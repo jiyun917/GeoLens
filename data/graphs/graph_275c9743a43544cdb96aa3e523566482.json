@@ -1,0 +1,3535 @@
+{
+  "nodes": [
+    {
+      "id": "large language model",
+      "label": "Large Language Model",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetry data processing",
+      "label": "Bathymetry Data processing",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetry",
+      "label": "Bathymetry",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "underwater depths",
+      "label": "underwater depths",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "mapping underwater topography",
+      "label": "mapping underwater topography",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric data",
+      "label": "Bathymetric data",
+      "mentions": 29,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "satellite imagery",
+      "label": "satellite imagery",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "hyper and multi-spectral sensors",
+      "label": "hyper and multi-spectral sensors",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "commercial lidar bathymetry systems",
+      "label": "commercial LIDAR bathymetry systems",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "llm framework",
+      "label": "LLM framework",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "analyzing bathymetry data",
+      "label": "analyzing Bathymetry data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "visualizing bathymetry data",
+      "label": "visualizing Bathymetry data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "traditional software tools",
+      "label": "Traditional software tools",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "high costs",
+      "label": "high costs",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "accessibility issues",
+      "label": "accessibility issues",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "global mapper",
+      "label": "Global Mapper",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "traditional software tool",
+      "label": "Traditional software tool",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "nautical charts",
+      "label": "Nautical charts",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seafloor maps",
+      "label": "Seafloor maps",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seafloor terrain",
+      "label": "seafloor terrain",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "safe navigation",
+      "label": "safe navigation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "understanding the seabed",
+      "label": "Understanding the seabed",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "marine-induced disasters",
+      "label": "marine-induced disasters",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+    },
+    {
+      "id": "hydrodynamic models",
+      "label": "hydrodynamic models",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "calculating salinity",
+      "label": "calculating salinity",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "calculating currents",
+      "label": "calculating currents",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "calculating tides",
+      "label": "calculating tides",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "rip tides",
+      "label": "rip tides",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "coastal flooding",
+      "label": "coastal flooding",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "mapping coral habitats",
+      "label": "mapping coral habitats",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "studying benthic organism ecosystems",
+      "label": "studying benthic organism ecosystems",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "marine conservation efforts",
+      "label": "marine conservation efforts",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric information",
+      "label": "bathymetric information",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "fragmented",
+      "label": "fragmented",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "multiple sources",
+      "label": "multiple sources",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "large language model (llm)",
+      "label": "large language model (LLM)",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric maps",
+      "label": "bathymetric maps",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "retrieval-augmented generation (rag)",
+      "label": "Retrieval-Augmented Generation (RAG)",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "scattered information",
+      "label": "scattered information",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seabed exploration",
+      "label": "seabed exploration",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "marine navigation",
+      "label": "marine navigation",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seabed study",
+      "label": "seabed study",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "real-time monitoring",
+      "label": "real-time monitoring",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "deep learning",
+      "label": "Deep Learning",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric data derivation",
+      "label": "Bathymetric Data derivation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "satellite images",
+      "label": "Satellite Images",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "dlsrb",
+      "label": "DLSRB",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "neural network architecture",
+      "label": "Neural Network Architecture",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "encoder-decoder architecture",
+      "label": "Encoder-Decoder Architecture",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "resnet56",
+      "label": "ResNet56",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "estimating average local depth of seabed",
+      "label": "estimating Average Local Depth of Seabed",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "deep blue ai",
+      "label": "Deep Blue AI",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric data into actionable insights",
+      "label": "Bathymetric Data into Actionable Insights",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "iot ocean sensors",
+      "label": "IoT Ocean Sensors",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "remote sensing methods",
+      "label": "Remote Sensing Methods",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "international seabed authority's deepdata database",
+      "label": "International Seabed Authority's DeepData database",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "biological data",
+      "label": "Biological Data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "coral reef identification",
+      "label": "Coral Reef identification",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "convolutional neural network",
+      "label": "Convolutional Neural Network",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seabed images",
+      "label": "Seabed Images",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "data acquisition techniques",
+      "label": "Data Acquisition Techniques",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seabed analysis",
+      "label": "Seabed Analysis",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "single-beam echo sounders",
+      "label": "Single-Beam Echo Sounders",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "data acquisition technique",
+      "label": "Data Acquisition Technique",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "multi-beam echo sounders",
+      "label": "Multi-Beam Echo Sounders",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "hybrid cnn-svm model",
+      "label": "hybrid CNN-SVM model",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "feature extraction",
+      "label": "feature extraction",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "classification",
+      "label": "classification",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "sonar data processing",
+      "label": "sonar data processing",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "study",
+      "label": "study",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "substrate detection",
+      "label": "substrate detection",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seabed classification",
+      "label": "seabed classification",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "machine learning methodology",
+      "label": "machine learning methodology",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "transfer learning model",
+      "label": "transfer learning model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "shufflenet-dse architecture",
+      "label": "ShuffleNet-DSE architecture",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "svm",
+      "label": "SVM",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "noisy dataset",
+      "label": "noisy dataset",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "sonar data",
+      "label": "sonar data",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "noise",
+      "label": "noise",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "oceangpt",
+      "label": "OceanGPT",
+      "mentions": 6,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "llm model",
+      "label": "LLM model",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "marine science tasks",
+      "label": "marine science tasks",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "doinstruct",
+      "label": "DOINSTRUCT",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "obtaining bathymetric data",
+      "label": "obtaining bathymetric data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "hallucination",
+      "label": "hallucination",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric data collection",
+      "label": "bathymetric data collection",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ocean mapping",
+      "label": "ocean mapping",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "map development",
+      "label": "map development",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ocean bed depth",
+      "label": "ocean bed depth",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "single-beam echo sounder",
+      "label": "Single-beam echo sounder",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ship-based measurement technology",
+      "label": "ship-based measurement technology",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "multi-beam echo sounder",
+      "label": "Multi-beam echo sounder",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "echo sounder",
+      "label": "Echo sounder",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "operating frequency dependent on depth",
+      "label": "operating frequency dependent on depth",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "multibeam echo sounder (mbes)",
+      "label": "Multibeam echo sounder (MBES)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "high-resolution seafloor topography measurements",
+      "label": "high-resolution seafloor topography measurements",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "satellite altimetry",
+      "label": "Satellite altimetry",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "indirectly inferring seafloor topography",
+      "label": "indirectly inferring seafloor topography",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "sea surface height",
+      "label": "sea surface height",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "underwater mountains presence",
+      "label": "underwater mountains presence",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "altimetric bathymetry",
+      "label": "Altimetric bathymetry",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ocean depth estimation method",
+      "label": "ocean depth estimation method",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "airborne light detection and ranging (lidar)",
+      "label": "Airborne Light Detection and Ranging (LIDAR)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "high resolution bathymetry data",
+      "label": "high resolution bathymetry data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric lidar system",
+      "label": "Bathymetric LIDAR system",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "532 nm green wavelength",
+      "label": "532 nm green wavelength",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "autonomous underwater vehicle (auv)",
+      "label": "Autonomous Underwater Vehicle (AUV)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "unmanned surface vehicle (usv)",
+      "label": "Unmanned Surface Vehicle (USV)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "crowdsourced bathymetry (csb)",
+      "label": "Crowdsourced Bathymetry (CSB)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "noaa",
+      "label": "NOAA",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "us waters bathymetric data",
+      "label": "US waters bathymetric data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gebco",
+      "label": "GEBCO",
+      "mentions": 6,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "global initiative",
+      "label": "Global Initiative",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "world oceans",
+      "label": "World Oceans",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seafloor topography data",
+      "label": "Seafloor Topography Data",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gebco web mapping services",
+      "label": "GEBCO Web Mapping Services",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gebco bathymetric data",
+      "label": "GEBCO Bathymetric Data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "emodnet",
+      "label": "EMODnet",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "collaborative initiative",
+      "label": "Collaborative Initiative",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "european waters",
+      "label": "European Waters",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "emodnet bathymetry portal",
+      "label": "EMODnet Bathymetry Portal",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "digital terrain models",
+      "label": "Digital Terrain Models",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "srtm",
+      "label": "SRTM",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "nasa",
+      "label": "NASA",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "topographic data",
+      "label": "Topographic Data",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "coastal bathymetry data",
+      "label": "Coastal Bathymetry Data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "srtm data",
+      "label": "SRTM Data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "high-resolution elevation models",
+      "label": "High-resolution Elevation Models",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "natural earth",
+      "label": "Natural Earth",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "public domain map datasets",
+      "label": "Public Domain Map Datasets",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "opentopography",
+      "label": "OpenTopography",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "high-resolution bathymetry data",
+      "label": "High-resolution Bathymetry Data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "tiff",
+      "label": "TIFF",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "tagged image file format",
+      "label": "Tagged Image File Format",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "storing bathymetric data",
+      "label": "storing bathymetric data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "lossless and lossy compression",
+      "label": "lossless and lossy compression",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geotiff",
+      "label": "GeoTIFF",
+      "mentions": 8,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "tiff format",
+      "label": "TIFF format",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geospatial metadata",
+      "label": "geospatial metadata",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "map projections information",
+      "label": "map projections information",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geographic information systems (gis) applications",
+      "label": "Geographic Information Systems (GIS) applications",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "netcdf",
+      "label": "NetCDF",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "network common data form",
+      "label": "Network Common Data Form",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "storing multi-dimensional data",
+      "label": "storing multi-dimensional data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "time series analysis of depth measurements",
+      "label": "time series analysis of depth measurements",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "esri ascii raster",
+      "label": "Esri ASCII Raster",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "text-based raster format",
+      "label": "text-based raster format",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "not suitable for large datasets",
+      "label": "not suitable for large datasets",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bag",
+      "label": "BAG",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetry attributed grid",
+      "label": "Bathymetry Attributed Grid",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "depth data and uncertainty points",
+      "label": "depth data and uncertainty points",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "rag system",
+      "label": "RAG system",
+      "mentions": 8,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ai technique",
+      "label": "AI technique",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "llm",
+      "label": "LLM",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "vector store",
+      "label": "Vector store",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "data",
+      "label": "data",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "embeddings",
+      "label": "embeddings",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "numerical representation",
+      "label": "numerical representation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "k-nn algorithm",
+      "label": "K-NN algorithm",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "vector database",
+      "label": "vector database",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "openai model",
+      "label": "OpenAI model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gemma model",
+      "label": "Gemma model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "mixtral model",
+      "label": "Mixtral model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "models",
+      "label": "Models",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "api key",
+      "label": "API key",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "docker",
+      "label": "Docker",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "open-source model",
+      "label": "open-source model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geocoding",
+      "label": "Geocoding",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "place name",
+      "label": "Place name",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geographic coordinates",
+      "label": "Geographic coordinates",
+      "mentions": 6,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "netcdf files",
+      "label": "NetCDF files",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "xarray",
+      "label": "xarray",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gdal (geospatial data abstraction library)",
+      "label": "GDAL (Geospatial Data Abstraction Library)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "data processing",
+      "label": "Data processing",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "data filtering",
+      "label": "Data filtering",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "specific depth ranges",
+      "label": "Specific depth ranges",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "visualizations",
+      "label": "Visualizations",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "cartopy",
+      "label": "Cartopy",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "matplotlib",
+      "label": "Matplotlib",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "high quality images",
+      "label": "High quality images",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "processed bathymetry data",
+      "label": "Processed bathymetry data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "underwater topography",
+      "label": "Underwater topography",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "rag framework",
+      "label": "RAG Framework",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "retrieve function",
+      "label": "RETRIEVE function",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "retriever",
+      "label": "Retriever",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "generate function",
+      "label": "GENERATE function",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "query",
+      "label": "Query",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "system architecture",
+      "label": "System Architecture",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "user request handling",
+      "label": "User Request Handling",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "data retrieval",
+      "label": "Data Retrieval",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "request parsing and interpretation",
+      "label": "Request Parsing and Interpretation",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "amazon bedrock",
+      "label": "Amazon Bedrock",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "foundation model",
+      "label": "foundation model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geographic locations",
+      "label": "geographic locations",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "location name",
+      "label": "location name",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "latitude",
+      "label": "latitude",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "longitude",
+      "label": "longitude",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "aws lambda function",
+      "label": "AWS Lambda function",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "amazon s3",
+      "label": "Amazon S3",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetry data format",
+      "label": "bathymetry data format",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gdal",
+      "label": "GDAL",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geospatial data management",
+      "label": "geospatial data management",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geospatial data processing",
+      "label": "geospatial data processing",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "salt-and-pepper noise",
+      "label": "Salt-and-Pepper noise",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "impulse noise",
+      "label": "impulse noise",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gaussian noise",
+      "label": "Gaussian noise",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "additive noise",
+      "label": "additive noise",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "filters",
+      "label": "Filters",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "noise removal",
+      "label": "noise removal",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "cv2 library",
+      "label": "cv2 library",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "noise handling",
+      "label": "noise handling",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "vector data",
+      "label": "vector data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "raster data",
+      "label": "raster data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gdal warp",
+      "label": "GDAL Warp",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "reprojection",
+      "label": "reprojection",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gdal translate",
+      "label": "GDAL Translate",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "raster data conversion",
+      "label": "raster data conversion",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ogr2ogr",
+      "label": "OGR2OGR",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "vector data conversion",
+      "label": "vector data conversion",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetry visualization",
+      "label": "bathymetry visualization",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "rag",
+      "label": "RAG",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "gebco wms",
+      "label": "GEBCO WMS",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "web map service",
+      "label": "Web Map Service",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "global bathymetric data",
+      "label": "global bathymetric data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "data visualization",
+      "label": "data visualization",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "zoom levels",
+      "label": "zoom levels",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "map regions",
+      "label": "map regions",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "web applications",
+      "label": "web applications",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "llm agents",
+      "label": "LLM agents",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "visualization stages",
+      "label": "visualization stages",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "cochin estuary",
+      "label": "Cochin Estuary",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric checkpoints",
+      "label": "bathymetric checkpoints",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "depth variations",
+      "label": "depth variations",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "color gradients",
+      "label": "color gradients",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "contour lines",
+      "label": "contour lines",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "hypsographic elevation",
+      "label": "hypsographic elevation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "streams",
+      "label": "streams",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geospatial data",
+      "label": "geospatial data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "limited availability",
+      "label": "limited availability",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric data sources",
+      "label": "bathymetric data sources",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "different formats",
+      "label": "different formats",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "multi-dimensional",
+      "label": "multi-dimensional",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "preprocessing steps",
+      "label": "Preprocessing steps",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "noise reduction",
+      "label": "noise reduction",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "interpolation",
+      "label": "interpolation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "llm training",
+      "label": "LLM training",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "spatial relationships",
+      "label": "spatial relationships",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "llms",
+      "label": "LLMs",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ocean science tasks",
+      "label": "ocean science tasks",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "proposed model",
+      "label": "Proposed model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "rag model",
+      "label": "RAG model",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric data corpus",
+      "label": "bathymetric data corpus",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "multimodal frameworks",
+      "label": "Multimodal frameworks",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "fetching visual content",
+      "label": "fetching visual content",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "nippon foundation-gebco seabed 2030 project",
+      "label": "Nippon Foundation-GEBCO Seabed 2030 Project",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "complete map of world's seabed",
+      "label": "complete map of world's seabed",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "2030",
+      "label": "2030",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ai models",
+      "label": "AI models",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "generative ai",
+      "label": "Generative AI",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ocean science",
+      "label": "ocean science",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "satellite derived bathymetry",
+      "label": "Satellite derived bathymetry",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "international seabed authority deep-data database",
+      "label": "International Seabed Authority Deep-Data database",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "database",
+      "label": "database",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "biological perspective",
+      "label": "biological perspective",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "benthic substrate classification method",
+      "label": "benthic substrate classification method",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "deep-sea coral reefs",
+      "label": "deep-sea coral reefs",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "modern bathymetry",
+      "label": "modern bathymetry",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "data acquisition devices",
+      "label": "data acquisition devices",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "interpolation techniques",
+      "label": "interpolation techniques",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "underwater mapping",
+      "label": "underwater mapping",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "deepblue",
+      "label": "DeepBlue",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ocean remote sensing",
+      "label": "ocean remote sensing",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seabed substrate detection model",
+      "label": "Seabed Substrate Detection Model",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "cnn-svm architecture",
+      "label": "CNN-SVM Architecture",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "seabed substrate",
+      "label": "Seabed Substrate",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "marine and coastal gis",
+      "label": "Marine and Coastal GIS",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "geomorphology",
+      "label": "Geomorphology",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "habitat mapping",
+      "label": "Habitat Mapping",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "airborne lidar",
+      "label": "Airborne LiDAR",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "tree stem location",
+      "label": "Tree Stem Location",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "biomass measurements",
+      "label": "Biomass Measurements",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "crowd-sourced bathymetry",
+      "label": "Crowd-sourced Bathymetry",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "safety of navigation",
+      "label": "Safety of Navigation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "ncei",
+      "label": "NCEI",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "general bathymetric chart of the oceans",
+      "label": "General Bathymetric Chart of the Oceans",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "marine observation data",
+      "label": "Marine Observation Data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "global bathymetry",
+      "label": "Global Bathymetry",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "15 arc seconds",
+      "label": "15 arc seconds",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "bathymetric attributed grid (bag)",
+      "label": "Bathymetric Attributed Grid (BAG)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    },
+    {
+      "id": "community standard",
+      "label": "Community Standard",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "ocean science",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "multi-dimensional",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geographic coordinates",
+      "relation": "accessed_by_parameter",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "gebco",
+      "relation": "sourced_from",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geospatial data",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "limited availability",
+      "relation": "has_challenge",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geotiff",
+      "relation": "comes_in_format",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "netcdf",
+      "relation": "comes_in_format",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "ocean bed depth",
+      "relation": "measures",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "map development",
+      "relation": "processed_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "ocean mapping",
+      "relation": "aims",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "satellite images",
+      "relation": "derived_from",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "mapping coral habitats",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "studying benthic organism ecosystems",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "marine conservation efforts",
+      "relation": "supports",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetry data processing",
+      "relation": "improves",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "underwater depths",
+      "relation": "measures",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "mapping underwater topography",
+      "relation": "involves",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "satellite imagery",
+      "relation": "gathered_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "hyper and multi-spectral sensors",
+      "relation": "gathered_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "commercial lidar bathymetry systems",
+      "relation": "gathered_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "analyzing bathymetry data",
+      "relation": "developed_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "visualizing bathymetry data",
+      "relation": "developed_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "high costs",
+      "relation": "has_limitation",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "accessibility issues",
+      "relation": "has_limitation",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "traditional software tool",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetric data",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "seafloor terrain",
+      "relation": "indicates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "safe navigation",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "marine-induced disasters",
+      "relation": "provides_insight_into",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "calculating salinity",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "calculating currents",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "calculating tides",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "rip tides",
+      "relation": "predicts",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "coastal flooding",
+      "relation": "predicts",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "fragmented",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "multiple sources",
+      "relation": "is_distributed_across",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetric maps",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "retrieval-augmented generation (rag)",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "scattered information",
+      "relation": "consolidates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "marine navigation",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "real-time monitoring",
+      "relation": "important_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetric data derivation",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "coral reef identification",
+      "relation": "applied_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "neural network architecture",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "encoder-decoder architecture",
+      "relation": "has_architecture",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "estimating average local depth of seabed",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetric data into actionable insights",
+      "relation": "transforms",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "iot ocean sensors",
+      "relation": "integrates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "remote sensing methods",
+      "relation": "integrates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "biological data",
+      "relation": "integrates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "seabed images",
+      "relation": "applied_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "seabed analysis",
+      "relation": "evaluated_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "data acquisition technique",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "feature extraction",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "classification",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "sonar data processing",
+      "relation": "improves",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "substrate detection",
+      "relation": "focused_on",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "machine learning methodology",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "shufflenet-dse architecture",
+      "relation": "has_architecture",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "noisy dataset",
+      "relation": "performs_poorly_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "noise",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "llm model",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "marine science tasks",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "hallucination",
+      "relation": "prone_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetric data collection",
+      "relation": "focuses_on",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "obtaining bathymetric data",
+      "relation": "reduces_difficulty_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "ship-based measurement technology",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "operating frequency dependent on depth",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "high-resolution seafloor topography measurements",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "indirectly inferring seafloor topography",
+      "relation": "method_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "sea surface height",
+      "relation": "measures",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "underwater mountains presence",
+      "relation": "indicates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "ocean depth estimation method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "high resolution bathymetry data",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "532 nm green wavelength",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "us waters bathymetric data",
+      "relation": "primary_source_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "world oceans",
+      "relation": "covers",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "global initiative",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "satellite altimetry",
+      "relation": "collects_data_from",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "seafloor topography data",
+      "relation": "produces",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "gebco bathymetric data",
+      "relation": "provides_access_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "collaborative initiative",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "european waters",
+      "relation": "provides_data_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "digital terrain models",
+      "relation": "offers",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "nasa",
+      "relation": "led_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "topographic data",
+      "relation": "collects",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "coastal bathymetry data",
+      "relation": "includes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "high-resolution elevation models",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "public domain map datasets",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "high-resolution bathymetry data",
+      "relation": "provides_access_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "tagged image file format",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "storing bathymetric data",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "lossless and lossy compression",
+      "relation": "supports",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "tiff format",
+      "relation": "based_on",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geospatial metadata",
+      "relation": "embeds",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geographic information systems (gis) applications",
+      "relation": "useful_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "map projections information",
+      "relation": "includes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "network common data form",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "storing multi-dimensional data",
+      "relation": "designed_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "time series analysis of depth measurements",
+      "relation": "suitable_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "text-based raster format",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "not suitable for large datasets",
+      "relation": "limitation",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetry attributed grid",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "depth data and uncertainty points",
+      "relation": "stores",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "ai technique",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "llm",
+      "relation": "utilizes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "k-nn algorithm",
+      "relation": "employs",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "openai model",
+      "relation": "can_be_trained_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "gemma model",
+      "relation": "can_be_trained_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "mixtral model",
+      "relation": "can_be_trained_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "docker",
+      "relation": "containerized_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "open-source model",
+      "relation": "can_be_trained_on",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "data",
+      "relation": "stores",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "embeddings",
+      "relation": "contains",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "numerical representation",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "vector database",
+      "relation": "searches",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "api key",
+      "relation": "accessed_via",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "gdal (geospatial data abstraction library)",
+      "relation": "handled_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "place name",
+      "relation": "converts",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "xarray",
+      "relation": "processed_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "data filtering",
+      "relation": "includes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "specific depth ranges",
+      "relation": "focuses_on",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "cartopy",
+      "relation": "created_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "underwater topography",
+      "relation": "displays",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "matplotlib",
+      "relation": "integrated_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "processed bathymetry data",
+      "relation": "represents",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "retriever",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "query",
+      "relation": "combines",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "location name",
+      "relation": "converts",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "latitude",
+      "relation": "consists_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "longitude",
+      "relation": "consists_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "user request handling",
+      "relation": "has_component",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "data retrieval",
+      "relation": "has_component",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "request parsing and interpretation",
+      "relation": "includes_step",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geocoding",
+      "relation": "includes_step",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "aws lambda function",
+      "relation": "uses_tool",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "amazon bedrock",
+      "relation": "integrates_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geographic locations",
+      "relation": "identifies",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "foundation model",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "amazon s3",
+      "relation": "queries",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetry data format",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geospatial data processing",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetry visualization",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geospatial data management",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "vector data",
+      "relation": "supports",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "raster data",
+      "relation": "supports",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "impulse noise",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "additive noise",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "noise removal",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "noise handling",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "reprojection",
+      "relation": "performs",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "raster data conversion",
+      "relation": "performs",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "vector data conversion",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "web map service",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "global bathymetric data",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "data visualization",
+      "relation": "enables",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "zoom levels",
+      "relation": "accessed_by_parameter",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "web applications",
+      "relation": "streamed_into",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "data processing",
+      "relation": "simplifies",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "visualization stages",
+      "relation": "simplifies",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetric checkpoints",
+      "relation": "contains",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "color gradients",
+      "relation": "visualized_using",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "contour lines",
+      "relation": "visualized_using",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "streams",
+      "relation": "calculated_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "different formats",
+      "relation": "have",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "llms",
+      "relation": "incorporates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "ocean science tasks",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "spatial relationships",
+      "relation": "captures",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "noise reduction",
+      "relation": "includes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "interpolation",
+      "relation": "includes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "rag model",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "bathymetric data corpus",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "fetching visual content",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "complete map of world's seabed",
+      "relation": "aims_to_achieve",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "2030",
+      "relation": "target_year",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "ocean remote sensing",
+      "relation": "applied_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "deep learning",
+      "relation": "uses_method",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "database",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "biological perspective",
+      "relation": "reviewed_from",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "deep-sea coral reefs",
+      "relation": "supports_management_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "data acquisition devices",
+      "relation": "involves",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "interpolation techniques",
+      "relation": "involves",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "underwater mapping",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "convolutional neural network",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "large language model",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "ocean science tasks",
+      "relation": "applied_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "general bathymetric chart of the oceans",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "marine observation data",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "tagged image file format",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "cnn-svm architecture",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "sonar data",
+      "relation": "processes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "seabed substrate",
+      "relation": "detects",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "geomorphology",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "habitat mapping",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "tree stem location",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "biomass measurements",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "safety of navigation",
+      "relation": "impacts",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "noaa",
+      "relation": "part_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "15 arc seconds",
+      "relation": "has_resolution",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/275c9743a43544cdb96aa3e523566482_Comprehensive_Large_Language_Model_for_Bathymetry_Data.pdf",
+      "target": "community standard",
+      "relation": "type_of",
+      "weight": 1
+    }
+  ]
+}

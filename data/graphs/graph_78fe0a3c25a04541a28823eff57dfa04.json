@@ -1,0 +1,2999 @@
+{
+  "nodes": [
+    {
+      "id": "reconstruction results",
+      "label": "Reconstruction results",
+      "mentions": 8,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "synthetic data",
+      "label": "synthetic data",
+      "mentions": 16,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "residuals",
+      "label": "Residuals",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "missing rates",
+      "label": "missing rates",
+      "mentions": 16,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "67%",
+      "label": "67%",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "75%",
+      "label": "75%",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "80%",
+      "label": "80%",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "f–x interpolation",
+      "label": "f–x interpolation",
+      "mentions": 8,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "reconstruction method",
+      "label": "reconstruction method",
+      "mentions": 14,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "cddip",
+      "label": "CDDIP",
+      "mentions": 17,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "u-net",
+      "label": "U-Net",
+      "mentions": 23,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "wt-unet",
+      "label": "WT-UNet",
+      "mentions": 12,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "ct-unet",
+      "label": "CT-UNet",
+      "mentions": 56,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "blue boxes",
+      "label": "Blue boxes",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "region of interest",
+      "label": "Region of Interest",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "detailed comparison",
+      "label": "detailed comparison",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "input",
+      "label": "Input",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "data representation",
+      "label": "data representation",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "ground truth",
+      "label": "Ground truth",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+    },
+    {
+      "id": "roi",
+      "label": "ROI",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "data processing method",
+      "label": "data processing method",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic exploration",
+      "label": "Seismic Exploration",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "geophysical method",
+      "label": "Geophysical Method",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "journal of seismic exploration",
+      "label": "Journal of Seismic Exploration",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "scientific journal",
+      "label": "Scientific Journal",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "f–k spectra",
+      "label": "f–k spectra",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "evaluating reconstructed results",
+      "label": "evaluating reconstructed results",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "reconstructed results",
+      "label": "reconstructed results",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "field data",
+      "label": "field data",
+      "mentions": 10,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "noise",
+      "label": "noise",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "non-stationarity",
+      "label": "non-stationarity",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "complex reflection patterns",
+      "label": "complex reflection patterns",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "continuity of major reflection events",
+      "label": "continuity of major reflection events",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "energy distribution in f–k spectra",
+      "label": "energy distribution in f–k spectra",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "highest psnr",
+      "label": "highest PSNR",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "algorithm",
+      "label": "Algorithm",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "method",
+      "label": "Method",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "significant improvement",
+      "label": "significant improvement",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "figure 8",
+      "label": "Figure 8",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "f-k spectrum",
+      "label": "f-k spectrum",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "reconstructed seismic data",
+      "label": "reconstructed seismic data",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "regular missing data",
+      "label": "regular missing data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "f-x interpolation",
+      "label": "f-x interpolation",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data reconstruction method",
+      "label": "seismic data reconstruction method",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "deep learning reconstruction method",
+      "label": "deep learning reconstruction method",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "irregular missing data",
+      "label": "irregular missing data",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "random",
+      "label": "random",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "periodic aliasing pattern",
+      "label": "periodic aliasing pattern",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "f-k domain",
+      "label": "f-k domain",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "large residuals",
+      "label": "large residuals",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "spatial domain",
+      "label": "spatial domain",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "major reflection events",
+      "label": "major reflection events",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "psnr",
+      "label": "PSNR",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "quantitative evaluation metric",
+      "label": "quantitative evaluation metric",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "reconstruction result",
+      "label": "Reconstruction result",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "residual",
+      "label": "Residual",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "missing data (50% irregular)",
+      "label": "Missing data (50% irregular)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "data reconstruction",
+      "label": "Data reconstruction",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "input data",
+      "label": "Input data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "f-k spectra",
+      "label": "f-k spectra",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "50%",
+      "label": "50%",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic interpolation method",
+      "label": "seismic interpolation method",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "self-supervised method",
+      "label": "self-supervised method",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "training data",
+      "label": "training data",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data processing method",
+      "label": "seismic data processing method",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "evaluation metric",
+      "label": "evaluation metric",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "missing ratio",
+      "label": "missing ratio",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "data evaluation",
+      "label": "data evaluation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "p < 0.05",
+      "label": "p < 0.05",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "statistical significance",
+      "label": "statistical significance",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet-based component separation",
+      "label": "Curvelet-based component separation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet transform",
+      "label": "Curvelet transform",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "near-optimal sparse representation",
+      "label": "Near-optimal sparse representation",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvilinear discontinuities",
+      "label": "Curvilinear discontinuities",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "o(k⁻²(log k)³)",
+      "label": "O(k⁻²(log k)³)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "wavelets",
+      "label": "Wavelets",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "o(k⁻¹)",
+      "label": "O(k⁻¹)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "component-wise learning",
+      "label": "Component-wise learning",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "spectral bias",
+      "label": "Spectral bias",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "psnr improvement",
+      "label": "PSNR improvement",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "high missing-rate conditions (80%)",
+      "label": "High missing-rate conditions (80%)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "psnr improvements",
+      "label": "PSNR improvements",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "ct-unet psnr improvement on synthetic data",
+      "label": "CT-UNet PSNR improvement on synthetic data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "0.28 db",
+      "label": "0.28 dB",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "ct-unet psnr improvement on field data",
+      "label": "CT-UNet PSNR improvement on field data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "1.61 db",
+      "label": "1.61 dB",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "high missing-rate conditions",
+      "label": "high missing-rate conditions",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "statistical significance confirmed",
+      "label": "statistical significance confirmed",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "performance difference",
+      "label": "Performance difference",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "low missing-rate conditions",
+      "label": "low missing-rate conditions",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "experimental results",
+      "label": "Experimental results",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "theoretical prediction",
+      "label": "theoretical prediction",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "component separation",
+      "label": "Component separation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "high missing-rate environments",
+      "label": "High missing-rate environments",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "aliasing components",
+      "label": "Aliasing components",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "periodic structure in f-k domain",
+      "label": "Periodic structure in f-k domain",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet directional decomposition",
+      "label": "Curvelet directional decomposition",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "signal and aliasing component separation",
+      "label": "Signal and aliasing component separation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "irregular missing",
+      "label": "Irregular missing",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet-based separation",
+      "label": "Curvelet-based separation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "general reconstruction basis",
+      "label": "General reconstruction basis",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "aliasing structure",
+      "label": "Aliasing structure",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "[8,8] configuration",
+      "label": "[8,8] configuration",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "ct-unet framework",
+      "label": "CT-UNet framework",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "patch size (64x256)",
+      "label": "Patch size (64x256)",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "four-stage u-net",
+      "label": "Four-stage U-Net",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "udct",
+      "label": "UDCT",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "components with different lattice structures",
+      "label": "Components with different lattice structures",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "group-wise independent networks",
+      "label": "Group-wise independent networks",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "udct transform structure",
+      "label": "UDCT transform structure",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "three independent u-nets",
+      "label": "Three independent U-Nets",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "total parameters approx 3x baseline u-net",
+      "label": "Total parameters approx 3x baseline U-Net",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "deep learning framework",
+      "label": "Deep Learning framework",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet decomposition",
+      "label": "Curvelet decomposition",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "computational load",
+      "label": "Computational load",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "transform representational power",
+      "label": "Transform representational power",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "performance",
+      "label": "Performance",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet-pocs",
+      "label": "Curvelet-POCS",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "sparsity-promoting reconstruction method",
+      "label": "Sparsity-promoting reconstruction method",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "neural networks",
+      "label": "Neural Networks",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "reconstruction paradigm",
+      "label": "Reconstruction paradigm",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "iterative optimization",
+      "label": "Iterative optimization",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "~30 gpu·hours",
+      "label": "~30 GPU·hours",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "~30 seconds",
+      "label": "~30 seconds",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "~6 gb",
+      "label": "~6 GB",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "1.61 db psnr improvement",
+      "label": "1.61 dB PSNR improvement",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "single u-net",
+      "label": "Single U-Net",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "low missing-rate environments",
+      "label": "Low missing-rate environments",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data interpolation framework",
+      "label": "seismic data interpolation framework",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data",
+      "label": "seismic data",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data decomposition",
+      "label": "seismic data decomposition",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "event continuity",
+      "label": "event continuity",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "frequency components",
+      "label": "frequency components",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seg/eage salt model",
+      "label": "SEG/EAGE Salt Model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "mobil avo viking graben line 12",
+      "label": "Mobil AVO Viking Graben Line 12",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "f-k spectral analysis",
+      "label": "f-k spectral analysis",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "evaluation",
+      "label": "evaluation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "quantitative evaluation method",
+      "label": "quantitative evaluation method",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "ssim",
+      "label": "SSIM",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "robustness evaluation",
+      "label": "robustness evaluation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "controlled noise environments",
+      "label": "controlled noise environments",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "consistent_superiority",
+      "label": "consistent_superiority",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "comparison_methods",
+      "label": "comparison_methods",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "synthetic_data",
+      "label": "synthetic_data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "field_data",
+      "label": "field_data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "different_missing_types",
+      "label": "different_missing_types",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet-based_representation",
+      "label": "curvelet-based_representation",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "multi-scale_representation",
+      "label": "multi-scale_representation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "multi-directional_representation",
+      "label": "multi-directional_representation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelets",
+      "label": "Curvelets",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "directional_decomposition_advantage",
+      "label": "directional_decomposition_advantage",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "irregular_missing",
+      "label": "irregular_missing",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "deep_learning_interpolation_method",
+      "label": "deep_learning_interpolation_method",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "event_continuity",
+      "label": "event_continuity",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "spectral_consistency",
+      "label": "spectral_consistency",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic_data",
+      "label": "seismic_data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "regular_undersampling",
+      "label": "regular_undersampling",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic trace interpolation",
+      "label": "Seismic trace interpolation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "f-x domain",
+      "label": "F-X domain",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "3d interpolation",
+      "label": "3D interpolation",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "irregular data",
+      "label": "Irregular data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "pocs algorithm",
+      "label": "POCS algorithm",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "convolutional network",
+      "label": "Convolutional network",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "biomedical image segmentation",
+      "label": "Biomedical image segmentation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "deep learning",
+      "label": "Deep learning",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data interpolation",
+      "label": "Seismic data interpolation",
+      "mentions": 10,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data reconstruction",
+      "label": "Seismic data reconstruction",
+      "mentions": 6,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "missing seismic data",
+      "label": "Missing seismic data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "attention and hybrid loss guided deep learning",
+      "label": "Attention and hybrid loss guided deep learning",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "missing seismic data interpolation",
+      "label": "Missing seismic data interpolation",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "coordinate attention unet",
+      "label": "Coordinate attention Unet",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "multistage neural network training",
+      "label": "Multistage neural network training",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "fr-unet",
+      "label": "FR-UNet",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "missing trace interpolation",
+      "label": "Missing trace interpolation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data crossline interpolation",
+      "label": "Seismic data crossline interpolation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "transposed arrangement strategy",
+      "label": "Transposed arrangement strategy",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "crossline reconstruction",
+      "label": "Crossline reconstruction",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "3d seismic data",
+      "label": "3D seismic data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "sleipner seismic survey data",
+      "label": "Sleipner seismic survey data",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "dcwgan",
+      "label": "DcWGAN",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "comparative study",
+      "label": "comparative study",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "sleipner seismic survey",
+      "label": "Sleipner seismic survey",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "geophysical data",
+      "label": "geophysical data",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "sleipner",
+      "label": "Sleipner",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic survey",
+      "label": "seismic survey",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "conditional generative adversarial networks",
+      "label": "Conditional Generative Adversarial Networks",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "multi-scale transformer",
+      "label": "Multi-scale Transformer",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "denoising diffusion implicit models",
+      "label": "Denoising Diffusion Implicit Models",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "diffusion probabilistic model",
+      "label": "Diffusion Probabilistic Model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "constrained diffusion-driven deep image prior",
+      "label": "Constrained diffusion-driven deep image prior",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "deep diffusion models",
+      "label": "Deep diffusion models",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic processing",
+      "label": "Seismic processing",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "time domain",
+      "label": "Time domain",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "frequency domain",
+      "label": "Frequency domain",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "irregularly sampled seismic data",
+      "label": "Irregularly sampled seismic data",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "irregularly sampled",
+      "label": "Irregularly sampled",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "coherence-corrected resampling",
+      "label": "Coherence-corrected resampling",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "wavelet-based convolutional block attention deep learning",
+      "label": "Wavelet-based Convolutional Block Attention Deep Learning",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "artificial intelligence",
+      "label": "Artificial Intelligence",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "geosciences",
+      "label": "Geosciences",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "wavelet-based method",
+      "label": "Wavelet-based Method",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "convolutional block attention",
+      "label": "Convolutional Block Attention",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "artif intell geosci",
+      "label": "Artif Intell Geosci",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "artificial intelligence in geosciences",
+      "label": "Artificial Intelligence in Geosciences",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "journal",
+      "label": "Journal",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "data domain",
+      "label": "Data Domain",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seg technical program expanded abstracts",
+      "label": "SEG Technical Program Expanded Abstracts",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "conference proceedings",
+      "label": "Conference Proceedings",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "attention-based wavelet-convolutional neural network",
+      "label": "attention-based wavelet-convolutional neural network",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data denoising",
+      "label": "seismic data denoising",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "wavelet-convolutional neural network",
+      "label": "wavelet-convolutional neural network",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "neural network",
+      "label": "neural network",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "wavelet-based residual deep learning",
+      "label": "wavelet-based residual deep learning",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "deep prior-based unsupervised reconstruction",
+      "label": "deep prior-based unsupervised reconstruction",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet",
+      "label": "curvelet",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "tight frame",
+      "label": "tight frame",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "multiscale transform",
+      "label": "multiscale transform",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "fast discrete curvelet transform",
+      "label": "fast discrete curvelet transform",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "discrete curvelet transform",
+      "label": "discrete curvelet transform",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet frames",
+      "label": "curvelet frames",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic data recovery",
+      "label": "seismic data recovery",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "curvelet domain",
+      "label": "curvelet domain",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "solving wave equation",
+      "label": "solving wave equation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "contourlet transform",
+      "label": "contourlet transform",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "multiresolution image representation",
+      "label": "multiresolution image representation",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "adam",
+      "label": "Adam",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "stochastic optimization algorithm",
+      "label": "stochastic optimization algorithm",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seg/eage 3-d salt and overthrust models",
+      "label": "SEG/EAGE 3-D Salt and Overthrust Models",
+      "mentions": 6,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "geological model",
+      "label": "geological model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "society of exploration geophysicists",
+      "label": "Society of Exploration Geophysicists",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "geophysical model",
+      "label": "Geophysical Model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seg/eage 3-d modeling series",
+      "label": "SEG/EAGE 3-D Modeling Series",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "salt model",
+      "label": "Salt Model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "overthrust model",
+      "label": "Overthrust Model",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "professional organization",
+      "label": "Professional Organization",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "seismic inversion methods",
+      "label": "Seismic Inversion Methods",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "comparison of seismic inversion methods on a single real data set",
+      "label": "Comparison of Seismic Inversion Methods on a Single Real Data Set",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    },
+    {
+      "id": "real data set",
+      "label": "Real Data Set",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "constrained diffusion-driven deep image prior",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "convolutional network",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "biomedical image segmentation",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "consistent_superiority",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "comparison_methods",
+      "relation": "outperforms",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "synthetic_data",
+      "relation": "evaluated_on",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "field_data",
+      "relation": "evaluated_on",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "different_missing_types",
+      "relation": "robust_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "curvelet-based_representation",
+      "relation": "integrates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "deep_learning_interpolation_method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "event_continuity",
+      "relation": "improves",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "spectral_consistency",
+      "relation": "improves",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic_data",
+      "relation": "applied_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "regular_undersampling",
+      "relation": "used_in_scenarios_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seg/eage salt model",
+      "relation": "originates_from",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic data interpolation framework",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "curvelet transform",
+      "relation": "based_on",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic data",
+      "relation": "decomposes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "event continuity",
+      "relation": "enhances",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "frequency components",
+      "relation": "preserves",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "synthetic data",
+      "relation": "observed_on_data_type",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "field data",
+      "relation": "observed_on_data_type",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "high missing-rate conditions",
+      "relation": "occurred_under_condition",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "reconstruction paradigm",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "iterative optimization",
+      "relation": "performs",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "training data",
+      "relation": "operates_without",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "deep learning framework",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "curvelet decomposition",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "~30 gpu·hours",
+      "relation": "has_training_time",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "~30 seconds",
+      "relation": "has_inference_time",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "~6 gb",
+      "relation": "has_peak_memory_training",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "1.61 db psnr improvement",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "high missing-rate environments",
+      "relation": "advantageous_in",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "wt-unet",
+      "relation": "outperformed",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "u-net",
+      "relation": "utilizes_algorithm",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "three independent u-nets",
+      "relation": "employs",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "total parameters approx 3x baseline u-net",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "psnr improvements",
+      "relation": "achieved_metric",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "reconstruction method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "curvelet-based component separation",
+      "relation": "has_core_component",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "self-supervised method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic data processing method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "missing data (50% irregular)",
+      "relation": "affected_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "data reconstruction",
+      "relation": "method_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic data reconstruction method",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "deep learning reconstruction method",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "major reflection events",
+      "relation": "reconstructs",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "highest psnr",
+      "relation": "achieved",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "67%",
+      "relation": "has_value",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "75%",
+      "relation": "has_value",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "80%",
+      "relation": "has_value",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "reconstruction results",
+      "relation": "shows",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "algorithm",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "significant improvement",
+      "relation": "demonstrates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "f–x interpolation",
+      "relation": "processed_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "cddip",
+      "relation": "utilizes_algorithm",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "continuity of major reflection events",
+      "relation": "reproduces",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "energy distribution in f–k spectra",
+      "relation": "maintains",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "missing rates",
+      "relation": "analyzed_under",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "data processing method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "region of interest",
+      "relation": "stands_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "detailed comparison",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "data representation",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "geophysical method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic exploration",
+      "relation": "focuses_on_field",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "scientific journal",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "evaluating reconstructed results",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "noise",
+      "relation": "contains",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "non-stationarity",
+      "relation": "contains",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "complex reflection patterns",
+      "relation": "contains",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "residuals",
+      "relation": "shows",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "reconstructed seismic data",
+      "relation": "corresponds_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "regular missing data",
+      "relation": "evaluated_under",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "large residuals",
+      "relation": "exhibits",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "random",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "periodic aliasing pattern",
+      "relation": "does_not_form",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "f-k domain",
+      "relation": "occurs_in_domain",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "spatial domain",
+      "relation": "occur_in_domain",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "quantitative evaluation metric",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "ground truth",
+      "relation": "compared_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "input data",
+      "relation": "compared_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "irregular missing data",
+      "relation": "affected_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic interpolation method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "50%",
+      "relation": "has_percentage",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "evaluation metric",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "reconstructed results",
+      "relation": "represents",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "data evaluation",
+      "relation": "parameter_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "statistical significance",
+      "relation": "indicates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "near-optimal sparse representation",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "o(k⁻²(log k)³)",
+      "relation": "has_decay_rate_for_C2_discontinuities",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "wavelets",
+      "relation": "exhibits_faster_convergence_than",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "curvilinear discontinuities",
+      "relation": "for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "o(k⁻¹)",
+      "relation": "has_decay_rate_for_C2_discontinuities",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "spectral bias",
+      "relation": "mitigates",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "high missing-rate conditions (80%)",
+      "relation": "observed_under_condition",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "statistical significance confirmed",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "0.28 db",
+      "relation": "has_value",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "1.61 db",
+      "relation": "has_value",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "low missing-rate conditions",
+      "relation": "not_significant_under",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "theoretical prediction",
+      "relation": "consistent_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "periodic structure in f-k domain",
+      "relation": "exhibit",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "signal and aliasing component separation",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "curvelet directional decomposition",
+      "relation": "reduces_advantage_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "general reconstruction basis",
+      "relation": "provides",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "aliasing structure",
+      "relation": "independent_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "ct-unet framework",
+      "relation": "enables_constitution_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "patch size (64x256)",
+      "relation": "requires",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "four-stage u-net",
+      "relation": "requires",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "components with different lattice structures",
+      "relation": "produces",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "udct transform structure",
+      "relation": "compatible_with",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "computational load",
+      "relation": "reduces",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "performance",
+      "relation": "influences",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "sparsity-promoting reconstruction method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "neural networks",
+      "relation": "can_be_without",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "low missing-rate environments",
+      "relation": "is_practical_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "mobil avo viking graben line 12",
+      "relation": "originates_from",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "quantitative evaluation method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic data decomposition",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "evaluation",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "controlled noise environments",
+      "relation": "future_work_in",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "multi-scale_representation",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "multi-directional_representation",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "directional_decomposition_advantage",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "irregular_missing",
+      "relation": "reduced_under",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "f-x domain",
+      "relation": "domain_is",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "irregular data",
+      "relation": "applies_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "pocs algorithm",
+      "relation": "uses_method",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic data interpolation",
+      "relation": "undergoes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "missing seismic data",
+      "relation": "handles",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "attention and hybrid loss guided deep learning",
+      "relation": "uses_method",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "coordinate attention unet",
+      "relation": "uses_method",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "multistage neural network training",
+      "relation": "uses_method",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "missing trace interpolation",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "transposed arrangement strategy",
+      "relation": "uses_method",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "3d seismic data",
+      "relation": "applies_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "sleipner seismic survey data",
+      "relation": "analyzes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "sleipner seismic survey",
+      "relation": "originates_from",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "geophysical data",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "comparative study",
+      "relation": "used_in",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "sleipner",
+      "relation": "location_is",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic data reconstruction",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "conditional generative adversarial networks",
+      "relation": "utilizes_algorithm",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "multi-scale transformer",
+      "relation": "utilizes_algorithm",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "denoising diffusion implicit models",
+      "relation": "utilizes_algorithm",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "diffusion probabilistic model",
+      "relation": "utilizes_algorithm",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "time domain",
+      "relation": "operates_in_domain",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "frequency domain",
+      "relation": "operates_in_domain",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "coherence-corrected resampling",
+      "relation": "incorporates_technique",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic processing",
+      "relation": "applied_to",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "irregularly sampled",
+      "relation": "has_property",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "artificial intelligence",
+      "relation": "is_branch_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "wavelet-based convolutional block attention deep learning",
+      "relation": "component_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "data domain",
+      "relation": "is_type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "deep learning",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "geosciences",
+      "relation": "applied_to_field",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "artificial intelligence in geosciences",
+      "relation": "publishes_research_on",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "journal",
+      "relation": "is_type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "conference proceedings",
+      "relation": "is_type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "multiscale transform",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic data denoising",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "neural network",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "irregularly sampled seismic data",
+      "relation": "processes",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "tight frame",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "discrete curvelet transform",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic data recovery",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "solving wave equation",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "multiresolution image representation",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "stochastic optimization algorithm",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "geological model",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "society of exploration geophysicists",
+      "relation": "published_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "geophysical model",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seg/eage 3-d modeling series",
+      "relation": "part_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "professional organization",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "society of exploration geophysicists",
+      "relation": "published_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seg/eage 3-d salt and overthrust models",
+      "relation": "component_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seg/eage 3-d salt and overthrust models",
+      "relation": "component_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "geophysical method",
+      "relation": "type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "seismic inversion methods",
+      "relation": "studies",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "real data set",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/78fe0a3c25a04541a28823eff57dfa04_manuscript.pdf",
+      "target": "society of exploration geophysicists",
+      "relation": "published_by",
+      "weight": 1
+    }
+  ]
+}

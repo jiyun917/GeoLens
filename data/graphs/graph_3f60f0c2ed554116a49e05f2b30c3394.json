@@ -1,0 +1,208 @@
+{
+  "nodes": [
+    {
+      "id": "r&d business portal",
+      "label": "R&D Business Portal",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "agreement change application",
+      "label": "Agreement Change Application",
+      "mentions": 5,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "r&d expenses tab",
+      "label": "R&D Expenses Tab",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "change item selection pop-up",
+      "label": "Change Item Selection Pop-up",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "r&d expense usage plan",
+      "label": "R&D Expense Usage Plan",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "expenditure item",
+      "label": "Expenditure Item",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "research allowance",
+      "label": "Research Allowance",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "personnel expenses",
+      "label": "Personnel Expenses",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "approval-required change",
+      "label": "Approval-required Change",
+      "mentions": 3,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "notification-required change",
+      "label": "Notification-required Change",
+      "mentions": 4,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "specialized institution",
+      "label": "Specialized Institution",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "lead r&d institution",
+      "label": "Lead R&D Institution",
+      "mentions": 2,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "joint r&d institution",
+      "label": "Joint R&D Institution",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    },
+    {
+      "id": "contracted r&d institution",
+      "label": "Contracted R&D Institution",
+      "mentions": 1,
+      "sources": [
+        "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "agreement change application",
+      "relation": "manages_process",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "r&d expenses tab",
+      "relation": "accessed_via",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "approval-required change",
+      "relation": "has_type",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "notification-required change",
+      "relation": "has_type",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "r&d business portal",
+      "relation": "is_part_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "agreement change application",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "r&d expenses tab",
+      "relation": "can_be_modified_in",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "r&d expense usage plan",
+      "relation": "is_component_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "expenditure item",
+      "relation": "is_type_of",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "personnel expenses",
+      "relation": "calculated_from",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "specialized institution",
+      "relation": "requires_approval_from",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "lead r&d institution",
+      "relation": "can_be_initiated_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "lead r&d institution",
+      "relation": "can_be_initiated_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "joint r&d institution",
+      "relation": "can_be_initiated_by",
+      "weight": 1
+    },
+    {
+      "source": "/home/jiyun/workspace/workspace_0311/GeoLens/data/uploads/3f60f0c2ed554116a49e05f2b30c3394_IRIS매뉴얼_R&D업무포털_과제수행_2.협약변경_(승인통보)협약변경신청.pdf",
+      "target": "contracted r&d institution",
+      "relation": "can_be_initiated_by",
+      "weight": 1
+    }
+  ]
+}
