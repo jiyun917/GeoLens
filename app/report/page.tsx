@@ -46,12 +46,8 @@ export default function ReportPage() {
 
     setTopic(storedTopic);
 
-    // Check if coming from guide mode with a screenshot
-    const guideScreenshot = sessionStorage.getItem("geolens-guide-screenshot");
-    if (guideScreenshot) {
-      sessionStorage.removeItem("geolens-guide-screenshot");
-      report.addCapture(guideScreenshot, "Guide mode final screen", "other");
-    }
+    // Clean up any leftover guide screenshot — do not auto-add
+    sessionStorage.removeItem("geolens-guide-screenshot");
 
     setShowModal(true);
   }, []);

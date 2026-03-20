@@ -50,8 +50,8 @@ export const ALL_SECTIONS: ReportSectionDef[] = [
     promptKo: "## 결론\n- 번호 매긴 핵심 결론 (3-5줄)\n- 탐사/연구 시사점 (1-2줄)\n- 향후 연구 방향 (1-2줄)\n" },
   // === QC (Quality Control) sections ===
   { id: "qc_data_info", en: "Data Information", ko: "자료 정보",
-    promptEn: "## Data Information\n- Data type, format, acquisition parameters if identifiable (2-3 lines)\n- Coverage, line/trace count, sampling interval, record length\n",
-    promptKo: "## 자료 정보\n- 자료 종류, 포맷, 취득 파라미터 (2-3줄)\n- 범위, 라인/트레이스 수, 샘플링 간격, 기록 길이\n" },
+    promptEn: "## Data Information\n- Dataset name: Read any visible title, header, or label in the image. If the topic mentions a name (e.g., 'F3 Demo'), use it.\n- Data dimensionality: State if 2D or 3D. IMPORTANT: A single inline or crossline section displayed from a 3D volume is still 3D data — do NOT call it 2D just because you see one section.\n- Data type, format, acquisition parameters if identifiable (2-3 lines)\n- Coverage, line/trace count, sampling interval, record length\n",
+    promptKo: "## 자료 정보\n- 데이터셋명: 이미지에 보이는 제목/헤더/라벨을 읽으세요. 토픽에 이름이 있으면 (예: 'F3 Demo') 사용하세요.\n- 자료 차원: 2D인지 3D인지 명시. 중요: 3D 볼륨에서 하나의 인라인/크로스라인 단면을 표시한 것은 여전히 3D 자료입니다. 단면 하나만 보인다고 2D로 판정하지 마세요.\n- 자료 종류, 포맷, 취득 파라미터 (2-3줄)\n- 범위, 라인/트레이스 수, 샘플링 간격, 기록 길이\n" },
   { id: "qc_noise", en: "Noise Assessment", ko: "노이즈 평가",
     promptEn: "## Noise Assessment\n- Overall noise level: Good / Moderate / Poor\n- Noise types identified: random noise, coherent noise, ground roll, air wave, cultural noise (2-4 lines)\n- Signal-to-noise ratio assessment by depth/time zone\n- Frequency band: dominant frequency, bandwidth adequacy for target depth\n",
     promptKo: "## 노이즈 평가\n- 전체 노이즈 수준: 양호 / 보통 / 불량\n- 식별된 노이즈 유형: 랜덤 노이즈, 코히런트 노이즈, 지표파, 공중파, 인공 노이즈 (2-4줄)\n- 심도/시간 구간별 신호 대 잡음비 평가\n- 주파수 대역: 우세 주파수, 목표 심도 대비 대역폭 적정성\n" },
@@ -65,8 +65,8 @@ export const ALL_SECTIONS: ReportSectionDef[] = [
     promptEn: "## Well Log Quality Control\n- Spike detection: abnormal spikes in curves, location and severity\n- Washout zones: caliper log anomalies, unreliable intervals\n- Sensor malfunction indicators: flat-lining, impossible values, sudden jumps\n- Depth correction: depth shift indicators, casing points\n- Curve consistency: agreement between related curves (e.g., density vs sonic)\n",
     promptKo: "## 검층 품질 관리\n- 스파이크 감지: 커브의 비정상적 스파이크, 위치와 심각도\n- 워시아웃 구간: 캘리퍼 로그 이상, 신뢰성 낮은 구간\n- 센서 오작동 지시자: 플랫라인, 불가능한 값, 급격한 변화\n- 심도 보정: 심도 이동 지시자, 케이싱 포인트\n- 커브 정합성: 관련 커브 간 일치도 (예: 밀도 vs 음파)\n" },
   { id: "qc_verdict", en: "QC Verdict & Recommendations", ko: "QC 판정 및 권고",
-    promptEn: "## QC Verdict\n- Overall data quality rating: GOOD / ACCEPTABLE / POOR / REJECT\n- Usability assessment: suitable for interpretation as-is, needs reprocessing, or unusable\n- Specific zones/intervals with quality concerns (list with depth/time ranges)\n\n## Recommendations\n- Required preprocessing steps before interpretation\n- Suggested reprocessing parameters or techniques\n- Areas requiring additional data acquisition\n",
-    promptKo: "## QC 판정\n- 전체 자료 품질 등급: 양호 / 허용 / 불량 / 부적합\n- 활용 가능성: 현재 상태로 해석 가능 / 재처리 필요 / 사용 불가\n- 품질 우려 구간 (심도/시간 범위 명시)\n\n## 권고사항\n- 해석 전 필요한 전처리 단계\n- 권장 재처리 파라미터 또는 기법\n- 추가 자료 취득이 필요한 영역\n" },
+    promptEn: "## QC Verdict\n- Overall data quality rating: GOOD / ACCEPTABLE / POOR / REJECT\n- Base the rating ONLY on technical quality metrics (noise, S/N, continuity, artifacts) — NOT on geological interpretation\n- Usability assessment: suitable for interpretation as-is, needs reprocessing, or unusable\n- Specific zones/intervals with quality concerns (list with depth/time ranges)\n\n## Recommendations\n- Required preprocessing steps before interpretation (technical only)\n- Suggested reprocessing parameters or techniques\n- Areas requiring additional data acquisition\n- Do NOT include geological interpretation recommendations (faults, horizons, etc.) — QC is about data quality only\n",
+    promptKo: "## QC 판정\n- 전체 자료 품질 등급: 양호 / 허용 / 불량 / 부적합\n- 등급은 기술적 품질 지표(노이즈, S/N, 연속성, 인공물)만으로 판정 — 지질학적 해석을 근거로 사용하지 마세요\n- 활용 가능성: 현재 상태로 해석 가능 / 재처리 필요 / 사용 불가\n- 품질 우려 구간 (심도/시간 범위 명시)\n\n## 권고사항\n- 해석 전 필요한 전처리 단계 (기술적 사항만)\n- 권장 재처리 파라미터 또는 기법\n- 추가 자료 취득이 필요한 영역\n- 지질학적 해석 권고(단층, 호라이즌 등)는 포함하지 마세요 — QC는 자료 품질에 대한 것입니다\n" },
 ];
 
 export const PRESET_SECTIONS: Record<string, string[]> = {
@@ -184,13 +184,20 @@ export function buildReportPrompt(
     reportFormatSection = isEn
       ? "# Report Format (Data Quality Control)\n" +
         "Total 20-30 items. Rate each item: GOOD / ACCEPTABLE / POOR.\n\n" +
-        "## Data Information\n- Data type, format, acquisition parameters (2-3 lines)\n\n" +
+        "## Data Information\n" +
+        "- Dataset name: identify from image title/header or topic. If the topic says 'F3 Demo', the dataset is F3.\n" +
+        "- Dimensionality: 2D or 3D. A single inline/crossline section from a 3D volume is STILL 3D data.\n" +
+        "- Data type, format, acquisition parameters (2-3 lines)\n\n" +
         "## Noise Assessment\n- Noise level, types, S/N ratio by zone, frequency adequacy (3-5 lines)\n\n" +
-        "## Reflector / Signal Quality\n- Continuity, multiples, amplitude consistency, phase, artifacts (3-5 lines)\n\n" +
-        "## Artifacts & Anomalies\n- Missing traces, amplitude anomalies, processing artifacts, aliasing (3-5 lines)\n\n" +
+        "## Reflector / Signal Quality\n- Continuity, multiples, amplitude consistency, phase, artifacts (3-5 lines)\n" +
+        "- Describe ONLY what you observe technically. Do NOT add geological interpretation (no faults, no anticlines, no rift terminology).\n\n" +
+        "## Artifacts & Anomalies\n- Missing traces, amplitude anomalies, processing artifacts, aliasing (3-5 lines)\n" +
+        "- Describe amplitude anomalies as technical observations, NOT as geological features.\n\n" +
         "## Well Log QC (if applicable)\n- Spikes, washout, sensor issues, depth correction, curve consistency (3-5 lines)\n\n" +
-        "## QC Verdict\n- Overall rating: GOOD / ACCEPTABLE / POOR / REJECT (1-2 lines)\n- Usability: ready for interpretation / needs reprocessing / unusable\n- Problem zones with depth/time ranges\n\n" +
-        "## Recommendations\n- Required preprocessing, reprocessing suggestions, additional data needs (2-4 lines)\n\n"
+        "## QC Verdict\n- Overall rating: GOOD / ACCEPTABLE / POOR / REJECT\n" +
+        "- Base rating ONLY on technical metrics. Do NOT reference geological structures.\n" +
+        "- Usability: ready for interpretation / needs reprocessing / unusable\n- Problem zones with depth/time ranges\n\n" +
+        "## Recommendations\n- Technical preprocessing/reprocessing only. No geological interpretation recommendations. (2-4 lines)\n\n"
       : "# Report Format (데이터 품질 관리)\n" +
         "전체 20-30개 항목. 각 항목 평가: 양호 / 허용 / 불량.\n\n" +
         "## 자료 정보\n- 자료 종류, 포맷, 취득 파라미터 (2-3줄)\n\n" +
@@ -198,8 +205,20 @@ export function buildReportPrompt(
         "## 반사면 / 신호 품질\n- 연속성, 멀티플, 진폭 일관성, 위상, 인공물 (3-5줄)\n\n" +
         "## 인공물 및 이상\n- 결측 트레이스, 진폭 이상, 처리 인공물, 앨리어싱 (3-5줄)\n\n" +
         "## 검층 QC (해당 시)\n- 스파이크, 워시아웃, 센서 이상, 심도 보정, 커브 정합성 (3-5줄)\n\n" +
-        "## QC 판정\n- 전체 등급: 양호 / 허용 / 불량 / 부적합 (1-2줄)\n- 활용성: 해석 가능 / 재처리 필요 / 사용 불가\n- 문제 구간 (심도/시간 범위)\n\n" +
-        "## 권고사항\n- 필요 전처리, 재처리 권장사항, 추가 자료 필요성 (2-4줄)\n\n";
+        "## 자료 정보\n" +
+        "- 데이터셋명: 이미지 제목/헤더 또는 토픽에서 식별. 토픽에 'F3 Demo'가 있으면 해당 데이터셋입니다.\n" +
+        "- 차원: 2D 또는 3D. 3D 볼륨의 인라인/크로스라인 단면 하나는 여전히 3D 자료입니다.\n" +
+        "- 자료 종류, 포맷, 취득 파라미터 (2-3줄)\n\n" +
+        "## 노이즈 평가\n- 노이즈 수준, 유형, 구간별 S/N비, 주파수 적정성 (3-5줄)\n\n" +
+        "## 반사면 / 신호 품질\n- 연속성, 멀티플, 진폭 일관성, 위상, 인공물 (3-5줄)\n" +
+        "- 기술적 관찰만 기술. 지질학적 해석(단층, 배사, 리프트 등)을 추가하지 마세요.\n\n" +
+        "## 인공물 및 이상\n- 결측 트레이스, 진폭 이상, 처리 인공물, 앨리어싱 (3-5줄)\n" +
+        "- 진폭 이상은 기술적 관찰로 기술. 지질학적 특징으로 해석하지 마세요.\n\n" +
+        "## 검층 QC (해당 시)\n- 스파이크, 워시아웃, 센서 이상, 심도 보정, 커브 정합성 (3-5줄)\n\n" +
+        "## QC 판정\n- 전체 등급: 양호 / 허용 / 불량 / 부적합\n" +
+        "- 기술적 지표만으로 판정. 지질 구조를 근거로 사용하지 마세요.\n" +
+        "- 활용성: 해석 가능 / 재처리 필요 / 사용 불가\n- 문제 구간 (심도/시간 범위)\n\n" +
+        "## 권고사항\n- 기술적 전처리/재처리만. 지질학적 해석 권고 없음. (2-4줄)\n\n";
   } else if (template === "brief") {
     reportFormatSection = isEn
       ? "# Report Format (Brief Summary)\n" +
@@ -305,6 +324,8 @@ export function buildReportPrompt(
       "- Be thorough and detailed in geological interpretation\n" +
       "- Describe only what is actually observable, but interpret deeply\n" +
       "- Structural interpretations must be consistent with the tectonic setting of the study area\n" +
+      "- Name specific formations, groups, and geological units when the region is identifiable (e.g., 'Zechstein salt' not 'salt', 'Brent Group' not 'reservoir unit')\n" +
+      "- Include fault/structure generation history when multiple phases are evident\n" +
       "- Do not assert uncertain interpretations — state them as possibilities with reasoning\n" +
       "- Confidence tags are mandatory for every item\n" +
       "- Total length: A4 1 page"
@@ -313,6 +334,8 @@ export function buildReportPrompt(
       "- 지질학적 해석은 충분히 상세하게 기술\n" +
       "- 관찰 가능한 것만 기술하되, 해석은 깊이 있게\n" +
       "- 구조 해석은 반드시 해당 지역의 지구조 환경과 일관되어야 함\n" +
+      "- 지역이 식별되면 구체적 지층명/그룹명을 사용 (예: '암염' 대신 'Zechstein 암염', '저류층' 대신 'Brent Group 저류층')\n" +
+      "- 다수의 구조 운동이 관찰되면 단층/구조 세대 구분과 운동사를 포함\n" +
       "- 불확실한 해석은 단정 짓지 말고 근거와 함께 가능성으로 기술\n" +
       "- 모든 항목에 신뢰도 태그 필수\n" +
       "- 전체 분량: A4 1페이지";
@@ -330,14 +353,18 @@ export function buildReportPrompt(
   const datasetSection = isEn
     ? "# Dataset Identification\n" +
       "In the Data Overview section, you MUST include:\n" +
-      "- The specific dataset/line name if identifiable from the topic, description, or image (e.g., 'Mobil AVO Viking Graben Line 12')\n" +
+      "- The specific dataset/line name if identifiable from the topic, description, or image (e.g., 'Mobil AVO Viking Graben Line 12', 'F3 Demo 2023')\n" +
       "- If the dataset name is visible in the image header/title bar, extract and use it\n" +
-      "- If not identifiable, state 'Dataset name not specified' and describe what can be inferred about the data\n\n"
+      "- If not identifiable, state 'Dataset name not specified' and describe what can be inferred about the data\n" +
+      "- 2D vs 3D: A single inline/crossline section displayed from a 3D volume is STILL 3D data. Only call it 2D if it is a standalone 2D line.\n" +
+      "- IMPORTANT: Do NOT apply geological context from one dataset to another. Each dataset has its own geological setting. F3 (Netherlands) ≠ Viking Graben (Norway).\n\n"
     : "# 데이터셋 식별\n" +
       "자료 개요 섹션에 반드시 포함:\n" +
-      "- 토픽, 설명, 이미지에서 식별 가능한 구체적 데이터셋/라인명 (예: 'Mobil AVO Viking Graben Line 12')\n" +
+      "- 토픽, 설명, 이미지에서 식별 가능한 구체적 데이터셋/라인명 (예: 'Mobil AVO Viking Graben Line 12', 'F3 Demo 2023')\n" +
       "- 이미지 상단/제목에 데이터셋명이 표시되어 있으면 추출하여 사용\n" +
-      "- 식별 불가 시 '데이터셋명 미기재'로 표기하고, 자료에서 추론 가능한 정보 기술\n\n";
+      "- 식별 불가 시 '데이터셋명 미기재'로 표기하고, 자료에서 추론 가능한 정보 기술\n" +
+      "- 2D vs 3D: 3D 볼륨에서 인라인/크로스라인 단면 하나를 표시한 것은 여전히 3D 자료입니다. 독립 2D 라인인 경우에만 2D로 기재.\n" +
+      "- 중요: 하나의 데이터셋의 지질 맥락을 다른 데이터셋에 적용하지 마세요. F3(네덜란드) ≠ Viking Graben(노르웨이).\n\n";
 
   const referenceSection = isEn
     ? "# Use of Reference Context\n" +
@@ -352,7 +379,16 @@ export function buildReportPrompt(
       "- 참고자료에 DHI(직접 탄화수소 지시자)나 AVO 이상에 대한 논의가 있으면 해석에 반영\n\n";
 
   const roleDescription = template === "qc"
-    ? "You are a geoscience data quality control specialist. Analyze the provided data captures and produce a thorough QC assessment report. Focus on identifying data quality issues, artifacts, and fitness for interpretation — NOT on geological interpretation.\n\n"
+    ? "You are a geoscience data quality control specialist. Analyze the provided data captures and produce a thorough QC assessment report.\n\n" +
+      "# QC RULES (CRITICAL)\n" +
+      "1. QC is about TECHNICAL DATA QUALITY only — noise, S/N ratio, continuity, artifacts, frequency content, multiple removal, trace quality.\n" +
+      "2. The MAJORITY of the report (>70%) must be technical quality metrics. Geological interpretation should be minimal or absent.\n" +
+      "3. Do NOT structure the report as an interpretation report. Structure it as: Data Info → Noise → Signal Quality → Artifacts → Verdict → Recommendations.\n" +
+      "4. Dataset identification: If the topic contains a name (e.g., 'F3', 'Viking Graben'), that IS the dataset name — state it definitively, not as 'possibly' or 'presumed'.\n" +
+      "5. 2D vs 3D: A single inline or crossline section displayed from a 3D survey is STILL 3D data. Only classify as 2D if you have explicit evidence.\n" +
+      "6. Amplitude anomalies should be described as technical observations (e.g., 'amplitude brightening at 1200ms'), NOT as geological features.\n" +
+      "7. For well-known datasets (F3, Penobscot, Poseidon, etc.), mention known properties: included wells, survey size, sampling interval if you know them.\n" +
+      "8. Do NOT apply geological context from one dataset to another.\n\n"
     : "You are a geoscience interpretation expert with deep domain knowledge. Analyze the provided screen captures and write a detailed, professional interpretation report.\n\n";
 
   return (
@@ -367,15 +403,26 @@ export function buildReportPrompt(
     referenceSection +
     "# Interpretation Methodology (CRITICAL)\n" +
     "You must follow this sequence strictly:\n\n" +
-    "Step 1. IDENTIFY CONTEXT\n" +
-    "- From the topic, data descriptions, basin/region name, and your geological knowledge, determine the tectonic regime and geological setting of the study area.\n" +
+    "Step 0. IDENTIFY DATASET (MANDATORY — do this FIRST)\n" +
+    "- Read the TOPIC text carefully. If it contains ANY recognizable name (e.g., 'F3', 'F3 Demo', 'Viking Graben', 'Poseidon', 'Penobscot'), that IS the dataset name. State it definitively: 'F3 Demo 3D Survey' — NOT 'possibly F3' or 'dataset not specified'.\n" +
+    "- Read any visible text in the image (window title, axis labels, header). Extract the dataset/survey name.\n" +
+    "- Determine 2D vs 3D: If the image shows a single inline or crossline section from a named survey or software like OpendTect, it is almost certainly a 3D volume. Only classify as 2D if you have explicit evidence it is a standalone 2D seismic line.\n" +
+    "- For well-known datasets, include known metadata: F3 → Netherlands North Sea, 651 inlines, 951 crosslines, 4ms sampling, wells F02-1/F03-2/F03-4/F06-1. Viking Graben → Norwegian North Sea, Mobil AVO dataset. Penobscot → Nova Scotia, Canada.\n" +
+    "- NEVER write 'Dataset name not specified' or 'presumably' if the topic contains a recognizable name.\n\n" +
+    "Step 1. IDENTIFY GEOLOGICAL CONTEXT\n" +
+    "- From the dataset name and region, determine the specific geological setting using your knowledge.\n" +
+    "- Name specific geological formations, groups, and stratigraphic units relevant to the area.\n" +
+    "  Examples: F3 → Netherlands North Sea, Zechstein salt, Pliocene marine sediments.\n" +
+    "  Viking Graben → Brent Group, Kimmeridge Clay, Draupne Formation.\n" +
+    "- Use the CORRECT regional geology. Do NOT mix up geological contexts between different basins.\n" +
     "- Correct any apparent typos in geographical/geological terms.\n\n" +
     "Step 2. OBSERVE\n" +
     "- Describe only what is visually present in the image: reflector geometry, amplitude patterns, discontinuities, log curve shapes, anomaly patterns, etc.\n" +
-    "- Use neutral, descriptive language — do NOT jump to structural terms yet.\n" +
-    "- Read any text visible in the image (titles, axis labels, legends) to identify the dataset.\n\n" +
+    "- Use neutral, descriptive language — do NOT jump to structural terms yet.\n\n" +
     "Step 3. INTERPRET — CONSISTENT WITH CONTEXT\n" +
-    "- Apply structural/stratigraphic terminology ONLY after confirming it is compatible with the tectonic regime identified in Step 1.\n" +
+    "- Apply structural/stratigraphic terminology ONLY after confirming it is compatible with the geological setting identified in Step 1.\n" +
+    "- Name specific formations/groups when possible (e.g., 'Zechstein salt diapir' not just 'salt diapir', 'Brent Group reservoir' not just 'reservoir').\n" +
+    "- Include structural generation/history when relevant (e.g., fault generations, reactivation phases).\n" +
     "- Every structural term must be geologically valid for the identified setting.\n" +
     "- If the image alone is ambiguous, state the uncertainty rather than forcing an interpretation.\n" +
     "- For each interpretation, consider alternative explanations (e.g., structural vs. processing artifact) and note them.\n" +

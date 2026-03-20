@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "fastapi-dev": ".venv\\Scripts\\python.exe -m uvicorn api.index:app --reload --reload-dir api",
-    "next-dev": "next dev",
+    "next-dev": "next dev -p 3000",
     "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
     "build": "next build",
     "start": "next start",

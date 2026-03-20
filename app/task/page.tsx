@@ -74,11 +74,9 @@ export default function TaskPage() {
   };
 
   const handleContinueToReport = () => {
-    // Pass goal and last screenshot to report mode
     sessionStorage.setItem("geolens-report-topic", goal || "");
-    if (taskContext.lastScreenshot) {
-      sessionStorage.setItem("geolens-guide-screenshot", taskContext.lastScreenshot);
-    }
+    // Do NOT auto-pass screenshot — let user capture fresh in report mode
+    sessionStorage.removeItem("geolens-guide-screenshot");
     stopSharing();
     router.push("/report");
   };
