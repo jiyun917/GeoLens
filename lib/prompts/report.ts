@@ -340,6 +340,28 @@ export function buildReportPrompt(
       "- 모든 항목에 신뢰도 태그 필수\n" +
       "- 전체 분량: A4 1페이지";
 
+  const structuresSection = isEn
+    ? '\n\n# Structure Labels (MANDATORY — DO NOT SKIP)\n' +
+      'You MUST end your report with a ```structures code block containing a JSON array.\n' +
+      'This identifies key geological structures and their location in the image (3x3 grid).\n' +
+      'Example (you MUST output something like this):\n' +
+      '```structures\n' +
+      '[{"type":"anticline","label":"Anticline","position":"mid-center"},{"type":"normal_fault","label":"Normal Fault","position":"mid-left"}]\n' +
+      '```\n' +
+      'Valid types: salt_diapir, normal_fault, reverse_fault, unconformity, anticline, syncline, growth_strata, horizon, amplitude_anomaly, channel, delta, reef\n' +
+      'Valid positions: top-left, top-center, top-right, mid-left, mid-center, mid-right, bottom-left, bottom-center, bottom-right\n' +
+      'Rules: max 8, determine position from the ACTUAL IMAGE, skip basement/post_kinematic\n'
+    : '\n\n# 구조 라벨 (반드시 출력 — 생략 금지)\n' +
+      '리포트 맨 마지막에 반드시 ```structures 코드블록으로 JSON 배열을 출력하세요.\n' +
+      '이미지에서 식별한 주요 지질 구조와 위치(3x3 그리드)를 표시합니다.\n' +
+      '예시 (반드시 이런 형태로 출력):\n' +
+      '```structures\n' +
+      '[{"type":"anticline","label":"배사 구조","position":"mid-center"},{"type":"normal_fault","label":"정단층","position":"mid-left"}]\n' +
+      '```\n' +
+      'type: salt_diapir, normal_fault, reverse_fault, unconformity, anticline, syncline, growth_strata, horizon, amplitude_anomaly, channel, delta, reef\n' +
+      'position: top-left, top-center, top-right, mid-left, mid-center, mid-right, bottom-left, bottom-center, bottom-right\n' +
+      '규칙: 최대 8개, 실제 이미지를 보고 위치 판단, basement/post_kinematic 제외\n';
+
   const typoSection = isEn
     ? "\n# Terminology Correction\n" +
       "If the topic or descriptions contain apparent typos or misspellings of geological terms, basins, or formations, silently correct them in your report.\n" +
@@ -429,6 +451,7 @@ export function buildReportPrompt(
     crossSection +
     confidenceSection +
     reportFormatSection +
-    rulesSection
+    rulesSection +
+    structuresSection
   );
 }

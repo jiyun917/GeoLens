@@ -10,6 +10,7 @@ import {
 } from "docx";
 import type { GeoAnnotation } from "./ai";
 import type { CapturedScreen } from "@/app/providers/ReportProvider";
+import type { ImageLabel } from "./image-labels";
 
 const FEATURE_COLORS: Record<string, string> = {
   fault: "#ef4444",
@@ -219,32 +220,90 @@ function markdownToDocxParagraphs(markdown: string): Paragraph[] {
   return paragraphs;
 }
 
+async function renderImageWithLabels(
+  imageDataUrl: string,
+  labels: ImageLabel[]
+): Promise<{ buffer: ArrayBuffer; width: number; height: number }> {
+  const img = new Image();
+  img.src = imageDataUrl;
+  await new Promise<void>((r) => { img.onload = () => r(); });
+
+  const canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  const ctx = canvas.getContext("2d")!;
+  ctx.drawImage(img, 0, 0);
+
+  const fontSize = Math.max(9, Math.min(img.width * 0.008, 12));
+
+  for (const label of labels) {
+    const px = label.x * img.width;
+    const py = label.y * img.height;
+
+    ctx.font = `bold ${fontSize}px sans-serif`;
+    const m = ctx.measureText(label.text);
+    const dotR = 3;
+    const pad = 6;
+    const bw = dotR * 2 + 4 + m.width + pad * 2;
+    const bh = fontSize + pad * 2;
+    const bx = px - bw / 2;
+    const by = py - bh / 2;
+
+    // Dark semi-transparent background
+    ctx.fillStyle = "rgba(0,0,0,0.65)";
+    ctx.beginPath();
+    ctx.roundRect(bx, by, bw, bh, 3);
+    ctx.fill();
+
+    // Colored border
+    ctx.strokeStyle = label.color;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Dot
+    ctx.fillStyle = label.color;
+    ctx.beginPath();
+    ctx.arc(bx + pad + dotR, py, dotR, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Text
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = label.color;
+    ctx.fillText(label.text, bx + pad + dotR * 2 + 4, py);
+  }
+
+  const blob = await new Promise<Blob>((r) => {
+    canvas.toBlob((b) => r(b!), "image/jpeg", 0.95);
+  });
+  return { buffer: await blob.arrayBuffer(), width: canvas.width, height: canvas.height };
+}
+
 export async function exportReportAsDocx(
   topic: string,
   captures: CapturedScreen[],
-  reportContent: string
+  reportContent: string,
+  imageLabels?: ImageLabel[]
 ): Promise<void> {
-  const imageResults = await Promise.all(
-    captures.map((c) =>
-      renderAnnotatedImage(c.image)
-    )
-  );
+  const hasLabels = imageLabels && imageLabels.length > 0;
 
   const imageParagraphs: Paragraph[] = [];
   for (let i = 0; i < captures.length; i++) {
-    const { buffer, width, height } = imageResults[i];
-    const maxWidth = 550;
-    const scale = Math.min(maxWidth / width, 1);
-    const displayWidth = Math.round(width * scale);
-    const displayHeight = Math.round(height * scale);
+    // If labels ON, use labeled image; otherwise use original
+    const imgResult = hasLabels
+      ? await renderImageWithLabels(captures[i].image, imageLabels)
+      : await renderAnnotatedImage(captures[i].image);
+
+    const maxWidth = 480;
+    const scale = Math.min(maxWidth / imgResult.width, 1);
 
     imageParagraphs.push(
       new Paragraph({
         children: [
           new ImageRun({
             type: "jpg",
-            data: buffer,
-            transformation: { width: displayWidth, height: displayHeight },
+            data: imgResult.buffer,
+            transformation: { width: Math.round(imgResult.width * scale), height: Math.round(imgResult.height * scale) },
           }),
         ],
         spacing: { before: 120, after: 40 },
@@ -254,7 +313,7 @@ export async function exportReportAsDocx(
       new Paragraph({
         children: [
           new TextRun({
-            text: `Capture ${i + 1}: ${captures[i].description}`,
+            text: `Capture ${i + 1}: ${captures[i].description}${hasLabels ? " (with structural labels)" : ""}`,
             size: 18,
             italics: true,
             color: "666666",

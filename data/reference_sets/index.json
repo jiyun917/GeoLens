@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "name": "geological_schematics",
+    "description": "Geological cross-section schematic reference set",
+    "version": "1.2.0",
+    "total_examples": 10
+  },
+  "examples": [
+    {
+      "id": "geo_salt_diapir",
+      "source_context": "Salt diapir with growth strata, drag folds, normal faults along flanks, and unconformity. Post-kinematic horizontal layers drape over the dome.",
+      "caption": "Salt Diapir schematic cross-section (matplotlib generated)",
+      "image_path": "images/geo_salt_diapir.png",
+      "category": "salt_tectonics",
+      "structure_hints": ["salt_diapir", "growth_strata", "normal_fault", "unconformity", "post_kinematic"]
+    },
+    {
+      "id": "geo_half_graben",
+      "source_context": "Half-graben with listric normal fault, syn-rift wedge thickening toward fault, post-rift horizontal drape, footwall uplift.",
+      "caption": "Half-Graben with Listric Normal Fault",
+      "image_path": "images/geo_half_graben.png",
+      "category": "extensional_tectonics",
+      "structure_hints": ["normal_fault", "growth_strata", "post_kinematic", "basement"]
+    },
+    {
+      "id": "geo_rift_basin",
+      "source_context": "Rift basin with horst and graben structure, conjugate normal faults, syn-rift fill, post-rift drape, unconformity.",
+      "caption": "Rift Basin: Horst and Graben Structure",
+      "image_path": "images/geo_rift_basin.png",
+      "category": "extensional_tectonics",
+      "structure_hints": ["normal_fault", "growth_strata", "post_kinematic", "basement", "unconformity"]
+    },
+    {
+      "id": "geo_hydrocarbon_trap",
+      "source_context": "Hydrocarbon trap combining anticline and fault trap. Reservoir sandstone, seal shale, oil accumulation, OWC, migration pathways.",
+      "caption": "Hydrocarbon Trap: Anticline + Fault Trap",
+      "image_path": "images/geo_hydrocarbon_trap.png",
+      "category": "exploration_concepts",
+      "structure_hints": ["anticline", "normal_fault", "horizon", "amplitude_anomaly"]
+    },
+    {
+      "id": "geo_salt_dome_cross_section",
+      "source_context": "Detailed geological cross-section of salt domes with Zechstein salt piercing through Triassic-Cretaceous strata. Color-coded lithology with hatching patterns. Professional illustration style.",
+      "caption": "Salt Dome Geological Cross-Section (textbook style)",
+      "image_path": "images/geo_salt_dome_cross_section.png",
+      "category": "salt_tectonics",
+      "structure_hints": ["salt_diapir", "normal_fault", "unconformity", "basement", "growth_strata", "horizon"]
+    },
+    {
+      "id": "geo_salt_dome_concept",
+      "source_context": "Simple conceptual diagram of salt dome with oil trapped along flanks. Clean minimal style. Blue salt body, yellow reservoir, gray overburden.",
+      "caption": "Salt Dome Concept Diagram (simple clean style)",
+      "image_path": "images/geo_salt_dome_concept.png",
+      "category": "salt_tectonics",
+      "structure_hints": ["salt_diapir", "amplitude_anomaly", "horizon"]
+    },
+    {
+      "id": "geo_f3_nwse_interpreted",
+      "source_context": "F3 Netherlands North Sea interpreted seismic section NW-SE. Multiple Zechstein salt diapirs with color-coded stratigraphy overlay. TWT axis.",
+      "caption": "F3 Interpreted Seismic Section with Stratigraphy",
+      "image_path": "images/geo_f3_nwse_interpreted.jpg",
+      "category": "salt_tectonics",
+      "structure_hints": ["salt_diapir", "growth_strata", "unconformity", "horizon", "post_kinematic", "basement"]
+    },
+    {
+      "id": "ref_salt_dome_cartoon",
+      "source_context": "Simple cartoon of salt dome piercing through two rock units. Salt body rises from source layer at depth, oil trapped along flanks. Clean, minimal, conceptual style from Geology.com.",
+      "caption": "Salt Dome Cartoon - piercement through rock units (Geology.com)",
+      "image_path": "images/ref_salt_dome_cartoon.jpg",
+      "category": "salt_tectonics",
+      "structure_hints": ["salt_diapir", "amplitude_anomaly", "horizon"]
+    },
+    {
+      "id": "ref_salt_dome_basin",
+      "source_context": "Regional cross-section of East Texas Basin showing multiple salt domes (Hawksville, Mt. Sylvan, Brooks, Boggy Creek) piercing through Jurassic-Pliocene stratigraphy. Color-coded geological units. From Oklahoma/Texas border to coastline. Depth scale in km.",
+      "caption": "East Texas Basin Salt Domes Regional Cross-Section (Geology.com)",
+      "image_path": "images/ref_salt_dome_basin.gif",
+      "category": "salt_tectonics",
+      "structure_hints": ["salt_diapir", "growth_strata", "normal_fault", "horizon", "basement"]
+    },
+    {
+      "id": "ref_salt_dome_seismic",
+      "source_context": "Seismic survey profile showing central salt core about 1.5 miles wide. Rock layers deformed by upward motion of salt. Depth markers at 3000 and 6000 feet. Classic black-and-white seismic reflection profile.",
+      "caption": "Salt Dome Seismic Profile (Geology.com)",
+      "image_path": "images/ref_salt_dome_seismic.jpg",
+      "category": "salt_tectonics",
+      "structure_hints": ["salt_diapir", "growth_strata", "horizon"]
+    }
+  ]
+}

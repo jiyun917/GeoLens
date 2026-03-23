@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
@@ -14,6 +14,9 @@ import { DATA_TYPES, type DataType } from "@/app/providers/ReportProvider";
 import type { ReportContextType, CapturedScreen } from "@/app/providers/ReportProvider";
 import type { ReportTemplate } from "@/lib/prompts/report";
 import { ALL_SECTIONS } from "@/lib/prompts/report";
+import { parseStructuresFromReport, stripStructuresBlock } from "@/lib/report-diagram";
+import { structuresToLabels } from "@/lib/image-labels";
+import { ImageLabelOverlay } from "./image-labels";
 
 const TEMPLATES: { id: ReportTemplate; label: string; desc: string }[] = [
   { id: "detailed", label: "Exploration", desc: "6 sections, detailed" },
@@ -96,9 +99,81 @@ export const ReportScreen = ({
   const [isExportingDocx, setIsExportingDocx] = useState(false);
   const [showExportMenu, setShowExportMenu] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [showImageLabels, setShowImageLabels] = useState(false);
   const exportRef = useRef<HTMLDivElement>(null);
   const printRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Parse structures from report content (VLM outputs ```structures block)
+  const reportStructures = useMemo(() => {
+    if (!reportContent || isGenerating) return [];
+    return parseStructuresFromReport(reportContent);
+  }, [reportContent, isGenerating]);
+
+  // Clean report text (strip ```structures block for display)
+  const reportTextClean = useMemo(() => {
+    if (!reportContent) return "";
+    return stripStructuresBlock(reportContent);
+  }, [reportContent]);
+
+  // Convert structures to image labels
+  const imageLabels = useMemo(
+    () => structuresToLabels(reportStructures),
+    [reportStructures]
+  );
+
+  // Pre-render labeled images for PDF export (Canvas composited)
+  const [labeledImages, setLabeledImages] = useState<string[]>([]);
+  useEffect(() => {
+    if (!showImageLabels || imageLabels.length === 0 || captures.length === 0) {
+      setLabeledImages([]);
+      return;
+    }
+    const renderAll = async () => {
+      const results: string[] = [];
+      for (const c of captures) {
+        const img = new Image();
+        img.src = c.image;
+        await new Promise<void>((r) => { img.onload = () => r(); });
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d")!;
+        ctx.drawImage(img, 0, 0);
+        const fs = Math.max(9, Math.min(img.width * 0.008, 12));
+        for (const label of imageLabels) {
+          const px = label.x * img.width;
+          const py = label.y * img.height;
+          ctx.font = `bold ${fs}px sans-serif`;
+          const m = ctx.measureText(label.text);
+          const dotR = 2;
+          const pad = 3;
+          const bw = dotR * 2 + 4 + m.width + pad * 2;
+          const bh = fs + pad * 2;
+          const bx = px - bw / 2;
+          const by = py - bh / 2;
+          ctx.fillStyle = "rgba(0,0,0,0.7)";
+          ctx.beginPath();
+          ctx.roundRect(bx, by, bw, bh, 3);
+          ctx.fill();
+          ctx.strokeStyle = label.color;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          ctx.fillStyle = label.color;
+          ctx.beginPath();
+          ctx.arc(bx + pad + dotR, py, dotR, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.textAlign = "left";
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = label.color;
+          ctx.fillText(label.text, bx + pad + dotR * 2 + 4, py);
+        }
+        results.push(canvas.toDataURL("image/jpeg", 0.92));
+      }
+      setLabeledImages(results);
+    };
+    renderAll();
+  }, [showImageLabels, imageLabels, captures]);
 
   useEffect(() => {
     if (!showExportMenu) return;
@@ -151,14 +226,31 @@ export const ReportScreen = ({
     setIsExporting(true);
     try {
       const html2pdf = (await import("html2pdf.js")).default;
+      // Temporarily make print div visible for accurate capture
+      const wrapper = printRef.current!.parentElement!;
+      wrapper.style.position = "fixed";
+      wrapper.style.left = "0";
+      wrapper.style.top = "0";
+      wrapper.style.zIndex = "-1";
+      wrapper.style.opacity = "0.01";
+
+      // Wait for layout
+      await new Promise((r) => setTimeout(r, 100));
+
       await html2pdf().set({
-        margin: [15, 15, 15, 15],
+        margin: [12, 12, 12, 12],
         filename: `GeoLens_Report_${new Date().toISOString().slice(0, 10)}.pdf`,
         image: { type: "jpeg", quality: 0.95 },
-        html2canvas: { scale: 2, useCORS: true, logging: false, width: 680 },
+        html2canvas: { scale: 2, useCORS: true, logging: false },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        pagebreak: { mode: ["avoid-all", "css", "legacy"] },
+        pagebreak: { mode: ["css", "legacy"] } as any,
       }).from(printRef.current).save();
+
+      // Restore hidden
+      wrapper.style.position = "absolute";
+      wrapper.style.left = "-9999px";
+      wrapper.style.zIndex = "";
+      wrapper.style.opacity = "";
     } catch (e) { console.error("PDF export failed:", e); }
     finally { setIsExporting(false); }
   };
@@ -166,19 +258,18 @@ export const ReportScreen = ({
   const handleExportDocx = async () => {
     if (isExportingDocx) return;
     setIsExportingDocx(true);
-    try { await exportReportAsDocx(topic, captures, reportContent); }
+    try { await exportReportAsDocx(topic, captures, reportTextClean || reportContent, showImageLabels ? imageLabels : undefined); }
     catch (e) { console.error("Word export failed:", e); }
     finally { setIsExportingDocx(false); }
   };
 
   // Split by ## headers - try multiple patterns for robustness
   const reportSections = (() => {
-    if (!reportContent) return [];
-    // Try splitting by ## at line start
-    let sections = reportContent.split(/(?=\n##\s)/).filter((s) => s.trim());
+    const text = reportTextClean || reportContent;
+    if (!text) return [];
+    let sections = text.split(/(?=\n##\s)/).filter((s) => s.trim());
     if (sections.length <= 1) {
-      // Try with ## anywhere (some models don't put newline before first ##)
-      sections = reportContent.split(/(?=##\s)/).filter((s) => s.trim());
+      sections = text.split(/(?=##\s)/).filter((s) => s.trim());
     }
     return sections;
   })();
@@ -373,17 +464,32 @@ export const ReportScreen = ({
                       )}
                     </div>
                     <ActionBtn onClick={handleCopyReport}>Copy</ActionBtn>
+                    {imageLabels.length > 0 && (
+                      <button
+                        onClick={() => setShowImageLabels((v) => !v)}
+                        className={`px-3 py-1.5 text-[11px] rounded-md transition-colors ${
+                          showImageLabels
+                            ? "bg-blue-600/20 text-blue-300 border border-blue-500/40"
+                            : "text-gray-400 hover:text-white hover:bg-zinc-800"
+                        }`}
+                      >
+                        {showImageLabels ? "Labels ON" : "Labels OFF"}
+                      </button>
+                    )}
                     <ActionBtn onClick={() => generateInterpretationReport()}>Regenerate</ActionBtn>
                   </div>
                 </div>
               )}
 
-              {/* Capture strip */}
+              {/* Capture images with optional labels */}
               {captures.length > 0 && (
-                <div className="flex gap-2 overflow-x-auto pb-1">
+                <div className={showImageLabels ? "space-y-2" : "flex gap-2 overflow-x-auto pb-1"}>
                   {captures.map((c, i) => (
-                    <div key={c.timestamp} className="shrink-0 w-36 rounded-lg overflow-hidden border border-gray-700">
-                      <img src={c.image} alt={c.description} className="w-full h-20 object-cover" />
+                    <div key={c.timestamp} className={`rounded-lg overflow-hidden border border-gray-700 ${showImageLabels ? "w-full" : "shrink-0 w-36"}`}>
+                      <div className="relative">
+                        <img src={c.image} alt={c.description} className={`w-full ${showImageLabels ? "h-auto" : "h-20 object-cover"}`} />
+                        <ImageLabelOverlay labels={imageLabels} visible={showImageLabels} />
+                      </div>
                       <p className="text-[10px] text-gray-400 px-1.5 py-1 truncate">#{i + 1} {c.description}</p>
                     </div>
                   ))}
@@ -451,6 +557,7 @@ export const ReportScreen = ({
                   )
                 )}
               </div>
+
             </motion.div>
           )}
         </div>
@@ -458,22 +565,24 @@ export const ReportScreen = ({
 
       {/* ── Hidden printable div ── */}
       {reportContent && (
-        <div className="fixed left-[-9999px] top-0">
-          <div ref={printRef} className="w-[210mm] bg-white text-black p-8 font-sans text-sm break-words [word-break:break-word] overflow-hidden [&_*]:max-w-full [&_pre]:whitespace-pre-wrap [&_code]:break-all [&_table]:table-fixed [&_td]:break-words [&_img]:max-w-full [&_img]:h-auto">
+        <div style={{ position: "absolute", left: "-9999px", top: 0 }}>
+          <div ref={printRef} style={{ width: "180mm", maxWidth: "180mm", backgroundColor: "white", color: "black", padding: "10mm", fontFamily: "sans-serif", fontSize: "13px", wordBreak: "break-word", overflow: "visible", lineHeight: 1.6 }}>
             <h1 className="text-xl font-bold mb-1">{topic}</h1>
             <p className="text-xs text-gray-500 mb-4">GeoLens Interpretation Report &middot; {new Date().toLocaleDateString("ko-KR")}</p>
             {captures.length > 0 && (
-              <div className="grid grid-cols-2 gap-3 mb-4">
-                {captures.map((c, i) => (
-                  <div key={c.timestamp}>
-                    <img src={c.image} alt={c.description} className="w-full rounded border border-gray-300" />
-                    <p className="text-[10px] text-gray-500 mt-0.5">Capture {i + 1}: {c.description}</p>
+              <div style={{ marginBottom: "16px" }}>
+                {(showImageLabels && labeledImages.length > 0 ? labeledImages : captures.map((c) => c.image)).map((src, i) => (
+                  <div key={i} style={{ marginBottom: "12px" }}>
+                    <img src={src} alt={captures[i]?.description} style={{ width: "100%", maxWidth: "100%", height: "auto", display: "block", border: "1px solid #d1d5db", borderRadius: "4px", boxSizing: "border-box" }} />
+                    <p style={{ fontSize: "10px", color: "#6b7280", marginTop: "2px" }}>
+                      Capture {i + 1}: {captures[i]?.description}{showImageLabels && labeledImages.length > 0 ? " (with structural labels)" : ""}
+                    </p>
                   </div>
                 ))}
               </div>
             )}
             <div className="[&_h2]:text-base [&_h2]:font-bold [&_h2]:mt-3 [&_h2]:mb-1 [&_h3]:text-sm [&_h3]:font-bold [&_h3]:mt-2 [&_li]:py-0.5 [&_li]:text-sm [&_p]:text-sm [&_p]:mb-1 [&_ul]:list-disc [&_ul]:ml-4 [&_ol]:list-decimal [&_ol]:ml-4">
-              <ReportMarkdown showConfidence={false}>{reportContent}</ReportMarkdown>
+              <ReportMarkdown showConfidence={false}>{reportTextClean || reportContent}</ReportMarkdown>
             </div>
           </div>
         </div>

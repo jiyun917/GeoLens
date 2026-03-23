@@ -27,7 +27,7 @@ const NonMemoizedReportMarkdown = ({
       const fullText = extractText(liChildren);
       const { level } = parseConfidence(fullText);
 
-      // Always strip the tag text from rendered children
+      // Strip confidence tags from rendered children
       const stripped = level
         ? React.Children.map(liChildren, (child) => {
             if (typeof child === "string") {
