@@ -34,6 +34,7 @@ export interface TaskContextType {
 
   goal: string;
   setGoal: (goal: string) => void;
+  setGuideLanguage: (lang: string) => void;
 
   onNextTask: () => void;
   onRefreshTask: () => void;
@@ -69,6 +70,7 @@ const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
 export function TaskProvider({ children }: { children: ReactNode }) {
   const [goal, setGoal] = useState("");
+  const [guideLanguage, setGuideLanguage] = useState("en");
 
   const { settings, isUsingLocalProvider } = useSettings();
   const { activeManualIds } = useManuals();
@@ -117,6 +119,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
   // === Auto-save checkpoint (array-based, multiple sessions) ===
   useEffect(() => {
+    console.log("[Checkpoint] goal:", goal, "tasks:", tasks.length);
     if (!goal || tasks.length === 0) return;
 
     // Generate a stable ID for this session
@@ -155,7 +158,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (tasks.length === 0) return;
     const lastTask = tasks[tasks.length - 1];
-    const isDone = lastTask.text.toLowerCase().replace(".", "") === "done";
+    const doneText = lastTask.text.toLowerCase().replace(".", "").trim();
+    const isDone = doneText === "done" || doneText === "완료";
     if (!isDone || !goal) return;
 
     try {
@@ -235,7 +239,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         osName,
         followUpContext,
         activeManualIds.length > 0 ? activeManualIds : undefined,
-        plan.length > 0 ? plan : undefined
+        plan.length > 0 ? plan : undefined,
+        guideLanguage
       );
 
       lastScreenshotRef.current = imageDataUrl;
@@ -266,6 +271,32 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         textLower === "wait." ||
         textLower.startsWith("scroll down") ||
         textLower.startsWith("scroll up");
+
+      // Generate coordinate snapshot (async, non-blocking)
+      if (!isStandardizedInstruction && !isLink && text) {
+        generateCoordinate(text, nonScaledImage, settings)
+          .then(async (coordinates) => {
+            const coordinatePattern = /^-?\d+,\s*-?\d+$/;
+            if (coordinates && coordinatePattern.test(coordinates.trim())) {
+              const parsedCoordinates = parseCoordinates(coordinates);
+              const generatedPreviewImage = await createCoordinateSnapshot(
+                nonScaledImage,
+                parsedCoordinates
+              );
+              if (generatedPreviewImage) {
+                const lastIndex = tasksRef.current.length - 1;
+                if (lastIndex >= 0) {
+                  tasksRef.current[lastIndex] = {
+                    ...tasksRef.current[lastIndex],
+                    previewImage: generatedPreviewImage,
+                  };
+                  setTasks([...tasksRef.current]);
+                }
+              }
+            }
+          })
+          .catch((e) => console.error("Coordinate generation failed:", e));
+      }
 
       // Start change detection IMMEDIATELY (don't wait for coordinates)
       if (
@@ -423,10 +454,11 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
   const onRefreshTask = () => {
     if (hasExceededMaxSteps) return;
+    // Tell the VLM the previous instruction was wrong — don't remove the task here,
+    // triggerGenerateTaskDescription's followUp logic will handle removal
     if (tasksRef.current.length > 0) {
-      tasksRef.current = tasksRef.current.slice(0, -1);
-      setTasks(tasksRef.current);
-      setTotalTaskCount((prev) => Math.max(0, prev - 1));
+      const failedInstruction = tasksRef.current[tasksRef.current.length - 1].text;
+      pendingFollowUpRef.current = `Your previous instruction "${failedInstruction}" was WRONG or did not work. The user rejected it. You MUST give a COMPLETELY DIFFERENT instruction. Do NOT repeat "${failedInstruction}" or any similar action.`;
     }
     triggerGenerateTaskDescription();
   };
@@ -627,6 +659,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     hasExceededMaxSteps,
     goal,
     setGoal,
+    setGuideLanguage,
     onNextTask,
     onRefreshTask,
     triggerFirstTask,

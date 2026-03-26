@@ -117,7 +117,8 @@ async def delete_manual(manual_id: str):
 
     # Delete from ChromaDB (both standard and guide collections) and Graph
     vectorstore.delete_collection(manual_id)
-    vectorstore.delete_guide_collection(manual_id)
+    if hasattr(vectorstore, "delete_guide_collection"):
+        vectorstore.delete_guide_collection(manual_id)
     graphstore.delete_graph(manual_id)
 
     # Delete uploaded file if it's a PDF

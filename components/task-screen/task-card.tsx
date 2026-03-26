@@ -208,7 +208,7 @@ export const TaskCard = ({
   const textLower = text.toLowerCase();
   const link = extractLink(text);
 
-  const isCompleted = textLower === "done" || textLower === "done.";
+  const isCompleted = textLower === "done" || textLower === "done." || textLower === "완료" || textLower === "완료.";
   const isWaiting = textLower === "wait" || textLower === "wait.";
   const isScrollDown = textLower.startsWith("scroll down");
   const isScrollUp = textLower.startsWith("scroll up");

@@ -37,6 +37,8 @@ export default function TaskPage() {
     }
 
     setGoal(storedGoal);
+    const lang = sessionStorage.getItem("geolens-guide-language") || "en";
+    taskContext.setGuideLanguage(lang);
     setShowModal(true);
   }, []);
 

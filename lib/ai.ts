@@ -265,12 +265,13 @@ export async function generateAction(
   osName?: string,
   followUpContext?: FollowUpContext,
   manualIds?: string[],
-  plan?: string[]
+  plan?: string[],
+  language?: string
 ) {
   const maxRetries = 3;
   let lastError: unknown;
 
-  const systemPrompt = buildActionPrompt(goal, osName, completedSteps, undefined, plan);
+  const systemPrompt = buildActionPrompt(goal, osName, completedSteps, undefined, plan, language);
 
   let messages: Message[];
 
@@ -725,14 +726,34 @@ export const createCoordinateSnapshot = async (
   const cursorX = imageX - cropX + 5;
   const cursorY = imageY - cropY - 5;
 
-  const cursorImg = new Image();
-  cursorImg.src = "/cursor.png";
-  await new Promise<void>((resolve) => {
-    cursorImg.onload = () => resolve();
-  });
-
-  const cursorSize = 50;
-  ctx.drawImage(cursorImg, cursorX, cursorY, cursorSize, cursorSize);
+  // Draw cursor pointer directly (no external image needed)
+  const s = 40; // cursor size
+  ctx.save();
+  ctx.translate(cursorX, cursorY);
+  // Pointer arrow shape
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(0, s * 0.85);
+  ctx.lineTo(s * 0.25, s * 0.65);
+  ctx.lineTo(s * 0.45, s);
+  ctx.lineTo(s * 0.55, s * 0.9);
+  ctx.lineTo(s * 0.35, s * 0.55);
+  ctx.lineTo(s * 0.6, s * 0.55);
+  ctx.closePath();
+  ctx.fillStyle = "#ef4444";
+  ctx.fill();
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  // Red circle highlight
+  ctx.beginPath();
+  ctx.arc(s * 0.15, s * 0.15, s * 0.5, 0, Math.PI * 2);
+  ctx.strokeStyle = "#ef4444";
+  ctx.lineWidth = 3;
+  ctx.globalAlpha = 0.4;
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+  ctx.restore();
 
   return canvas.toDataURL("image/png");
 };

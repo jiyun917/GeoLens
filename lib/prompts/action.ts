@@ -3,7 +3,8 @@ export function buildActionPrompt(
   osName?: string,
   completedSteps?: string[],
   manualContext?: string,
-  plan?: string[]
+  plan?: string[],
+  language?: string
 ): string {
   let stepsSection = "";
   if (completedSteps && completedSteps.length > 0) {
@@ -50,8 +51,12 @@ IMPORTANT — How to use this plan:
 - Do NOT say "Done" until ALL plan steps are complete.`;
   }
 
-  return `You are a UI navigation assistant. You give ONE instruction at a time based on what you SEE on the screen.
+  const langInstruction = language === "ko"
+    ? "\n# Language\nRespond in Korean (한국어). All instructions must be written in Korean.\n"
+    : "\n# Language\nRespond in English.\n";
 
+  return `You are a UI navigation assistant. You give ONE instruction at a time based on what you SEE on the screen.
+${langInstruction}
 # User's Operating System
 ${osName || "Unknown"}
 
@@ -110,9 +115,13 @@ If the screen has NOT changed after your previous instruction, or a button/actio
 - Common alternatives: use a different menu path, right-click context menu, keyboard shortcut, close and reopen the program, create new instead of modifying, use a settings/preferences dialog, or try a different workflow entirely.
 - If multiple attempts fail, suggest the simplest possible reset: close the program and start fresh.
 
-# Error Detection
-If the screen shows error dialogs, red warnings, or "Not Responding":
-→ Address the error first with a recovery instruction.
+# Error & Validation Detection (CRITICAL)
+Before giving your next instruction, scan the screenshot for errors:
+- Error dialogs, popups, red text, red borders, validation messages
+- If ANY error is visible: READ it, UNDERSTAND it, and give an instruction that FIXES it
+- Do NOT click forward buttons (Next/OK) when there are errors or empty required fields
+- WRONG: Error says "name required" → "Click Next" (FORBIDDEN)
+- RIGHT: Error says "name required" → "Type a name in the field"
 
 # Response Format
 - ONE action only. No explanation, no numbering, no bullets.
