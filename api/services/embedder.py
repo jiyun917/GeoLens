@@ -21,9 +21,19 @@ def _get_model():
     return _model
 
 
-def split_into_chunks(text: str) -> List[str]:
+def _chunk_single_text(text: str) -> List[str]:
+    """Split a single text into token-based chunks with overlap."""
     enc = tiktoken.encoding_for_model("gpt-4o")
-    tokens = enc.encode(text)
+    # Pre-split very large texts to avoid tiktoken stack overflow
+    MAX_CHARS = 50000
+    if len(text) > MAX_CHARS:
+        sub_texts = [text[i:i + MAX_CHARS] for i in range(0, len(text), MAX_CHARS)]
+        all_tokens = []
+        for sub in sub_texts:
+            all_tokens.extend(enc.encode(sub))
+        tokens = all_tokens
+    else:
+        tokens = enc.encode(text)
     chunks = []
     start = 0
     while start < len(tokens):
@@ -34,6 +44,45 @@ def split_into_chunks(text: str) -> List[str]:
     return chunks
 
 
+def split_into_chunks(content_pieces: List[Tuple[str, dict]]) -> List[Tuple[str, dict]]:
+    """
+    Split content pieces into chunks, respecting section boundaries.
+    Each (text, metadata) pair is chunked independently so chunks never cross sections.
+    Returns list of (chunk_text, metadata_with_chunk_index) tuples.
+    """
+    all_chunks = []
+    # Track chunk_index per section
+    section_counters = {}
+
+    for text, metadata in content_pieces:
+        section = metadata.get("section", "unknown")
+        if section not in section_counters:
+            section_counters[section] = 0
+
+        chunks = _chunk_single_text(text)
+        for chunk in chunks:
+            chunk_meta = {
+                **metadata,
+                "section": section,
+                "chunk_index": section_counters[section],
+            }
+            all_chunks.append((chunk, chunk_meta))
+            section_counters[section] += 1
+
+    return all_chunks
+
+
+def _contextualize_chunk(chunk: str, metadata: dict) -> str:
+    """
+    Prepend contextual information to a chunk (Contextual Retrieval).
+    This helps the embedding model and LLM understand where the chunk comes from.
+    """
+    section = metadata.get("section", "unknown")
+    page = metadata.get("page", "?")
+    source = metadata.get("source", "unknown")
+    return f"[Section: {section}, Page: {page}, Source: {source}]\n{chunk}"
+
+
 def get_embeddings(texts: List[str]) -> List[List[float]]:
     model = _get_model()
     embeddings = model.encode(texts, show_progress_bar=True)
@@ -42,49 +91,56 @@ def get_embeddings(texts: List[str]) -> List[List[float]]:
 
 def embed_and_store(manual_id: str, content_pieces: List[Tuple[str, dict]]):
     """
-    Takes a list of (text, metadata) tuples, chunks them, embeds, and stores in ChromaDB.
+    Takes a list of (text, metadata) tuples, chunks them within section boundaries,
+    applies contextual retrieval (prepends section/page/source info),
+    embeds, and stores in ChromaDB.
     Updates the manual's chunk_count and status when done.
     """
-    all_chunks = []
-    all_metadatas = []
+    # Split into chunks respecting section boundaries
+    chunk_pairs = split_into_chunks(content_pieces)
 
-    for text, metadata in content_pieces:
-        chunks = split_into_chunks(text)
-        for chunk in chunks:
-            all_chunks.append(chunk)
-            all_metadatas.append(metadata)
-
-    if not all_chunks:
+    if not chunk_pairs:
         update_manual(manual_id, status="ready", chunk_count=0)
         return
 
-    # Embed in batches of 100
+    # Apply contextual retrieval: prepend metadata context to each chunk
+    contextualized_chunks = []
+    chunk_metadatas = []
+    raw_chunks = []  # For graph building (without context prefix)
+
+    for chunk, metadata in chunk_pairs:
+        contextualized = _contextualize_chunk(chunk, metadata)
+        contextualized_chunks.append(contextualized)
+        chunk_metadatas.append(metadata)
+        raw_chunks.append(chunk)
+
+    # Embed contextualized chunks in batches of 100
     all_embeddings = []
     batch_size = 100
-    for i in range(0, len(all_chunks), batch_size):
-        batch = all_chunks[i : i + batch_size]
+    for i in range(0, len(contextualized_chunks), batch_size):
+        batch = contextualized_chunks[i : i + batch_size]
         embeddings = get_embeddings(batch)
         all_embeddings.extend(embeddings)
 
-    ids = [uuid.uuid4().hex for _ in all_chunks]
+    ids = [uuid.uuid4().hex for _ in contextualized_chunks]
 
     vectorstore.add_chunks(
         manual_id=manual_id,
         ids=ids,
-        documents=all_chunks,
-        metadatas=all_metadatas,
+        documents=contextualized_chunks,
+        metadatas=chunk_metadatas,
         embeddings=all_embeddings,
     )
 
-    update_manual(manual_id, status="ready", chunk_count=len(all_chunks))
-    print(f"[EMBED] Manual {manual_id} ready: {len(all_chunks)} chunks")
+    update_manual(manual_id, status="ready", chunk_count=len(contextualized_chunks))
+    print(f"[EMBED] Manual {manual_id} ready: {len(contextualized_chunks)} contextualized chunks")
 
-    # Build knowledge graph from chunks (Graph RAG) - in separate thread to not block
+    # Build knowledge graph from raw chunks (without context prefix)
     import threading
     def _build_graph():
         try:
-            chunk_pairs = list(zip(all_chunks, all_metadatas))
-            build_graph_from_chunks(manual_id, chunk_pairs)
+            graph_pairs = list(zip(raw_chunks, chunk_metadatas))
+            build_graph_from_chunks(manual_id, graph_pairs)
         except Exception as e:
             print(f"[GRAPH] Graph building failed for {manual_id}: {e}")
 

@@ -408,8 +408,49 @@ async def handle_annotate(request: FastAPIRequest, body: AnnotateRequest):
 @router.post("/api/coordinates")
 @limiter.limit("15/minute;200/hour")
 async def handle_coordinate_chat(request: FastAPIRequest, body: MessagesRequest):
-    # Coordinates locates UI elements - needs vision
-    response = _gemini_stream_response(body.messages)
-    if response:
-        return response
+    # Coordinates: synchronous call for simple "x,y" output, wrapped as SSE
+    gemini_api_key = os.environ.get("GEMINI_API_KEY")
+    if gemini_api_key:
+        client = genai.Client(api_key=gemini_api_key)
+
+        system_instruction_parts = []
+        for msg in body.messages:
+            if msg.get("role") == "system":
+                content = msg.get("content")
+                if isinstance(content, str):
+                    system_instruction_parts.append(types.Part.from_text(text=content))
+
+        system_instruction = (
+            types.Content(parts=system_instruction_parts)
+            if system_instruction_parts
+            else None
+        )
+
+        contents = convert_openai_to_gemini(body.messages)
+
+        config = types.GenerateContentConfig(
+            system_instruction=system_instruction,
+        )
+
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=contents,
+            config=config,
+        )
+
+        text = response.text.strip() if response.text else "None"
+        print(f"[coordinates] Result: {text}")
+
+        import uuid, json as json_mod
+        msg_id = f"msg-{uuid.uuid4().hex}"
+
+        def sse_wrap():
+            yield f'data: {json_mod.dumps({"type":"start","messageId":msg_id})}\n\n'
+            yield f'data: {json_mod.dumps({"type":"text-start","id":"text-1"})}\n\n'
+            yield f'data: {json_mod.dumps({"type":"text-delta","id":"text-1","delta":text})}\n\n'
+            yield f'data: {json_mod.dumps({"type":"text-end","id":"text-1"})}\n\n'
+            yield f'data: {json_mod.dumps({"type":"finish"})}\n\n'
+            yield "data: [DONE]\n\n"
+
+        return StreamingResponse(sse_wrap(), media_type="text/event-stream")
     return _local_llm_response(body.messages)

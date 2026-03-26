@@ -10,7 +10,6 @@ import {
   FollowUpContext,
   checkStepCompletion,
   generateSummary,
-  generatePlan,
 } from "@/lib/ai";
 import {
   createContext,
@@ -96,8 +95,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   const [isLoadingPreviewImage, setIsLoadingPreviewImage] = useState(false);
   const [autoCompleteTriggered, setAutoCompleteTriggered] = useState(0);
 
-  const [plan, setPlan] = useState<string[]>([]);
-  const [isPlanLoading, setIsPlanLoading] = useState(false);
+  const plan: string[] = [];
+  const isPlanLoading = false;
   const [isGuidePaused, setIsGuidePaused] = useState(false);
 
   const [summaryReport, setSummaryReport] = useState("");
@@ -134,7 +133,6 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       const entry = {
         id: checkpointIdRef.current,
         goal,
-        plan,
         completedSteps: tasks.map((t) => t.text),
         timestamp: Date.now(),
       };
@@ -152,7 +150,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     } catch {
       // localStorage full or unavailable
     }
-  }, [goal, tasks, plan]);
+  }, [goal, tasks]);
 
   // === Save completed workflow + remove checkpoint on completion ===
   useEffect(() => {
@@ -239,7 +237,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         osName,
         followUpContext,
         activeManualIds.length > 0 ? activeManualIds : undefined,
-        plan.length > 0 ? plan : undefined,
+        undefined,
         guideLanguage
       );
 
@@ -465,24 +463,6 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
   const triggerFirstTask = async () => {
     if (hasExceededMaxSteps) return;
-
-    // Generate plan first, then start first task
-    setIsPlanLoading(true);
-    try {
-      const captured = await captureImageFromStream({ isLocalLlm: isUsingLocalProvider });
-      const steps = await generatePlan(
-        goal,
-        captured.scaledImageDataUrl,
-        settings,
-        activeManualIds.length > 0 ? activeManualIds : undefined
-      );
-      if (steps.length > 0) setPlan(steps);
-    } catch (e) {
-      console.error("Plan generation failed:", e);
-    } finally {
-      setIsPlanLoading(false);
-    }
-
     triggerGenerateTaskDescription();
   };
 
@@ -495,7 +475,6 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       }
       sessionStorage.removeItem("geolens-resume-data");
       const data = JSON.parse(raw);
-      if (data.plan?.length) setPlan(data.plan);
       if (data.completedSteps?.length) {
         const restored: TaskHistoryItem[] = data.completedSteps.map((text: string) => ({ text }));
         tasksRef.current = restored;
@@ -633,8 +612,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     setIsLoading(false);
     setIsLoadingFollowUp(false);
     setIsLoadingPreviewImage(false);
-    setPlan([]);
-    setIsPlanLoading(false);
+    // plan removed
     // Remove this session's checkpoint
     if (checkpointIdRef.current) {
       try {

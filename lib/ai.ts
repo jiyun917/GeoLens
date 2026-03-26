@@ -225,15 +225,16 @@ ${goal}
 - Each step: short phrase (under 12 words).
 - Output ONLY the numbered list, nothing else.`;
 
+  const userContent: Array<Record<string, unknown>> = [
+    { type: "text", text: "Create a step plan for this goal." },
+  ];
+  if (base64Image) {
+    userContent.push({ type: "image_url", image_url: { url: base64Image } });
+  }
+
   const messages: Message[] = [
     { role: "system", content: systemPrompt },
-    {
-      role: "user",
-      content: [
-        { type: "text", text: "Create a step plan for this goal." },
-        { type: "image_url", image_url: { url: base64Image } },
-      ],
-    },
+    { role: "user", content: userContent },
   ];
 
   try {

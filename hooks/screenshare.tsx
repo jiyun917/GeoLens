@@ -58,7 +58,7 @@ export const useScreenShare = create<ScreenShareState>((set, get) => {
   let previousImageData: ImageData | null = null;
   let temporaryPauseTimer: NodeJS.Timeout | null = null;
 
-  const imagePixelSize = 2_100_000;
+  const imagePixelSize = 3_500_000;
   const imageSizeForChangeDetection = 800_000;
 
   return {
@@ -194,7 +194,7 @@ export const useScreenShare = create<ScreenShareState>((set, get) => {
             detectAndMaskPopup(imageData.data, width, height);
             ctx.putImageData(imageData, 0, 0);
 
-            const scaledImageDataUrl = canvas.toDataURL("image/jpeg");
+            const scaledImageDataUrl = canvas.toDataURL("image/jpeg", 0.95);
 
             const nonScaledCanvas = document.createElement("canvas");
             nonScaledCanvas.width = video.videoWidth;
@@ -212,7 +212,7 @@ export const useScreenShare = create<ScreenShareState>((set, get) => {
                 video.videoWidth,
                 video.videoHeight
               );
-              nonScaledImageDataUrl = nonScaledCanvas.toDataURL("image/jpeg");
+              nonScaledImageDataUrl = nonScaledCanvas.toDataURL("image/jpeg", 0.95);
             }
 
             if (options?.whiteout) {
@@ -358,7 +358,7 @@ export const useScreenShare = create<ScreenShareState>((set, get) => {
                 captureCtx.putImageData(captureImageData, 0, 0);
 
                 const scaledImageDataUrl =
-                  captureCanvas.toDataURL("image/jpeg");
+                  captureCanvas.toDataURL("image/jpeg", 0.95);
 
                 const nonScaledCanvas = document.createElement("canvas");
                 nonScaledCanvas.width = video.videoWidth;
@@ -377,7 +377,7 @@ export const useScreenShare = create<ScreenShareState>((set, get) => {
                     video.videoHeight
                   );
                   nonScaledImageDataUrl =
-                    nonScaledCanvas.toDataURL("image/jpeg");
+                    nonScaledCanvas.toDataURL("image/jpeg", 0.95);
                 }
 
                 callback(scaledImageDataUrl, nonScaledImageDataUrl);
