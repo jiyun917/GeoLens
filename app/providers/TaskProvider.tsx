@@ -147,8 +147,9 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
       // Keep max 10
       localStorage.setItem("geolens-guide-checkpoints", JSON.stringify(all.slice(0, 10)));
-    } catch {
-      // localStorage full or unavailable
+      console.log("[Checkpoint] Saved:", entry.id, "goal:", goal?.slice(0, 30), "steps:", tasks.length);
+    } catch (e) {
+      console.error("[Checkpoint] Save failed:", e);
     }
   }, [goal, tasks]);
 

@@ -59,6 +59,7 @@ export default function HomePage() {
     const valid = allCheckpoints
       .filter((cp) => Date.now() - cp.timestamp < 7 * 24 * 60 * 60 * 1000)
       .sort((a, b) => b.timestamp - a.timestamp);
+    console.log("[Home] Loaded checkpoints:", valid.length, valid.map(c => ({ id: c.id, goal: c.goal?.slice(0, 30), mode: c.mode })));
     setCheckpoints(valid);
 
     // Load workflow history
