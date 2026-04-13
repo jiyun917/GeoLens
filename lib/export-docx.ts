@@ -160,33 +160,93 @@ function parseInlineFormatting(text: string): TextRun[] {
   return runs.length > 0 ? runs : [new TextRun({ text, size: 22 })];
 }
 
+const SECTION_ICONS: Record<string, string> = {
+  "자료 개요": "📋", "data overview": "📋",
+  "주요 관찰": "🔍", "key observations": "🔍",
+  "구조 해석": "🏗️", "structural": "🏗️",
+  "층서 해석": "📐", "stratigraphic": "📐",
+  "지질학적 과정": "⚙️", "geological process": "⚙️",
+  "종합 평가": "📊", "summary": "📊",
+  "결론": "✅", "conclusions": "✅",
+  "요약": "📝", "abstract": "📝",
+  "자료 및 방법": "🔬", "data and methods": "🔬",
+  "해석 및 논의": "💡", "interpretation": "💡",
+  "교차 대비": "🔗", "cross-comparison": "🔗",
+  "qc 판정": "✅", "qc verdict": "✅",
+  "노이즈": "📡", "noise": "📡",
+  "반사면": "📶", "reflector": "📶",
+  "인공물": "⚠️", "artifacts": "⚠️",
+  "권고": "💡", "recommend": "💡",
+  "자료 정보": "📂", "data information": "📂",
+};
+
+function getSectionIcon(title: string): string {
+  const lower = title.toLowerCase();
+  for (const [key, icon] of Object.entries(SECTION_ICONS)) {
+    if (lower.includes(key)) return icon;
+  }
+  return "📌";
+}
+
 function markdownToDocxParagraphs(markdown: string): Paragraph[] {
   const paragraphs: Paragraph[] = [];
-  const lines = markdown.split("\n");
+  // Pre-process: split inline bullets onto separate lines
+  const preprocessed = markdown
+    .replace(/([.!?。])\s*\*\s+/g, "$1\n* ")
+    .replace(/([.!?。])\s*-\s+/g, "$1\n- ")
+    .replace(/([.!?。])\s*●\s*/g, "$1\n- ")
+    .replace(/●\s*/g, "\n- ")
+    .replace(/\*\s{2,}/g, "\n* ");
+  const lines = preprocessed.split("\n");
 
   for (const line of lines) {
     const trimmed = line.trim();
     if (!trimmed) continue;
 
+    // Skip horizontal rules
+    if (trimmed === "---" || trimmed === "***") continue;
+
     const clean = trimmed
-      .replace(/\[신뢰도:\s*(높음|중간|낮음)\]\s*$/, "")
-      .replace(/\[Confidence:\s*(High|Medium|Low)\]\s*$/i, "")
+      .replace(/\[신뢰도:\s*(높음|중간|낮음)\][.\s]*/g, "")
+      .replace(/\[Confidence:\s*(High|Medium|Low)\][.\s]*/gi, "")
       .trim();
 
-    if (clean.startsWith("## ")) {
+    if (!clean) continue;
+
+    // Detect headings: ## Title, ###Title, or standalone **Title**
+    const isH2 = clean.match(/^#{2}\s/) || clean.match(/^##[^\s#]/);
+    const isH3 = !isH2 && (clean.match(/^#{3}\s/) || clean.match(/^###[^\s#]/));
+    const isBoldHeading = !isH2 && !isH3 && clean.match(/^\*\*[^*]+\*\*$/);
+
+    if (isH2 || isBoldHeading) {
+      const title = isH2 ? clean.replace(/^#{2,3}\s*/, "") : clean.replace(/^\*\*|\*\*$/g, "");
+      const icon = getSectionIcon(title);
       paragraphs.push(
         new Paragraph({
-          children: [new TextRun({ text: clean.slice(3), bold: true, size: 28 })],
+          children: [
+            new TextRun({ text: `${icon} `, size: 26 }),
+            new TextRun({ text: title, bold: true, size: 26, color: "1e40af" }),
+          ],
           heading: HeadingLevel.HEADING_2,
-          spacing: { before: 300, after: 120 },
+          spacing: { before: 300, after: 80 },
         })
       );
-    } else if (clean.startsWith("### ")) {
       paragraphs.push(
         new Paragraph({
-          children: [new TextRun({ text: clean.slice(4), bold: true, size: 24 })],
+          children: [],
+          border: { bottom: { style: "single" as any, size: 4, color: "93c5fd", space: 1 } },
+          spacing: { after: 80 },
+        })
+      );
+    } else if (isH3) {
+      const title = clean.replace(/^#{2,3}\s*/, "");
+      paragraphs.push(
+        new Paragraph({
+          children: [
+            new TextRun({ text: title, bold: true, size: 22, color: "0d9488" }),
+          ],
           heading: HeadingLevel.HEADING_3,
-          spacing: { before: 200, after: 80 },
+          spacing: { before: 200, after: 60 },
         })
       );
     } else if (clean.match(/^[-*]\s/)) {
@@ -195,7 +255,7 @@ function markdownToDocxParagraphs(markdown: string): Paragraph[] {
         new Paragraph({
           children: parseInlineFormatting(text),
           bullet: { level: 0 },
-          spacing: { before: 40, after: 40 },
+          spacing: { before: 30, after: 30 },
         })
       );
     } else if (clean.match(/^\d+\.\s/)) {
@@ -204,14 +264,14 @@ function markdownToDocxParagraphs(markdown: string): Paragraph[] {
         new Paragraph({
           children: parseInlineFormatting(text),
           numbering: { reference: "report-numbering", level: 0 },
-          spacing: { before: 40, after: 40 },
+          spacing: { before: 30, after: 30 },
         })
       );
     } else {
       paragraphs.push(
         new Paragraph({
           children: parseInlineFormatting(clean),
-          spacing: { before: 80, after: 80 },
+          spacing: { before: 60, after: 60 },
         })
       );
     }
@@ -234,7 +294,7 @@ async function renderImageWithLabels(
   const ctx = canvas.getContext("2d")!;
   ctx.drawImage(img, 0, 0);
 
-  const fontSize = Math.max(9, Math.min(img.width * 0.008, 12));
+  const fontSize = Math.max(14, Math.min(img.width * 0.016, 28));
 
   for (const label of labels) {
     const px = label.x * img.width;
@@ -242,8 +302,8 @@ async function renderImageWithLabels(
 
     ctx.font = `bold ${fontSize}px sans-serif`;
     const m = ctx.measureText(label.text);
-    const dotR = 3;
-    const pad = 6;
+    const dotR = Math.round(fontSize * 0.2);
+    const pad = Math.round(fontSize * 0.4);
     const bw = dotR * 2 + 4 + m.width + pad * 2;
     const bh = fontSize + pad * 2;
     const bx = px - bw / 2;

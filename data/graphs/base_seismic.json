@@ -1,0 +1,1367 @@
+{
+  "nodes": [
+    {
+      "id": "반사면",
+      "label": "반사면 (Reflector)",
+      "category": "seismic_feature"
+    },
+    {
+      "id": "반사면 연속성",
+      "label": "반사면 연속성 (Reflector Continuity)",
+      "category": "seismic_quality"
+    },
+    {
+      "id": "음향 임피던스",
+      "label": "음향 임피던스 (Acoustic Impedance)",
+      "category": "seismic_property"
+    },
+    {
+      "id": "진폭",
+      "label": "진폭 (Amplitude)",
+      "category": "seismic_attribute"
+    },
+    {
+      "id": "진폭 이상",
+      "label": "진폭 이상 (Amplitude Anomaly)",
+      "category": "seismic_attribute"
+    },
+    {
+      "id": "주파수",
+      "label": "주파수 (Frequency)",
+      "category": "seismic_attribute"
+    },
+    {
+      "id": "위상",
+      "label": "위상 (Phase)",
+      "category": "seismic_attribute"
+    },
+    {
+      "id": "극성",
+      "label": "극성 (Polarity)",
+      "category": "seismic_attribute"
+    },
+    {
+      "id": "bright spot",
+      "label": "Bright Spot",
+      "category": "dhi"
+    },
+    {
+      "id": "dim spot",
+      "label": "Dim Spot",
+      "category": "dhi"
+    },
+    {
+      "id": "flat spot",
+      "label": "Flat Spot",
+      "category": "dhi"
+    },
+    {
+      "id": "극성 반전",
+      "label": "극성 반전 (Polarity Reversal)",
+      "category": "dhi"
+    },
+    {
+      "id": "avo",
+      "label": "AVO (Amplitude vs Offset)",
+      "category": "seismic_analysis"
+    },
+    {
+      "id": "avo class i",
+      "label": "AVO Class I",
+      "category": "avo_class"
+    },
+    {
+      "id": "avo class ii",
+      "label": "AVO Class II",
+      "category": "avo_class"
+    },
+    {
+      "id": "avo class iii",
+      "label": "AVO Class III",
+      "category": "avo_class"
+    },
+    {
+      "id": "avo class iv",
+      "label": "AVO Class IV",
+      "category": "avo_class"
+    },
+    {
+      "id": "dhi",
+      "label": "DHI (Direct Hydrocarbon Indicator)",
+      "category": "seismic_analysis"
+    },
+    {
+      "id": "튜닝 효과",
+      "label": "튜닝 효과 (Tuning Effect)",
+      "category": "seismic_artifact"
+    },
+    {
+      "id": "속도 풀업",
+      "label": "속도 풀업 (Velocity Pull-up)",
+      "category": "seismic_artifact"
+    },
+    {
+      "id": "속도 푸시다운",
+      "label": "속도 푸시다운 (Velocity Push-down)",
+      "category": "seismic_artifact"
+    },
+    {
+      "id": "다중반사",
+      "label": "다중반사 (Multiple)",
+      "category": "seismic_artifact"
+    },
+    {
+      "id": "해저면 다중반사",
+      "label": "해저면 다중반사 (Water-bottom Multiple)",
+      "category": "seismic_artifact"
+    },
+    {
+      "id": "페그레그 다중반사",
+      "label": "페그레그 다중반사 (Peg-leg Multiple)",
+      "category": "seismic_artifact"
+    },
+    {
+      "id": "층간 다중반사",
+      "label": "층간 다중반사 (Interbed Multiple)",
+      "category": "seismic_artifact"
+    },
+    {
+      "id": "마이그레이션 스마일",
+      "label": "마이그레이션 스마일 (Migration Smile)",
+      "category": "seismic_artifact"
+    },
+    {
+      "id": "사이드스와이프",
+      "label": "사이드스와이프 (Sideswipe)",
+      "category": "seismic_artifact"
+    },
+    {
+      "id": "회절",
+      "label": "회절 (Diffraction)",
+      "category": "seismic_feature"
+    },
+    {
+      "id": "onlap",
+      "label": "온랩 (Onlap)",
+      "category": "stratal_termination"
+    },
+    {
+      "id": "downlap",
+      "label": "다운랩 (Downlap)",
+      "category": "stratal_termination"
+    },
+    {
+      "id": "toplap",
+      "label": "톱랩 (Toplap)",
+      "category": "stratal_termination"
+    },
+    {
+      "id": "truncation",
+      "label": "절단 (Truncation)",
+      "category": "stratal_termination"
+    },
+    {
+      "id": "apparent truncation",
+      "label": "겉보기 절단 (Apparent Truncation)",
+      "category": "stratal_termination"
+    },
+    {
+      "id": "erosional truncation",
+      "label": "침식 절단 (Erosional Truncation)",
+      "category": "stratal_termination"
+    },
+    {
+      "id": "전진퇴적",
+      "label": "전진퇴적 (Progradation)",
+      "category": "stacking_pattern"
+    },
+    {
+      "id": "후퇴퇴적",
+      "label": "후퇴퇴적 (Retrogradation)",
+      "category": "stacking_pattern"
+    },
+    {
+      "id": "수직적층",
+      "label": "수직적층 (Aggradation)",
+      "category": "stacking_pattern"
+    },
+    {
+      "id": "클리노폼",
+      "label": "클리노폼 (Clinoform)",
+      "category": "seismic_geometry"
+    },
+    {
+      "id": "시그모이달",
+      "label": "시그모이달 (Sigmoidal)",
+      "category": "clinoform_type"
+    },
+    {
+      "id": "오블리크",
+      "label": "오블리크 (Oblique)",
+      "category": "clinoform_type"
+    },
+    {
+      "id": "탄젠셜",
+      "label": "탄젠셜 (Tangential)",
+      "category": "clinoform_type"
+    },
+    {
+      "id": "시퀀스 경계",
+      "label": "시퀀스 경계 (Sequence Boundary, SB)",
+      "category": "sequence_stratigraphy"
+    },
+    {
+      "id": "범람면",
+      "label": "최대범람면 (Maximum Flooding Surface, MFS)",
+      "category": "sequence_stratigraphy"
+    },
+    {
+      "id": "해침면",
+      "label": "해침면 (Transgressive Surface, TS)",
+      "category": "sequence_stratigraphy"
+    },
+    {
+      "id": "저위체계역",
+      "label": "저위체계역 (Lowstand Systems Tract, LST)",
+      "category": "systems_tract"
+    },
+    {
+      "id": "해침체계역",
+      "label": "해침체계역 (Transgressive Systems Tract, TST)",
+      "category": "systems_tract"
+    },
+    {
+      "id": "고위체계역",
+      "label": "고위체계역 (Highstand Systems Tract, HST)",
+      "category": "systems_tract"
+    },
+    {
+      "id": "하강체계역",
+      "label": "하강체계역 (Falling Stage Systems Tract, FSST)",
+      "category": "systems_tract"
+    },
+    {
+      "id": "암염돔",
+      "label": "암염돔 (Salt Dome/Diapir)",
+      "category": "structure"
+    },
+    {
+      "id": "암염벽",
+      "label": "암염벽 (Salt Wall)",
+      "category": "structure"
+    },
+    {
+      "id": "암염베개",
+      "label": "암염베개 (Salt Pillow)",
+      "category": "structure"
+    },
+    {
+      "id": "용접",
+      "label": "암염 용접 (Salt Weld)",
+      "category": "structure"
+    },
+    {
+      "id": "림싱크라인",
+      "label": "림싱크라인 (Rim Syncline)",
+      "category": "structure"
+    },
+    {
+      "id": "배사",
+      "label": "배사 (Anticline)",
+      "category": "structure"
+    },
+    {
+      "id": "향사",
+      "label": "향사 (Syncline)",
+      "category": "structure"
+    },
+    {
+      "id": "부정합",
+      "label": "부정합 (Unconformity)",
+      "category": "structure"
+    },
+    {
+      "id": "정단층",
+      "label": "정단층 (Normal Fault)",
+      "category": "structure"
+    },
+    {
+      "id": "역단층",
+      "label": "역단층 (Reverse Fault)",
+      "category": "structure"
+    },
+    {
+      "id": "충상단층",
+      "label": "충상단층 (Thrust Fault)",
+      "category": "structure"
+    },
+    {
+      "id": "주향이동단층",
+      "label": "주향이동단층 (Strike-slip Fault)",
+      "category": "structure"
+    },
+    {
+      "id": "성장단층",
+      "label": "성장단층 (Growth Fault)",
+      "category": "structure"
+    },
+    {
+      "id": "리스트릭단층",
+      "label": "리스트릭단층 (Listric Fault)",
+      "category": "structure"
+    },
+    {
+      "id": "롤오버배사",
+      "label": "롤오버 배사 (Rollover Anticline)",
+      "category": "structure"
+    },
+    {
+      "id": "성장지층",
+      "label": "성장지층 (Growth Strata)",
+      "category": "structure"
+    },
+    {
+      "id": "지구",
+      "label": "지구 (Graben)",
+      "category": "structure"
+    },
+    {
+      "id": "반지구",
+      "label": "반지구 (Half-graben)",
+      "category": "structure"
+    },
+    {
+      "id": "지루",
+      "label": "지루 (Horst)",
+      "category": "structure"
+    },
+    {
+      "id": "플라워구조",
+      "label": "플라워 구조 (Flower Structure)",
+      "category": "structure"
+    },
+    {
+      "id": "반전구조",
+      "label": "반전구조 (Inversion Structure)",
+      "category": "structure"
+    },
+    {
+      "id": "가스 침니",
+      "label": "가스 침니 (Gas Chimney)",
+      "category": "fluid_indicator"
+    },
+    {
+      "id": "가스 블랭킹",
+      "label": "가스 블랭킹 (Gas Blanking)",
+      "category": "fluid_indicator"
+    },
+    {
+      "id": "bsr",
+      "label": "BSR (Bottom Simulating Reflector)",
+      "category": "fluid_indicator"
+    },
+    {
+      "id": "가스 하이드레이트",
+      "label": "가스 하이드레이트 (Gas Hydrate)",
+      "category": "fluid_indicator"
+    },
+    {
+      "id": "유체이동경로",
+      "label": "유체이동경로 (Fluid Migration Path)",
+      "category": "fluid_indicator"
+    },
+    {
+      "id": "해저선상지",
+      "label": "해저선상지 (Submarine Fan)",
+      "category": "depositional"
+    },
+    {
+      "id": "삼각주",
+      "label": "삼각주 (Delta)",
+      "category": "depositional"
+    },
+    {
+      "id": "수로",
+      "label": "수로 (Channel)",
+      "category": "depositional"
+    },
+    {
+      "id": "제방퇴적",
+      "label": "자연제방 (Levee)",
+      "category": "depositional"
+    },
+    {
+      "id": "터비다이트",
+      "label": "터비다이트 (Turbidite)",
+      "category": "depositional"
+    },
+    {
+      "id": "탄산염대지",
+      "label": "탄산염대지 (Carbonate Platform)",
+      "category": "depositional"
+    },
+    {
+      "id": "리프",
+      "label": "리프 (Reef)",
+      "category": "depositional"
+    },
+    {
+      "id": "마운드",
+      "label": "마운드 (Mound)",
+      "category": "depositional"
+    },
+    {
+      "id": "콘투라이트",
+      "label": "콘투라이트 (Contourite)",
+      "category": "depositional"
+    },
+    {
+      "id": "seismic facies",
+      "label": "탄성파상 (Seismic Facies)",
+      "category": "interpretation"
+    },
+    {
+      "id": "평행/아평행",
+      "label": "평행/아평행 반사 (Parallel/Sub-parallel)",
+      "category": "seismic_facies_type"
+    },
+    {
+      "id": "발산",
+      "label": "발산 반사 (Divergent)",
+      "category": "seismic_facies_type"
+    },
+    {
+      "id": "혼탁",
+      "label": "혼탁 반사 (Chaotic)",
+      "category": "seismic_facies_type"
+    },
+    {
+      "id": "투명",
+      "label": "투명 (Transparent/Reflection-free)",
+      "category": "seismic_facies_type"
+    },
+    {
+      "id": "마운드형",
+      "label": "마운드형 반사 (Mound-shaped)",
+      "category": "seismic_facies_type"
+    },
+    {
+      "id": "쐐기형",
+      "label": "쐐기형 (Wedge-shaped)",
+      "category": "seismic_facies_type"
+    },
+    {
+      "id": "시트형",
+      "label": "시트형 (Sheet)",
+      "category": "seismic_facies_type"
+    },
+    {
+      "id": "inline",
+      "label": "인라인 (Inline)",
+      "category": "seismic_display"
+    },
+    {
+      "id": "crossline",
+      "label": "크로스라인 (Crossline)",
+      "category": "seismic_display"
+    },
+    {
+      "id": "timeslice",
+      "label": "타임슬라이스 (Time Slice)",
+      "category": "seismic_display"
+    },
+    {
+      "id": "임의측선",
+      "label": "임의측선 (Arbitrary Line)",
+      "category": "seismic_display"
+    },
+    {
+      "id": "저류층",
+      "label": "저류층 (Reservoir)",
+      "category": "petroleum"
+    },
+    {
+      "id": "덮개암",
+      "label": "덮개암 (Seal)",
+      "category": "petroleum"
+    },
+    {
+      "id": "근원암",
+      "label": "근원암 (Source Rock)",
+      "category": "petroleum"
+    },
+    {
+      "id": "트랩",
+      "label": "트랩 (Trap)",
+      "category": "petroleum"
+    },
+    {
+      "id": "구조트랩",
+      "label": "구조트랩 (Structural Trap)",
+      "category": "petroleum"
+    },
+    {
+      "id": "층서트랩",
+      "label": "층서트랩 (Stratigraphic Trap)",
+      "category": "petroleum"
+    },
+    {
+      "id": "복합트랩",
+      "label": "복합트랩 (Combination Trap)",
+      "category": "petroleum"
+    },
+    {
+      "id": "f3 데이터셋",
+      "label": "F3 Demo (Netherlands North Sea)",
+      "category": "dataset"
+    },
+    {
+      "id": "북해",
+      "label": "북해 (North Sea)",
+      "category": "region"
+    },
+    {
+      "id": "네덜란드 대륙붕",
+      "label": "네덜란드 대륙붕 (Dutch Continental Shelf)",
+      "category": "region"
+    },
+    {
+      "id": "인장환경",
+      "label": "인장환경 (Extensional Setting)",
+      "category": "tectonic"
+    },
+    {
+      "id": "압축환경",
+      "label": "압축환경 (Compressional Setting)",
+      "category": "tectonic"
+    },
+    {
+      "id": "차별다짐",
+      "label": "차별다짐 (Differential Compaction)",
+      "category": "process"
+    },
+    {
+      "id": "중력구조",
+      "label": "중력구조 (Gravity-driven Structure)",
+      "category": "process"
+    },
+    {
+      "id": "플라이오세",
+      "label": "플라이오세 (Pliocene)",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "마이오세",
+      "label": "마이오세 (Miocene)",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "제히스타인 암염",
+      "label": "제히스타인 암염 (Zechstein Salt)",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "초크층",
+      "label": "초크층 (Chalk Group)",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "viking graben",
+      "label": "Viking Graben (Norway)",
+      "category": "dataset"
+    },
+    {
+      "id": "브렌트그룹",
+      "label": "Brent Group",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "킴머리지클레이",
+      "label": "Kimmeridge Clay",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "드라우프네층",
+      "label": "Draupne Formation",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "penobscot",
+      "label": "Penobscot (Nova Scotia, Canada)",
+      "category": "dataset"
+    },
+    {
+      "id": "겉보기배사",
+      "label": "겉보기배사 (Apparent Anticline)",
+      "category": "misinterpretation"
+    },
+    {
+      "id": "암염 캐노피",
+      "label": "암염 캐노피 (Salt Canopy)",
+      "category": "salt_structure"
+    },
+    {
+      "id": "암염 시트",
+      "label": "암염 시트 (Salt Sheet)",
+      "category": "salt_structure"
+    },
+    {
+      "id": "방사상 단층",
+      "label": "방사상 단층 (Radial Fault)",
+      "category": "salt_structure"
+    },
+    {
+      "id": "크레스탈 단층",
+      "label": "크레스탈 단층 (Crestal Fault)",
+      "category": "salt_structure"
+    },
+    {
+      "id": "draping",
+      "label": "드레이핑 (Draping)",
+      "category": "stratal_pattern"
+    },
+    {
+      "id": "onlap_salt",
+      "label": "온랩 (Onlap on salt)",
+      "category": "stratal_pattern"
+    },
+    {
+      "id": "핵심반사면",
+      "label": "핵심반사면 (Key Horizon)",
+      "category": "interpretation"
+    },
+    {
+      "id": "상부층서단위",
+      "label": "상부 층서 단위 (Upper Unit)",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "중부층서단위",
+      "label": "중부 층서 단위 (Middle Unit)",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "하부층서단위",
+      "label": "하부 층서 단위 (Lower Unit)",
+      "category": "stratigraphy"
+    },
+    {
+      "id": "kerry-3d",
+      "label": "Kerry-3D (Australia)",
+      "category": "dataset"
+    },
+    {
+      "id": "poseidon",
+      "label": "Poseidon (Browse Basin, Australia)",
+      "category": "dataset"
+    },
+    {
+      "id": "teapot dome",
+      "label": "Teapot Dome (Wyoming, USA)",
+      "category": "dataset"
+    },
+    {
+      "id": "groningen",
+      "label": "Groningen (Netherlands)",
+      "category": "dataset"
+    }
+  ],
+  "edges": [
+    {
+      "source": "반사면",
+      "target": "음향 임피던스",
+      "relation": "음향 임피던스 대비에 의해 반사면 형성",
+      "weight": 10
+    },
+    {
+      "source": "진폭",
+      "target": "음향 임피던스",
+      "relation": "진폭 = 반사계수(음향 임피던스 대비) × 입력 파형",
+      "weight": 9
+    },
+    {
+      "source": "암염돔",
+      "target": "반사면",
+      "relation": "내부 반사면이 혼탁/투명(chaotic/transparent)하며 연속 반사면 없음",
+      "weight": 10
+    },
+    {
+      "source": "암염돔",
+      "target": "혼탁",
+      "relation": "암염 내부는 혼탁 또는 투명 반사 패턴",
+      "weight": 10
+    },
+    {
+      "source": "암염돔",
+      "target": "투명",
+      "relation": "균질 암염은 투명(reflection-free) 패턴",
+      "weight": 10
+    },
+    {
+      "source": "배사",
+      "target": "반사면",
+      "relation": "내부 반사면이 연속적으로 곡률을 보이며 유지됨",
+      "weight": 10
+    },
+    {
+      "source": "배사",
+      "target": "평행/아평행",
+      "relation": "배사 내부 반사면은 평행/아평행 패턴 유지",
+      "weight": 9
+    },
+    {
+      "source": "암염돔",
+      "target": "배사",
+      "relation": "서로 다른 구조: 암염돔=관입(내부 혼탁), 배사=습곡(내부 연속)",
+      "weight": 10
+    },
+    {
+      "source": "암염돔",
+      "target": "림싱크라인",
+      "relation": "암염돔 주변에 림싱크라인 발달 (암염 인출에 의한 침하)",
+      "weight": 9
+    },
+    {
+      "source": "암염돔",
+      "target": "성장지층",
+      "relation": "암염 상승 시기에 주변에 성장지층 형성",
+      "weight": 8
+    },
+    {
+      "source": "암염베개",
+      "target": "암염돔",
+      "relation": "암염베개는 암염돔의 초기 단계",
+      "weight": 8
+    },
+    {
+      "source": "암염벽",
+      "target": "암염돔",
+      "relation": "암염벽은 선형으로 연장된 다이어피르",
+      "weight": 8
+    },
+    {
+      "source": "용접",
+      "target": "암염돔",
+      "relation": "암염이 완전히 빠져나간 자리에 용접 형성",
+      "weight": 7
+    },
+    {
+      "source": "속도 풀업",
+      "target": "배사",
+      "relation": "고속체(암염/탄산염) 아래 겉보기 배사로 오인 가능 → 실제 구조가 아닐 수 있음",
+      "weight": 9
+    },
+    {
+      "source": "속도 푸시다운",
+      "target": "향사",
+      "relation": "저속체(가스) 아래 겉보기 향사/구조저 → 속도 효과 확인 필요",
+      "weight": 8
+    },
+    {
+      "source": "다중반사",
+      "target": "반사면",
+      "relation": "실제 반사면과 혼동 가능, 주기성과 무브아웃으로 구분",
+      "weight": 8
+    },
+    {
+      "source": "해저면 다중반사",
+      "target": "다중반사",
+      "relation": "해저면 다중반사는 가장 흔한 유형",
+      "weight": 8
+    },
+    {
+      "source": "페그레그 다중반사",
+      "target": "다중반사",
+      "relation": "해저면과 층 사이 반복 반사",
+      "weight": 7
+    },
+    {
+      "source": "층간 다중반사",
+      "target": "다중반사",
+      "relation": "강한 반사면 사이 반복, 제거 어려움",
+      "weight": 7
+    },
+    {
+      "source": "회절",
+      "target": "정단층",
+      "relation": "단층면 끝에서 회절파 발생 → 단층 위치 지시",
+      "weight": 8
+    },
+    {
+      "source": "마이그레이션 스마일",
+      "target": "반사면",
+      "relation": "마이그레이션 처리 불완전 시 발생하는 인공물",
+      "weight": 7
+    },
+    {
+      "source": "사이드스와이프",
+      "target": "반사면",
+      "relation": "측면 구조의 에너지가 단면에 나타나는 인공물",
+      "weight": 6
+    },
+    {
+      "source": "튜닝 효과",
+      "target": "진폭",
+      "relation": "얇은 층의 보강간섭으로 진폭 증가 → 두께와 진폭의 비선형 관계",
+      "weight": 8
+    },
+    {
+      "source": "bright spot",
+      "target": "dhi",
+      "relation": "DHI: 가스/유체에 의한 진폭 증가, 또는 암상 변화 가능",
+      "weight": 9
+    },
+    {
+      "source": "dim spot",
+      "target": "dhi",
+      "relation": "DHI: 가스에 의한 임피던스 감소로 대비 약화",
+      "weight": 8
+    },
+    {
+      "source": "flat spot",
+      "target": "dhi",
+      "relation": "DHI: 유체 접촉면(OWC/GWC/GOC) 지시, 구조와 무관한 수평 반사",
+      "weight": 9
+    },
+    {
+      "source": "극성 반전",
+      "target": "dhi",
+      "relation": "DHI: 유체 변화에 의한 반사계수 부호 변화",
+      "weight": 8
+    },
+    {
+      "source": "avo class iii",
+      "target": "bright spot",
+      "relation": "Class III AVO → Bright Spot (진폭 증가)",
+      "weight": 8
+    },
+    {
+      "source": "avo class i",
+      "target": "dim spot",
+      "relation": "Class I AVO → Dim Spot (진폭 감소)",
+      "weight": 7
+    },
+    {
+      "source": "avo class ii",
+      "target": "극성 반전",
+      "relation": "Class II AVO → 극성 반전 가능",
+      "weight": 7
+    },
+    {
+      "source": "avo",
+      "target": "dhi",
+      "relation": "AVO 이상은 DHI의 정량적 근거",
+      "weight": 8
+    },
+    {
+      "source": "onlap",
+      "target": "시퀀스 경계",
+      "relation": "시퀀스 경계 위에서 온랩 → 새로운 퇴적 시작",
+      "weight": 9
+    },
+    {
+      "source": "onlap",
+      "target": "해침체계역",
+      "relation": "해침 시 해안 방향 온랩 발달",
+      "weight": 8
+    },
+    {
+      "source": "downlap",
+      "target": "범람면",
+      "relation": "최대범람면 위에서 다운랩 → 전진퇴적 시작",
+      "weight": 9
+    },
+    {
+      "source": "downlap",
+      "target": "고위체계역",
+      "relation": "고위체계역에서 해안 방향 다운랩 발달",
+      "weight": 8
+    },
+    {
+      "source": "toplap",
+      "target": "고위체계역",
+      "relation": "고위체계역 상부에서 톱랩 → 퇴적 정지/비퇴적",
+      "weight": 7
+    },
+    {
+      "source": "truncation",
+      "target": "부정합",
+      "relation": "침식에 의한 반사면 절단 → 부정합면 지시",
+      "weight": 9
+    },
+    {
+      "source": "erosional truncation",
+      "target": "시퀀스 경계",
+      "relation": "침식 절단은 시퀀스 경계의 핵심 증거",
+      "weight": 9
+    },
+    {
+      "source": "전진퇴적",
+      "target": "클리노폼",
+      "relation": "클리노폼이 분지 방향으로 전진 → 해수면 하강 또는 퇴적물 공급 증가",
+      "weight": 9
+    },
+    {
+      "source": "후퇴퇴적",
+      "target": "해침체계역",
+      "relation": "후퇴퇴적 패턴은 해침체계역의 특징",
+      "weight": 8
+    },
+    {
+      "source": "수직적층",
+      "target": "고위체계역",
+      "relation": "수직적층은 고위체계역 후기에 나타남",
+      "weight": 7
+    },
+    {
+      "source": "시그모이달",
+      "target": "클리노폼",
+      "relation": "시그모이달 클리노폼: 톱셋+포어셋+바텀셋 발달",
+      "weight": 7
+    },
+    {
+      "source": "오블리크",
+      "target": "클리노폼",
+      "relation": "오블리크 클리노폼: 톱셋 없음, 활발한 침식",
+      "weight": 7
+    },
+    {
+      "source": "저위체계역",
+      "target": "시퀀스 경계",
+      "relation": "시퀀스 경계 바로 위에 저위체계역 발달",
+      "weight": 9
+    },
+    {
+      "source": "해침체계역",
+      "target": "해침면",
+      "relation": "해침면 위에 해침체계역 발달",
+      "weight": 9
+    },
+    {
+      "source": "고위체계역",
+      "target": "범람면",
+      "relation": "최대범람면 위에 고위체계역 발달",
+      "weight": 9
+    },
+    {
+      "source": "하강체계역",
+      "target": "시퀀스 경계",
+      "relation": "하강체계역 → 시퀀스 경계로 종결",
+      "weight": 8
+    },
+    {
+      "source": "성장단층",
+      "target": "롤오버배사",
+      "relation": "리스트릭 성장단층 하반에 롤오버 배사 형성",
+      "weight": 9
+    },
+    {
+      "source": "성장단층",
+      "target": "성장지층",
+      "relation": "단층 활동 시 하반에서 지층 두께 증가",
+      "weight": 9
+    },
+    {
+      "source": "리스트릭단층",
+      "target": "성장단층",
+      "relation": "리스트릭단층은 성장단층의 일반적 형태",
+      "weight": 8
+    },
+    {
+      "source": "정단층",
+      "target": "지구",
+      "relation": "정단층 쌍 사이에 지구 형성",
+      "weight": 8
+    },
+    {
+      "source": "정단층",
+      "target": "반지구",
+      "relation": "한쪽 경사 블록 → 반지구 형성",
+      "weight": 8
+    },
+    {
+      "source": "정단층",
+      "target": "지루",
+      "relation": "정단층 사이 상승 블록 = 지루",
+      "weight": 8
+    },
+    {
+      "source": "주향이동단층",
+      "target": "플라워구조",
+      "relation": "주향이동 환경에서 플라워 구조 발달",
+      "weight": 8
+    },
+    {
+      "source": "반전구조",
+      "target": "정단층",
+      "relation": "기존 정단층이 압축에 의해 재활성화 → 반전",
+      "weight": 8
+    },
+    {
+      "source": "가스 침니",
+      "target": "진폭 이상",
+      "relation": "수직 진폭 감쇠/혼탁 구간 → 가스 이동 경로",
+      "weight": 8
+    },
+    {
+      "source": "가스 블랭킹",
+      "target": "가스 침니",
+      "relation": "가스에 의한 반사 에너지 소멸",
+      "weight": 8
+    },
+    {
+      "source": "bsr",
+      "target": "가스 하이드레이트",
+      "relation": "BSR = 가스 하이드레이트 하부 경계, 해저면과 평행",
+      "weight": 9
+    },
+    {
+      "source": "유체이동경로",
+      "target": "정단층",
+      "relation": "단층이 유체 이동 통로 역할",
+      "weight": 7
+    },
+    {
+      "source": "해저선상지",
+      "target": "저위체계역",
+      "relation": "해저선상지는 저위체계역의 대표 퇴적체",
+      "weight": 8
+    },
+    {
+      "source": "삼각주",
+      "target": "전진퇴적",
+      "relation": "삼각주 전진 → 클리노폼 전진퇴적 패턴",
+      "weight": 8
+    },
+    {
+      "source": "수로",
+      "target": "seismic facies",
+      "relation": "수로는 U/V자 절입 + 채움 패턴",
+      "weight": 7
+    },
+    {
+      "source": "터비다이트",
+      "target": "해저선상지",
+      "relation": "터비다이트는 해저선상지의 주요 구성 퇴적물",
+      "weight": 7
+    },
+    {
+      "source": "리프",
+      "target": "마운드형",
+      "relation": "리프는 마운드형 반사 패턴 (돔 형태, 내부 혼탁)",
+      "weight": 8
+    },
+    {
+      "source": "콘투라이트",
+      "target": "seismic facies",
+      "relation": "콘투라이트는 렌즈형/시트형 + 내부 아평행 반사",
+      "weight": 6
+    },
+    {
+      "source": "탄산염대지",
+      "target": "고비저항",
+      "relation": "탄산염 → 높은 속도/밀도, 강한 반사",
+      "weight": 7
+    },
+    {
+      "source": "seismic facies",
+      "target": "평행/아평행",
+      "relation": "안정적 퇴적 환경 지시 (대륙붕, 심해 평원)",
+      "weight": 7
+    },
+    {
+      "source": "seismic facies",
+      "target": "발산",
+      "relation": "차등 침강 또는 성장 구조 영향",
+      "weight": 7
+    },
+    {
+      "source": "seismic facies",
+      "target": "혼탁",
+      "relation": "고에너지 환경, 사태, 또는 변형된 지층",
+      "weight": 7
+    },
+    {
+      "source": "seismic facies",
+      "target": "쐐기형",
+      "relation": "쐐기형: 차등 퇴적/침식, 단층 성장 구간",
+      "weight": 7
+    },
+    {
+      "source": "배사",
+      "target": "구조트랩",
+      "relation": "배사 구조는 대표적 구조트랩",
+      "weight": 8
+    },
+    {
+      "source": "정단층",
+      "target": "구조트랩",
+      "relation": "단층 차폐에 의한 구조트랩",
+      "weight": 7
+    },
+    {
+      "source": "부정합",
+      "target": "층서트랩",
+      "relation": "부정합면에서 층서트랩 형성 가능",
+      "weight": 7
+    },
+    {
+      "source": "수로",
+      "target": "층서트랩",
+      "relation": "수로 사암체는 층서트랩 후보",
+      "weight": 6
+    },
+    {
+      "source": "리프",
+      "target": "층서트랩",
+      "relation": "리프 구조는 층서트랩 후보",
+      "weight": 7
+    },
+    {
+      "source": "구조트랩",
+      "target": "트랩",
+      "relation": "구조트랩은 트랩의 하위 유형",
+      "weight": 8
+    },
+    {
+      "source": "층서트랩",
+      "target": "트랩",
+      "relation": "층서트랩은 트랩의 하위 유형",
+      "weight": 8
+    },
+    {
+      "source": "복합트랩",
+      "target": "트랩",
+      "relation": "복합트랩 = 구조 + 층서 요소 결합",
+      "weight": 7
+    },
+    {
+      "source": "f3 데이터셋",
+      "target": "네덜란드 대륙붕",
+      "relation": "F3는 네덜란드 북해 대륙붕에 위치",
+      "weight": 10
+    },
+    {
+      "source": "f3 데이터셋",
+      "target": "인장환경",
+      "relation": "F3 지역은 인장환경 + 염체 구조가 지배적",
+      "weight": 10
+    },
+    {
+      "source": "f3 데이터셋",
+      "target": "클리노폼",
+      "relation": "F3의 가장 대표적 구조는 플라이오세 클리노폼(전진퇴적체)",
+      "weight": 10
+    },
+    {
+      "source": "f3 데이터셋",
+      "target": "제히스타인 암염",
+      "relation": "F3 심부에 제히스타인 암염 존재",
+      "weight": 9
+    },
+    {
+      "source": "f3 데이터셋",
+      "target": "플라이오세",
+      "relation": "F3 천부-중부는 플라이오세 해성 퇴적층",
+      "weight": 9
+    },
+    {
+      "source": "f3 데이터셋",
+      "target": "초크층",
+      "relation": "F3 중부에 초크층(Chalk Group) 발달",
+      "weight": 8
+    },
+    {
+      "source": "f3 데이터셋",
+      "target": "압축환경",
+      "relation": "F3는 압축환경이 아님! 인장+염체 환경",
+      "weight": 10
+    },
+    {
+      "source": "겉보기배사",
+      "target": "차별다짐",
+      "relation": "F3에서 배사처럼 보이는 구조는 차별다짐에 의한 것일 수 있음",
+      "weight": 10
+    },
+    {
+      "source": "겉보기배사",
+      "target": "클리노폼",
+      "relation": "휘어진 반사면이 배사가 아닌 클리노폼(전진퇴적)일 수 있음",
+      "weight": 10
+    },
+    {
+      "source": "겉보기배사",
+      "target": "암염돔",
+      "relation": "암염돔 상부의 변형이 배사로 오인될 수 있음",
+      "weight": 9
+    },
+    {
+      "source": "인장환경",
+      "target": "정단층",
+      "relation": "인장환경에서는 정단층이 발달 (역단층/충상단층 아님)",
+      "weight": 10
+    },
+    {
+      "source": "인장환경",
+      "target": "역단층",
+      "relation": "인장환경에서 역단층은 일반적으로 발달하지 않음",
+      "weight": 9
+    },
+    {
+      "source": "인장환경",
+      "target": "암염돔",
+      "relation": "인장환경에서 암염 다이어피즘이 활발",
+      "weight": 9
+    },
+    {
+      "source": "차별다짐",
+      "target": "배사",
+      "relation": "차별다짐에 의한 겉보기 배사 ≠ 압축성 배사",
+      "weight": 10
+    },
+    {
+      "source": "중력구조",
+      "target": "성장단층",
+      "relation": "삼각주 환경에서 중력에 의한 성장단층 발달",
+      "weight": 8
+    },
+    {
+      "source": "viking graben",
+      "target": "인장환경",
+      "relation": "Viking Graben은 쥐라기 리프트 환경",
+      "weight": 10
+    },
+    {
+      "source": "viking graben",
+      "target": "브렌트그룹",
+      "relation": "Viking Graben의 주요 저류층",
+      "weight": 9
+    },
+    {
+      "source": "viking graben",
+      "target": "킴머리지클레이",
+      "relation": "Viking Graben의 주요 근원암/덮개암",
+      "weight": 9
+    },
+    {
+      "source": "viking graben",
+      "target": "드라우프네층",
+      "relation": "Viking Graben의 주요 근원암",
+      "weight": 8
+    },
+    {
+      "source": "클리노폼",
+      "target": "배사",
+      "relation": "클리노폼의 곡률을 배사구조로 오인하지 말 것! 클리노폼은 퇴적, 배사는 구조운동",
+      "weight": 10
+    },
+    {
+      "source": "클리노폼",
+      "target": "차별다짐",
+      "relation": "클리노폼 하부에서 차별다짐에 의한 구조가 형성될 수 있음",
+      "weight": 8
+    },
+    {
+      "source": "암염돔",
+      "target": "방사상 단층",
+      "relation": "암염돔 상부에 방사상 단층/크레스탈 단층 발달",
+      "weight": 9
+    },
+    {
+      "source": "암염돔",
+      "target": "크레스탈 단층",
+      "relation": "돔 정상부 인장에 의한 크레스탈 단층",
+      "weight": 9
+    },
+    {
+      "source": "암염 캐노피",
+      "target": "암염돔",
+      "relation": "다수의 다이어피르가 합류하여 캐노피 형성",
+      "weight": 7
+    },
+    {
+      "source": "암염 시트",
+      "target": "암염돔",
+      "relation": "암염 시트는 측방으로 확장된 다이어피르",
+      "weight": 7
+    },
+    {
+      "source": "draping",
+      "target": "암염돔",
+      "relation": "반사면이 돔 형태를 따라감 → 구조운동 종료 후 피복 퇴적",
+      "weight": 10
+    },
+    {
+      "source": "onlap_salt",
+      "target": "암염돔",
+      "relation": "반사면이 돔 측면에 비스듬히 접함 → 구조 활동 중 퇴적",
+      "weight": 10
+    },
+    {
+      "source": "draping",
+      "target": "onlap_salt",
+      "relation": "draping(수동적 피복) ≠ onlap(능동적 채움): 구조운동 시기 판별에 핵심",
+      "weight": 10
+    },
+    {
+      "source": "핵심반사면",
+      "target": "진폭",
+      "relation": "핵심반사면은 고진폭·고연속성으로 단면 전체에서 추적 가능",
+      "weight": 9
+    },
+    {
+      "source": "핵심반사면",
+      "target": "상부층서단위",
+      "relation": "핵심반사면이 상부/중부/하부 층서단위를 구분하는 경계",
+      "weight": 8
+    },
+    {
+      "source": "림싱크라인",
+      "target": "암염돔",
+      "relation": "돔 주변부의 하향 처짐 구조. 좌/우 대칭/비대칭으로 암염 이동 방향 추정 가능",
+      "weight": 10
+    },
+    {
+      "source": "f3 데이터셋",
+      "target": "f3 데이터셋",
+      "relation": "F3 메타: 651 inlines, 951 crosslines, 4ms sampling, wells F02-1/F03-2/F03-4/F06-1, TWT vertical axis",
+      "weight": 10
+    },
+    {
+      "source": "viking graben",
+      "target": "viking graben",
+      "relation": "Viking Graben: Mobil AVO dataset, Norwegian North Sea, Jurassic rift, oil/gas province",
+      "weight": 10
+    },
+    {
+      "source": "penobscot",
+      "target": "penobscot",
+      "relation": "Penobscot: Nova Scotia Canada, passive margin, 2D/3D, wells L-30/B-41",
+      "weight": 10
+    },
+    {
+      "source": "kerry-3d",
+      "target": "kerry-3d",
+      "relation": "Kerry-3D: Exmouth Plateau Australia, passive margin, carbonate-siliciclastic",
+      "weight": 8
+    },
+    {
+      "source": "teapot dome",
+      "target": "teapot dome",
+      "relation": "Teapot Dome: Wyoming USA, compressional anticline, CO2 storage site",
+      "weight": 8
+    },
+    {
+      "source": "정단층",
+      "target": "반사면",
+      "relation": "시각적 판별: 반사면의 수직 어긋남(offset) + 종단(termination) + 경사방향으로 정/역 구분",
+      "weight": 9
+    },
+    {
+      "source": "방사상 단층",
+      "target": "정단층",
+      "relation": "암염돔 주변 방사상 단층은 대부분 정단층 (돔 상승에 의한 인장)",
+      "weight": 8
+    }
+  ]
+}

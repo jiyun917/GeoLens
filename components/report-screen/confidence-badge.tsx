@@ -28,8 +28,8 @@ export function ConfidenceBadge({ level }: { level: ConfidenceLevel }) {
   );
 }
 
-const koRegex = /\[신뢰도:\s*(높음|중간|낮음)\]\s*$/;
-const enRegex = /\[Confidence:\s*(High|Medium|Low)\]\s*$/i;
+const koRegex = /\[신뢰도:\s*(높음|중간|낮음)\][.\s]*/;
+const enRegex = /\[Confidence:\s*(High|Medium|Low)\][.\s]*/i;
 
 const levelMap: Record<string, ConfidenceLevel> = {
   높음: "high",

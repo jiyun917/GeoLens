@@ -34,6 +34,7 @@ export default function HomePage() {
   const { isSharing, stopSharing } = useScreenShare();
   const [checkpoints, setCheckpoints] = useState<Checkpoint[]>([]);
   const [workflows, setWorkflows] = useState<WorkflowItem[]>([]);
+  const [currentMode, setCurrentMode] = useState<"guide" | "report">("guide");
 
   useEffect(() => {
     if (isSharing) stopSharing();
@@ -212,12 +213,12 @@ export default function HomePage() {
         )}
 
         <div className="mb-6 space-y-4">
-          <ManualUpload />
-          <ManualList />
+          <ManualUpload mode={currentMode} />
+          <ManualList mode={currentMode} />
           <ManualStatus />
         </div>
 
-        <GoalInput />
+        <GoalInput onModeChange={setCurrentMode} />
 
         <div className="mt-4">
           <ProjectList />

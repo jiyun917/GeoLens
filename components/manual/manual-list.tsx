@@ -40,14 +40,16 @@ const StatusBadge = ({ status }: { status: Manual["status"] }) => {
   }
 };
 
-export const ManualList = () => {
-  const { manuals, deleteManual } = useManuals();
+export const ManualList = ({ mode }: { mode?: "guide" | "report" }) => {
+  const { manuals, guideManuals, reportManuals, deleteManual } = useManuals();
 
-  if (manuals.length === 0) return null;
+  const filtered = mode === "guide" ? guideManuals : mode === "report" ? reportManuals : manuals;
+
+  if (filtered.length === 0) return null;
 
   return (
     <div className="w-full space-y-2">
-      {manuals.map((manual) => (
+      {filtered.map((manual) => (
         <div
           key={manual.id}
           className="flex items-center justify-between px-3 py-2 bg-white border border-gray-200 rounded-md"

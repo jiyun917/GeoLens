@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {"id": "비저항", "label": "비저항 (Resistivity)", "category": "property"},
+    {"id": "고비저항", "label": "고비저항 (High Resistivity)", "category": "anomaly"},
+    {"id": "저비저항", "label": "저비저항 (Low Resistivity)", "category": "anomaly"},
+    {"id": "전극배열", "label": "전극배열 (Electrode Array)", "category": "method"},
+    {"id": "웨너배열", "label": "웨너배열 (Wenner Array)", "category": "method"},
+    {"id": "슐럼버저배열", "label": "슐럼버저배열 (Schlumberger Array)", "category": "method"},
+    {"id": "쌍극자배열", "label": "쌍극자배열 (Dipole-Dipole Array)", "category": "method"},
+    {"id": "역산단면", "label": "역산단면 (Inverted Section)", "category": "processing"},
+    {"id": "의사단면", "label": "의사단면 (Pseudosection)", "category": "processing"},
+    {"id": "기반암", "label": "기반암 (Bedrock)", "category": "geology"},
+    {"id": "풍화대", "label": "풍화대 (Weathered Zone)", "category": "geology"},
+    {"id": "지하수", "label": "지하수 (Groundwater)", "category": "geology"},
+    {"id": "점토", "label": "점토 (Clay)", "category": "geology"},
+    {"id": "파쇄대", "label": "파쇄대 (Fracture Zone)", "category": "geology"},
+    {"id": "공동", "label": "공동 (Cavity/Void)", "category": "geology"},
+    {"id": "오염대", "label": "오염대 (Contamination Plume)", "category": "environmental"}
+  ],
+  "edges": [
+    {"source": "기반암", "target": "고비저항", "relation": "미풍화 기반암 → 고비저항", "weight": 9},
+    {"source": "풍화대", "target": "저비저항", "relation": "풍화된 기반암 → 비저항 감소", "weight": 8},
+    {"source": "지하수", "target": "저비저항", "relation": "포화대 → 저비저항", "weight": 9},
+    {"source": "점토", "target": "저비저항", "relation": "점토 광물 → 매우 낮은 비저항", "weight": 9},
+    {"source": "파쇄대", "target": "저비저항", "relation": "파쇄대 내 지하수 → 저비저항 선형 이상", "weight": 8},
+    {"source": "공동", "target": "고비저항", "relation": "공기 충진 공동 → 고비저항", "weight": 7},
+    {"source": "공동", "target": "저비저항", "relation": "물 충진 공동 → 저비저항", "weight": 7},
+    {"source": "오염대", "target": "저비저항", "relation": "이온 오염물 → 비저항 급감", "weight": 8}
+  ]
+}

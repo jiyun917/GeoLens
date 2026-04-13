@@ -89,7 +89,7 @@ export function ReportProvider({ children }: { children: ReactNode }) {
   };
 
   const { settings } = useSettings();
-  const { activeManualIds } = useManuals();
+  const { activeReportManualIds: activeManualIds } = useManuals();
   const { captureImageFromStream } = useScreenShare();
 
   const captureFullScreen = async (): Promise<string | null> => {
@@ -182,6 +182,7 @@ export function ReportProvider({ children }: { children: ReactNode }) {
     setIsGenerating(true);
     setReportContent("");
 
+    let finalReport = "";
     try {
       await generateReport(
         topic,
@@ -192,6 +193,7 @@ export function ReportProvider({ children }: { children: ReactNode }) {
         })),
         settings,
         (streamed) => {
+          finalReport = streamed;
           setReportContent(streamed);
         },
         activeManualIds.length > 0 ? activeManualIds : undefined,
@@ -199,6 +201,27 @@ export function ReportProvider({ children }: { children: ReactNode }) {
         "custom",
         customSections
       );
+
+      // Claude review: verify and enhance the Gemini-generated report
+      if (finalReport && finalReport.length > 50) {
+        try {
+          const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+          const reviewResp = await fetch(`${apiUrl}/report/review`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ report: finalReport, topic }),
+          });
+          if (reviewResp.ok) {
+            const { reviewed_report } = await reviewResp.json();
+            if (reviewed_report && reviewed_report.length > finalReport.length * 0.5) {
+              setReportContent(reviewed_report);
+              console.log("[Report] Claude review applied");
+            }
+          }
+        } catch (reviewErr) {
+          console.warn("[Report] Claude review skipped:", reviewErr);
+        }
+      }
     } catch (e) {
       console.error("Report generation failed:", e);
     } finally {

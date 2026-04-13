@@ -8,7 +8,7 @@ export type GeoLensMode = "guide" | "report";
 
 export type GuideLanguage = "ko" | "en";
 
-export const GoalInput = () => {
+export const GoalInput = ({ onModeChange }: { onModeChange?: (mode: GeoLensMode) => void } = {}) => {
   const [input, setInput] = useState("");
   const [mode, setMode] = useState<GeoLensMode>("guide");
   const [guideLang, setGuideLang] = useState<GuideLanguage>("ko");
@@ -38,7 +38,7 @@ export const GoalInput = () => {
       <div className="flex justify-center mb-4">
         <div className="inline-flex rounded-full border border-gray-700 bg-zinc-900 p-1">
           <button
-            onClick={() => setMode("guide")}
+            onClick={() => { setMode("guide"); onModeChange?.("guide"); }}
             className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
               mode === "guide"
                 ? "bg-white text-black"
@@ -48,7 +48,7 @@ export const GoalInput = () => {
             Guide Mode
           </button>
           <button
-            onClick={() => setMode("report")}
+            onClick={() => { setMode("report"); onModeChange?.("report"); }}
             className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
               mode === "report"
                 ? "bg-white text-black"

@@ -161,7 +161,7 @@ def _expand_neighbors(manual_ids: List[str], specific_results: List[Dict]) -> Li
     return neighbor_results
 
 
-def _abstract_search(manual_ids: List[str], query: str, specific_results: List[Dict] = None) -> List[Dict]:
+def _abstract_search(manual_ids: List[str], query: str, specific_results: List[Dict] = None, data_types: Optional[List[str]] = None) -> List[Dict]:
     """
     Abstract Retrieval: graph-based conceptual search.
     Finds related entities and relationships for deeper understanding.
@@ -186,7 +186,7 @@ def _abstract_search(manual_ids: List[str], query: str, specific_results: List[D
     print(f"[RAG] Extracted entities: {unique_entities[:15]}")
 
     try:
-        unique_triplets = graphstore.query_subgraph_with_base(manual_ids, unique_entities, max_hops=2)
+        unique_triplets = graphstore.query_subgraph_with_base(manual_ids, unique_entities, max_hops=2, data_types=data_types)
     except Exception as e:
         print(f"[RAG] Graph search error: {e}")
         unique_triplets = []
@@ -255,17 +255,17 @@ def _merge_contexts(
 # Main Entry Point
 # ═══════════════════════════════════════════════════════════
 
-def get_manual_context(manual_ids: List[str], query: str, top_k: int = 5) -> Optional[str]:
+def get_manual_context(manual_ids: List[str], query: str, top_k: int = 5, data_types: Optional[List[str]] = None) -> Optional[str]:
     """
     LightRAG Dual-Level Retrieval:
     1. Specific search: vector similarity for exact matches
     2. Neighbor expansion: same-section adjacent chunks
-    3. Abstract search: graph traversal for conceptual context
+    3. Abstract search: graph traversal for conceptual context (with data-type-specific base graphs)
     4. Merge: deduplicated combination
     """
     ids = manual_ids or []
 
-    print(f"[RAG] Query: {query[:100]}")
+    print(f"[RAG] Query: {query[:100]}, data_types: {data_types}")
 
     # 1. Specific Retrieval
     specific_results = _specific_search(ids, query, top_k)
@@ -273,8 +273,8 @@ def get_manual_context(manual_ids: List[str], query: str, top_k: int = 5) -> Opt
     # 2. Neighbor Expansion
     neighbor_results = _expand_neighbors(ids, specific_results)
 
-    # 3. Abstract Retrieval (graph search — always runs, includes base graph)
-    graph_triplets = _abstract_search(ids, query, specific_results)
+    # 3. Abstract Retrieval (graph search — includes data-type-specific base graphs)
+    graph_triplets = _abstract_search(ids, query, specific_results, data_types)
 
     # 4. Merge all contexts
     return _merge_contexts(specific_results, neighbor_results, graph_triplets)

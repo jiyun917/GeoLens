@@ -72,7 +72,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   const [guideLanguage, setGuideLanguage] = useState("en");
 
   const { settings, isUsingLocalProvider } = useSettings();
-  const { activeManualIds } = useManuals();
+  const { activeGuideManualIds: activeManualIds } = useManuals();
 
   const {
     captureImageFromStream,

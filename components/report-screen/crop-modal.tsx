@@ -113,6 +113,16 @@ export function CropModal({ imageSrc, onConfirm, onCancel }: CropModalProps) {
     draw();
   }, [draw]);
 
+  // Re-draw on window resize (e.g., exiting compact mode)
+  useEffect(() => {
+    const handleResize = () => {
+      setSelection(null);
+      draw();
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [draw]);
+
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     setSelection({
       startX: e.clientX,

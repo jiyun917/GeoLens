@@ -18,19 +18,24 @@ export interface Manual {
   type: "pdf" | "url" | "github";
   name: string;
   status: "processing" | "ready" | "error";
+  mode: "guide" | "report";
   created_at?: string;
   error?: string;
 }
 
 export interface ManualContextType {
   manuals: Manual[];
+  guideManuals: Manual[];
+  reportManuals: Manual[];
   isUploading: boolean;
-  uploadPdf: (file: File) => Promise<void>;
-  addUrl: (url: string) => Promise<void>;
-  addGithub: (url: string) => Promise<void>;
+  uploadPdf: (file: File, mode?: string) => Promise<void>;
+  addUrl: (url: string, mode?: string) => Promise<void>;
+  addGithub: (url: string, mode?: string) => Promise<void>;
   deleteManual: (id: string) => Promise<void>;
   refreshManuals: () => Promise<void>;
   activeManualIds: string[];
+  activeGuideManualIds: string[];
+  activeReportManualIds: string[];
 }
 
 const ManualContext = createContext<ManualContextType | undefined>(undefined);
@@ -40,7 +45,18 @@ export function ManualProvider({ children }: { children: ReactNode }) {
   const [isUploading, setIsUploading] = useState(false);
   const pollingRef = useRef<NodeJS.Timeout | null>(null);
 
+  const guideManuals = manuals.filter((m) => (m.mode || "guide") === "guide");
+  const reportManuals = manuals.filter((m) => m.mode === "report");
+
   const activeManualIds = manuals
+    .filter((m) => m.status === "ready")
+    .map((m) => m.id);
+
+  const activeGuideManualIds = guideManuals
+    .filter((m) => m.status === "ready")
+    .map((m) => m.id);
+
+  const activeReportManualIds = reportManuals
     .filter((m) => m.status === "ready")
     .map((m) => m.id);
 
@@ -85,13 +101,14 @@ export function ManualProvider({ children }: { children: ReactNode }) {
     };
   }, [manuals, refreshManuals]);
 
-  const uploadPdf = async (file: File) => {
+  const uploadPdf = async (file: File, mode: string = "guide") => {
     setIsUploading(true);
     try {
       const formData = new FormData();
       formData.append("file", file);
+      formData.append("mode", mode);
 
-      const response = await fetch(`${apiUrl}/manual/upload`, {
+      const response = await fetch(`${apiUrl}/manual/upload?mode=${mode}`, {
         method: "POST",
         body: formData,
       });
@@ -109,13 +126,13 @@ export function ManualProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const addUrl = async (url: string) => {
+  const addUrl = async (url: string, mode: string = "guide") => {
     setIsUploading(true);
     try {
       const response = await fetch(`${apiUrl}/manual/url`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url, mode }),
       });
 
       if (!response.ok) {
@@ -131,13 +148,13 @@ export function ManualProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const addGithub = async (url: string) => {
+  const addGithub = async (url: string, mode: string = "guide") => {
     setIsUploading(true);
     try {
       const response = await fetch(`${apiUrl}/manual/github`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url, mode }),
       });
 
       if (!response.ok) {
@@ -174,6 +191,8 @@ export function ManualProvider({ children }: { children: ReactNode }) {
     <ManualContext.Provider
       value={{
         manuals,
+        guideManuals,
+        reportManuals,
         isUploading,
         uploadPdf,
         addUrl,
@@ -181,6 +200,8 @@ export function ManualProvider({ children }: { children: ReactNode }) {
         deleteManual,
         refreshManuals,
         activeManualIds,
+        activeGuideManualIds,
+        activeReportManualIds,
       }}
     >
       {children}

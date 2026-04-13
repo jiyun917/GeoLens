@@ -83,10 +83,10 @@ export function buildCustomFormatSection(sectionIds: string[], isEn: boolean): s
     // User-typed custom section name
     return `## ${id}\n- Provide detailed analysis for this section (3-5 lines)\n`;
   });
-  const totalItems = sectionIds.length <= 3 ? "8-12" : sectionIds.length <= 5 ? "20-30" : "25-35";
+  const totalItems = sectionIds.length <= 3 ? "8-12" : sectionIds.length <= 5 ? "25-35" : "35-50";
   const header = isEn
-    ? `# Report Format\nTotal ${totalItems} bullet points. Each bullet: 1-3 sentences.\n\n`
-    : `# Report Format\n전체 ${totalItems}개 항목. 각 항목: 1-3문장.\n\n`;
+    ? `# Report Format\nTotal ${totalItems} bullet points. Each bullet: 1-3 sentences.\nBe THOROUGH — cover every observable feature in detail.\n\n`
+    : `# Report Format\n전체 ${totalItems}개 항목. 각 항목: 1-3문장.\n철저하게 — 관찰 가능한 모든 특징을 상세히 기술하세요.\n\n`;
   return header + parts.join("\n");
 }
 
@@ -146,24 +146,26 @@ export function buildReportPrompt(
   // === Language-specific sections ===
 
   const confidenceSection = isEn
-    ? "\n# Confidence Level (REQUIRED — Be CONSERVATIVE)\n" +
-      "Every bullet point MUST end with a confidence tag: [Confidence: High], [Confidence: Medium], or [Confidence: Low]\n" +
-      "- High: ONLY for direct observations (e.g., 'a discontinuity is visible') or interpretations with unambiguous evidence" +
+    ? "\n# ██ Confidence Tags (MANDATORY — every bullet MUST have one) ██\n" +
+      "EVERY bullet point in the report MUST end with exactly one of these tags:\n" +
+      "  [Confidence: High]  [Confidence: Medium]  [Confidence: Low]\n\n" +
+      "A bullet WITHOUT a tag is a VIOLATION. Check every bullet before finishing.\n\n" +
+      "- High: Direct observation clearly visible in the image, or interpretation with unambiguous evidence" +
       (isMultiData ? " cross-confirmed by multiple datasets" : "") + "\n" +
-      "- Medium: Most interpretations belong here — structural interpretations (e.g., rollover anticline vs velocity pull-up), inferred depositional environments, feature type identification where alternatives exist\n" +
-      "- Low: Speculative interpretation, features at resolution limit, or where multiple equally valid explanations exist\n" +
-      "- IMPORTANT: Err on the side of Medium/Low. A professional report with conservative confidence is more credible than one where everything is High.\n" +
-      "- When assigning Medium or Low, briefly note why (e.g., 'could also be velocity artifact' or 'requires well calibration')\n" +
-      '- Format: "- Observation/interpretation [Confidence: Medium]"\n\n'
-    : "\n# 신뢰도 (REQUIRED — 보수적으로 평가)\n" +
-      "모든 항목 끝에 반드시 신뢰도 태그 부착: [신뢰도: 높음], [신뢰도: 중간], [신뢰도: 낮음]\n" +
-      "- 높음: 직접 관찰 사항(예: '불연속면이 관찰됨') 또는 증거가 명확한 해석만 해당" +
+      "- Medium: Most interpretations (default). Structural interpretations, inferred environments, where alternatives exist\n" +
+      "- Low: Speculative, at resolution limit, or multiple equally valid explanations\n" +
+      "- Err on Medium/Low. Conservative confidence = more credible.\n" +
+      '- Exact format example:\n  "- The reflector shows 30ms offset, interpreted as a normal fault [Confidence: Medium]"\n\n'
+    : "\n# ██ 신뢰도 태그 (필수 — 모든 항목에 반드시 부착) ██\n" +
+      "리포트의 모든 불릿 항목 끝에 반드시 아래 태그 중 하나를 부착하세요:\n" +
+      "  [신뢰도: 높음]  [신뢰도: 중간]  [신뢰도: 낮음]\n\n" +
+      "태그가 없는 항목은 규칙 위반입니다. 작성 완료 후 모든 항목을 검토하세요.\n\n" +
+      "- 높음: 이미지에서 명확히 보이는 직접 관찰, 또는 증거가 확실한 해석" +
       (isMultiData ? ", 복수 자료에서 교차 확인된 경우" : "") + "\n" +
-      "- 중간: 대부분의 해석이 여기에 해당 — 구조 해석(예: 롤오버 배사 vs 속도 풀업 효과), 추정 퇴적환경, 대안적 해석이 가능한 피처 식별 등\n" +
-      "- 낮음: 추정적 해석, 해상도 한계의 피처, 복수의 동등한 해석이 가능한 경우\n" +
-      "- 중요: 의심스러우면 중간/낮음으로 판정. 보수적 신뢰도를 가진 전문적 보고서가 모든 것이 '높음'인 보고서보다 신뢰할 수 있음.\n" +
-      "- 중간/낮음 판정 시 간단한 이유 기재 (예: '속도 인공물 가능성 있음', '검층 보정 필요')\n" +
-      '- 형식: "- 관찰/해석 내용 [신뢰도: 중간]"\n\n';
+      "- 중간: 대부분의 해석 (기본값). 구조 해석, 추정 환경, 대안 가능한 경우\n" +
+      "- 낮음: 추정적 해석, 해상도 한계, 동등한 대안이 여러 개인 경우\n" +
+      "- 의심스러우면 중간/낮음 판정. 보수적 = 더 신뢰할 수 있음.\n" +
+      '- 정확한 형식 예시:\n  "- 반사면에서 약 30ms의 변위가 관찰되며 정단층으로 해석됨 [신뢰도: 중간]"\n\n';
 
   const crossReportSection = isMultiData
     ? isEn
@@ -266,79 +268,117 @@ export function buildReportPrompt(
         "- 탐사/연구에 대한 시사점 (1-2줄)\n" +
         "- 향후 연구 방향 제안 (1-2줄)\n\n";
   } else {
-    // detailed (default) - existing format
+    // detailed (default) - comprehensive format
     reportFormatSection = isEn
-      ? "# Report Format (English, bullet points)\n" +
-      "Total 25-35 bullet points. Each bullet: 1-3 sentences.\n\n" +
+      ? "# Report Format (Detailed Exploration Report)\n" +
+      "Total 35-50 bullet points. Each bullet: 1-3 sentences. Be EXHAUSTIVE.\n\n" +
       "## Data Overview\n" +
-      "- Data type, acquisition parameters, coverage area, and data quality assessment (2-3 lines)\n\n" +
-      "## Key Observations\n" +
-      "- Describe WHAT you see: reflector patterns, amplitude variations, curve shapes, anomaly distributions (4-6 lines)\n" +
-      "- Be specific: reference locations (e.g., left/center/right of section, shallow/deep)\n\n" +
-      "## Structural Interpretation\n" +
-      "- Identify and describe structural features: faults (type, dip, displacement), folds (geometry, wavelength, vergence), fracture zones (3-5 lines)\n" +
-      "- Describe the deformation history: timing relationships, overprinting, reactivation\n" +
-      "- Relate structures to the regional tectonic framework\n\n" +
-      "## Stratigraphic Interpretation\n" +
-      "- Identify key stratigraphic surfaces: sequence boundaries, flooding surfaces, unconformities (3-5 lines)\n" +
-      "- Describe depositional units: geometry (sheet, wedge, mound), stacking patterns (progradation, retrogradation, aggradation)\n" +
-      "- Interpret depositional environments and facies distributions based on observed patterns\n\n" +
-      "## Geological Process Analysis\n" +
-      "- Discuss the geological processes that produced the observed features (2-4 lines)\n" +
-      "- Temporal evolution: reconstruct the geological history in chronological order\n" +
-      "- Identify any indicators of fluid migration, diagenesis, or post-depositional modification\n" +
+      "- Dataset name/identification (3-4 lines)\n" +
+      "- Data type, acquisition parameters, coverage, vertical/horizontal axis units\n" +
+      "- Data quality assessment: signal-to-noise, frequency content, resolution\n\n" +
+      "## Key Observations (describe EVERYTHING visible — 8-12 lines)\n" +
+      "- Identify and describe ALL visible reflectors/features with their locations\n" +
+      "- Amplitude patterns: high/low/variable, spatial distribution\n" +
+      "- Continuity: which reflectors are continuous, which are disrupted?\n" +
+      "- Key horizons: describe the boundary reflectors between units (amplitude, continuity, shape)\n" +
+      "- Relative spatial descriptions: 'left vs right', 'shallow vs deep', asymmetry\n" +
+      "- Any anomalous zones: blanking, chaotic, transparent areas\n\n" +
+      "## Structural Interpretation (6-10 lines)\n" +
+      "- Identify EACH structural feature with visual evidence and location\n" +
+      "- Fault checklist: offset visible? terminations? dip direction? → type determination\n" +
+      "- For each structure: observation → evidence → interpretation\n" +
+      "- Tectonic consistency: verify all structures match the regional setting\n" +
+      "- Deformation history: timing, sequence, reactivation\n" +
+      "- Salt/diapir features: draping vs onlap patterns, rim syncline symmetry\n\n" +
+      "## Stratigraphic Interpretation (6-10 lines)\n" +
+      "- Identify ALL key stratigraphic surfaces with visual criteria\n" +
+      "- Clinoform analysis: direction, geometry (sigmoidal/oblique), stacking\n" +
+      "- Sequence stratigraphy: systems tracts, key surfaces\n" +
+      "- Depositional environments and facies interpretation\n" +
+      "- Thickness variations and their significance\n\n" +
+      "## Geological Process Analysis (4-8 lines)\n" +
+      "- Geological processes with chronological order\n" +
+      "- Temporal evolution: step-by-step geological history\n" +
+      "- Fluid migration, diagenesis, post-depositional modifications\n" +
+      "- Alternative process interpretations\n" +
       crossReportSection +
-      "\n## Summary and Recommendations\n" +
-      "- Key conclusions integrating structural and stratigraphic interpretations (2-3 lines)\n" +
-      "- Geological significance and implications (1-2 lines)\n" +
-      "- Suggested follow-up analyses or additional data needs (1-2 lines)\n\n"
-    : "# Report Format (Korean, 개조식)\n" +
-      "전체 25-35개 항목. 각 항목: 1-3문장.\n\n" +
+      "\n## Summary and Recommendations (4-6 lines)\n" +
+      "- Key conclusions integrating ALL interpretations\n" +
+      "- Geological significance, implications for exploration\n" +
+      "- Confidence summary: what is well-constrained vs uncertain\n" +
+      "- Suggested follow-up: additional data, processing, analyses\n\n"
+    : "# Report Format (상세 해석 보고서)\n" +
+      "전체 35-50개 항목. 각 항목: 1-3문장. 철저하고 빠짐없이 기술하세요.\n\n" +
       "## 자료 개요\n" +
-      "- 자료 종류, 취득 파라미터, 범위, 품질 평가 (2-3줄)\n\n" +
-      "## 주요 관찰\n" +
-      "- 이미지에서 보이는 것을 구체적으로 기술: 반사면 패턴, 진폭 변화, 커브 형태, 이상대 분포 (4-6줄)\n" +
-      "- 위치를 명시 (예: 단면 좌측/중앙/우측, 천부/심부)\n\n" +
-      "## 구조 해석\n" +
-      "- 구조 요소 식별 및 기술: 단층(유형, 경사, 변위량), 습곡(기하, 파장, 비대칭성), 파쇄대 (3-5줄)\n" +
-      "- 변형사 기술: 시기적 선후관계, 중첩 변형, 재활성화 여부\n" +
-      "- 지역 지구조 환경과의 연관성 논의\n\n" +
-      "## 층서 해석\n" +
-      "- 주요 층서면 식별: 시퀀스 경계, 범람면, 부정합 (3-5줄)\n" +
-      "- 퇴적 단위 기술: 형태(sheet, wedge, mound), 적층 패턴(전진, 후퇴, 수직적층)\n" +
-      "- 관찰된 패턴을 바탕으로 퇴적환경 및 상 분포 해석\n\n" +
-      "## 지질학적 과정 분석\n" +
-      "- 관찰된 특징을 형성한 지질학적 과정 논의 (2-4줄)\n" +
-      "- 시간적 변화: 지질 역사를 시간 순서로 복원\n" +
-      "- 유체 이동, 속성작용, 퇴적 후 변형의 지시자 식별\n" +
+      "- 데이터셋 식별/명칭 (3-4줄)\n" +
+      "- 자료 종류, 취득 파라미터, 범위, 수직/수평축 단위\n" +
+      "- 자료 품질: 신호대잡음비, 주파수 대역, 해상도\n\n" +
+      "## 주요 관찰 (보이는 모든 것을 기술 — 8-12줄)\n" +
+      "- 식별 가능한 모든 반사면/피처를 위치와 함께 기술\n" +
+      "- 진폭 패턴: 고/저/가변, 공간적 분포\n" +
+      "- 연속성: 연속적 vs 단속적 반사면 구분\n" +
+      "- 핵심 반사면(Key Horizon): 층서단위 경계 반사면의 진폭, 연속성, 형태를 명시\n" +
+      "- 상대적 공간 기술: '좌측 vs 우측', '천부 vs 심부', 대칭/비대칭\n" +
+      "- 이상 구간: 블랭킹, 혼탁, 투명 영역\n\n" +
+      "## 구조 해석 (6-10줄)\n" +
+      "- 각 구조 요소를 시각적 근거 + 위치와 함께 기술\n" +
+      "- 단층 체크리스트: 변위(offset) 확인? 종단(termination)? 경사 방향? → 단층 유형 결정\n" +
+      "- 각 구조: 관찰 → 근거 → 해석 패턴으로 기술\n" +
+      "- 지구조 일관성: 모든 구조가 지역 환경과 일치하는지 검증\n" +
+      "- 변형사: 시기, 순서, 재활성화\n" +
+      "- 암염/다이어피르: draping vs onlap 패턴, 림싱크라인 대칭성\n\n" +
+      "## 층서 해석 (6-10줄)\n" +
+      "- 모든 주요 층서면을 시각적 기준과 함께 식별\n" +
+      "- 클리노폼 분석: 방향, 형태(시그모이달/오블리크), 적층 패턴\n" +
+      "- 시퀀스 층서: 체계역, 핵심 층서면\n" +
+      "- 퇴적환경 및 상 해석\n" +
+      "- 두께 변화와 그 의미\n\n" +
+      "## 지질학적 과정 분석 (4-8줄)\n" +
+      "- 지질학적 과정을 시간 순서로 기술\n" +
+      "- 시간적 변화: 단계별 지질 역사 복원\n" +
+      "- 유체 이동, 속성작용, 퇴적 후 변형\n" +
+      "- 대안적 과정 해석\n" +
       crossReportSection +
-      "\n## 종합 평가 및 제언\n" +
-      "- 구조 및 층서 해석을 통합한 핵심 결론 (2-3줄)\n" +
-      "- 지질학적 의의 및 시사점 (1-2줄)\n" +
-      "- 추가 분석 방향 또는 필요 자료 제안 (1-2줄)\n\n";
+      "\n## 종합 평가 및 제언 (4-6줄)\n" +
+      "- 모든 해석을 통합한 핵심 결론\n" +
+      "- 지질학적 의의, 탐사 시사점\n" +
+      "- 신뢰도 요약: 확실한 것 vs 불확실한 것\n" +
+      "- 추가 자료, 처리, 분석 방향 제안\n\n";
   } // end template switch
 
   const rulesSection = isEn
-    ? "# Rules\n" +
-      "- English, bullet points only\n" +
+    ? "# Writing Style & Formatting Rules\n" +
+      "- Write in English. Use a professional, polished report style.\n" +
+      "- Mix **narrative paragraphs** and bullet points — do NOT write everything as bullets.\n" +
+      "  - Section intros: 1-2 sentence paragraph summarizing the section, then bullets for details.\n" +
+      "  - Key findings: use bold (**bold**) for important terms, structure names, and conclusions.\n" +
+      "- Use **horizontal rules** (---) between major sections for visual separation.\n" +
       "- Be thorough and detailed in geological interpretation\n" +
       "- Describe only what is actually observable, but interpret deeply\n" +
       "- Structural interpretations must be consistent with the tectonic setting of the study area\n" +
-      "- Name specific formations, groups, and geological units when the region is identifiable (e.g., 'Zechstein salt' not 'salt', 'Brent Group' not 'reservoir unit')\n" +
+      "- Name specific formations, groups, and geological units when the region is identifiable\n" +
       "- Include fault/structure generation history when multiple phases are evident\n" +
       "- Do not assert uncertain interpretations — state them as possibilities with reasoning\n" +
       "- Confidence tags are mandatory for every item\n" +
-      "- Total length: A4 1 page"
-    : "# Rules\n" +
-      "- Korean, 개조식 (bullet points only)\n" +
+      "- Total length: A4 1-2 pages\n" +
+      "- Make the report visually organized and easy to read\n" +
+      "- Do NOT include author names, reviewer names, roles (e.g., 'Senior Researcher'), or any personnel information in the report body"
+    : "# 작성 스타일 및 서식 규칙\n" +
+      "- 한국어로 작성. 전문적이고 정돈된 보고서 스타일.\n" +
+      "- **서술형 문단**과 개조식(bullet)을 혼합 — 모든 것을 개조식으로만 쓰지 마세요.\n" +
+      "  - 각 섹션 시작: 1-2문장의 요약 문단을 쓰고, 세부 사항은 개조식으로.\n" +
+      "  - 핵심 용어, 구조명, 결론은 **굵게(bold)** 처리.\n" +
+      "- 주요 섹션 사이에 **수평선**(---)을 넣어 시각적으로 구분.\n" +
       "- 지질학적 해석은 충분히 상세하게 기술\n" +
       "- 관찰 가능한 것만 기술하되, 해석은 깊이 있게\n" +
       "- 구조 해석은 반드시 해당 지역의 지구조 환경과 일관되어야 함\n" +
-      "- 지역이 식별되면 구체적 지층명/그룹명을 사용 (예: '암염' 대신 'Zechstein 암염', '저류층' 대신 'Brent Group 저류층')\n" +
+      "- 지역이 식별되면 구체적 지층명/그룹명을 사용 (예: '암염' 대신 'Zechstein 암염')\n" +
       "- 다수의 구조 운동이 관찰되면 단층/구조 세대 구분과 운동사를 포함\n" +
       "- 불확실한 해석은 단정 짓지 말고 근거와 함께 가능성으로 기술\n" +
       "- 모든 항목에 신뢰도 태그 필수\n" +
-      "- 전체 분량: A4 1페이지";
+      "- 전체 분량: A4 1-2페이지\n" +
+      "- 보고서 본문에 작성자, 검토자, 직책(예: '선임 연구원') 등 인적 정보를 포함하지 마세요\n" +
+      "- 보고서가 시각적으로 정돈되고 읽기 쉽도록 작성";
 
   const structuresSection = isEn
     ? '\n\n# Structure Labels (MANDATORY — DO NOT SKIP)\n' +
@@ -411,7 +451,54 @@ export function buildReportPrompt(
       "6. Amplitude anomalies should be described as technical observations (e.g., 'amplitude brightening at 1200ms'), NOT as geological features.\n" +
       "7. For well-known datasets (F3, Penobscot, Poseidon, etc.), mention known properties: included wells, survey size, sampling interval if you know them.\n" +
       "8. Do NOT apply geological context from one dataset to another.\n\n"
-    : "You are a geoscience interpretation expert with deep domain knowledge. Analyze the provided screen captures and write a detailed, professional interpretation report.\n\n";
+    : "You are a senior geoscience interpretation expert with 20+ years of experience in seismic interpretation, well log analysis, and geological modeling. " +
+      "You have published extensively and reviewed hundreds of interpretation reports. " +
+      "Analyze the provided screen captures with extreme rigor and write a detailed, professional interpretation report.\n\n" +
+      "# ACCURACY RULES (CRITICAL — READ FIRST)\n" +
+      "1. ONLY describe features you can CLEARLY SEE in the image. If something is ambiguous, say '불명확' or 'ambiguous'.\n" +
+      "2. Distinguish between OBSERVATION (what you see) and INTERPRETATION (what it means). Never mix them.\n" +
+      "3. For every interpretation, provide the VISUAL EVIDENCE from the image that supports it.\n" +
+      "   - WRONG: '단층이 존재한다' (no evidence)\n" +
+      "   - RIGHT: '단면 중앙부(약 X 위치)에서 반사면의 불연속과 약 Yms의 수직 변위가 관찰되며, 이는 정단층으로 해석된다' (location + evidence + interpretation)\n" +
+      "4. If you cannot determine something from the image alone, explicitly state the limitation.\n" +
+      "5. Do NOT hallucinate features. If the image resolution is poor or the feature is unclear, say '해상도 한계' or 'resolution limit'.\n" +
+      "6. Reference SPECIFIC locations in the image: read axis labels carefully. Use inline/crossline numbers, time(ms)/depth(m) values, or relative positions.\n" +
+      "7. When describing spatial relationships, use directional terms tied to the image: left/right, shallow/deep, with approximate positions.\n" +
+      "8. READ THE IMAGE CAREFULLY before writing. Spend time analyzing:\n" +
+      "   - What are the axis labels? (time vs depth, inline vs crossline, distance)\n" +
+      "   - What is the color scale? (amplitude, velocity, impedance)\n" +
+      "   - What is the vertical/horizontal scale?\n" +
+      "   - What text/annotations are already on the image?\n" +
+      "9. Cross-check your interpretations: if you say 'fault', verify there is actual displacement. If you say 'unconformity', verify truncation/onlap.\n" +
+      "10. Do NOT use generic descriptions. Be SPECIFIC with relative descriptions from the image.\n" +
+      "11. Use RELATIVE descriptions when absolute values are unavailable:\n" +
+      "   - Position: '단면 중앙부에서 약간 우측', '상부 1/3 지점'\n" +
+      "   - Comparison: '좌측 림싱크라인이 우측보다 깊다', '돔 정상부에서 측면부로 갈수록 지층이 얇아진다'\n" +
+      "   - Direction: '클리노폼이 좌→우 방향으로 전진', '단층면이 좌측으로 경사'\n" +
+      "   These relative observations are VALUABLE evidence even without absolute measurements.\n\n" +
+      "# FAULT IDENTIFICATION CHECKLIST (use when assessing faults)\n" +
+      "Before claiming a fault exists, check these visual criteria:\n" +
+      "- Is there vertical OFFSET (displacement) of reflectors across the suspected fault?\n" +
+      "- Do reflectors TERMINATE against the suspected fault plane?\n" +
+      "- Can you identify the FAULT PLANE dip direction? → normal vs reverse\n" +
+      "- What is the spatial relationship with nearby structures (salt domes → radial faults, grabens → conjugate faults)?\n" +
+      "- If none of these are clearly visible, state 'possible fault' with Low confidence, not 'fault exists'.\n\n" +
+      "# KEY HORIZON DESCRIPTION (for stratigraphic division)\n" +
+      "When dividing the section into upper/middle/lower units, describe the BOUNDARY reflectors:\n" +
+      "- Amplitude: high/moderate/low (brightness in image)\n" +
+      "- Continuity: continuous across section / intermittent / disrupted\n" +
+      "- Shape: flat / gently dipping / curved / irregular\n" +
+      "- Example: '중부와 하부를 구분하는 경계면은 고진폭·고연속성 반사면으로, 단면 전체에 걸쳐 추적 가능하다'\n\n" +
+      "# DRAPING vs ONLAP DISTINCTION (critical for salt/structural interpretation)\n" +
+      "- **Draping**: reflectors CONFORM to the structure shape, maintaining thickness → post-tectonic passive burial\n" +
+      "- **Onlap**: reflectors ABUT against the structure sideways, thinning toward it → syn-tectonic sedimentation\n" +
+      "- This distinction reveals TIMING: draping = structure formed first, onlap = structure growing during deposition\n" +
+      "- Always specify which pattern you observe near structural features.\n\n" +
+      "# COMMON MISINTERPRETATION WARNINGS\n" +
+      "- **Do NOT confuse visually similar but geologically different features.** Check internal characteristics.\n" +
+      "- **Artifacts ≠ Real features**: Distinguish real signals from processing effects.\n" +
+      "- **Use standard terminology**: 림싱크라인(rim syncline), NOT 퀼싱크라인. Check spelling of all technical terms.\n" +
+      "- **Alternative explanations**: For each major interpretation, consider at least one alternative.\n\n";
 
   return (
     roleDescription +
@@ -431,27 +518,57 @@ export function buildReportPrompt(
     "- Determine 2D vs 3D: If the image shows a single inline or crossline section from a named survey or software like OpendTect, it is almost certainly a 3D volume. Only classify as 2D if you have explicit evidence it is a standalone 2D seismic line.\n" +
     "- For well-known datasets, include known metadata: F3 → Netherlands North Sea, 651 inlines, 951 crosslines, 4ms sampling, wells F02-1/F03-2/F03-4/F06-1. Viking Graben → Norwegian North Sea, Mobil AVO dataset. Penobscot → Nova Scotia, Canada.\n" +
     "- NEVER write 'Dataset name not specified' or 'presumably' if the topic contains a recognizable name.\n\n" +
-    "Step 1. IDENTIFY GEOLOGICAL CONTEXT\n" +
-    "- From the dataset name and region, determine the specific geological setting using your knowledge.\n" +
-    "- Name specific geological formations, groups, and stratigraphic units relevant to the area.\n" +
-    "  Examples: F3 → Netherlands North Sea, Zechstein salt, Pliocene marine sediments.\n" +
-    "  Viking Graben → Brent Group, Kimmeridge Clay, Draupne Formation.\n" +
-    "- Use the CORRECT regional geology. Do NOT mix up geological contexts between different basins.\n" +
+    "Step 1. IDENTIFY GEOLOGICAL CONTEXT (CRITICAL — this determines ALL subsequent interpretations)\n" +
+    "- From the dataset name and region, determine the TECTONIC SETTING first:\n" +
+    "  - Is it EXTENSIONAL (rift, passive margin)? → expect normal faults, salt diapirs, half-grabens\n" +
+    "  - Is it COMPRESSIONAL (fold-thrust belt, foreland)? → expect reverse faults, anticlines, thrust sheets\n" +
+    "  - Is it STRIKE-SLIP? → expect flower structures, pull-apart basins\n" +
+    "- Name specific geological formations, groups, and stratigraphic units:\n" +
+    "  F3 → Netherlands North Sea, EXTENSIONAL + salt tectonics. Dominant features: Pliocene clinoforms (progradation), Zechstein salt, Chalk Group. Curved reflectors are usually clinoforms NOT anticlines. Do NOT interpret compressional folding.\n" +
+    "  Viking Graben → Norwegian North Sea, EXTENSIONAL (Jurassic rift). Brent Group, Kimmeridge Clay, Draupne Formation.\n" +
+    "  Penobscot → Nova Scotia, Canada, passive margin.\n" +
+    "- ██ TECTONIC CONSISTENCY CHECK: Your structural interpretations MUST match the tectonic setting. ██\n" +
+    "  - In extensional settings: do NOT interpret compressional folds, thrust faults, or nappe structures\n" +
+    "  - Curved reflectors in extensional/deltaic settings are more likely clinoforms or differential compaction than anticlines\n" +
+    "  - Salt-related structures (diapirs, pillows, walls) are common in North Sea — consider salt influence first\n" +
     "- Correct any apparent typos in geographical/geological terms.\n\n" +
-    "Step 2. OBSERVE\n" +
-    "- Describe only what is visually present in the image: reflector geometry, amplitude patterns, discontinuities, log curve shapes, anomaly patterns, etc.\n" +
-    "- Use neutral, descriptive language — do NOT jump to structural terms yet.\n\n" +
-    "Step 3. INTERPRET — CONSISTENT WITH CONTEXT\n" +
-    "- Apply structural/stratigraphic terminology ONLY after confirming it is compatible with the geological setting identified in Step 1.\n" +
-    "- Name specific formations/groups when possible (e.g., 'Zechstein salt diapir' not just 'salt diapir', 'Brent Group reservoir' not just 'reservoir').\n" +
-    "- Include structural generation/history when relevant (e.g., fault generations, reactivation phases).\n" +
-    "- Every structural term must be geologically valid for the identified setting.\n" +
+    "Step 2. OBSERVE — DESCRIBE EXACTLY WHAT YOU SEE\n" +
+    "- Examine the image thoroughly. Describe ALL visible features relevant to the data type:\n" +
+    "  - Patterns, shapes, trends, anomalies, discontinuities, gradients\n" +
+    "  - Spatial distribution: where features appear (position, depth/time/distance)\n" +
+    "  - Intensity/amplitude/value variations across the image\n" +
+    "- Read ALL visible text: axis labels, colorbars, scale bars, titles, legends, units\n" +
+    "- Reference EXACT positions using visible coordinates or relative terms ('left third', 'center at ~Xm depth')\n" +
+    "- Use ONLY neutral, descriptive language — NO interpretation terms yet\n\n" +
+    "Step 3. INTERPRET — WITH EVIDENCE\n" +
+    "- For EACH interpretation, cite the specific observation that supports it:\n" +
+    "  - Pattern: 'Observation → therefore → Interpretation'\n" +
+    "  - Example: '해당 위치에서 [구체적 관찰 내용] → [해석]으로 판단된다'\n" +
+    "- ██ BEFORE writing any structural interpretation, re-check Step 1: is this term valid for this tectonic setting? ██\n" +
+    "  - 'Anticline' in an extensional basin? → More likely clinoform, differential compaction, or drape over salt\n" +
+    "  - 'Thrust fault' in a rift? → Very unlikely. Re-examine.\n" +
+    "  - 'Growth fold' in extensional setting? → Consider growth fault + rollover instead\n" +
+    "- Apply geological terminology ONLY after confirming compatibility with the tectonic setting.\n" +
+    "- Name specific formations, units, or features when identifiable from context.\n" +
+    "- Include geological history/sequence when relevant.\n" +
+    "- For key interpretations, provide at least one ALTERNATIVE explanation:\n" +
+    "  - Curved reflectors: anticline vs clinoform vs differential compaction vs velocity artifact?\n" +
+    "  - Reflector discontinuity: fault vs channel edge vs processing artifact?\n" +
+    "  - High amplitude: fluid effect vs lithology change vs tuning?\n" +
     "- If the image alone is ambiguous, state the uncertainty rather than forcing an interpretation.\n" +
     "- For each interpretation, consider alternative explanations (e.g., structural vs. processing artifact) and note them.\n" +
     crossSection +
     confidenceSection +
     reportFormatSection +
     rulesSection +
+    "\n# ██ SELF-VERIFICATION (DO THIS BEFORE FINISHING) ██\n" +
+    "Before outputting your report, verify:\n" +
+    "1. TECTONIC CONSISTENCY: Do ALL structural interpretations match the tectonic setting (Step 1)? If not, FIX them.\n" +
+    "2. EVIDENCE CHECK: Does each interpretation have specific visual evidence with location?\n" +
+    "3. ARTIFACT CHECK: Did you confuse artifacts with real features?\n" +
+    "4. CLINOFORM vs ANTICLINE: In extensional/deltaic settings, are curved reflectors interpreted as clinoforms (not anticlines)?\n" +
+    "5. CONFIDENCE: Is every bullet tagged with [신뢰도: X] or [Confidence: X]? Most should be 중간/Medium.\n" +
+    "If any check fails, correct it before outputting.\n\n" +
     structuresSection
   );
 }

@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {"id": "중력이상", "label": "중력이상 (Gravity Anomaly)", "category": "gravity"},
+    {"id": "부게이상", "label": "부게이상 (Bouguer Anomaly)", "category": "gravity"},
+    {"id": "자력이상", "label": "자력이상 (Magnetic Anomaly)", "category": "magnetic"},
+    {"id": "전자력이상", "label": "전자력이상 (Total Magnetic Intensity)", "category": "magnetic"},
+    {"id": "정이상", "label": "정이상 (Positive Anomaly)", "category": "anomaly_type"},
+    {"id": "부이상", "label": "부이상 (Negative Anomaly)", "category": "anomaly_type"},
+    {"id": "구배", "label": "구배/경사 (Gradient)", "category": "analysis"},
+    {"id": "선형이상", "label": "선형이상 (Linear Anomaly)", "category": "anomaly_type"},
+    {"id": "원형이상", "label": "원형이상 (Circular Anomaly)", "category": "anomaly_type"},
+    {"id": "밀도", "label": "밀도 (Density)", "category": "physical_property"},
+    {"id": "자화율", "label": "자화율 (Magnetic Susceptibility)", "category": "physical_property"},
+    {"id": "잔류자화", "label": "잔류자화 (Remanent Magnetization)", "category": "physical_property"},
+    {"id": "관입암체", "label": "관입암체 (Intrusive Body)", "category": "geology"},
+    {"id": "분지구조", "label": "분지구조 (Basin Structure)", "category": "geology"},
+    {"id": "기반암융기", "label": "기반암융기 (Basement High)", "category": "geology"},
+    {"id": "단층대", "label": "단층대 (Fault Zone)", "category": "geology"},
+    {"id": "광체", "label": "광체 (Ore Body)", "category": "geology"},
+    {"id": "역산", "label": "역산 (Inversion)", "category": "analysis"},
+    {"id": "필터링", "label": "필터링 (Filtering)", "category": "processing"},
+    {"id": "잔류이상", "label": "잔류이상 (Residual Anomaly)", "category": "analysis"},
+    {"id": "지역이상", "label": "지역이상 (Regional Anomaly)", "category": "analysis"}
+  ],
+  "edges": [
+    {"source": "정이상", "target": "밀도", "relation": "높은 밀도체 → 중력 정이상", "weight": 9},
+    {"source": "부이상", "target": "밀도", "relation": "낮은 밀도체 → 중력 부이상", "weight": 9},
+    {"source": "관입암체", "target": "정이상", "relation": "고밀도/고자화율 관입암 → 정이상", "weight": 8},
+    {"source": "분지구조", "target": "부이상", "relation": "저밀도 퇴적층 충진 → 중력 부이상", "weight": 8},
+    {"source": "기반암융기", "target": "정이상", "relation": "고밀도 기반암 상승 → 중력 정이상", "weight": 8},
+    {"source": "구배", "target": "단층대", "relation": "급격한 구배 변화 → 단층/경계 지시", "weight": 9},
+    {"source": "선형이상", "target": "단층대", "relation": "선형 자력이상 → 단층대/암맥 지시", "weight": 8},
+    {"source": "원형이상", "target": "관입암체", "relation": "원형 자력이상 → 관입암체 가능", "weight": 7},
+    {"source": "잔류이상", "target": "지역이상", "relation": "전체이상 = 지역이상 + 잔류이상", "weight": 8},
+    {"source": "자화율", "target": "자력이상", "relation": "자화율 대비 → 자력이상 원인", "weight": 8}
+  ]
+}

@@ -10,6 +10,7 @@ import { ManualUpload } from "../manual/manual-upload";
 import { ManualList } from "../manual/manual-list";
 import { ManualStatus } from "../manual/manual-status";
 import { exportReportAsDocx } from "@/lib/export-docx";
+import { exportReportAsPdf } from "@/lib/export-pdf";
 import { DATA_TYPES, type DataType } from "@/app/providers/ReportProvider";
 import type { ReportContextType, CapturedScreen } from "@/app/providers/ReportProvider";
 import type { ReportTemplate } from "@/lib/prompts/report";
@@ -17,6 +18,129 @@ import { ALL_SECTIONS } from "@/lib/prompts/report";
 import { parseStructuresFromReport, stripStructuresBlock } from "@/lib/report-diagram";
 import { structuresToLabels } from "@/lib/image-labels";
 import { ImageLabelOverlay } from "./image-labels";
+
+const PRINT_ICONS: Record<string, string> = {
+  "자료 개요": "📋", "data overview": "📋",
+  "주요 관찰": "🔍", "key observations": "🔍",
+  "구조 해석": "🏗️", "structural": "🏗️",
+  "층서 해석": "📐", "stratigraphic": "📐",
+  "지질학적 과정": "⚙️", "geological process": "⚙️",
+  "종합 평가": "📊", "summary": "📊",
+  "결론": "✅", "conclusions": "✅",
+  "요약": "📝", "abstract": "📝",
+  "해석 및 논의": "💡", "interpretation": "💡",
+  "권고": "💡", "recommend": "💡",
+  "자료 정보": "📂", "data information": "📂",
+};
+function getPrintSectionIcon(title: string): string {
+  const lower = title.toLowerCase();
+  for (const [key, icon] of Object.entries(PRINT_ICONS)) {
+    if (lower.includes(key)) return icon;
+  }
+  return "📌";
+}
+
+function markdownToInlineHtml(md: string): string {
+  // Pre-process: split inline bullets onto separate lines
+  const preprocessed = md
+    .replace(/([.!?。])\s*\*\s+/g, "$1\n* ")     // "sentence. * next" → separate lines
+    .replace(/([.!?。])\s*-\s+/g, "$1\n- ")       // "sentence. - next" → separate lines
+    .replace(/([.!?。])\s*●\s*/g, "$1\n- ")       // "sentence. ● next" → convert ● to -
+    .replace(/●\s*/g, "\n- ")                      // standalone ● → -
+    .replace(/\*\s{2,}/g, "\n* ");                 // "* " with extra spaces → clean
+  const lines = preprocessed.split("\n");
+  let html = "";
+  let inList = false;
+  let listType = "";
+
+  const closeList = () => {
+    if (inList) {
+      html += listType === "ul" ? "</ul>" : "</ol>";
+      inList = false;
+    }
+  };
+
+  const formatInline = (text: string): string => {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight:600">$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>');
+  };
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      closeList();
+      continue;
+    }
+
+    // Headings: ## Title, ### Title, or standalone **Title** (bold-only heading)
+    if (trimmed.match(/^#{2}\s/) || trimmed.match(/^##[^\s#]/)) {
+      closeList();
+      const title = trimmed.replace(/^#{2,3}\s*/, "");
+      const icon = getPrintSectionIcon(title);
+      const text = formatInline(title);
+      html += `<h2 style="font-size:13px;font-weight:700;color:#1e40af;margin:16px 0 6px 0;padding-bottom:4px;border-bottom:1.5px solid #93c5fd">${icon} ${text}</h2>`;
+      continue;
+    }
+    if (trimmed.match(/^#{3}\s/) || trimmed.match(/^###[^\s#]/)) {
+      closeList();
+      const title = trimmed.replace(/^#{2,3}\s*/, "");
+      const text = formatInline(title);
+      html += `<h3 style="font-size:11px;font-weight:600;color:#0d9488;margin:10px 0 4px 0">${text}</h3>`;
+      continue;
+    }
+    // Bold-only line as section heading (e.g., **자료 개요**)
+    if (trimmed.match(/^\*\*[^*]+\*\*$/) && !inList) {
+      closeList();
+      const title = trimmed.replace(/^\*\*|\*\*$/g, "");
+      const icon = getPrintSectionIcon(title);
+      html += `<h2 style="font-size:13px;font-weight:700;color:#1e40af;margin:16px 0 6px 0;padding-bottom:4px;border-bottom:1.5px solid #93c5fd">${icon} ${title}</h2>`;
+      continue;
+    }
+
+    // Horizontal rule
+    if (trimmed === "---" || trimmed === "***") {
+      closeList();
+      html += '<hr style="border:none;border-top:1px solid #d1d5db;margin:10px 0">';
+      continue;
+    }
+
+    // Bullet list
+    if (trimmed.match(/^[-*]\s/)) {
+      if (!inList || listType !== "ul") {
+        closeList();
+        html += '<ul style="list-style:disc;margin:4px 0 4px 20px;padding:0">';
+        inList = true;
+        listType = "ul";
+      }
+      const text = formatInline(trimmed.replace(/^[-*]\s/, ""));
+      html += `<li style="font-size:11px;color:#111;margin:3px 0;line-height:1.6">${text}</li>`;
+      continue;
+    }
+
+    // Numbered list
+    if (trimmed.match(/^\d+\.\s/)) {
+      if (!inList || listType !== "ol") {
+        closeList();
+        html += '<ol style="list-style:decimal;margin:4px 0 4px 20px;padding:0">';
+        inList = true;
+        listType = "ol";
+      }
+      const text = formatInline(trimmed.replace(/^\d+\.\s/, ""));
+      html += `<li style="font-size:11px;color:#111;margin:3px 0;line-height:1.6">${text}</li>`;
+      continue;
+    }
+
+    // Paragraph
+    closeList();
+    const text = formatInline(trimmed);
+    html += `<p style="font-size:11px;color:#111;margin:4px 0;line-height:1.7">${text}</p>`;
+  }
+
+  closeList();
+  return html;
+}
 
 const TEMPLATES: { id: ReportTemplate; label: string; desc: string }[] = [
   { id: "detailed", label: "Exploration", desc: "6 sections, detailed" },
@@ -116,6 +240,14 @@ export const ReportScreen = ({
     return stripStructuresBlock(reportContent);
   }, [reportContent]);
 
+  // Text with confidence tags removed (for PDF/DOCX export)
+  const reportTextNoConfidence = useMemo(() => {
+    if (!reportTextClean) return "";
+    return reportTextClean
+      .replace(/\[신뢰도:\s*(높음|중간|낮음)\][.\s]*/g, "")
+      .replace(/\[Confidence:\s*(High|Medium|Low)\][.\s]*/gi, "");
+  }, [reportTextClean]);
+
   // Convert structures to image labels
   const imageLabels = useMemo(
     () => structuresToLabels(reportStructures),
@@ -140,14 +272,14 @@ export const ReportScreen = ({
         canvas.height = img.height;
         const ctx = canvas.getContext("2d")!;
         ctx.drawImage(img, 0, 0);
-        const fs = Math.max(9, Math.min(img.width * 0.008, 12));
+        const fs = Math.max(14, Math.min(img.width * 0.016, 28));
         for (const label of imageLabels) {
           const px = label.x * img.width;
           const py = label.y * img.height;
           ctx.font = `bold ${fs}px sans-serif`;
           const m = ctx.measureText(label.text);
-          const dotR = 2;
-          const pad = 3;
+          const dotR = Math.round(fs * 0.2);
+          const pad = Math.round(fs * 0.4);
           const bw = dotR * 2 + 4 + m.width + pad * 2;
           const bh = fs + pad * 2;
           const bx = px - bw / 2;
@@ -226,27 +358,38 @@ export const ReportScreen = ({
     setIsExporting(true);
     try {
       const html2pdf = (await import("html2pdf.js")).default;
-      // Temporarily make print div visible for accurate capture
-      const wrapper = printRef.current!.parentElement!;
+
+      // Clone the print div content, make it visible with white background
+      const el = printRef.current!;
+      const wrapper = el.parentElement!;
       wrapper.style.position = "fixed";
       wrapper.style.left = "0";
       wrapper.style.top = "0";
       wrapper.style.zIndex = "-1";
       wrapper.style.opacity = "0.01";
 
-      // Wait for layout
-      await new Promise((r) => setTimeout(r, 100));
+      await new Promise((r) => setTimeout(r, 400));
+      const imgs = el.querySelectorAll("img");
+      await Promise.all(Array.from(imgs).map((img) =>
+        img.complete ? Promise.resolve() : new Promise<void>((r) => { img.onload = () => r(); img.onerror = () => r(); })
+      ));
+
+      // Inject page-break-inside:avoid on all child elements
+      const allElements = el.querySelectorAll("h2, h3, li, p, div, img");
+      allElements.forEach((child) => {
+        (child as HTMLElement).style.pageBreakInside = "avoid";
+        (child as HTMLElement).style.breakInside = "avoid";
+      });
 
       await html2pdf().set({
         margin: [12, 12, 12, 12],
         filename: `GeoLens_Report_${new Date().toISOString().slice(0, 10)}.pdf`,
-        image: { type: "jpeg", quality: 0.95 },
-        html2canvas: { scale: 2, useCORS: true, logging: false },
+        image: { type: "jpeg", quality: 0.92 },
+        html2canvas: { scale: 2, useCORS: true, logging: false, scrollY: 0 },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        pagebreak: { mode: ["css", "legacy"] } as any,
-      }).from(printRef.current).save();
+        pagebreak: { mode: ["css"] } as any,
+      }).from(el).save();
 
-      // Restore hidden
       wrapper.style.position = "absolute";
       wrapper.style.left = "-9999px";
       wrapper.style.zIndex = "";
@@ -258,7 +401,7 @@ export const ReportScreen = ({
   const handleExportDocx = async () => {
     if (isExportingDocx) return;
     setIsExportingDocx(true);
-    try { await exportReportAsDocx(topic, captures, reportTextClean || reportContent, showImageLabels ? imageLabels : undefined); }
+    try { await exportReportAsDocx(topic, captures, reportTextNoConfidence || reportContent, showImageLabels ? imageLabels : undefined); }
     catch (e) { console.error("Word export failed:", e); }
     finally { setIsExportingDocx(false); }
   };
@@ -307,9 +450,9 @@ export const ReportScreen = ({
                   Upload manuals, papers, or data docs for RAG-powered interpretation.
                 </p>
                 <div className="bg-zinc-800 rounded-lg p-4 border border-gray-700 [&_input]:bg-zinc-800 [&_input]:border-gray-700 [&_input]:text-white [&_input]:placeholder-gray-500 [&_button]:text-sm [&_.border-gray-200]:border-gray-700 [&_.bg-white]:bg-zinc-800 [&_.text-black]:text-white [&_.border-black]:border-blue-500 [&_.text-gray-500]:text-gray-400 [&_.hover\\:text-gray-700]:hover:text-gray-300 [&_.text-gray-600]:text-gray-400 [&_.text-gray-400]:text-gray-500 [&_.border-gray-300]:border-gray-600 [&_.hover\\:border-gray-400]:hover:border-gray-500 [&_.bg-gray-50]:bg-zinc-700">
-                  <ManualUpload />
+                  <ManualUpload mode="report" />
                 </div>
-                <ManualList />
+                <ManualList mode="report" />
                 <ManualStatus />
               </SectionCard>
 
@@ -563,27 +706,25 @@ export const ReportScreen = ({
         </div>
       </div>
 
-      {/* ── Hidden printable div ── */}
+      {/* ── Hidden printable div (mirrors app structure) ── */}
       {reportContent && (
         <div style={{ position: "absolute", left: "-9999px", top: 0 }}>
-          <div ref={printRef} style={{ width: "180mm", maxWidth: "180mm", backgroundColor: "white", color: "black", padding: "10mm", fontFamily: "sans-serif", fontSize: "13px", wordBreak: "break-word", overflow: "visible", lineHeight: 1.6 }}>
-            <h1 className="text-xl font-bold mb-1">{topic}</h1>
-            <p className="text-xs text-gray-500 mb-4">GeoLens Interpretation Report &middot; {new Date().toLocaleDateString("ko-KR")}</p>
+          <div ref={printRef} style={{ width: "580px", backgroundColor: "white", color: "#111", padding: "12px 12px 12px 20px", fontFamily: "'Segoe UI', 'Malgun Gothic', sans-serif", fontSize: "11px", wordBreak: "break-word", overflowWrap: "break-word", overflow: "visible", lineHeight: 1.7, boxSizing: "border-box" }}>
+            <h1 style={{ fontSize: "16px", fontWeight: 700, color: "#111", margin: "0 0 4px 0" }}>{topic}</h1>
+            <p style={{ fontSize: "9px", color: "#888", margin: "0 0 14px 0" }}>GeoLens Interpretation Report &middot; {new Date().toLocaleDateString("ko-KR")}</p>
             {captures.length > 0 && (
               <div style={{ marginBottom: "16px" }}>
                 {(showImageLabels && labeledImages.length > 0 ? labeledImages : captures.map((c) => c.image)).map((src, i) => (
                   <div key={i} style={{ marginBottom: "12px" }}>
                     <img src={src} alt={captures[i]?.description} style={{ width: "100%", maxWidth: "100%", height: "auto", display: "block", border: "1px solid #d1d5db", borderRadius: "4px", boxSizing: "border-box" }} />
-                    <p style={{ fontSize: "10px", color: "#6b7280", marginTop: "2px" }}>
+                    <p style={{ fontSize: "9px", color: "#6b7280", marginTop: "2px" }}>
                       Capture {i + 1}: {captures[i]?.description}{showImageLabels && labeledImages.length > 0 ? " (with structural labels)" : ""}
                     </p>
                   </div>
                 ))}
               </div>
             )}
-            <div className="[&_h2]:text-base [&_h2]:font-bold [&_h2]:mt-3 [&_h2]:mb-1 [&_h3]:text-sm [&_h3]:font-bold [&_h3]:mt-2 [&_li]:py-0.5 [&_li]:text-sm [&_p]:text-sm [&_p]:mb-1 [&_ul]:list-disc [&_ul]:ml-4 [&_ol]:list-decimal [&_ol]:ml-4">
-              <ReportMarkdown showConfidence={false}>{reportTextClean || reportContent}</ReportMarkdown>
-            </div>
+            <div dangerouslySetInnerHTML={{ __html: markdownToInlineHtml(reportTextNoConfidence || reportContent) }} />
           </div>
         </div>
       )}

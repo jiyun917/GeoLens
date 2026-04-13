@@ -13,6 +13,12 @@ from ..utils.stream import stream_text
 from ..utils.gemini import convert_openai_to_gemini, stream_gemini
 from ..services.rag import get_manual_context
 
+import anthropic
+import base64 as b64module
+import json
+import uuid
+import time
+
 router = APIRouter()
 limiter = Limiter(key_func=get_remote_address)
 
@@ -31,6 +37,153 @@ class AnnotateRequest(BaseModel):
     data_type: str = "other"
     description: str = ""
     topic: str = ""
+
+
+def _claude_stream_response(messages, model="claude-opus-4-20250514"):
+    """Create a Claude streaming response for report/analysis tasks."""
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        return None
+
+    client = anthropic.Anthropic(api_key=api_key)
+
+    # Extract system message
+    system_text = ""
+    claude_messages = []
+    for msg in messages:
+        role = msg.get("role")
+        content = msg.get("content")
+
+        if role == "system":
+            if isinstance(content, str):
+                system_text = content
+            elif isinstance(content, list):
+                system_text = " ".join(p.get("text", "") for p in content if p.get("type") == "text")
+            continue
+
+        # Convert content to Claude format
+        if isinstance(content, str):
+            claude_messages.append({"role": role, "content": content})
+        elif isinstance(content, list):
+            claude_parts = []
+            for part in content:
+                if part.get("type") == "text":
+                    claude_parts.append({"type": "text", "text": part["text"]})
+                elif part.get("type") == "image_url":
+                    image_url = part.get("image_url", {}).get("url", "")
+                    if image_url.startswith("data:image/"):
+                        try:
+                            header, data = image_url.split(",", 1)
+                            mime_type = header.split(";")[0].split(":")[1]
+                            claude_parts.append({
+                                "type": "image",
+                                "source": {
+                                    "type": "base64",
+                                    "media_type": mime_type,
+                                    "data": data,
+                                },
+                            })
+                        except Exception:
+                            pass
+            if claude_parts:
+                claude_messages.append({"role": role, "content": claude_parts})
+
+    if not claude_messages:
+        return None
+
+    start_time = time.time()
+
+    def stream_claude():
+        def format_sse(payload: dict) -> str:
+            return f"data: {json.dumps(payload, separators=(',', ':'))}\n\n"
+
+        message_id = f"msg-{uuid.uuid4().hex}"
+        text_started = False
+        full_text = ""
+
+        yield format_sse({"type": "start", "messageId": message_id})
+
+        try:
+            with client.messages.stream(
+                model=model,
+                max_tokens=16384,
+                system=system_text,
+                messages=claude_messages,
+            ) as stream:
+                for text in stream.text_stream:
+                    full_text += text
+                    if not text_started:
+                        yield format_sse({"type": "text-start", "id": "text-1"})
+                        text_started = True
+                        print(f"[claude] Time to first chunk: {(time.time() - start_time) * 1000:.0f}ms")
+                    yield format_sse({"type": "text-delta", "id": "text-1", "delta": text})
+
+            if text_started:
+                yield format_sse({"type": "text-end", "id": "text-1"})
+
+            yield format_sse({"type": "finish"})
+            print(f"[claude] Total: {(time.time() - start_time) * 1000:.0f}ms | {len(full_text)} chars")
+        except Exception as e:
+            print(f"[claude] Error: {e}")
+            if not text_started:
+                yield format_sse({"type": "text-start", "id": "text-1"})
+            yield format_sse({"type": "text-delta", "id": "text-1", "delta": f"Error: {str(e)}"})
+            yield format_sse({"type": "text-end", "id": "text-1"})
+            yield format_sse({"type": "finish"})
+
+        yield "data: [DONE]\n\n"
+
+    return StreamingResponse(stream_claude(), media_type="text/event-stream")
+
+
+def _claude_review_report(report_text: str, topic: str) -> str:
+    """Use Claude Opus to verify and enhance a Gemini-generated report."""
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key or not report_text.strip():
+        return report_text
+
+    try:
+        client = anthropic.Anthropic(api_key=api_key)
+        result = client.messages.create(
+            model="claude-opus-4-20250514",
+            max_tokens=16384,
+            messages=[{
+                "role": "user",
+                "content": (
+                    f"Topic: {topic}\n\n"
+                    "You are a senior geoscience peer reviewer with 20+ years of experience. "
+                    "Critically review and IMPROVE this geological interpretation report.\n\n"
+                    "## Review Checklist (check EVERY item)\n"
+                    "1. **Terminology**: Fix incorrect terms. Use standard geology terms (림싱크라인 not 퀼싱크라인, clinoform not just curved reflector).\n"
+                    "2. **Tectonic consistency**: Do structural interpretations match the tectonic setting?\n"
+                    "   - Extensional basin (F3, Viking Graben): expect normal faults, salt diapirs, clinoforms — NOT compressional folds\n"
+                    "   - Clinoforms ≠ anticlines. Differential compaction ≠ tectonic folding.\n"
+                    "3. **Evidence-based**: Every interpretation MUST cite a specific visual observation with LOCATION.\n"
+                    "   - REJECT: '단층이 존재한다' → FIX: '단면 중앙부에서 반사면의 불연속이 관찰되며 정단층으로 해석된다'\n"
+                    "4. **Relative descriptions**: Add relative spatial comparisons where missing:\n"
+                    "   - Position: '단면 중앙에서 약간 우측', symmetry: '좌측이 우측보다 깊다'\n"
+                    "   - Thickness: '돔 정상부에서 측면부로 갈수록 얇아진다'\n"
+                    "5. **Draping vs Onlap**: Distinguish correctly. Draping = passive burial after structure. Onlap = syn-tectonic sedimentation.\n"
+                    "6. **Fault checklist**: For each fault claim, verify: offset visible? termination? dip direction?\n"
+                    "7. **Key horizons**: Describe boundary reflectors with amplitude, continuity, shape.\n"
+                    "8. **Confidence tags**: EVERY bullet MUST end with [신뢰도: 높음/중간/낮음] or [Confidence: High/Medium/Low]. Add ALL missing tags. Most should be 중간/Medium.\n"
+                    "9. **No hallucination**: Remove features not supported by the described observations.\n"
+                    "10. **Completeness**: Add any important observations or interpretations that are missing.\n\n"
+                    "## Rules\n"
+                    "- Keep the same markdown format, language, and section structure\n"
+                    "- Do NOT remove existing correct content — only correct, enhance, and add\n"
+                    "- Keep all ```structures blocks unchanged\n"
+                    "- Output the improved report only. No meta-commentary. No preamble.\n\n"
+                    f"Report to review:\n{report_text}"
+                ),
+            }],
+        )
+        reviewed = result.content[0].text.strip()
+        print(f"[CLAUDE] Report review complete: {len(report_text)} → {len(reviewed)} chars")
+        return reviewed
+    except Exception as e:
+        print(f"[CLAUDE] Report review failed: {e}")
+        return report_text
 
 
 def _get_llm_client():
@@ -144,8 +297,9 @@ async def handle_step_chat(request: FastAPIRequest, body: StepRequest):
                 if isinstance(content, str):
                     query_parts.append(content)
 
-        # Use goal + recent steps as the RAG query
-        query = " ".join(query_parts[-3:]) if query_parts else ""
+        # Use goal + recent steps as the RAG query, optimized by GPT
+        raw_query = " ".join(query_parts[-3:]) if query_parts else ""
+        query = raw_query
         print(f"[STEP] RAG query: {query[:150]}")
 
         if query:
@@ -203,8 +357,9 @@ async def handle_report_chat(request: FastAPIRequest, body: StepRequest):
     print(f"[REPORT] Received request with {len(body.messages)} messages, manual_ids={body.manual_ids}")
     messages = body.messages
 
-    # Extract topic + capture descriptions for precise Graph RAG query
+    # Extract topic + capture descriptions + data types for precise Graph RAG query
     topic_parts = []
+    data_types = set()
     for msg in messages:
         if msg.get("role") == "system":
             content = msg.get("content", "")
@@ -220,13 +375,22 @@ async def handle_report_chat(request: FastAPIRequest, body: StepRequest):
             if isinstance(content, list):
                 for part in content:
                     if part.get("type") == "text":
-                        topic_parts.append(part.get("text", ""))
+                        text = part.get("text", "")
+                        topic_parts.append(text)
+                        # Extract data type from capture labels like "[Capture 1 (seismic): ...]"
+                        import re
+                        dt_matches = re.findall(r'\((\w+)\):', text)
+                        data_types.update(dt_matches)
 
-    query = " ".join(topic_parts) if topic_parts else ""
+    detected_types = list(data_types) if data_types else None
+    print(f"[REPORT] Detected data types: {detected_types}")
+
+    raw_query = " ".join(topic_parts) if topic_parts else ""
+    query = raw_query
     print(f"[REPORT] Graph RAG query: {query[:200]}")
 
     if query:
-        context = get_manual_context(body.manual_ids or [], query, top_k=10)
+        context = get_manual_context(body.manual_ids or [], query, top_k=10, data_types=detected_types)
         if context:
             context_block = (
                 "\n\n--- Reference Context (Knowledge Graph + Manuals) ---\n"
@@ -241,7 +405,8 @@ async def handle_report_chat(request: FastAPIRequest, body: StepRequest):
                         msg["content"].append({"type": "text", "text": context_block})
                     break
 
-    # Report generation needs vision for screenshot analysis
+    # Report generation: Gemini Pro (image analysis + draft) → Gemini fallback
+    print("[REPORT] Using Gemini Pro for report generation (image analysis)...")
     response = _gemini_stream_response(messages)
     if response:
         return response
@@ -258,36 +423,52 @@ _DATA_TYPE_HINTS = {
     "geological_map": "Geological map: contacts/faults=line, structural points=point, intrusions=bbox.",
 }
 
-ANNOTATE_PROMPT = """You are an expert geoscientist. Detect and precisely locate geological features in this {data_type} image.
+ANNOTATE_PROMPT = """You are an expert geoscientist performing precise geological feature detection.
 Context: {topic} — {description}
+Data type: {data_type}
 {data_type_hint}
 
-## Coordinate System (CRITICAL — follow exactly)
-Normalized 0.0 to 1.0:
-- (0.0, 0.0) = top-left corner, (1.0, 1.0) = bottom-right corner
-- (0.5, 0.5) = exact center of image
-- x increases left→right, y increases top→bottom
+## ██ ACCURACY FIRST — READ BEFORE ANNOTATING ██
+1. ONLY annotate features you can CLEARLY and UNAMBIGUOUSLY see in the image.
+2. If a feature is uncertain or ambiguous, DO NOT include it. Fewer accurate labels > many inaccurate ones.
+3. For EACH feature, verify: Can I trace this feature's exact path/boundary in the image? If not, skip it.
+
+## Coordinate System (CRITICAL — relative to FULL IMAGE)
+Normalized 0.0 to 1.0 relative to the FULL IMAGE (including any borders, axes, toolbars):
+- (0.0, 0.0) = top-left corner of the ENTIRE image
+- (1.0, 1.0) = bottom-right corner of the ENTIRE image
+- (0.5, 0.5) = exact center of the ENTIRE image
 
 ## How to locate features precisely
 For each feature, think step by step:
-1. What fraction of the image width (0.0-1.0) is the feature's LEFT edge? RIGHT edge?
-2. What fraction of the image height (0.0-1.0) is the feature's TOP? BOTTOM?
-3. For lines: trace 8-12 points along the feature. At curves, place points closer together.
-4. Double-check: a feature at the image center should have coords near (0.5, 0.5).
+1. Look at where the feature is in the FULL image (not just the data area)
+2. Estimate x: how far from the LEFT edge (0.0) to the RIGHT edge (1.0)?
+3. Estimate y: how far from the TOP edge (0.0) to the BOTTOM edge (1.0)?
+4. For lines: trace 8-12 points ALONG THE VISIBLE FEATURE path
+5. VERIFY each coordinate: mentally place a dot at (x, y) on the image — does it land on the feature?
 
 ## Geometry types
-- "line": array of 8-12 {{x,y}} points. Geological features are usually CURVED — capture the curvature with well-placed points.
-- "bbox": x, y (top-left corner), width, height
-- "point": x, y
+- "line": array of 8-12 {{x,y}} points tracing the feature. Follow the ACTUAL visible path, not a schematic.
+- "bbox": x, y (top-left), width, height — for zones/areas
+- "point": x, y — for point features
 
-feature_type: fault, horizon, unconformity, anomaly, stratigraphic_boundary, fold, intrusion, contact, fracture_zone, amplitude_anomaly, velocity_anomaly, well_marker, formation_top, log_anomaly
+## Feature types
+fault, horizon, unconformity, anomaly, stratigraphic_boundary, fold, intrusion, contact, fracture_zone, amplitude_anomaly, velocity_anomaly, well_marker, formation_top, log_anomaly
+
+## Labels
+- Use descriptive, specific labels: "Main Horizon (strong reflector)" not just "Horizon"
+- Include observable characteristics: "Normal Fault (30ms throw)" not just "Fault"
 
 Output format:
-{{"annotations": [{{"id":"h1","feature_type":"horizon","label":"Horizon H1","confidence":"high",
-"geometry":{{"type":"line","points":[{{"x":0.05,"y":0.40}},{{"x":0.15,"y":0.38}},{{"x":0.30,"y":0.34}},{{"x":0.40,"y":0.32}},{{"x":0.50,"y":0.33}},{{"x":0.60,"y":0.36}},{{"x":0.75,"y":0.41}},{{"x":0.90,"y":0.44}}]}},
-"description":"Curved reflector with synclinal geometry"}}]}}
+{{"annotations": [{{"id":"h1","feature_type":"horizon","label":"Strong continuous reflector","confidence":"high",
+"geometry":{{"type":"line","points":[{{"x":0.05,"y":0.40}},{{"x":0.15,"y":0.38}},{{"x":0.30,"y":0.34}},{{"x":0.50,"y":0.33}},{{"x":0.75,"y":0.41}},{{"x":0.90,"y":0.44}}]}},
+"description":"Continuous high-amplitude reflector traceable across section"}}]}}
 
-Rules: max 5 features, only CLEARLY visible ones, coordinates strictly 0.0-1.0.
+Rules:
+- Max 5 features — quality over quantity
+- ONLY clearly visible features — when in doubt, leave it out
+- Coordinates strictly 0.0-1.0, relative to DATA AREA only
+- Confidence: "high" only for unambiguous features, "medium" for most, "low" for subtle
 """
 
 
@@ -335,42 +516,47 @@ def _validate_annotations(annotations: list) -> list:
 @router.post("/api/annotate")
 @limiter.limit("10/minute;100/hour")
 async def handle_annotate(request: FastAPIRequest, body: AnnotateRequest):
+    hint = _DATA_TYPE_HINTS.get(body.data_type, "Detect geological features.")
+    prompt = ANNOTATE_PROMPT.format(
+        data_type=body.data_type,
+        topic=body.topic or "geological interpretation",
+        description=body.description or "no description",
+        data_type_hint=hint,
+    )
+
+    image_data = body.image
+    if "," in image_data:
+        header_part, b64_data = image_data.split(",", 1)
+        mime_type = header_part.split(";")[0].split(":")[1] if ":" in header_part else "image/jpeg"
+    else:
+        b64_data = image_data
+        mime_type = "image/jpeg"
+
+    # Resize large images
+    try:
+        from PIL import Image
+        import io
+        image_bytes = b64module.b64decode(b64_data)
+        img = Image.open(io.BytesIO(image_bytes))
+        max_dim = 2048
+        if max(img.size) > max_dim:
+            img.thumbnail((max_dim, max_dim), Image.LANCZOS)
+            buf = io.BytesIO()
+            img.save(buf, format="JPEG", quality=85)
+            image_bytes = buf.getvalue()
+            b64_data = b64module.b64encode(image_bytes).decode()
+            mime_type = "image/jpeg"
+    except Exception:
+        pass
+
+    # Gemini for annotation (better spatial/coordinate accuracy)
     gemini_api_key = os.environ.get("GEMINI_API_KEY")
     if not gemini_api_key:
         return {"annotations": []}
 
     try:
-        client = genai.Client(api_key=gemini_api_key)
-
-        hint = _DATA_TYPE_HINTS.get(body.data_type, "Detect geological features.")
-
-        prompt = ANNOTATE_PROMPT.format(
-            data_type=body.data_type,
-            topic=body.topic or "geological interpretation",
-            description=body.description or "no description",
-            data_type_hint=hint,
-        )
-
-        import base64 as b64mod
-        image_data = body.image
-        if "," in image_data:
-            image_data = image_data.split(",", 1)[1]
-        image_bytes = b64mod.b64decode(image_data)
-
-        # Resize large images to speed up API call (coordinates are normalized so this is safe)
-        try:
-            from PIL import Image
-            import io
-            img = Image.open(io.BytesIO(image_bytes))
-            max_dim = 1536
-            if max(img.size) > max_dim:
-                img.thumbnail((max_dim, max_dim), Image.LANCZOS)
-                buf = io.BytesIO()
-                img.save(buf, format="JPEG", quality=85)
-                image_bytes = buf.getvalue()
-        except Exception:
-            pass
-
+        gclient = genai.Client(api_key=gemini_api_key)
+        image_bytes = b64module.b64decode(b64_data)
         contents = [
             types.Content(
                 role="user",
@@ -380,29 +566,34 @@ async def handle_annotate(request: FastAPIRequest, body: AnnotateRequest):
                 ],
             )
         ]
-
         config = types.GenerateContentConfig(
             response_mime_type="application/json",
             temperature=0,
             thinking_config=types.ThinkingConfig(thinking_budget=1024),
         )
-
-        import json
-        result = client.models.generate_content(
-            model="gemini-2.5-pro",
-            contents=contents,
-            config=config,
-        )
-
+        result = gclient.models.generate_content(model="gemini-2.5-pro", contents=contents, config=config)
         parsed = json.loads(result.text)
         raw_annotations = parsed.get("annotations", [])
         annotations = _validate_annotations(raw_annotations)
-        print(f"[ANNOTATE] Detected {len(annotations)} features (raw: {len(raw_annotations)}) for {body.data_type}")
+        print(f"[ANNOTATE] Gemini detected {len(annotations)} features for {body.data_type}")
         return {"annotations": annotations}
-
     except Exception as e:
-        print(f"[ANNOTATE] Error: {e}")
+        print(f"[ANNOTATE] Gemini error: {e}")
         return {"annotations": []}
+
+
+class ReviewRequest(BaseModel):
+    report: str
+    topic: str
+
+
+@router.post("/api/report/review")
+@limiter.limit("5/minute;30/hour")
+async def handle_report_review(request: FastAPIRequest, body: ReviewRequest):
+    """GPT reviews and enhances a Claude-generated report."""
+    print(f"[REVIEW] Reviewing report: {len(body.report)} chars, topic: {body.topic[:50]}")
+    reviewed = _claude_review_report(body.report, body.topic)
+    return {"reviewed_report": reviewed}
 
 
 @router.post("/api/coordinates")
@@ -433,7 +624,7 @@ async def handle_coordinate_chat(request: FastAPIRequest, body: MessagesRequest)
         )
 
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-2.5-pro",
             contents=contents,
             config=config,
         )

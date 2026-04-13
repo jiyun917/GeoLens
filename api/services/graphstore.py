@@ -174,41 +174,67 @@ def query_subgraph(manual_id: str, entities: List[str], max_hops: int = 2) -> Li
 
 BASE_GRAPH_PATH = os.path.join(GRAPH_DIR, "base_geoscience.json")
 
-_base_graph_cache: Optional[nx.DiGraph] = None
+# Data-type-specific base graphs
+DATA_TYPE_GRAPH_MAP = {
+    "seismic": "base_seismic.json",
+    "well_log": "base_well_log.json",
+    "gpr": "base_gpr.json",
+    "gravity": "base_gravity_magnetic.json",
+    "magnetic": "base_gravity_magnetic.json",
+    "resistivity": "base_resistivity.json",
+}
+
+_base_graph_cache: Dict[str, nx.DiGraph] = {}
 
 
-def load_base_graph() -> nx.DiGraph:
-    """Load the pre-built geoscience knowledge graph (cached)."""
-    global _base_graph_cache
-    if _base_graph_cache is not None:
-        return _base_graph_cache
-
-    if not os.path.exists(BASE_GRAPH_PATH):
-        _base_graph_cache = nx.DiGraph()
-        return _base_graph_cache
-
-    with open(BASE_GRAPH_PATH, "r", encoding="utf-8") as f:
+def _load_graph_file(path: str) -> nx.DiGraph:
+    """Load a graph from a JSON file."""
+    if not os.path.exists(path):
+        return nx.DiGraph()
+    with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
-
     G = nx.DiGraph()
     for node in data.get("nodes", []):
         G.add_node(node["id"], **{k: v for k, v in node.items() if k != "id"})
     for edge in data.get("edges", []):
         G.add_edge(edge["source"], edge["target"], **{k: v for k, v in edge.items() if k not in ("source", "target")})
-
-    _base_graph_cache = G
-    return _base_graph_cache
+    return G
 
 
-def query_subgraph_with_base(manual_ids: List[str], entities: List[str], max_hops: int = 2) -> List[Dict]:
+def load_base_graph(data_types: Optional[List[str]] = None) -> nx.DiGraph:
+    """Load base knowledge graphs. Combines general + data-type-specific graphs."""
+    cache_key = ",".join(sorted(data_types)) if data_types else "_general"
+
+    if cache_key in _base_graph_cache:
+        return _base_graph_cache[cache_key]
+
+    # Always include general geoscience graph
+    combined = _load_graph_file(BASE_GRAPH_PATH)
+
+    # Add data-type-specific graphs
+    if data_types:
+        for dt in data_types:
+            filename = DATA_TYPE_GRAPH_MAP.get(dt)
+            if filename:
+                dt_path = os.path.join(GRAPH_DIR, filename)
+                dt_graph = _load_graph_file(dt_path)
+                if dt_graph.number_of_nodes() > 0:
+                    combined = nx.compose(combined, dt_graph)
+                    print(f"[GRAPH] Loaded base graph for {dt}: {dt_graph.number_of_nodes()} nodes")
+
+    _base_graph_cache[cache_key] = combined
+    return combined
+
+
+def query_subgraph_with_base(manual_ids: List[str], entities: List[str], max_hops: int = 2, data_types: Optional[List[str]] = None) -> List[Dict]:
     """
     Query both the base geoscience graph and manual-specific graphs.
     Returns combined, deduplicated triplets sorted by weight.
     """
     all_triplets = []
 
-    # 1. Base geoscience graph (always queried)
-    base_G = load_base_graph()
+    # 1. Base graphs (general + data-type-specific)
+    base_G = load_base_graph(data_types)
     if base_G.number_of_nodes() > 0:
         base_triplets = _query_graph(base_G, entities, max_hops)
         for t in base_triplets:

@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {"id": "gpr 반사", "label": "GPR 반사 (GPR Reflection)", "category": "gpr_feature"},
+    {"id": "하이퍼볼라", "label": "하이퍼볼라 (Hyperbola/Diffraction)", "category": "gpr_feature"},
+    {"id": "유전상수", "label": "유전상수 (Dielectric Constant)", "category": "gpr_property"},
+    {"id": "전도도", "label": "전도도 (Conductivity)", "category": "gpr_property"},
+    {"id": "감쇠", "label": "신호 감쇠 (Signal Attenuation)", "category": "gpr_property"},
+    {"id": "매립물", "label": "매립물 (Buried Object)", "category": "gpr_target"},
+    {"id": "배관", "label": "배관 (Pipe/Utility)", "category": "gpr_target"},
+    {"id": "공동", "label": "공동/동공 (Void/Cavity)", "category": "gpr_target"},
+    {"id": "지하수면", "label": "지하수면 (Water Table)", "category": "gpr_target"},
+    {"id": "기반암", "label": "기반암 경계 (Bedrock Interface)", "category": "gpr_target"},
+    {"id": "토양층", "label": "토양층 경계 (Soil Layer)", "category": "gpr_target"},
+    {"id": "링잉", "label": "링잉 (Ringing)", "category": "gpr_artifact"},
+    {"id": "클러터", "label": "클러터 (Clutter)", "category": "gpr_artifact"},
+    {"id": "다중반사", "label": "다중반사 (Multiple)", "category": "gpr_artifact"},
+    {"id": "천부지질", "label": "천부지질 (Near-surface Geology)", "category": "geology"},
+    {"id": "단층", "label": "천부 단층 (Shallow Fault)", "category": "geology"},
+    {"id": "충적층", "label": "충적층 (Alluvium)", "category": "geology"}
+  ],
+  "edges": [
+    {"source": "하이퍼볼라", "target": "매립물", "relation": "점형 물체에 의한 회절 패턴", "weight": 9},
+    {"source": "하이퍼볼라", "target": "배관", "relation": "배관/유틸리티 상부에서 하이퍼볼라 형성", "weight": 9},
+    {"source": "gpr 반사", "target": "토양층", "relation": "유전상수 차이에 의한 층 경계 반사", "weight": 8},
+    {"source": "gpr 반사", "target": "지하수면", "relation": "강한 수평 반사 → 지하수면 가능", "weight": 8},
+    {"source": "감쇠", "target": "전도도", "relation": "높은 전도도 → 빠른 신호 감쇠", "weight": 8},
+    {"source": "감쇠", "target": "지하수면", "relation": "지하수면 아래 급격한 감쇠", "weight": 7},
+    {"source": "공동", "target": "gpr 반사", "relation": "강한 반사 + 내부 다중반사 패턴", "weight": 8},
+    {"source": "링잉", "target": "gpr 반사", "relation": "안테나 링잉 → 천부 인공물", "weight": 7},
+    {"source": "단층", "target": "gpr 반사", "relation": "반사면 불연속/변위", "weight": 7}
+  ]
+}
