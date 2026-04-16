@@ -8,6 +8,7 @@ from fastapi import APIRouter
 
 from ..services.workflow_graph import get_workflow_graph, reload_workflow_graph
 from ..services.rag_router import get_rag_router
+from ..services.chunk_mapper import map_all_workflows
 
 router = APIRouter()
 
@@ -17,6 +18,11 @@ class RouteRequest(BaseModel):
     screenshot: Optional[str] = None  # base64 data URL or raw
     session_state: Optional[dict] = None
     manual_ids: Optional[List[str]] = None
+
+
+class MapChunksRequest(BaseModel):
+    manual_ids: List[str]
+    top_k: int = 3
 
 
 @router.get("/api/workflow/list")
@@ -47,6 +53,18 @@ async def reload_workflow():
         "node_count": wg.graph.number_of_nodes(),
         "edge_count": wg.graph.number_of_edges(),
     }
+
+
+@router.post("/api/workflow/map-chunks")
+async def map_chunks(body: MapChunksRequest):
+    """
+    Auto-populate linked_chunks for all workflow nodes by semantic similarity
+    against the specified ChromaDB manuals. Updates JSON files in place.
+    """
+    results = map_all_workflows(body.manual_ids, top_k=body.top_k)
+    # Reload workflow graph to pick up new linked_chunks
+    reload_workflow_graph()
+    return {"status": "ok", "results": results}
 
 
 @router.post("/api/rag/route")

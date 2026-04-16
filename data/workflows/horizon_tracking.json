@@ -12,10 +12,22 @@
       "step_type": "setup",
       "visual_signature": {
         "expected_dialog": "Survey Setup / Main Window",
-        "expected_ui_elements": ["survey_tree", "select_survey_button"],
-        "screenshot_keywords": ["OpendTect", "Survey", "Select Survey", "Survey Setup"]
+        "expected_ui_elements": [
+          "survey_tree",
+          "select_survey_button"
+        ],
+        "screenshot_keywords": [
+          "OpendTect",
+          "Survey",
+          "Select Survey",
+          "Survey Setup"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "e5286f4d1ca84c2fb078f2c9a02fc059",
+        "74d2a0c3647b4c9fb60bce42774e259b",
+        "b19cf8aa3cc24090bc0d3902e8364c76"
+      ],
       "parameters": []
     },
     {
@@ -27,10 +39,23 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "3D Scene Viewer",
-        "expected_ui_elements": ["scene_tree", "inline_display", "add_default_data_menu"],
-        "screenshot_keywords": ["Inline", "Crossline", "Scene", "Add Default Data"]
+        "expected_ui_elements": [
+          "scene_tree",
+          "inline_display",
+          "add_default_data_menu"
+        ],
+        "screenshot_keywords": [
+          "Inline",
+          "Crossline",
+          "Scene",
+          "Add Default Data"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "bc2ce57226d3464382559678acf26366",
+        "74d2a0c3647b4c9fb60bce42774e259b",
+        "be9225d73ab84de68ce9539a9156c632"
+      ],
       "parameters": []
     },
     {
@@ -42,10 +67,23 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "Tracking Menu / New Horizon Dialog",
-        "expected_ui_elements": ["tracking_menu", "horizon_menu_item", "new_horizon_option"],
-        "screenshot_keywords": ["Tracking", "Horizon", "New", "Track"]
+        "expected_ui_elements": [
+          "tracking_menu",
+          "horizon_menu_item",
+          "new_horizon_option"
+        ],
+        "screenshot_keywords": [
+          "Tracking",
+          "Horizon",
+          "New",
+          "Track"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "bc2ce57226d3464382559678acf26366",
+        "b19cf8aa3cc24090bc0d3902e8364c76",
+        "dc214fc99f844daa8d8e3cdefb2d71e3"
+      ],
       "parameters": []
     },
     {
@@ -57,10 +95,23 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "Horizon Tracking Window",
-        "expected_ui_elements": ["seed_pick_button", "crosshair_cursor", "tracking_panel"],
-        "screenshot_keywords": ["Seed", "Pick", "tracking window", "pick mode"]
+        "expected_ui_elements": [
+          "seed_pick_button",
+          "crosshair_cursor",
+          "tracking_panel"
+        ],
+        "screenshot_keywords": [
+          "Seed",
+          "Pick",
+          "tracking window",
+          "pick mode"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "be9225d73ab84de68ce9539a9156c632",
+        "b19cf8aa3cc24090bc0d3902e8364c76",
+        "ef2a9521204548dfbf414039e3b26c8c"
+      ],
       "parameters": [
         {
           "name": "Seed Mode",
@@ -78,10 +129,22 @@
       "step_type": "setup",
       "visual_signature": {
         "expected_dialog": "Tracking Setup / Properties",
-        "expected_ui_elements": ["threshold_slider", "parameter_panel"],
-        "screenshot_keywords": ["Correlation", "Threshold", "Amplitude", "Tracking Setup"]
+        "expected_ui_elements": [
+          "threshold_slider",
+          "parameter_panel"
+        ],
+        "screenshot_keywords": [
+          "Correlation",
+          "Threshold",
+          "Amplitude",
+          "Tracking Setup"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "bc2ce57226d3464382559678acf26366",
+        "53131832d82345c5a9e4d596c7cb7ae6",
+        "dfe945dbf19f42b2b67ad233874093ae"
+      ],
       "parameters": [
         {
           "name": "Correlation Threshold",
@@ -104,10 +167,23 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "Horizon Tracking Window",
-        "expected_ui_elements": ["auto_track_button", "progress_bar", "tracked_horizon"],
-        "screenshot_keywords": ["Auto", "Track", "Start", "Running"]
+        "expected_ui_elements": [
+          "auto_track_button",
+          "progress_bar",
+          "tracked_horizon"
+        ],
+        "screenshot_keywords": [
+          "Auto",
+          "Track",
+          "Start",
+          "Running"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "bc2ce57226d3464382559678acf26366",
+        "be9225d73ab84de68ce9539a9156c632",
+        "b19cf8aa3cc24090bc0d3902e8364c76"
+      ],
       "parameters": []
     },
     {
@@ -119,10 +195,24 @@
       "step_type": "verification",
       "visual_signature": {
         "expected_dialog": "Horizon Display / Edit Mode",
-        "expected_ui_elements": ["edit_tools", "horizon_display", "undo_redo"],
-        "screenshot_keywords": ["QC", "Edit", "Manual", "Erase", "Grow"]
+        "expected_ui_elements": [
+          "edit_tools",
+          "horizon_display",
+          "undo_redo"
+        ],
+        "screenshot_keywords": [
+          "QC",
+          "Edit",
+          "Manual",
+          "Erase",
+          "Grow"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "74d2a0c3647b4c9fb60bce42774e259b",
+        "bc2ce57226d3464382559678acf26366",
+        "b19cf8aa3cc24090bc0d3902e8364c76"
+      ],
       "parameters": []
     },
     {
@@ -134,10 +224,21 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "Save Horizon Dialog",
-        "expected_ui_elements": ["save_button", "name_field"],
-        "screenshot_keywords": ["Save", "Name", "Horizon"]
+        "expected_ui_elements": [
+          "save_button",
+          "name_field"
+        ],
+        "screenshot_keywords": [
+          "Save",
+          "Name",
+          "Horizon"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "74d2a0c3647b4c9fb60bce42774e259b",
+        "b19cf8aa3cc24090bc0d3902e8364c76",
+        "dc214fc99f844daa8d8e3cdefb2d71e3"
+      ],
       "parameters": [
         {
           "name": "Horizon Name",

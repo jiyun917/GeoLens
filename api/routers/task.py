@@ -31,6 +31,7 @@ class MessagesRequest(BaseModel):
 class StepRequest(BaseModel):
     messages: List[Any]
     manual_ids: Optional[List[str]] = None
+    session_state: Optional[dict] = None  # mode, visited_node_ids, active_workflow_id, etc.
 
 
 class AnnotateRequest(BaseModel):
@@ -318,16 +319,22 @@ async def handle_step_chat(request: FastAPIRequest, body: StepRequest):
 
         # Use RAG Router (graph-aware) if screenshot available, else plain vector
         context_block = ""
+        # Merge frontend-provided session state (do NOT override explicit mode)
+        session_state = dict(body.session_state or {})
+        # Guide endpoint defaults to "guide" mode only if caller did not specify
+        session_state.setdefault("mode", "guide")
         try:
             if latest_screenshot:
                 router_result = get_rag_router().route(
                     user_message=query,
                     screenshot_b64=latest_screenshot,
-                    session_state={"mode": "guide"},
+                    session_state=session_state,
                     manual_ids=body.manual_ids,
                 )
                 context_block = router_result.get("context_block", "")
-                print(f"[STEP] RAG router mode={router_result.get('mode')}, context={len(context_block)}chars")
+                raw = router_result.get("raw_output") or {}
+                current_node = raw.get("current_node") if isinstance(raw, dict) else None
+                print(f"[STEP] RAG router mode={router_result.get('mode')}, context={len(context_block)}chars, node={current_node.get('id') if current_node else None}")
             elif query:
                 ctx = get_manual_context(body.manual_ids, query)
                 if ctx:

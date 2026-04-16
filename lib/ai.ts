@@ -267,7 +267,8 @@ export async function generateAction(
   followUpContext?: FollowUpContext,
   manualIds?: string[],
   plan?: string[],
-  language?: string
+  language?: string,
+  sessionState?: Record<string, unknown>
 ) {
   const maxRetries = 3;
   let lastError: unknown;
@@ -329,6 +330,7 @@ export async function generateAction(
       } else {
         return await sendToBackend("step", messages, undefined, {
           manual_ids: manualIds,
+          session_state: sessionState,
         });
       }
     } catch (e) {

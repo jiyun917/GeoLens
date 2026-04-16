@@ -12,10 +12,19 @@
       "step_type": "setup",
       "visual_signature": {
         "expected_dialog": "Survey Setup",
-        "expected_ui_elements": ["survey_tree"],
-        "screenshot_keywords": ["OpendTect", "Survey"]
+        "expected_ui_elements": [
+          "survey_tree"
+        ],
+        "screenshot_keywords": [
+          "OpendTect",
+          "Survey"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "b7adc791af824d38ae7a6beeb15a6ccd",
+        "e0b9063bac6744a28b16817c1bb910f0",
+        "6157ae534c83463bb99b0a02f623f213"
+      ],
       "parameters": []
     },
     {
@@ -27,10 +36,22 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "Create Seismic Attribute",
-        "expected_ui_elements": ["processing_menu", "attribute_menu_item"],
-        "screenshot_keywords": ["Processing", "Attribute", "Create", "Seismic Attribute"]
+        "expected_ui_elements": [
+          "processing_menu",
+          "attribute_menu_item"
+        ],
+        "screenshot_keywords": [
+          "Processing",
+          "Attribute",
+          "Create",
+          "Seismic Attribute"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "e0b9063bac6744a28b16817c1bb910f0",
+        "6157ae534c83463bb99b0a02f623f213",
+        "5159644ebc2a4a0abae99f97e39957d3"
+      ],
       "parameters": []
     },
     {
@@ -42,10 +63,22 @@
       "step_type": "setup",
       "visual_signature": {
         "expected_dialog": "Attribute Type Selection",
-        "expected_ui_elements": ["attribute_type_dropdown"],
-        "screenshot_keywords": ["Similarity", "Curvature", "Frequency", "Energy", "Instantaneous"]
+        "expected_ui_elements": [
+          "attribute_type_dropdown"
+        ],
+        "screenshot_keywords": [
+          "Similarity",
+          "Curvature",
+          "Frequency",
+          "Energy",
+          "Instantaneous"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "5159644ebc2a4a0abae99f97e39957d3",
+        "4367389c21594d7eaad7a1a6e96870db",
+        "6157ae534c83463bb99b0a02f623f213"
+      ],
       "parameters": [
         {
           "name": "Attribute Type",
@@ -63,10 +96,22 @@
       "step_type": "setup",
       "visual_signature": {
         "expected_dialog": "Attribute Parameters",
-        "expected_ui_elements": ["parameter_fields", "window_size"],
-        "screenshot_keywords": ["Window", "Step out", "Parameter", "Time gate"]
+        "expected_ui_elements": [
+          "parameter_fields",
+          "window_size"
+        ],
+        "screenshot_keywords": [
+          "Window",
+          "Step out",
+          "Parameter",
+          "Time gate"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "5159644ebc2a4a0abae99f97e39957d3",
+        "d16403884b2c4abc886c2ca223ed9076",
+        "dd88e41c323c41a08e8f679a3bf99281"
+      ],
       "parameters": [
         {
           "name": "Time Gate",
@@ -89,10 +134,22 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "Batch Processing / Progress",
-        "expected_ui_elements": ["go_button", "progress_bar"],
-        "screenshot_keywords": ["Go", "Start", "Running", "Processing"]
+        "expected_ui_elements": [
+          "go_button",
+          "progress_bar"
+        ],
+        "screenshot_keywords": [
+          "Go",
+          "Start",
+          "Running",
+          "Processing"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "5159644ebc2a4a0abae99f97e39957d3",
+        "e0b9063bac6744a28b16817c1bb910f0",
+        "6157ae534c83463bb99b0a02f623f213"
+      ],
       "parameters": []
     },
     {
@@ -104,10 +161,21 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "3D Scene",
-        "expected_ui_elements": ["scene_tree", "attribute_display"],
-        "screenshot_keywords": ["Display", "Scene", "Color Bar"]
+        "expected_ui_elements": [
+          "scene_tree",
+          "attribute_display"
+        ],
+        "screenshot_keywords": [
+          "Display",
+          "Scene",
+          "Color Bar"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "5159644ebc2a4a0abae99f97e39957d3",
+        "6093080a64164f73b64be2498e283d62",
+        "5f0e69d5130143039558bbb124cf4960"
+      ],
       "parameters": []
     },
     {
@@ -119,19 +187,66 @@
       "step_type": "verification",
       "visual_signature": {
         "expected_dialog": "Scene Display",
-        "expected_ui_elements": ["colorbar", "statistics"],
-        "screenshot_keywords": ["Analyze", "Interpret", "Statistics"]
+        "expected_ui_elements": [
+          "colorbar",
+          "statistics"
+        ],
+        "screenshot_keywords": [
+          "Analyze",
+          "Interpret",
+          "Statistics"
+        ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "e0b9063bac6744a28b16817c1bb910f0",
+        "43b91cf526054c94b255bddc16ec0f35",
+        "6157ae534c83463bb99b0a02f623f213"
+      ],
       "parameters": []
     }
   ],
   "edges": [
-    {"source": "seismic_attribute_01_data_load", "target": "seismic_attribute_02_open_attribute_tool", "edge_type": "sequential", "condition": null, "instruction": "데이터 로드 후 속성 계산 창을 여세요"},
-    {"source": "seismic_attribute_02_open_attribute_tool", "target": "seismic_attribute_03_select_type", "edge_type": "sequential", "condition": null, "instruction": "창이 열리면 계산할 속성 유형을 선택하세요"},
-    {"source": "seismic_attribute_03_select_type", "target": "seismic_attribute_04_configure", "edge_type": "sequential", "condition": null, "instruction": "속성 유형 선택 후 파라미터를 설정하세요"},
-    {"source": "seismic_attribute_04_configure", "target": "seismic_attribute_05_compute", "edge_type": "sequential", "condition": null, "instruction": "파라미터 설정 후 계산을 실행하세요"},
-    {"source": "seismic_attribute_05_compute", "target": "seismic_attribute_06_display", "edge_type": "sequential", "condition": null, "instruction": "계산이 완료되면 결과를 Scene에 표시하세요"},
-    {"source": "seismic_attribute_06_display", "target": "seismic_attribute_07_qc_analyze", "edge_type": "sequential", "condition": null, "instruction": "표시 후 결과를 분석하세요"}
+    {
+      "source": "seismic_attribute_01_data_load",
+      "target": "seismic_attribute_02_open_attribute_tool",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "데이터 로드 후 속성 계산 창을 여세요"
+    },
+    {
+      "source": "seismic_attribute_02_open_attribute_tool",
+      "target": "seismic_attribute_03_select_type",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "창이 열리면 계산할 속성 유형을 선택하세요"
+    },
+    {
+      "source": "seismic_attribute_03_select_type",
+      "target": "seismic_attribute_04_configure",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "속성 유형 선택 후 파라미터를 설정하세요"
+    },
+    {
+      "source": "seismic_attribute_04_configure",
+      "target": "seismic_attribute_05_compute",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "파라미터 설정 후 계산을 실행하세요"
+    },
+    {
+      "source": "seismic_attribute_05_compute",
+      "target": "seismic_attribute_06_display",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "계산이 완료되면 결과를 Scene에 표시하세요"
+    },
+    {
+      "source": "seismic_attribute_06_display",
+      "target": "seismic_attribute_07_qc_analyze",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "표시 후 결과를 분석하세요"
+    }
   ]
 }

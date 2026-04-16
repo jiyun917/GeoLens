@@ -182,6 +182,35 @@ export function ReportProvider({ children }: { children: ReactNode }) {
     setIsGenerating(true);
     setReportContent("");
 
+    // Fetch Graph-RAG session state (visited nodes from guide mode)
+    let graphSessionState: Record<string, unknown> | null = null;
+    try {
+      const raw = sessionStorage.getItem("geolens-graph-session");
+      if (raw) graphSessionState = JSON.parse(raw);
+    } catch { /* ignore */ }
+
+    // Pre-fetch report context from Graph-RAG (backward traversal)
+    if (graphSessionState && activeManualIds.length > 0) {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+        const ragResp = await fetch(`${apiUrl}/rag/route`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: topic,
+            session_state: { ...graphSessionState, mode: "report", report_type: "interpretation_summary" },
+            manual_ids: activeManualIds,
+          }),
+        });
+        if (ragResp.ok) {
+          const data = await ragResp.json();
+          console.log("[Graph-RAG Report]", { mode: data.mode, path_length: data?.raw_output?.workflow_path?.length || 0 });
+        }
+      } catch (e) {
+        console.warn("[Graph-RAG Report] failed:", e);
+      }
+    }
+
     let finalReport = "";
     try {
       await generateReport(

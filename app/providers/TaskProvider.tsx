@@ -105,6 +105,10 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
   const lastScreenshotRef = useRef<string>("");
   const pendingFollowUpRef = useRef<string>("");
+  // RAG session state: tracks visited workflow nodes for Graph-RAG
+  const visitedNodeIdsRef = useRef<string[]>([]);
+  const activeWorkflowIdRef = useRef<string | null>(null);
+  const expectedNextNodeIdRef = useRef<string | null>(null);
 
   const isTriggeringRef = useRef(false);
   const changeDetectionStartedRef = useRef(false);
@@ -239,8 +243,63 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         followUpContext,
         activeManualIds.length > 0 ? activeManualIds : undefined,
         undefined,
-        guideLanguage
+        guideLanguage,
+        {
+          mode: "guide",
+          visited_node_ids: visitedNodeIdsRef.current,
+          active_workflow_id: activeWorkflowIdRef.current,
+          expected_next_node_id: expectedNextNodeIdRef.current,
+        }
       );
+
+      // Graph-RAG localization (fire-and-forget, updates visited nodes)
+      (async () => {
+        try {
+          const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+          const resp = await fetch(`${apiUrl}/rag/route`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              message: goal,
+              screenshot: imageDataUrl,
+              session_state: {
+                mode: "guide",
+                visited_node_ids: visitedNodeIdsRef.current,
+                active_workflow_id: activeWorkflowIdRef.current,
+              },
+              manual_ids: activeManualIds.length > 0 ? activeManualIds : undefined,
+            }),
+          });
+          if (!resp.ok) return;
+          const data = await resp.json();
+          const node = data?.raw_output?.current_node;
+          const confidence = data?.raw_output?.confidence || 0;
+          if (node?.id && confidence > 0.3) {
+            if (!visitedNodeIdsRef.current.includes(node.id)) {
+              visitedNodeIdsRef.current = [...visitedNodeIdsRef.current, node.id];
+            }
+            if (node.workflow_id) activeWorkflowIdRef.current = node.workflow_id;
+            const nextNodes = data?.raw_output?.next_nodes || [];
+            if (nextNodes.length > 0) {
+              expectedNextNodeIdRef.current = nextNodes[0].id;
+            }
+            // Persist for report mode (backward traversal)
+            try {
+              sessionStorage.setItem(
+                "geolens-graph-session",
+                JSON.stringify({
+                  visited_node_ids: visitedNodeIdsRef.current,
+                  active_workflow_id: activeWorkflowIdRef.current,
+                  current_node_id: node.id,
+                })
+              );
+            } catch { /* ignore */ }
+            console.log("[Graph-RAG]", { node: node.id, confidence, visited: visitedNodeIdsRef.current.length });
+          }
+        } catch (e) {
+          // Silent — tracking is optional
+        }
+      })();
 
       lastScreenshotRef.current = imageDataUrl;
 
