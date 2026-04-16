@@ -12,6 +12,7 @@ import os
 from ..utils.stream import stream_text
 from ..utils.gemini import convert_openai_to_gemini, stream_gemini
 from ..services.rag import get_manual_context
+from ..services.rag_router import get_rag_router
 
 import anthropic
 import base64 as b64module
@@ -297,31 +298,58 @@ async def handle_step_chat(request: FastAPIRequest, body: StepRequest):
                 if isinstance(content, str):
                     query_parts.append(content)
 
-        # Use goal + recent steps as the RAG query, optimized by GPT
+        # Use goal + recent steps as RAG query
         raw_query = " ".join(query_parts[-3:]) if query_parts else ""
         query = raw_query
         print(f"[STEP] RAG query: {query[:150]}")
 
-        if query:
-            context = get_manual_context(body.manual_ids, query)
-            if context:
-                # Prepend manual context to the system message
-                context_block = (
-                    "\n\n--- Reference Manual Context ---\n"
-                    f"{context}\n"
-                    "--- End Reference Manual Context ---\n"
+        # Extract latest screenshot from messages for Graph-RAG localization
+        latest_screenshot = None
+        for msg in reversed(messages):
+            content = msg.get("content")
+            if isinstance(content, list):
+                for part in content:
+                    if part.get("type") == "image_url":
+                        latest_screenshot = part.get("image_url", {}).get("url")
+                        if latest_screenshot:
+                            break
+            if latest_screenshot:
+                break
+
+        # Use RAG Router (graph-aware) if screenshot available, else plain vector
+        context_block = ""
+        try:
+            if latest_screenshot:
+                router_result = get_rag_router().route(
+                    user_message=query,
+                    screenshot_b64=latest_screenshot,
+                    session_state={"mode": "guide"},
+                    manual_ids=body.manual_ids,
                 )
-                # Find system message and append context
-                for msg in messages:
-                    if msg.get("role") == "system":
-                        if isinstance(msg["content"], str):
-                            msg["content"] += context_block
-                        elif isinstance(msg["content"], list):
-                            msg["content"].append({"type": "text", "text": context_block})
-                        break
-                else:
-                    # No system message found, add one
-                    messages.insert(0, {"role": "system", "content": context_block})
+                context_block = router_result.get("context_block", "")
+                print(f"[STEP] RAG router mode={router_result.get('mode')}, context={len(context_block)}chars")
+            elif query:
+                ctx = get_manual_context(body.manual_ids, query)
+                if ctx:
+                    context_block = f"--- Reference Manual Context ---\n{ctx}\n--- End Reference Manual Context ---"
+        except Exception as e:
+            print(f"[STEP] RAG error, falling back to plain vector: {e}")
+            if query:
+                ctx = get_manual_context(body.manual_ids, query)
+                if ctx:
+                    context_block = f"--- Reference Manual Context ---\n{ctx}\n--- End Reference Manual Context ---"
+
+        if context_block:
+            block = f"\n\n--- GeoLens RAG Context ---\n{context_block}\n--- End Context ---\n"
+            for msg in messages:
+                if msg.get("role") == "system":
+                    if isinstance(msg["content"], str):
+                        msg["content"] += block
+                    elif isinstance(msg["content"], list):
+                        msg["content"].append({"type": "text", "text": block})
+                    break
+            else:
+                messages.insert(0, {"role": "system", "content": block})
 
     # Use Gemini (vision-capable) as primary, local LLM as fallback
     response = _gemini_stream_response(messages)

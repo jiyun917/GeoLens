@@ -1,0 +1,137 @@
+{
+  "workflow_id": "seismic_attribute",
+  "name": "Seismic Attribute Analysis (탄성파 속성 분석)",
+  "description": "OpendTect에서 탄성파 속성을 계산하고 시각화하는 워크플로우",
+  "nodes": [
+    {
+      "id": "seismic_attribute_01_data_load",
+      "workflow_id": "seismic_attribute",
+      "step_number": 1,
+      "title": "Survey 및 탄성파 데이터 로드",
+      "description": "Survey 선택 후 탄성파 볼륨 로드",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Survey Setup",
+        "expected_ui_elements": ["survey_tree"],
+        "screenshot_keywords": ["OpendTect", "Survey"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "workflow_id": "seismic_attribute",
+      "step_number": 2,
+      "title": "Attribute 계산 창 열기",
+      "description": "Processing > Create Seismic Attribute 메뉴로 속성 계산 창 열기",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Create Seismic Attribute",
+        "expected_ui_elements": ["processing_menu", "attribute_menu_item"],
+        "screenshot_keywords": ["Processing", "Attribute", "Create", "Seismic Attribute"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "seismic_attribute_03_select_type",
+      "workflow_id": "seismic_attribute",
+      "step_number": 3,
+      "title": "속성 유형 선택",
+      "description": "Similarity, Curvature, Frequency 등 계산할 속성 유형 선택",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Attribute Type Selection",
+        "expected_ui_elements": ["attribute_type_dropdown"],
+        "screenshot_keywords": ["Similarity", "Curvature", "Frequency", "Energy", "Instantaneous"]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {
+          "name": "Attribute Type",
+          "default": "Similarity",
+          "description": "계산할 속성 유형 (Similarity, Curvature, Frequency 등)"
+        }
+      ]
+    },
+    {
+      "id": "seismic_attribute_04_configure",
+      "workflow_id": "seismic_attribute",
+      "step_number": 4,
+      "title": "속성 파라미터 설정",
+      "description": "선택한 속성의 파라미터 (window size, step out 등) 설정",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Attribute Parameters",
+        "expected_ui_elements": ["parameter_fields", "window_size"],
+        "screenshot_keywords": ["Window", "Step out", "Parameter", "Time gate"]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {
+          "name": "Time Gate",
+          "default": "-20 to +20 ms",
+          "description": "속성 계산에 사용할 시간 구간"
+        },
+        {
+          "name": "Step Out",
+          "default": "1,1",
+          "description": "Inline/Crossline 방향 스텝"
+        }
+      ]
+    },
+    {
+      "id": "seismic_attribute_05_compute",
+      "workflow_id": "seismic_attribute",
+      "step_number": 5,
+      "title": "속성 계산 실행",
+      "description": "설정한 파라미터로 속성 계산을 실행하여 새 볼륨 생성",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Batch Processing / Progress",
+        "expected_ui_elements": ["go_button", "progress_bar"],
+        "screenshot_keywords": ["Go", "Start", "Running", "Processing"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "seismic_attribute_06_display",
+      "workflow_id": "seismic_attribute",
+      "step_number": 6,
+      "title": "속성 볼륨 표시",
+      "description": "계산된 속성 볼륨을 Scene에 추가하여 시각화",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "3D Scene",
+        "expected_ui_elements": ["scene_tree", "attribute_display"],
+        "screenshot_keywords": ["Display", "Scene", "Color Bar"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "seismic_attribute_07_qc_analyze",
+      "workflow_id": "seismic_attribute",
+      "step_number": 7,
+      "title": "결과 분석 및 해석",
+      "description": "속성 결과를 분석하여 지질학적 의미 해석",
+      "step_type": "verification",
+      "visual_signature": {
+        "expected_dialog": "Scene Display",
+        "expected_ui_elements": ["colorbar", "statistics"],
+        "screenshot_keywords": ["Analyze", "Interpret", "Statistics"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    }
+  ],
+  "edges": [
+    {"source": "seismic_attribute_01_data_load", "target": "seismic_attribute_02_open_attribute_tool", "edge_type": "sequential", "condition": null, "instruction": "데이터 로드 후 속성 계산 창을 여세요"},
+    {"source": "seismic_attribute_02_open_attribute_tool", "target": "seismic_attribute_03_select_type", "edge_type": "sequential", "condition": null, "instruction": "창이 열리면 계산할 속성 유형을 선택하세요"},
+    {"source": "seismic_attribute_03_select_type", "target": "seismic_attribute_04_configure", "edge_type": "sequential", "condition": null, "instruction": "속성 유형 선택 후 파라미터를 설정하세요"},
+    {"source": "seismic_attribute_04_configure", "target": "seismic_attribute_05_compute", "edge_type": "sequential", "condition": null, "instruction": "파라미터 설정 후 계산을 실행하세요"},
+    {"source": "seismic_attribute_05_compute", "target": "seismic_attribute_06_display", "edge_type": "sequential", "condition": null, "instruction": "계산이 완료되면 결과를 Scene에 표시하세요"},
+    {"source": "seismic_attribute_06_display", "target": "seismic_attribute_07_qc_analyze", "edge_type": "sequential", "condition": null, "instruction": "표시 후 결과를 분석하세요"}
+  ]
+}

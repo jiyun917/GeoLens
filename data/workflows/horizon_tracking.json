@@ -1,0 +1,208 @@
+{
+  "workflow_id": "horizon_tracking",
+  "name": "Horizon Tracking (층서면 추적)",
+  "description": "OpendTect에서 탄성파 반사면을 자동/수동으로 추적하여 층서면을 정의하는 워크플로우",
+  "nodes": [
+    {
+      "id": "horizon_tracking_01_data_load",
+      "workflow_id": "horizon_tracking",
+      "step_number": 1,
+      "title": "Survey 및 탄성파 데이터 로드",
+      "description": "OpendTect를 실행하고 Survey를 선택하여 탄성파 볼륨을 로드",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Survey Setup / Main Window",
+        "expected_ui_elements": ["survey_tree", "select_survey_button"],
+        "screenshot_keywords": ["OpendTect", "Survey", "Select Survey", "Survey Setup"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "horizon_tracking_02_display_inline",
+      "workflow_id": "horizon_tracking",
+      "step_number": 2,
+      "title": "Inline/Crossline 단면 표시",
+      "description": "3D Scene에 Inline 또는 Crossline 단면을 추가하여 표시",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "3D Scene Viewer",
+        "expected_ui_elements": ["scene_tree", "inline_display", "add_default_data_menu"],
+        "screenshot_keywords": ["Inline", "Crossline", "Scene", "Add Default Data"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "horizon_tracking_03_open_tracking",
+      "workflow_id": "horizon_tracking",
+      "step_number": 3,
+      "title": "Horizon Tracking 창 열기",
+      "description": "Tracking > Horizon 메뉴로 추적 창을 열거나, 새 Horizon 생성 시작",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Tracking Menu / New Horizon Dialog",
+        "expected_ui_elements": ["tracking_menu", "horizon_menu_item", "new_horizon_option"],
+        "screenshot_keywords": ["Tracking", "Horizon", "New", "Track"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "horizon_tracking_04_seed_pick",
+      "workflow_id": "horizon_tracking",
+      "step_number": 4,
+      "title": "Seed Point 설정",
+      "description": "Horizon을 추적할 시작점(seed)을 탄성파 단면에서 클릭하여 지정",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Horizon Tracking Window",
+        "expected_ui_elements": ["seed_pick_button", "crosshair_cursor", "tracking_panel"],
+        "screenshot_keywords": ["Seed", "Pick", "tracking window", "pick mode"]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {
+          "name": "Seed Mode",
+          "default": "Manual",
+          "description": "수동/반자동 seed 설정 모드"
+        }
+      ]
+    },
+    {
+      "id": "horizon_tracking_05_configure_params",
+      "workflow_id": "horizon_tracking",
+      "step_number": 5,
+      "title": "Tracking 파라미터 설정",
+      "description": "Correlation threshold, amplitude range 등 자동 추적 파라미터 설정",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Tracking Setup / Properties",
+        "expected_ui_elements": ["threshold_slider", "parameter_panel"],
+        "screenshot_keywords": ["Correlation", "Threshold", "Amplitude", "Tracking Setup"]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {
+          "name": "Correlation Threshold",
+          "default": 0.8,
+          "description": "Auto-tracking 시 사용되는 상관계수 임계값 (0.7-0.95 권장)"
+        },
+        {
+          "name": "Amplitude Range",
+          "default": "Auto",
+          "description": "추적할 진폭 범위"
+        }
+      ]
+    },
+    {
+      "id": "horizon_tracking_06_auto_track",
+      "workflow_id": "horizon_tracking",
+      "step_number": 6,
+      "title": "Auto-tracking 실행",
+      "description": "설정된 파라미터로 자동 추적 실행, 결과를 실시간 확인",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Horizon Tracking Window",
+        "expected_ui_elements": ["auto_track_button", "progress_bar", "tracked_horizon"],
+        "screenshot_keywords": ["Auto", "Track", "Start", "Running"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "horizon_tracking_07_qc_review",
+      "workflow_id": "horizon_tracking",
+      "step_number": 7,
+      "title": "QC 및 수동 보정",
+      "description": "추적 결과를 검토하고 잘못된 부분을 수동으로 수정",
+      "step_type": "verification",
+      "visual_signature": {
+        "expected_dialog": "Horizon Display / Edit Mode",
+        "expected_ui_elements": ["edit_tools", "horizon_display", "undo_redo"],
+        "screenshot_keywords": ["QC", "Edit", "Manual", "Erase", "Grow"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "horizon_tracking_08_save",
+      "workflow_id": "horizon_tracking",
+      "step_number": 8,
+      "title": "Horizon 저장",
+      "description": "추적 완료된 Horizon을 이름을 지정하여 저장",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Save Horizon Dialog",
+        "expected_ui_elements": ["save_button", "name_field"],
+        "screenshot_keywords": ["Save", "Name", "Horizon"]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {
+          "name": "Horizon Name",
+          "default": "H1",
+          "description": "저장할 Horizon 이름"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "horizon_tracking_01_data_load",
+      "target": "horizon_tracking_02_display_inline",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Survey 로드 후 Inline/Crossline 단면을 Scene에 추가하세요"
+    },
+    {
+      "source": "horizon_tracking_02_display_inline",
+      "target": "horizon_tracking_03_open_tracking",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "단면이 표시되면 Tracking 메뉴를 열어 Horizon 추적을 시작하세요"
+    },
+    {
+      "source": "horizon_tracking_03_open_tracking",
+      "target": "horizon_tracking_04_seed_pick",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Tracking 창이 열리면 추적할 반사면에 Seed Point를 클릭하세요"
+    },
+    {
+      "source": "horizon_tracking_04_seed_pick",
+      "target": "horizon_tracking_05_configure_params",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Seed가 설정되면 Correlation threshold 등 파라미터를 조정하세요"
+    },
+    {
+      "source": "horizon_tracking_05_configure_params",
+      "target": "horizon_tracking_06_auto_track",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "파라미터 설정 후 Auto-track 버튼을 눌러 자동 추적을 시작하세요"
+    },
+    {
+      "source": "horizon_tracking_06_auto_track",
+      "target": "horizon_tracking_07_qc_review",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "자동 추적이 완료되면 결과를 검토하고 QC를 수행하세요"
+    },
+    {
+      "source": "horizon_tracking_07_qc_review",
+      "target": "horizon_tracking_08_save",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "QC가 완료되면 Horizon을 저장하세요"
+    },
+    {
+      "source": "horizon_tracking_07_qc_review",
+      "target": "horizon_tracking_04_seed_pick",
+      "edge_type": "optional",
+      "condition": "needs_more_tracking",
+      "instruction": "추가 영역이 필요하면 Seed를 더 설정하여 다시 추적하세요"
+    }
+  ]
+}

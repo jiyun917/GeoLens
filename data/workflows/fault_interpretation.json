@@ -1,0 +1,154 @@
+{
+  "workflow_id": "fault_interpretation",
+  "name": "Fault Interpretation (단층 해석)",
+  "description": "OpendTect에서 탄성파 단면의 단층을 식별하고 해석하는 워크플로우",
+  "nodes": [
+    {
+      "id": "fault_interpretation_01_data_load",
+      "workflow_id": "fault_interpretation",
+      "step_number": 1,
+      "title": "Survey 및 탄성파 데이터 로드",
+      "description": "OpendTect를 실행하고 Survey를 선택하여 탄성파 볼륨을 로드",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Survey Setup / Main Window",
+        "expected_ui_elements": ["survey_tree", "select_survey_button"],
+        "screenshot_keywords": ["OpendTect", "Survey", "Select Survey"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "fault_interpretation_02_display",
+      "workflow_id": "fault_interpretation",
+      "step_number": 2,
+      "title": "Inline/Crossline 단면 표시",
+      "description": "3D Scene에 Inline 또는 Crossline 단면을 추가",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "3D Scene Viewer",
+        "expected_ui_elements": ["scene_tree", "inline_display"],
+        "screenshot_keywords": ["Inline", "Crossline", "Scene"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "fault_interpretation_03_apply_attribute",
+      "workflow_id": "fault_interpretation",
+      "step_number": 3,
+      "title": "단층 강조 속성 적용",
+      "description": "Similarity, Curvature 등 단층을 강조하는 속성을 단면에 적용",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Attribute Selection / Scene",
+        "expected_ui_elements": ["attribute_dropdown", "similarity_option"],
+        "screenshot_keywords": ["Similarity", "Curvature", "Attribute", "Edge Detection"]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {
+          "name": "Attribute Type",
+          "default": "Similarity",
+          "description": "Similarity, Curvature, Coherence 등 단층 강조 속성"
+        }
+      ]
+    },
+    {
+      "id": "fault_interpretation_04_open_fault_tool",
+      "workflow_id": "fault_interpretation",
+      "step_number": 4,
+      "title": "Fault 해석 도구 열기",
+      "description": "Fault > New 메뉴로 단층 해석 도구를 실행",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Fault Tool / New Fault Dialog",
+        "expected_ui_elements": ["fault_menu", "new_fault_button"],
+        "screenshot_keywords": ["Fault", "New Fault", "Fault Interpretation"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "fault_interpretation_05_pick_fault",
+      "workflow_id": "fault_interpretation",
+      "step_number": 5,
+      "title": "단층면 포인트 설정",
+      "description": "여러 Inline/Crossline에서 단층면을 따라 포인트를 클릭하여 해석",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Fault Picking Mode",
+        "expected_ui_elements": ["pick_mode_button", "fault_sticks"],
+        "screenshot_keywords": ["Pick", "Fault Stick", "Fault Plane"]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {
+          "name": "Sampling Interval",
+          "default": "Every 10 inlines",
+          "description": "단층 포인트 샘플링 간격"
+        }
+      ]
+    },
+    {
+      "id": "fault_interpretation_06_fault_plane",
+      "workflow_id": "fault_interpretation",
+      "step_number": 6,
+      "title": "단층면 생성 및 보간",
+      "description": "선택한 포인트들을 연결하여 3D 단층면을 생성 및 보간",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Fault Surface Generation",
+        "expected_ui_elements": ["generate_button", "interpolation_options"],
+        "screenshot_keywords": ["Generate", "Surface", "Interpolation", "Fault Plane"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "fault_interpretation_07_qc",
+      "workflow_id": "fault_interpretation",
+      "step_number": 7,
+      "title": "단층 QC 및 수정",
+      "description": "생성된 단층면의 품질을 검토하고 필요시 포인트 수정",
+      "step_type": "verification",
+      "visual_signature": {
+        "expected_dialog": "Fault Display / Edit Mode",
+        "expected_ui_elements": ["edit_tools", "fault_display"],
+        "screenshot_keywords": ["QC", "Edit", "Modify", "Fault"]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "fault_interpretation_08_save",
+      "workflow_id": "fault_interpretation",
+      "step_number": 8,
+      "title": "Fault 저장",
+      "description": "해석한 단층을 이름을 지정하여 저장",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Save Fault Dialog",
+        "expected_ui_elements": ["save_button", "name_field"],
+        "screenshot_keywords": ["Save", "Fault Name"]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {
+          "name": "Fault Name",
+          "default": "F1",
+          "description": "저장할 단층 이름"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {"source": "fault_interpretation_01_data_load", "target": "fault_interpretation_02_display", "edge_type": "sequential", "condition": null, "instruction": "데이터 로드 후 단면을 표시하세요"},
+    {"source": "fault_interpretation_02_display", "target": "fault_interpretation_03_apply_attribute", "edge_type": "sequential", "condition": null, "instruction": "단면 표시 후 단층 강조 속성을 적용하세요"},
+    {"source": "fault_interpretation_03_apply_attribute", "target": "fault_interpretation_04_open_fault_tool", "edge_type": "sequential", "condition": null, "instruction": "속성이 적용되면 Fault 도구를 여세요"},
+    {"source": "fault_interpretation_04_open_fault_tool", "target": "fault_interpretation_05_pick_fault", "edge_type": "sequential", "condition": null, "instruction": "Fault 도구가 열리면 단층면을 따라 포인트를 클릭하세요"},
+    {"source": "fault_interpretation_05_pick_fault", "target": "fault_interpretation_06_fault_plane", "edge_type": "sequential", "condition": null, "instruction": "충분한 포인트를 설정한 후 단층면을 생성하세요"},
+    {"source": "fault_interpretation_06_fault_plane", "target": "fault_interpretation_07_qc", "edge_type": "sequential", "condition": null, "instruction": "단층면이 생성되면 QC를 수행하세요"},
+    {"source": "fault_interpretation_07_qc", "target": "fault_interpretation_08_save", "edge_type": "sequential", "condition": null, "instruction": "QC 완료 후 Fault를 저장하세요"}
+  ]
+}
