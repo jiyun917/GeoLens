@@ -190,6 +190,7 @@ export function ReportProvider({ children }: { children: ReactNode }) {
     } catch { /* ignore */ }
 
     // Pre-fetch report context from Graph-RAG (backward traversal)
+    let graphContextBlock = "";
     if (graphSessionState && activeManualIds.length > 0) {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
@@ -204,7 +205,12 @@ export function ReportProvider({ children }: { children: ReactNode }) {
         });
         if (ragResp.ok) {
           const data = await ragResp.json();
-          console.log("[Graph-RAG Report]", { mode: data.mode, path_length: data?.raw_output?.workflow_path?.length || 0 });
+          graphContextBlock = data?.context_block || "";
+          console.log("[Graph-RAG Report]", {
+            mode: data.mode,
+            path_length: data?.raw_output?.workflow_path?.length || 0,
+            context_chars: graphContextBlock.length,
+          });
         }
       } catch (e) {
         console.warn("[Graph-RAG Report] failed:", e);
@@ -228,7 +234,8 @@ export function ReportProvider({ children }: { children: ReactNode }) {
         activeManualIds.length > 0 ? activeManualIds : undefined,
         reportLanguage,
         "custom",
-        customSections
+        customSections,
+        graphContextBlock || undefined
       );
 
       // Claude review: verify and enhance the Gemini-generated report

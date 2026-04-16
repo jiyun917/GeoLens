@@ -549,9 +549,10 @@ export async function generateReport(
   manualIds?: string[],
   language: ReportLanguage = "ko",
   template: ReportTemplate = "detailed",
-  customSections?: string[]
+  customSections?: string[],
+  graphContext?: string
 ) {
-  const systemPrompt = buildReportPrompt(
+  let systemPrompt = buildReportPrompt(
     topic,
     capturedImages.map((c) => ({
       description: c.description,
@@ -561,6 +562,11 @@ export async function generateReport(
     template,
     customSections
   );
+
+  // Inject Graph-RAG context (workflow path + per-step technique/parameter info)
+  if (graphContext && graphContext.trim()) {
+    systemPrompt += `\n\n--- Workflow Graph Context (User's Completed Steps + Manual References) ---\n${graphContext}\n--- End Workflow Graph Context ---\n`;
+  }
 
   const imageContent: Array<{
     type: string;
