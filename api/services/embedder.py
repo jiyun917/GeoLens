@@ -174,3 +174,43 @@ def embed_and_store(
             print(f"[GRAPH] Graph building failed for {manual_id}: {e}")
 
     threading.Thread(target=_build_graph, daemon=True).start()
+
+def _build_auto_workflows(manual_id: str, classified_chunks: List[Tuple[str, dict]]) -> int:
+    """Build and save auto workflow JSONs. Returns the number of workflows created."""
+    try:
+        from .auto_graph_builder import AutoGraphBuilder, save_workflows
+        workflows = AutoGraphBuilder().build_workflow_from_chunks(manual_id, classified_chunks)
+        if not workflows:
+            print(f"[AUTO_GRAPH] no qualifying sections for manual={manual_id}")
+            return 0
+        paths = save_workflows(workflows)
+        print(f"[AUTO_GRAPH] saved {len(paths)} workflow JSON(s) for manual={manual_id}")
+        try:
+            from .workflow_graph import reload_workflow_graph
+            reload_workflow_graph()
+        except Exception as e:
+            print(f"[AUTO_GRAPH] reload failed: {e}")
+        return len(workflows)
+    except Exception as e:
+        print(f"[AUTO_GRAPH] build failed for manual={manual_id}: {e}")
+        return 0
+
+
+def _index_manual_images(manual_id: str, pdf_path: str) -> int:
+    """Extract manual images from the PDF and index them for visual matching."""
+    try:
+        from .image_extractor import ManualImageExtractor
+        from .visual_matcher import get_visual_matcher
+        extractor = ManualImageExtractor()
+        images = extractor.extract_images(pdf_path)
+        if not images:
+            return 0
+        extractor.save_images(manual_id, images)
+        matcher = get_visual_matcher()
+        if not matcher.available():
+            print(f"[VISUAL_MATCH] skipped CLIP indexing for manual={manual_id} (CLIP unavailable)")
+            return 0
+        return matcher.index_manual_images(manual_id, images)
+    except Exception as e:
+        print(f"[VISUAL_MATCH] image indexing failed for manual={manual_id}: {e}")
+        return 0
