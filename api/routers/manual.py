@@ -24,7 +24,7 @@ def _ensure_upload_dir():
 def _process_pdf(manual_id: str, file_path: str):
     try:
         content_pieces = parse_pdf(file_path)
-        embed_and_store(manual_id, content_pieces)
+        embed_and_store(manual_id, content_pieces, pdf_path=file_path)
     except Exception as e:
         manual_store.update_manual(manual_id, status="error", error_message=str(e))
 
@@ -124,6 +124,25 @@ async def delete_manual(manual_id: str):
     if hasattr(vectorstore, "delete_guide_collection"):
         vectorstore.delete_guide_collection(manual_id)
     graphstore.delete_graph(manual_id)
+
+    # Delete auto-generated workflow JSONs + reload graph
+    try:
+        from ..services.auto_graph_builder import delete_auto_workflows
+        from ..services.workflow_graph import reload_workflow_graph
+        removed = delete_auto_workflows(manual_id)
+        if removed:
+            reload_workflow_graph()
+    except Exception as e:
+        print(f"[MANUAL] auto workflow cleanup failed: {e}")
+
+    # Delete extracted manual images + clear CLIP index
+    try:
+        from ..services.image_extractor import delete_manual_images
+        from ..services.visual_matcher import get_visual_matcher
+        delete_manual_images(manual_id)
+        get_visual_matcher().clear_manual(manual_id)
+    except Exception as e:
+        print(f"[MANUAL] image cleanup failed: {e}")
 
     # Delete uploaded file if it's a PDF
     if manual.type == "pdf" and manual.source and os.path.exists(manual.source):

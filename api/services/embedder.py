@@ -1,5 +1,5 @@
 import uuid
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 import tiktoken
 from sentence_transformers import SentenceTransformer
@@ -7,6 +7,7 @@ from sentence_transformers import SentenceTransformer
 from . import vectorstore
 from .manual_store import update_manual
 from .graph_builder import build_graph_from_chunks
+from .chunk_classifier import ChunkClassifier
 
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 100
@@ -89,7 +90,11 @@ def get_embeddings(texts: List[str]) -> List[List[float]]:
     return embeddings.tolist()
 
 
-def embed_and_store(manual_id: str, content_pieces: List[Tuple[str, dict]]):
+def embed_and_store(
+    manual_id: str,
+    content_pieces: List[Tuple[str, dict]],
+    pdf_path: Optional[str] = None,
+):
     """
     Takes a list of (text, metadata) tuples, chunks them within section boundaries,
     applies contextual retrieval (prepends section/page/source info),
@@ -100,8 +105,23 @@ def embed_and_store(manual_id: str, content_pieces: List[Tuple[str, dict]]):
     chunk_pairs = split_into_chunks(content_pieces)
 
     if not chunk_pairs:
-        update_manual(manual_id, status="ready", chunk_count=0)
+        update_manual(manual_id, status="ready", chunk_count=0, workflow_count=0)
         return
+
+    # Classify each chunk's procedural role (procedural_step / parameter_desc /
+    # concept_explanation / transition_cue / ui_description / general).
+    try:
+        chunk_pairs = ChunkClassifier().classify_batch(chunk_pairs)
+    except Exception as e:
+        print(f"[EMBED] chunk classification failed ({e}); continuing without roles")
+
+    # Generate ChromaDB IDs up front and bake them into metadata so the auto
+    # graph builder can reference chunks by their stored id.
+    ids = [uuid.uuid4().hex for _ in chunk_pairs]
+    chunk_pairs = [
+        (text, {**meta, "chunk_id": cid})
+        for (text, meta), cid in zip(chunk_pairs, ids)
+    ]
 
     # Apply contextual retrieval: prepend metadata context to each chunk
     contextualized_chunks = []
@@ -122,8 +142,6 @@ def embed_and_store(manual_id: str, content_pieces: List[Tuple[str, dict]]):
         embeddings = get_embeddings(batch)
         all_embeddings.extend(embeddings)
 
-    ids = [uuid.uuid4().hex for _ in contextualized_chunks]
-
     vectorstore.add_chunks(
         manual_id=manual_id,
         ids=ids,
@@ -132,8 +150,19 @@ def embed_and_store(manual_id: str, content_pieces: List[Tuple[str, dict]]):
         embeddings=all_embeddings,
     )
 
-    update_manual(manual_id, status="ready", chunk_count=len(contextualized_chunks))
     print(f"[EMBED] Manual {manual_id} ready: {len(contextualized_chunks)} contextualized chunks")
+
+    # ─── AutoProcRAG post-processing ──────────────────────
+    workflow_count = _build_auto_workflows(manual_id, chunk_pairs)
+    if pdf_path:
+        _index_manual_images(manual_id, pdf_path)
+
+    update_manual(
+        manual_id,
+        status="ready",
+        chunk_count=len(contextualized_chunks),
+        workflow_count=workflow_count,
+    )
 
     # Build knowledge graph from raw chunks (without context prefix)
     import threading

@@ -13,6 +13,7 @@ class Manual(BaseModel):
     mode: str = "guide"  # "guide" or "report"
     error_message: Optional[str] = None
     chunk_count: int = 0
+    workflow_count: int = 0
     created_at: str
 
     @staticmethod
@@ -25,6 +26,7 @@ class Manual(BaseModel):
             mode=mode,
             status="processing",
             chunk_count=0,
+            workflow_count=0,
             created_at=datetime.utcnow().isoformat(),
         )
 
