@@ -134,6 +134,18 @@ def detect_content_type(chunks: List[Tuple[str, dict]], sample_size: int = 10) -
 
 _gemini_client = None
 
+TRIPLET_MAX_RETRIES = 4
+TRIPLET_BASE_BACKOFF = 2.0
+
+
+def _is_transient_error(err: Exception) -> bool:
+    msg = str(err)
+    for marker in ("503", "429", "500", "504", "UNAVAILABLE", "RESOURCE_EXHAUSTED",
+                   "DEADLINE_EXCEEDED", "timeout", "Timeout", "temporarily"):
+        if marker in msg:
+            return True
+    return False
+
 
 def _get_gemini_client():
     global _gemini_client
@@ -142,23 +154,48 @@ def _get_gemini_client():
         if not gemini_api_key:
             return None
         from google import genai
-        _gemini_client = genai.Client(api_key=gemini_api_key)
+        from google.genai import types as _t
+        _gemini_client = genai.Client(
+            api_key=gemini_api_key,
+            http_options=_t.HttpOptions(timeout=60_000),
+        )
     return _gemini_client
 
 
 def _extract_triplets(text: str, prompt_template: str) -> List[Tuple[str, str, str]]:
-    """Extract triplets using the given prompt template."""
+    """Extract triplets using the given prompt template, with retry on transient errors."""
     client = _get_gemini_client()
     if not client:
         return []
 
+    import time as _time, random as _random
+    prompt = prompt_template.replace("{text}", text[:3000])
+    response_text = ""
+    last_err: Exception = RuntimeError("never attempted")
+    for attempt in range(TRIPLET_MAX_RETRIES + 1):
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.5-pro",
+                contents=prompt,
+            )
+            response_text = (response.text or "").strip()
+            if attempt > 0:
+                print(f"[GRAPH] Triplet extraction recovered on retry {attempt}")
+            break
+        except Exception as e:
+            last_err = e
+            if attempt >= TRIPLET_MAX_RETRIES or not _is_transient_error(e):
+                break
+            delay = TRIPLET_BASE_BACKOFF * (2 ** attempt) + _random.uniform(0, 1.0)
+            print(f"[GRAPH] Triplet transient error ({e.__class__.__name__}); "
+                  f"retry {attempt + 1}/{TRIPLET_MAX_RETRIES} after {delay:.1f}s")
+            _time.sleep(delay)
+
+    if not response_text:
+        print(f"[GRAPH] Triplet extraction failed after {TRIPLET_MAX_RETRIES + 1} attempts: {last_err}")
+        return []
+
     try:
-        prompt = prompt_template.replace("{text}", text[:3000])
-        response = client.models.generate_content(
-            model="gemini-2.5-pro",
-            contents=prompt,
-        )
-        response_text = response.text.strip()
         json_match = re.search(r'\[.*\]', response_text, re.DOTALL)
         if json_match:
             raw = json.loads(json_match.group())
@@ -168,7 +205,7 @@ def _extract_triplets(text: str, prompt_template: str) -> List[Tuple[str, str, s
                     triplets.append((str(item[0]), str(item[1]), str(item[2])))
             return triplets
     except Exception as e:
-        print(f"[GRAPH] Triplet extraction failed: {e}")
+        print(f"[GRAPH] Triplet parse failed: {e}")
 
     return []
 

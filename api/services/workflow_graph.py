@@ -108,6 +108,31 @@ class WorkflowGraph:
     # Visual State Matching (Current Node Detection)
     # ═══════════════════════════════════════════════════════════
 
+    def get_top_k_nodes(
+        self, visual_state: Dict, k: int = 3, hint_workflow_id: Optional[str] = None
+    ) -> List[Tuple[Dict, float]]:
+        """Return top-k (node, score) matches by visual_signature keyword overlap."""
+        vs_text = " ".join(
+            [
+                str(visual_state.get("current_dialog", "")),
+                str(visual_state.get("active_menu", "")),
+                " ".join(visual_state.get("visible_elements", []) or []),
+                str(visual_state.get("data_state", "")),
+                str(visual_state.get("current_action", "")),
+            ]
+        ).lower()
+
+        scored: List[Tuple[Dict, float]] = []
+        for node_id in self.graph.nodes:
+            node = self.graph.nodes[node_id]
+            if hint_workflow_id and node.get("workflow_id") != hint_workflow_id:
+                continue
+            score = self._score_node_match(node, vs_text)
+            if score > 0:
+                scored.append((dict(node), score))
+        scored.sort(key=lambda p: p[1], reverse=True)
+        return scored[:k]
+
     def get_current_node(
         self, visual_state: Dict, hint_workflow_id: Optional[str] = None
     ) -> Tuple[Optional[Dict], float]:

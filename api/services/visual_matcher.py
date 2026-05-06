@@ -142,7 +142,11 @@ class VisualMatcher:
     def _embed_screenshot(self, screenshot_b64: str):
         from PIL import Image
         try:
-            raw = base64.b64decode(screenshot_b64)
+            # Strip data URL prefix if present ("data:image/jpeg;base64,....")
+            b64_payload = screenshot_b64
+            if b64_payload.startswith("data:"):
+                _, _, b64_payload = b64_payload.partition(",")
+            raw = base64.b64decode(b64_payload)
             img = Image.open(io.BytesIO(raw)).convert("RGB")
         except Exception as e:
             print(f"[VISUAL_MATCH] screenshot decode failed: {e}")
@@ -153,6 +157,41 @@ class VisualMatcher:
             feats = feats / feats.norm(dim=-1, keepdim=True)
         return feats[0].cpu()
 
+    def _ensure_indexed(self, manual_id: str) -> int:
+        """If manual_id isn't in the in-memory index (e.g. after server restart),
+        try to re-index from data/manual_images/{manual_id}/ on disk."""
+        if manual_id in self._index:
+            return len(self._index[manual_id])
+        import glob, re as _re
+        img_dir = os.path.join(
+            os.environ.get(
+                "MANUAL_IMAGE_DIR",
+                os.path.join(
+                    os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+                    "data", "manual_images",
+                ),
+            ),
+            manual_id,
+        )
+        if not os.path.isdir(img_dir):
+            return 0
+        entries = []
+        for path in sorted(glob.glob(os.path.join(img_dir, "*"))):
+            fname = os.path.basename(path)
+            m = _re.match(r"p(\d+)_i(\d+)\.", fname)
+            if not m:
+                continue
+            entries.append({
+                "path": path,
+                "page_number": int(m.group(1)),
+                "section": "",
+                "nearby_text": "",
+            })
+        if not entries:
+            return 0
+        print(f"[VISUAL_MATCH] rehydrating {len(entries)} images for manual={manual_id} from disk")
+        return self.index_manual_images(manual_id, entries)
+
     def match_screenshot(
         self,
         screenshot_b64: str,
@@ -162,6 +201,7 @@ class VisualMatcher:
         """Return the top_k most similar manual images for the given screenshot."""
         if not self._available:
             return []
+        self._ensure_indexed(manual_id)
         indexed = self._index.get(manual_id, [])
         if not indexed:
             return []
@@ -190,6 +230,55 @@ class VisualMatcher:
     # ─────────────────────────────────────────────────────
     # Node-level matching
     # ─────────────────────────────────────────────────────
+
+    def match_to_workflow_nodes_top_k(
+        self,
+        screenshot_b64: str,
+        manual_id: str,
+        workflow_graph,
+        k: int = 3,
+    ) -> List[Tuple[Dict, float]]:
+        """Return top-k (node, confidence) tuples by combining top CLIP image
+        matches with their page-based node lookup. Useful for LLM reranking."""
+        if not self._available:
+            return []
+        img_matches = self.match_screenshot(screenshot_b64, manual_id, top_k=k * 2)
+        if not img_matches:
+            return []
+
+        candidates = []
+        for node in workflow_graph.get_all_nodes():
+            wf_id = node.get("workflow_id", "")
+            if manual_id and manual_id not in wf_id:
+                continue
+            candidates.append(node)
+        if not candidates:
+            candidates = workflow_graph.get_all_nodes()
+        if not candidates:
+            return []
+
+        seen_ids: set = set()
+        result: List[Tuple[Dict, float]] = []
+        for img in img_matches:
+            target_page = img.get("page_number")
+            target_section = (img.get("section") or "").strip().lower()
+
+            def score(node: Dict):
+                page_diff = abs(int(node.get("page") or 0) - int(target_page or 0))
+                section_match = 0
+                wf_name = (node.get("workflow_id") or "").lower()
+                if target_section and target_section.replace(" ", "_") in wf_name:
+                    section_match = 1
+                return (-section_match, page_diff)
+
+            best = min(candidates, key=score)
+            if best["id"] in seen_ids:
+                continue
+            seen_ids.add(best["id"])
+            result.append((best, float(img["similarity"])))
+            if len(result) >= k:
+                break
+        return result
 
     def match_to_workflow_node(
         self,

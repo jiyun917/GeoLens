@@ -28,6 +28,20 @@ ROLES = (
 BATCH_SIZE = 5
 MAX_CHUNK_CHARS = 2000  # trim very long chunks before sending to Gemini
 
+CLASSIFIER_MODEL = "gemini-2.5-flash"
+CLASSIFIER_MAX_RETRIES = 4
+CLASSIFIER_BASE_BACKOFF = 2.0  # seconds; doubles each retry with jitter
+
+
+def _is_transient_error(err: Exception) -> bool:
+    """Retryable: 503/429/500/504, UNAVAILABLE, timeouts."""
+    msg = str(err)
+    for marker in ("503", "429", "500", "504", "UNAVAILABLE", "RESOURCE_EXHAUSTED",
+                   "DEADLINE_EXCEEDED", "timeout", "Timeout", "temporarily"):
+        if marker in msg:
+            return True
+    return False
+
 _client = None
 
 
@@ -40,7 +54,12 @@ def _get_client():
         return None
     try:
         from google import genai
-        _client = genai.Client(api_key=api_key)
+        from google.genai import types as _t
+        # Per-request HTTP timeout so a hung Pro call doesn't block forever.
+        _client = genai.Client(
+            api_key=api_key,
+            http_options=_t.HttpOptions(timeout=60_000),  # 60s per call
+        )
         return _client
     except Exception as e:
         print(f"[CLASSIFIER] Gemini client init failed: {e}")
@@ -101,19 +120,40 @@ def _call_gemini_batch(chunk_texts: List[str]) -> List[dict]:
     chunks_block = "\n\n".join(blocks)
     prompt = BATCH_PROMPT.replace("{chunks_block}", chunks_block)
 
-    try:
-        from google.genai import types
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                temperature=0,
-            ),
-        )
-        raw_text = (response.text or "").strip()
-    except Exception as e:
-        print(f"[CLASSIFIER] Gemini call failed: {e}")
+    from google.genai import types
+    import time as _time, random as _random
+
+    cfg = types.GenerateContentConfig(
+        response_mime_type="application/json",
+        temperature=0,
+    )
+
+    raw_text = ""
+    last_err: Exception = RuntimeError("never attempted")
+    for attempt in range(CLASSIFIER_MAX_RETRIES + 1):
+        try:
+            response = client.models.generate_content(
+                model=CLASSIFIER_MODEL,
+                contents=prompt,
+                config=cfg,
+            )
+            raw_text = (response.text or "").strip()
+            if attempt > 0:
+                print(f"[CLASSIFIER] batch recovered on retry {attempt}")
+            break
+        except Exception as e:
+            last_err = e
+            if attempt >= CLASSIFIER_MAX_RETRIES or not _is_transient_error(e):
+                break
+            delay = CLASSIFIER_BASE_BACKOFF * (2 ** attempt) + _random.uniform(0, 1.0)
+            print(f"[CLASSIFIER] batch transient error ({e.__class__.__name__}); "
+                  f"retry {attempt + 1}/{CLASSIFIER_MAX_RETRIES} after {delay:.1f}s")
+            _time.sleep(delay)
+    else:
+        raw_text = ""
+
+    if not raw_text:
+        print(f"[CLASSIFIER] batch failed after {CLASSIFIER_MAX_RETRIES + 1} attempts: {last_err}")
         return [_default_result() for _ in chunk_texts]
 
     # Parse JSON array (tolerate surrounding text)
@@ -210,20 +250,26 @@ class ChunkClassifier:
         if not chunks:
             return []
 
+        total_batches = (len(chunks) + BATCH_SIZE - 1) // BATCH_SIZE
+        print(f"[CLASSIFIER] starting {total_batches} batches ({len(chunks)} chunks, batch_size={BATCH_SIZE}, model={CLASSIFIER_MODEL})")
+
         out: List[Tuple[str, dict]] = []
         for i in range(0, len(chunks), BATCH_SIZE):
+            batch_idx = i // BATCH_SIZE
             batch = chunks[i:i + BATCH_SIZE]
             texts = [c[0] for c in batch]
             try:
                 results = _call_gemini_batch(texts)
             except Exception as e:
-                print(f"[CLASSIFIER] batch {i // BATCH_SIZE} failed: {e}")
+                print(f"[CLASSIFIER] batch {batch_idx} failed: {e}")
                 results = [_default_result() for _ in texts]
             if len(results) != len(batch):
-                # pad/truncate for safety
                 results = (results + [_default_result()] * len(batch))[:len(batch)]
             for (text, metadata), result in zip(batch, results):
                 out.append((text, _apply_to_metadata(metadata, result)))
+            # Progress log every 10 batches
+            if (batch_idx + 1) % 10 == 0 or batch_idx + 1 == total_batches:
+                print(f"[CLASSIFIER] progress: {batch_idx + 1}/{total_batches} batches done")
 
         try:
             counts = {}

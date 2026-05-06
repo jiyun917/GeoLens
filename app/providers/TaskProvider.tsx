@@ -161,7 +161,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (tasks.length === 0) return;
     const lastTask = tasks[tasks.length - 1];
-    const doneText = lastTask.text.toLowerCase().replace(".", "").trim();
+    const doneText = lastTask.text.toLowerCase().replace(/[.\s]/g, "");
     const isDone = doneText === "done" || doneText === "완료";
     if (!isDone || !goal) return;
 
@@ -322,9 +322,20 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
       const isLink = text.startsWith("https://");
       const textLower = text.toLowerCase();
+      const textBare = textLower.replace(/[.\s]/g, "");
+      // Goal-complete sentinel — accept either:
+      //   (a) entire response is exactly "Done"/"완료" (with optional period/whitespace)
+      //   (b) the LAST line or LAST word is "Done"/"완료" (Claude sometimes
+      //       prepends a celebratory sentence despite the prompt)
+      const lastLine = text.trim().split(/\r?\n/).pop()?.trim() || "";
+      const lastLineBare = lastLine.toLowerCase().replace(/[.\s]/g, "");
+      const endsWithDone = /(?:^|\s)(done|완료)\.?\s*$/i.test(text.trim());
+      const isGoalDone =
+        textBare === "done" || textBare === "완료" ||
+        lastLineBare === "done" || lastLineBare === "완료" ||
+        endsWithDone;
       const isStandardizedInstruction =
-        textLower === "done" ||
-        textLower === "done." ||
+        isGoalDone ||
         textLower === "wait" ||
         textLower === "wait." ||
         textLower.startsWith("scroll down") ||
@@ -356,15 +367,22 @@ export function TaskProvider({ children }: { children: ReactNode }) {
           .catch((e) => console.error("Coordinate generation failed:", e));
       }
 
-      // Start change detection IMMEDIATELY (don't wait for coordinates)
+      // Start change detection IMMEDIATELY (don't wait for coordinates).
+      // Skip if goal already complete — no further screenshots needed.
       if (
         !changeDetectionStartedRef.current &&
         text &&
-        textLower !== "done" &&
-        textLower !== "done."
+        !isGoalDone
       ) {
         changeDetectionStartedRef.current = true;
         startChangeDetection(handleScreenChange);
+      }
+
+      // Goal complete — STOP the polling loop so screen changes don't
+      // re-trigger /step and produce more guidance after the goal is reached.
+      if (isGoalDone && changeDetectionStartedRef.current) {
+        stopChangeDetection();
+        changeDetectionStartedRef.current = false;
       }
 
       // Release the triggering lock so "Done" button and checks can work
@@ -372,7 +390,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
 
       // Auto-generate summary report when task is complete
       if (
-        (textLower === "done" || textLower === "done.") &&
+        isGoalDone &&
         !summaryGeneratedRef.current
       ) {
         summaryGeneratedRef.current = true;
@@ -381,7 +399,10 @@ export function TaskProvider({ children }: { children: ReactNode }) {
           goal,
           imageDataUrl,
           settings,
-          tasksRef.current.map((item) => item.text).filter((t) => t.toLowerCase() !== "done" && t.toLowerCase() !== "done."),
+          tasksRef.current.map((item) => item.text).filter((t) => {
+            const b = t.toLowerCase().replace(/[.\s]/g, "");
+            return b !== "done" && b !== "완료";
+          }),
           (streamed) => setSummaryReport(streamed),
           activeManualIds.length > 0 ? activeManualIds : undefined
         )

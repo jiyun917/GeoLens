@@ -246,7 +246,7 @@ def _gemini_stream_response(messages):
     )
 
     stream = client.models.generate_content_stream(
-        model="gemini-2.5-pro",
+        model="gemini-2.5-flash",
         contents=contents,
         config=generate_content_config,
     )
@@ -319,6 +319,7 @@ async def handle_step_chat(request: FastAPIRequest, body: StepRequest):
 
         # Use RAG Router (graph-aware) if screenshot available, else plain vector
         context_block = ""
+        router_result: Optional[dict] = None
         # Merge frontend-provided session state (do NOT override explicit mode)
         session_state = dict(body.session_state or {})
         # Guide endpoint defaults to "guide" mode only if caller did not specify
@@ -346,6 +347,48 @@ async def handle_step_chat(request: FastAPIRequest, body: StepRequest):
                 if ctx:
                     context_block = f"--- Reference Manual Context ---\n{ctx}\n--- End Reference Manual Context ---"
 
+        # Text-based post-completion fallback: if the current dialog name
+        # appears in a recent assistant message, the user is back on a
+        # screen they were already instructed about → inject dismiss hint.
+        # This works even when the workflow node localization returns None.
+        try:
+            current_dialog = ""
+            if latest_screenshot and isinstance(router_result, dict):
+                vs = (router_result.get("raw_output") or {}).get("visual_state") or {}
+                current_dialog = (vs.get("current_dialog") or "").strip()
+        except Exception:
+            current_dialog = ""
+
+        if current_dialog and len(current_dialog) >= 4:
+            # Check the last 6 assistant messages for the dialog name
+            recent_assistant_text = []
+            count = 0
+            for m in reversed(messages):
+                if m.get("role") == "assistant":
+                    content = m.get("content")
+                    if isinstance(content, str):
+                        recent_assistant_text.append(content)
+                    elif isinstance(content, list):
+                        recent_assistant_text.extend(
+                            p.get("text", "") for p in content if p.get("type") == "text"
+                        )
+                    count += 1
+                    if count >= 6:
+                        break
+            joined = "\n".join(recent_assistant_text).lower()
+            dialog_lc = current_dialog.lower()
+            if dialog_lc in joined:
+                hint = (
+                    "\n\n--- POST-COMPLETION DETECTED ---\n"
+                    f"The current dialog \"{current_dialog}\" was already the subject of a previous instruction "
+                    "in this session. The action you previously gave on this dialog has finished — the dialog "
+                    "is just lingering. DO NOT repeat any instruction targeting this dialog. "
+                    "Instead, instruct the user to DISMISS it (Close / Finish / Done / OK / Cancel / X).\n"
+                    "--- End ---"
+                )
+                context_block = (context_block or "") + hint
+                print(f"[STEP] post-completion text-fallback fired for dialog='{current_dialog}'")
+
         if context_block:
             block = f"\n\n--- GeoLens RAG Context ---\n{context_block}\n--- End Context ---\n"
             for msg in messages:
@@ -358,7 +401,12 @@ async def handle_step_chat(request: FastAPIRequest, body: StepRequest):
             else:
                 messages.insert(0, {"role": "system", "content": block})
 
-    # Use Gemini (vision-capable) as primary, local LLM as fallback
+    # Claude Sonnet 4 for best visual grounding (fewer "phantom button"
+    # hallucinations than Gemini Flash). Fall back to Gemini Flash, then
+    # local LLM if Anthropic key missing or service down.
+    response = _claude_stream_response(messages, model="claude-sonnet-4-6")
+    if response:
+        return response
     response = _gemini_stream_response(messages)
     if response:
         return response
@@ -637,7 +685,11 @@ async def handle_coordinate_chat(request: FastAPIRequest, body: MessagesRequest)
     # Coordinates: synchronous call for simple "x,y" output, wrapped as SSE
     gemini_api_key = os.environ.get("GEMINI_API_KEY")
     if gemini_api_key:
-        client = genai.Client(api_key=gemini_api_key)
+        import time as _t, random as _r
+        client = genai.Client(
+            api_key=gemini_api_key,
+            http_options=types.HttpOptions(timeout=20_000),
+        )
 
         system_instruction_parts = []
         for msg in body.messages:
@@ -658,13 +710,33 @@ async def handle_coordinate_chat(request: FastAPIRequest, body: MessagesRequest)
             system_instruction=system_instruction,
         )
 
-        response = client.models.generate_content(
-            model="gemini-2.5-pro",
-            contents=contents,
-            config=config,
-        )
-
-        text = response.text.strip() if response.text else "None"
+        # Retry on transient errors so a single 503 burst doesn't 500 the endpoint.
+        text = "None"
+        MAX_RETRY = 3
+        for attempt in range(MAX_RETRY + 1):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-2.5-pro",
+                    contents=contents,
+                    config=config,
+                )
+                text = response.text.strip() if response.text else "None"
+                if attempt > 0:
+                    print(f"[coordinates] recovered on retry {attempt}")
+                break
+            except Exception as e:
+                msg = str(e)
+                transient = any(m in msg for m in (
+                    "503", "429", "500", "504", "UNAVAILABLE",
+                    "RESOURCE_EXHAUSTED", "DEADLINE_EXCEEDED", "timed out", "Timeout"
+                ))
+                if not transient or attempt >= MAX_RETRY:
+                    print(f"[coordinates] failed: {e}")
+                    text = "None"
+                    break
+                delay = 1.0 * (2 ** attempt) + _r.uniform(0, 0.5)
+                print(f"[coordinates] transient; retry {attempt + 1}/{MAX_RETRY} after {delay:.1f}s")
+                _t.sleep(delay)
         print(f"[coordinates] Result: {text}")
 
         import uuid, json as json_mod

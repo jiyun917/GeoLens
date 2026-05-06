@@ -154,7 +154,7 @@ export function MultimodalInput({
           value={input || ""}
           onChange={handleInput}
           className={cn(
-            "min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-3xl !text-base bg-white shadow-sm border border-gray-200 pl-11 pr-14 focus:outline-none focus:ring-0 focus:border-gray-300 focus-visible:ring-0 focus-visible:ring-offset-0",
+            "min-h-[24px] max-h-[calc(75dvh)] overflow-y-auto resize-none whitespace-pre-wrap break-words rounded-3xl !text-base bg-white shadow-sm border border-gray-200 pl-11 pr-14 focus:outline-none focus:ring-0 focus:border-gray-300 focus-visible:ring-0 focus-visible:ring-offset-0",
             size === "sm" ? "py-3" : "py-4",
             className
           )}

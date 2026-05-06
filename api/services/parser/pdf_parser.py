@@ -10,10 +10,26 @@ import fitz  # PyMuPDF
 MIN_TEXT_LENGTH = 50
 
 
+OCR_MODEL = "gemini-2.5-flash"
+OCR_MAX_RETRIES = 4
+OCR_BASE_BACKOFF = 2.0  # seconds; doubles each retry with jitter
+
+
+def _is_transient_error(err: Exception) -> bool:
+    """Classify errors worth retrying: 503/429/500/504 + network timeouts."""
+    msg = str(err)
+    for marker in ("503", "429", "500", "504", "UNAVAILABLE", "RESOURCE_EXHAUSTED",
+                   "DEADLINE_EXCEEDED", "timeout", "Timeout", "temporarily"):
+        if marker in msg:
+            return True
+    return False
+
+
 def _ocr_page_gemini(image_bytes: bytes, page_num: int, api_key: str) -> str:
-    """Extract text from a PDF page image using Gemini Vision."""
+    """Extract text from a PDF page image using Gemini Vision, with retry on transient errors."""
     from google import genai
     from google.genai import types
+    import random
 
     client = genai.Client(api_key=api_key)
 
@@ -38,16 +54,29 @@ def _ocr_page_gemini(image_bytes: bytes, page_num: int, api_key: str) -> str:
 
     config = types.GenerateContentConfig(temperature=0)
 
-    try:
-        result = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=contents,
-            config=config,
-        )
-        return result.text or ""
-    except Exception as e:
-        print(f"[OCR] Page {page_num + 1} failed: {e}")
-        return ""
+    last_err: Exception = RuntimeError("never attempted")
+    for attempt in range(OCR_MAX_RETRIES + 1):
+        try:
+            result = client.models.generate_content(
+                model=OCR_MODEL,
+                contents=contents,
+                config=config,
+            )
+            if attempt > 0:
+                print(f"[OCR] Page {page_num + 1} recovered on retry {attempt}")
+            return result.text or ""
+        except Exception as e:
+            last_err = e
+            if attempt >= OCR_MAX_RETRIES or not _is_transient_error(e):
+                break
+            # exponential backoff with jitter
+            delay = OCR_BASE_BACKOFF * (2 ** attempt) + random.uniform(0, 1.0)
+            print(f"[OCR] Page {page_num + 1} transient error ({e.__class__.__name__}); "
+                  f"retry {attempt + 1}/{OCR_MAX_RETRIES} after {delay:.1f}s")
+            time.sleep(delay)
+
+    print(f"[OCR] Page {page_num + 1} failed after {OCR_MAX_RETRIES + 1} attempts: {last_err}")
+    return ""
 
 
 def _render_page_to_png(page) -> bytes:

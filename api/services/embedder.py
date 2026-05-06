@@ -99,7 +99,13 @@ def embed_and_store(
     Takes a list of (text, metadata) tuples, chunks them within section boundaries,
     applies contextual retrieval (prepends section/page/source info),
     embeds, and stores in ChromaDB.
-    Updates the manual's chunk_count and status when done.
+
+    Also triggers AutoProcRAG post-processing:
+      - chunk role classification (procedural / parameter / concept / …)
+      - automatic Workflow Graph construction from classified chunks
+      - (if pdf_path) manual image extraction + CLIP indexing for visual matching
+
+    Updates the manual's chunk_count, workflow_count, and status when done.
     """
     # Split into chunks respecting section boundaries
     chunk_pairs = split_into_chunks(content_pieces)
@@ -110,6 +116,7 @@ def embed_and_store(
 
     # Classify each chunk's procedural role (procedural_step / parameter_desc /
     # concept_explanation / transition_cue / ui_description / general).
+    # Adds chunk_role + extracted fields to each chunk's metadata.
     try:
         chunk_pairs = ChunkClassifier().classify_batch(chunk_pairs)
     except Exception as e:
@@ -174,6 +181,7 @@ def embed_and_store(
             print(f"[GRAPH] Graph building failed for {manual_id}: {e}")
 
     threading.Thread(target=_build_graph, daemon=True).start()
+
 
 def _build_auto_workflows(manual_id: str, classified_chunks: List[Tuple[str, dict]]) -> int:
     """Build and save auto workflow JSONs. Returns the number of workflows created."""

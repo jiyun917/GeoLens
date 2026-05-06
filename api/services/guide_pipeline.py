@@ -10,7 +10,7 @@ Combines:
 import json
 import os
 import re
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional, Tuple
 
 from .workflow_graph import WorkflowGraph, get_workflow_graph
 from .graph_retriever import GraphRetriever, get_graph_retriever
@@ -74,12 +74,16 @@ class GuideRAGPipeline:
         if not api_key:
             return {}
 
-        try:
-            from google import genai
-            from google.genai import types
-            import base64 as b64module
+        from google import genai
+        from google.genai import types
+        import base64 as b64module
+        import time as _time, random as _random
 
-            client = genai.Client(api_key=api_key)
+        try:
+            client = genai.Client(
+                api_key=api_key,
+                http_options=types.HttpOptions(timeout=30_000),
+            )
 
             # Extract base64 payload
             b64_data = screenshot_b64
@@ -106,27 +110,267 @@ class GuideRAGPipeline:
                 response_mime_type="application/json",
                 temperature=0,
             )
-            response = client.models.generate_content(
-                model="gemini-2.5-pro", contents=contents, config=config
-            )
-            return _extract_json(response.text) or {}
+
+            MAX_RETRY = 3
+            for attempt in range(MAX_RETRY + 1):
+                try:
+                    response = client.models.generate_content(
+                        model="gemini-2.5-flash", contents=contents, config=config
+                    )
+                    return _extract_json(response.text) or {}
+                except Exception as e:
+                    msg = str(e)
+                    transient = any(m in msg for m in (
+                        "503", "429", "500", "504", "UNAVAILABLE",
+                        "RESOURCE_EXHAUSTED", "DEADLINE_EXCEEDED", "timed out", "Timeout"
+                    ))
+                    if not transient or attempt >= MAX_RETRY:
+                        print(f"[GuidePipeline] Visual state recognition failed: {e}")
+                        return {}
+                    delay = 1.5 * (2 ** attempt) + _random.uniform(0, 0.5)
+                    print(f"[GuidePipeline] visual_state transient; retry {attempt + 1}/{MAX_RETRY} after {delay:.1f}s")
+                    _time.sleep(delay)
         except Exception as e:
-            print(f"[GuidePipeline] Visual state recognition failed: {e}")
+            print(f"[GuidePipeline] Visual state setup failed: {e}")
             return {}
+        return {}
 
     # ═══════════════════════════════════════════════════════════
     # Step 2: Graph Localization
     # ═══════════════════════════════════════════════════════════
 
     def localize_to_graph(
-        self, visual_state: Dict, hint_workflow_id: Optional[str] = None
+        self,
+        visual_state: Dict,
+        hint_workflow_id: Optional[str] = None,
+        screenshot_b64: Optional[str] = None,
+        manual_ids: Optional[List[str]] = None,
+        user_goal: str = "",
+        visited_node_ids: Optional[List[str]] = None,
     ) -> Dict:
         """
-        Match visual state to a workflow graph node.
-        Returns {"node": node_dict or None, "confidence": float}.
+        Match visual state to a workflow graph node using:
+          1. Top-K keyword candidates (on visual_signature)
+          2. Top-K CLIP image candidates (on manual screenshots)
+          3. Gemini rerank over the combined candidate set
+
+        The LLM rerank is the highest-accuracy signal because it understands
+        user intent (goal), UI semantics (visual_state), and workflow
+        descriptions — solving the problem where keyword/CLIP alone match
+        generic chrome like "Scene", "OpendTect window".
+
+        Returns {"node": node_dict or None, "confidence": float, "match_method": str}.
         """
-        node, score = self.graph.get_current_node(visual_state, hint_workflow_id)
-        return {"node": node, "confidence": score}
+        # Legacy single-best for logging + fallback path
+        kw_node, kw_score = self.graph.get_current_node(visual_state, hint_workflow_id)
+
+        # CLIP is a weak-to-ambiguous signal for UI screenshots — two different
+        # OpendTect panes routinely cosine ≥0.85 because they share UI chrome.
+        # So we prefer keyword matching whenever it has real signal, and only
+        # fall back to CLIP when keyword gives no answer at all.
+        KW_TRUST_FLOOR = 0.20      # kw ≥ this → trust keyword, ignore CLIP
+        CLIP_MIN_SCORE = 0.85      # CLIP must be this confident to override silence
+
+        clip_node = None
+        clip_score = 0.0
+        if screenshot_b64 and manual_ids:
+            try:
+                from .visual_matcher import get_visual_matcher
+                matcher = get_visual_matcher()
+                if matcher.available():
+                    for mid in manual_ids:
+                        node, score = matcher.match_to_workflow_node(
+                            screenshot_b64, mid, self.graph
+                        )
+                        if node and score > clip_score:
+                            clip_node = node
+                            clip_score = float(score)
+            except Exception as e:
+                print(f"[GUIDE] CLIP match failed: {e}")
+
+        # Log what Gemini extracted so we can debug mismatches offline
+        vs_summary = (visual_state.get("current_dialog") or "")[:40] + " / " + \
+                     (visual_state.get("active_menu") or "")[:40]
+        print(f"[GUIDE] visual_state: {vs_summary!r}")
+
+        # Build top-K candidate pool (keyword top-3 + CLIP top-3, dedup by node id)
+        kw_top = self.graph.get_top_k_nodes(visual_state, k=3, hint_workflow_id=hint_workflow_id)
+        clip_top: List[Tuple[Dict, float]] = []
+        if screenshot_b64 and manual_ids:
+            try:
+                from .visual_matcher import get_visual_matcher
+                matcher = get_visual_matcher()
+                if matcher.available():
+                    for mid in manual_ids:
+                        clip_top.extend(
+                            matcher.match_to_workflow_nodes_top_k(
+                                screenshot_b64, mid, self.graph, k=3
+                            )
+                        )
+            except Exception as e:
+                print(f"[GUIDE] CLIP top-k failed: {e}")
+
+        seen_ids: set = set()
+        candidates: List[Dict] = []
+        for node, score in kw_top + clip_top:
+            nid = node.get("id")
+            if not nid or nid in seen_ids:
+                continue
+            seen_ids.add(nid)
+            candidates.append({"node": node, "source_score": score})
+
+        print(f"[GUIDE] candidates: {len(candidates)} (kw_top={len(kw_top)}, clip_top={len(clip_top)})")
+
+        # Ask Gemini to pick the best candidate (authoritative signal).
+        # visited_node_ids tells it which nodes the user has already passed,
+        # so if the screenshot still looks like one of them (common when a
+        # wizard dialog stays up after Import) it should advance to the
+        # successor instead of repeating.
+        if candidates:
+            picked_id, picked_conf = self._llm_rerank_candidates(
+                candidates, visual_state, user_goal,
+                visited_node_ids=visited_node_ids,
+            )
+            if picked_id:
+                for c in candidates:
+                    if c["node"].get("id") == picked_id:
+                        node = c["node"]
+                        print(f"[GUIDE] localize via LLM rerank: node={picked_id} conf={picked_conf:.2f}")
+                        return {"node": node, "confidence": picked_conf, "match_method": "llm"}
+
+            # LLM rerank returned "none" OR failed after retries.
+            # Do NOT fall back to keyword top-1 — keyword matching latches
+            # onto generic UI terms (Scene, Window, Cross-line) and routinely
+            # picks a wrong workflow whose manual context misleads the guide
+            # LLM. Returning node=None lets RAG vector search supply chunks
+            # by user_message similarity instead — better than wrong context.
+            print(f"[GUIDE] LLM rerank gave no answer — node=None (vector RAG will provide context)")
+            return {"node": None, "confidence": 0.0, "match_method": "none"}
+
+        # No candidates at all — fall back to single-best keyword
+        print(f"[GUIDE] no candidates; fallback node={kw_node.get('id') if kw_node else None} score={kw_score:.3f}")
+        return {"node": kw_node, "confidence": kw_score, "match_method": "keyword"}
+
+    def _llm_rerank_candidates(
+        self,
+        candidates: List[Dict],
+        visual_state: Dict,
+        user_goal: str,
+        visited_node_ids: Optional[List[str]] = None,
+    ) -> Tuple[Optional[str], float]:
+        """Ask Gemini Flash to pick the candidate whose workflow step best
+        matches the user's current situation. Returns (node_id, confidence 0-1)
+        or (None, 0.0) if no candidate fits or Gemini fails."""
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if not api_key:
+            return None, 0.0
+
+        # Build a compact candidate list for the prompt
+        lines = []
+        for i, c in enumerate(candidates, start=1):
+            n = c["node"]
+            wf = (n.get("workflow_id") or "").replace("auto_", "").split("__", 1)[-1]
+            title = (n.get("title") or "")[:80]
+            desc = (n.get("description") or "")[:120]
+            step = n.get("step_number", "?")
+            lines.append(f'{i}. id="{n.get("id")}" workflow="{wf}" step={step}\n   title: {title}\n   desc: {desc}')
+        candidate_block = "\n".join(lines)
+
+        goal_line = f"User goal: {user_goal.strip()}" if user_goal.strip() else "User goal: (unspecified)"
+        vs_line = json.dumps(visual_state, ensure_ascii=False)[:500]
+
+        visited_line = ""
+        if visited_node_ids:
+            # Only mention ones that actually appear in the candidate pool
+            candidate_ids = {c["node"].get("id") for c in candidates}
+            visited_in_pool = [v for v in visited_node_ids if v in candidate_ids]
+            if visited_in_pool:
+                visited_line = (
+                    "\nAlready-completed candidate nodes (the user has finished these — "
+                    "DO NOT pick one of these again if the screenshot shows the same state "
+                    "after completion; prefer a candidate that represents the NEXT step, "
+                    "or return \"none\" to let the user discover the Close/Finish button "
+                    "themselves): " + ", ".join(visited_in_pool)
+                )
+
+        prompt = f"""You rank workflow steps by how well they match the user's current UI situation.
+
+{goal_line}
+Current UI visual_state JSON: {vs_line}{visited_line}
+
+Candidate workflow steps (from a software manual):
+{candidate_block}
+
+Pick the candidate whose step description best matches what the user is CURRENTLY doing or trying to do next — aligned to both the goal and the visible UI state.
+
+DECISION RULE — bias toward PICKING a candidate:
+- If ANY candidate's title/description shares the dialog name, screen name, or topic with the visual_state, PICK that candidate. Confidence in [0.5, 0.9] is fine for partial matches; use higher only when title essentially names what's on screen.
+- Returning "none" is ONLY for cases where NO candidate is even loosely related (different application, different module, totally unrelated topic).
+- Picking a slightly-imperfect candidate is better than "none", because downstream logic uses the picked node for state tracking (post-completion detection, next-step hints). Returning "none" disables those.
+
+IMPORTANT — wizard dialogs stay on screen after their action completes:
+- If the screenshot still looks like a candidate the user ALREADY completed (see "Already-completed" list above), they are NOT re-doing it. The wizard just hasn't been dismissed yet.
+- In that case, prefer a NEXT candidate in the same workflow, OR (if no next exists) STILL pick the visited candidate — downstream code will detect post-completion from that match.
+
+Respond with JSON only:
+{{"id": "<candidate_id_or_none>", "confidence": 0.0-1.0}}"""
+
+        from google import genai
+        from google.genai import types
+        import time as _time, random as _random
+
+        client = genai.Client(
+            api_key=api_key,
+            http_options=types.HttpOptions(timeout=40_000),
+        )
+        cfg = types.GenerateContentConfig(
+            response_mime_type="application/json",
+            temperature=0,
+        )
+
+        RERANK_MAX_RETRIES = 3
+        RERANK_BASE_BACKOFF = 1.5
+        raw = ""
+        last_err = None
+        for attempt in range(RERANK_MAX_RETRIES + 1):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=prompt,
+                    config=cfg,
+                )
+                raw = (response.text or "").strip()
+                if attempt > 0:
+                    print(f"[GUIDE] rerank recovered on retry {attempt}")
+                break
+            except Exception as e:
+                last_err = e
+                msg = str(e)
+                transient = any(m in msg for m in (
+                    "503", "429", "500", "504", "UNAVAILABLE",
+                    "RESOURCE_EXHAUSTED", "DEADLINE_EXCEEDED", "timed out", "Timeout"
+                ))
+                if not transient or attempt >= RERANK_MAX_RETRIES:
+                    print(f"[GUIDE] LLM rerank failed: {e}")
+                    return None, 0.0
+                delay = RERANK_BASE_BACKOFF * (2 ** attempt) + _random.uniform(0, 0.5)
+                print(f"[GUIDE] rerank transient ({e.__class__.__name__}); retry {attempt + 1}/{RERANK_MAX_RETRIES} after {delay:.1f}s")
+                _time.sleep(delay)
+
+        if not raw:
+            print(f"[GUIDE] LLM rerank empty response after retries: {last_err}")
+            return None, 0.0
+
+        try:
+            parsed = json.loads(raw)
+        except Exception as e:
+            print(f"[GUIDE] LLM rerank JSON parse failed: {e}")
+            return None, 0.0
+        pid = str(parsed.get("id", "") or "").strip()
+        conf = float(parsed.get("confidence", 0.0) or 0.0)
+        if not pid or pid.lower() == "none":
+            return None, 0.0
+        return pid, max(0.0, min(1.0, conf))
 
     # ═══════════════════════════════════════════════════════════
     # Step 3-5: Main processing
@@ -162,9 +406,17 @@ class GuideRAGPipeline:
         # Step 2: Detect intent
         intent = self._detect_intent(user_message)
 
-        # Step 3: Localize
+        # Step 3: Localize (keyword + CLIP top-K → Gemini rerank)
         hint = session_history.get("active_workflow_id")
-        localization = self.localize_to_graph(visual_state, hint)
+        visited = session_history.get("visited_node_ids") or []
+        localization = self.localize_to_graph(
+            visual_state,
+            hint,
+            screenshot_b64=screenshot_b64,
+            manual_ids=manual_ids,
+            user_goal=user_message,
+            visited_node_ids=visited,
+        )
         current_node = localization["node"]
         confidence = localization["confidence"]
         current_node_id = current_node["id"] if current_node else None
@@ -183,6 +435,19 @@ class GuideRAGPipeline:
         if current_node_id and expected_node_id:
             correction = self.graph.analyze_position(current_node_id, expected_node_id)
 
+        # Step 6: Post-completion detection — fires when the matched node was
+        # visited in the RECENT window (last 3 entries). This catches:
+        #   step1: Click Next on Import SEG-Y Data (node A)
+        #   step2: Click Import on Import Volume   (node B)
+        #   step3: Import SEG-Y Data dialog returns → matches A again  ← fire
+        # while NOT firing for legitimate backtracks 5+ steps later.
+        RECENT_WINDOW = 3
+        recent_visited = visited[-RECENT_WINDOW:] if visited else []
+        post_completion = bool(current_node_id and current_node_id in recent_visited)
+        if post_completion:
+            pos = len(visited) - 1 - recent_visited[::-1].index(current_node_id)
+            print(f"[GUIDE] post-completion detected — node {current_node_id} visited at history[{pos}] (within last {RECENT_WINDOW})")
+
         return {
             "visual_state": visual_state,
             "current_node": current_node,
@@ -192,6 +457,7 @@ class GuideRAGPipeline:
             "vector_context": retrieval.get("vector_context"),
             "correction": correction,
             "intent": intent,
+            "post_completion": post_completion,
         }
 
     # ═══════════════════════════════════════════════════════════
@@ -222,6 +488,18 @@ class GuideRAGPipeline:
         Build a text context block to inject into the LLM system prompt.
         """
         parts = []
+
+        # Post-completion override — place at TOP so it wins over manual context.
+        if pipeline_output.get("post_completion"):
+            parts.append(
+                "[██ POST-COMPLETION STATE — OVERRIDE ALL OTHER GUIDANCE ██]\n"
+                "The user has already completed the action for the matched workflow step. "
+                "The dialog is still on screen only because the wizard has not been dismissed yet — "
+                "this is NOT a cue to repeat the previous action (e.g. clicking Next again).\n"
+                "INSTRUCTION: Tell the user to DISMISS the current dialog by clicking the visible "
+                "\"Close\", \"Finish\", \"Done\", \"OK\", \"Cancel\", or \"X\" button — whichever is "
+                "actually shown in the screenshot. Do NOT repeat any previously completed instruction."
+            )
 
         current = pipeline_output.get("current_node")
         if current:
