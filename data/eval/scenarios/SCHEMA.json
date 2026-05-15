@@ -1,0 +1,35 @@
+{
+  "_schema_version": "1.0",
+  "_description": "Procedural UI Guide benchmark — labeled multi-step scenario. One scenario = one user goal traced through N screen states with ground-truth expected behavior at each step.",
+  "_field_docs": {
+    "scenario_id":            "Unique slug; convention: {manual_slug}__{goal_slug}__{variant_n}",
+    "manual_id":              "Manual ChromaDB collection id this scenario is grounded in",
+    "manual_name":            "Human-readable manual title (for reports)",
+    "category":               "Domain tag — e.g. import, visualization, attribute, modeling, file_management, settings",
+    "difficulty":             "easy / medium / hard — judged by # of steps, branching, error-recovery needs",
+    "language":               "ko / en — language the AI should respond in",
+    "goal":                   "Full user-typed goal text (verbatim from typical user input, including specifics like paths/names)",
+    "steps":                  "Ordered list of expected screen states + ground-truth actions",
+    "steps[].step_index":     "0-based",
+    "steps[].screenshot_path":"Path to the captured screenshot (PNG/JPEG)",
+    "steps[].visual_state_gt":"Ground-truth UI extraction the AI SHOULD produce — used to score visual recognition fidelity",
+    "steps[].expected_action_text_pattern": "Regex(case-insensitive) the AI response is expected to match — at least one capture group naming the target button/menu",
+    "steps[].expected_action_keywords":     "List of keyword strings the AI response should contain (lenient alt to regex)",
+    "steps[].expected_workflow_node":       "Workflow node id we expect localizer to pick (null = any valid match acceptable)",
+    "steps[].allowed_alternatives":         "Other acceptable response patterns (alternate menu paths etc.)",
+    "steps[].is_error_recovery_test":       "true if this step is intentionally a wrong-state test — expects AI to detect+recover",
+    "completion":             "How to detect successful goal completion",
+    "completion.final_screenshot_path": "Screenshot AFTER goal achieved",
+    "completion.expected_done_sentinel": "true if AI is expected to emit Done/완료 after this scenario"
+  },
+
+  "scenario_id": "EXAMPLE_PLACEHOLDER",
+  "manual_id":   "EXAMPLE_PLACEHOLDER",
+  "manual_name": "EXAMPLE_PLACEHOLDER",
+  "category":    "EXAMPLE_PLACEHOLDER",
+  "difficulty":  "easy",
+  "language":    "ko",
+  "goal":        "EXAMPLE_PLACEHOLDER",
+  "steps": [],
+  "completion": {"final_screenshot_path": null, "expected_done_sentinel": true}
+}

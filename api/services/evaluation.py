@@ -411,6 +411,215 @@ def load_test_screenshots(manifest: Optional[str] = None) -> List[Dict]:
         return []
 
 
+# ═══════════════════════════════════════════════════════════════════
+# Scenario-level benchmark — multi-step procedural evaluation
+#
+# Designed for the paper's benchmark. A "scenario" is a list of expected
+# screen states with ground-truth actions. We run the scenario through
+# four backends (vanilla_vector / graph_only / vision_only / full_system)
+# and compute paper-grade metrics:
+#
+#   step_accuracy       — fraction of steps where AI response matches GT
+#   hallucination_rate  — fraction of steps where AI references a UI element
+#                          NOT in visual_state_gt.visible_elements
+#   dwell_loop_rate     — fraction of steps where response equals previous
+#                          response (after normalization)
+#   recovery_rate       — among is_error_recovery_test steps, fraction
+#                          where AI gave the expected corrective action
+#   goal_completion_rate— 1.0 if final response ends with Done/완료 sentinel
+#                          on the completion screenshot, else 0.0
+#   trap_pass_rate      — fraction of trap steps the AI handled correctly
+#                          (e.g. didn't pick Skip when Run was the right call)
+# ═══════════════════════════════════════════════════════════════════
+
+# Standard backend names — used as keys in result dicts.
+BACKENDS = ("vanilla_vector", "graph_only", "vision_only", "full_system")
+
+
+def _normalize_instruction(text: str) -> str:
+    """Strip whitespace/punctuation/brackets for loop-detection comparison."""
+    return re.sub(r"[\s\W_]+", "", (text or "").lower())
+
+
+def step_match(response: str, step_gt: Dict) -> bool:
+    """True if `response` satisfies the step's expected_action_text_pattern,
+    expected_action_keywords, OR any allowed_alternatives pattern."""
+    if not response:
+        return False
+    text = response.strip()
+
+    pat = step_gt.get("expected_action_text_pattern")
+    if pat:
+        try:
+            if re.search(pat, text):
+                return True
+        except re.error:
+            pass
+
+    kws = step_gt.get("expected_action_keywords") or []
+    if kws:
+        low = text.lower()
+        if all(k.lower() in low for k in kws):
+            return True
+
+    for alt in step_gt.get("allowed_alternatives", []) or []:
+        ap = alt.get("pattern")
+        if ap:
+            try:
+                if re.search(ap, text):
+                    return True
+            except re.error:
+                continue
+    return False
+
+
+def hallucinated_elements(response: str, visible_elements_gt: List[str]) -> List[str]:
+    """Return list of UI-element-like tokens in `response` that are NOT in the
+    ground-truth visible_elements list. Heuristic: looks at quoted strings
+    'X' / "X" / 'X 버튼' since those are how the AI references UI items."""
+    visible_lc = [e.lower() for e in (visible_elements_gt or [])]
+    referenced = set()
+    # quoted tokens: 'X', "X", `X`, X 버튼, X 메뉴, X 탭, X button
+    for m in re.findall(r"['\"`]([^'\"`\n]{1,40})['\"`]", response or ""):
+        referenced.add(m.strip())
+    for m in re.findall(r"\b([A-Z][\w \-/]{1,30}?)\s*(?:버튼|메뉴|탭|button|menu|tab)\b",
+                       response or ""):
+        referenced.add(m.strip())
+    halls = []
+    for r in referenced:
+        if not r or len(r) < 2:
+            continue
+        rlc = r.lower()
+        # Lenient: skip if any visible element substring-contains it
+        if any(rlc in v or v in rlc for v in visible_lc):
+            continue
+        halls.append(r)
+    return halls
+
+
+def has_done_sentinel(response: str) -> bool:
+    if not response:
+        return False
+    t = response.strip()
+    last_line = t.split("\n")[-1].strip()
+    bare = re.sub(r"[\s.\W_]+", "", last_line.lower())
+    if bare in ("done", "완료"):
+        return True
+    return bool(re.search(r"(?:^|\s)(done|완료)\.?\s*$", t, re.IGNORECASE))
+
+
+class ScenarioEvaluator:
+    """Runs a labeled scenario through a chosen backend and computes
+    per-step + per-scenario metrics. Each backend is a callable:
+
+        backend(scenario_step_index, scenario, prior_responses) -> str
+
+    The backend receives the full scenario + index so it can build the
+    appropriate query/context. The framework feeds it screenshots from
+    `screenshot_path` (loaded from disk) one at a time.
+    """
+
+    def __init__(self, scenario: Dict):
+        self.scenario = scenario
+        self.steps: List[Dict] = scenario.get("steps", []) or []
+
+    def evaluate_backend(self, backend_name: str, backend_callable) -> Dict:
+        per_step: List[Dict] = []
+        prior_responses: List[str] = []
+        for i, step in enumerate(self.steps):
+            try:
+                response = backend_callable(i, self.scenario, prior_responses) or ""
+            except Exception as e:
+                print(f"[EVAL] backend {backend_name} step {i} failed: {e}")
+                response = ""
+
+            matched = step_match(response, step)
+            halls = hallucinated_elements(
+                response, (step.get("visual_state_gt") or {}).get("visible_elements", [])
+            )
+            looped = bool(
+                prior_responses and
+                _normalize_instruction(response) == _normalize_instruction(prior_responses[-1])
+            )
+            per_step.append({
+                "step_index": i,
+                "response": response,
+                "matched": matched,
+                "hallucinated": halls,
+                "looped": looped,
+                "is_trap": bool(step.get("trap")),
+                "is_recovery": bool(step.get("is_error_recovery_test")),
+            })
+            prior_responses.append(response)
+
+        # Completion check
+        completion = self.scenario.get("completion") or {}
+        done_ok = False
+        if completion.get("expected_done_sentinel"):
+            try:
+                final_path = completion.get("final_screenshot_path")
+                if final_path:
+                    final_response = backend_callable(
+                        len(self.steps), self.scenario, prior_responses
+                    ) or ""
+                    done_ok = has_done_sentinel(final_response)
+            except Exception as e:
+                print(f"[EVAL] backend {backend_name} completion check failed: {e}")
+
+        n = max(1, len(per_step))
+        trap_steps = [s for s in per_step if s["is_trap"]]
+        recovery_steps = [s for s in per_step if s["is_recovery"]]
+        return {
+            "backend": backend_name,
+            "n_steps": len(per_step),
+            "step_accuracy":        sum(1 for s in per_step if s["matched"]) / n,
+            "hallucination_rate":   sum(1 for s in per_step if s["hallucinated"]) / n,
+            "dwell_loop_rate":      sum(1 for s in per_step if s["looped"]) / n,
+            "trap_pass_rate":       (sum(1 for s in trap_steps if s["matched"]) / len(trap_steps)) if trap_steps else None,
+            "recovery_rate":        (sum(1 for s in recovery_steps if s["matched"]) / len(recovery_steps)) if recovery_steps else None,
+            "goal_completion_rate": 1.0 if done_ok else 0.0,
+            "per_step": per_step,
+        }
+
+
+def load_scenario(path: str) -> Optional[Dict]:
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            d = json.load(f)
+        if d.get("scenario_id") == "EXAMPLE_PLACEHOLDER":
+            return None  # the schema doc file
+        return d
+    except Exception as e:
+        print(f"[EVAL] scenario load failed {path}: {e}")
+        return None
+
+
+def load_all_scenarios(scenarios_dir: Optional[str] = None) -> List[Dict]:
+    base = scenarios_dir or os.path.join(EVAL_DIR, "scenarios")
+    if not os.path.isdir(base):
+        return []
+    out = []
+    for path in sorted(glob.glob(os.path.join(base, "*.json"))):
+        s = load_scenario(path)
+        if s:
+            out.append(s)
+    return out
+
+
+def aggregate_scenario_results(results: List[Dict]) -> Dict:
+    """Average per-backend metrics across many scenarios. Skips None values
+    (e.g. trap_pass_rate when no trap steps exist for a scenario)."""
+    if not results:
+        return {}
+    keys = ["step_accuracy", "hallucination_rate", "dwell_loop_rate",
+            "trap_pass_rate", "recovery_rate", "goal_completion_rate"]
+    out: Dict = {"n_scenarios": len(results)}
+    for k in keys:
+        vals = [r[k] for r in results if r.get(k) is not None]
+        out[k] = (sum(vals) / len(vals)) if vals else None
+    return out
+
+
 def run_full_evaluation(manual_id: str, manual_json_path: str) -> Dict:
     """Top-level entrypoint: runs graph-quality + guide-accuracy + visual-match."""
     out: Dict = {"manual_id": manual_id}

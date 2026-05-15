@@ -1,0 +1,113 @@
+{
+  "scenario_id": "opendtect__seg_y_import__01",
+  "manual_id": "73156e63c0c84fd7851895ea901dd8b2",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "category": "import",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3_Demo Survey를 C:\\Survey\\F3_Demo 경로에서 SEG-Y import로 불러오기",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/seg_y_import_step0_main.png",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window",
+        "active_menu": null,
+        "visible_elements": ["Survey", "menu bar", "tree", "scene"],
+        "data_state": "no survey loaded"
+      },
+      "expected_action_text_pattern": "(?i)\\b(survey)\\b.*\\b(select|change|선택)\\b",
+      "expected_action_keywords": ["Survey", "Select"],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_2a_survey_setup_load_seg-y_01",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/seg_y_import_step1_select_survey.png",
+      "visual_state_gt": {
+        "current_dialog": "Select Survey",
+        "visible_elements": ["Survey list", "OK button", "Cancel button", "New button"]
+      },
+      "expected_action_text_pattern": "(?i)\\b(new|new survey)\\b",
+      "expected_action_keywords": ["New"],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/seg_y_import_step2_specify.png",
+      "visual_state_gt": {
+        "current_dialog": "Specify",
+        "visible_elements": ["Survey Data Root field", "Browse button", "OK button"]
+      },
+      "expected_action_text_pattern": "(?i)C:\\\\\\\\Survey\\\\\\\\F3_Demo",
+      "expected_action_keywords": ["C:\\Survey\\F3_Demo"],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_2a_survey_setup_load_seg-y_03",
+      "is_error_recovery_test": false
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/seg_y_import_step3_segy_wizard_first.png",
+      "visual_state_gt": {
+        "current_dialog": "Import SEG-Y Data",
+        "visible_elements": ["Quick scan result", "Next button", "Skip full scan", "Run full scan"]
+      },
+      "expected_action_text_pattern": "(?i)\\b(Run full scan)\\b",
+      "expected_action_keywords": ["Run full scan"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(double-arrow|arrow icon|scan icon)\\b", "note": "alternative phrasing of the full-scan trigger"}
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_2a_survey_setup_load_seg-y_04",
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "prefer_verify_over_skip",
+        "description": "Visible buttons include both 'Skip full scan' and 'Run full scan'. Default integrity rule says Run wins unless goal explicitly asks for speed. AI must NOT pick Skip."
+      }
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/eval/screenshots/seg_y_import_step4_segy_wizard_after_scan.png",
+      "visual_state_gt": {
+        "current_dialog": "Import SEG-Y Data",
+        "visible_elements": ["Full scan result", "Next button"]
+      },
+      "expected_action_text_pattern": "(?i)\\b(Next)\\b",
+      "expected_action_keywords": ["Next"],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_2a_survey_setup_load_seg-y_04",
+      "is_error_recovery_test": false
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/eval/screenshots/seg_y_import_step5_import_volume.png",
+      "visual_state_gt": {
+        "current_dialog": "Import 3D Volume",
+        "visible_elements": ["Output Cube name field", "Import button"]
+      },
+      "expected_action_text_pattern": "(?i)\\b(Import)\\b",
+      "expected_action_keywords": ["Import"],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_2a_survey_setup_load_seg-y_04",
+      "is_error_recovery_test": false
+    },
+    {
+      "step_index": 6,
+      "screenshot_path": "data/eval/screenshots/seg_y_import_step6_dialog_returned.png",
+      "visual_state_gt": {
+        "current_dialog": "Import SEG-Y Data",
+        "visible_elements": ["Quick scan result", "Next button", "Close button"]
+      },
+      "expected_action_text_pattern": "(?i)\\b(Close|Finish|닫기|마침)\\b",
+      "expected_action_keywords": ["Close"],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": true,
+      "trap": {
+        "type": "post_completion_repeat",
+        "description": "Same Import SEG-Y Data dialog has returned after the import action finished. AI MUST detect this is a post-completion residual state and instruct dismissal, NOT 'Click Next' again. visited_node_ids will contain the earlier dialog node."
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/seg_y_import_done_main.png",
+    "expected_done_sentinel": true
+  }
+}
