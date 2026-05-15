@@ -1,0 +1,154 @@
+{
+  "scenario_id": "73156e63__1_5_1a_bright_spot__01",
+  "manual_id": "73156e63c0c84fd7851895ea901dd8b2",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "category": "attribute",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3_Demo seismic에서 bright spot 탐지 attribute 계산",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p127_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Select Energy, define volume sub-selecti']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Select",
+        "Energy"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_1a_bright_spot_01",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Select Energy, define volume sub-selection, and run processing.",
+        "description": "Workflow cont'd: 2.",
+        "step_type": "action",
+        "page": 127
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p119_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Provide an attribute name and add it as ']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Provide"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_1a_bright_spot_02",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Provide an attribute name and add it as new.",
+        "description": "Workflow cont'd: 3.",
+        "step_type": "action",
+        "page": 119
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p128_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Fill in ranges in the positioning dialog']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Fill",
+        "OK"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_1a_bright_spot_03",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Fill in ranges in the positioning dialog and press OK.",
+        "description": "Workflow cont'd 3.",
+        "step_type": "action",
+        "page": 128
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p120_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Add data, change position, and add attri']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Add"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_1a_bright_spot_04",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Add data, change position, and add attribute to inline.",
+        "description": "Workflow cont'd: 6.",
+        "step_type": "action",
+        "page": 120
+      }
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p126_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Accept the time gate and update the attr']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Accept"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_1a_bright_spot_05",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Accept the time gate and update the attribute name.",
+        "description": "Workflow cont'd: 9.",
+        "step_type": "action",
+        "page": 126
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/[TODO_done_1_5_1a_bright_spot].png",
+    "expected_done_sentinel": true
+  },
+  "_meta": {
+    "source_workflow_id": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_1a_bright_spot",
+    "auto_generated_template": true,
+    "labeling_checklist": [
+      "1) 각 step의 screenshot_path를 실제 사용자 화면 캡처로 교체 (또는 매뉴얼 이미지 그대로 사용)",
+      "2) visual_state_gt를 채워서 화면 ground-truth 명시",
+      "3) trap이 있는 step에 'trap': {...} + 'is_error_recovery_test': true 추가",
+      "4) 첫 번째 step의 current_dialog는 어플리케이션 메인 화면이 보통",
+      "5) goal 텍스트에 사용자가 입력할 구체적 path/이름 포함",
+      "6) _meta + _node_hint 필드는 라벨링 후 삭제 가능"
+    ]
+  }
+}

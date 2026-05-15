@@ -1,0 +1,142 @@
+{
+  "scenario_id": "73156e63__1_2_4a_well_data__01",
+  "manual_id": "73156e63c0c84fd7851895ea901dd8b2",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "category": "import",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3_Demo의 well log 데이터를 import해서 보기",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p038_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Define Format for Depth to Time Model Fi']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Define",
+        "Format",
+        "Depth",
+        "Time",
+        "Model"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_4a_well_data_01",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Define Format for Depth to Time Model File",
+        "description": "Workflow cont'd 5.",
+        "step_type": "action",
+        "page": 38
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p039_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Display Well and Import Logs']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Display",
+        "Well",
+        "Import",
+        "Logs"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_4a_well_data_02",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Display Well and Import Logs",
+        "description": "Workflow cont'd: 11.",
+        "step_type": "action",
+        "page": 39
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p040_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Import Well Markers from an Existing Fil']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Import",
+        "Well",
+        "Markers",
+        "Existing",
+        "File"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_4a_well_data_03",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Import Well Markers from an Existing File",
+        "description": "Workflow cont'd: 18.",
+        "step_type": "action",
+        "page": 40
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p041_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Select or Modify Colors for Well Markers']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Select",
+        "Modify",
+        "Colors",
+        "Well",
+        "Markers"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_4a_well_data_04",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Select or Modify Colors for Well Markers",
+        "description": "Workflow cont'd: 21.",
+        "step_type": "action",
+        "page": 41
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/[TODO_done_1_2_4a_well_data].png",
+    "expected_done_sentinel": true
+  },
+  "_meta": {
+    "source_workflow_id": "auto_73156e63c0c84fd7851895ea901dd8b2__1_2_4a_well_data",
+    "auto_generated_template": true,
+    "labeling_checklist": [
+      "1) 각 step의 screenshot_path를 실제 사용자 화면 캡처로 교체 (또는 매뉴얼 이미지 그대로 사용)",
+      "2) visual_state_gt를 채워서 화면 ground-truth 명시",
+      "3) trap이 있는 step에 'trap': {...} + 'is_error_recovery_test': true 추가",
+      "4) 첫 번째 step의 current_dialog는 어플리케이션 메인 화면이 보통",
+      "5) goal 텍스트에 사용자가 입력할 구체적 path/이름 포함",
+      "6) _meta + _node_hint 필드는 라벨링 후 삭제 가능"
+    ]
+  }
+}
