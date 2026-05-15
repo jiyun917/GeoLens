@@ -301,7 +301,69 @@ def backend_full_system(step_index: int, scenario: Dict,
 
 
 # ─────────────────────────────────────────────────────────────────────
-# Registry — used by run_benchmark.py
+# Backend 5: state_path — Procedural State-Path Retrieval (PSPR, novel)
+# ─────────────────────────────────────────────────────────────────────
+
+def backend_state_path(step_index: int, scenario: Dict,
+                       prior_responses: List[str]) -> str:
+    """Localize anchor like full_system, then use StatePathRetriever to
+    expand a temporal sub-path (prev → current → next) with per-step chunks,
+    and inject the structured PROCEDURAL PATH block. The novelty is in the
+    CONTEXT FORMAT — same generator, same localization, but path-structured
+    context instead of an unordered chunk bag."""
+    from .guide_pipeline import get_guide_pipeline
+    from .state_path_retriever import get_state_path_retriever, format_step_path
+
+    screenshot_b64 = _load_screenshot_b64(scenario, step_index)
+    pipeline = get_guide_pipeline()
+    retriever = get_state_path_retriever()
+
+    # Reconstruct visited by re-localizing earlier steps (same as full_system)
+    visited: List[str] = []
+    if step_index > 0:
+        for j in range(step_index):
+            prev_b64 = _load_screenshot_b64(scenario, j)
+            if not prev_b64:
+                continue
+            vs = pipeline.recognize_visual_state(prev_b64)
+            loc = pipeline.localize_to_graph(
+                vs, None, screenshot_b64=prev_b64,
+                manual_ids=[scenario["manual_id"]],
+                user_goal=scenario.get("goal", ""),
+                visited_node_ids=list(visited),
+            )
+            n = loc.get("node")
+            if n and n["id"] not in visited:
+                visited.append(n["id"])
+
+    # Anchor localization for THIS step
+    visual_state = pipeline.recognize_visual_state(screenshot_b64) if screenshot_b64 else {}
+    loc = pipeline.localize_to_graph(
+        visual_state, None,
+        screenshot_b64=screenshot_b64,
+        manual_ids=[scenario["manual_id"]],
+        user_goal=scenario.get("goal", ""),
+        visited_node_ids=visited,
+    )
+    anchor_node = loc.get("node")
+    anchor_id = anchor_node.get("id") if anchor_node else None
+    conf = float(loc.get("confidence") or 0.0)
+
+    # Expand sub-path
+    path = retriever.retrieve(
+        anchor_node_id=anchor_id,
+        manual_id=scenario["manual_id"],
+        visited_node_ids=visited,
+        confidence=conf,
+    )
+    context_block = format_step_path(path)
+
+    messages = _build_messages(scenario, step_index, prior_responses, context_block=context_block)
+    return _call_generator(messages)
+
+
+# ─────────────────────────────────────────────────────────────────────
+# Registry — used by bench_runner.py
 # ─────────────────────────────────────────────────────────────────────
 
 BACKEND_REGISTRY: Dict[str, Callable[[int, Dict, List[str]], str]] = {
@@ -309,4 +371,5 @@ BACKEND_REGISTRY: Dict[str, Callable[[int, Dict, List[str]], str]] = {
     "graph_only":     backend_graph_only,
     "vision_only":    backend_vision_only,
     "full_system":    backend_full_system,
+    "state_path":     backend_state_path,
 }

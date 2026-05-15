@@ -59,6 +59,28 @@ def search_by_section(manual_id: str, section: str, chunk_indices: list[int]) ->
         return {"documents": [], "metadatas": []}
 
 
+def get_chunks_by_ids(manual_id: str, ids: list) -> dict:
+    """Fetch chunks by their ChromaDB document ids. Used by the procedural
+    state-path retriever to materialize workflow-node linked_chunks. Returns
+    {"documents": [...], "metadatas": [...]} ordered to match the input ids
+    (missing ids drop out)."""
+    if not ids:
+        return {"documents": [], "metadatas": []}
+    collection = get_collection(manual_id)
+    try:
+        result = collection.get(ids=list(ids), include=["documents", "metadatas"])
+        # Re-order to match input order so callers can preserve their step order
+        id_to_idx = {cid: i for i, cid in enumerate(result.get("ids", []) or [])}
+        docs, metas = [], []
+        for cid in ids:
+            if cid in id_to_idx:
+                docs.append(result["documents"][id_to_idx[cid]])
+                metas.append(result["metadatas"][id_to_idx[cid]])
+        return {"documents": docs, "metadatas": metas}
+    except Exception:
+        return {"documents": [], "metadatas": []}
+
+
 def delete_collection(manual_id: str):
     client = get_client()
     try:

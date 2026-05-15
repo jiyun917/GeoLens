@@ -433,7 +433,8 @@ def load_test_screenshots(manifest: Optional[str] = None) -> List[Dict]:
 # ═══════════════════════════════════════════════════════════════════
 
 # Standard backend names — used as keys in result dicts.
-BACKENDS = ("vanilla_vector", "graph_only", "vision_only", "full_system")
+# state_path is the novel contribution (Procedural State-Path Retrieval).
+BACKENDS = ("vanilla_vector", "graph_only", "vision_only", "full_system", "state_path")
 
 
 def _normalize_instruction(text: str) -> str:
