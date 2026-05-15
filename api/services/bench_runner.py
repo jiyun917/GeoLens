@@ -34,7 +34,8 @@ from api.services.evaluation import (  # noqa: E402
 from api.services.bench_backends import BACKEND_REGISTRY  # noqa: E402
 
 
-def run_all(out_path: str, scenarios_dir: str = None, backends: List[str] = None) -> Dict:
+def run_all(out_path: str, scenarios_dir: str = None, backends: List[str] = None,
+            judge_mode: str = None) -> Dict:
     scenarios = load_all_scenarios(scenarios_dir)
     if not scenarios:
         print(f"No scenarios found under {scenarios_dir or 'data/eval/scenarios'}")
@@ -66,6 +67,18 @@ def run_all(out_path: str, scenarios_dir: str = None, backends: List[str] = None
                 print(f"  - {bname}: FAIL ({e})")
                 metrics = {"backend": bname, "error": str(e)}
             metrics["latency_sec"] = round(time.time() - t0, 2)
+
+            # Optional: re-score with LLM-as-judge (semantic, lenient)
+            if judge_mode and metrics.get("per_step"):
+                try:
+                    from api.services.bench_judge import annotate_with_judge
+                    judge_result = annotate_with_judge(
+                        metrics["per_step"], scen.get("steps", []), mode=judge_mode
+                    )
+                    metrics["judge"] = judge_result
+                except Exception as e:
+                    print(f"  - {bname}: judge failed ({e})")
+
             scen_result["backends"][bname] = metrics
             def _f(v):
                 return f"{v:.2f}" if isinstance(v, (int, float)) else "—"
@@ -130,9 +143,13 @@ def main():
         f"run_{datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%S')}.json",
     ))
     parser.add_argument("--backends", nargs="*", default=None,
-                        help="Subset of backend names to run (default: all 4)")
+                        help="Subset of backend names to run (default: all 5)")
+    parser.add_argument("--judge", default=None,
+                        choices=["claude", "gemini", "consensus", "strict"],
+                        help="Optionally re-score with LLM-as-judge (more lenient than regex match)")
     args = parser.parse_args()
-    run_all(args.out, scenarios_dir=args.scenarios, backends=args.backends)
+    run_all(args.out, scenarios_dir=args.scenarios, backends=args.backends,
+            judge_mode=args.judge)
 
 
 if __name__ == "__main__":

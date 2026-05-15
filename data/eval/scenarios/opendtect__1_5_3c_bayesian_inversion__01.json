@@ -1,0 +1,213 @@
+{
+  "scenario_id": "73156e63__1_5_3c_bayesian_inversion__01",
+  "manual_id": "73156e63c0c84fd7851895ea901dd8b2",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "category": "inversion",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3_Demo seismic에 bayesian inversion 적용",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p150_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Open previously saved cross-plot data']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Open"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_3c_bayesian_inversion_01",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Open previously saved cross-plot data",
+        "description": "1.",
+        "step_type": "action",
+        "page": 150
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p151_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Toggle the density plot in the cross-plo']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Toggle"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_3c_bayesian_inversion_02",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Toggle the density plot in the cross-plot window",
+        "description": "Workflow cont'd 6.",
+        "step_type": "action",
+        "page": 151
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p152_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Create a Probability Density Function fo']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Create",
+        "Probability",
+        "Density",
+        "Function"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_3c_bayesian_inversion_03",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Create a Probability Density Function for bright amplitudes",
+        "description": "Workflow cont'd: 10.",
+        "step_type": "action",
+        "page": 152
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p153_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Create a Probability Density Function fo']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Create",
+        "Probability",
+        "Density",
+        "Function"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_3c_bayesian_inversion_04",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Create a Probability Density Function for low amplitudes",
+        "description": "Workflow cont'd: 16.",
+        "step_type": "action",
+        "page": 153
+      }
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p154_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'View, smooth, and save the Probability D']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "View",
+        "Probability",
+        "Density",
+        "Functions"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_3c_bayesian_inversion_05",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "View, smooth, and save the Probability Density Functions",
+        "description": "Workflow cont'd: 21.",
+        "step_type": "action",
+        "page": 154
+      }
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p155_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Launch the Bayesian classification tool ']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Launch",
+        "Bayesian",
+        "Processing"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_3c_bayesian_inversion_06",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Launch the Bayesian classification tool from the Processing menu",
+        "description": "Workflow cont'd: 28.",
+        "step_type": "action",
+        "page": 155
+      }
+    },
+    {
+      "step_index": 6,
+      "screenshot_path": "data/manual_images/73156e63c0c84fd7851895ea901dd8b2/p156_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Select input volumes, specify outputs, a']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Select"
+      ],
+      "expected_workflow_node": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_3c_bayesian_inversion_07",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Select input volumes, specify outputs, and run the classification",
+        "description": "Workflow cont'd: 31.",
+        "step_type": "action",
+        "page": 156
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/[TODO_done_1_5_3c_bayesian_inversion].png",
+    "expected_done_sentinel": true
+  },
+  "_meta": {
+    "source_workflow_id": "auto_73156e63c0c84fd7851895ea901dd8b2__1_5_3c_bayesian_inversion",
+    "auto_generated_template": true,
+    "labeling_checklist": [
+      "1) 각 step의 screenshot_path를 실제 사용자 화면 캡처로 교체 (또는 매뉴얼 이미지 그대로 사용)",
+      "2) visual_state_gt를 채워서 화면 ground-truth 명시",
+      "3) trap이 있는 step에 'trap': {...} + 'is_error_recovery_test': true 추가",
+      "4) 첫 번째 step의 current_dialog는 어플리케이션 메인 화면이 보통",
+      "5) goal 텍스트에 사용자가 입력할 구체적 path/이름 포함",
+      "6) _meta + _node_hint 필드는 라벨링 후 삭제 가능"
+    ]
+  }
+}
