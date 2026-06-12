@@ -244,7 +244,7 @@ class GuideRAGPipeline:
             # picks a wrong workflow whose manual context misleads the guide
             # LLM. Returning node=None lets RAG vector search supply chunks
             # by user_message similarity instead — better than wrong context.
-            print(f"[GUIDE] LLM rerank gave no answer — node=None (vector RAG will provide context)")
+            print(f"[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)")
             return {"node": None, "confidence": 0.0, "match_method": "none"}
 
         # No candidates at all — fall back to single-best keyword
