@@ -7,82 +7,45 @@ import { ManualUpload } from "@/components/manual/manual-upload";
 import { ManualList } from "@/components/manual/manual-list";
 import { ManualStatus } from "@/components/manual/manual-status";
 import { GoalInput } from "@/components/goal-input";
-import { ProjectList } from "@/components/project-list";
 
 interface Checkpoint {
   id: string;
-  mode: "guide" | "report";
   goal: string;
   title?: string;
-  // Guide fields
   plan?: string[];
   completedSteps?: string[];
-  // Report fields
-  captureCount?: number;
-  hasReport?: boolean;
   timestamp: number;
-}
-
-interface WorkflowItem {
-  goal: string;
-  timestamp: number;
-  stepCount: number;
 }
 
 export default function HomePage() {
   const router = useRouter();
   const { isSharing, stopSharing } = useScreenShare();
   const [checkpoints, setCheckpoints] = useState<Checkpoint[]>([]);
-  const [workflows, setWorkflows] = useState<WorkflowItem[]>([]);
-  const [currentMode, setCurrentMode] = useState<"guide" | "report">("guide");
 
   useEffect(() => {
     if (isSharing) stopSharing();
 
-    // Load checkpoints (guide + report)
     const allCheckpoints: Checkpoint[] = [];
     try {
       const guideRaw = localStorage.getItem("geolens-guide-checkpoints");
       if (guideRaw) {
-        const guideAll = JSON.parse(guideRaw).map((c: any) => ({ ...c, mode: "guide" as const, goal: c.goal }));
-        allCheckpoints.push(...guideAll);
-      }
-    } catch { /* ignore */ }
-    try {
-      const reportRaw = localStorage.getItem("geolens-report-checkpoints");
-      if (reportRaw) {
-        const reportAll = JSON.parse(reportRaw).map((c: any) => ({ ...c, mode: "report" as const, goal: c.topic }));
-        allCheckpoints.push(...reportAll);
+        allCheckpoints.push(...JSON.parse(guideRaw));
       }
     } catch { /* ignore */ }
 
-    // Filter out older than 7 days, sort by timestamp
     const valid = allCheckpoints
       .filter((cp) => Date.now() - cp.timestamp < 7 * 24 * 60 * 60 * 1000)
       .sort((a, b) => b.timestamp - a.timestamp);
-    console.log("[Home] Loaded checkpoints:", valid.length, valid.map(c => ({ id: c.id, goal: c.goal?.slice(0, 30), mode: c.mode })));
     setCheckpoints(valid);
-
-    // Load workflow history
-    try {
-      const raw = localStorage.getItem("geolens-workflow-history");
-      if (raw) setWorkflows(JSON.parse(raw));
-    } catch { /* ignore */ }
   }, []);
 
   const handleResumeCheckpoint = (cp: Checkpoint) => {
-    if (cp.mode === "guide") {
-      sessionStorage.setItem("geolens-goal", cp.goal);
-      sessionStorage.setItem("geolens-resume-data", JSON.stringify({
-        plan: cp.plan || [],
-        completedSteps: cp.completedSteps || [],
-      }));
-      router.push("/task");
-    } else {
-      sessionStorage.setItem("geolens-report-checkpoint-id", cp.id);
-      sessionStorage.setItem("geolens-report-topic", cp.goal);
-      router.push("/report");
-    }
+    sessionStorage.setItem("geolens-goal", cp.goal);
+    sessionStorage.setItem("geolens-resume-data", JSON.stringify({
+      plan: cp.plan || [],
+      completedSteps: cp.completedSteps || [],
+    }));
+    router.push("/task");
   };
 
   const formatTime = (ts: number) => {
@@ -98,7 +61,7 @@ export default function HomePage() {
     return `${diffDay}d ago`;
   };
 
-  const handleRenameCheckpoint = (id: string, mode: string) => {
+  const handleRenameCheckpoint = (id: string) => {
     const cp = checkpoints.find((c) => c.id === id);
     const current = cp?.title || cp?.goal || "";
     const newTitle = prompt("Set a title for this session:", current);
@@ -109,15 +72,13 @@ export default function HomePage() {
     );
     setCheckpoints(updated);
 
-    // Persist
-    const storageKey = mode === "guide" ? "geolens-guide-checkpoints" : "geolens-report-checkpoints";
     try {
-      const raw = localStorage.getItem(storageKey);
+      const raw = localStorage.getItem("geolens-guide-checkpoints");
       if (raw) {
         const all = JSON.parse(raw).map((c: any) =>
           c.id === id ? { ...c, title: newTitle || undefined } : c
         );
-        localStorage.setItem(storageKey, JSON.stringify(all));
+        localStorage.setItem("geolens-guide-checkpoints", JSON.stringify(all));
       }
     } catch { /* ignore */ }
   };
@@ -125,26 +86,7 @@ export default function HomePage() {
   const handleDismissCheckpoint = (id: string) => {
     const next = checkpoints.filter((cp) => cp.id !== id);
     setCheckpoints(next);
-    // Remove from the correct storage
-    const dismissed = checkpoints.find((cp) => cp.id === id);
-    if (dismissed?.mode === "guide") {
-      const guideOnly = next.filter((c) => c.mode === "guide");
-      localStorage.setItem("geolens-guide-checkpoints", JSON.stringify(guideOnly));
-    } else {
-      const reportOnly = next.filter((c) => c.mode === "report");
-      localStorage.setItem("geolens-report-checkpoints", JSON.stringify(reportOnly));
-    }
-  };
-
-  const handleRunWorkflow = (goal: string) => {
-    sessionStorage.setItem("geolens-goal", goal);
-    router.push("/task");
-  };
-
-  const handleRemoveWorkflow = (index: number) => {
-    const next = workflows.filter((_, i) => i !== index);
-    setWorkflows(next);
-    localStorage.setItem("geolens-workflow-history", JSON.stringify(next));
+    localStorage.setItem("geolens-guide-checkpoints", JSON.stringify(next));
   };
 
   return (
@@ -153,11 +95,10 @@ export default function HomePage() {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2">GeoLens</h1>
           <p className="text-gray-500">
-            Share your screen with AI. Get guided or generate interpretation reports.
+            Share your screen with AI. Get guided step-by-step.
           </p>
         </div>
 
-        {/* Resume checkpoint banners */}
         {checkpoints.length > 0 && (
           <div className="mb-4 space-y-2">
             <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">Resume Sessions</h3>
@@ -165,23 +106,14 @@ export default function HomePage() {
               <div key={cp.id} className="rounded-xl border-2 border-orange-400 bg-orange-950 p-3">
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-2">
-                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
-                      cp.mode === "guide"
-                        ? "bg-orange-400/20 text-orange-300"
-                        : "bg-purple-400/20 text-purple-300"
-                    }`}>
-                      {cp.mode === "guide" ? "Guide Mode" : "Report Mode"}
-                    </span>
                     <span className="text-xs text-orange-200">
-                      {cp.mode === "guide"
-                        ? `${cp.completedSteps?.length || 0} steps`
-                        : `${cp.captureCount || 0} captures${cp.hasReport ? " · report generated" : ""}`}
+                      {cp.completedSteps?.length || 0} steps
                     </span>
                     <span className="text-[10px] text-orange-400/70">{formatTime(cp.timestamp)}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
-                      onClick={() => handleRenameCheckpoint(cp.id, cp.mode)}
+                      onClick={() => handleRenameCheckpoint(cp.id)}
                       className="text-xs text-orange-300 hover:text-white"
                       title="Rename"
                     >
@@ -213,16 +145,12 @@ export default function HomePage() {
         )}
 
         <div className="mb-6 space-y-4">
-          <ManualUpload mode={currentMode} />
-          <ManualList mode={currentMode} />
+          <ManualUpload />
+          <ManualList />
           <ManualStatus />
         </div>
 
-        <GoalInput onModeChange={setCurrentMode} />
-
-        <div className="mt-4">
-          <ProjectList />
-        </div>
+        <GoalInput />
       </div>
     </div>
   );

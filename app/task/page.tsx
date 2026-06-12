@@ -75,14 +75,6 @@ export default function TaskPage() {
     router.push("/");
   };
 
-  const handleContinueToReport = () => {
-    sessionStorage.setItem("geolens-report-topic", goal || "");
-    // Do NOT auto-pass screenshot — let user capture fresh in report mode
-    sessionStorage.removeItem("geolens-guide-screenshot");
-    stopSharing();
-    router.push("/report");
-  };
-
   if (isPipActive) {
     return <MinimalTaskScreen goal={goal} />;
   }
@@ -103,7 +95,6 @@ export default function TaskPage() {
           goal={goal}
           isLoading={isLoading}
           onStartOver={handleStartOver}
-          onContinueToReport={handleContinueToReport}
           onTaskRefreshed={() => {}}
           onAllTasksCompleted={() => {}}
           isGuidePaused={taskContext.isGuidePaused}

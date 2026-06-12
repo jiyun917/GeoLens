@@ -155,8 +155,7 @@ async def run_evaluation(body: EvalRequest):
 @router.post("/api/rag/route")
 async def route_rag(body: RouteRequest):
     """
-    Unified RAG entry point.
-    Returns mode (guide/report/qa) and corresponding context block for LLM.
+    Guide RAG entry point. Returns the guide mode context block for the LLM.
     """
     router_instance = get_rag_router()
     result = router_instance.route(

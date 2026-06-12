@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { TaskProvider } from "./providers/TaskProvider";
 import { SettingsProvider } from "./providers/SettingsProvider";
 import { ManualProvider } from "./providers/ManualProvider";
-import { ReportProvider } from "./providers/ReportProvider";
 import { Inter } from "next/font/google";
 
 export const metadata = {
@@ -43,9 +42,7 @@ export default function RootLayout({
         <Toaster position="top-center" richColors />
         <SettingsProvider>
           <ManualProvider>
-            <TaskProvider>
-              <ReportProvider>{children}</ReportProvider>
-            </TaskProvider>
+            <TaskProvider>{children}</TaskProvider>
           </ManualProvider>
         </SettingsProvider>
       </body>

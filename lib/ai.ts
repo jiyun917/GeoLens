@@ -4,10 +4,8 @@ import {
   buildHelpPrompt,
   buildCheckPrompt,
   buildCoordinatePrompt,
-  buildReportPrompt,
   buildSummaryPrompt,
 } from "./prompts";
-import type { ReportLanguage, ReportTemplate } from "./prompts/report";
 
 export const aiApiUrl =
   process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
@@ -492,187 +490,10 @@ export async function generateSummary(
     if (shouldUseDirectApi(settings)) {
       return await sendDirectToApi(messages, settings, onStream);
     } else {
-      return await sendToBackend("report", messages, onStream, {
-        manual_ids: manualIds,
-      });
-    }
-  } catch (e) {
-    console.error("Error generating summary:", e);
-    return "";
-  }
-}
-
-export interface GeoAnnotation {
-  id: string;
-  feature_type: string;
-  label: string;
-  confidence: "high" | "medium" | "low";
-  geometry: {
-    type: "bbox" | "point" | "line";
-    x?: number;
-    y?: number;
-    width?: number;
-    height?: number;
-    points?: Array<{ x: number; y: number }>;
-  };
-  description?: string;
-}
-
-export async function requestAnnotations(
-  image: string,
-  dataType: string,
-  description: string,
-  topic: string
-): Promise<GeoAnnotation[]> {
-  try {
-    const response = await fetch(`${aiApiUrl}/annotate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ image, data_type: dataType, description, topic }),
-    });
-
-    if (!response.ok) return [];
-
-    const data = await response.json();
-    return data.annotations || [];
-  } catch (e) {
-    console.error("Annotation request failed:", e);
-    return [];
-  }
-}
-
-export async function generateReport(
-  topic: string,
-  capturedImages: { image: string; description: string; dataType?: string }[],
-  settings: ApiSettings,
-  onStream?: (message: string) => void,
-  manualIds?: string[],
-  language: ReportLanguage = "ko",
-  template: ReportTemplate = "detailed",
-  customSections?: string[],
-  graphContext?: string
-) {
-  let systemPrompt = buildReportPrompt(
-    topic,
-    capturedImages.map((c) => ({
-      description: c.description,
-      dataType: c.dataType || "other",
-    })),
-    language,
-    template,
-    customSections
-  );
-
-  // Inject Graph-RAG context (workflow path + per-step technique/parameter info)
-  if (graphContext && graphContext.trim()) {
-    systemPrompt += `\n\n--- Workflow Graph Context (User's Completed Steps + Manual References) ---\n${graphContext}\n--- End Workflow Graph Context ---\n`;
-  }
-
-  const imageContent: Array<{
-    type: string;
-    text?: string;
-    image_url?: { url: string };
-  }> = [];
-
-  capturedImages.forEach((capture, i) => {
-    const typeLabel = capture.dataType || "other";
-    imageContent.push({
-      type: "text",
-      text: `[Capture ${i + 1} (${typeLabel}): ${capture.description}]`,
-    });
-    imageContent.push({
-      type: "image_url",
-      image_url: { url: capture.image },
-    });
-  });
-
-  const messages: Message[] = [
-    { role: "system", content: systemPrompt },
-    { role: "user", content: imageContent },
-  ];
-
-  try {
-    if (shouldUseDirectApi(settings)) {
-      return await sendDirectToApi(messages, settings, onStream);
-    } else {
-      return await sendToBackend("report", messages, onStream, {
-        manual_ids: manualIds,
-      });
-    }
-  } catch (e) {
-    console.error("Error generating report:", e);
-    return "";
-  }
-}
-
-export async function regenerateSection(
-  topic: string,
-  capturedImages: { image: string; description: string; dataType?: string }[],
-  fullReport: string,
-  sectionTitle: string,
-  settings: ApiSettings,
-  onStream?: (message: string) => void,
-  _manualIds?: string[],
-  language: ReportLanguage = "ko"
-) {
-  // Extract only the target section
-  const sectionRegex = new RegExp(
-    `## ${sectionTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\n[\\s\\S]*?(?=\\n## |$)`
-  );
-  const currentSection = fullReport.match(sectionRegex)?.[0] || "";
-
-  const captureDesc = capturedImages
-    .map((c, i) => `Capture ${i + 1} (${c.dataType || "other"}): ${c.description}`)
-    .join("; ");
-
-  const isEn = language === "en";
-  const prompt = isEn
-    ? `Rewrite this report section to be more detailed and accurate.
-
-## Format Rules (MUST follow exactly)
-- Start with "## ${sectionTitle}"
-- Use bullet points only (- prefix)
-- Every bullet MUST end with a confidence tag: [Confidence: High], [Confidence: Medium], or [Confidence: Low]
-- Keep it concise: 1-2 sentences per bullet
-- Example format:
-  - Observation or interpretation here [Confidence: High]
-  - Another point with reasoning [Confidence: Medium]
-
-Topic: ${topic}
-Data: ${captureDesc}
-
-Current section to improve:
-${currentSection}`
-    : `이 보고서 섹션을 더 상세하고 정확하게 다시 작성하세요.
-
-## 형식 규칙 (반드시 준수)
-- "## ${sectionTitle}" 헤더로 시작
-- 개조식(bullet point)으로만 작성 (- 접두사)
-- 모든 항목 끝에 반드시 신뢰도 태그: [신뢰도: 높음], [신뢰도: 중간], [신뢰도: 낮음]
-- 각 항목 1-2문장으로 간결하게
-- 형식 예시:
-  - 관찰 또는 해석 내용 [신뢰도: 높음]
-  - 근거를 포함한 해석 [신뢰도: 중간]
-
-주제: ${topic}
-자료: ${captureDesc}
-
-개선할 현재 섹션:
-${currentSection}`;
-
-  const messages: Message[] = [
-    { role: "user", content: prompt },
-  ];
-
-  try {
-    if (shouldUseDirectApi(settings)) {
-      return await sendDirectToApi(messages, settings, onStream);
-    } else {
-      // Use /api/help (lightweight, no RAG) instead of /api/report
       return await sendToBackend("help", messages, onStream);
     }
   } catch (e) {
-    console.error("Error regenerating section:", e);
+    console.error("Error generating summary:", e);
     return "";
   }
 }

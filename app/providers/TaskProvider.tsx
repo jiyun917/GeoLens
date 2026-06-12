@@ -283,17 +283,6 @@ export function TaskProvider({ children }: { children: ReactNode }) {
             if (nextNodes.length > 0) {
               expectedNextNodeIdRef.current = nextNodes[0].id;
             }
-            // Persist for report mode (backward traversal)
-            try {
-              sessionStorage.setItem(
-                "geolens-graph-session",
-                JSON.stringify({
-                  visited_node_ids: visitedNodeIdsRef.current,
-                  active_workflow_id: activeWorkflowIdRef.current,
-                  current_node_id: node.id,
-                })
-              );
-            } catch { /* ignore */ }
             console.log("[Graph-RAG]", { node: node.id, confidence, visited: visitedNodeIdsRef.current.length });
           }
         } catch (e) {

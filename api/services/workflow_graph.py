@@ -1,7 +1,6 @@
 """
 Workflow Graph: Directed Acyclic Graph (DAG) of software workflow steps.
-Used by guide mode to locate current step and find next steps,
-and by report mode to backtrack completed steps.
+Used by guide mode to locate the current step and find next steps.
 """
 
 import json
@@ -239,10 +238,7 @@ class WorkflowGraph:
             return []
 
     def get_completed_path(self, current_node_id: str) -> List[Dict]:
-        """
-        Get all nodes leading up to the current node within its workflow.
-        Used by report mode for backward traversal.
-        """
+        """Get all nodes leading up to the current node within its workflow."""
         if current_node_id not in self.graph:
             return []
 

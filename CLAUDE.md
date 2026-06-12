@@ -54,7 +54,7 @@ npm run lint
 
 ### Backend Architecture
 
-- `api/routers/task.py` — `/step` (OpenAI + RAG), `/check` (Gemini), `/help` (OpenAI), `/coordinates` (Qwen via OpenRouter)
+- `api/routers/task.py` — `/step` (Claude/Gemini + RAG), `/check` (Gemini), `/help` (Gemini follow-up), `/coordinates` (Gemini click target)
 - `api/routers/manual.py` — CRUD endpoints for PDF upload, URL crawl, GitHub clone; uses BackgroundTasks
 - `api/services/parser/` — `pdf_parser.py` (PyMuPDF), `url_parser.py` (BeautifulSoup, depth-2 crawl), `github_parser.py` (GitPython shallow clone)
 - `api/services/embedder.py` — Chunk splitting (800 tokens, 100 overlap via tiktoken) + OpenAI text-embedding-3-small
@@ -89,7 +89,11 @@ NEXT_PUBLIC_API_URL     — Backend URL (default: http://127.0.0.1:8000/api)
 
 | Endpoint | Model | Purpose |
 |----------|-------|---------|
-| /step | gpt-5-mini | Generate next instruction (with RAG context) |
-| /check | gemini-3-flash | Verify step completion (before/after images) |
-| /help | gpt-5-mini | Answer follow-up questions |
-| /coordinates | qwen3-vl-30b | Locate UI elements for click targets |
+| /step | claude-sonnet-4-6 → gemini-2.5-flash | Generate next instruction (with RAG context) |
+| /check | gemini-2.5-flash | Verify step completion (before/after images) |
+| /help | gemini-2.5-flash | Answer follow-up questions during guide |
+| /coordinates | gemini-2.5-pro | Locate UI elements for click targets |
+
+## Guide-only build
+
+This branch keeps only guide mode. Report and qa modes (and their endpoints, providers, components, and prompts) have been removed.

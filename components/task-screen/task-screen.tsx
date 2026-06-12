@@ -11,7 +11,6 @@ export const TaskScreen = ({
   onNextTask,
   onRefreshTask,
   onStartOver,
-  onContinueToReport,
   returnToTask,
   goal,
   sendFollowUpMessage,
@@ -167,7 +166,6 @@ export const TaskScreen = ({
           onRefresh={handleRefreshTask}
           onNextTask={handleNextTask}
           onStartOver={onStartOver}
-          onContinueToReport={onContinueToReport}
           isPip={isPip}
           isCompleting={true}
         />
@@ -200,7 +198,6 @@ export const TaskScreen = ({
           onRefresh={handleRefreshTask}
           onNextTask={handleNextTask}
           onStartOver={onStartOver}
-          onContinueToReport={onContinueToReport}
           isPip={isPip}
           isCompleting={false}
           isGuidePaused={isGuidePaused}

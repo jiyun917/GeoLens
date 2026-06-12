@@ -18,7 +18,6 @@ export interface TaskScreenProps {
   onNextTask?: () => void;
   onRefreshTask?: () => void;
   onStartOver?: () => void;
-  onContinueToReport?: () => void;
   returnToTask?: (taskIndex: number) => void;
   goal?: string;
   isLoading: boolean;

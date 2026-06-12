@@ -7,7 +7,7 @@ from slowapi.errors import RateLimitExceeded
 from google.genai import types
 import os
 
-from .routers import task, manual, project, diagram, workflow
+from .routers import task, manual, workflow
 
 
 # Monkeypatch ThinkingConfig to allow extra fields like thinking_level
@@ -39,6 +39,4 @@ app.add_middleware(
 
 app.include_router(task.router)
 app.include_router(manual.router)
-app.include_router(project.router)
-app.include_router(diagram.router)
 app.include_router(workflow.router)

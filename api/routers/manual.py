@@ -46,12 +46,12 @@ def _process_github(manual_id: str, repo_url: str):
 
 
 @router.post("/api/manual/upload")
-async def upload_pdf(background_tasks: BackgroundTasks, file: UploadFile = File(...), mode: str = "guide"):
+async def upload_pdf(background_tasks: BackgroundTasks, file: UploadFile = File(...)):
     if not file.filename or not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are accepted")
 
     _ensure_upload_dir()
-    manual = Manual.new(name=file.filename, type="pdf", source=file.filename, mode=mode)
+    manual = Manual.new(name=file.filename, type="pdf", source=file.filename)
     file_path = os.path.join(UPLOAD_DIR, f"{manual.id}_{file.filename}")
 
     with open(file_path, "wb") as f:
@@ -68,13 +68,12 @@ async def upload_pdf(background_tasks: BackgroundTasks, file: UploadFile = File(
 class UrlRequest(BaseModel):
     url: str
     name: Optional[str] = None
-    mode: str = "guide"
 
 
 @router.post("/api/manual/url")
 async def add_url(background_tasks: BackgroundTasks, body: UrlRequest):
     name = body.name or body.url
-    manual = Manual.new(name=name, type="url", source=body.url, mode=body.mode)
+    manual = Manual.new(name=name, type="url", source=body.url)
     manual_store.add_manual(manual)
     background_tasks.add_task(_process_url, manual.id, body.url)
 
@@ -84,13 +83,12 @@ async def add_url(background_tasks: BackgroundTasks, body: UrlRequest):
 class GithubRequest(BaseModel):
     url: str
     name: Optional[str] = None
-    mode: str = "guide"
 
 
 @router.post("/api/manual/github")
 async def add_github(background_tasks: BackgroundTasks, body: GithubRequest):
     name = body.name or body.url
-    manual = Manual.new(name=name, type="github", source=body.url, mode=body.mode)
+    manual = Manual.new(name=name, type="github", source=body.url)
     manual_store.add_manual(manual)
     background_tasks.add_task(_process_github, manual.id, body.url)
 
@@ -98,10 +96,8 @@ async def add_github(background_tasks: BackgroundTasks, body: GithubRequest):
 
 
 @router.get("/api/manual/list")
-async def list_manuals(mode: Optional[str] = None):
+async def list_manuals():
     manuals = manual_store.load_manuals()
-    if mode:
-        manuals = [m for m in manuals if getattr(m, "mode", "guide") == mode]
     return ManualListResponse(manuals=manuals).model_dump()
 
 

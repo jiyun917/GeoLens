@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 type Tab = "pdf" | "url" | "github";
 
-export const ManualUpload = ({ mode = "guide" }: { mode?: "guide" | "report" }) => {
+export const ManualUpload = () => {
   const { uploadPdf, addUrl, addGithub, isUploading } = useManuals();
   const [activeTab, setActiveTab] = useState<Tab>("pdf");
   const [urlInput, setUrlInput] = useState("");
@@ -23,7 +23,7 @@ export const ManualUpload = ({ mode = "guide" }: { mode?: "guide" | "report" }) 
       }
 
       try {
-        await uploadPdf(file, mode);
+        await uploadPdf(file);
         toast.success("PDF uploaded successfully");
       } catch {
         toast.error("Failed to upload PDF");
@@ -58,7 +58,7 @@ export const ManualUpload = ({ mode = "guide" }: { mode?: "guide" | "report" }) 
     if (!urlInput.trim()) return;
 
     try {
-      await addUrl(urlInput.trim(), mode);
+      await addUrl(urlInput.trim());
       setUrlInput("");
       toast.success("URL added successfully");
     } catch {
@@ -70,7 +70,7 @@ export const ManualUpload = ({ mode = "guide" }: { mode?: "guide" | "report" }) 
     if (!githubInput.trim()) return;
 
     try {
-      await addGithub(githubInput.trim(), mode);
+      await addGithub(githubInput.trim());
       setGithubInput("");
       toast.success("GitHub repository added successfully");
     } catch {

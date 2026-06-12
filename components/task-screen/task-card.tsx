@@ -151,7 +151,6 @@ interface TaskCardProps {
   onRefresh?: () => void;
   onNextTask?: () => void;
   onStartOver?: () => void;
-  onContinueToReport?: () => void;
   isPip?: boolean;
   isCompleting?: boolean;
   shouldAnimateIn?: boolean;
@@ -174,7 +173,6 @@ export const TaskCard = ({
   onRefresh,
   onNextTask,
   onStartOver,
-  onContinueToReport,
   isPip = false,
   isCompleting = false,
   shouldAnimateIn = false,
@@ -345,14 +343,6 @@ export const TaskCard = ({
             You&apos;ve completed all the steps.
           </p>
           <div className="flex gap-3">
-            {onContinueToReport && (
-              <Button
-                onClick={onContinueToReport}
-                className="bg-green-600 text-white hover:bg-green-700 px-6 py-3 text-base font-medium rounded-lg"
-              >
-                Continue to Report
-              </Button>
-            )}
             {onStartOver && (
               <Button
                 onClick={onStartOver}
