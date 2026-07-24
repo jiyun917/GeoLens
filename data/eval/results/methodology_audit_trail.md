@@ -218,6 +218,37 @@ Latency trade-off 표: "cached vs uncached full_system"를 v2 로그에서
 
 **교훈 → methods**: v2 매트릭스는 "무손실 240×24 실행 = 5760 스텝 전부 clean" 이라는 조건을 만족하기 위해 aux 실패 발생 시 replicate 단위로 재실행함. 이 원칙 덕분에 논문의 어떤 셀도 aux 열화 각주가 붙지 않음.
 
+## v3 실행 중 이벤트 — long_context r5 폐기 및 재실행 (2026-07-23)
+
+**증상**: long_context 백엔드가 매뉴얼 전문(226,660 tokens/step)을 주입하며
+Gemini 프로젝트의 monthly spending cap을 소진. r5의 마지막 스텝(survey_setup
+step 3)이 empty 응답으로 저장됨. 로그에 `429 RESOURCE_EXHAUSTED` 다수.
+
+**결정 근거**: 사용자 사전 원칙에 명시적으로 등재된 "429/quota exhaustion
+→ replicate 폐기" 규칙에 정확히 해당. 카테고리 판단 여지 없음.
+
+**조치**: 
+1. `run_gemini_longctx_r5_20260723T035334.json` → `data/eval/results/discarded/`
+2. 사용자가 Gemini AI Studio에서 spending cap 상향
+3. 재실행 후 `run_gemini_longctx_r5_20260723T041637.json` (전 스텝 clean)
+
+## 폐기 replicate 감사 트레일
+
+두 이벤트 모두 `data/eval/results/discarded/` 하위에 원본 파일이 보존되어
+있으며, 폐기 사유와 재실행 결과가 `discarded/README.md`에 문서화되어 있다.
+Reviewer는 다음을 통해 폐기 격리 여부를 검증 가능:
+
+```bash
+# Final result files (aggregation target)
+ls data/eval/results/run_*_r*_*.json | wc -l   # 25 (4 unified2 × 5 + longctx × 5)
+
+# Discarded originals (audit only, not aggregated)
+ls data/eval/results/discarded/*.json | wc -l  # 2
+```
+
+Aggregation 스크립트의 glob 패턴이 top-level만 매칭하므로 discarded 파일이
+자동으로 표에 섞이지 않음.
+
 ---
 
 ## Limitations 섹션 원자재

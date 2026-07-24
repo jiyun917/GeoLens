@@ -46,5 +46,5 @@ data/manuals.json
 # CLIP image cache — regenerated from PDFs via scripts (see README).
 # Excluded due to 164MB size; regeneration procedure documented for reproducibility.
 data/manual_images/
-# Discarded benchmark replicates — preserved locally as audit trail, excluded from repo
-data/eval/results/discarded/
+# Note: data/eval/results/discarded/ IS tracked (audit trail for
+# discarded replicates — required for reproducibility claim in paper).
