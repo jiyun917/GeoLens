@@ -1,0 +1,273 @@
+{
+  "started_at": "2026-07-23T03:50:39.737758Z",
+  "scenarios": [
+    {
+      "scenario_id": "opendtect__3d_visualization__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "visualization",
+      "difficulty": "medium",
+      "backends": {
+        "long_context": {
+          "backend": "long_context",
+          "n_steps": 4,
+          "step_accuracy": 0.0,
+          "hallucination_rate": 0.25,
+          "faithfulness": 0.75,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 0.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 16.323,
+          "mean_cost_usd": 0.283398,
+          "total_cost_usd": 1.133591,
+          "total_input_tokens": 906593,
+          "total_output_tokens": 35,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": null,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": false,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "In-line에 마우스 오른쪽 버튼을 클릭하고 Add Default Data를 선택하세요.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 26.134,
+              "input_tokens": 226621,
+              "output_tokens": 18,
+              "cost_usd": 0.283456,
+              "model": "gemini",
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "judge_score": 1
+            },
+            {
+              "step_index": 1,
+              "response": "Add Default Data를 클릭하세요.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 18.472,
+              "input_tokens": 226647,
+              "output_tokens": 7,
+              "cost_usd": 0.283379,
+              "model": "gemini",
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "judge_score": 1
+            },
+            {
+              "step_index": 2,
+              "response": "'OK' 버튼을 클릭하세요.",
+              "matched": false,
+              "hallucinated": [
+                "OK"
+              ],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 8.397,
+              "input_tokens": 226657,
+              "output_tokens": 8,
+              "cost_usd": 0.283401,
+              "model": "gemini",
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "완료",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 12.288,
+              "input_tokens": 226668,
+              "output_tokens": 2,
+              "cost_usd": 0.283355,
+              "model": "gemini",
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "judge_score": 1
+            }
+          ],
+          "latency_sec": 80.37,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.75,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "opendtect__survey_setup__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "setup",
+      "difficulty": "medium",
+      "backends": {
+        "long_context": {
+          "backend": "long_context",
+          "n_steps": 4,
+          "step_accuracy": 0.5,
+          "hallucination_rate": 0.75,
+          "faithfulness": 0.25,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 0.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 9.921,
+          "mean_cost_usd": 0.283484,
+          "total_cost_usd": 1.133938,
+          "total_input_tokens": 906678,
+          "total_output_tokens": 59,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": null,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "\"새 측량 추가\" 아이콘을 클릭합니다.",
+              "matched": false,
+              "hallucinated": [
+                "새 측량 추가"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 7.406,
+              "input_tokens": 226637,
+              "output_tokens": 12,
+              "cost_usd": 0.283416,
+              "model": "gemini",
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "judge_score": 1
+            },
+            {
+              "step_index": 1,
+              "response": "\"Survey name\" 텍스트 입력란에 \"My_F3_Survey\"를 입력합니다.",
+              "matched": true,
+              "hallucinated": [
+                "My_F3_Survey"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 11.588,
+              "input_tokens": 226657,
+              "output_tokens": 22,
+              "cost_usd": 0.283541,
+              "model": "gemini",
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "judge_score": 1
+            },
+            {
+              "step_index": 2,
+              "response": "Initial setup 목록에서 \"Scan SEG-Y file(s)\"를 클릭합니다.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 10.799,
+              "input_tokens": 226682,
+              "output_tokens": 17,
+              "cost_usd": 0.283523,
+              "model": "gemini",
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "judge_score": 1
+            },
+            {
+              "step_index": 3,
+              "response": "\"Select...\" 버튼을 클릭합니다.",
+              "matched": false,
+              "hallucinated": [
+                "Select..."
+              ],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 9.891,
+              "input_tokens": 226702,
+              "output_tokens": 8,
+              "cost_usd": 0.283458,
+              "model": "gemini",
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "judge_score": 0
+            }
+          ],
+          "latency_sec": 51.37,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.75,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "long_context": {
+      "n_scenarios": 2,
+      "step_accuracy": 0.25,
+      "faithfulness": 0.5,
+      "hallucination_rate": 0.5,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 0.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 0.5,
+      "mean_latency_sec": 13.122,
+      "mean_cost_usd": 0.283441,
+      "total_cost_usd": 1.1337644999999998,
+      "total_input_tokens": 906635.5,
+      "total_output_tokens": 47.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": null
+    }
+  }
+}

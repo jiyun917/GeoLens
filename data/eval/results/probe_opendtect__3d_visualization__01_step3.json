@@ -1,0 +1,90 @@
+{
+  "scenario_id": "opendtect__3d_visualization__01",
+  "step_index": 3,
+  "model": "gemini-2.5-pro",
+  "context_block_chars": 3059,
+  "system_message_chars": 3683,
+  "results": [
+    {
+      "text_property": "완료",
+      "text_property_len": 2,
+      "sys_text_len": 3683,
+      "candidates_count": 1,
+      "candidates": [
+        {
+          "index": 0,
+          "finish_reason": "FinishReason.STOP",
+          "finish_message": "None",
+          "safety_ratings": [],
+          "parts_count": 1,
+          "parts_preview": [
+            {
+              "text": "완료",
+              "text_len": 2
+            }
+          ]
+        }
+      ],
+      "usage_metadata": {
+        "prompt_token_count": 1651,
+        "candidates_token_count": 2,
+        "total_token_count": 2184
+      },
+      "_attempt": 1
+    },
+    {
+      "text_property": "완료",
+      "text_property_len": 2,
+      "sys_text_len": 3683,
+      "candidates_count": 1,
+      "candidates": [
+        {
+          "index": 0,
+          "finish_reason": "FinishReason.STOP",
+          "finish_message": "None",
+          "safety_ratings": [],
+          "parts_count": 1,
+          "parts_preview": [
+            {
+              "text": "완료",
+              "text_len": 2
+            }
+          ]
+        }
+      ],
+      "usage_metadata": {
+        "prompt_token_count": 1651,
+        "candidates_token_count": 2,
+        "total_token_count": 2005
+      },
+      "_attempt": 2
+    },
+    {
+      "text_property": "완료",
+      "text_property_len": 2,
+      "sys_text_len": 3683,
+      "candidates_count": 1,
+      "candidates": [
+        {
+          "index": 0,
+          "finish_reason": "FinishReason.STOP",
+          "finish_message": "None",
+          "safety_ratings": [],
+          "parts_count": 1,
+          "parts_preview": [
+            {
+              "text": "완료",
+              "text_len": 2
+            }
+          ]
+        }
+      ],
+      "usage_metadata": {
+        "prompt_token_count": 1651,
+        "candidates_token_count": 2,
+        "total_token_count": 2723
+      },
+      "_attempt": 3
+    }
+  ]
+}

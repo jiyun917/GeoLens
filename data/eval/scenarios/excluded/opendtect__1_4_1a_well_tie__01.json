@@ -1,0 +1,143 @@
+{
+  "scenario_id": "645b7cdf__1_4_1a_well_tie__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "category": "well_tie",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3_Demo well-1을 seismic과 well-to-seismic tie 수행",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/manual_images/645b7cdf2690408da843b9ce63c52d5b/p062_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'View Well-to-Seismic Tie Data and Parame']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "View",
+        "Well-to-Seismic",
+        "Tie",
+        "Data",
+        "Parameters"
+      ],
+      "expected_workflow_node": "auto_645b7cdf2690408da843b9ce63c52d5b__1_4_1a_well_tie_01",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "View Well-to-Seismic Tie Data and Parameters",
+        "description": "Workflow cont'd: [Window: Tie F03-4 to 4 Dip steered median filter] Sonic 120 140 160 TWT (ms) Top 700 750 800 FS6 850 MFS 900 FS4 2 2.",
+        "step_type": "action",
+        "page": 62
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/manual_images/645b7cdf2690408da843b9ce63c52d5b/p063_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Zoom and Pan Display to Match Events']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Zoom",
+        "Pan",
+        "Display",
+        "Match",
+        "Events"
+      ],
+      "expected_workflow_node": "auto_645b7cdf2690408da843b9ce63c52d5b__1_4_1a_well_tie_02",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Zoom and Pan Display to Match Events",
+        "description": "Workflow cont'd 4.",
+        "step_type": "action",
+        "page": 63
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/manual_images/645b7cdf2690408da843b9ce63c52d5b/p064_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Apply, Undo, or Clear Event Picks']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Apply",
+        "Undo",
+        "Clear",
+        "Event",
+        "Picks"
+      ],
+      "expected_workflow_node": "auto_645b7cdf2690408da843b9ce63c52d5b__1_4_1a_well_tie_03",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Apply, Undo, or Clear Event Picks",
+        "description": "Workflow cont'd: 8.",
+        "step_type": "action",
+        "page": 64
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/manual_images/645b7cdf2690408da843b9ce63c52d5b/p065_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Define Analysis Window Between Markers']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Define",
+        "Analysis",
+        "Window",
+        "Between",
+        "Markers"
+      ],
+      "expected_workflow_node": "auto_645b7cdf2690408da843b9ce63c52d5b__1_4_1a_well_tie_04",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Define Analysis Window Between Markers",
+        "description": "Workflow cont'd 11.",
+        "step_type": "action",
+        "page": 65
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/[TODO_done_1_4_1a_well_tie].png",
+    "expected_done_sentinel": true
+  },
+  "_meta": {
+    "source_workflow_id": "auto_645b7cdf2690408da843b9ce63c52d5b__1_4_1a_well_tie",
+    "auto_generated_template": true,
+    "labeling_checklist": [
+      "1) 각 step의 screenshot_path를 실제 사용자 화면 캡처로 교체 (또는 매뉴얼 이미지 그대로 사용)",
+      "2) visual_state_gt를 채워서 화면 ground-truth 명시",
+      "3) trap이 있는 step에 'trap': {...} + 'is_error_recovery_test': true 추가",
+      "4) 첫 번째 step의 current_dialog는 어플리케이션 메인 화면이 보통",
+      "5) goal 텍스트에 사용자가 입력할 구체적 path/이름 포함",
+      "6) _meta + _node_hint 필드는 라벨링 후 삭제 가능"
+    ]
+  }
+}

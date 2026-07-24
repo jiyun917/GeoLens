@@ -1,0 +1,229 @@
+{
+  "scenario_id": "opendtect__attribute_computation__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "manual_reference": "1.5 Attribute Analysis (1.5.1a Bright Spot workflow — Energy attribute on F3 Demo seismic)",
+  "category": "attribute",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3 Demo survey에서 매뉴얼 1.5.1a 절차에 따라 Bright Spot 탐지를 위한 Energy attribute를 계산한다. 중요 규칙: 화면에 실제로 보이는 버튼/메뉴 이름 그대로만 지시할 것. 존재하지 않는 이름을 만들어내지 말 것. 워크플로우: 먼저 상단 메뉴 바에서 'Attribute'를 클릭하여 드롭다운을 연다. 그 안의 '3D' 서브메뉴로 이동하여 'Define...' 항목을 선택한다 (이렇게 하면 Attribute Set 편집 창이 열린다). 그 창에서 왼쪽 목록의 'Energy'를 선택하고, 이름 필드에 'Energy_16ms' 등을 입력하고, Time Gate와 Input Data를 채운 뒤 'Add as new' 버튼으로 attribute set에 추가한다. 이어서 툴바의 볼륨 계산 아이콘(초록색 러닝맨/화살표)을 눌러 처리 다이얼로그를 열고, 볼륨 범위를 확인한 뒤 'OK' 또는 'Proceed'로 실행한다. 처리 완료 후 Tree scene의 In-line 카테고리 아래의 In-line 자식을 우클릭하여 컨텍스트 메뉴에서 'Add > Attribute > Stored...' 또는 'Add' 항목으로 방금 만든 Energy_16ms를 In-line에 표시한다.",
+  "initial_state": {
+    "description": "F3 Demo survey 로드된 상태. Main Window 열려있고 Tree scene에 seismic cube가 이미 추가되어 있음 (In-line 하위에 자식 노드 존재). 어떤 wizard/dialog도 안 열려있고 Attribute Set dialog도 안 열려있음.",
+    "must_be_true": [
+      "OpendTect Main Window is loaded with F3 Demo (or similar seismic-loaded) survey active",
+      "Seismic cube exists in Tree scene under Elements/Volume or already displayed as In-line",
+      "No Attribute Set / Attribute Engine dialog open yet",
+      "No other wizard dialog open"
+    ]
+  },
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_0.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window",
+        "active_menu": null,
+        "visible_elements": [
+          "Main menu bar (Survey, Analysis, Processing, Scene, View, Utilities, Help)",
+          "Tree scene panel",
+          "3D Scene / seismic display",
+          "Toolbar with attribute icons"
+        ],
+        "data_state": "F3 Demo loaded, seismic cube available, no attribute set yet",
+        "current_action": "user needs to open the Attribute Set / Attribute Engine dialog"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Attribute|Analysis|3D Attributes|Processing)\\b",
+      "expected_action_keywords": ["Attribute", "Analysis"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Utilities)\\b", "note": "Some manual paths use Utilities menu"},
+        {"pattern": "(?i)\\b(3D)\\b", "note": "3D Attributes menu entry"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_required": true,
+      "capture_instructions": {
+        "screen_state": "OpendTect Main Window with F3 Demo loaded. Seismic already visible in 3D Scene (or as In-line child). No dialog is open.",
+        "user_should_have_just": "Opened OpendTect, loaded F3 Demo survey, and has seismic ready — has NOT yet started Attribute workflow.",
+        "must_not_show": [
+          "Attribute Set dialog open",
+          "Any other wizard open"
+        ]
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_1.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Attribute Set (or Attribute Engine)",
+        "visible_elements": [
+          "Attribute Set dialog",
+          "Attribute type dropdown / list",
+          "Energy option (in attribute types)",
+          "Attribute name field",
+          "Time gate / parameter fields",
+          "Add button",
+          "Add as new button",
+          "OK / Cancel / Help buttons"
+        ],
+        "data_state": "Attribute Set dialog just opened, no attribute type chosen yet",
+        "current_action": "user must select the Energy attribute type"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Energy|Select.*Energy|Attribute.*type|dropdown)\\b",
+      "expected_action_keywords": ["Energy", "Select"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(type|category|list)\\b", "note": "Model may mention the dropdown/list as the immediate target"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_required": true,
+      "capture_instructions": {
+        "screen_state": "Attribute Set / Attribute Engine dialog has just opened. Attribute type field or dropdown is visible but Energy is not yet selected.",
+        "user_should_have_just": "Opened the Attribute Set dialog via the menu (Analysis > Attributes > 3D Attributes, or similar).",
+        "must_not_show": [
+          "Energy already selected and parameters already filled",
+          "Processing already started"
+        ]
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_2.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Attribute Set (Energy selected)",
+        "visible_elements": [
+          "Attribute Set dialog",
+          "Energy attribute type highlighted / selected",
+          "Attribute name input field",
+          "Time gate min/max fields (empty or defaults)",
+          "Input Data field",
+          "Add / Add as new buttons"
+        ],
+        "data_state": "Energy attribute type selected; name and parameters not yet filled",
+        "current_action": "user must enter an attribute name (e.g. Energy_10ms)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(name|Provide|Type|Input.*name|Energy_)\\b",
+      "expected_action_keywords": ["name", "Provide"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Attribute name|Energy)\\b", "note": "Field label or example name"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_required": true,
+      "capture_instructions": {
+        "screen_state": "Attribute Set dialog with Energy selected. Attribute name field is visible and empty.",
+        "user_should_have_just": "Selected the Energy attribute type from the dropdown/list.",
+        "must_not_show": [
+          "Attribute name field already filled",
+          "Add button already clicked"
+        ]
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_3.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Attribute Set (name filled)",
+        "visible_elements": [
+          "Attribute Set dialog",
+          "Attribute name field with user-typed value (e.g. Energy_10ms)",
+          "Time gate min/max fields",
+          "Input Data / input cube selector",
+          "Add as new button",
+          "Add button",
+          "OK / Apply / Close buttons"
+        ],
+        "data_state": "Energy attribute type + name set; time gate defaults or already customized",
+        "current_action": "user must add this attribute to the set (Add / Add as new)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Add as new|Add|OK)\\b",
+      "expected_action_keywords": ["Add", "new"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(OK|Apply)\\b", "note": "Some layouts commit via OK/Apply"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_required": true,
+      "capture_instructions": {
+        "screen_state": "Attribute Set with attribute name filled in (e.g. Energy_10ms) and time gate values entered.",
+        "user_should_have_just": "Typed the attribute name and (optionally) adjusted the time gate.",
+        "must_not_show": [
+          "Attribute already added to the list (would show it in the attribute set table)",
+          "Processing dialog open"
+        ]
+      }
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_4.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Volume Sub-selection / Processing / Positioning dialog",
+        "visible_elements": [
+          "Volume sub-selection or positioning dialog",
+          "Inline range field",
+          "Crossline range field",
+          "Z range / time gate field",
+          "OK / Run / Apply / Proceed button"
+        ],
+        "data_state": "Attribute added; a sub-selection or positioning dialog now requests ranges before processing",
+        "current_action": "user must confirm the sub-selection ranges and launch processing"
+      },
+      "expected_action_text_pattern": "(?i)\\b(OK|Run|Proceed|Process|Apply|Fill|range)\\b",
+      "expected_action_keywords": ["OK", "Fill"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Full range|Volume|In[- ]?line|Cross[- ]?line)\\b", "note": "Model may reference the ranges themselves"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_required": true,
+      "capture_instructions": {
+        "screen_state": "Sub-selection / positioning dialog is open (either directly after Add, or after clicking 'Proceed' / 'Run'). Range fields visible.",
+        "user_should_have_just": "Added the attribute to the set and clicked a button that opened the positioning / sub-selection dialog.",
+        "must_not_show": [
+          "Attribute already displayed on In-line (that's after processing)",
+          "Attribute Set main dialog still on top"
+        ]
+      }
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_5.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window (attribute result available) or Attribute display context",
+        "visible_elements": [
+          "3D Scene with in-line / seismic display visible",
+          "Tree scene now includes the newly computed Energy attribute (or attribute displayed on In-line)",
+          "Attribute name (e.g. Energy_10ms) visible in Elements",
+          "Right-click / Add Attribute option on In-line"
+        ],
+        "data_state": "Processing done. Attribute available; user must display it on In-line or 3D Scene.",
+        "current_action": "user must add the computed attribute to the In-line display (right-click In-line or use scene menu)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(right[- ]click|In[- ]?line|Add.*attribute|Display|Energy_10ms|attribute)\\b",
+      "expected_action_keywords": ["In-line", "attribute", "Add"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Energy)\\b", "note": "Model may reference the attribute by name"},
+        {"pattern": "(?i)\\b(display|show|Scene)\\b", "note": "Alt visualization action"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_required": true,
+      "trap": {
+        "type": "category_vs_child_item",
+        "description": "For the display step, the right-click target must be the In-line CATEGORY node OR the existing In-line child (to add the attribute to it), not the Elements group or the Volume group."
+      },
+      "capture_instructions": {
+        "screen_state": "Processing finished, Main Window in focus again. New attribute (e.g. Energy_10ms) exists in the project. In-line is visible but the attribute is not yet displayed on it.",
+        "user_should_have_just": "Waited for the attribute processing to finish (progress bar hits 100 % and closes).",
+        "must_not_show": [
+          "Processing dialog still open",
+          "Attribute already displayed on In-line (that's the completion state after step_5's action)"
+        ]
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": null,
+    "expected_done_sentinel": true,
+    "note": "After step 5's action executes, the Energy attribute should be visible on the In-line in the 3D Scene. The next /step call should trigger the model to emit '완료'. That final capture may become step_6 if it fires."
+  }
+}

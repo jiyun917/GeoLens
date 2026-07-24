@@ -1,0 +1,185 @@
+C:\Users\user\Downloads\GeoLens-paper\scripts\run_all_models.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  ts = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%S")
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:71: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+[EVAL] long_context completion sentinel present but rejected — final visual_state does not indicate goal-reached
+  - long_context   step_acc=0.50 hall=0.50 loop=0.00 latency=70.91s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - long_context   step_acc=0.50 hall=0.00 loop=0.00 latency=47.09s
+
+# Benchmark Results
+
+Started: 2026-07-23T03:42:54.129612Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| long_context | 0.500 | 0.250 | 0.000 | 0.167 | — | 0.500 |
+
+
+Results written: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r1_20260723T034253.json
+Markdown:        C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r1_20260723T034253.md
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:71: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+[EVAL] long_context completion sentinel present but rejected — final visual_state does not indicate goal-reached
+  - long_context   step_acc=0.50 hall=0.25 loop=0.00 latency=57.46s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - long_context   step_acc=0.50 hall=0.00 loop=0.00 latency=43.51s
+
+# Benchmark Results
+
+Started: 2026-07-23T03:45:38.339097Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| long_context | 0.500 | 0.125 | 0.000 | 0.167 | — | 0.000 |
+
+
+Results written: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r2_20260723T034537.json
+Markdown:        C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r2_20260723T034537.md
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:71: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+[EVAL] long_context completion sentinel present but rejected — final visual_state does not indicate goal-reached
+  - long_context   step_acc=0.50 hall=0.75 loop=0.00 latency=74.13s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - long_context   step_acc=0.50 hall=0.50 loop=0.00 latency=39.15s
+
+# Benchmark Results
+
+Started: 2026-07-23T03:48:02.325102Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| long_context | 0.500 | 0.625 | 0.000 | 0.167 | — | 0.500 |
+
+
+Results written: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r3_20260723T034801.json
+Markdown:        C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r3_20260723T034801.md
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:71: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+[EVAL] long_context completion sentinel present but rejected — final visual_state does not indicate goal-reached
+  - long_context   step_acc=0.00 hall=0.25 loop=0.00 latency=80.37s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - long_context   step_acc=0.50 hall=0.75 loop=0.00 latency=51.37s
+
+# Benchmark Results
+
+Started: 2026-07-23T03:50:39.737758Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| long_context | 0.250 | 0.500 | 0.000 | 0.000 | — | 0.500 |
+
+
+Results written: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r4_20260723T035039.json
+Markdown:        C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r4_20260723T035039.md
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:71: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+[EVAL] long_context completion sentinel present but rejected — final visual_state does not indicate goal-reached
+  - long_context   step_acc=0.25 hall=0.00 loop=0.00 latency=63.74s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+[BENCH] gemini attempt 1 exception: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
+[BENCH] gemini attempt 2 exception: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
+[BENCH] gemini attempt 3 exception: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
+[BENCH] gemini exhausted 3 retries, returning empty
+[BENCH] gemini attempt 1 exception: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
+[BENCH] gemini attempt 2 exception: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
+[BENCH] gemini attempt 3 exception: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
+[BENCH] gemini exhausted 3 retries, returning empty
+[JUDGE] gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
+[JUDGE] gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
+[JUDGE] gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its monthly spending cap. Please go to AI Studio at https://ai.studio/spend to manage your project spend cap. Learn more at https://ai.google.dev/gemini-api/docs/billing#project-spend-caps. ', 'status': 'RESOURCE_EXHAUSTED'}}
+  - long_context   step_acc=0.50 hall=0.00 loop=0.00 latency=50.0s
+
+# Benchmark Results
+
+Started: 2026-07-23T03:53:35.069540Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| long_context | 0.375 | 0.000 | 0.000 | 0.000 | — | 0.000 |
+
+
+Results written: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r5_20260723T035334.json
+Markdown:        C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r5_20260723T035334.md
+Running models in sequence: ['gemini']  ×  5 replicates each
+Backends subset: ['long_context']
+Filename tag: longctx
+Total planned runs: 5
+
+======================================================================
+[12:42:53] Starting GEMINI replicate 1
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model gemini --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r1_20260723T034253.json --judge consensus --backends long_context
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r1_20260723T034253.json
+
+======================================================================
+[12:45:37] Starting GEMINI replicate 2
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model gemini --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r2_20260723T034537.json --judge consensus --backends long_context
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r2_20260723T034537.json
+
+======================================================================
+[12:48:01] Starting GEMINI replicate 3
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model gemini --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r3_20260723T034801.json --judge consensus --backends long_context
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r3_20260723T034801.json
+
+======================================================================
+[12:50:39] Starting GEMINI replicate 4
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model gemini --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r4_20260723T035039.json --judge consensus --backends long_context
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r4_20260723T035039.json
+
+======================================================================
+[12:53:34] Starting GEMINI replicate 5
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model gemini --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r5_20260723T035334.json --judge consensus --backends long_context
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r5_20260723T035334.json
+
+
+=== SUMMARY ===
+  [OK  ] gemini   r1 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r1_20260723T034253.json
+  [OK  ] gemini   r2 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r2_20260723T034537.json
+  [OK  ] gemini   r3 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r3_20260723T034801.json
+  [OK  ] gemini   r4 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r4_20260723T035039.json
+  [OK  ] gemini   r5 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_longctx_r5_20260723T035334.json

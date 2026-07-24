@@ -1,0 +1,224 @@
+{
+  "workflow_id": "survey_setup",
+  "name": "Survey Setup & Load SEG-Y (Survey 생성 및 SEG-Y 로드)",
+  "description": "OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey를 생성하고 SEG-Y 파일로부터 geometry를 정의하여 Main Window로 진입하는 워크플로우 (매뉴얼 1.2.2a)",
+  "nodes": [
+    {
+      "id": "survey_setup_01_open_selection",
+      "workflow_id": "survey_setup",
+      "step_number": 1,
+      "title": "Survey Setup and Selection 창 열기",
+      "description": "OpendTect 첫 실행 시 Survey Setup and Selection 창이 최상단에 열림. Survey Data Root 리스트에서 새 survey를 만들거나 기존 survey를 선택.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Survey Setup and Selection",
+        "expected_ui_elements": [
+          "survey_data_root_tab",
+          "add_button",
+          "edit_button",
+          "select_button",
+          "cancel_button"
+        ],
+        "screenshot_keywords": [
+          "Survey Setup and Selection",
+          "Survey Data Root",
+          "Add",
+          "Edit",
+          "Select",
+          "Information"
+        ]
+      },
+      "linked_chunks": [
+        "ea79cb7c48754d51a8240b6c5925b5de",
+        "7ecaade7307b4372ad0949fc89d10b37"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "workflow_id": "survey_setup",
+      "step_number": 2,
+      "title": "Create New Survey 다이얼로그 열기",
+      "description": "Survey Setup and Selection 창에서 Add (+) 버튼을 클릭하여 Create New Survey 다이얼로그를 연다.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Create New Survey",
+        "expected_ui_elements": [
+          "survey_name_input",
+          "available_data_checkboxes",
+          "initial_setup_list",
+          "z_domain_radio",
+          "next_button"
+        ],
+        "screenshot_keywords": [
+          "Create New Survey",
+          "Survey name",
+          "Available data",
+          "3D",
+          "2D",
+          "Wells",
+          "Initial setup",
+          "Z Domain",
+          "Time",
+          "Depth"
+        ]
+      },
+      "linked_chunks": [
+        "ea79cb7c48754d51a8240b6c5925b5de",
+        "7ecaade7307b4372ad0949fc89d10b37"
+      ],
+      "parameters": []
+    },
+    {
+      "id": "survey_setup_03_choose_initial_setup",
+      "workflow_id": "survey_setup",
+      "step_number": 3,
+      "title": "Survey 이름 입력 및 Initial setup 선택",
+      "description": "Survey name을 입력하고 Initial setup에서 'Scan SEG-Y file(s)' 또는 'Enter X/Y ranges'를 선택. Scan SEG-Y 선택 시 SEG-Y 파일에서 geometry를 자동 추출.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Create New Survey",
+        "expected_ui_elements": [
+          "survey_name_filled",
+          "initial_setup_options",
+          "scan_segy_option",
+          "enter_xy_option",
+          "next_button"
+        ],
+        "screenshot_keywords": [
+          "Create New Survey",
+          "My_F3_Survey",
+          "Initial setup",
+          "Scan SEG-Y",
+          "Enter X/Y ranges",
+          "Copy from other survey",
+          "Next"
+        ]
+      },
+      "linked_chunks": [
+        "7ecaade7307b4372ad0949fc89d10b37",
+        "2543bcb69745472287a01a4d905b74af"
+      ],
+      "parameters": [
+        {
+          "name": "Initial setup",
+          "default": "Scan SEG-Y file(s)",
+          "description": "Geometry 정의 방식 (Scan SEG-Y file(s) / Enter X/Y ranges / Copy from other survey)"
+        }
+      ]
+    },
+    {
+      "id": "survey_setup_04_scan_segy",
+      "workflow_id": "survey_setup",
+      "step_number": 4,
+      "title": "SEG-Y 파일 스캔 및 geometry 추출",
+      "description": "Scan SEG-Y 방식 선택 시 SEG-Y 파일 경로를 지정하고 (예: Rawdata\\Seismic_data.sgy), 파일 스캔을 실행하여 Inline/Crossline range, Z range 등 geometry를 추출.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Extract Survey Setup from SEG-Y",
+        "expected_ui_elements": [
+          "segy_file_path",
+          "select_button",
+          "scan_button",
+          "inline_range_display",
+          "crossline_range_display"
+        ],
+        "screenshot_keywords": [
+          "Extract Survey Setup",
+          "SEG-Y",
+          "Seismic_data.sgy",
+          "Rawdata",
+          "Input SEG-Y",
+          "Inline",
+          "Crossline",
+          "Z range",
+          "Scan"
+        ]
+      },
+      "linked_chunks": [
+        "2543bcb69745472287a01a4d905b74af",
+        "7ecaade7307b4372ad0949fc89d10b37"
+      ],
+      "parameters": [
+        {
+          "name": "SEG-Y file path",
+          "default": "C:\\Users\\user\\Downloads\\F3_Demo_2023\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy",
+          "description": "F3 Demo 표준 SEG-Y 경로"
+        }
+      ]
+    },
+    {
+      "id": "survey_setup_05_select_survey",
+      "workflow_id": "survey_setup",
+      "step_number": 5,
+      "title": "Survey Select — Main Window 진입",
+      "description": "Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 달성.",
+      "step_type": "verification",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window",
+        "expected_ui_elements": [
+          "main_menu_bar",
+          "toolbar",
+          "tree_scene_panel",
+          "3d_scene_panel",
+          "title_bar_survey_name"
+        ],
+        "screenshot_keywords": [
+          "OpendTect",
+          "Main Window",
+          "My_F3_Survey",
+          "F3 Demo",
+          "Survey",
+          "Analysis",
+          "Processing",
+          "Scene",
+          "View",
+          "Utilities",
+          "Tree scene"
+        ]
+      },
+      "linked_chunks": [
+        "a31c4777df5b4ab880d5637f8f071985",
+        "541ee4f5d73f409dab534a22e4fbb841"
+      ],
+      "parameters": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "survey_setup_01_open_selection",
+      "target": "survey_setup_02_open_new_survey_dialog",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Add (+) 버튼을 클릭하여 Create New Survey 다이얼로그를 여세요"
+    },
+    {
+      "source": "survey_setup_02_open_new_survey_dialog",
+      "target": "survey_setup_03_choose_initial_setup",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Survey 이름을 입력하고 Initial setup 방식을 선택하세요"
+    },
+    {
+      "source": "survey_setup_03_choose_initial_setup",
+      "target": "survey_setup_04_scan_segy",
+      "edge_type": "sequential",
+      "condition": "initial_setup == 'Scan SEG-Y file(s)'",
+      "instruction": "Next를 눌러 SEG-Y 파일 스캔 단계로 진행하세요"
+    },
+    {
+      "source": "survey_setup_04_scan_segy",
+      "target": "survey_setup_05_select_survey",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "스캔 완료 후 Survey Setup and Selection 창에서 새 survey를 선택하고 Select를 눌러 Main Window로 진입하세요"
+    },
+    {
+      "source": "survey_setup_03_choose_initial_setup",
+      "target": "survey_setup_05_select_survey",
+      "edge_type": "conditional",
+      "condition": "initial_setup == 'Enter X/Y ranges' (수동 geometry 입력 완료 후)",
+      "instruction": "수동으로 X/Y range 입력 후 survey를 선택하고 Select를 눌러 Main Window로 진입하세요"
+    }
+  ]
+}

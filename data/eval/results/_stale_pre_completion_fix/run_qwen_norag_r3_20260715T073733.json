@@ -1,0 +1,211 @@
+{
+  "started_at": "2026-07-15T07:37:33.492194Z",
+  "scenarios": [
+    {
+      "scenario_id": "opendtect__3d_visualization__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "visualization",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.75,
+          "hallucination_rate": 0.75,
+          "faithfulness": 0.25,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 8.765,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 1940,
+          "total_output_tokens": 2657,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "'Add Data'를 클릭합니다.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 5.878,
+              "input_tokens": 203,
+              "output_tokens": 386,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 1,
+              "response": "Select Cube 다이얼로그의 파란색 화살표 아이콘(→)을 클릭합니다.",
+              "matched": true,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 3.125,
+              "input_tokens": 219,
+              "output_tokens": 223,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            },
+            {
+              "step_index": 2,
+              "response": "<think>\nOkay, let's see. The user is working on the F3 Demo survey and needs to display seismic volumes in the 3D scene as In-line, Cross-line, and Z-slice. The previous steps were adding data and clicking the blue arrow in the Select Cube dialog. Now, what's next?\n\nThe goal is to load the default seismic data using 'Add Data' for each category. Since they already clicked the blue arrow, maybe the data is loading, but they need to confirm or proceed. Wait, the user mentioned that if the 'Select Cube' dialog appears, click the blue arrow. So after that, what happens? Maybe the data is added to the scene, and the next step is to check if all three views (In-line, Cross-line, Z-slice) are displayed. But the instructions say to right-click each category and choose 'Add Data' to load the default seismic. Wait, maybe after adding the data via the dialog, they need to confirm the addition. Or perhaps after loading, the data appears in the scene, and the next action is to visualize it. But the user's steps already completed adding data and clicking the arrow. So maybe the next step is to close the dialog or confirm the data is added. However, the user might need to ensure that each category (In-line, Cross-line, Z-slice) has the seismic data loaded. Wait, the original instruction says to right-click each category and select 'Add Data' to load the default seismic. But in the steps completed, they clicked 'Add Data' and then the blue arrow. Maybe the current step is to repeat this for the other categories. But the user's current step is after adding data and clicking the arrow. So perhaps the next action is to check if the data is displayed, or maybe to proceed to the next category. Alternatively, if the data is already loaded, maybe the next step is to close the dialog or proceed to view the 3D scene. Hmm, the user's goal is to display the seismic volumes in the 3D scene. After adding the data, maybe the next step is to confirm that the data is visible. But the assistant's response should be a single action. Since the previous steps were adding data and clicking the arrow, maybe the next step is to close the Select Cube dialog. Alternatively, if the data is now loaded, the next action could be to check the 3D view. But without seeing the screenshot, it's hard to tell. However, the user's instruction says to output one action only. Based on the steps completed, after clicking the blue arrow in Select Cube, the next logical step would be to confirm that the data is added to the scene, which might involve closing the dialog. But if the dialog is modal, maybe the user needs to click 'OK' or 'Apply' to finalize. Alternatively, if the arrow was sufficient, maybe the data is already loaded, and the next step is to check the 3D scene. However, the user's original instruction says to right-click each category and select 'Add Data' to load the default seismic. If they have to do this for each category (In-line, Cross-line, Z-slice), then after adding one, they might need to do the same for the others. But the steps completed so far are 1. Click Add Data, 2. Click the blue arrow. So maybe the current step is done for one category, and the next is to repeat for others. But the user's question is what's the next single action after those steps. If the Select Cube dialog was closed after clicking the arrow, maybe the next step is to check the 3D scene. Alternatively, if the data is now loaded, maybe the user should proceed to add the other categories. But since the user's goal is to add all three, perhaps the next action is to right-click another category and select 'Add Data' again. But the assistant needs to respond based on the current state. Since the user has already completed steps 1 and 2, which were to click Add Data and then the blue arrow, maybe the next step is to close the dialog or confirm the addition, or proceed to add another category. However, without seeing the actual UI, the most logical next step after adding data via the Select Cube dialog would be to confirm or close the dialog. But if the dialog automatically closes, maybe the next action is to check the 3D view. Alternatively, if the user needs to apply the changes, perhaps clicking 'Apply' or 'OK' in the dialog. But the user's instruction says that clicking the blue arrow is sufficient. Maybe the next step is to ensure that the data is displayed in the 3D scene, so the action would be to click on the 3D view or refresh it. However, this is speculative. Since the user's original instruction says to right-click each category and select 'Add Data' to load the default seismic, and the steps completed",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 12.84,
+              "input_tokens": 245,
+              "output_tokens": 1024,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "<think>\nOkay, let's see. The user is working on the F3 Demo survey and needs to display seismic volumes in the 3D scene as In-line, Cross-line, and Z-slice. They've already completed steps 1 and 2: clicking 'Add Data' and then the blue arrow in the Select Cube dialog. Now, what's next?\n\nThe goal is to load the default seismic data for each category. The user mentioned that after adding data and clicking the arrow, if the Select Cube dialog appears, they should click the arrow. But maybe after that, they need to confirm the data is added. However, the original instructions say to right-click each category and choose 'Add Data' (the first option) to load the default seismic. So perhaps after adding the data via the context menu, they need to do the same for the other categories. But the steps completed so far are for one category. So the next action would be to repeat the process for the remaining categories. Wait, but the user's steps already completed adding data once. The initial steps were: 1. Click Add Data. 2. Click the blue arrow. Now, the user might need to add data for the other categories (like Cross-line and Z-slice). So the next action would be to right-click another category (maybe Cross-line) and select 'Add Data' again. But the user's instruction says to do this for each category. So after handling In-line, the next step is to do the same for Cross-line and Z-slice. But since the user has already done the first one, the next action would be to right-click another category. However, the user might need to confirm that each addition is done. Alternatively, maybe after adding the first data, the next step is to close the dialog or proceed. But the user's instruction says to output one action only. Since the previous steps were adding data and clicking the arrow, the next logical step would be to add data for another category. So the answer would be to right-click another category and select 'Add Data' again. But the user might need to do this for each category. Alternatively, if the Select Cube dialog is still open, maybe they need to click the arrow again for another category. But without seeing the screenshot, it's a bit tricky. However, based on the user's description, the main goal is to add all three categories. So the next action after adding the first one would be to add the next category. Therefore, the answer should be to right-click on another category (like Cross-line) and choose 'Add Data' again. But the user might need to do this for each category. However, the user's steps already completed steps 1 and 2. So the next single action would be to add data for the next category. Alternatively, if the Select Cube dialog is still open, maybe they need to select another cube. But the user's instruction says to click the blue arrow once. Maybe after that, the data is added, and the next step is to check the 3D scene. But the user's goal is to display all three, so perhaps the next action is to right-click another category and select 'Add Data'. The assistant should output the next action based on the current state. Since the user has already added one data, the next step is to add another. Therefore, the answer would be: 우클릭한 다음 'Add Data'를 선택합니다. (Right-click and select 'Add Data'). But since the user's previous steps were adding data, maybe the next step is to do the same for another category. However, the user might need to navigate to another category first. Alternatively, if the dialog is still open, maybe they need to click the arrow again. But the user's instruction says that if the Select Cube dialog appears, click the arrow. So if after adding data for the first category, the dialog appears again, click the arrow. But without knowing the exact UI, it's hard. The safest answer based on the given info is to proceed to add data for the next category, so the next action is to right-click another category and choose 'Add Data'. But since the user's steps are completed up to step 2, maybe the next action is to close the dialog or confirm. Alternatively, if the data is already loaded, maybe the next step is to check the 3D scene. However, the user's goal requires adding three categories. So the answer should be to add data for the next category. Therefore, the next action is to right-click another category and select 'Add Data'. But the user might need to do this for each category. Since the user has already done it once, the next step is to repeat for the other categories. So the next single action would be to right-click another category (e.g., Cross-line) and choose 'Add Data' again. But the assistant should output the exact action. Since the user's instruction says to right-click each",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 13.218,
+              "input_tokens": 1273,
+              "output_tokens": 1024,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            }
+          ],
+          "latency_sec": 35.06,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.25,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "opendtect__survey_setup__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "setup",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.25,
+          "hallucination_rate": 0.25,
+          "faithfulness": 0.75,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 4.82,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 1067,
+          "total_output_tokens": 1468,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "SEG-Y 파일 경로 선택: C:\\Users\\user\\Downloads\\F3_Demo_2023\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\n\n완료",
+              "matched": false,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 5.744,
+              "input_tokens": 211,
+              "output_tokens": 448,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 1,
+              "response": "Create Survey My_F3_Survey using Scan SEG-Y file(s) method with selected seismic_data.sgy file.",
+              "matched": false,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 4.162,
+              "input_tokens": 263,
+              "output_tokens": 316,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 2,
+              "response": "Select My_F3_Survey in Survey Setup and Selection window to load.",
+              "matched": false,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.982,
+              "input_tokens": 288,
+              "output_tokens": 220,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "Survey Setup and Selection 창에서 My_F3_Survey 선택 후 Load 버튼 클릭하여 로드 완료. \n\n완료",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 6.391,
+              "input_tokens": 305,
+              "output_tokens": 484,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            }
+          ],
+          "latency_sec": 21.7,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.25,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "no_rag": {
+      "n_scenarios": 2,
+      "step_accuracy": 0.5,
+      "faithfulness": 0.5,
+      "hallucination_rate": 0.5,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 0.5,
+      "mean_latency_sec": 6.7925,
+      "mean_cost_usd": 0.0,
+      "total_cost_usd": 0.0,
+      "total_input_tokens": 1503.5,
+      "total_output_tokens": 2062.5
+    }
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "started_at": "2026-07-15T09:09:10.983006Z",
+  "scenarios": [
+    {
+      "scenario_id": "opendtect__3d_visualization__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "visualization",
+      "difficulty": "medium",
+      "backends": {
+        "full_system": {
+          "backend": "full_system",
+          "n_steps": 4,
+          "step_accuracy": 0.75,
+          "hallucination_rate": 1.0,
+          "faithfulness": 0.0,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 0.6666666666666666,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 66.024,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 8735,
+          "total_output_tokens": 2917,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "<think>\nOkay, let's see. The user's goal is to display seismic volumes in the F3 Demo survey as In-line, Cross-line, and Z-slice in the 3D scene. They need to right-click each category and choose 'Add Data' from the context menu. If a 'Select Cube' dialog appears, they should click the blue arrow icon to load the data.\n\nFirst, I need to check the current step mentioned in the reference manual. The current step is seismic_attribute > Step 6: 속성 볼륨 표시, which translates to displaying attribute volumes. The next step is Step 7: 결과 분석 및 해석, which is analyzing and interpreting the results after display.\n\nThe user's instruction says to add the calculated attribute volume to the scene for visualization. The possible next steps in the manual context point to moving to Step 7. However, the user's specific task is to load the seismic data into the 3D scene using the 'Add Data' option. \n\nLooking at the reference manual context, the current step is about adding the attribute volume. The next action should be following the steps to load the data. The user mentioned that if the 'Select Cube' dialog appears, they should click the blue arrow. \n\nSince the user's goal hasn't been completed yet, the next action should be adding the data via the context menu. The correct instruction here is to right-click each category (In-line, Cross-line, Z-slice) and select 'Add Data'. However, since the user might have already started this process, the next single action would be to click the blue arrow in the Select Cube dialog if it appears. But according to the problem statement, the user should first try to add via the context menu. \n\nWait, the user's instruction says to use the 'Add Data' option (the first option in the context menu) to load the default seismic all at once. If the 'Add and Select Data...' path is taken, leading to the Select Cube dialog, then click the blue arrow. \n\nSo the next action depends on whether the user has already added the data. If they haven't, the first action is to right-click and choose 'Add Data'. If that leads to the Select Cube dialog, then click the arrow. But the user's instruction says to use 'Add Data' first. \n\nSince the current step is about displaying the attribute volume, the next step in the manual is Step 7. But the user's specific task requires loading the seismic data. Therefore, the next action is to add the data. The correct instruction here is to right-click each category and select 'Add Data'. However, the user might have to do this for each of the three categories (In-line, Cross-line, Z-slice). But the problem says to output one action only. \n\nThe reference manual's next step is Step 7, but the user's goal requires loading the data. So the next action is to add the data via the context menu. Therefore, the correct response is to right-click each category and select 'Add Data' to load the seismic volumes. However, since the user needs to do this for each category, but the answer should be one action. The instruction says to right-click each category and choose 'Add Data' to load all at once. But maybe the user has to do it step by step. However, the answer should be the next single action. \n\nWait, the user's goal is to add all three (In-line, Cross-line, Z-slice) by right-clicking each and selecting 'Add Data'. But the next single action would be to right-click one of them. However, the user might have to do each one. But since the problem asks for one action, perhaps the next step is to click the blue arrow in the Select Cube dialog if it's present. But according to the instructions, first try 'Add Data', if that leads to the dialog, then click the arrow. \n\nIf the user has already initiated 'Add and Select Data...', then the next action is the blue arrow. But if they haven't, the first action is right-click and 'Add Data'. \n\nBut given the current step is Step 6 (displaying the attribute volume), and the next step in the manual is Step 7 (analysis), but the user's goal is to load the seismic data into the scene. Therefore, the next action is to add the data. \n\nThe correct answer here is to right-click each category and select 'Add Data'. However, since the user needs to do this for each category (In-line, Cross-line, Z-slice), but the problem requires one single action. The instruction says to right-click each category and choose 'Add Data' to load all at once. But since the user needs to do each one, the next action might be to right-click one of them. However, the problem states to output one action only. \n\nAlternatively, if the user has already added the data and",
+              "matched": true,
+              "hallucinated": [
+                "s next step is Step 7, but the user",
+                "s instruction says to use",
+                "Add Data",
+                "s goal hasn",
+                "t, the first action is right-click and",
+                "Select Cube",
+                "s see. The user",
+                "s instruction says to use the",
+                "Add and Select Data..."
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 90.267,
+              "input_tokens": 1345,
+              "output_tokens": 1024,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 1,
+              "response": "F3 Demo survey의 In-line, Cross-line, Z-slice 카테고리 중 하나를 우클릭하여 컨텍스트 메뉴에서 'Add Data'를 선택합니다.",
+              "matched": true,
+              "hallucinated": [
+                "Add Data"
+              ],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 37.605,
+              "input_tokens": 2383,
+              "output_tokens": 376,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            },
+            {
+              "step_index": 2,
+              "response": "'Add Data' 선택 후 'Select Cube' 다이얼로그가 나타났다면 파란색 화살표 아이콘(→) 클릭하여 데이터 로드.",
+              "matched": false,
+              "hallucinated": [
+                "Add Data",
+                "Select Cube"
+              ],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 50.563,
+              "input_tokens": 2426,
+              "output_tokens": 510,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "F3 Demo survey의 In-line, Cross-line, Z-slice 카테고리 중 하나를 우클릭하여 컨텍스트 메뉴에서 'Add Data'를 선택합니다.",
+              "matched": true,
+              "hallucinated": [
+                "Add Data"
+              ],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 85.66,
+              "input_tokens": 2581,
+              "output_tokens": 1007,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            }
+          ],
+          "latency_sec": 264.09,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.5,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "opendtect__survey_setup__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "setup",
+      "difficulty": "medium",
+      "backends": {
+        "full_system": {
+          "backend": "full_system",
+          "n_steps": 4,
+          "step_accuracy": 0.25,
+          "hallucination_rate": 0.0,
+          "faithfulness": 1.0,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 58.693,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 5779,
+          "total_output_tokens": 1861,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "SEG-Y 파일 스캔 옵션을 선택하고 C:\\Users\\user\\Downloads\\F3_Demo_2023\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy 경로에서 진행합니다.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 23.22,
+              "input_tokens": 1373,
+              "output_tokens": 832,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 1,
+              "response": "SEG-Y 파일 스캔을 진행하여 survey geometry를 정의합니다.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 48.924,
+              "input_tokens": 1400,
+              "output_tokens": 260,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 2,
+              "response": "Survey Setup and Selection 창에서 새롭게 생성된 'My_F3_Survey'를 선택하여 로드합니다.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 64.769,
+              "input_tokens": 1414,
+              "output_tokens": 389,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 97.858,
+              "input_tokens": 1592,
+              "output_tokens": 380,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            }
+          ],
+          "latency_sec": 359.32,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.25,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "full_system": {
+      "n_scenarios": 2,
+      "step_accuracy": 0.5,
+      "faithfulness": 0.5,
+      "hallucination_rate": 0.5,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 0.8333333333333333,
+      "recovery_rate": null,
+      "goal_completion_rate": 0.0,
+      "mean_latency_sec": 62.3585,
+      "mean_cost_usd": 0.0,
+      "total_cost_usd": 0.0,
+      "total_input_tokens": 7257.0,
+      "total_output_tokens": 2389.0
+    }
+  }
+}

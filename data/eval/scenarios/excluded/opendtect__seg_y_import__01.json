@@ -1,0 +1,75 @@
+{
+  "scenario_id": "opendtect__seg_y_import__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "category": "import",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3_Demo Survey를 C:\\Survey\\F3_Demo 경로에서 SEG-Y import로 불러오기",
+  "_capture_note": "Scenario trimmed to 4 steps to match actual capture. RAG router mis-localized this task to fault_interpretation/seismic_attribute workflows (no import workflow exists in the auto-generated set), leading to poor guidance quality. Documented as qualitative limitation.",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/opendtect__seg_y_import__01/step_0.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window",
+        "active_menu": null,
+        "visible_elements": ["Survey", "menu bar", "tree", "scene"],
+        "data_state": "no survey loaded"
+      },
+      "expected_action_text_pattern": "(?i)\\b(survey)\\b.*\\b(select|change|선택)\\b",
+      "expected_action_keywords": ["Survey", "Select"],
+      "expected_workflow_node": null,
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/opendtect__seg_y_import__01/step_1.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Select Survey",
+        "visible_elements": ["Survey list", "OK button", "Cancel button", "New button"]
+      },
+      "expected_action_text_pattern": "(?i)\\b(new|new survey)\\b",
+      "expected_action_keywords": ["New"],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/opendtect__seg_y_import__01/step_2.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Specify",
+        "visible_elements": ["Survey Data Root field", "Browse button", "OK button"]
+      },
+      "expected_action_text_pattern": "(?i)C:\\\\\\\\Survey\\\\\\\\F3_Demo",
+      "expected_action_keywords": ["C:\\Survey\\F3_Demo"],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/opendtect__seg_y_import__01/step_3.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Import SEG-Y Data",
+        "visible_elements": ["Quick scan result", "Next button", "Skip full scan", "Run full scan"]
+      },
+      "expected_action_text_pattern": "(?i)\\b(Run full scan)\\b",
+      "expected_action_keywords": ["Run full scan"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(double-arrow|arrow icon|scan icon)\\b", "note": "alternative phrasing of the full-scan trigger"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "prefer_verify_over_skip",
+        "description": "Visible buttons include both 'Skip full scan' and 'Run full scan'. Default integrity rule says Run wins unless goal explicitly asks for speed. AI must NOT pick Skip."
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/opendtect__seg_y_import__01/step_3.jpg",
+    "expected_done_sentinel": false,
+    "known_limitation": "RAG router mis-routes to fault_interpretation_01_data_load / seismic_attribute_01_data_load nodes because no 'import' workflow exists in the auto-generated workflow set for this manual. Guidance quality is degraded — used as qualitative example of auto-workflow coverage limits."
+  }
+}

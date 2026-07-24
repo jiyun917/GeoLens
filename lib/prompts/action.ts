@@ -9,7 +9,12 @@ export function buildActionPrompt(
   let stepsSection = "";
   if (completedSteps && completedSteps.length > 0) {
     const total = completedSteps.length;
-    if (total <= 5) {
+    // Widened recent window (8) so repeat-detection can see past ~step 15
+    // in longer workflows. Prior 3-step window was too narrow — the
+    // instruction that triggered a lingering dialog often sits at t-5..t-10
+    // and was falling outside the visible slice, causing "Click Next" loops.
+    const RECENT = 8;
+    if (total <= RECENT + 2) {
       const stepsList = completedSteps.map((step, i) => `${i + 1}. ${step}`).join("\n");
       stepsSection = `
 # Steps Already Completed (${total} total) — DO NOT REPEAT
@@ -18,11 +23,12 @@ ${stepsList}
 These steps are DONE. Give the NEXT action that has NOT been done yet. Never repeat a completed step.`;
     } else {
       const earlySteps = completedSteps.slice(0, 3).map((step, i) => `${i + 1}. ${step}`).join("\n");
-      const recentSteps = completedSteps.slice(-3).map((step, i) => `${total - 2 + i}. ${step}`).join("\n");
+      const recentStart = total - RECENT;
+      const recentSteps = completedSteps.slice(-RECENT).map((step, i) => `${recentStart + i + 1}. ${step}`).join("\n");
       stepsSection = `
 # Steps Already Completed (${total} total) — DO NOT REPEAT
 ${earlySteps}
-... (${total - 6} steps omitted) ...
+... (${recentStart - 3} steps omitted) ...
 ${recentSteps}
 
 These steps are DONE. Do NOT repeat them. Look at the screenshot for the CURRENT state and decide what comes NEXT.`;
@@ -32,10 +38,11 @@ These steps are DONE. Do NOT repeat them. Look at the screenshot for the CURRENT
   let manualSection = "";
   if (manualContext) {
     manualSection = `
-# Reference Manual Context (USE THIS — highest priority)
+# Reference Manual Context (USE — but adapt to current state)
 The following comes from the user's uploaded manual/documentation.
-- If the manual describes a specific menu path, button name, or workflow order, follow it EXACTLY.
-- Prefer the manual's terminology and steps over your own knowledge.
+- Use the manual's MENU PATHS, BUTTON NAMES, and WORKFLOW ORDER as authoritative.
+- Use the manual's TERMINOLOGY over generic phrasing.
+- BUT: the manual often shows ONE specific tutorial run. Numbered identifiers in those examples (Scene 1/2/3, Window 1/2, Tab 3, Plot 4, panel "Tree scene 2", etc.) are ARTIFACTS of that tutorial's state — they are NOT prescriptive for the current user.
 ${manualContext}`;
   }
 
@@ -59,6 +66,19 @@ The Goal above may contain CONCRETE values the user wants applied: file or folde
 - If the Goal gives an absolute path and the current screen is a file picker, guide the user to navigate to THAT specific path (or paste it into the path bar).
 - If the Goal names a specific item (project, dataset, file, table, attribute, etc.), use THAT EXACT NAME when instructing the user to select it from a tree or list.
 - These user-provided specifics are AUTHORITATIVE — they override any generic example from the manual.
+
+# ██ ADAPT MANUAL EXAMPLES TO USER'S CURRENT STATE ██
+Manual instructions are written for ONE specific tutorial run. They reference numbered identifiers (Scene 2, Window 3, "Tree scene 2" panel, Plot 4, in-001.sgy, etc.) only because the tutorial author already had earlier instances open. These numbers are NOT prescriptive — they are STATE that depends on what is open RIGHT NOW.
+
+When the manual context tells you to act on a numbered Scene/Window/Tab/Panel/View:
+1. Look at the screenshot — what numbered instance(s) does the user ACTUALLY have open right now?
+2. Substitute the manual's number with the one the user currently has active. If the user has only "Tree scene 1" and the manual says "Tree scene 2 panel", target "Tree scene 1" instead.
+3. Do NOT instruct the user to CREATE a new Scene/Window/Tab/Panel just because the manual example created one — UNLESS at least one of the following is true:
+   - The Goal explicitly requires comparing two views in parallel (e.g. "compare original vs filtered side by side")
+   - The current Scene/Window is locked by another operation that's incompatible with the next step
+   - There is no existing Scene/Window of the required type (zero open)
+
+Rule of thumb: REUSE the existing instance whenever the goal can be reached inside it. Creating a new Scene 2 / Window 3 when Scene 1 / Window 1 would have worked is a known failure pattern — it traps the user in the wrong tab and the rest of the guide tracks the wrong panel.
 
 # ██ DO NOT REPEAT ANY INSTRUCTION FROM "Steps Already Completed" ██
 Before writing your next instruction, SCAN the entire "Steps Already Completed" list for any prior instruction that targets the SAME dialog/window/button/element you are about to mention.
@@ -111,6 +131,37 @@ Many applications have tree/hierarchy panels (usually on the left side).
 - If data exists in the tree but is not shown in the main view, try: right-click → look for display/show/add options.
 - Expand collapsed tree nodes (+/▸ icons) to reveal child items.
 
+# ██ DISPLAYING DATA IN A 3D SCENE — Right-Click is the Primary Path ██
+For 3D visualization apps (OpendTect, Petrel, GeoTeric, etc.), data is added to the Scene by RIGHT-CLICKING tree items, NOT by ticking checkboxes labelled "Volume" inside Elements > Volume.
+
+RIGHT-CLICK TARGET = the SLICE ORIENTATION / GEOMETRY CATEGORY node, NOT a child data item.
+
+In OpendTect the Scene tree contains category nodes such as:
+  - "Inline"  (or "In-line")
+  - "Crossline" (or "Cross-line")
+  - "Z-slice"  (or "Time slice" / "Depth slice")
+  - "Volume"
+  - "Horizon"
+  - "Well"
+  - "2D Line"
+
+Beneath each category, previously loaded DATA ITEMS (e.g. "Seismic 1", "Seismic Cube", "4 Dip steered median filter", horizon names) may appear as CHILDREN. Those child items are the wrong right-click target for adding a new slice — right-clicking them opens a per-item context (properties, remove, save-as), not the "Add and Select Data..." dialog you need.
+
+Standard pattern for "show seismic / horizon / well in 3D scene":
+1. Locate the appropriate CATEGORY node in the tree ("Inline", "Crossline", "Z-slice", "Horizon", "2D Line", etc.). NOT a data item that happens to sit under it.
+2. RIGHT-CLICK on the category node.
+3. From the context menu choose "Add" / "Add and Select" / "Add and Select Data..." / "Display" / "Add Default Data".
+4. The element appears in the scene tree under that category and is rendered.
+
+Disambiguation cues:
+- Category nodes typically have GENERIC geometry names (Inline / Crossline / Z-slice / Horizon).
+- Data items have SPECIFIC names the user has previously imported ("Seismic 1", "4 Dip steered median filter", "Top Foresets").
+- If both are visible, ALWAYS target the category node, not the data item, when the goal is to ADD a new display element.
+
+Only check/expand the Volume checkbox path when the manual context EXPLICITLY describes that exact element-by-element selection and the right-click context menu is NOT a viable alternative for the current target.
+
+If the screenshot shows the tree panel but the user has NOT right-clicked yet → instruct to right-click the appropriate CATEGORY node first; do NOT instruct right-clicking a child data item and do NOT instruct toggling checkboxes that may not be there.
+
 # Workflow Awareness
 - If the goal requires data to be loaded/imported before it can be used, check whether the data is already available. If not, guide the import first.
 - Importing/loading data and displaying/visualizing it are SEPARATE steps. Do NOT stop after import — continue until the data is visible.
@@ -124,6 +175,34 @@ When a dialog, wizard, or form is visible:
 3. Suggest a reasonable value when possible: "Type a name in the [field label] field"
 4. NEVER click forward buttons (Next/OK/Finish/Import) when required fields are empty.
 5. If clicking Next/OK previously failed, check what is missing — do NOT repeat the same click.
+
+# ██ VERIFY UI STATE BEFORE INSTRUCTING A TOGGLE / CHECK / EXPAND ██
+Before issuing an instruction that CHANGES the state of a UI element, read its CURRENT state from the screenshot. If the desired end state is already achieved, that step is DONE — skip to the next action instead of asking the user to re-do it.
+
+Visual cues to read (look closely — these are usually small):
+
+Checkboxes:
+- ☐ / empty square / unfilled = unchecked → instructing "Click to check" is correct
+- ☑ / ✓ / filled square / square with check mark / dark fill = ALREADY CHECKED → DO NOT instruct another click
+
+Toggle switches:
+- Slider on left + grey/off color = OFF
+- Slider on right + colored/blue/green = ON
+
+Tree-panel expand indicators (left of an item name):
+- ▶ / ▷ / + / right-pointing triangle = collapsed → click to expand is correct
+- ▼ / ▽ / − / down-pointing triangle = ALREADY EXPANDED — child items should now be visible below; DO NOT instruct another expand click. Operate on the visible child instead.
+- No indicator at all = leaf node (no children) — do not look for an expand arrow.
+
+Radio buttons, dropdown selections, tabs:
+- The one with the highlighted/colored/bordered/filled appearance is ALREADY SELECTED. Do not re-click the currently selected option.
+
+When the previous instruction was "Click X checkbox / Click X expand arrow" and the new screenshot shows X is now in the achieved state:
+- That step succeeded. Move ON to whatever should happen AFTER X was toggled/expanded.
+- Re-asserting the same click is the failure pattern the user is most likely to complain about. AVOID it.
+
+If the indicator is genuinely too small or ambiguous to read with confidence:
+- Do not guess. Either zoom in mentally to the few pixels around the element, or shift to a different reliable cue (e.g. "are the Volume's child items already visible in the tree?" — if yes, Volume is expanded).
 
 # Error Detection
 Before giving your next instruction, scan the screenshot for:

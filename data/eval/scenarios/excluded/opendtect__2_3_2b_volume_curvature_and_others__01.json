@@ -1,0 +1,142 @@
+{
+  "scenario_id": "645b7cdf__2_3_2b_volume_curvature_and_others__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "category": "attribute",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3_Demo seismic에서 volume curvature attribute 계산",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/manual_images/645b7cdf2690408da843b9ce63c52d5b/p223_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Create a New Steered Similarity Attribut']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Create",
+        "New",
+        "Steered",
+        "Similarity",
+        "Attribute"
+      ],
+      "expected_workflow_node": "auto_645b7cdf2690408da843b9ce63c52d5b__2_3_2b_volume_curvature_and_others_01",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Create a New Steered Similarity Attribute",
+        "description": "Workflow cont'd: 5.",
+        "step_type": "action",
+        "page": 223
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/manual_images/645b7cdf2690408da843b9ce63c52d5b/p224_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Create a Most Negative Curvature Attribu']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Create",
+        "Most",
+        "Negative",
+        "Curvature",
+        "Attribute"
+      ],
+      "expected_workflow_node": "auto_645b7cdf2690408da843b9ce63c52d5b__2_3_2b_volume_curvature_and_others_02",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Create a Most Negative Curvature Attribute",
+        "description": "Workflow cont'd 11.",
+        "step_type": "action",
+        "page": 224
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/manual_images/645b7cdf2690408da843b9ce63c52d5b/p225_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Initiate and Cancel Adding Data to the Z']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Initiate",
+        "Cancel",
+        "Adding",
+        "Data",
+        "Z-slice"
+      ],
+      "expected_workflow_node": "auto_645b7cdf2690408da843b9ce63c52d5b__2_3_2b_volume_curvature_and_others_03",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Initiate and Cancel Adding Data to the Z-slice",
+        "description": "Workflow cont'd 16.",
+        "step_type": "action",
+        "page": 225
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/manual_images/645b7cdf2690408da843b9ce63c52d5b/p226_i00.png",
+      "visual_state_gt": {
+        "current_dialog": "[TODO: dialog 이름 — 예: 'Add and Compare Attributes on the Z-slic']",
+        "active_menu": null,
+        "visible_elements": [
+          "[TODO: 화면에 보이는 주요 UI 요소들]"
+        ],
+        "data_state": "[TODO: 데이터 상태]"
+      },
+      "expected_action_text_pattern": null,
+      "expected_action_keywords": [
+        "Add",
+        "Compare",
+        "Attributes",
+        "Z-slice"
+      ],
+      "expected_workflow_node": "auto_645b7cdf2690408da843b9ce63c52d5b__2_3_2b_volume_curvature_and_others_04",
+      "allowed_alternatives": [],
+      "is_error_recovery_test": false,
+      "_node_hint": {
+        "title": "Add and Compare Attributes on the Z-slice",
+        "description": "Workflow cont'd: 22.",
+        "step_type": "action",
+        "page": 226
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/[TODO_done_2_3_2b_volume_curvature_and_others].png",
+    "expected_done_sentinel": true
+  },
+  "_meta": {
+    "source_workflow_id": "auto_645b7cdf2690408da843b9ce63c52d5b__2_3_2b_volume_curvature_and_others",
+    "auto_generated_template": true,
+    "labeling_checklist": [
+      "1) 각 step의 screenshot_path를 실제 사용자 화면 캡처로 교체 (또는 매뉴얼 이미지 그대로 사용)",
+      "2) visual_state_gt를 채워서 화면 ground-truth 명시",
+      "3) trap이 있는 step에 'trap': {...} + 'is_error_recovery_test': true 추가",
+      "4) 첫 번째 step의 current_dialog는 어플리케이션 메인 화면이 보통",
+      "5) goal 텍스트에 사용자가 입력할 구체적 path/이름 포함",
+      "6) _meta + _node_hint 필드는 라벨링 후 삭제 가능"
+    ]
+  }
+}

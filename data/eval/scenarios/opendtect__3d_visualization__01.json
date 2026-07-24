@@ -1,0 +1,163 @@
+{
+  "scenario_id": "opendtect__3d_visualization__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "manual_reference": "1.3.1a Display An Inline / Display Cross-line / Display Z-slice",
+  "category": "visualization",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의 'Add Data' (첫번째 옵션)를 선택하여 기본 seismic을 한 번에 로드한다. 만약 'Add and Select Data...' 경로로 진입해서 'Select Cube' 다이얼로그가 나타나면, 다이얼로그의 파란색 화살표 아이콘(→)을 클릭하여 데이터를 로드한다.",
+  "initial_state": {
+    "description": "F3 Demo survey 활성화 및 seismic data (예: f3_demo_2023 또는 4 Dip steered median filter) 로드 완료 상태. 매뉴얼 1.2 말미의 '새로 만든 survey가 아닌 F3 Demo로 복귀하라'는 지침을 반영. Tree scene 패널에 Elements 카테고리(In-line/Cross-line/Z-slice)가 준비되어 있으나 3D Scene은 비어있음.",
+    "must_be_true": [
+      "OpendTect Main Window is loaded with F3 Demo survey active (title bar shows F3 Demo)",
+      "Seismic cube exists in Tree scene under Elements or Volume",
+      "3D Scene panel is EMPTY — no In-line/Cross-line/Z-slice child displayed yet",
+      "No wizard dialog (Survey Setup, Import SEG-Y, Create New Survey) is open"
+    ]
+  },
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_0.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window",
+        "visible_elements": [
+          "Tree scene panel (left)",
+          "Elements group",
+          "In-line category node",
+          "Cross-line category node",
+          "Z-slice category node",
+          "Empty 3D Scene panel (right)"
+        ],
+        "data_state": "F3 Demo loaded; no slices added to 3D scene yet",
+        "current_action": "user is inspecting the Tree scene, about to add first slice"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Tree|Scene|Elements|In[- ]?line)\\b",
+      "expected_action_keywords": ["Tree", "Scene", "Elements"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(In[- ]?line)\\b", "note": "First target is In-line"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "OpendTect Main Window. Tree scene visible with In-line/Cross-line/Z-slice category nodes. 3D Scene panel EMPTY.",
+        "user_should_have_just": "Loaded F3 Demo survey (or switched back from My_F3_Survey) — has NOT yet right-clicked any slice category.",
+        "must_not_show": [
+          "Any slice already displayed",
+          "Any context menu already open",
+          "Any wizard dialog"
+        ]
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_1.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Context menu on In-line / Select Attribute or Data",
+        "visible_elements": [
+          "In-line category node (selected)",
+          "Context menu items (Add and Select Data..., Add Default Data)",
+          "OR Select Attribute dialog listing seismic cubes"
+        ],
+        "data_state": "user just right-clicked In-line",
+        "current_action": "picking seismic data to display as In-line"
+      },
+      "expected_action_text_pattern": "(?i)\\b(In[- ]?line|Add Data|Add Default Data|파란|blue arrow|화살표|Select Cube|Seismic|f3_demo)\\b",
+      "expected_action_keywords": ["In-line", "Add Data"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Add Default Data)\\b", "note": "Manual sometimes labels this as Add Default Data"},
+        {"pattern": "(?i)\\b(파란|blue|화살표|arrow)\\b", "note": "If Select Cube dialog is open, blue arrow icon is the load trigger"},
+        {"pattern": "(?i)\\b(f3_demo_2023|4 Dip steered)\\b", "note": "Data volume name (fallback)"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "category_vs_child_item",
+        "description": "Right-click target must be In-line CATEGORY node, not a child data item."
+      },
+      "known_failure_mode": "Model often picks 'Add and Select Data...' — that path requires a subsequent blue-arrow click that the model fails to instruct. 'Add Data' (first menu item) is the correct one-shot choice.",
+      "capture_instructions": {
+        "screen_state": "Right-click on In-line just fired → context menu open, OR Select Attribute dialog with seismic list open.",
+        "user_should_have_just": "Right-clicked In-line category node in Tree scene.",
+        "must_not_show": [
+          "Cross-line or Z-slice interaction",
+          "In-line slice already displayed in 3D Scene"
+        ]
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_2.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window (In-line displayed) or Context menu on Cross-line",
+        "visible_elements": [
+          "3D Scene with In-line slice visible",
+          "Cross-line category node in Tree",
+          "In-line child node under Elements"
+        ],
+        "data_state": "In-line displayed; Cross-line still empty",
+        "current_action": "user targets Cross-line next"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Cross[- ]?line|Add.*Select.*Data|Add Default Data)\\b",
+      "expected_action_keywords": ["Cross-line", "Add"],
+      "allowed_alternatives": [],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "category_vs_child_item",
+        "description": "Right-click target must be Cross-line CATEGORY node."
+      },
+      "capture_instructions": {
+        "screen_state": "In-line slice now visible in 3D Scene. Cross-line child does NOT exist yet.",
+        "user_should_have_just": "Added In-line to 3D Scene, closed any residual dialog.",
+        "must_not_show": [
+          "Cross-line already added",
+          "Z-slice already added"
+        ]
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_3.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window (In-line + Cross-line displayed) or Context menu on Z-slice",
+        "visible_elements": [
+          "3D Scene with In-line and Cross-line both visible",
+          "Z-slice category node with no children",
+          "Elements group updated"
+        ],
+        "data_state": "In-line + Cross-line displayed; Z-slice next",
+        "current_action": "adding Z-slice"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Z[- ]?slice|Time[- ]?slice|Depth[- ]?slice|Add.*Select.*Data|Add Default Data)\\b",
+      "expected_action_keywords": ["Z-slice", "Add"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$", "note": "If all three slices already visible when this capture fires"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "category_vs_child_item",
+        "description": "Right-click target must be Z-slice CATEGORY node."
+      },
+      "capture_instructions": {
+        "screen_state": "Both In-line and Cross-line visible in 3D Scene. Z-slice category has no child yet.",
+        "user_should_have_just": "Added Cross-line to 3D Scene, dismissed any residual dialog.",
+        "must_not_show": [
+          "Z-slice already added",
+          "In-line or Cross-line missing"
+        ]
+      },
+      "capture_required": true
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_3.jpg",
+    "expected_done_sentinel": true,
+    "note": "The step_3 capture happens to depict the goal-achieved state (all three slices visible in 3D Scene). We reuse it as the completion-check reference — the completion check calls the backend once more at step_index=len(steps)=4 with this image, and the backend is expected to emit '완료'. Without this, goal_completion is UNMEASURABLE for this scenario, not 0."
+  }
+}

@@ -1,0 +1,145 @@
+C:\Users\user\Downloads\GeoLens-paper\scripts\run_all_models.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  ts = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%S")
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:58: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 179, in <module>
+    main()
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 174, in main
+    run_all(args.out, scenarios_dir=args.scenarios, backends=args.backends,
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 124, in run_all
+    print("\n" + md)
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2014' in position 317: illegal multibyte sequence
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+  - no_rag         step_acc=0.50 hall=0.25 loop=0.50 latency=27.21s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - no_rag         step_acc=0.50 hall=0.75 loop=0.00 latency=25.67s
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:58: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 179, in <module>
+    main()
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 174, in main
+    run_all(args.out, scenarios_dir=args.scenarios, backends=args.backends,
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 124, in run_all
+    print("\n" + md)
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2014' in position 317: illegal multibyte sequence
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+  - no_rag         step_acc=0.25 hall=1.00 loop=0.25 latency=27.74s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - no_rag         step_acc=0.25 hall=1.00 loop=0.00 latency=30.7s
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:58: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 179, in <module>
+    main()
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 174, in main
+    run_all(args.out, scenarios_dir=args.scenarios, backends=args.backends,
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 124, in run_all
+    print("\n" + md)
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2014' in position 317: illegal multibyte sequence
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+  - no_rag         step_acc=0.75 hall=0.75 loop=0.00 latency=35.06s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - no_rag         step_acc=0.25 hall=0.25 loop=0.00 latency=21.7s
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:58: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 179, in <module>
+    main()
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 174, in main
+    run_all(args.out, scenarios_dir=args.scenarios, backends=args.backends,
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 124, in run_all
+    print("\n" + md)
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2014' in position 317: illegal multibyte sequence
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+  - no_rag         step_acc=0.50 hall=0.25 loop=0.25 latency=36.06s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - no_rag         step_acc=0.75 hall=0.50 loop=0.00 latency=30.93s
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:58: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 179, in <module>
+    main()
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 174, in main
+    run_all(args.out, scenarios_dir=args.scenarios, backends=args.backends,
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 124, in run_all
+    print("\n" + md)
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2014' in position 317: illegal multibyte sequence
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+[JUDGE] gemini failed: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=20.0)
+  - no_rag         step_acc=0.75 hall=1.00 loop=0.00 latency=29.94s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - no_rag         step_acc=0.25 hall=0.75 loop=0.00 latency=15.67s
+Running models in sequence: ['qwen']  ×  5 replicates each
+Backends subset: ['no_rag']
+Filename tag: norag
+Total planned runs: 5
+
+======================================================================
+[16:34:12] Starting QWEN replicate 1
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model qwen --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r1_20260715T073412.json --judge consensus --backends no_rag
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r1_20260715T073412.json
+
+[WARN] qwen replicate 1 exited with code 1 — continuing.
+
+======================================================================
+[16:35:52] Starting QWEN replicate 2
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model qwen --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r2_20260715T073552.json --judge consensus --backends no_rag
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r2_20260715T073552.json
+
+[WARN] qwen replicate 2 exited with code 1 — continuing.
+
+======================================================================
+[16:37:33] Starting QWEN replicate 3
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model qwen --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r3_20260715T073733.json --judge consensus --backends no_rag
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r3_20260715T073733.json
+
+[WARN] qwen replicate 3 exited with code 1 — continuing.
+
+======================================================================
+[16:39:28] Starting QWEN replicate 4
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model qwen --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r4_20260715T073928.json --judge consensus --backends no_rag
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r4_20260715T073928.json
+
+[WARN] qwen replicate 4 exited with code 1 — continuing.
+
+======================================================================
+[16:41:19] Starting QWEN replicate 5
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model qwen --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r5_20260715T074119.json --judge consensus --backends no_rag
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r5_20260715T074119.json
+
+[WARN] qwen replicate 5 exited with code 1 — continuing.
+
+
+=== SUMMARY ===
+  [FAIL] qwen     r1 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r1_20260715T073412.json
+  [FAIL] qwen     r2 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r2_20260715T073552.json
+  [FAIL] qwen     r3 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r3_20260715T073733.json
+  [FAIL] qwen     r4 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r4_20260715T073928.json
+  [FAIL] qwen     r5 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_qwen_norag_r5_20260715T074119.json

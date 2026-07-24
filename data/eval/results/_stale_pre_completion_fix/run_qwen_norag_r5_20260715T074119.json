@@ -1,0 +1,211 @@
+{
+  "started_at": "2026-07-15T07:41:20.303702Z",
+  "scenarios": [
+    {
+      "scenario_id": "opendtect__3d_visualization__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "visualization",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.75,
+          "hallucination_rate": 1.0,
+          "faithfulness": 0.0,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 0.6666666666666666,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 7.485,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 4067,
+          "total_output_tokens": 2246,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "<think>\nOkay, let's see. The user is working on the F3 Demo survey and needs to display seismic volumes in the 3D scene as In-line, Cross-line, and Z-slice. The goal is to right-click each category and choose 'Add Data' from the context menu to load the default seismic data all at once. If they end up in the 'Select Cube' dialog, they should click the blue arrow icon to proceed.\n\nThe current question is asking for the next single action. The user might have already performed some steps, but since the screenshot isn't visible, I need to infer based on the instructions. The key points are: right-click each category (In-line, Cross-line, Z-slice) and select 'Add Data'. If a 'Select Cube' dialog appears, click the blue arrow. \n\nSince the user is supposed to do this for all three categories, maybe they've done one or two already. But the instruction says \"각 카테고리 우클릭 시\" which means for each category, so the next action could be right-clicking one of the remaining categories. However, if they already right-clicked and are in the Select Cube dialog, then the next step is the blue arrow. But since the user's last action isn't clear, the safest next action is to right-click one of the categories (maybe the first one if starting fresh). But the problem says to output one action only. The original instruction says to do it for each category, so maybe the next action is to right-click one of them. However, the user might have already done that and is now in the Select Cube dialog. But without seeing the screen, the assistant should follow the steps given. The goal-complete sentinel is 'Done' once all are loaded. Since the user hasn't said 'Done' yet, the next step is likely to right-click a category. Alternatively, if the Select Cube dialog is open, click the arrow. But how to know which? Since the user's instruction says if the Select Cube dialog appears, click the arrow. So the assistant should check if that dialog is present. Since I can't see the screen, maybe the answer should be based on the given steps. The correct answer would be either right-clicking a category and selecting Add Data, or clicking the blue arrow in the Select Cube dialog. But since the user might be at the point where they need to click the arrow, but without knowing, perhaps the next action is to click the blue arrow in the Select Cube dialog. However, the initial steps require right-clicking each category. If the user is following the steps, after right-clicking each category, the Select Cube dialog might appear each time, requiring the blue arrow click. But the instruction says \"한 번에 로드한다\" which implies doing all at once. Maybe the user needs to do each category's Add Data, and if any Select Cube dialog appears, click the arrow. But since the user hasn't completed all, the next action could be clicking the blue arrow if they are in the Select Cube dialog. Alternatively, if they haven't started, the next action is to right-click a category. Since the problem says \"각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의 'Add Data' 선택하여 기본 seismic을 한 번에 로드한다\", which means do this for each category to load all at once. So the next action is to right-click one of the categories and select Add Data. But since the user might have already done some, but the assistant can't know. The answer should be the next step in the process. Since the user hasn't said 'Done', maybe they need to proceed with one of the right-clicks. So the answer would be to right-click one of the In-line, Cross-line, or Z-slice categories and select Add Data. Alternatively, if they are in the Select Cube dialog, click the arrow. But without knowing the current state, the assistant should follow the instruction order. The original instruction says if the Select Cube dialog appears, click the arrow. So if after selecting Add Data the dialog appears, then click the arrow. But since the user's current step isn't visible, the next possible action could be clicking the arrow if the dialog is open. However, the initial steps require right-clicking the categories first. Since the user's goal is to load all three, maybe the next action is to right-click one of the categories. But the problem says \"각 카테고리 우클릭 시\" which implies each one needs to be done. If the user hasn't completed all three, the next action is to right-click another category. However, the assistant can only output one action. Since the user might be at the start, the first action is to right-click one of them. But the user's screenshot isn't visible, so the assistant must rely on the given goal. The correct answer here is likely to right-click one of the",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 13.65,
+              "input_tokens": 203,
+              "output_tokens": 1024,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 1,
+              "response": "In-line, Cross-line, 또는 Z-slice 카테고리 중 하나를 우클릭하여 'Add Data'를 선택하거나, 'Select Cube' 다이얼로그가 열려 있다면 파란색 화살표 아이콘(→)을 클릭합니다.",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 4.986,
+              "input_tokens": 1236,
+              "output_tokens": 350,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            },
+            {
+              "step_index": 2,
+              "response": "In-line, Cross-line, 또는 Z-slice 카테고리 중 하나를 우클릭하여 'Add Data'를 선택합니다.",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 4.562,
+              "input_tokens": 1298,
+              "output_tokens": 345,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            },
+            {
+              "step_index": 3,
+              "response": "'Add Data' 선택 후 'Select Cube' 다이얼로그가 표시되면 파란색 화살표 아이콘(→)을 클릭합니다.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 6.742,
+              "input_tokens": 1330,
+              "output_tokens": 527,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            }
+          ],
+          "latency_sec": 29.94,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.5,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "opendtect__survey_setup__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "setup",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.25,
+          "hallucination_rate": 0.75,
+          "faithfulness": 0.25,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 0.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 3.237,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 1054,
+          "total_output_tokens": 955,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "새로운 3D survey(My_F3_Survey) 생성을 위해 Survey Setup 창에서 'New Survey' 버튼 클릭.",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.147,
+              "input_tokens": 211,
+              "output_tokens": 234,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            },
+            {
+              "step_index": 1,
+              "response": "Survey Setup 창에서 \"Scan SEG-Y file(s)\" 옵션을 선택합니다.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.612,
+              "input_tokens": 246,
+              "output_tokens": 186,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 2,
+              "response": "SEG-Y 파일 선택을 위해 파일 탐색기에서 지정된 경로(C:\\Users\\user\\Downloads\\F3_Demo_2023\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy)로 이동 후 파일을 선택합니다.",
+              "matched": false,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 4.601,
+              "input_tokens": 267,
+              "output_tokens": 351,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "Next 버튼 클릭하여 SEG-Y 파일 스캔 및 survey geometry 자동 생성 진행.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 2.59,
+              "input_tokens": 330,
+              "output_tokens": 184,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            }
+          ],
+          "latency_sec": 15.67,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.25,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "no_rag": {
+      "n_scenarios": 2,
+      "step_accuracy": 0.5,
+      "faithfulness": 0.125,
+      "hallucination_rate": 0.875,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 0.3333333333333333,
+      "recovery_rate": null,
+      "goal_completion_rate": 0.0,
+      "mean_latency_sec": 5.361000000000001,
+      "mean_cost_usd": 0.0,
+      "total_cost_usd": 0.0,
+      "total_input_tokens": 2560.5,
+      "total_output_tokens": 1600.5
+    }
+  }
+}

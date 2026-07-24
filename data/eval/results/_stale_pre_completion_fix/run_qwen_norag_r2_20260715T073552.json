@@ -1,0 +1,211 @@
+{
+  "started_at": "2026-07-15T07:35:53.193257Z",
+  "scenarios": [
+    {
+      "scenario_id": "opendtect__3d_visualization__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "visualization",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.25,
+          "hallucination_rate": 1.0,
+          "faithfulness": 0.0,
+          "dwell_loop_rate": 0.25,
+          "loop_rate": 0.25,
+          "trap_pass_rate": 0.3333333333333333,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 6.934,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 2962,
+          "total_output_tokens": 2054,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "'Add Data' 클릭하여 seismic 볼륨 로드.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 5.772,
+              "input_tokens": 203,
+              "output_tokens": 371,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 1,
+              "response": "<think>\nOkay, let's see. The user is working on the F3 Demo survey and needs to display seismic volumes as In-line, Cross-line, and Z-slice in the 3D scene. They mentioned right-clicking each category and selecting 'Add Data' from the context menu. If they end up in the 'Select Cube' dialog, they should click the blue arrow icon to load the data.\n\nThe previous step was already completed: they clicked 'Add Data' to load the seismic volume. Now, the next action depends on what's happening after that. If the 'Select Cube' dialog appears, the user needs to click the blue arrow. But if they're past that step, maybe they need to proceed with another category.\n\nWait, the user said each category (In-line, Cross-line, Z-slice) should be added by right-clicking and choosing 'Add Data'. So after loading the first one via 'Add Data', maybe they need to do the same for the other categories. But the initial step was completed. Hmm, maybe the first action triggered the dialog, so the next step is to click the arrow in the dialog. But if the dialog isn't there, perhaps they need to right-click another category. The answer should be the immediate next action based on the screenshot.\n\nSince the user mentioned that if the 'Select Cube' dialog appears, click the blue arrow. The previous step was clicking 'Add Data', so if that dialog is now open, the next action is to click the arrow. Otherwise, maybe proceed to add another data type. But according to the steps, the user should add each category one by one. However, the first 'Add Data' was already done. Wait, the user's instruction says to use 'Add Data' for each category. So after adding the first, they might need to do the same for the next category. But the problem is, the user's current state isn't clear. Since the assistant has to respond based on the screenshot, which we can't see, but based on the previous steps.\n\nWait, the user's last completed step was 'Add Data' clicked. So the next action would be, if the dialog is open, click the blue arrow. If not, maybe right-click another category. But according to the original instructions, the user should right-click each category and select 'Add Data' each time. However, the first 'Add Data' was already done. But maybe the user needs to do this for each of the three categories. However, the problem says to output one action only. Since the previous step was clicking 'Add Data', the next step is likely to handle the dialog if it's open. So the next action is to click the blue arrow in the 'Select Cube' dialog. If that's the case, then the answer is to click the arrow. But if the dialog isn't present, maybe the next step is to right-click another category. But given the instructions, the user should process each category. However, the user's goal is to load all three, but the next single action after the first 'Add Data' would be to click the arrow if the dialog is there. Otherwise, proceed to add the next data. But since the assistant has to respond based on the actual UI state, which we don't have access to. But according to the problem's setup, the user is to do this for each category. However, the initial step was completed for one. The user might need to repeat the process for the remaining categories. But the assistant should output one action. The user's instruction says to respond 'Done' when the goal is complete. Since the goal is to display all three, but only one was added so far. Therefore, the next action is to right-click another category (e.g., Cross-line) and select 'Add Data'. But the problem says to output one action. However, the user's instruction says if the 'Select Cube' dialog appears, click the arrow. So depending on the current UI state. Since we don't have the screenshot, the assistant should infer based on the steps. Since the first 'Add Data' was clicked, and assuming the dialog is open, the next step is to click the arrow. If not, then maybe the user needs to add another data. But according to the problem's setup, the user should add all three. However, the assistant can't know how many have been added. So perhaps the answer is to click the blue arrow in the Select Cube dialog. But if that's not present, then right-click another category. But since the user's previous step was clicking 'Add Data', the next logical step is to handle the dialog if it's there. So the answer would be to click the arrow. However, if the dialog is not present, then the user should proceed to add another data. But since the assistant can't know, maybe the answer is to click the arrow. Alternatively, the user might have to add each data one by one. But since",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 12.876,
+              "input_tokens": 224,
+              "output_tokens": 1024,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 2,
+              "response": "'선택한 큐브' 대화 상자의 파란색 화살표 아이콘(→)을 클릭합니다.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 4.924,
+              "input_tokens": 1252,
+              "output_tokens": 344,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "'선택한 큐브' 대화 상자의 파란색 화살표 아이콘(→)을 클릭합니다.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": true,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 4.162,
+              "input_tokens": 1283,
+              "output_tokens": 315,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            }
+          ],
+          "latency_sec": 27.74,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.0,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "opendtect__survey_setup__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "setup",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.25,
+          "hallucination_rate": 1.0,
+          "faithfulness": 0.0,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 0.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 6.769,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 2001,
+          "total_output_tokens": 2082,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "SEG-Y 파일 경로에서 'Seismic_data.sgy' 선택.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 6.955,
+              "input_tokens": 211,
+              "output_tokens": 547,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 1,
+              "response": "Survey Setup and Selection 창에서 'Scan' 버튼 클릭하여 선택된 SEG-Y 파일의 메타데이터를 분석합니다.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.123,
+              "input_tokens": 233,
+              "output_tokens": 225,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 2,
+              "response": "<think>\nOkay, let's see. The user is setting up a new 3D survey in OpendTect using the Scan SEG-Y file method. They've already selected the SEG-Y file and clicked the Scan button to analyze the metadata. Now, what's the next step?\n\nAccording to the manual 1.2.2a, after scanning the SEG-Y file, the next step would be to define the survey geometry based on the scanned data. In OpendTect, after scanning, you typically need to specify the survey parameters like the inline and crossline ranges, sample rate, etc., using the information from the SEG-Y file. However, since the user is following the initial setup, maybe after scanning, they need to create the survey by confirming the parameters. But the exact next action after scanning might be to proceed to the survey creation, possibly by clicking a 'Create' or 'Next' button. Alternatively, after scanning, they might need to select the survey from the list and load it. Wait, the goal is to create the survey and then select it in the Survey Setup window. Since they've already scanned, the survey should be listed there. So the next action would be to select the newly created My_F3_Survey in the Survey Setup and Selection window to load it. But the user has to first create the survey. Wait, after scanning, does the survey get created automatically, or does the user need to confirm creation? Maybe after scanning, the survey is created, and the next step is to select it. The user's steps completed so far are selecting the SEG-Y file and clicking Scan. The next action should be to create the survey using the scanned data, but maybe in the interface, after scanning, there's a 'Create' button. Alternatively, in OpendTect, scanning might generate the survey parameters, and then you click 'Create' to finalize it. Then, after creation, select it. But the exact next step after scanning is likely to create the survey. However, the user's goal is to create the survey via Scan SEG-Y, so after scanning, maybe the survey is already created and listed, and the next step is to select it. But the user needs to confirm. Let me think again. In OpendTect's workflow, when you scan a SEG-Y file, it reads the headers and then allows you to define the survey. Once you've scanned, you can then create the survey based on that data. So the next action after scanning would be to create the survey, perhaps by clicking 'Create' or 'Apply' in the Survey Setup window. But the user's goal is to create My_F3_Survey, so after scanning, they might need to enter the survey name and click create. However, the initial steps already selected the SEG-Y file and clicked Scan. Now, the next action would be to proceed with creating the survey, possibly by clicking 'Create' or confirming the parameters. Alternatively, after scanning, the survey might be automatically created, and the next step is to select it. Since the user needs to select the new survey in the Survey Setup window to load it, the next action after scanning would be to select My_F3_Survey in that window. But maybe after scanning, the survey is listed, and the user needs to click 'Create' first. Hmm. The answer should be the next single action after scanning. If the Scan is complete, then the survey data is loaded, and the user can create the survey. So perhaps the next step is to click 'Create' to generate the survey. Alternatively, in some interfaces, after scanning, you might need to confirm the parameters and then create. But since the user's goal is to create the survey via Scan SEG-Y, and they've done the scan, the next action is to create the survey using that data. So the answer would be to click 'Create' in the Survey Setup and Selection window. Or maybe the survey is automatically created, and the next step is to select it. Wait, the original goal says \"Survey 생성 후 Survey Setup and Selection 창에서 새 survey를 Select 하여 로드하면 목표 달성.\" So after creating the survey, they need to select it. So the steps are: scan, create survey, then select it. The user has completed steps 1 and 2 (select SEG-Y, click Scan). The next step would be to create the survey. So the action would be to create the survey, perhaps by clicking a 'Create' button. But in OpendTect, after scanning, you might need to click 'Apply' or 'Create' to finalize the survey creation. Therefore, the next single action is to click 'Create' or the equivalent in the current interface. Alternatively, if after scanning, the survey is already created and the user needs to select it, then the next step would be to select My_F3_Survey. But according to the problem statement, the user needs to create the survey first.",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 12.779,
+              "input_tokens": 265,
+              "output_tokens": 1024,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "Survey Setup and Selection 창에서 'Create' 버튼 클릭하여 스캔된 SEG-Y 파일 정보로 My_F3_Survey 생성.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 4.218,
+              "input_tokens": 1292,
+              "output_tokens": 286,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            }
+          ],
+          "latency_sec": 30.7,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.0,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "no_rag": {
+      "n_scenarios": 2,
+      "step_accuracy": 0.25,
+      "faithfulness": 0.0,
+      "hallucination_rate": 1.0,
+      "dwell_loop_rate": 0.125,
+      "loop_rate": 0.125,
+      "trap_pass_rate": 0.16666666666666666,
+      "recovery_rate": null,
+      "goal_completion_rate": 0.0,
+      "mean_latency_sec": 6.8515,
+      "mean_cost_usd": 0.0,
+      "total_cost_usd": 0.0,
+      "total_input_tokens": 2481.5,
+      "total_output_tokens": 2068.0
+    }
+  }
+}

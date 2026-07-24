@@ -1,0 +1,386 @@
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. Inl, data_types: None
+[1] [STEP] RAG router mode=guide, context=2547chars, node=seismic_attribute_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.95
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. Inl, data_types: None
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [STEP] RAG router mode=guide, context=3116chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.85
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. Inl, data_types: None
+[1] [GUIDE] post-completion detected — node seismic_attribute_01_data_load visited at history[0] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3622chars, node=seismic_attribute_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.95
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.95
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.95
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.75
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.70
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.80
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.95
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.75
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.80
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.95
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3643chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. Inl, data_types: None
+[1] [STEP] RAG router mode=guide, context=2547chars, node=seismic_attribute_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. Inl, data_types: None
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. Inl, data_types: None
+[1] [GUIDE] post-completion detected — node seismic_attribute_01_data_load visited at history[0] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3622chars, node=seismic_attribute_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. Inl, data_types: None
+[1] [GUIDE] post-completion detected — node seismic_attribute_01_data_load visited at history[0] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. Inl, data_types: None
+[1] [GUIDE] post-completion detected — node seismic_attribute_01_data_load visited at history[0] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3622chars, node=seismic_attribute_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. Inl, data_types: None
+[1] [GUIDE] post-completion detected — node seismic_attribute_01_data_load visited at history[0] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3622chars, node=seismic_attribute_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.85
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.95
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.95
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.85
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.95
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.95
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.85
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [STEP] RAG router mode=guide, context=2564chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니다. , data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3643chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.95
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.95
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.75
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.90
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3639chars, node=fault_interpretation_02_display
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_02_display conf=0.85
+[1] [RAG] Query: [fault_interpretation > Inline/Crossline 단면 표시] OpendTect에서 3D 탄성파 데이터를 가져와서 3D 뷰어로 전체 볼륨을 시각화하고 싶습니, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_02_display visited at history[2] (within last 3)
+[1] [EVAL-CAPTURE] active scenario set to: 'opendtect__seg_y_import__01'
+[1] [EVAL-CAPTURE] saved data\eval\screenshots\opendtect__seg_y_import__01\step_0.jpg
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.65
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] F3_Demo Survey를 C:\Survey\F3_Demo 경로에서 SEG-Y import로 불러, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3643chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] F3_Demo Survey를 C:\Survey\F3_Demo 경로에서 SEG-Y import로 불러, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [EVAL-CAPTURE] saved data\eval\screenshots\opendtect__seg_y_import__01\step_1.jpg
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] F3_Demo Survey를 C:\Survey\F3_Demo 경로에서 SEG-Y import로 불러, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3643chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] F3_Demo Survey를 C:\Survey\F3_Demo 경로에서 SEG-Y import로 불러, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [EVAL-CAPTURE] saved data\eval\screenshots\opendtect__seg_y_import__01\step_1.jpg
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.90
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] F3_Demo Survey를 C:\Survey\F3_Demo 경로에서 SEG-Y import로 불러, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3645chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.60
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] F3_Demo Survey를 C:\Survey\F3_Demo 경로에서 SEG-Y import로 불러, data_types: None
+[1] [GUIDE] post-completion detected — node fault_interpretation_01_data_load visited at history[1] (within last 3)
+[1] [EVAL-CAPTURE] saved data\eval\screenshots\opendtect__seg_y_import__01\step_0.jpg
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.95
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3_Demo Survey 데이터 import로 불러오기
+[1] [STEP] RAG router mode=guide, context=2547chars, node=seismic_attribute_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3_Demo Survey 데이터 import로 불러오기
+[1] [EVAL-CAPTURE] saved data\eval\screenshots\opendtect__seg_y_import__01\step_1.jpg
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3_Demo Survey 데이터 import로 불러오기
+[1] [GUIDE] post-completion detected — node seismic_attribute_01_data_load visited at history[0] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3622chars, node=seismic_attribute_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.65
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3_Demo Survey 데이터 import로 불러오기
+[1] [GUIDE] post-completion detected — node seismic_attribute_01_data_load visited at history[0] (within last 3)
+[1] [EVAL-CAPTURE] saved data\eval\screenshots\opendtect__seg_y_import__01\step_2.jpg
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3_Demo Survey 데이터 import로 불러오기
+[1] [GUIDE] post-completion detected — node seismic_attribute_01_data_load visited at history[0] (within last 3)
+[1] [STEP] RAG router mode=guide, context=3622chars, node=seismic_attribute_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[1] [RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3_Demo Survey 데이터 import로 불러오기
+[1] [GUIDE] post-completion detected — node seismic_attribute_01_data_load visited at history[0] (within last 3)
+[1] [EVAL-CAPTURE] saved data\eval\screenshots\opendtect__seg_y_import__01\step_3.jpg
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.85
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] F3_Demo Survey 데이터 import로 불러오기
+[1] [STEP] RAG router mode=guide, context=3116chars, node=fault_interpretation_01_data_load
+[1] [GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.50
+[1] [RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] F3_Demo Survey 데이터 import로 불러오기

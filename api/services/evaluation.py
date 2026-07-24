@@ -434,7 +434,7 @@ def load_test_screenshots(manifest: Optional[str] = None) -> List[Dict]:
 
 # Standard backend names — used as keys in result dicts.
 # state_path is the novel contribution (Procedural State-Path Retrieval).
-BACKENDS = ("vanilla_vector", "graph_only", "vision_only", "full_system", "state_path")
+BACKENDS = ("no_rag", "vanilla_vector", "graph_only", "vision_only", "full_system", "state_path")
 
 
 def _normalize_instruction(text: str) -> str:
@@ -442,12 +442,67 @@ def _normalize_instruction(text: str) -> str:
     return re.sub(r"[\s\W_]+", "", (text or "").lower())
 
 
+_DONE_SENTINEL_RE = re.compile(r"(?i)^\s*(완료|done)\.?\s*$")
+
+
+def _visual_state_indicates_goal_reached(step_gt: Dict) -> bool:
+    """Heuristic: the visual_state_gt / data_state / current_action fields
+    of THIS step indicate that the workflow goal has already been achieved,
+    so a bare 'Done'/'완료' response is a legitimate answer rather than a
+    premature declaration. Signals: keywords like 'achieved', '완료',
+    '전체 표시', 'goal reached', 'all three slices'; or a completion trap
+    of type 'goal_completion_sentinel'; or capture_instructions.screen_state
+    explicitly describing the goal-achieved terminal state.
+
+    Applied only when the response is a bare completion sentinel — this
+    filter prevents the sentinel from silently satisfying steps whose
+    screen still shows an intermediate state."""
+    trap = step_gt.get("trap") or {}
+    if trap.get("type") == "goal_completion_sentinel":
+        return True
+
+    haystack_parts: List[str] = []
+    vs = step_gt.get("visual_state_gt") or {}
+    for k in ("current_dialog", "active_menu", "data_state", "current_action"):
+        v = vs.get(k)
+        if isinstance(v, str):
+            haystack_parts.append(v)
+    for v in (vs.get("visible_elements") or []):
+        if isinstance(v, str):
+            haystack_parts.append(v)
+    ci = step_gt.get("capture_instructions") or {}
+    for k in ("screen_state",):
+        v = ci.get(k)
+        if isinstance(v, str):
+            haystack_parts.append(v)
+
+    hay = " ".join(haystack_parts).lower()
+    goal_markers = [
+        "goal achieved", "goal reached", "goal complete", "goal-achieved",
+        "achieved", "all three slices", "all slices",
+        "완료", "달성", "goal state", "completed", "terminal state",
+    ]
+    return any(m in hay for m in goal_markers)
+
+
 def step_match(response: str, step_gt: Dict) -> bool:
     """True if `response` satisfies the step's expected_action_text_pattern,
-    expected_action_keywords, OR any allowed_alternatives pattern."""
+    expected_action_keywords, OR any allowed_alternatives pattern.
+
+    Special rule for the bare '완료'/'Done' completion sentinel: it counts
+    as a match ONLY when the step's visual_state indicates the workflow
+    goal has actually been achieved. Otherwise the model is declaring
+    completion prematurely and the response is a MISS, even if some
+    allowed_alternatives pattern would have matched '완료' by regex. This
+    stops zero-shot baselines from silently satisfying intermediate steps
+    with an over-eager 'Done'."""
     if not response:
         return False
     text = response.strip()
+
+    is_bare_sentinel = bool(_DONE_SENTINEL_RE.match(text))
+    if is_bare_sentinel and not _visual_state_indicates_goal_reached(step_gt):
+        return False
 
     pat = step_gt.get("expected_action_text_pattern")
     if pat:
@@ -509,6 +564,81 @@ def has_done_sentinel(response: str) -> bool:
     return bool(re.search(r"(?:^|\s)(done|완료)\.?\s*$", t, re.IGNORECASE))
 
 
+# UI element categories that scenarios test the model's ability to observe
+# on screen. If a completion declaration NAMES one of these but the actual
+# final visual_state does not confirm its presence, the declaration is
+# hallucinated — the model claimed to see something that wasn't there.
+_COMPLETION_CLAIM_PATTERNS = [
+    r"(In[- ]?line|Inline|Cross[- ]?line|Crossline|Z[- ]?slice|Time[- ]?slice|Depth[- ]?slice)",
+    r"(3D Scene|Main Window|Tree scene)",
+    r"(Seismic_data|F3[_ ]?Demo|Similarity|Curvature|Frequency)",
+]
+
+
+def _canon(token: str) -> str:
+    """Canonicalize a UI element mention: lowercase, strip spaces/hyphens/underscores."""
+    return re.sub(r"[\s\-_]+", "", (token or "").lower())
+
+
+def completion_visually_grounded(
+    response: str, final_step_gt: Dict
+) -> Tuple[bool, List[str]]:
+    """Verify that a completion declaration only names UI elements the final
+    step's visual_state actually confirms as present.
+
+    Returns (grounded: bool, hallucinated_terms: list[str]).
+
+    A bare sentinel ("완료" / "Done") is always grounded — nothing to verify.
+    An elaborated response ("In-line, Cross-line, Z-slice 모두 표시되어 있음
+    → 완료") is grounded ONLY if each named category appears in the final
+    visual_state's data_state / visible_elements / current_action / dialog /
+    capture_instructions.screen_state.
+
+    This closes a scoring gap: without it, no_rag zero-shot models pass
+    goal_completion by habitually listing the workflow's target elements
+    at the end regardless of whether the screen actually shows them. That
+    turns goal_completion into a measure of utterance habit, not screen
+    observation.
+    """
+    if not response:
+        return True, []
+
+    claims: List[str] = []
+    for pat in _COMPLETION_CLAIM_PATTERNS:
+        for m in re.findall(pat, response, flags=re.IGNORECASE):
+            token = m if isinstance(m, str) else m[0]
+            claims.append(token)
+    if not claims:
+        return True, []
+
+    vs = (final_step_gt or {}).get("visual_state_gt") or {}
+    ci = (final_step_gt or {}).get("capture_instructions") or {}
+    haystack_parts: List[str] = []
+    for k in ("current_dialog", "active_menu", "data_state", "current_action"):
+        v = vs.get(k)
+        if isinstance(v, str):
+            haystack_parts.append(v)
+    for v in (vs.get("visible_elements") or []):
+        if isinstance(v, str):
+            haystack_parts.append(v)
+    for k in ("screen_state", "user_should_have_just"):
+        v = ci.get(k)
+        if isinstance(v, str):
+            haystack_parts.append(v)
+    haystack = _canon(" ".join(haystack_parts))
+
+    hallucinated: List[str] = []
+    seen_canon = set()
+    for raw in claims:
+        c = _canon(raw)
+        if not c or c in seen_canon:
+            continue
+        seen_canon.add(c)
+        if c not in haystack:
+            hallucinated.append(raw)
+    return (len(hallucinated) == 0), hallucinated
+
+
 class ScenarioEvaluator:
     """Runs a labeled scenario through a chosen backend and computes
     per-step + per-scenario metrics. Each backend is a callable:
@@ -525,14 +655,36 @@ class ScenarioEvaluator:
         self.steps: List[Dict] = scenario.get("steps", []) or []
 
     def evaluate_backend(self, backend_name: str, backend_callable) -> Dict:
+        import time as _time
+        try:
+            from api.services.bench_backends import get_last_usage  # type: ignore
+        except ImportError:
+            get_last_usage = lambda: {"input_tokens": 0, "output_tokens": 0, "cost_usd": 0.0, "model": ""}
+        try:
+            from api.services.guide_pipeline import (
+                get_last_localize_meta, reset_last_localize_meta,
+            )
+        except ImportError:
+            get_last_localize_meta = lambda: {}
+            reset_last_localize_meta = lambda: None
+
         per_step: List[Dict] = []
         prior_responses: List[str] = []
+        step_latencies: List[float] = []
+        step_costs: List[float] = []
+        step_input_toks: List[int] = []
+        step_output_toks: List[int] = []
         for i, step in enumerate(self.steps):
+            reset_last_localize_meta()
+            t0 = _time.time()
             try:
                 response = backend_callable(i, self.scenario, prior_responses) or ""
             except Exception as e:
                 print(f"[EVAL] backend {backend_name} step {i} failed: {e}")
                 response = ""
+            latency = round(_time.time() - t0, 3)
+            usage = get_last_usage()
+            loc_meta = get_last_localize_meta()
 
             matched = step_match(response, step)
             halls = hallucinated_elements(
@@ -550,35 +702,111 @@ class ScenarioEvaluator:
                 "looped": looped,
                 "is_trap": bool(step.get("trap")),
                 "is_recovery": bool(step.get("is_error_recovery_test")),
+                "latency_sec":   latency,
+                "input_tokens":  usage.get("input_tokens", 0),
+                "output_tokens": usage.get("output_tokens", 0),
+                "cost_usd":      usage.get("cost_usd", 0.0),
+                "model":         usage.get("model", ""),
+                # Routing telemetry (only meaningful for backends that call
+                # guide_pipeline.process_guide_request or localize_to_graph;
+                # zeros for vanilla_vector, no_rag, vision_only, graph_only).
+                "route_confidence":   loc_meta.get("confidence", 0.0),
+                "picked_node_id":     loc_meta.get("picked_node_id"),
+                "picked_workflow_id": loc_meta.get("picked_workflow_id"),
+                "route_method":       loc_meta.get("match_method", ""),
+                "fallback_activated": bool(loc_meta.get("fallback_activated", False)),
             })
+            step_latencies.append(latency)
+            step_costs.append(float(usage.get("cost_usd") or 0.0))
+            step_input_toks.append(int(usage.get("input_tokens") or 0))
+            step_output_toks.append(int(usage.get("output_tokens") or 0))
             prior_responses.append(response)
 
         # Completion check
         completion = self.scenario.get("completion") or {}
         done_ok = False
+        completion_response = ""
+        completion_hallucinations: List[str] = []
+        completion_grounded: Optional[bool] = None
         if completion.get("expected_done_sentinel"):
             try:
                 final_path = completion.get("final_screenshot_path")
                 if final_path:
-                    final_response = backend_callable(
+                    completion_response = backend_callable(
                         len(self.steps), self.scenario, prior_responses
                     ) or ""
-                    done_ok = has_done_sentinel(final_response)
+                    sentinel_ok = has_done_sentinel(completion_response)
+                    # Visual-state cross-check has TWO gates:
+                    #   (a) the response's named UI elements must be present
+                    #       in the final visual_state (no phantom element
+                    #       claims — the r2/r4/r5 hallucination pattern)
+                    #   (b) the final visual_state must ACTIVELY indicate
+                    #       goal-reached (blocks bare-sentinel responses
+                    #       that assert "완료" without any screen evidence
+                    #       — the r1 pattern)
+                    final_step_gt = self.steps[-1] if self.steps else {}
+                    completion_grounded, completion_hallucinations = (
+                        completion_visually_grounded(
+                            completion_response, final_step_gt
+                        )
+                    )
+                    visual_confirms_goal = _visual_state_indicates_goal_reached(final_step_gt)
+                    done_ok = sentinel_ok and completion_grounded and visual_confirms_goal
+                    if sentinel_ok and not (completion_grounded and visual_confirms_goal):
+                        reasons = []
+                        if not completion_grounded:
+                            reasons.append(f"ungrounded claims={completion_hallucinations}")
+                        if not visual_confirms_goal:
+                            reasons.append("final visual_state does not indicate goal-reached")
+                        print(
+                            f"[EVAL] {backend_name} completion sentinel present but "
+                            f"rejected — " + "; ".join(reasons)
+                        )
             except Exception as e:
                 print(f"[EVAL] backend {backend_name} completion check failed: {e}")
 
         n = max(1, len(per_step))
         trap_steps = [s for s in per_step if s["is_trap"]]
         recovery_steps = [s for s in per_step if s["is_recovery"]]
+        hall_rate = sum(1 for s in per_step if s["hallucinated"]) / n
+        mean_lat = round(sum(step_latencies) / n, 3) if step_latencies else 0.0
+        total_cost = round(sum(step_costs), 6)
+        mean_cost = round(total_cost / n, 6) if n else 0.0
+        # Route confidence + fallback aggregate. Only meaningful for backends
+        # that touch guide_pipeline (full_system, state_path). For others the
+        # confidence field stays at zero and fallback_rate reads 0 — that's
+        # honest, not fake activation.
+        route_steps = [s for s in per_step if s.get("route_method")]
+        fallback_rate = (sum(1 for s in per_step if s.get("fallback_activated")) / n) if n else 0.0
+        mean_route_conf = (
+            round(sum(s.get("route_confidence", 0.0) for s in route_steps) / len(route_steps), 3)
+            if route_steps else None
+        )
         return {
             "backend": backend_name,
             "n_steps": len(per_step),
             "step_accuracy":        sum(1 for s in per_step if s["matched"]) / n,
-            "hallucination_rate":   sum(1 for s in per_step if s["hallucinated"]) / n,
+            "hallucination_rate":   hall_rate,
+            "faithfulness":         round(1.0 - hall_rate, 4),  # higher = better
             "dwell_loop_rate":      sum(1 for s in per_step if s["looped"]) / n,
+            "loop_rate":            sum(1 for s in per_step if s["looped"]) / n,  # alias for paper
             "trap_pass_rate":       (sum(1 for s in trap_steps if s["matched"]) / len(trap_steps)) if trap_steps else None,
             "recovery_rate":        (sum(1 for s in recovery_steps if s["matched"]) / len(recovery_steps)) if recovery_steps else None,
             "goal_completion_rate": 1.0 if done_ok else 0.0,
+            "mean_latency_sec":     mean_lat,
+            "mean_cost_usd":        mean_cost,
+            "total_cost_usd":       total_cost,
+            "total_input_tokens":   sum(step_input_toks),
+            "total_output_tokens":  sum(step_output_toks),
+            "fallback_rate":        fallback_rate,
+            "mean_route_confidence": mean_route_conf,
+            "completion_response":  completion_response,
+            "completion_grounded":  completion_grounded,
+            "completion_visual_confirms_goal": (
+                _visual_state_indicates_goal_reached(self.steps[-1])
+                if self.steps and completion.get("expected_done_sentinel") else None
+            ),
+            "completion_hallucinations": completion_hallucinations,
             "per_step": per_step,
         }
 
@@ -612,8 +840,12 @@ def aggregate_scenario_results(results: List[Dict]) -> Dict:
     (e.g. trap_pass_rate when no trap steps exist for a scenario)."""
     if not results:
         return {}
-    keys = ["step_accuracy", "hallucination_rate", "dwell_loop_rate",
-            "trap_pass_rate", "recovery_rate", "goal_completion_rate"]
+    keys = ["step_accuracy", "faithfulness", "hallucination_rate",
+            "dwell_loop_rate", "loop_rate",
+            "trap_pass_rate", "recovery_rate", "goal_completion_rate",
+            "mean_latency_sec", "mean_cost_usd", "total_cost_usd",
+            "total_input_tokens", "total_output_tokens",
+            "fallback_rate", "mean_route_confidence"]
     out: Dict = {"n_scenarios": len(results)}
     for k in keys:
         vals = [r[k] for r in results if r.get(k) is not None]

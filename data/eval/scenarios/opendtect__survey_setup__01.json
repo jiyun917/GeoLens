@@ -1,0 +1,171 @@
+{
+  "scenario_id": "opendtect__survey_setup__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "manual_reference": "1.2.2a Survey Setup & Load SEG-Y",
+  "category": "setup",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 initial setup은 Scan SEG-Y file(s) 방식을 선택하여 SEG-Y 파일로부터 survey geometry를 정의한다. SEG-Y 파일 경로: C:\\Users\\user\\Downloads\\F3_Demo_2023\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy. Survey 생성 후 Survey Setup and Selection 창에서 새 survey를 Select 하여 로드하면 목표 달성.",
+  "initial_state": {
+    "description": "OpendTect 첫 실행. Survey Setup and Selection 창이 최상단에 열려 있고 아직 어떤 새 survey도 생성되지 않은 상태.",
+    "must_be_true": [
+      "Survey Setup and Selection window is the topmost window",
+      "No Create New Survey dialog is open yet",
+      "OpendTect Main Window is NOT loaded (or is behind Survey Setup)",
+      "Survey Data Root list is visible but new-survey creation has not started"
+    ]
+  },
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_0.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Survey Setup and Selection",
+        "active_menu": "Survey Data Root",
+        "visible_elements": [
+          "Survey Data Root tab",
+          "Add button",
+          "Edit button",
+          "Select button",
+          "Cancel button",
+          "Information tab"
+        ],
+        "data_state": "no survey created yet",
+        "current_action": "user is on the initial survey selection window"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Survey|Create|New|Add)\\b",
+      "expected_action_keywords": ["Survey", "Create", "New"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Add)\\b", "note": "The Add / '+' button opens Create New Survey dialog"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Survey Setup and Selection window open. Survey Data Root list visible. NO Create New Survey dialog open yet.",
+        "user_should_have_just": "Launched OpendTect for the first time OR reopened the Survey Setup window without picking a survey.",
+        "must_not_show": [
+          "Create New Survey dialog",
+          "OpendTect Main Window fully loaded with survey"
+        ]
+      },
+      "source_note": "Mapped from archived screenshot (was captured Jul 6 with mis-tagged scenario id)."
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_1.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Create New Survey",
+        "active_menu": "Survey Data Root...",
+        "visible_elements": [
+          "Create New Survey dialog",
+          "Survey name input field (empty)",
+          "Available data checkboxes (3D, 2D, Wells)",
+          "Initial setup list (Enter X/Y ranges selected)",
+          "Z Domain radio buttons (Time, Depth)",
+          "Next button",
+          "Cancel button"
+        ],
+        "data_state": "Create New Survey dialog just opened, survey name empty",
+        "current_action": "user is about to fill survey parameters"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Survey name|Available data|3D|Wells|Initial setup)\\b",
+      "expected_action_keywords": ["Survey name", "Available data", "3D"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Type|Enter|Input).*(name|My_F3)\\b", "note": "Model may instruct to type a name"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Create New Survey dialog OPEN, fields blank or default. Available data section shows checkboxes for 3D/2D/Wells.",
+        "user_should_have_just": "Clicked Add / + to open the Create New Survey dialog.",
+        "must_not_show": [
+          "Survey name already filled in",
+          "Initial setup 'Scan SEG-Y' option already selected (Enter X/Y ranges is the default)"
+        ]
+      },
+      "source_note": "Mapped from archived screenshot."
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_2.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Create New Survey",
+        "active_menu": "Survey Data Root...",
+        "visible_elements": [
+          "Create New Survey dialog",
+          "Survey name field with 'My_F3_Survey' typed",
+          "Available data (3D, 2D, Wells)",
+          "Initial setup options list (Enter X/Y ranges, Scan SEG-Y file(s), Copy from other survey)",
+          "Z Domain radio buttons (Time, Depth)",
+          "Next button",
+          "Cancel button"
+        ],
+        "data_state": "Survey name filled; initial setup method needs to be chosen",
+        "current_action": "user is deciding how to define geometry"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Scan SEG-Y|Enter X/Y|Initial setup|Next)\\b",
+      "expected_action_keywords": ["Scan SEG-Y", "Enter X/Y ranges", "Initial setup"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Next)\\b", "note": "After choosing initial setup, Next proceeds"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Create New Survey dialog with My_F3_Survey (or any name) typed. Initial setup list visible with options.",
+        "user_should_have_just": "Typed a survey name.",
+        "must_not_show": [
+          "Next button clicked already (next dialog would be up)",
+          "Empty survey name field"
+        ]
+      },
+      "source_note": "Mapped from archived screenshot."
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_3.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window",
+        "visible_elements": [
+          "OpendTect V7.0.9 application window",
+          "Main menu bar (Survey, Analysis, Processing, Scene, View, Utilities, Help)",
+          "Toolbar",
+          "Tree scene panel",
+          "3D Scene / Cross-line panels (empty)",
+          "Survey name in title bar (My_F3_Survey)"
+        ],
+        "data_state": "Select clicked — Main Window loaded with newly created survey active. Goal achieved.",
+        "current_action": "goal complete — model should emit '완료'"
+      },
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": ["완료"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Done)\\b", "note": "English completion sentinel"},
+        {"pattern": "OpendTect", "note": "Screen shows OpendTect Main Window — validator checks this"},
+        {"pattern": "Main Window", "note": "Alternative main window marker for validator"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "goal_completion_sentinel",
+        "description": "Survey creation + Select produced the loaded Main Window. Goal achieved. Model MUST emit '완료' as the sole response. Any further instruction (open menu, click X, etc.) is a failure."
+      },
+      "capture_instructions": {
+        "screen_state": "OpendTect Main Window fully loaded with My_F3_Survey active. Title bar shows survey name. Tree scene and 3D Scene panels are visible but empty.",
+        "user_should_have_just": "Clicked Select on Survey Setup and Selection — Main Window just loaded.",
+        "must_not_show": [
+          "Survey Setup and Selection window still open",
+          "Create New Survey wizard still open",
+          "Any error/warning dialog"
+        ]
+      },
+      "capture_required": false,
+      "source_note": "Captured Jul 8. Represents state AFTER Select click (Main Window loaded). /step fires on screen change so pre-Select state cannot be captured — Main Window is the natural next capture."
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_3.jpg",
+    "expected_done_sentinel": true,
+    "note": "Goal is achieved when user clicks Select on the newly created My_F3_Survey. The subsequent /step (screen change → Main Window) should trigger 완료 emit."
+  }
+}

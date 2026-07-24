@@ -1,0 +1,211 @@
+{
+  "started_at": "2026-07-15T07:34:14.219173Z",
+  "scenarios": [
+    {
+      "scenario_id": "opendtect__3d_visualization__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "visualization",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.75,
+          "hallucination_rate": 0.25,
+          "faithfulness": 0.75,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 0.6666666666666666,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 4.356,
+          "mean_cost_usd": 0.003389,
+          "total_cost_usd": 0.013555,
+          "total_input_tokens": 5274,
+          "total_output_tokens": 37,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "'In-line'를 우클릭하세요.",
+              "matched": true,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.939,
+              "input_tokens": 1298,
+              "output_tokens": 10,
+              "cost_usd": 0.003345,
+              "model": "gpt",
+              "judge_score": 1
+            },
+            {
+              "step_index": 1,
+              "response": "'Add Default Data'를 클릭하세요.",
+              "matched": true,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 9.244,
+              "input_tokens": 1315,
+              "output_tokens": 9,
+              "cost_usd": 0.003377,
+              "model": "gpt",
+              "judge_score": 1
+            },
+            {
+              "step_index": 2,
+              "response": "'OK'을 클릭하세요.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 2.79,
+              "input_tokens": 1326,
+              "output_tokens": 7,
+              "cost_usd": 0.003385,
+              "model": "gpt",
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "'Z-slice'를 우클릭하세요.",
+              "matched": true,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 1.451,
+              "input_tokens": 1335,
+              "output_tokens": 11,
+              "cost_usd": 0.003448,
+              "model": "gpt",
+              "judge_score": 1
+            }
+          ],
+          "latency_sec": 17.43,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.75,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "opendtect__survey_setup__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "setup",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.25,
+          "hallucination_rate": 0.5,
+          "faithfulness": 0.5,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 0.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 1.98,
+          "mean_cost_usd": 0.003484,
+          "total_cost_usd": 0.013935,
+          "total_input_tokens": 5338,
+          "total_output_tokens": 59,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "왼쪽 도구 모음에서 새 프로젝트 아이콘을 클릭합니다.",
+              "matched": false,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.447,
+              "input_tokens": 1306,
+              "output_tokens": 16,
+              "cost_usd": 0.003425,
+              "model": "gpt",
+              "judge_score": 1
+            },
+            {
+              "step_index": 1,
+              "response": "Survey name에 \"My_F3_Survey\"를 입력하세요.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 1.875,
+              "input_tokens": 1329,
+              "output_tokens": 14,
+              "cost_usd": 0.003463,
+              "model": "gpt",
+              "judge_score": 1
+            },
+            {
+              "step_index": 2,
+              "response": "\"Scan SEG-Y file(s)\"를 선택하세요.",
+              "matched": true,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 1.597,
+              "input_tokens": 1345,
+              "output_tokens": 11,
+              "cost_usd": 0.003472,
+              "model": "gpt",
+              "judge_score": 1
+            },
+            {
+              "step_index": 3,
+              "response": "세로 도구 모음에서 \"파일 열기\" 아이콘을 클릭하세요.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 2.001,
+              "input_tokens": 1358,
+              "output_tokens": 18,
+              "cost_usd": 0.003575,
+              "model": "gpt",
+              "judge_score": 0
+            }
+          ],
+          "latency_sec": 9.46,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.75,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "no_rag": {
+      "n_scenarios": 2,
+      "step_accuracy": 0.5,
+      "faithfulness": 0.625,
+      "hallucination_rate": 0.375,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 0.3333333333333333,
+      "recovery_rate": null,
+      "goal_completion_rate": 0.0,
+      "mean_latency_sec": 3.168,
+      "mean_cost_usd": 0.0034365000000000003,
+      "total_cost_usd": 0.013745,
+      "total_input_tokens": 5306.0,
+      "total_output_tokens": 48.0
+    }
+  }
+}

@@ -1,0 +1,26 @@
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:71: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+[EVAL] long_context completion sentinel present but rejected — final visual_state does not indicate goal-reached
+  - long_context   step_acc=0.25 hall=0.25 loop=0.00 latency=70.67s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - long_context   step_acc=0.50 hall=0.50 loop=0.00 latency=51.18s
+
+# Benchmark Results
+
+Started: 2026-07-23T04:16:37.965379Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| long_context | 0.375 | 0.375 | 0.000 | 0.167 | — | 0.500 |
+
+
+Results written: data/eval/results/run_gemini_longctx_r5_20260723T041637.json
+Markdown:        data/eval/results/run_gemini_longctx_r5_20260723T041637.md

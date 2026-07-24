@@ -1,0 +1,129 @@
+{
+  "scenario_id": "opendtect__3d_visualization__02",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "manual_reference": "1.3.1a Display An Inline / Display Cross-line / Display Z-slice",
+  "category": "visualization",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의 'Add Data' (첫번째 옵션)를 선택하여 기본 seismic을 한 번에 로드한다.",
+  "initial_state": {
+    "description": "F3 Demo (또는 seismic 로드된 다른) survey 활성 상태. Tree scene에 Elements 카테고리 준비됨. 3D Scene 비어있음.",
+    "must_be_true": [
+      "OpendTect Main Window is loaded with survey active",
+      "Seismic cube exists in Tree scene",
+      "No wizard dialog is open"
+    ]
+  },
+  "_variant_note": "Variant 02: adjusted to match the ACTUAL captured sequence (Cross-line context at step_1, color-settings Information dialog at step_2, Z-slice displayed at step_3). Sibling variant 01 assumes an idealized In-line-first sequence — different scoring lens on the same screenshots.",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_0.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window",
+        "visible_elements": [
+          "Tree scene panel",
+          "Elements group (In-line/Cross-line/Z-slice categories)",
+          "Empty 3D Scene panel",
+          "Survey title bar"
+        ],
+        "data_state": "Survey loaded; no slice displayed yet",
+        "current_action": "user about to add first slice"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Tree|Scene|Elements|In[- ]?line|Cross[- ]?line|Z[- ]?slice)\\b",
+      "expected_action_keywords": ["Tree", "Scene", "Elements"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(In[- ]?line|Cross[- ]?line|Z[- ]?slice)\\b", "note": "First target — any slice category acceptable"},
+        {"pattern": "(?i)\\b(right[- ]click|우클릭)\\b", "note": "Right-click gesture on tree category"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_required": false,
+      "source_note": "Same screenshot as variant 01 step_0."
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_1.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Context menu on Cross-line",
+        "visible_elements": [
+          "Cross-line category node (selected)",
+          "Context menu items (Add Data, Add and Select Data...)"
+        ],
+        "data_state": "Cross-line context menu open — user is about to load Cross-line seismic",
+        "current_action": "selecting the Add Data option"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Cross[- ]?line|Add Data|Add Default Data|Add.*Select.*Data)\\b",
+      "expected_action_keywords": ["Cross-line", "Add Data"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Add Default Data)\\b", "note": "Alternate label"},
+        {"pattern": "(?i)\\b(Add)\\b", "note": "Any Add-family action"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "category_vs_child_item",
+        "description": "Right-click target must be Cross-line CATEGORY node."
+      },
+      "capture_required": false,
+      "source_note": "Actual capture shows Cross-line context; variant 02 aligns expectation to this reality."
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_2.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Information (default color settings)",
+        "visible_elements": [
+          "Information dialog",
+          "Default color settings notice for OD Seismic 1",
+          "OK button"
+        ],
+        "data_state": "Seismic cube just added; color-settings Information dialog awaits OK",
+        "current_action": "dismiss the Information dialog"
+      },
+      "expected_action_text_pattern": "(?i)\\b(OK|확인|Yes)\\b",
+      "expected_action_keywords": ["OK"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Close|Dismiss|닫기)\\b", "note": "Any dismiss action"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "capture_required": false,
+      "source_note": "Information dialog for default color settings — user must OK to continue."
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_3.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window (Z-slice displayed)",
+        "visible_elements": [
+          "3D Scene with slices visible",
+          "Z-slice 924 in navigation toolbar",
+          "Multiple slices in Elements"
+        ],
+        "data_state": "Multiple slices visible including Z-slice — goal achieved",
+        "current_action": "goal complete"
+      },
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": ["완료"],
+      "allowed_alternatives": [
+        {"pattern": "(?i)\\b(Done)\\b", "note": "English sentinel"},
+        {"pattern": "OpendTect", "note": "Screen contains OpendTect main window"},
+        {"pattern": "Scene", "note": "Screen shows 3D Scene"}
+      ],
+      "expected_workflow_node": null,
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "goal_completion_sentinel",
+        "description": "All required slices are visible — model must emit '완료'."
+      },
+      "capture_required": false,
+      "source_note": "Screenshot shows Z-slice 924 displayed → goal achieved."
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_3.jpg",
+    "expected_done_sentinel": true
+  }
+}

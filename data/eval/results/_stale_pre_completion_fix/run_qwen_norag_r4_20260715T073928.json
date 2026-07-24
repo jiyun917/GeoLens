@@ -1,0 +1,211 @@
+{
+  "started_at": "2026-07-15T07:39:28.579620Z",
+  "scenarios": [
+    {
+      "scenario_id": "opendtect__3d_visualization__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "visualization",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.25,
+          "hallucination_rate": 0.25,
+          "faithfulness": 0.75,
+          "dwell_loop_rate": 0.25,
+          "loop_rate": 0.25,
+          "trap_pass_rate": 0.3333333333333333,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 9.015,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 2961,
+          "total_output_tokens": 2743,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "Select Cube 다이얼로그의 파란색 화살표 아이콘(→) 클릭",
+              "matched": false,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 4.059,
+              "input_tokens": 203,
+              "output_tokens": 241,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 1,
+              "response": "<think>\nOkay, let's see. The user is working on the F3 Demo survey and needs to display seismic volumes as In-line, Cross-line, and Z-slice in the 3D scene. The previous step was clicking the blue arrow icon in the Select Cube dialog to load the data. Now, what's next?\n\nThe goal says to right-click each category and choose 'Add Data' from the context menu. But if they took the 'Add and Select Data...' path, which opens the Select Cube dialog, they should click the blue arrow there. Since the user already clicked the blue arrow, maybe the next step is to proceed with adding the data through the context menu.\n\nWait, the steps already completed include clicking the blue arrow in the Select Cube dialog. So after that, the data should be loaded. But the main goal requires adding each category (In-line, Cross-line, Z-slice) by right-clicking and selecting 'Add Data'. Maybe after loading the data via the blue arrow, the next action is to go back to the context menu and select 'Add Data' for each category. But the user might need to confirm if they're in the correct menu.\n\nAlternatively, after loading the data, the next step could be to close the dialog or proceed to the next part. But the main task is to load all three categories. Since the user already used the blue arrow once, perhaps they need to repeat the process for each category. Wait, no. The initial instruction says to right-click each category and choose 'Add Data' (first option). If they go through 'Add and Select Data...', which opens the Select Cube dialog, then click the blue arrow. So each category needs that process. But the user already clicked the blue arrow once. Maybe the next action is to confirm that the data is added, or perhaps move on to the next category. But the user's last action was clicking the blue arrow in the Select Cube dialog. The next step might be to close the dialog or proceed to add another data. However, according to the goal, they need to add all three categories. So perhaps after loading one, they need to repeat the process for the remaining categories. But the user's current step is after clicking the arrow. The next action might be to click 'Add Data' again for another category. But I'm not entirely sure. The user might need to go back to the context menu and select 'Add Data' again for the next category. Alternatively, if the Select Cube dialog is still open, maybe they need to confirm with OK or something. But based on the given info, the next single action should be 'Done' if all steps are completed. But the user's previous step was clicking the blue arrow. The original goal requires adding three categories. So maybe the user needs to do this three times. But since the user only did it once, the next action would be to right-click another category and choose 'Add Data', leading to another Select Cube dialog. However, the assistant needs to respond based on the current state. If the user has completed the step of clicking the blue arrow in the Select Cube dialog, and the next step is to proceed with adding another data or closing, but without seeing the screenshot, it's hard. The assistant is supposed to output 'Done' if the task is complete. Since the user has completed the step of clicking the arrow, but the overall goal requires three categories to be added. So maybe the next action is to right-click another category. But the user might have to do this multiple times. However, the problem says to output one action only. Since the previous step was clicking the blue arrow, maybe the next step is to close the dialog or proceed. Alternatively, if all three data additions are done, then respond 'Done'. But the user might have to do this three times. The initial instruction says to add each category by right-clicking and choosing 'Add Data'. If the user did that once and clicked the arrow, but needs to do it two more times, the next action would be to click 'Add Data' again. But without knowing the current UI state, the assistant might have to assume that after clicking the arrow, the data is loaded, and if all three are done, then 'Done'. Alternatively, the assistant might respond '완료' if the task is complete. But since the user only completed one step (clicking the arrow once), but the goal requires three categories, maybe the task isn't done yet. However, the problem states that the user should respond 'Done' when the goal is complete. Since the user's last action was clicking the arrow, which is part of the process, but they might need to proceed with adding the other categories. But the assistant can't know how many are left. Therefore, perhaps the correct response is '완료' if all steps are done. Alternatively, maybe the user has completed all steps by clicking the arrow once, but that doesn't make sense. Maybe the correct next action is to",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 12.87,
+              "input_tokens": 232,
+              "output_tokens": 1024,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 2,
+              "response": "완료",
+              "matched": false,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 6.68,
+              "input_tokens": 1260,
+              "output_tokens": 488,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 3,
+              "response": "완료",
+              "matched": false,
+              "hallucinated": false,
+              "looped": true,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 12.452,
+              "input_tokens": 1266,
+              "output_tokens": 990,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            }
+          ],
+          "latency_sec": 36.06,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.25,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    },
+    {
+      "scenario_id": "opendtect__survey_setup__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "setup",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 4,
+          "step_accuracy": 0.75,
+          "hallucination_rate": 0.5,
+          "faithfulness": 0.5,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 0.0,
+          "mean_latency_sec": 6.338,
+          "mean_cost_usd": 0.0,
+          "total_cost_usd": 0.0,
+          "total_input_tokens": 1070,
+          "total_output_tokens": 1966,
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "Scan SEG-Y file(s) 선택하여 새 3D survey(My_F3_Survey) 생성 시작.",
+              "matched": true,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 12.538,
+              "input_tokens": 211,
+              "output_tokens": 1007,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            },
+            {
+              "step_index": 1,
+              "response": "SEG-Y 파일 선택 창에서 경로 'C:\\Users\\user\\Downloads\\F3_Demo_2023\\F3_Demo_2023\\Rawdata'로 이동 후 'Seismic_data.sgy' 파일을 선택합니다.",
+              "matched": false,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 4.724,
+              "input_tokens": 240,
+              "output_tokens": 350,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            },
+            {
+              "step_index": 2,
+              "response": "Next 단계로 SEG-Y 파일 스캔을 시작하기 위해 'Next' 버튼을 클릭합니다.",
+              "matched": true,
+              "hallucinated": false,
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.622,
+              "input_tokens": 297,
+              "output_tokens": 187,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 1
+            },
+            {
+              "step_index": 3,
+              "response": "SEG-Y 파일 스캔 완료 후 'Finish' 버튼을 클릭하여 My_F3_Survey 생성을 완료합니다. 이후 Survey Setup and Selection 창에서 해당 survey를 선택하여 로드합니다.",
+              "matched": true,
+              "hallucinated": true,
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 5.469,
+              "input_tokens": 322,
+              "output_tokens": 422,
+              "cost_usd": 0.0,
+              "model": "qwen",
+              "judge_score": 0
+            }
+          ],
+          "latency_sec": 30.93,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.5,
+            "judged_steps": 4,
+            "total_steps": 4
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "no_rag": {
+      "n_scenarios": 2,
+      "step_accuracy": 0.5,
+      "faithfulness": 0.625,
+      "hallucination_rate": 0.375,
+      "dwell_loop_rate": 0.125,
+      "loop_rate": 0.125,
+      "trap_pass_rate": 0.6666666666666666,
+      "recovery_rate": null,
+      "goal_completion_rate": 0.0,
+      "mean_latency_sec": 7.676500000000001,
+      "mean_cost_usd": 0.0,
+      "total_cost_usd": 0.0,
+      "total_input_tokens": 2015.5,
+      "total_output_tokens": 2354.5
+    }
+  }
+}

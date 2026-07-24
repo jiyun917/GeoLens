@@ -16,6 +16,68 @@ from .workflow_graph import WorkflowGraph, get_workflow_graph
 from .graph_retriever import GraphRetriever, get_graph_retriever
 
 
+# Rerank confidence gate. When the LLM rerank picks a node with confidence
+# below this threshold, we treat the match as unreliable and fall back to
+# vector-only retrieval (no graph_context, no next_nodes, no post-completion
+# override). This exists because a low-confidence graph pick actively poisons
+# the context with the wrong workflow's chunks — worse than pure vector RAG.
+CONFIDENCE_THRESHOLD = 0.7
+
+
+# Module-level scratch space, populated by process_guide_request() on each
+# call so downstream benchmarking code can read what routing did without
+# threading extra return values through every backend signature. Mirrors
+# the _LAST_USAGE pattern in bench_backends.py.
+_LAST_LOCALIZE_META: Dict[str, Any] = {
+    "confidence": 0.0,
+    "picked_node_id": None,
+    "picked_workflow_id": None,
+    "match_method": "",
+    "fallback_activated": False,
+    "threshold": CONFIDENCE_THRESHOLD,
+}
+
+
+def get_last_localize_meta() -> Dict[str, Any]:
+    return dict(_LAST_LOCALIZE_META)
+
+
+def reset_last_localize_meta() -> None:
+    _LAST_LOCALIZE_META.update({
+        "confidence": 0.0,
+        "picked_node_id": None,
+        "picked_workflow_id": None,
+        "match_method": "",
+        "fallback_activated": False,
+        "threshold": CONFIDENCE_THRESHOLD,
+    })
+
+
+# Screenshot-content-addressed cache for recognize_visual_state results.
+# Keyed by SHA-256 of raw decoded image bytes so identical screenshots hit
+# the cache regardless of base64 padding or data-URL prefix. Bounded via
+# _CACHE_MAX_ENTRIES to guard against long-running processes leaking memory.
+_VISUAL_STATE_CACHE: Dict[str, Dict] = {}
+_VISUAL_STATE_CACHE_STATS: Dict[str, int] = {"hits": 0, "misses": 0}
+_CACHE_MAX_ENTRIES = 512
+
+
+def get_visual_state_cache_stats() -> Dict[str, int]:
+    total = _VISUAL_STATE_CACHE_STATS["hits"] + _VISUAL_STATE_CACHE_STATS["misses"]
+    return {
+        "hits": _VISUAL_STATE_CACHE_STATS["hits"],
+        "misses": _VISUAL_STATE_CACHE_STATS["misses"],
+        "size": len(_VISUAL_STATE_CACHE),
+        "hit_rate": (_VISUAL_STATE_CACHE_STATS["hits"] / total) if total else 0.0,
+    }
+
+
+def reset_visual_state_cache() -> None:
+    _VISUAL_STATE_CACHE.clear()
+    _VISUAL_STATE_CACHE_STATS["hits"] = 0
+    _VISUAL_STATE_CACHE_STATS["misses"] = 0
+
+
 VISUAL_STATE_PROMPT = """You are analyzing a screenshot of the OpendTect geophysics software.
 Extract the current UI state into JSON:
 
@@ -69,6 +131,13 @@ class GuideRAGPipeline:
         """
         Use Gemini to extract structured UI state from a screenshot.
         screenshot_b64: raw base64 or data URL
+
+        Results are cached in-process by SHA-256 of the raw image bytes so
+        the bench harness (which re-analyzes every prior step's screenshot
+        on each new step to reconstruct visited_node_ids) pays the Gemini
+        vision call once per unique screenshot instead of O(N^2). In
+        production this also helps when the same on-screen state persists
+        across successive 200 ms captures.
         """
         api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
@@ -77,15 +146,12 @@ class GuideRAGPipeline:
         from google import genai
         from google.genai import types
         import base64 as b64module
+        import hashlib as _hashlib
         import time as _time, random as _random
 
         try:
-            client = genai.Client(
-                api_key=api_key,
-                http_options=types.HttpOptions(timeout=30_000),
-            )
-
-            # Extract base64 payload
+            # Extract base64 payload up-front so we can hash the raw image
+            # bytes (data-URL prefix must not affect cache identity).
             b64_data = screenshot_b64
             mime = "image/jpeg"
             if screenshot_b64.startswith("data:image/"):
@@ -96,6 +162,17 @@ class GuideRAGPipeline:
                     mime = "image/jpeg"
 
             image_bytes = b64module.b64decode(b64_data)
+            cache_key = _hashlib.sha256(image_bytes).hexdigest()
+            cached = _VISUAL_STATE_CACHE.get(cache_key)
+            if cached is not None:
+                _VISUAL_STATE_CACHE_STATS["hits"] += 1
+                return dict(cached)  # defensive copy — callers may mutate
+            _VISUAL_STATE_CACHE_STATS["misses"] += 1
+
+            client = genai.Client(
+                api_key=api_key,
+                http_options=types.HttpOptions(timeout=30_000),
+            )
 
             contents = [
                 types.Content(
@@ -117,7 +194,19 @@ class GuideRAGPipeline:
                     response = client.models.generate_content(
                         model="gemini-2.5-flash", contents=contents, config=config
                     )
-                    return _extract_json(response.text) or {}
+                    result = _extract_json(response.text) or {}
+                    # Only cache non-empty results — an empty dict typically
+                    # means Gemini returned something we couldn't parse, and
+                    # caching that would poison every future call on the
+                    # same screenshot.
+                    if result:
+                        if len(_VISUAL_STATE_CACHE) >= _CACHE_MAX_ENTRIES:
+                            # Simple FIFO eviction — the harness never
+                            # revisits an old screenshot after 500+ new
+                            # ones, so LRU adds complexity for no gain.
+                            _VISUAL_STATE_CACHE.pop(next(iter(_VISUAL_STATE_CACHE)))
+                        _VISUAL_STATE_CACHE[cache_key] = dict(result)
+                    return result
                 except Exception as e:
                     msg = str(e)
                     transient = any(m in msg for m in (
@@ -419,7 +508,36 @@ Respond with JSON only:
         )
         current_node = localization["node"]
         confidence = localization["confidence"]
+        match_method = localization.get("match_method", "")
         current_node_id = current_node["id"] if current_node else None
+
+        # Confidence gate — if rerank picked a node but only weakly, treat as
+        # "no reliable match" and fall back to pure vector retrieval. Low-
+        # confidence graph picks poison the context with the wrong workflow's
+        # chunks and misdirect the guide LLM. Better to ground on user-message
+        # vector similarity alone than on a mis-routed node.
+        fallback_activated = False
+        if current_node_id and confidence < CONFIDENCE_THRESHOLD:
+            print(
+                f"[GUIDE] confidence fallback — node={current_node_id} "
+                f"conf={confidence:.2f} < threshold={CONFIDENCE_THRESHOLD:.2f}; "
+                f"suppressing graph_context, using vector-only"
+            )
+            fallback_activated = True
+            current_node = None
+            current_node_id = None
+
+        # Record for the benchmark harness (module-level, read via
+        # get_last_localize_meta() after the pipeline call returns).
+        picked = localization.get("node") or {}
+        _LAST_LOCALIZE_META.update({
+            "confidence": confidence,
+            "picked_node_id": picked.get("id"),
+            "picked_workflow_id": picked.get("workflow_id"),
+            "match_method": match_method,
+            "fallback_activated": fallback_activated,
+            "threshold": CONFIDENCE_THRESHOLD,
+        })
 
         # Step 4: Retrieve context
         retrieval = self.retriever.hybrid_retrieve(
@@ -458,6 +576,8 @@ Respond with JSON only:
             "correction": correction,
             "intent": intent,
             "post_completion": post_completion,
+            "fallback_activated": fallback_activated,
+            "confidence_threshold": CONFIDENCE_THRESHOLD,
         }
 
     # ═══════════════════════════════════════════════════════════

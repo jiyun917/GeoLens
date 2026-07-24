@@ -21,9 +21,34 @@ import sys
 import time
 from typing import Dict, List
 
+# Force UTF-8 stdout/stderr. Without this, ANY print containing an em-dash
+# (U+2014), Korean text, or common Unicode punctuation crashes on Windows'
+# cp949 default with `UnicodeEncodeError`. That error propagates up through
+# `_call_gemini_variant` → the evaluator's try/except catches it and stores
+# response="" — producing the "EMPTY response at step 3" phantom bug we
+# spent hours chasing. Set the encoding once here so no subprocess ever
+# has to worry about it again.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 # Make this runnable as `python -m api.services.bench_runner`
 if __package__ in (None, ""):
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+
+# Load .env.local so GEMINI_API_KEY / ANTHROPIC_API_KEY are visible to the
+# backends. When bench_runner is invoked as a bare subprocess (not via
+# uvicorn), the environment is otherwise empty and every LLM call silently
+# returns an empty string.
+try:
+    from dotenv import load_dotenv  # noqa: E402
+    for _p in (".env.local", ".env"):
+        if os.path.exists(_p):
+            load_dotenv(_p)
+except ImportError:
+    pass
 
 from api.services.evaluation import (  # noqa: E402
     BACKENDS,
@@ -138,16 +163,27 @@ def _render_markdown_table(results: Dict, backend_names: List[str]) -> str:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--scenarios", default=None)
-    parser.add_argument("--out", default=os.path.join(
-        "data", "eval", "results",
-        f"run_{datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%S')}.json",
-    ))
+    parser.add_argument("--out", default=None,
+                        help="Output path. If omitted, defaults to run_<model>_<timestamp>.json.")
     parser.add_argument("--backends", nargs="*", default=None,
                         help="Subset of backend names to run (default: all 5)")
     parser.add_argument("--judge", default=None,
                         choices=["claude", "gemini", "consensus", "strict"],
                         help="Optionally re-score with LLM-as-judge (more lenient than regex match)")
+    parser.add_argument("--model", default=None,
+                        choices=["gemini", "gemini_flash", "claude", "qwen", "gpt"],
+                        help="Generator model for all backends. Sets BENCH_MODEL env var. "
+                             "Defaults to whatever BENCH_MODEL is already set to (or 'gemini').")
     args = parser.parse_args()
+
+    if args.model:
+        os.environ["BENCH_MODEL"] = args.model
+
+    model_tag = os.environ.get("BENCH_MODEL", "gemini")
+    if args.out is None:
+        ts = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%S")
+        args.out = os.path.join("data", "eval", "results", f"run_{model_tag}_{ts}.json")
+
     run_all(args.out, scenarios_dir=args.scenarios, backends=args.backends,
             judge_mode=args.judge)
 

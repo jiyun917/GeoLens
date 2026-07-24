@@ -1,0 +1,1322 @@
+C:\Users\user\Downloads\GeoLens-paper\scripts\run_all_models.py:27: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  ts = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%S")
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:58: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+=== opendtect__3d_visualization__01 (4 steps) ===
+[RAG] Query: F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의, data_types: None
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|##########| 103/103 [00:00<00:00, 11444.67it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 33.33it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Add and Select Data...', 'Select Cube', 'Demo', 'In', 'Cross', 'Add', 'Select Data', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 62.49it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Add and Select Data...', 'Select Cube', 'Demo', 'In', 'Cross', 'Add', 'Select Data', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 66.65it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Add and Select Data...', 'Select Cube', 'Demo', 'In', 'Cross', 'Add', 'Select Data', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 66.66it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+C:\Users\user\Downloads\GeoLens-paper\.venv\Lib\site-packages\open_clip\factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Add and Select Data...', 'Select Cube', 'Demo', 'In', 'Cross', 'Add', 'Select Data', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+  - vanilla_vector step_acc=0.75 hall=0.25 loop=0.00 latency=47.72s
+[WorkflowGraph] Loaded 3 workflows, 23 nodes, 21 edges
+  - graph_only     step_acc=0.25 hall=0.00 loop=0.00 latency=61.6s
+[VISUAL_MATCH] CLIP ViT-B-32/openai loaded on cpu
+[VISUAL_MATCH] rehydrating 765 images for manual=645b7cdf2690408da843b9ce63c52d5b from disk
+[VISUAL_MATCH] indexed 765 images for manual=645b7cdf2690408da843b9ce63c52d5b
+  - vision_only    step_acc=0.25 hall=0.00 loop=0.00 latency=49.92s
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[RAG] Query: 결과 분석 및 해석 속성 결과를 분석하여 지질학적 의미 해석, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 124.96it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+[RAG] Extracted entities: ['결과', '분석', '해석', '속성', '결과를', '분석하여', '지질학적', '의미', 'Section', 'Seismic Object Detection Using Neural Networks', 'Page', 'Source', 'Users', 'Downloads', 'Geo']
+[RAG] Graph triplets found: 104
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: [seismic_attribute > 속성 볼륨 표시] F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 62.50it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 7 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Add and Select Data...', 'Select Cube', 'Demo', 'In', 'Cross', 'Add', 'Select Data', '속성', '볼륨', '표시', '에서', '볼륨을', '표시한다', '카테고리']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) My_F3_Survey  / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: "None / Context menu for 'Cross-line'"
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[RAG] Query: Attribute 계산 창 열기 Processing > Create Seismic Attribute 메뉴로 속성 계산 창 열기, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 199.98it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Attribute', 'Processing', 'Create Seismic Attribute', '계산', '열기', '메뉴로', '속성', 'Seismic', 'Section', 'Attribute Analysis', 'Cross', 'Page', 'Source', 'Users', 'Downloads']
+[RAG] Graph triplets found: 48
+  Viking Graben --[주요 저류층]--> Brent Group
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+[RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 66.67it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Add and Select Data...', 'Select Cube', 'Survey', 'Demo', 'In', 'Cross', 'Add', 'Select Data', '탄성파', '데이터', '로드', '에서', '볼륨을', '표시한다']
+[RAG] Graph triplets found: 101
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'Context menu for Cross-line / None (context menu active)'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_02_display_inline conf=0.90
+[GUIDE] visual_state: 'Information / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[RAG] Query: Attribute 계산 창 열기 Processing > Create Seismic Attribute 메뉴로 속성 계산 창 열기, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 166.67it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Attribute', 'Processing', 'Create Seismic Attribute', '계산', '열기', '메뉴로', '속성', 'Seismic', 'Section', 'Attribute Analysis', 'Cross', 'Page', 'Source', 'Users', 'Downloads']
+[RAG] Graph triplets found: 48
+  Viking Graben --[주요 저류층]--> Brent Group
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+[RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 62.50it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Add and Select Data...', 'Select Cube', 'Survey', 'Demo', 'In', 'Cross', 'Add', 'Select Data', '탄성파', '데이터', '로드', '에서', '볼륨을', '표시한다']
+[RAG] Graph triplets found: 101
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: 'Context menu for Cross-line / None (context menu active)'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_02_display_inline conf=0.90
+[GUIDE] visual_state: 'Information / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'OpendTect Main Window / Scene'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[RAG] Query: Attribute 계산 창 열기 Processing > Create Seismic Attribute 메뉴로 속성 계산 창 열기, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 201.74it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Attribute', 'Processing', 'Create Seismic Attribute', '계산', '열기', '메뉴로', '속성', 'Seismic', 'Section', 'Attribute Analysis', 'Cross', 'Page', 'Source', 'Users', 'Downloads']
+[RAG] Graph triplets found: 48
+  Viking Graben --[주요 저류층]--> Brent Group
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+[RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 66.67it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Add and Select Data...', 'Select Cube', 'Survey', 'Demo', 'In', 'Cross', 'Add', 'Select Data', '탄성파', '데이터', '로드', '에서', '볼륨을', '표시한다']
+[RAG] Graph triplets found: 101
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[EVAL] backend full_system step 3 failed: 'cp949' codec can't encode character '\u2014' in position 33: illegal multibyte sequence
+  - full_system    step_acc=0.25 hall=0.00 loop=0.00 latency=177.34s
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) My_F3_Survey  / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'Context menu for Cross-line / None (context menu active)'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_02_display_inline conf=0.90
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) My_F3_Survey  / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: "None / Context menu for 'Cross-line'"
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[GUIDE] visual_state: 'Information / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.60
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) My_F3_Survey  / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'Context menu for Cross-line / None (context menu active)'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_02_display_inline conf=0.90
+[GUIDE] visual_state: 'Information / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[GUIDE] visual_state: 'OpendTect Main Window / Scene'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+  - state_path     step_acc=0.50 hall=0.00 loop=0.00 latency=187.8s
+
+=== opendtect__3d_visualization__02 (4 steps) ===
+[RAG] Query: F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 83.34it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Demo', 'In', 'Cross', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴', '최상단의', '첫번째', '옵션', '선택하여']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 83.34it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Demo', 'In', 'Cross', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴', '최상단의', '첫번째', '옵션', '선택하여']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 111.09it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Demo', 'In', 'Cross', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴', '최상단의', '첫번째', '옵션', '선택하여']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 99.96it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Demo', 'In', 'Cross', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴', '최상단의', '첫번째', '옵션', '선택하여']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 표시한다. 각 카테고리 우클릭 시 컨텍스트 메뉴 최상단의, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 90.90it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Demo', 'In', 'Cross', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴', '최상단의', '첫번째', '옵션', '선택하여']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+  - vanilla_vector step_acc=1.00 hall=0.00 loop=0.00 latency=43.69s
+  - graph_only     step_acc=0.75 hall=0.50 loop=0.00 latency=81.57s
+  - vision_only    step_acc=1.00 hall=0.25 loop=0.00 latency=51.47s
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) My_F3_Survey  / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.90
+[RAG] Query: 결과 분석 및 해석 속성 결과를 분석하여 지질학적 의미 해석, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 166.54it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+[RAG] Extracted entities: ['결과', '분석', '해석', '속성', '결과를', '분석하여', '지질학적', '의미', 'Section', 'Seismic Object Detection Using Neural Networks', 'Page', 'Source', 'Users', 'Downloads', 'Geo']
+[RAG] Graph triplets found: 104
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: [seismic_attribute > 속성 볼륨 표시] F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로 3D scene에 , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 90.89it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Demo', 'In', 'Cross', '속성', '볼륨', '표시', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴', '최상단의']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) My_F3_Survey  / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.90
+[GUIDE] visual_state: 'Context menu for Cross-line / None (context menu active)'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_02_display_inline conf=0.90
+[RAG] Query: Horizon Tracking 창 열기 Tracking > Horizon 메뉴로 추적 창을 열거나, 새 Horizon 생성 시작, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 142.81it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Horizon Tracking', 'Tracking', 'Horizon', '열기', '메뉴로', '추적', '창을', '열거나', '생성', '시작', 'd\n\n9. In some areas the horizon does not propagate well and you may want to switch to the manual drawing mode.\n\nWorkflow cont', 'Section', 'Tracking In', 'Viewer', 'Page']
+[RAG] Graph triplets found: 116
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  주향이동단층 (Strike-slip Fault) --[형성환경]--> 주향이동 환경 (Strike-slip)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+[RAG] Query: [horizon_tracking > Inline/Crossline 단면 표시] F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slic, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 90.88it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Inline', 'Crossline', 'Demo', 'In', 'Cross', '단면', '표시', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴']
+[RAG] Graph triplets found: 98
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) My_F3_Survey  / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'Context menu for Cross-line / None (context menu active)'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_02_display_inline conf=0.90
+[GUIDE] visual_state: 'Information / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.90
+[RAG] Query: Attribute 계산 창 열기 Processing > Create Seismic Attribute 메뉴로 속성 계산 창 열기, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 166.68it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Attribute', 'Processing', 'Create Seismic Attribute', '계산', '열기', '메뉴로', '속성', 'Seismic', 'Section', 'Attribute Analysis', 'Cross', 'Page', 'Source', 'Users', 'Downloads']
+[RAG] Graph triplets found: 48
+  Viking Graben --[주요 저류층]--> Brent Group
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+[RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 90.91it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Survey', 'Demo', 'In', 'Cross', '탄성파', '데이터', '로드', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴']
+[RAG] Graph triplets found: 101
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: "None / Context menu for 'Cross-line'"
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'Information / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: 'OpendTect Main Window / Scene'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.70
+[RAG] Query: Inline/Crossline 단면 표시 3D Scene에 Inline 또는 Crossline 단면을 추가, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 142.88it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Inline', 'Crossline', 'Scene', '단면', '표시', '또는', '단면을', '추가', 'Section', 'Steering Cube', 'Page', 'Source', 'Users', 'Downloads', 'Geo']
+[RAG] Graph triplets found: 96
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-sli, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 83.31it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Survey', 'Demo', 'In', 'Cross', '탄성파', '데이터', '로드', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴']
+[RAG] Graph triplets found: 101
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: "None / Context menu for 'Cross-line'"
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'Information / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'OpendTect Main Window / Scene'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'OpendTect Main Window / Scene'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.70
+[RAG] Query: Attribute 계산 창 열기 Processing > Create Seismic Attribute 메뉴로 속성 계산 창 열기, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 166.65it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Attribute', 'Processing', 'Create Seismic Attribute', '계산', '열기', '메뉴로', '속성', 'Seismic', 'Section', 'Attribute Analysis', 'Cross', 'Page', 'Source', 'Users', 'Downloads']
+[RAG] Graph triplets found: 48
+  Viking Graben --[주요 저류층]--> Brent Group
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+[RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] F3 Demo survey에서 seismic 볼륨을 In-line, Cross-line, Z-slice로, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 99.99it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Survey', 'Demo', 'In', 'Cross', '탄성파', '데이터', '로드', '에서', '볼륨을', '표시한다', '카테고리', '우클릭', '컨텍스트', '메뉴']
+[RAG] Graph triplets found: 101
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[EVAL] backend full_system completion check failed: 'cp949' codec can't encode character '\u2014' in position 33: illegal multibyte sequence
+  - full_system    step_acc=1.00 hall=0.50 loop=0.00 latency=297.3s
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.80
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: "None / Context menu for 'Cross-line'"
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: 'Context menu for Cross-line / None (context menu active)'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_02_display_inline conf=0.90
+[GUIDE] visual_state: 'Information / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.75
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) My_F3_Survey  / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: "None / Context menu for 'Cross-line'"
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: 'Information / '
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: 'OpendTect Main Window / Scene'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'OpendTect V7.0.0 (Windows) - My_F3_Surve / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.80
+[GUIDE] visual_state: "None / Context menu for 'Cross-line'"
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: 'Information / None'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.85
+[GUIDE] visual_state: 'OpendTect Main Window / Scene'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.70
+[GUIDE] visual_state: 'OpendTect Main Window / Scene'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.80
+  - state_path     step_acc=0.75 hall=0.00 loop=0.00 latency=371.07s
+
+=== opendtect__survey_setup__01 (4 steps) ===
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 62.49it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 31
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+  Resistivity Log --[측정항목]--> 검층 (Well Logging)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 71.43it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 31
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+  Resistivity Log --[측정항목]--> 검층 (Well Logging)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 71.42it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 31
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+  Resistivity Log --[측정항목]--> 검층 (Well Logging)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 83.33it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 31
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+  Resistivity Log --[측정항목]--> 검층 (Well Logging)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 71.43it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 31
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+  Resistivity Log --[측정항목]--> 검층 (Well Logging)
+  - vanilla_vector step_acc=0.75 hall=0.00 loop=0.00 latency=45.52s
+  - graph_only     step_acc=0.75 hall=0.00 loop=0.00 latency=83.71s
+  - vision_only    step_acc=0.75 hall=0.25 loop=0.00 latency=40.43s
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.80
+[RAG] Query: Attribute 계산 창 열기 Processing > Create Seismic Attribute 메뉴로 속성 계산 창 열기, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 142.84it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Attribute', 'Processing', 'Create Seismic Attribute', '계산', '열기', '메뉴로', '속성', 'Seismic', 'Section', 'Attribute Analysis', 'Cross', 'Page', 'Source', 'Users', 'Downloads']
+[RAG] Graph triplets found: 48
+  Viking Graben --[주요 저류층]--> Brent Group
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+[RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D surve, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 66.66it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Survey', 'Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '탄성파', '데이터']
+[RAG] Graph triplets found: 60
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+  Resistivity Log --[측정항목]--> 검층 (Well Logging)
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.75
+[GUIDE] visual_state: 'Create New Survey / Information'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_01_data_load conf=0.75
+[RAG] Query: Inline/Crossline 단면 표시 3D Scene에 Inline 또는 Crossline 단면을 추가하여 표시, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 143.76it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Inline', 'Crossline', 'Scene', '단면', '표시', '또는', '단면을', '추가하여', 'Section', 'Steering Cube', 'Page', 'Source', 'Users', 'Downloads', 'Geo']
+[RAG] Graph triplets found: 96
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: [horizon_tracking > Survey 및 탄성파 데이터 로드] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 66.65it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Survey', 'Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '탄성파', '데이터']
+[RAG] Graph triplets found: 16
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: 'Create New Survey / Information'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_01_data_load conf=0.60
+[GUIDE] visual_state: 'Create New Survey / Survey Data Root...'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.60
+[RAG] Query: Inline/Crossline 단면 표시 3D Scene에 Inline 또는 Crossline 단면을 추가, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 168.50it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Inline', 'Crossline', 'Scene', '단면', '표시', '또는', '단면을', '추가', 'Section', 'Steering Cube', 'Page', 'Source', 'Users', 'Downloads', 'Geo']
+[RAG] Graph triplets found: 96
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: [fault_interpretation > Survey 및 탄성파 데이터 로드] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D su, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 71.42it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Survey', 'Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '탄성파', '데이터']
+[RAG] Graph triplets found: 16
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.80
+[GUIDE] visual_state: 'Create New Survey / Information'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_01_data_load conf=0.75
+[GUIDE] visual_state: 'Create New Survey / Survey Data Root...'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.60
+[GUIDE] visual_state: 'None / Cross-line 0 tab'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.50
+[RAG] Query: Attribute 계산 창 열기 Processing > Create Seismic Attribute 메뉴로 속성 계산 창 열기, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 166.67it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Attribute', 'Processing', 'Create Seismic Attribute', '계산', '열기', '메뉴로', '속성', 'Seismic', 'Section', 'Attribute Analysis', 'Cross', 'Page', 'Source', 'Users', 'Downloads']
+[RAG] Graph triplets found: 48
+  Viking Graben --[주요 저류층]--> Brent Group
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+[RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D surve, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 76.91it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Survey', 'Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '탄성파', '데이터']
+[RAG] Graph triplets found: 60
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+  Resistivity Log --[측정항목]--> 검층 (Well Logging)
+[EVAL] backend full_system step 3 failed: 'cp949' codec can't encode character '\u2014' in position 33: illegal multibyte sequence
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.75
+[GUIDE] visual_state: 'Create New Survey / Enter X/Y ranges (within Initial setup l'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_01_data_load conf=0.70
+[GUIDE] visual_state: 'Create New Survey / Survey Data Root...'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.60
+[GUIDE] visual_state: 'None / Cross-line 0 tab'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.50
+[GUIDE] visual_state: 'None / Cross-line 0 tab'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.50
+[RAG] Query: Attribute 계산 창 열기 Processing > Create Seismic Attribute 메뉴로 속성 계산 창 열기, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 199.99it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Attribute', 'Processing', 'Create Seismic Attribute', '계산', '열기', '메뉴로', '속성', 'Seismic', 'Section', 'Attribute Analysis', 'Cross', 'Page', 'Source', 'Users', 'Downloads']
+[RAG] Graph triplets found: 48
+  Viking Graben --[주요 저류층]--> Brent Group
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+[RAG] Query: [seismic_attribute > Survey 및 탄성파 데이터 로드] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D surve, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 66.67it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 179, in <module>
+    main()
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 174, in main
+    run_all(args.out, scenarios_dir=args.scenarios, backends=args.backends,
+  File "C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py", line 124, in run_all
+    print("\n" + md)
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2014' in position 325: illegal multibyte sequence
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 5 additional chunks
+[RAG] Extracted entities: ['Survey', 'Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '탄성파', '데이터']
+[RAG] Graph triplets found: 60
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  GR (Gamma Ray) --[측정항목]--> 검층 (Well Logging)
+  GR (Gamma Ray) --[고값 → 셰일 지시]--> 셰일 (Shale)
+  GR (Gamma Ray) --[저값 → 사암 지시]--> 사암 (Sandstone)
+  Resistivity Log --[측정항목]--> 검층 (Well Logging)
+[EVAL] backend full_system completion check failed: 'cp949' codec can't encode character '\u2014' in position 33: illegal multibyte sequence
+  - full_system    step_acc=0.50 hall=0.00 loop=0.00 latency=326.21s
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.75
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.75
+[GUIDE] visual_state: 'Create New Survey / Information'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_01_data_load conf=0.75
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.85
+[GUIDE] visual_state: 'Create New Survey / Information'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_01_data_load conf=0.60
+[GUIDE] visual_state: 'Create New Survey / Survey Data Root...'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.60
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.80
+[GUIDE] visual_state: 'Create New Survey / Information'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_01_data_load conf=0.60
+[GUIDE] visual_state: 'Create New Survey / Survey Data Root...'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.60
+[GUIDE] visual_state: 'None / Cross-line 0 tab'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.60
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.75
+[GUIDE] visual_state: 'Create New Survey / Enter X/Y ranges (within Initial setup l'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_01_data_load conf=0.60
+[GUIDE] visual_state: 'Create New Survey / C:\\Users\\user\\Downloads\\GeoLens_test (ta'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=fault_interpretation_01_data_load conf=0.50
+[GUIDE] visual_state: 'None / Cross-line 0 tab'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.50
+[GUIDE] visual_state: 'None / Cross-line 0 tab'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_01_data_load conf=0.50
+  - state_path     step_acc=0.75 hall=0.00 loop=0.00 latency=338.73s
+Running models in sequence: ['gemini', 'claude', 'qwen', 'gpt']  ×  3 replicates each
+Total planned runs: 12
+
+======================================================================
+[18:30:42] Starting GEMINI replicate 1
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model gemini --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_r1_20260708T093042.json --judge consensus
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_r1_20260708T093042.json
+Traceback (most recent call last):
+  File "C:\Users\user\Downloads\GeoLens-paper\scripts\run_all_models.py", line 76, in <module>
+    main()
+  File "C:\Users\user\Downloads\GeoLens-paper\scripts\run_all_models.py", line 66, in main
+    print(f"\n[WARN] {m} replicate {r} exited with code {code} \u2014 continuing.")
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2014' in position 47: illegal multibyte sequence
