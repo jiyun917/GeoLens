@@ -51,7 +51,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.012529
+              "effective_cost_usd": 0.008158
             },
             {
               "step_index": 1,
@@ -78,7 +78,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.018255
+              "effective_cost_usd": 0.011887
             },
             {
               "step_index": 2,
@@ -101,7 +101,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.00914
+              "effective_cost_usd": 0.005952
             },
             {
               "step_index": 3,
@@ -124,7 +124,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.013096
+              "effective_cost_usd": 0.008528
             }
           ],
           "latency_sec": 68.76,
@@ -134,8 +134,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.013255,
-          "total_cost_usd_effective": 0.05302
+          "mean_cost_usd_effective": 0.008631,
+          "total_cost_usd_effective": 0.034525
         },
         "vanilla_vector": {
           "backend": "vanilla_vector",
@@ -191,7 +191,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.026928
+              "effective_cost_usd": 0.017535
             },
             {
               "step_index": 1,
@@ -218,7 +218,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.025033
+              "effective_cost_usd": 0.016301
             },
             {
               "step_index": 2,
@@ -239,7 +239,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.014619
+              "effective_cost_usd": 0.009519
             },
             {
               "step_index": 3,
@@ -260,7 +260,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.015734
+              "effective_cost_usd": 0.010245
             }
           ],
           "latency_sec": 74.18,
@@ -270,8 +270,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.020578,
-          "total_cost_usd_effective": 0.082313
+          "mean_cost_usd_effective": 0.0134,
+          "total_cost_usd_effective": 0.053599
         },
         "graph_only": {
           "backend": "graph_only",
@@ -317,7 +317,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.018754
+              "effective_cost_usd": 0.012212
             },
             {
               "step_index": 1,
@@ -340,7 +340,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.025308
+              "effective_cost_usd": 0.01648
             },
             {
               "step_index": 2,
@@ -361,7 +361,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.018802
+              "effective_cost_usd": 0.012243
             },
             {
               "step_index": 3,
@@ -382,7 +382,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.023547
+              "effective_cost_usd": 0.015333
             }
           ],
           "latency_sec": 71.31,
@@ -392,8 +392,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.021603,
-          "total_cost_usd_effective": 0.086411
+          "mean_cost_usd_effective": 0.014067,
+          "total_cost_usd_effective": 0.056268
         },
         "vision_only": {
           "backend": "vision_only",
@@ -439,7 +439,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.043065
+              "effective_cost_usd": 0.028042
             },
             {
               "step_index": 1,
@@ -470,7 +470,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.018546
+              "effective_cost_usd": 0.012076
             },
             {
               "step_index": 2,
@@ -494,7 +494,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.009977
+              "effective_cost_usd": 0.006497
             },
             {
               "step_index": 3,
@@ -518,7 +518,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.008508
+              "effective_cost_usd": 0.00554
             }
           ],
           "latency_sec": 63.41,
@@ -528,8 +528,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.020024,
-          "total_cost_usd_effective": 0.080096
+          "mean_cost_usd_effective": 0.013039,
+          "total_cost_usd_effective": 0.052156
         },
         "full_system": {
           "backend": "full_system",
@@ -575,7 +575,7 @@
               "route_method": "llm",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.034065
+              "effective_cost_usd": 0.022182
             },
             {
               "step_index": 1,
@@ -596,7 +596,7 @@
               "route_method": "llm",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.041072
+              "effective_cost_usd": 0.026745
             },
             {
               "step_index": 2,
@@ -619,7 +619,7 @@
               "route_method": "llm",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.052145
+              "effective_cost_usd": 0.033955
             },
             {
               "step_index": 3,
@@ -642,7 +642,7 @@
               "route_method": "llm",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.070605
+              "effective_cost_usd": 0.045975
             }
           ],
           "latency_sec": 188.4,
@@ -652,8 +652,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.049472,
-          "total_cost_usd_effective": 0.197886
+          "mean_cost_usd_effective": 0.032214,
+          "total_cost_usd_effective": 0.128856
         },
         "state_path": {
           "backend": "state_path",
@@ -699,7 +699,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.026895
+              "effective_cost_usd": 0.017513
             },
             {
               "step_index": 1,
@@ -722,7 +722,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.037636
+              "effective_cost_usd": 0.024507
             },
             {
               "step_index": 2,
@@ -745,7 +745,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.049646
+              "effective_cost_usd": 0.032328
             },
             {
               "step_index": 3,
@@ -766,7 +766,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.079167
+              "effective_cost_usd": 0.051551
             }
           ],
           "latency_sec": 188.39,
@@ -776,8 +776,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.048336,
-          "total_cost_usd_effective": 0.193345
+          "mean_cost_usd_effective": 0.031475,
+          "total_cost_usd_effective": 0.125899
         }
       }
     },
@@ -832,7 +832,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.006598
+              "effective_cost_usd": 0.004296
             },
             {
               "step_index": 1,
@@ -855,7 +855,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.003527
+              "effective_cost_usd": 0.002297
             },
             {
               "step_index": 2,
@@ -876,7 +876,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.005951
+              "effective_cost_usd": 0.003875
             },
             {
               "step_index": 3,
@@ -897,7 +897,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.005666
+              "effective_cost_usd": 0.003689
             }
           ],
           "latency_sec": 19.03,
@@ -907,8 +907,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.005436,
-          "total_cost_usd_effective": 0.021742
+          "mean_cost_usd_effective": 0.003539,
+          "total_cost_usd_effective": 0.014158
         },
         "vanilla_vector": {
           "backend": "vanilla_vector",
@@ -954,7 +954,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.007627
+              "effective_cost_usd": 0.004966
             },
             {
               "step_index": 1,
@@ -977,7 +977,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.012616
+              "effective_cost_usd": 0.008215
             },
             {
               "step_index": 2,
@@ -1001,7 +1001,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.011085
+              "effective_cost_usd": 0.007218
             },
             {
               "step_index": 3,
@@ -1022,7 +1022,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.019578
+              "effective_cost_usd": 0.012748
             }
           ],
           "latency_sec": 41.6,
@@ -1032,8 +1032,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.012727,
-          "total_cost_usd_effective": 0.050906
+          "mean_cost_usd_effective": 0.008287,
+          "total_cost_usd_effective": 0.033148
         },
         "graph_only": {
           "backend": "graph_only",
@@ -1079,7 +1079,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.0147
+              "effective_cost_usd": 0.009572
             },
             {
               "step_index": 1,
@@ -1103,7 +1103,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.019882
+              "effective_cost_usd": 0.012946
             },
             {
               "step_index": 2,
@@ -1126,7 +1126,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.021794
+              "effective_cost_usd": 0.014191
             },
             {
               "step_index": 3,
@@ -1149,7 +1149,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.017832
+              "effective_cost_usd": 0.011612
             }
           ],
           "latency_sec": 56.88,
@@ -1159,8 +1159,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.018552,
-          "total_cost_usd_effective": 0.074208
+          "mean_cost_usd_effective": 0.01208,
+          "total_cost_usd_effective": 0.048321
         },
         "vision_only": {
           "backend": "vision_only",
@@ -1204,7 +1204,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.010086
+              "effective_cost_usd": 0.006568
             },
             {
               "step_index": 1,
@@ -1227,7 +1227,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.008004
+              "effective_cost_usd": 0.005212
             },
             {
               "step_index": 2,
@@ -1248,7 +1248,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.013515
+              "effective_cost_usd": 0.0088
             },
             {
               "step_index": 3,
@@ -1269,7 +1269,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.006897
+              "effective_cost_usd": 0.004491
             }
           ],
           "latency_sec": 31.09,
@@ -1279,8 +1279,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.009626,
-          "total_cost_usd_effective": 0.038502
+          "mean_cost_usd_effective": 0.006268,
+          "total_cost_usd_effective": 0.025071
         },
         "full_system": {
           "backend": "full_system",
@@ -1324,7 +1324,7 @@
               "route_method": "llm",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.012168
+              "effective_cost_usd": 0.007923
             },
             {
               "step_index": 1,
@@ -1348,7 +1348,7 @@
               "route_method": "llm",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.023316
+              "effective_cost_usd": 0.015183
             },
             {
               "step_index": 2,
@@ -1369,7 +1369,7 @@
               "route_method": "llm",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.031806
+              "effective_cost_usd": 0.020711
             },
             {
               "step_index": 3,
@@ -1392,7 +1392,7 @@
               "route_method": "llm",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.058917
+              "effective_cost_usd": 0.038365
             }
           ],
           "latency_sec": 131.02,
@@ -1402,8 +1402,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.031552,
-          "total_cost_usd_effective": 0.126206
+          "mean_cost_usd_effective": 0.020545,
+          "total_cost_usd_effective": 0.082181
         },
         "state_path": {
           "backend": "state_path",
@@ -1447,7 +1447,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.010919
+              "effective_cost_usd": 0.00711
             },
             {
               "step_index": 1,
@@ -1470,7 +1470,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.021099
+              "effective_cost_usd": 0.013739
             },
             {
               "step_index": 2,
@@ -1491,7 +1491,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 1,
-              "effective_cost_usd": 0.030243
+              "effective_cost_usd": 0.019693
             },
             {
               "step_index": 3,
@@ -1512,7 +1512,7 @@
               "route_method": "",
               "fallback_activated": false,
               "judge_score": 0,
-              "effective_cost_usd": 0.062885
+              "effective_cost_usd": 0.040948
             }
           ],
           "latency_sec": 137.4,
@@ -1522,8 +1522,8 @@
             "judged_steps": 4,
             "total_steps": 4
           },
-          "mean_cost_usd_effective": 0.031286,
-          "total_cost_usd_effective": 0.125146
+          "mean_cost_usd_effective": 0.020373,
+          "total_cost_usd_effective": 0.08149
         }
       }
     }
@@ -1546,7 +1546,7 @@
       "total_output_tokens": 1990.5,
       "fallback_rate": 0.0,
       "mean_route_confidence": null,
-      "mean_cost_usd_effective": 0.009345
+      "mean_cost_usd_effective": 0.006085
     },
     "vanilla_vector": {
       "n_scenarios": 2,
@@ -1565,7 +1565,7 @@
       "total_output_tokens": 2532.5,
       "fallback_rate": 0.0,
       "mean_route_confidence": null,
-      "mean_cost_usd_effective": 0.016653
+      "mean_cost_usd_effective": 0.010843
     },
     "graph_only": {
       "n_scenarios": 2,
@@ -1584,7 +1584,7 @@
       "total_output_tokens": 1943.5,
       "fallback_rate": 0.0,
       "mean_route_confidence": null,
-      "mean_cost_usd_effective": 0.020077
+      "mean_cost_usd_effective": 0.013074
     },
     "vision_only": {
       "n_scenarios": 2,
@@ -1603,7 +1603,7 @@
       "total_output_tokens": 2446.5,
       "fallback_rate": 0.0,
       "mean_route_confidence": null,
-      "mean_cost_usd_effective": 0.014825
+      "mean_cost_usd_effective": 0.009654
     },
     "full_system": {
       "n_scenarios": 2,
@@ -1622,7 +1622,7 @@
       "total_output_tokens": 1675.0,
       "fallback_rate": 0.0,
       "mean_route_confidence": 0.887,
-      "mean_cost_usd_effective": 0.040512
+      "mean_cost_usd_effective": 0.02638
     },
     "state_path": {
       "n_scenarios": 2,
@@ -1641,7 +1641,7 @@
       "total_output_tokens": 1925.0,
       "fallback_rate": 0.0,
       "mean_route_confidence": null,
-      "mean_cost_usd_effective": 0.039811
+      "mean_cost_usd_effective": 0.025924
     }
   }
 }

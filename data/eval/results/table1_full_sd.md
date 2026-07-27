@@ -3,7 +3,7 @@
 Statistical unit = replicate (n=5 per cell). Each replicate value is the mean across the 2 scenarios (survey_setup + 3d_visualization). SD is sample SD (n-1 denominator).
 
 Cells: 4 models × 6 backends + Gemini × long_context = 25.
-long_context runs Gemini only because the manual (~226K tokens) exceeds the 128K–200K context windows of the other three models.
+long_context runs Gemini only. The manual is ~226K tokens; Claude Sonnet 4.6 (200K) and GPT-4o (128K) advertised windows are below this, and the Qwen3-235B endpoint used for the benchmark is served at max-model-len=32,768 (a vLLM deployment setting, not the model's theoretical maximum), so long_context cannot be evaluated on any of the three.
 
 Qwen cost uses the cloud-equivalent (time-based) `mean_cost_usd_effective` value; the self-hosted marginal cost is $0 and would be misleading.
 
@@ -31,12 +31,12 @@ Qwen cost uses the cloud-equivalent (time-based) `mean_cost_usd_effective` value
 | gpt / vision_only | 57.5±14.3 | 27.5±16.3 | 0.0±0.0 | 4.4±0.1 | $3.64±0.02m |
 | gpt / full_system | 70.0±6.8 | 55.0±6.8 | 0.0±0.0 | 29.7±1.9 | $7.01±0.07m |
 | gpt / state_path | 57.5±6.8 | 50.0±0.0 | 0.0±0.0 | 28.4±1.6 | $4.94±0.16m |
-| qwen / no_rag | 57.5±19.0 | 62.5±8.8 | 7.5±6.8 | 7.3±1.1 | $10.53±1.52m |
-| qwen / vanilla_vector | 35.0±16.3 | 72.5±20.5 | 7.5±11.2 | 42.2±71.4 | $60.45±102.33m |
-| qwen / graph_only | 52.5±16.3 | 70.0±14.3 | 2.5±5.6 | 13.9±2.1 | $19.94±3.00m |
-| qwen / vision_only | 52.5±10.5 | 70.0±11.2 | 2.5±5.6 | 11.0±1.5 | $15.80±2.15m |
-| qwen / full_system | 50.0±12.5 | 47.5±10.5 | 0.0±0.0 | 30.9±2.1 | $44.30±3.00m |
-| qwen / state_path | 50.0±8.8 | 60.0±5.6 | 0.0±0.0 | 29.9±1.5 | $42.90±2.20m |
+| qwen / no_rag | 57.5±19.0 | 62.5±8.8 | 7.5±6.8 | 7.3±1.1 | $6.86±0.99m |
+| qwen / vanilla_vector | 35.0±16.3 | 72.5±20.5 | 7.5±11.2 | 42.2±71.4 | $39.36±66.64m |
+| qwen / graph_only | 52.5±16.3 | 70.0±14.3 | 2.5±5.6 | 13.9±2.1 | $12.98±1.95m |
+| qwen / vision_only | 52.5±10.5 | 70.0±11.2 | 2.5±5.6 | 11.0±1.5 | $10.29±1.40m |
+| qwen / full_system | 50.0±12.5 | 47.5±10.5 | 0.0±0.0 | 30.9±2.1 | $28.85±1.96m |
+| qwen / state_path | 50.0±8.8 | 60.0±5.6 | 0.0±0.0 | 29.9±1.5 | $27.94±1.43m |
 | gemini / long_context | 42.5±11.2 | 37.5±19.8 | 0.0±0.0 | 10.8±1.6 | $283.45±0.03m |
 
 ## Appendix A — Goal Completion

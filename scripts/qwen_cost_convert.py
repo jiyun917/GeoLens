@@ -1,27 +1,35 @@
-"""Qwen effective cost conversion — provisional estimate.
+"""Qwen effective cost conversion — hardware confirmed 2026-07-27.
 
-Hardware assumption (TENTATIVE — pending user confirmation of actual NAS
-GPU config): A100 80GB × 4 (minimum for Qwen3-235B INT4 GPTQ + KV cache).
+Confirmed hardware at the vLLM endpoint (168.131.141.77:28000):
+    4× NVIDIA RTX 6000 Ada 48GB, TP=4, GPTQ int4, max-model-len=32,768.
+The earlier "A100 80GB × 4" placeholder was an over-estimate of the GPU
+tier and has been retired. Ratios between backends are unaffected by the
+tier choice (cost = latency × constant hourly rate); absolute values
+scale linearly.
 
-Cloud rental rate reference: Lambda Labs 2026-07 pricing:
-    A100 80GB = $1.29/h × 4 GPUs = $5.16/h
+Cloud rental rate reference: RunPod Secure Cloud, RTX 6000 Ada 48GB
+    $0.84/hr per GPU (queried 2026-07-27 from https://www.runpod.io/pricing).
+Hourly rate for the 4-GPU node: $0.84 × 4 = $3.36/h.
 
 Per-step effective cost formula:
-    cost_per_step = (latency_s / 3600) × hourly_rate
+    effective_cost_usd = (latency_sec / 3600) × hourly_rate
 
 For each per_step row in Qwen result files, we compute:
-    effective_cost_usd = (ps.latency_sec / 3600) * HOURLY_RATE
+    ps["effective_cost_usd"] = (ps["latency_sec"] / 3600) * HOURLY_RATE
 
-This is written into a NEW field 'effective_cost_usd' (does not clobber
-the original cost_usd=0.0 which reflects self-hosted marginal cost).
+This is written into a new field alongside the original cost_usd=0.0
+(which correctly reflects the self-hosted per-token marginal). Backend-
+level aggregates 'mean_cost_usd_effective' and 'total_cost_usd_effective'
+are also recomputed so the final table can source from these fields.
 
-We ALSO recompute the backend-level aggregate 'mean_cost_usd_effective'
-and 'total_cost_usd_effective' so the final table can source from these
-fields.
+Primary reporting recommendation: use GPU-time/step (latency × N_GPU)
+as the primary Qwen cost unit, with the RunPod-derived USD figure as a
+comparability secondary. See data/eval/results/cost_basis.md §5 for the
+manuscript-ready phrasing.
 
 Usage:
     .venv/Scripts/python.exe scripts/qwen_cost_convert.py \\
-        --tag unified2 --gpus 4 --gpu-type a100-80gb --hourly-rate 5.16
+        --tag unified2 --gpus 4 --gpu-type rtx-6000-ada-48gb
 """
 
 from __future__ import annotations
@@ -41,12 +49,16 @@ except Exception:
     pass
 
 
-# Cloud rental rate reference (Lambda Labs 2026-07, USD/h per GPU)
+# Cloud rental rate reference (USD/h per GPU).
+# rtx-6000-ada-48gb rate is the confirmed benchmark-time hardware; source
+# is RunPod Secure Cloud (https://www.runpod.io/pricing, queried 2026-07-27).
+# Others retained as reference for alternative reporting.
 CLOUD_RATES = {
-    "a100-80gb": 1.29,
-    "h100-80gb": 2.49,
-    "a6000-48gb": 0.80,
-    "l40s-48gb":  1.00,
+    "rtx-6000-ada-48gb": 0.84,   # RunPod Secure Cloud, queried 2026-07-27
+    "a100-80gb":         1.29,   # Lambda Labs 2026-07 (legacy default)
+    "h100-80gb":         2.49,   # Lambda Labs 2026-07
+    "a6000-48gb":        0.80,   # Lambda Labs 2026-07
+    "l40s-48gb":         1.00,   # Lambda Labs 2026-07
 }
 
 
@@ -93,9 +105,9 @@ def main():
     ap.add_argument("--tag", default="unified2")
     ap.add_argument("--gpus", type=int, default=4,
                     help="Number of GPUs assumed (default 4)")
-    ap.add_argument("--gpu-type", default="a100-80gb",
+    ap.add_argument("--gpu-type", default="rtx-6000-ada-48gb",
                     choices=list(CLOUD_RATES.keys()),
-                    help="GPU model (default a100-80gb)")
+                    help="GPU model (default rtx-6000-ada-48gb — confirmed hardware)")
     ap.add_argument("--hourly-rate", type=float, default=None,
                     help="Override hourly rate (else derived from --gpu-type × --gpus)")
     ap.add_argument("--dry-run", action="store_true")
@@ -105,11 +117,11 @@ def main():
         per_gpu = CLOUD_RATES[args.gpu_type]
         args.hourly_rate = per_gpu * args.gpus
 
-    print(f"Conversion parameters (PROVISIONAL — pending hardware confirmation):")
+    print(f"Conversion parameters:")
     print(f"  GPU type:     {args.gpu_type}")
     print(f"  GPU count:    {args.gpus}")
     print(f"  Hourly rate:  ${args.hourly_rate:.2f}/h (= ${CLOUD_RATES.get(args.gpu_type, 0):.2f} × {args.gpus})")
-    print(f"  Rate source:  Lambda Labs 2026-07 published rates")
+    print(f"  Rate source:  RunPod Secure Cloud (https://www.runpod.io/pricing, queried 2026-07-27)")
     print(f"  Formula:      cost_per_step = (latency_sec / 3600) × hourly_rate")
     print()
 

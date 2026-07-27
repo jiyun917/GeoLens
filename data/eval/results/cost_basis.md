@@ -3,8 +3,10 @@
 Traces the code path that produces `mean_cost_usd` / `total_cost_usd` in
 every `run_*_r*_*.json`, records the pricing constants and their source
 date, verifies the reported `$283.45m` per-step cost for Gemini
-long_context arithmetically, and flags one assumption the manuscript
-should acknowledge (Gemini long-context tier pricing).
+long_context arithmetically, documents the confirmed Qwen serving
+hardware and its per-step GPU-time-based cost conversion, and flags one
+remaining assumption the manuscript should acknowledge (Gemini
+long-context tier pricing).
 
 ## 1. Where cost is computed
 
@@ -112,46 +114,109 @@ sentence noting the flat-rate assumption. Neither the 106.6× narrative
 nor the 213× narrative weakens the paper's argument (both are large);
 this is about accuracy of the accounting, not the qualitative claim.
 
-## 5. Qwen — time-based conversion
+## 5. Qwen — confirmed hardware and time-based conversion
 
-Qwen is self-hosted (vLLM on the institution's NAS); the raw `cost_usd`
-recorded during benchmarking is $0 because there is no per-token API
-fee. To make the row comparable, `scripts/qwen_cost_convert.py` post-
-processes each `run_qwen_*_.json` and writes new fields:
+### 5.1 Confirmed serving hardware (2026-07-27)
 
-- `per_step[i].effective_cost_usd`
-- `backend.mean_cost_usd_effective`
-- `backend.total_cost_usd_effective`
+The vLLM endpoint used for all Qwen benchmark runs is:
 
-using:
-
-```
-effective_cost_usd = (latency_sec / 3600) * hourly_rate
-hourly_rate        = CLOUD_RATES[gpu_type] * num_gpus
-```
-
-with `CLOUD_RATES` set to Lambda Labs 2026-07 published on-demand
-rates (from the script's constants):
-
-| GPU type       | $/h per GPU |
+| Item | Value |
 |---|---|
-| a100-80gb      | 1.29        |
-| h100-80gb      | 2.49        |
-| a6000-48gb     | 0.80        |
-| l40s-48gb      | 1.00        |
+| Model                | Qwen3-235B-A22B-Instruct |
+| Quantization         | GPTQ int4 |
+| Serving engine       | vLLM, TP=4 |
+| Max model length     | 32,768 tokens (vLLM `--max-model-len` at bench time) |
+| Hardware             | **4× NVIDIA RTX 6000 Ada 48GB** |
+| Endpoint             | `http://168.131.141.77:28000/v1` |
 
-The v2 unified2 numbers use the default `--gpus 4 --gpu-type a100-80gb
-→ hourly_rate = $5.16/h`. `scripts/compute_table1_sd.py` and
-`scripts/build_final_table.py` both prefer `mean_cost_usd_effective`
-over the raw `mean_cost_usd` for Qwen rows.
+The earlier working assumption of `A100 80GB × 4` was an over-estimate of
+the GPU tier and has been retired.
 
-**Caveats stamped by the script itself** (from its own preamble):
+**Consequence for the long-context evaluation.** The 32,768-token serving
+cap is well below the ~226K-token OpenDtect manual, so Qwen cannot host
+the long_context ablation regardless of the model's advertised 128K
+theoretical maximum. Long_context is Gemini-only for this reason (in
+addition to Claude/GPT-4o windows also falling short of 226K).
 
-- Hardware assumption is TENTATIVE — pending confirmation of the actual
-  NAS GPU config. Downstream numbers hinge on this.
-- The formula treats wall-clock latency as billable time. It therefore
-  attributes idle time to cost, which over-estimates the true amortized
-  cost when the same node is serving other queries in parallel.
+### 5.2 Primary reporting unit — GPU-time / step
+
+The natural, deployment-neutral cost unit for a self-hosted model is
+`latency × N_GPU` (GPU-seconds per step). This is what the benchmark
+actually measures and what would be paid by a reproducer regardless of
+whether they rent, own, or borrow the GPUs.
+
+The 5-replicate per-backend Qwen numbers (latency mean ± sample SD
+carried over from `table1_full_sd.md`, converted to 4-GPU-seconds):
+
+| Backend        | Latency/step (s) | GPU-time/step (4-GPU-s) | GPU-hours/step (4-GPU) |
+|---|---|---|---|
+| no_rag         |  7.3±1.1         |  29.2±4.4               | 0.00811 |
+| vanilla_vector | 42.2±71.4        | 168.8±285.6             | 0.04689 |
+| graph_only     | 13.9±2.1         |  55.6±8.4               | 0.01544 |
+| vision_only    | 11.0±1.5         |  44.0±6.0               | 0.01222 |
+| full_system    | 30.9±2.1         | 123.6±8.4               | 0.03433 |
+| state_path     | 29.9±1.5         | 119.6±6.0               | 0.03322 |
+
+Ratios between backends are preserved under any linear time→dollar
+conversion (verified in §5.4 below).
+
+### 5.3 Dollar conversion — RunPod RTX 6000 Ada Secure Cloud
+
+Conversion is done by `scripts/qwen_cost_convert.py` using:
+
+```
+effective_cost_usd = (latency_sec / 3600) × hourly_rate
+hourly_rate        = CLOUD_RATES[gpu_type] × num_gpus
+```
+
+**Rate**: $0.84 per GPU-hour for RTX 6000 Ada 48GB (Secure Cloud tier).
+**Source**: RunPod public pricing page, https://www.runpod.io/pricing
+(queried 2026-07-27). **Node rate at TP=4**: $0.84 × 4 = **$3.36/hr**.
+
+Applied to the latency table above:
+
+| Backend        | Effective cost/step (mean ± SD) |
+|---|---|
+| no_rag         |  $6.86 ± 0.99 m  |
+| vanilla_vector | $39.36 ± 66.64 m |
+| graph_only     | $12.98 ± 1.95 m  |
+| vision_only    | $10.29 ± 1.40 m  |
+| full_system    | $28.85 ± 1.96 m  |
+| state_path     | $27.94 ± 1.43 m  |
+
+*(m = milli-USD per step, e.g. `6.86m` = $0.00686.)*
+
+### 5.4 Old vs new Qwen Cost table (ratio-invariance check)
+
+The prior report used the A100 80GB × 4 assumption ($5.16/hr node).
+Corrected to RTX 6000 Ada × 4 ($3.36/hr node), all absolute Qwen cost
+values scale by 3.36/5.16 = **0.6512**. Backend-to-backend ratios are
+unchanged.
+
+| Backend        | Old cost/step ($m) | New cost/step ($m) | Ratio to full_system (old / new) |
+|---|---|---|---|
+| no_rag         | 10.53±1.52   |  6.86±0.99   | 0.238 / 0.238 |
+| vanilla_vector | 60.45±102.33 | 39.36±66.64  | 1.365 / 1.364 |
+| graph_only     | 19.94±3.00   | 12.98±1.95   | 0.450 / 0.450 |
+| vision_only    | 15.80±2.15   | 10.29±1.40   | 0.357 / 0.357 |
+| full_system    | 44.30±3.00   | 28.85±1.96   | 1.000 / 1.000 |
+| state_path    | 42.90±2.20   | 27.94±1.43   | 0.969 / 0.968 |
+
+Full_system-to-vanilla, full_system-to-no_rag, and all other pairwise
+Qwen cost ratios reproduce to the third decimal — the ratio-invariance
+is arithmetically exact and any 3rd-decimal drift is rounding on the
+`round(_, 6)` step.
+
+**Consequence for the paper's Qwen narrative** (in §Results and
+Discussion of the manuscript, where the current text reads
+`no_rag $10.53m 최저, full $44.30m`): update to the new absolute
+figures (`$6.86m` and `$28.85m` respectively). All directional
+conclusions ("cost tracks latency", "auxiliary calls add cost")
+carry over unchanged. Table 1 Qwen Cost row and the narrative doc
+paragraphs P19 (vanilla outlier note: `$60.45m` → `$39.36m` and
+`$14.4m` → `$9.4m`) and P31 (`$10.53` / `$44.30`
+→ `$6.86` / `$28.85`) have been re-generated by
+`scripts/compute_table1_sd.py` and `scripts/update_docx_with_sd.py`.
 
 ## 6. Methods paragraph draft (English)
 
@@ -164,14 +229,20 @@ over the raw `mean_cost_usd` for Qwen rows.
 > no prompt-cache discount is credited, and for the Gemini long-context
 > baseline we report costs at the ≤200K-token base rate rather than the
 > \>200K tier price — the alternative tier accounting would raise
-> long-context per-step cost by 2× (from $0.283 to $0.567) and the cost
-> ratio to full_system from 106.6× to ~213×. Qwen3-235B-Instruct is
-> self-hosted (vLLM on 4× A100 80GB) and incurs no per-token fee; to
-> make it comparable, we report an effective per-step cost of
-> `latency × on-demand cloud A100 rate`, using Lambda Labs' 2026-07
-> published rate of \$1.29/h per A100 80GB × 4 GPUs = \$5.16/h. This is
-> a wall-clock-based upper bound: the same node serving parallel
-> queries would prorate this figure downward.
+> long-context per-step cost by 2× (from \$0.283 to \$0.567) and the
+> cost ratio to full_system from 106.6× to ~213×.
+>
+> **Qwen self-hosted cost accounting.** Qwen3-235B-A22B-Instruct
+> (GPTQ int4) was served via vLLM on **4× NVIDIA RTX 6000 Ada 48GB**
+> (tensor-parallel 4, `max-model-len` 32,768). Because there is no
+> per-token API fee, we report the effective cost per step as
+> `latency_sec × node_hourly_rate`, using RunPod's published Secure
+> Cloud rate for the same GPU model queried 2026-07-27
+> (\$0.84 per GPU-hour × 4 GPUs = \$3.36/hr for the node). Backend-to-
+> backend Qwen cost ratios are invariant to this hourly rate; only the
+> absolute scale depends on it. The 32,768-token serving limit is why
+> Qwen is excluded from the long_context ablation — the manual is
+> ~226K tokens, well above the deployment's context budget.
 
 ## 7. Summary of findings
 
@@ -181,4 +252,6 @@ over the raw `mean_cost_usd` for Qwen rows.
 | 106.6× ratio is arithmetically consistent with the flat-rate accounting | Confirmed |
 | Gemini long-context >200K tier surcharge NOT applied in code | Flagged — needs Methods sentence or recomputation |
 | Prompt caching NOT credited on any backend | Flagged — needs Methods sentence |
-| Qwen cost via time × hourly rate; hardware config still tentative | Flagged in script preamble; user confirmation pending |
+| Qwen serving hardware confirmed: 4× RTX 6000 Ada 48GB, TP=4, GPTQ int4, max-model-len 32,768 | Confirmed (previously TENTATIVE assumption of A100×4 retired) |
+| Qwen cost primary unit = GPU-time/step; USD via RunPod RTX 6000 Ada Secure Cloud $0.84/GPU-hr | Confirmed |
+| Qwen 32K served context is the reason long_context is Gemini-only (Qwen 이론 128K 표기는 서빙 실측과 다름) | Confirmed |

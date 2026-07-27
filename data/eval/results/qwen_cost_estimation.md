@@ -1,5 +1,16 @@
 # Qwen3-235B-A22B 서빙 비용 환산 — 사전 준비
 
+> **[2026-07-27 SUPERSEDED]** — 하드웨어 확인 완료. 실제 서빙 스펙은
+> **4× NVIDIA RTX 6000 Ada 48GB** (TP=4, GPTQ int4, vLLM
+> `--max-model-len 32768`) 로 확정. 아래 시나리오 A(A100×4) / B(H100×2)
+> / C(A6000×4) 모두 부정확한 추정이며, 실제 값은 별도의
+> **RTX 6000 Ada × 4** 케이스로 산정됨. 최종 산정과 재현 가능한 절차는
+> `cost_basis.md §5` 및 `scripts/qwen_cost_convert.py`
+> (기본값 `--gpu-type rtx-6000-ada-48gb --gpus 4`, 요율 RunPod Secure
+> Cloud $0.84/GPU-hr, 조회일 2026-07-27) 를 참조. 이 문서는 하드웨어
+> 확정 이전 의사결정 감사 기록으로 보존.
+
+
 **모델**: Qwen3-235B-A22B-Instruct, INT4 GPTQ 양자화
 **서빙 엔진**: vLLM
 **호스팅**: 자체 NAS 시스템
