@@ -1,0 +1,100 @@
+{
+  "index_a": "data/chromadb_pymupdf_reference",
+  "index_b": "data/chromadb",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "top_k": 5,
+  "shingle_n": 5,
+  "mean_shingle_jaccard": 0.36611974657771573,
+  "verdict": "FAIL",
+  "n_queries": 8,
+  "per_query": [
+    {
+      "scenario": "opendtect__3d_visualization__01",
+      "step": 0,
+      "query_preview": "OpendTect Main Window user is inspecting the Tree scene, about to add first slice Tree scene panel (",
+      "shingles_a": 879,
+      "shingles_b": 450,
+      "shingles_intersection": 239,
+      "jaccard_shingle": 0.219,
+      "text_a_len_chars": 5835,
+      "text_b_len_chars": 2672
+    },
+    {
+      "scenario": "opendtect__3d_visualization__01",
+      "step": 1,
+      "query_preview": "Context menu on In-line / Select Attribute or Data picking seismic data to display as In-line In-lin",
+      "shingles_a": 1340,
+      "shingles_b": 1159,
+      "shingles_intersection": 438,
+      "jaccard_shingle": 0.213,
+      "text_a_len_chars": 8148,
+      "text_b_len_chars": 7108
+    },
+    {
+      "scenario": "opendtect__3d_visualization__01",
+      "step": 2,
+      "query_preview": "OpendTect Main Window (In-line displayed) or Context menu on Cross-line user targets Cross-line next",
+      "shingles_a": 797,
+      "shingles_b": 764,
+      "shingles_intersection": 312,
+      "jaccard_shingle": 0.25,
+      "text_a_len_chars": 5226,
+      "text_b_len_chars": 4547
+    },
+    {
+      "scenario": "opendtect__3d_visualization__01",
+      "step": 3,
+      "query_preview": "OpendTect Main Window (In-line + Cross-line displayed) or Context menu on Z-slice adding Z-slice 3D ",
+      "shingles_a": 981,
+      "shingles_b": 1080,
+      "shingles_intersection": 362,
+      "jaccard_shingle": 0.213,
+      "text_a_len_chars": 6906,
+      "text_b_len_chars": 6893
+    },
+    {
+      "scenario": "opendtect__survey_setup__01",
+      "step": 0,
+      "query_preview": "Survey Setup and Selection Survey Data Root user is on the initial survey selection window Survey Da",
+      "shingles_a": 445,
+      "shingles_b": 697,
+      "shingles_intersection": 299,
+      "jaccard_shingle": 0.355,
+      "text_a_len_chars": 2966,
+      "text_b_len_chars": 4467
+    },
+    {
+      "scenario": "opendtect__survey_setup__01",
+      "step": 1,
+      "query_preview": "Create New Survey Survey Data Root... user is about to fill survey parameters Create New Survey dial",
+      "shingles_a": 788,
+      "shingles_b": 801,
+      "shingles_intersection": 677,
+      "jaccard_shingle": 0.742,
+      "text_a_len_chars": 4998,
+      "text_b_len_chars": 5075
+    },
+    {
+      "scenario": "opendtect__survey_setup__01",
+      "step": 2,
+      "query_preview": "Create New Survey Survey Data Root... user is deciding how to define geometry Create New Survey dial",
+      "shingles_a": 1253,
+      "shingles_b": 1077,
+      "shingles_intersection": 567,
+      "jaccard_shingle": 0.322,
+      "text_a_len_chars": 7478,
+      "text_b_len_chars": 6992
+    },
+    {
+      "scenario": "opendtect__survey_setup__01",
+      "step": 3,
+      "query_preview": "OpendTect Main Window goal complete — model should emit '완료' OpendTect V7.0.9 application window Mai",
+      "shingles_a": 234,
+      "shingles_b": 178,
+      "shingles_intersection": 157,
+      "jaccard_shingle": 0.616,
+      "text_a_len_chars": 1580,
+      "text_b_len_chars": 1207
+    }
+  ]
+}

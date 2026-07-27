@@ -1,0 +1,214 @@
+{
+  "index_a": "data/chromadb_pymupdf_reference",
+  "index_b": "data/chromadb",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "top_k": 5,
+  "mean_jaccard": 0.5297619047619048,
+  "verdict": "FAIL",
+  "n_queries": 8,
+  "per_query": [
+    {
+      "scenario": "opendtect__3d_visualization__01",
+      "step": 0,
+      "query_preview": "OpendTect Main Window user is inspecting the Tree scene, about to add first slice Tree scene panel (",
+      "top_k_a_pages": [
+        45,
+        52,
+        320,
+        325,
+        351
+      ],
+      "top_k_b_pages": [
+        45,
+        75,
+        320,
+        325,
+        335
+      ],
+      "intersection_signatures": [
+        "(320, '2.4.2a Stratal Terminations')",
+        "(325, '2.4.2c Wheeler Scene')",
+        "(45, '1.3.1 Tree, Scene & Elements')"
+      ],
+      "jaccard": 0.429
+    },
+    {
+      "scenario": "opendtect__3d_visualization__01",
+      "step": 1,
+      "query_preview": "Context menu on In-line / Select Attribute or Data picking seismic data to display as In-line In-lin",
+      "top_k_a_pages": [
+        27,
+        28,
+        199,
+        367,
+        423
+      ],
+      "top_k_b_pages": [
+        27,
+        28,
+        43,
+        86,
+        199
+      ],
+      "intersection_signatures": [
+        "(199, '2.3.1c Dip-steered Similarity')",
+        "(27, '1.2.2a Survey Setup & Load SEG-Y')",
+        "(28, '1.2.2a Survey Setup & Load SEG-Y')"
+      ],
+      "jaccard": 0.429
+    },
+    {
+      "scenario": "opendtect__3d_visualization__01",
+      "step": 2,
+      "query_preview": "OpendTect Main Window (In-line displayed) or Context menu on Cross-line user targets Cross-line next",
+      "top_k_a_pages": [
+        45,
+        48,
+        75,
+        325,
+        351
+      ],
+      "top_k_b_pages": [
+        43,
+        45,
+        75,
+        325,
+        335
+      ],
+      "intersection_signatures": [
+        "(325, '2.4.2c Wheeler Scene')",
+        "(45, '1.3.1 Tree, Scene & Elements')",
+        "(75, '1.4.2a 3D Auto-track')"
+      ],
+      "jaccard": 0.429
+    },
+    {
+      "scenario": "opendtect__3d_visualization__01",
+      "step": 3,
+      "query_preview": "OpendTect Main Window (In-line + Cross-line displayed) or Context menu on Z-slice adding Z-slice 3D ",
+      "top_k_a_pages": [
+        45,
+        225,
+        325,
+        327,
+        351
+      ],
+      "top_k_b_pages": [
+        26,
+        45,
+        52,
+        225,
+        327
+      ],
+      "intersection_signatures": [
+        "(225, '2.3.2b Volume Curvature And Others')",
+        "(327, '2.4.2c Wheeler Scene')",
+        "(45, '1.3.1 Tree, Scene & Elements')"
+      ],
+      "jaccard": 0.429
+    },
+    {
+      "scenario": "opendtect__survey_setup__01",
+      "step": 0,
+      "query_preview": "Survey Setup and Selection Survey Data Root user is on the initial survey selection window Survey Da",
+      "top_k_a_pages": [
+        25,
+        27,
+        108,
+        164,
+        165
+      ],
+      "top_k_b_pages": [
+        21,
+        25,
+        26,
+        108,
+        164
+      ],
+      "intersection_signatures": [
+        "(108, '1.4.4f Setup Survey For Depth Converted Data')",
+        "(164, '2.1.1b Set up Survey using PetrelDirect')",
+        "(25, '1.2.2a Survey Setup & Load SEG-Y')"
+      ],
+      "jaccard": 0.429
+    },
+    {
+      "scenario": "opendtect__survey_setup__01",
+      "step": 1,
+      "query_preview": "Create New Survey Survey Data Root... user is about to fill survey parameters Create New Survey dial",
+      "top_k_a_pages": [
+        19,
+        25,
+        108,
+        164,
+        165
+      ],
+      "top_k_b_pages": [
+        19,
+        25,
+        108,
+        164,
+        165
+      ],
+      "intersection_signatures": [
+        "(108, '1.4.4f Setup Survey For Depth Converted Data')",
+        "(164, '2.1.1b Set up Survey using PetrelDirect')",
+        "(165, '2.1.1b Set up Survey using PetrelDirect')",
+        "(19, '1.2.1 Survey Definition')",
+        "(25, '1.2.2a Survey Setup & Load SEG-Y')"
+      ],
+      "jaccard": 1.0
+    },
+    {
+      "scenario": "opendtect__survey_setup__01",
+      "step": 2,
+      "query_preview": "Create New Survey Survey Data Root... user is deciding how to define geometry Create New Survey dial",
+      "top_k_a_pages": [
+        19,
+        22,
+        25,
+        28,
+        108
+      ],
+      "top_k_b_pages": [
+        19,
+        22,
+        108,
+        110,
+        165
+      ],
+      "intersection_signatures": [
+        "(108, '1.4.4f Setup Survey For Depth Converted Data')",
+        "(19, '1.2.1 Survey Definition')",
+        "(22, '1.2.2a Survey Setup & Load SEG-Y')"
+      ],
+      "jaccard": 0.429
+    },
+    {
+      "scenario": "opendtect__survey_setup__01",
+      "step": 3,
+      "query_preview": "OpendTect Main Window goal complete — model should emit '완료' OpendTect V7.0.9 application window Mai",
+      "top_k_a_pages": [
+        14,
+        15,
+        21,
+        84,
+        335
+      ],
+      "top_k_b_pages": [
+        10,
+        14,
+        15,
+        21,
+        84
+      ],
+      "intersection_signatures": [
+        "(14, 'Documentation')",
+        "(15, 'Documentation')",
+        "(21, '1.2.2a Survey Setup & Load SEG-Y')",
+        "(84, '1.4.3a Fault Planes')"
+      ],
+      "jaccard": 0.667
+    }
+  ]
+}
