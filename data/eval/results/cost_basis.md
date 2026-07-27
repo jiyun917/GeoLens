@@ -101,18 +101,36 @@ per step, i.e. **$566.87m / step** instead of $283.45m — a 2× under-
 report **if** the tier applies to this workload. Under that alternative
 accounting, the cost ratio would be **566.87 / 2.66 ≈ 213×**, not 106.6×.
 
-**Recommendation for the manuscript**:
+**Decision (2026-07-27) — Option A confirmed by author**:
 
-1. State the flat-rate assumption explicitly ("costs computed at the
-   base per-1M rate; no tier surcharge or cache discount applied"), OR
-2. Recompute long_context costs at the tier-adjusted rate for the >200K
-   tokens portion and re-derive the multiplier. Only long_context is
-   affected — no other backend crosses the 200K threshold.
+The paper adopts **flat-rate accounting**: costs are computed at the
+Gemini 2.5 Pro base per-1M rate ($1.25 in / $10.00 out) uniformly
+across all backends, including long_context. No >200K tier surcharge
+and no prompt-cache discount is applied. The reported long_context per-
+step cost stays at **$283.45m** and the ratio to full_system stays at
+**106.6×**.
 
-The rest of this note assumes option (1) — code as-is, with a Methods
-sentence noting the flat-rate assumption. Neither the 106.6× narrative
-nor the 213× narrative weakens the paper's argument (both are large);
-this is about accuracy of the accounting, not the qualitative claim.
+Rationale for choosing Option A:
+
+- Reproducibility: the code as committed produces the reported numbers
+  bit-for-bit. Retroactively recomputing at the tier rate would create
+  a numerical gap between the paper's tables and any reproduction run
+  a reader could execute against the current codebase.
+- Directional conclusion is preserved either way (both 106.6× and 213×
+  overwhelmingly favor full_system on cost).
+- Explicit Methods disclosure makes the accounting choice audit-able
+  and lets a reader interested in tier-adjusted numbers apply the
+  correction themselves (the arithmetic is one multiplication).
+
+**Rejected alternative — Option B**: recompute long_context at tier-
+adjusted rates ($2.50/M input for tokens beyond 200K, $15/M output).
+Would give **$566.87m/step** and a **~213×** ratio to full_system, a
+2× uplift over Option A. Recorded here so the choice remains legible
+in the audit trail.
+
+The Methods paragraph in §6 below reflects Option A: it names both
+rates and explicitly states which one was used and why the alternative
+was not selected.
 
 ## 5. Qwen — confirmed hardware and time-based conversion
 
@@ -250,7 +268,7 @@ paragraphs P19 (vanilla outlier note: `$60.45m` → `$39.36m` and
 |---|---|
 | $283.45m / step long_context reproduces from stored token counts × flat $1.25/M input | Confirmed |
 | 106.6× ratio is arithmetically consistent with the flat-rate accounting | Confirmed |
-| Gemini long-context >200K tier surcharge NOT applied in code | Flagged — needs Methods sentence or recomputation |
+| Gemini long-context >200K tier surcharge NOT applied in code | Resolved 2026-07-27 — Option A (flat rate) confirmed; §4 records the decision, §6 Methods paragraph names both rates and states which was used |
 | Prompt caching NOT credited on any backend | Flagged — needs Methods sentence |
 | Qwen serving hardware confirmed: 4× RTX 6000 Ada 48GB, TP=4, GPTQ int4, max-model-len 32,768 | Confirmed (previously TENTATIVE assumption of A100×4 retired) |
 | Qwen cost primary unit = GPU-time/step; USD via RunPod RTX 6000 Ada Secure Cloud $0.84/GPU-hr | Confirmed |
