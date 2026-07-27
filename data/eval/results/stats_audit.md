@@ -2,6 +2,8 @@
 
 **Scope**: Confirm the test unit, permutation configuration, family size, multiple-comparison correction, and effect size / 95% CI for the 4 quality-metric pairwise contrasts reported at p<0.10 in `data/eval/results/stats_unified2.md` (paper Table 2).
 
+**CI direction convention**: every row that involves `full_system` reports Δ mean, Cohen's d, and the 95% bootstrap CI in the direction (`full_system − comparison group`). Consequently a positive Δ on a higher-is-better metric (step_accuracy, goal_completion_rate) means full_system beats the comparison, and a negative Δ on a lower-is-better metric (hallucination_rate, loop_rate, mean_latency_sec, mean_cost_usd) means full_system beats the comparison. The `no_rag vs vanilla_vector` rows contain no full_system; the direction there is (`no_rag − vanilla_vector`).
+
 ## Configuration confirmed from `scripts/stats_unified.py`
 
 - **Test unit**: REPLICATE. Each side has n=5 values. Each value is the mean across the 2 scenarios (survey_setup + 3d_visualization) for that replicate, where each scenario value is itself the mean across its 4 evaluated steps.
@@ -29,10 +31,10 @@ The four focal results reported in Table 2 (p<0.10, quality metrics only) are sh
 
 | Model | Pair | Metric | Δ mean (pp) | Cohen's d | Perm p (raw) | Bonferroni p<sub>72</sub> | Holm p<sub>72</sub> | Bonferroni p<sub>48</sub> | 95% CI on Δ (pp) |
 |---|---|---|---|---|---|---|---|---|---|
-| gpt | no_rag vs full_system | step_accuracy | -27.5 | -2.46 | 0.025 | 1.000 | 1.000 | 1.000 | -27.50 [-40.00, -15.00] |
-| gpt | vanilla_vector vs full_system | step_accuracy | -32.5 | -4.11 | 0.009 | 0.626 | 0.626 | 0.418 | -32.50 [-40.00, -25.00] |
-| claude | no_rag vs full_system | hallucination_rate | +10.0 | +2.53 | 0.048 | 1.000 | 1.000 | 1.000 | +10.00 [+5.00, +12.50] |
-| qwen | no_rag vs full_system | hallucination_rate | +15.0 | +1.55 | 0.099 | 1.000 | 1.000 | 1.000 | +15.00 [+5.00, +25.00] |
+| gpt | full_system vs no_rag | step_accuracy | +27.5 | +2.46 | 0.025 | 1.000 | 1.000 | 1.000 | +27.50 [+15.00, +40.00] |
+| gpt | full_system vs vanilla_vector | step_accuracy | +32.5 | +4.11 | 0.009 | 0.626 | 0.626 | 0.418 | +32.50 [+25.00, +40.00] |
+| claude | full_system vs no_rag | hallucination_rate | -10.0 | -2.53 | 0.045 | 1.000 | 1.000 | 1.000 | -10.00 [-12.50, -5.00] |
+| qwen | full_system vs no_rag | hallucination_rate | -15.0 | -1.55 | 0.105 | 1.000 | 1.000 | 1.000 | -15.00 [-25.00, -5.00] |
 
 ## Interpretation
 
@@ -51,72 +53,72 @@ The four focal results reported in Table 2 (p<0.10, quality metrics only) are sh
 | gemini | no_rag vs vanilla_vector | goal_completion_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
 | gemini | no_rag vs vanilla_vector | mean_latency_sec | -1.57s | -3.08 | 0.009 | 0.626 | 0.626 | [-2.18, -1.07] |
 | gemini | no_rag vs vanilla_vector | mean_cost_usd | -0.01$ | -853.80 | 0.009 | 0.626 | 0.626 | [-0.01, -0.01] |
-| gemini | no_rag vs full_system | step_accuracy | -5.00pp | -0.57 | 0.690 | 1.000 | 1.000 | [-15.00, +5.00] |
-| gemini | no_rag vs full_system | hallucination_rate | +2.50pp | +0.27 | 1.000 | 1.000 | 1.000 | [-7.50, +12.50] |
-| gemini | no_rag vs full_system | loop_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
-| gemini | no_rag vs full_system | goal_completion_rate | +20.00pp | +1.03 | 0.449 | 1.000 | 1.000 | [+0.00, +40.00] |
-| gemini | no_rag vs full_system | mean_latency_sec | -27.21s | -10.51 | 0.009 | 0.626 | 0.626 | [-30.47, -24.85] |
-| gemini | no_rag vs full_system | mean_cost_usd | -0.00$ | -45.26 | 0.009 | 0.626 | 0.626 | [-0.00, -0.00] |
-| gemini | vanilla_vector vs full_system | step_accuracy | +0.00pp | +0.00 | 1.000 | 1.000 | 1.000 | [-12.50, +12.50] |
-| gemini | vanilla_vector vs full_system | hallucination_rate | +5.00pp | +0.57 | 0.680 | 1.000 | 1.000 | [-5.00, +15.00] |
-| gemini | vanilla_vector vs full_system | loop_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
-| gemini | vanilla_vector vs full_system | goal_completion_rate | +20.00pp | +1.03 | 0.449 | 1.000 | 1.000 | [+0.00, +40.00] |
-| gemini | vanilla_vector vs full_system | mean_latency_sec | -25.63s | -10.04 | 0.009 | 0.626 | 0.626 | [-28.80, -23.33] |
-| gemini | vanilla_vector vs full_system | mean_cost_usd | +0.01$ | +152.59 | 0.009 | 0.626 | 0.626 | [+0.01, +0.01] |
+| gemini | full_system vs no_rag | step_accuracy | +5.00pp | +0.57 | 0.684 | 1.000 | 1.000 | [-5.00, +15.00] |
+| gemini | full_system vs no_rag | hallucination_rate | -2.50pp | -0.27 | 1.000 | 1.000 | 1.000 | [-12.50, +7.50] |
+| gemini | full_system vs no_rag | loop_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
+| gemini | full_system vs no_rag | goal_completion_rate | -20.00pp | -1.03 | 0.453 | 1.000 | 1.000 | [-40.00, +0.00] |
+| gemini | full_system vs no_rag | mean_latency_sec | +27.21s | +10.51 | 0.009 | 0.626 | 0.626 | [+24.86, +30.46] |
+| gemini | full_system vs no_rag | mean_cost_usd | +0.00$ | +45.26 | 0.009 | 0.626 | 0.626 | [+0.00, +0.00] |
+| gemini | full_system vs vanilla_vector | step_accuracy | +0.00pp | +0.00 | 1.000 | 1.000 | 1.000 | [-12.50, +12.50] |
+| gemini | full_system vs vanilla_vector | hallucination_rate | -5.00pp | -0.57 | 0.681 | 1.000 | 1.000 | [-15.00, +5.00] |
+| gemini | full_system vs vanilla_vector | loop_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
+| gemini | full_system vs vanilla_vector | goal_completion_rate | -20.00pp | -1.03 | 0.453 | 1.000 | 1.000 | [-40.00, +0.00] |
+| gemini | full_system vs vanilla_vector | mean_latency_sec | +25.63s | +10.04 | 0.009 | 0.626 | 0.626 | [+23.36, +28.77] |
+| gemini | full_system vs vanilla_vector | mean_cost_usd | -0.01$ | -152.59 | 0.009 | 0.626 | 0.626 | [-0.01, -0.01] |
 | claude | no_rag vs vanilla_vector | step_accuracy | +0.00pp | +0.00 | 1.000 | 1.000 | 1.000 | [-7.50, +10.00] |
 | claude | no_rag vs vanilla_vector | hallucination_rate | +0.00pp | +0.00 | 1.000 | 1.000 | 1.000 | [-7.50, +7.50] |
 | claude | no_rag vs vanilla_vector | loop_rate | -7.50pp | -1.55 | 0.168 | 1.000 | 1.000 | [-12.50, -2.50] |
 | claude | no_rag vs vanilla_vector | goal_completion_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
 | claude | no_rag vs vanilla_vector | mean_latency_sec | -1.21s | -3.45 | 0.009 | 0.626 | 0.626 | [-1.55, -0.80] |
 | claude | no_rag vs vanilla_vector | mean_cost_usd | -0.02$ | -268.60 | 0.009 | 0.626 | 0.626 | [-0.02, -0.02] |
-| claude | no_rag vs full_system | step_accuracy | -5.00pp | -0.60 | 0.636 | 1.000 | 1.000 | [-15.00, +5.00] |
-| claude | no_rag vs full_system | hallucination_rate | +10.00pp | +2.53 | 0.048 | 1.000 | 1.000 | [+5.00, +12.50] |
-| claude | no_rag vs full_system | loop_rate | -5.00pp | -0.80 | 0.523 | 1.000 | 1.000 | [-12.50, +2.50] |
-| claude | no_rag vs full_system | goal_completion_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
-| claude | no_rag vs full_system | mean_latency_sec | -24.68s | -15.09 | 0.009 | 0.626 | 0.626 | [-26.68, -23.09] |
-| claude | no_rag vs full_system | mean_cost_usd | -0.01$ | -47.34 | 0.009 | 0.626 | 0.626 | [-0.01, -0.01] |
-| claude | vanilla_vector vs full_system | step_accuracy | -5.00pp | -0.89 | 0.551 | 1.000 | 1.000 | [-12.50, +0.00] |
-| claude | vanilla_vector vs full_system | hallucination_rate | +10.00pp | +1.35 | 0.167 | 1.000 | 1.000 | [+2.50, +17.50] |
-| claude | vanilla_vector vs full_system | loop_rate | +2.50pp | +0.63 | 1.000 | 1.000 | 1.000 | [+0.00, +7.50] |
-| claude | vanilla_vector vs full_system | goal_completion_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
-| claude | vanilla_vector vs full_system | mean_latency_sec | -23.47s | -14.61 | 0.009 | 0.626 | 0.626 | [-25.47, -21.90] |
-| claude | vanilla_vector vs full_system | mean_cost_usd | +0.02$ | +152.46 | 0.009 | 0.626 | 0.626 | [+0.02, +0.02] |
+| claude | full_system vs no_rag | step_accuracy | +5.00pp | +0.60 | 0.636 | 1.000 | 1.000 | [-5.00, +15.00] |
+| claude | full_system vs no_rag | hallucination_rate | -10.00pp | -2.53 | 0.045 | 1.000 | 1.000 | [-12.50, -5.00] |
+| claude | full_system vs no_rag | loop_rate | +5.00pp | +0.80 | 0.524 | 1.000 | 1.000 | [-2.50, +12.50] |
+| claude | full_system vs no_rag | goal_completion_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
+| claude | full_system vs no_rag | mean_latency_sec | +24.68s | +15.09 | 0.009 | 0.626 | 0.626 | [+23.10, +26.68] |
+| claude | full_system vs no_rag | mean_cost_usd | +0.01$ | +47.34 | 0.009 | 0.626 | 0.626 | [+0.01, +0.01] |
+| claude | full_system vs vanilla_vector | step_accuracy | +5.00pp | +0.89 | 0.551 | 1.000 | 1.000 | [+0.00, +12.50] |
+| claude | full_system vs vanilla_vector | hallucination_rate | -10.00pp | -1.35 | 0.170 | 1.000 | 1.000 | [-17.50, -2.50] |
+| claude | full_system vs vanilla_vector | loop_rate | -2.50pp | -0.63 | 1.000 | 1.000 | 1.000 | [-7.50, +0.00] |
+| claude | full_system vs vanilla_vector | goal_completion_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
+| claude | full_system vs vanilla_vector | mean_latency_sec | +23.47s | +14.61 | 0.009 | 0.626 | 0.626 | [+21.92, +25.49] |
+| claude | full_system vs vanilla_vector | mean_cost_usd | -0.02$ | -152.46 | 0.009 | 0.626 | 0.626 | [-0.02, -0.02] |
 | gpt | no_rag vs vanilla_vector | step_accuracy | +5.00pp | +0.42 | 0.765 | 1.000 | 1.000 | [-7.50, +17.50] |
 | gpt | no_rag vs vanilla_vector | hallucination_rate | -7.50pp | -0.62 | 0.723 | 1.000 | 1.000 | [-22.50, +5.00] |
 | gpt | no_rag vs vanilla_vector | loop_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
 | gpt | no_rag vs vanilla_vector | goal_completion_rate | -20.00pp | -1.03 | 0.447 | 1.000 | 1.000 | [-40.00, +0.00] |
 | gpt | no_rag vs vanilla_vector | mean_latency_sec | -1.22s | -3.51 | 0.009 | 0.626 | 0.626 | [-1.63, -0.86] |
 | gpt | no_rag vs vanilla_vector | mean_cost_usd | -0.01$ | -568.44 | 0.009 | 0.626 | 0.626 | [-0.01, -0.01] |
-| gpt | no_rag vs full_system | step_accuracy | -27.50pp | -2.46 | 0.025 | 1.000 | 1.000 | [-40.00, -15.00] |
-| gpt | no_rag vs full_system | hallucination_rate | -15.00pp | -1.20 | 0.157 | 1.000 | 1.000 | [-30.00, -2.50] |
-| gpt | no_rag vs full_system | loop_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
-| gpt | no_rag vs full_system | goal_completion_rate | -30.00pp | -1.55 | 0.170 | 1.000 | 1.000 | [-50.00, -10.00] |
-| gpt | no_rag vs full_system | mean_latency_sec | -27.43s | -20.77 | 0.009 | 0.626 | 0.626 | [-28.96, -26.02] |
-| gpt | no_rag vs full_system | mean_cost_usd | -0.00$ | -62.32 | 0.009 | 0.626 | 0.626 | [-0.00, -0.00] |
-| gpt | vanilla_vector vs full_system | step_accuracy | -32.50pp | -4.11 | 0.009 | 0.626 | 0.626 | [-40.00, -25.00] |
-| gpt | vanilla_vector vs full_system | hallucination_rate | -7.50pp | -1.20 | 0.274 | 1.000 | 1.000 | [-15.00, +0.00] |
-| gpt | vanilla_vector vs full_system | loop_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
-| gpt | vanilla_vector vs full_system | goal_completion_rate | -10.00pp | -0.37 | 1.000 | 1.000 | 1.000 | [-40.00, +20.00] |
-| gpt | vanilla_vector vs full_system | mean_latency_sec | -26.20s | -19.39 | 0.009 | 0.626 | 0.626 | [-27.74, -24.74] |
-| gpt | vanilla_vector vs full_system | mean_cost_usd | +0.01$ | +216.51 | 0.009 | 0.626 | 0.626 | [+0.01, +0.01] |
+| gpt | full_system vs no_rag | step_accuracy | +27.50pp | +2.46 | 0.025 | 1.000 | 1.000 | [+15.00, +40.00] |
+| gpt | full_system vs no_rag | hallucination_rate | +15.00pp | +1.20 | 0.163 | 1.000 | 1.000 | [+2.50, +30.00] |
+| gpt | full_system vs no_rag | loop_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
+| gpt | full_system vs no_rag | goal_completion_rate | +30.00pp | +1.55 | 0.168 | 1.000 | 1.000 | [+10.00, +50.00] |
+| gpt | full_system vs no_rag | mean_latency_sec | +27.43s | +20.77 | 0.009 | 0.626 | 0.626 | [+26.01, +28.90] |
+| gpt | full_system vs no_rag | mean_cost_usd | +0.00$ | +62.32 | 0.009 | 0.626 | 0.626 | [+0.00, +0.00] |
+| gpt | full_system vs vanilla_vector | step_accuracy | +32.50pp | +4.11 | 0.009 | 0.626 | 0.626 | [+25.00, +40.00] |
+| gpt | full_system vs vanilla_vector | hallucination_rate | +7.50pp | +1.20 | 0.281 | 1.000 | 1.000 | [+2.50, +15.00] |
+| gpt | full_system vs vanilla_vector | loop_rate | +0.00pp | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
+| gpt | full_system vs vanilla_vector | goal_completion_rate | +10.00pp | +0.37 | 1.000 | 1.000 | 1.000 | [-20.00, +40.00] |
+| gpt | full_system vs vanilla_vector | mean_latency_sec | +26.20s | +19.39 | 0.009 | 0.626 | 0.626 | [+24.77, +27.69] |
+| gpt | full_system vs vanilla_vector | mean_cost_usd | -0.01$ | -216.51 | 0.009 | 0.626 | 0.626 | [-0.01, -0.01] |
 | qwen | no_rag vs vanilla_vector | step_accuracy | +22.50pp | +1.27 | 0.122 | 1.000 | 1.000 | [+2.50, +42.50] |
 | qwen | no_rag vs vanilla_vector | hallucination_rate | -10.00pp | -0.63 | 0.482 | 1.000 | 1.000 | [-27.50, +7.50] |
 | qwen | no_rag vs vanilla_vector | loop_rate | +0.00pp | +0.00 | 1.000 | 1.000 | 1.000 | [-10.00, +10.00] |
 | qwen | no_rag vs vanilla_vector | goal_completion_rate | +20.00pp | +0.80 | 0.519 | 1.000 | 1.000 | [-10.00, +50.00] |
 | qwen | no_rag vs vanilla_vector | mean_latency_sec | -34.82s | -0.69 | 0.018 | 1.000 | 0.910 | [-98.86, -2.00] |
 | qwen | no_rag vs vanilla_vector | mean_cost_usd | +0.00$ | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
-| qwen | no_rag vs full_system | step_accuracy | +7.50pp | +0.47 | 0.636 | 1.000 | 1.000 | [-10.00, +25.00] |
-| qwen | no_rag vs full_system | hallucination_rate | +15.00pp | +1.55 | 0.099 | 1.000 | 1.000 | [+5.00, +25.00] |
-| qwen | no_rag vs full_system | loop_rate | +7.50pp | +1.55 | 0.169 | 1.000 | 1.000 | [+2.50, +12.50] |
-| qwen | no_rag vs full_system | goal_completion_rate | +20.00pp | +0.80 | 0.523 | 1.000 | 1.000 | [-10.00, +50.00] |
-| qwen | no_rag vs full_system | mean_latency_sec | -23.56s | -14.19 | 0.009 | 0.626 | 0.626 | [-25.38, -21.72] |
-| qwen | no_rag vs full_system | mean_cost_usd | +0.00$ | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
-| qwen | vanilla_vector vs full_system | step_accuracy | -15.00pp | -1.03 | 0.228 | 1.000 | 1.000 | [-32.50, +0.00] |
-| qwen | vanilla_vector vs full_system | hallucination_rate | +25.00pp | +1.53 | 0.078 | 1.000 | 1.000 | [+7.50, +42.50] |
-| qwen | vanilla_vector vs full_system | loop_rate | +7.50pp | +0.95 | 0.444 | 1.000 | 1.000 | [+0.00, +17.50] |
-| qwen | vanilla_vector vs full_system | goal_completion_rate | +0.00pp | +0.00 | 1.000 | 1.000 | 1.000 | [-20.00, +20.00] |
-| qwen | vanilla_vector vs full_system | mean_latency_sec | +11.27s | +0.22 | 1.000 | 1.000 | 1.000 | [-22.06, +75.38] |
-| qwen | vanilla_vector vs full_system | mean_cost_usd | +0.00$ | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
+| qwen | full_system vs no_rag | step_accuracy | -7.50pp | -0.47 | 0.639 | 1.000 | 1.000 | [-25.00, +10.00] |
+| qwen | full_system vs no_rag | hallucination_rate | -15.00pp | -1.55 | 0.105 | 1.000 | 1.000 | [-25.00, -5.00] |
+| qwen | full_system vs no_rag | loop_rate | -7.50pp | -1.55 | 0.170 | 1.000 | 1.000 | [-12.50, -2.50] |
+| qwen | full_system vs no_rag | goal_completion_rate | -20.00pp | -0.80 | 0.524 | 1.000 | 1.000 | [-50.00, +10.00] |
+| qwen | full_system vs no_rag | mean_latency_sec | +23.56s | +14.19 | 0.009 | 0.626 | 0.626 | [+21.76, +25.41] |
+| qwen | full_system vs no_rag | mean_cost_usd | +0.00$ | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
+| qwen | full_system vs vanilla_vector | step_accuracy | +15.00pp | +1.03 | 0.222 | 1.000 | 1.000 | [+0.00, +30.00] |
+| qwen | full_system vs vanilla_vector | hallucination_rate | -25.00pp | -1.53 | 0.081 | 1.000 | 1.000 | [-42.50, -7.50] |
+| qwen | full_system vs vanilla_vector | loop_rate | -7.50pp | -0.95 | 0.447 | 1.000 | 1.000 | [-17.50, +0.00] |
+| qwen | full_system vs vanilla_vector | goal_completion_rate | +0.00pp | +0.00 | 1.000 | 1.000 | 1.000 | [-20.00, +20.00] |
+| qwen | full_system vs vanilla_vector | mean_latency_sec | -11.27s | -0.22 | 1.000 | 1.000 | 1.000 | [-75.40, +22.07] |
+| qwen | full_system vs vanilla_vector | mean_cost_usd | +0.00$ | — | 1.000 | 1.000 | 1.000 | [+0.00, +0.00] |
 
 ## Manuscript wording draft (English)
 

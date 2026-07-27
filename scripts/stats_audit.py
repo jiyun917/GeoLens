@@ -53,9 +53,16 @@ RESULTS_DIR = ROOT / "data" / "eval" / "results"
 MODELS = ["gemini", "claude", "gpt", "qwen"]
 BACKENDS = ["no_rag", "vanilla_vector", "graph_only",
             "vision_only", "full_system", "state_path"]
-PAIRS = [("no_rag", "vanilla_vector"),
-         ("no_rag", "full_system"),
-         ("vanilla_vector", "full_system")]
+# CI direction convention: whenever full_system is one of the two
+# backends in a pair, it is placed on the LEFT (A). Δ mean, Cohen's d,
+# and the 95% CI on Δ are all in the direction (mean_A − mean_B), so any
+# row involving full_system reports (full_system − comparison group).
+# The (no_rag, vanilla_vector) pair contains no full_system; the
+# convention there is (no_rag − vanilla_vector), noted in the header of
+# the output document.
+PAIRS = [("no_rag",      "vanilla_vector"),
+         ("full_system", "no_rag"),
+         ("full_system", "vanilla_vector")]
 
 QUALITY_METRICS = [
     ("step_accuracy",        "higher"),
@@ -209,6 +216,16 @@ def render(rows: List[dict]) -> str:
         "for the 4 quality-metric pairwise contrasts reported at p<0.10 in "
         "`data/eval/results/stats_unified2.md` (paper Table 2).",
         "",
+        "**CI direction convention**: every row that involves `full_system` "
+        "reports Δ mean, Cohen's d, and the 95% bootstrap CI in the "
+        "direction (`full_system − comparison group`). Consequently a "
+        "positive Δ on a higher-is-better metric (step_accuracy, "
+        "goal_completion_rate) means full_system beats the comparison, "
+        "and a negative Δ on a lower-is-better metric (hallucination_rate, "
+        "loop_rate, mean_latency_sec, mean_cost_usd) means full_system "
+        "beats the comparison. The `no_rag vs vanilla_vector` rows contain "
+        "no full_system; the direction there is (`no_rag − vanilla_vector`).",
+        "",
         "## Configuration confirmed from `scripts/stats_unified.py`",
         "",
         "- **Test unit**: REPLICATE. Each side has n=5 values. Each value is "
@@ -276,10 +293,10 @@ def render(rows: List[dict]) -> str:
                          for r, h in zip(quality_rows, holm_quality)}
 
     focal_keys = [
-        ("gpt",    "no_rag vs full_system",         "step_accuracy"),
-        ("gpt",    "vanilla_vector vs full_system", "step_accuracy"),
-        ("claude", "no_rag vs full_system",         "hallucination_rate"),
-        ("qwen",   "no_rag vs full_system",         "hallucination_rate"),
+        ("gpt",    "full_system vs no_rag",         "step_accuracy"),
+        ("gpt",    "full_system vs vanilla_vector", "step_accuracy"),
+        ("claude", "full_system vs no_rag",         "hallucination_rate"),
+        ("qwen",   "full_system vs no_rag",         "hallucination_rate"),
     ]
     focal_by_key = {(r["model"], r["pair"], r["metric"]): r for r in rows}
     for key in focal_keys:
