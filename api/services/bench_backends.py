@@ -3,6 +3,11 @@ Benchmark backends — four side-by-side strategies for procedural UI
 guidance, used by ScenarioEvaluator to produce paper-quality comparison
 numbers.
 
+Note on Korean strings: the prompt template contains a Korean 'Done'
+sentinel ("완료") and other Korean-language guidance because the paper's
+evaluation targets Korean-language user scenarios (README §7). Prose
+comments in this file are English.
+
 Each backend is a callable with signature
 
     backend(step_index: int, scenario: dict, prior_responses: list[str]) -> str

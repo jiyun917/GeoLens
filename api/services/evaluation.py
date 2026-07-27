@@ -1,6 +1,13 @@
 """
 AutoProcRAG evaluation framework.
 
+Note on Korean tokens in this file: literal Korean strings appearing in
+regexes, sentinel values, and quoted examples in docstrings/comments are
+intentional. The benchmark targets Korean-language user scenarios (see
+README §7 Language policy); tokens like "완료" and "버튼" are the actual
+values the evaluator matches against — translating them would break the
+scoring. All commentary prose is English.
+
 Three independent evaluators:
 
   GraphQualityEvaluator  — node/edge precision·recall + order + linked_chunks

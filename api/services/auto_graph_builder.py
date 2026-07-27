@@ -4,6 +4,11 @@ Automatic Workflow Graph builder.
 Consumes classified chunks from `chunk_classifier.py` and emits workflow JSON
 files in the same format as hand-authored workflows under `data/workflows/`.
 
+Note on Korean tokens: the CONDITIONAL_CUES and ACTION_CUES token lists
+contain Korean phrases ("만약", "경우", "클릭", "선택", ...). These are
+intentional — the parser targets Korean-language manuals (README §7
+Language policy). Prose commentary is English.
+
 Strategy:
   1. Group chunks by section.
   2. Sections with < 3 procedural_step chunks are ignored (too thin for a

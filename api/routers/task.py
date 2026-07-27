@@ -277,7 +277,9 @@ async def handle_step_chat(request: FastAPIRequest, body: StepRequest):
         # plus the last 2 assistant messages (current local state). Earlier code
         # dropped the goal once 5+ messages accumulated, which caused RAG to
         # search only on recent actions ("clicked Survey → clicked Import")
-        # instead of the user's actual objective ("3차원 시각화").
+        # instead of the user's actual objective (e.g. "3차원 시각화" / "3D
+        # visualization" — Korean user scenarios are the KO deployment target,
+        # see README §7 Language policy).
         goal_text = ""
         assistant_texts: List[str] = []
         for msg in messages:
