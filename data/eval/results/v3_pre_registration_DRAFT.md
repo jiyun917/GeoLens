@@ -179,7 +179,7 @@ Qwen 제외 사유: Qwen3-VL 서빙 불가(NAS 미접속), 텍스트 전용 Qwen
 | 3 (dry-run ×5) | 820e993 | seismic_attribute 02·03·04 signature 관찰 상태 재작성, vision field_values, 근소차 prior, 종료 상태 앵커 | 14, 14, 14, 14, 13 | attribute s0 5/5 (04·03), s1 5/5 (04), survey s3 1/5 | — | 일관된 편향 → 다수결 미사용; rerank 기준 불일치 가설 확인 |
 | 4 (dry-run ×5) | d064577 → 21f0dec | rerank 프롬프트 v4(상태 일치 기준), 같은 다이얼로그 묶음 그래프 순서 prior(워크플로우 내), 03·04 비기본 상태 요구 | 첫 run 16,16,15,15,15 → 정정 후 **16/16 ×5** | 0 (정정 후) | — | 첫 run의 survey s3 오라우팅 3건은 묶음 범위 버그(교차 워크플로우) |
 | 4 개발 벤치 | 21f0dec | Gemini ×2, Claude ×1, GPT ×1 (단독 실행) | 64/64 | 0 | 16/16 / 12/16 | 아래 표 |
-| 5 (조립 v4, 마지막 개발 변경) | fcfa184 | [Current State (reached)] = signature 상태만, [Next Action] = 엣지 지시, 예시 값 주의 문구 | dry-run 16/16 ×5 | 0 | — | Gemini 2회: full 0.854 = vv 0.854 > vb 0.750; attribute s1 손실 소멸; Claude·GPT는 Gemini 크레딧 소진으로 미완(충전 후 재실행) |
+| 5 (조립 v4, 마지막 개발 변경) | fcfa184 / 34c06aa | [Current State (reached)] = signature 상태만, [Next Action] = 엣지 지시, 예시 값 주의 문구 | dry-run 16/16 ×5; 벤치 64/64 | 0 | 16/16 / 12/16 | Gemini 2회 full 0.854 = vv 0.854 > vb 0.750; Claude 1.000 > 0.875 = 0.875; GPT 0.792 < vv 0.833, > vb 0.667. attribute s1~s3 손실 5건 → 0; 신규 손실 2(GPT attribute s7·survey s1: verification 엣지·노드 단위 라우팅 오차가 [Next Action]으로 드러남, 미수정) |
 
 개발 벤치 4건 step accuracy(시나리오 평균): full / vanilla_vector / vanilla_budget / no_rag — Gemini(2회) 0.792 / 0.771 / 0.771 / 0.708, Claude 0.875 / 0.875 / 0.875 / 0.875, GPT 0.833 / 0.833 / 0.667 / 0.750. 방향: Gemini full > 두 vanilla; Claude 동률; GPT vanilla_vector 동률·vanilla_budget 우위. n = 1~2라 잡음 범위이며 판정에 쓰지 않는다. full_system 손실 12건 = 라우팅 0 · 컨텍스트 0 · 생성 9 · 표기 3.
 
@@ -204,6 +204,7 @@ GT 검수(2026-09-18): 스크린샷만 본 별도 세션이 고정 규칙(RULES.
 - **표기 손실**: survey s0의 텍스트 없는 아이콘 버튼("녹색 더하기/플러스 아이콘", "새로운 설문 아이콘")이 패턴(Survey|Create|New|Add)에 걸리지 않아 full_system이 4건 중 3건 실패(vanilla도 일부 실패). 규칙 3 보류로 패턴 불변.
 - **생성 손실**: 정답 라우팅에서도 [Current Step] 설명이 화면과 다른 값("Input Data = 4 Dip steered median filter")을 단정하면 생성기가 그것을 고치려 한다(4건 5스텝). 컨텍스트 조립 수정안(도달 상태·다음 동작 분리)은 제시만 하고 미적용(V3-15).
 - **지연**: full_system은 vanilla 대비 스텝당 약 +10~15 s(clean run: vision 4.5 + CLIP 4.0 + 임베딩 3.2 + rerank 1.3; CLIP은 iteration 2부터 vision과 병렬). 최종 표의 지연은 별도 clean run의 단계 분해로 보고한다.
+- **조립 v4의 노출 효과**: [Next Action]이 엣지 지시만 주므로 verification 노드로 가는 엣지(attribute 06→07 "QC 하세요")가 sentinel 대신 제시될 수 있고, 노드 단위 라우팅 오차(survey s1을 03으로)가 다음 동작 오류로 직결된다(GPT 2건). 개발 종료 시점의 알려진 한계로, 수정하지 않았다.
 - **n = 1~2 개발 벤치의 step accuracy 차이는 잡음 범위**이며 확인적 판정은 QGIS 테스트 세트(n = 10, 3모델)에서만 한다.
 
 
