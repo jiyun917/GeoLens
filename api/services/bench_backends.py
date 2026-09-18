@@ -231,10 +231,18 @@ def _inline_action_prompt(goal: str, completed: List[str], context_block: str,
         body = "\n".join(f"{i+1}. {t}" for i, t in enumerate(completed[-6:]))
         steps_section = f"\n\n# Steps Already Completed\n{body}"
     ctx_section = f"\n\n# Reference Manual Context\n{context_block}" if context_block else ""
+    naming = ""
+    if os.environ.get("GEN_PROMPT_VERSION", "v2").lower() != "v2":   # iteration 2: not enabled (reduced scope)
+        # v3 iteration 2 (all backends): control names as written in the manual
+        # context; icon-only buttons = the manual's name + a short icon description.
+        naming = ("Name controls exactly as they are written in the Reference Manual Context when one is provided; "
+                  "for a button that shows only an icon, use the manual's name for it and add a short description "
+                  "of the icon in parentheses (e.g. 'New Survey icon (green +)').\n")
     return (
         f"You are a UI navigation assistant. Respond in {lang}.\n"
         "Output ONE action only based on what you see in the screenshot.\n"
         "Goal-complete sentinel: respond exactly 'Done' (or '완료').\n"
+        f"{naming}"
         f"\n# Goal\n{goal}"
         f"{steps_section}{ctx_section}\n"
         "\nResponse Format: one short instruction; no bullets, no explanation."

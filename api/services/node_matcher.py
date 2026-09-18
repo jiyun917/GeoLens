@@ -89,6 +89,46 @@ def flatten_visual_state(visual_state: Dict) -> str:
     return " ".join(parts).lower()
 
 
+_WF_EMB: Dict[str, List[float]] = {}
+_WF_TEXT: Dict[str, str] = {}
+_GOAL_EMB: Dict[str, List[float]] = {}
+
+
+def workflow_text(workflow: Dict, nodes: List[Dict]) -> str:
+    """Workflow rendering for the two-stage router: name + description + node titles."""
+    titles = [str(n.get("title") or "") for n in sorted(nodes, key=lambda n: n.get("step_number", 0))]
+    return "\n".join([f"Workflow: {workflow.get('name') or workflow.get('workflow_id')}",
+                      f"Description: {workflow.get('description') or ''}",
+                      "Steps: " + " / ".join(t for t in titles if t)])
+
+
+def workflow_scores(user_goal: str, workflows: List[Dict], nodes: List[Dict]) -> List[Tuple[str, float]]:
+    """[(workflow_id, cosine(goal, workflow text))] sorted desc (v3 two-stage routing, stage i)."""
+    from .embedder import get_embeddings
+    goal = (user_goal or "").strip()
+    if not goal or not workflows:
+        return []
+    by_wf: Dict[str, List[Dict]] = {}
+    for n in nodes:
+        by_wf.setdefault(n.get("workflow_id"), []).append(n)
+    missing = []
+    for wf in workflows:
+        wid = wf.get("workflow_id")
+        t = workflow_text(wf, by_wf.get(wid, []))
+        if wid and (wid not in _WF_EMB or _WF_TEXT.get(wid) != t):
+            missing.append((wid, t))
+    if missing:
+        for (wid, t), e in zip(missing, get_embeddings([t for _, t in missing])):
+            _WF_EMB[wid] = e
+            _WF_TEXT[wid] = t
+    if goal not in _GOAL_EMB:
+        _GOAL_EMB[goal] = get_embeddings([goal])[0]
+    g = _GOAL_EMB[goal]
+    out = [(wf["workflow_id"], _dot(g, _WF_EMB[wf["workflow_id"]])) for wf in workflows if wf.get("workflow_id") in _WF_EMB]
+    out.sort(key=lambda p: p[1], reverse=True)
+    return out
+
+
 def _ensure_node_embeddings(nodes: List[Dict]) -> None:
     from .embedder import get_embeddings
     missing = []
