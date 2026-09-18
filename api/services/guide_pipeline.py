@@ -55,6 +55,10 @@ def get_last_localize_meta() -> Dict[str, Any]:
 
 
 def reset_last_localize_meta() -> None:
+    # v3 telemetry fix (2026-09-18): clear the extra telemetry keys too (candidates,
+    # emb_top, goal_state_node, evidence, rerank_prompt, ...) — they were persisting
+    # from the last routing call into the per_step records of non-routing backends.
+    _LAST_LOCALIZE_META.clear()
     _LAST_LOCALIZE_META.update({
         "confidence": 0.0,
         "picked_node_id": None,

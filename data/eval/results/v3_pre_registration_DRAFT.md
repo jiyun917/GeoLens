@@ -163,3 +163,44 @@ Qwen 제외 사유: Qwen3-VL 서빙 불가(NAS 미접속), 텍스트 전용 Qwen
 ## 9. 서명
 - 작성: `[사용자 결정]` / 검토: `[사용자 결정]` / 확정 시각(UTC): `[사용자 결정]`
 - 서명 후 첫 벤치 실행 시각을 아래에 append한다.
+
+
+---
+
+## 2.5 개발 이력 요약 (v3 개발 루프, 2026-09-18; 상세 methodology_audit_trail.md V3-8 … V3-16)
+
+개발 세트 = OpendTect 3 시나리오(16스텝). 테스트 세트(QGIS)는 동결 전까지 실행하지 않았다(dry-run 포함). 개발 판단의 1차 근거는 step accuracy가 아니라 (a) 라우팅 정답률·confident-wrong 건수, (b) 목표 절 검색 적중, (c) 스텝별 손실 분류였다. 모든 실행 결과 JSON에 코드 커밋 해시가 기록된다(iteration 0·1은 사후 표기).
+
+| iteration | 코드 | 주요 변경 | 라우팅 정답(16스텝) | confident-wrong | 목표 절 적중 full / vanilla | 비고 |
+|---|---|---|---|---|---|---|
+| 0 (v2mech knob) | c15259f(사후) | 동결 시점 메커니즘 재현 + v4 KB + linked_chunks 재연결 | 11/14 통과 | 3 | 15/16 / 12/16 | 3d_viz s3·attribute s1 전 백엔드 실패; 지연 오염 가능 |
+| 1 (v3) | c15259f | 임베딩 풀 5 + CLIP + 그래프 prior, vision/rerank 프롬프트 v3, 병렬 검색, fallback 예산 3,900, soft post-completion, KG 제외 | 16/16 | 0 | 16/16 / 12/16 | 손실 1 (3d_viz s3, 패턴 기인) |
+| 2 (dry-run ×3) | f3ee78a | 종료 상태 블록, CLIP‖vision, 텔레메트리, 코드 해시 기록 | 16, 14, 16 | attribute s0·s1 → 04 (1회) | — | 벤치 미실행(사용자 규칙) |
+| 3 (dry-run ×5) | 820e993 | seismic_attribute 02·03·04 signature 관찰 상태 재작성, vision field_values, 근소차 prior, 종료 상태 앵커 | 14, 14, 14, 14, 13 | attribute s0 5/5 (04·03), s1 5/5 (04), survey s3 1/5 | — | 일관된 편향 → 다수결 미사용; rerank 기준 불일치 가설 확인 |
+| 4 (dry-run ×5) | d064577 → 21f0dec | rerank 프롬프트 v4(상태 일치 기준), 같은 다이얼로그 묶음 그래프 순서 prior(워크플로우 내), 03·04 비기본 상태 요구 | 첫 run 16,16,15,15,15 → 정정 후 **16/16 ×5** | 0 (정정 후) | — | 첫 run의 survey s3 오라우팅 3건은 묶음 범위 버그(교차 워크플로우) |
+| 4 개발 벤치 | 21f0dec | Gemini ×2, Claude ×1, GPT ×1 (단독 실행) | 64/64 | 0 | 16/16 / 12/16 | 아래 표 |
+
+개발 벤치 4건 step accuracy(시나리오 평균): full / vanilla_vector / vanilla_budget / no_rag — Gemini(2회) 0.792 / 0.771 / 0.771 / 0.708, Claude 0.875 / 0.875 / 0.875 / 0.875, GPT 0.833 / 0.833 / 0.667 / 0.750. 방향: Gemini full > 두 vanilla; Claude 동률; GPT vanilla_vector 동률·vanilla_budget 우위. n = 1~2라 잡음 범위이며 판정에 쓰지 않는다. full_system 손실 12건 = 라우팅 0 · 컨텍스트 0 · 생성 9 · 표기 3.
+
+채택하지 않은 것(근거와 함께):
+- **rerank confidence 게이트**: iteration 0에서 오라우팅 3건의 confidence(0.7, 0.9, 0.9)가 정답 분포와 겹쳐 0.95 미만 어떤 임계값도 오라우팅만 걸러내지 못했다(`dev_iter0_v2mech_gemini.md` 보정표). confidence는 기록만 한다.
+- **증거 기반 gate**((i) expected_dialog ⊂ 창 제목, (ii) 직전 확정 노드/후속, (iii) 임베딩 1–2위 격차): 오프라인 표(`evidence_gate_offline_iter0.md`, `_iter1.md`)에서 iteration 0 오라우팅 3건 중 최대 1건만 걸러지고(02·03·04가 같은 expected_dialog), 전체 노드 풀에서는 iteration 1 정답 1건이 탈락 → 미채택(코드는 비활성).
+- **2단계 라우팅(목표→워크플로우→노드)**: 보류. attribute s0·s1 재구성(`recon_iter1_attribute_s0s1.md`)과 진단(`diag_attribute_s0s1_iter3.md`)에서 문제가 같은 다이얼로그를 공유하는 노드 간 rerank 기준 불일치임이 확인되어 프롬프트 v4·signature 정정으로 대응.
+- **다수결 rerank**: iteration 3의 오답이 회차마다 같은 방향이라 규칙상 미사용(코드는 `RERANK_VOTES=1`).
+- **종료 상태 블록의 좁힌 발동 조건**: 개발 벤치 4건의 조기 발동 8건에서 조기 '완료' 응답이 0건이라 규칙상 적용하지 않음(오프라인 검사 스크립트만 보관).
+
+GT 검수(2026-09-18): 스크린샷만 본 별도 세션이 고정 규칙(RULES.md)으로 수행 — 실행 로그·모델 응답·채점 결과 접근 없이 24장, 검수 목록, 시나리오, 매뉴얼 발췌만 제공. 표본 오독률 0.96%(< 5%), 변경 19·보류 11, survey s0 Add 버튼 패턴은 보류(매뉴얼 표기 "New Survey icon"), QGIS s3는 Input layer가 이미 채워진 화면 상태에 맞춰 GT 필드만 정정(패턴에 `Distance|50|Dissolve` 추가). 구·신 GT 재채점: step accuracy 변화 0, 환각률 −6.2 pp(라벨 원문화), survey s0에서 `New Survey (+)` 표기로 "Add (+)" 응답이 환각으로 잡히는 부작용 33건(사용자 결정 대기). 상세 `data/eval/gt_review_session/`, V3-16.
+
+## 5.x QGIS 예측에 덧붙이는 위험 (동결 전 기재)
+- QGIS 워크플로우는 노드 5개가 8스텝을 다루므로(노드 03·04·05가 여러 스텝 담당) attribute 06_display에서 본 것과 같은 **종료 상태 블록 조기 발동**이 일어날 수 있다(말단 노드 05_run_and_render가 확정된 뒤 렌더 전 화면에서도 발동). 개발 벤치에서는 조기 발동 8건 모두 생성기가 스크린샷을 보고 다음 동작을 냈고 조기 '완료'는 0건이었으나, QGIS에서는 보장하지 않는다. QGIS는 실행하지 않은 상태에서 적는다.
+- 같은 이유로 QGIS 라우팅 정답률 예측은 "워크플로우 단위 정답 ≥ 개발 세트 수준"으로 두되, 노드 단위(스텝별 expected_workflow_node)는 다단계 노드 경계에서 낮아질 수 있음을 예측에 포함한다.
+
+## 8.x 한계 (개발 루프에서 드러난 것, 수치)
+- **같은 다이얼로그를 공유하는 노드의 구별은 signature와 rerank 기준의 정합에 의존한다.** seismic_attribute 02·03·04는 모두 "Attribute Set 3D" 창이며, 2026-08-07 signature가 실제 화면(열리자마자 기본값 채워짐)과 어긋난 채로 "다음에 하려는 단계" 기준의 rerank가 03/04로 일관되게 밀렸다(iteration 3: s0 5/5·s1 5/5 오답). iteration 4(상태 일치 기준 + 워크플로우 내 그래프 순서 prior + 비기본 상태 signature)에서 dry-run 5회·벤치 4건 모두 정답이었으나, 이는 OpendTect 개발 세트의 signature를 고친 결과이며 QGIS signature는 손대지 않았다.
+- **3d_visualization 노드 단위 라우팅**: v4 상태 일치 기준에서 s2·s3 화면이 d3_01(main window ready)로 수렴한다(5회 dry-run 전부). 워크플로우 단위로는 정답이고 노드 GT가 없어 채점에는 영향이 없지만, 그 결과 3d_viz s3에서 종료 상태 블록이 발동하지 않는다.
+- **종료 상태 블록 오발동**: 다단계 노드(attribute 06_display, 스텝 5–7)에서 rep당 2/4 발동이 조기(5회 dry-run 합계 10/20; 벤치 4건 8/8 조기 발동에서 조기 '완료' 0건).
+- **step 3 sentinel 스텝**: 요소 언급 허용 대안 패턴(2026-08-06 재정의와 함께 의도적으로 추가, 사용자 결정으로 유지)이 sentinel 대신 요소 언급 지시도 정답으로 받아들이므로 이 스텝의 step accuracy는 목표 인식 능력을 직접 재지 않는다(3모델 full_system·vanilla_vector에는 제거 시 변화 없음, `pattern_impact_3dviz_s3.md`).
+- **표기 손실**: survey s0의 텍스트 없는 아이콘 버튼("녹색 더하기/플러스 아이콘", "새로운 설문 아이콘")이 패턴(Survey|Create|New|Add)에 걸리지 않아 full_system이 4건 중 3건 실패(vanilla도 일부 실패). 규칙 3 보류로 패턴 불변.
+- **생성 손실**: 정답 라우팅에서도 [Current Step] 설명이 화면과 다른 값("Input Data = 4 Dip steered median filter")을 단정하면 생성기가 그것을 고치려 한다(4건 5스텝). 컨텍스트 조립 수정안(도달 상태·다음 동작 분리)은 제시만 하고 미적용(V3-15).
+- **지연**: full_system은 vanilla 대비 스텝당 약 +10~15 s(clean run: vision 4.5 + CLIP 4.0 + 임베딩 3.2 + rerank 1.3; CLIP은 iteration 2부터 vision과 병렬). 최종 표의 지연은 별도 clean run의 단계 분해로 보고한다.
+- **n = 1~2 개발 벤치의 step accuracy 차이는 잡음 범위**이며 확인적 판정은 QGIS 테스트 세트(n = 10, 3모델)에서만 한다.
