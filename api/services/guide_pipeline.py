@@ -1173,7 +1173,10 @@ Respond with JSON only:
                 continue
             key = _norm_text(((n.get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0])
             if key:
-                groups.setdefault(key, []).append((nid, score))
+                # iteration 4 correction: a group is formed within ONE workflow — nodes of
+                # different workflows that share a dialog title are not ordered against
+                # each other (survey_setup_05 vs d3_visualization_01, both "OpendTect Main Window").
+                groups.setdefault(f"{n.get('workflow_id')}|{key}", []).append((nid, score))
         # iteration 4: consider the group holding the top-scoring candidate first
         ordered = sorted(groups.items(), key=lambda kv: -max(s for _, s in kv[1]))
         for key, members in ordered:
