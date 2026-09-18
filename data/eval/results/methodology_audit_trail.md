@@ -1304,8 +1304,15 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - **기준 미충족**: (b) Gemini rep 1 attribute s1 — 라우팅 정답(03)에서 응답 "Seismic_data 드롭다운을 클릭하세요"(Input Data를 바꾸려는 같은 유형; [This Step]에 "Input Data = 4 Dip steered median filter(예시)"가 다시 들어간 결과로 판단) → 실패. (d) 새 손실 2건 — 위 attribute s1과 GPT survey s3(메인 창 화면에서 d3_visualization_01로 교차 워크플로우 오라우팅; dry-run에서는 5/5 정답이었으나 벤치의 rerank가 이 화면에서 낮은 빈도로 흔들림 — iteration 3·4 dry-run에서도 관측된 불안정) → 실패. 규칙 4에 따라 **추가 수정 없이 iteration 5(c01fdda)로 되돌림**: v3-rerun에 병합하지 않음(라이브 코드 = c01fdda 그대로), iteration 6 코드·결과는 branch `v3-iter2`(d326838, 587881a)에 보존, 보고서 사본(`dev_iter6_report.md`, `dev_iter6_criteria.txt`, `routing_dryrun_v3_iter6_x5.md`)만 라이브 결과 디렉터리에 둠. `run_v3.sh`에 `CONTEXT_ASSEMBLY=v4`를 명시.
 - 개발 변경 종료. 동결 후보 = c01fdda(코드) + 이후 문서 커밋. 사용자가 동결한다.
 
-### V3-22. iteration 6 채택 전 확인 — 조립 변경이 rerank 입력에 영향을 줌, 채택 보류 (2026-09-19)
+### V3-22. iteration 6 채택 전 확인 — 조립 변경이 rerank 입력에 영향을 줌, 채택 보류 (2026-09-18)
 - 사용자가 iteration 6(조립 v5) 채택을 결정하면서 조건을 붙였다: 라우팅 코드 경로와 rerank 입력이 v4/v5에서 동일한지 API 호출 없이 확인하고, 동일하지 않으면 채택을 중단한다.
 - 결과(`assembly_routing_coupling_check_iter6.md`): 라우팅 코드 경로는 동일(diff는 `build_context_block` 분기와 상수뿐). 그러나 rerank 프롬프트의 "Instructions already given to the user in this session" 블록이 직전 생성기 응답(`completed_steps`)으로 만들어지고 결정 규칙이 이를 참조하므로, 조립 변경 → 직전 응답 → rerank 입력의 간접 경로가 있다(16스텝 중 13스텝). dry-run은 `completed_steps=[]`라 이 결합을 검사하지 못한다.
 - 수치 정정(V3-21은 수정하지 않음): V3-21의 "벤치 라우팅 63/64"는 라우팅 원인 손실만 센 값. dry-run과 같은 판정 규칙으로 다시 세면 iteration 5(v4) 64/64, iteration 6(v5) 61/64 — Claude attribute s2(03, 손실 없음; 세션 블록 동일·vision 다름), Gemini r1 survey s3(d3_01, 손실 없음; vision·세션 블록 모두 다름), GPT survey s3(d3_01, 손실; 고정부 동일·세션 블록만 다름). 최종 라우팅 코드(21f0dec 이후)에서 survey s3 → d3_01은 dry-run 15/15·iteration 5 벤치 4/4 정답, iteration 6 벤치 2/4 정답으로, 이 오라우팅이 관측된 것은 v5 벤치 2건뿐이다. 인과는 오프라인으로 확정 불가(rerank 재생 실험은 API 비용 발생).
 - 조치: 사용자 조건에 따라 채택 중단. 병합·`run_v3.sh` 변경·dry-run 없음. 라이브 코드 c01fdda 그대로, GT 2f3db66 그대로. 사전등록 초안 §2.5 iteration 6 행의 라우팅 수치를 61/64로 정정. 다음 결정은 사용자에게.
+
+### V3-23. 동결: c01fdda(조립 v4) — 태그 `v3-freeze-c01fdda` @ a03ca59 (2026-09-18)
+- 사용자 결정: V3-22의 확인 결과(조립 변경이 세션 블록을 거쳐 rerank 입력에 들어감, v5 벤치 라우팅 61/64 대 v4 64/64)에 따라 v5를 채택하지 않고 v4로 동결. rerank 재생 실험은 하지 않음. 이후 개발 변경 없음.
+- 태그 대상 HEAD a03ca59는 문서 커밋만 포함하며 코드(`api/`, `data/workflows/`)는 c01fdda, GT(`data/eval/scenarios/`)는 2f3db66과 바이트 단위로 동일함을 `git diff --stat`으로 확인. branch `v3-iter2`(iteration 6, d326838·587881a)는 병합하지 않고 기록용으로 보존.
+- 다음: 사전등록 초안 최종화(이 항목 뒤의 문서 커밋) → 사용자 검토·서명 → `scripts/run_v3.sh`. 서명 전 실행 없음.
+- 날짜 정정: V3-21 제목의 '2026-09-19'는 오기이며 2026-09-18(KST)이 맞다(V3-21 본문은 사용자 지시로 수정하지 않음; V3-22·V3-23 제목은 정정).
+- 사전등록 최종화(V3-23 뒤 커밋): 판정 = QGIS step accuracy를 vanilla_budget(비교 A)·vanilla_vector(비교 B) 각각과 비교(사용자 결정; hall·비용·지연은 기술 지표 — §6.1 hall 규칙 결과 중앙값 6.2%는 그대로 기재), §5.x 위험 (i)–(v), §2.3 G8 동결 구성, §2.5 벤치 모드 라우팅 표. 재집계 정정: iteration 4 벤치 라우팅은 62/64(Gemini r0 attribute s2→03, survey s3→d3_01, 둘 다 손실 없음; V3-15 보고서의 '라우팅 손실 0'은 손실만 센 값)이며 초안의 64/64를 정정. iteration 5 64/64는 재집계로 확인.
