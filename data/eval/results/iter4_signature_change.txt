@@ -1,0 +1,11 @@
+patched api/services/guide_pipeline.py
+patched api/services/evaluation.py
+=== seismic_attribute_03_select_type
+BEFORE: {"expected_dialog": "Attribute Set 3D", "expected_ui_elements": ["attribute_type_energy_selected", "output_energy", "compute_gradient_toggle", "attribute_name_blank", "attribute_list_empty"], "screenshot_keywords": ["Attribute Set 3D", "attribute type: Energy (selected)", "Output (Energy)", "Compute gradient Yes / No", "Time gate (ms) (-28) 28", "Attribute Name (empty) — not yet entered", "attribute list still empty — Add as new not yet clicked", "Attribute set (<not saved>)"]}
+AFTER:  {"expected_dialog": "Attribute Set 3D", "expected_ui_elements": ["attribute_type_energy_selected_not_default", "output_energy", "compute_gradient_toggle", "attribute_name_still_empty", "attribute_list_still_empty"], "screenshot_keywords": ["attribute type changed to Energy (NOT the default Similarity)", "Output (Energy)", "Compute gradient Yes / No", "Attribute Name still (empty) — not yet entered", "attribute list still empty — Add as new not yet clicked", "Time gate (ms) (-28) 28"]}
+
+=== seismic_attribute_04_configure
+BEFORE: {"expected_dialog": "Attribute Set 3D / Save Attribute as / Save Attribute Set", "expected_ui_elements": ["attribute_name_filled_energy_-28_28", "energy_entry_in_attribute_list", "save_on_close_checkbox", "save_attribute_as_dialog", "attribute_set_name_field"], "screenshot_keywords": ["Attribute Name (Energy [-28,+28])", "Energy [-28,+28] listed in the attribute set", "Save on Close (checked)", "Save Attribute as", "Select Output Attribute", "Name (my first attribute set)", "OK", "Attribute set (<not saved>)"]}
+AFTER:  {"expected_dialog": "Attribute Set 3D / Save Attribute as / Save Attribute Set", "expected_ui_elements": ["attribute_name_filled_energy_-28_28", "energy_entry_present_in_attribute_list", "save_on_close_checked", "save_attribute_as_dialog_open", "attribute_set_name_entered"], "screenshot_keywords": ["Attribute Name (Energy [-28,+28]) — field FILLED, not empty", "attribute list contains 'Energy [-28,+28]' — NOT empty", "Save on Close (checked)", "Save Attribute as dialog open", "Select Output Attribute", "Name (my first attribute set) entered"]}
+
+iteration-4 patch applied to C:\Users\user\Downloads\GeoLens-paper-wt-iter2

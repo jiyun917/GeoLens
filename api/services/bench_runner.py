@@ -59,6 +59,35 @@ from api.services.evaluation import (  # noqa: E402
 from api.services.bench_backends import BACKEND_REGISTRY  # noqa: E402
 
 
+_KNOB_KEYS = ["CHROMADB_PATH", "EMBED_MODEL", "GEOLENS_SCORER", "RAG_KG_ENABLED", "RAG_KG_POSITION", "AUX_THINKING_BUDGET",
+              "GEN_TEMPERATURE", "GEN_MAX_TOKENS", "GEMINI_THINKING_BUDGET", "VANILLA_BUDGET_CHARS", "BENCH_MODEL",
+              "ROUTER_MATCHER", "ROUTER_POOL_K", "ROUTER_GRAPH_PRIOR", "ROUTER_TWO_STAGE", "ROUTER_WF_TOPN", "ROUTER_SWITCH_MARGIN",
+              "ROUTER_EVIDENCE_GATE", "ROUTER_EMB_GAP", "ROUTER_CONF_FLOOR", "GOAL_STATE_HINT", "VISION_PROMPT_VERSION",
+              "RERANK_PROMPT_VERSION", "POST_COMPLETION_MODE", "GEN_PROMPT_VERSION", "CONFIDENCE_THRESHOLD", "PARALLEL_RETRIEVAL",
+              "ROUTED_VECTOR_QUERY", "GRAPH_VECTOR_AUX", "FALLBACK_CTX_CHARS", "VECTOR_CTX_CHARS", "GRAPH_CTX_CHARS", "GRAPH_CTX_ITEMS",
+              "GEOLENS_SOFTWARE_ID", "WORKFLOW_DATA_PATH"]
+
+
+def code_version() -> Dict:
+    """Commit hash of the code that produced a result JSON, plus a hash of the
+    uncommitted diff of the code/workflow directories (v3: every run is traceable
+    to a commit or to a specific dirty state)."""
+    import hashlib
+    import subprocess
+    root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    info: Dict = {"commit": None, "branch": None, "dirty": None, "dirty_diff_sha256": None, "worktree": root}
+    try:
+        info["commit"] = subprocess.run(["git", "rev-parse", "HEAD"], cwd=root, capture_output=True, text=True).stdout.strip() or None
+        info["branch"] = subprocess.run(["git", "branch", "--show-current"], cwd=root, capture_output=True, text=True).stdout.strip() or None
+        diff = subprocess.run(["git", "diff", "HEAD", "--", "api", "scripts", "data/workflows", "data/eval/scenarios"],
+                              cwd=root, capture_output=True, text=True, encoding="utf-8", errors="replace").stdout
+        info["dirty"] = bool(diff.strip())
+        info["dirty_diff_sha256"] = hashlib.sha256(diff.encode("utf-8")).hexdigest() if diff.strip() else None
+    except Exception as e:  # git unavailable
+        info["error"] = str(e)
+    return info
+
+
 def run_all(out_path: str, scenarios_dir: str = None, backends: List[str] = None,
             judge_mode: str = None) -> Dict:
     scenarios = load_all_scenarios(scenarios_dir)
@@ -69,9 +98,12 @@ def run_all(out_path: str, scenarios_dir: str = None, backends: List[str] = None
 
     results: Dict = {
         "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "code_version": code_version(),
+        "env_knobs": {k: os.environ.get(k) for k in _KNOB_KEYS if os.environ.get(k) is not None},
         "scenarios": [],
         "aggregate": {},
     }
+    print(f"[bench] code_version={results['code_version']}")
 
     for scen in scenarios:
         sid = scen.get("scenario_id", "?")

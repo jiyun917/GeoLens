@@ -967,6 +967,20 @@ class ScenarioEvaluator:
                 "picked_workflow_id": loc_meta.get("picked_workflow_id"),
                 "route_method":       loc_meta.get("match_method", ""),
                 "fallback_activated": bool(loc_meta.get("fallback_activated", False)),
+                # v3 iteration 2 telemetry (two-stage routing / evidence gate / goal-state hint)
+                "route_candidates":   loc_meta.get("candidates"),
+                "route_emb_top":      loc_meta.get("emb_top"),
+                "route_wf_scores":    loc_meta.get("wf_scores"),
+                "route_selected_wfs": loc_meta.get("selected_wfs"),
+                "route_session_wf":   loc_meta.get("session_wf"),
+                "route_gate_reason":  loc_meta.get("gate_reason", ""),
+                "route_evidence":     loc_meta.get("evidence"),
+                "route_rerank_raw":   loc_meta.get("rerank_raw"),
+                "route_rerank_prompt": (loc_meta.get("rerank_prompt") if save_context else None),
+                "goal_state_node":    loc_meta.get("goal_state_node"),
+                "route_tie_prior":    loc_meta.get("tie_prior"),
+                "route_tie_group":    loc_meta.get("tie_group"),
+                "route_rerank_votes": loc_meta.get("rerank_votes"),
             })
             step_latencies.append(latency)
             step_costs.append(gen_cost)

@@ -92,13 +92,17 @@ PROFILES: Dict[str, Dict[str, str]] = {
         "GRAPH_CTX_CHARS": "800",
         "GRAPH_CTX_ITEMS": "3",
         "CONFIDENCE_THRESHOLD": "0.7",
+        "GOAL_STATE_HINT": "0",
+        "ROUTER_TWO_STAGE": "0",
+        "ROUTER_EVIDENCE_GATE": "0",
+        "GEN_PROMPT_VERSION": "v2",
     },
     "v3": {
         "ROUTER_MATCHER": "embedding",
         "ROUTER_POOL_K": "5",
         "ROUTER_GRAPH_PRIOR": "1",
         "VISION_PROMPT_VERSION": "v3",
-        "RERANK_PROMPT_VERSION": "v3",
+        "RERANK_PROMPT_VERSION": "v4",
         "POST_COMPLETION_MODE": "soft",
         "PARALLEL_RETRIEVAL": "1",
         "ROUTED_VECTOR_QUERY": "goal",
@@ -109,6 +113,14 @@ PROFILES: Dict[str, Dict[str, str]] = {
         "GRAPH_CTX_CHARS": "800",
         "GRAPH_CTX_ITEMS": "3",
         "CONFIDENCE_THRESHOLD": "0.7",
+        # iteration 2 (reduced scope, 2026-09-18): goal-state block ON; two-stage
+        # routing ON HOLD; evidence gate only if the offline table meets the
+        # user criterion (set ROUTER_EVIDENCE_GATE=1 via --env then); generator
+        # naming rule not enabled.
+        "GOAL_STATE_HINT": "1",
+        "ROUTER_TWO_STAGE": "0",
+        "ROUTER_EVIDENCE_GATE": "0",
+        "GEN_PROMPT_VERSION": "v2",
     },
 }
 # Fixed for every profile (Task A / v3 evaluation settings).
@@ -143,8 +155,15 @@ def _prepare_dev_dir(files: List[str]) -> Path:
     return DEV_DIR
 
 
+def _bench_python() -> str:
+    """Interpreter for the bench subprocess: BENCH_PYTHON env, else this repo's .venv,
+    else the interpreter running this script (git worktrees have no .venv of their own)."""
+    cand = os.environ.get("BENCH_PYTHON") or str(ROOT / ".venv" / "Scripts" / "python.exe")
+    return cand if os.path.exists(cand) else sys.executable
+
+
 def _run_bench(out_path: Path, backends: List[str], env: Dict[str, str], model: str) -> int:
-    cmd = [str(ROOT / ".venv/Scripts/python.exe"), "-u", "-m", "api.services.bench_runner",
+    cmd = [_bench_python(), "-u", "-m", "api.services.bench_runner",
            "--model", model, "--backends", *backends,
            "--scenarios", str(DEV_DIR), "--out", str(out_path)]
     log_path = out_path.with_suffix(".log")
