@@ -1,0 +1,7215 @@
+{
+ "tag": "routing_dryrun_v3_iter3_x5",
+ "knobs": {
+  "AUX_THINKING_BUDGET": "0",
+  "CHROMADB_PATH": "C:/Users/user/Downloads/GeoLens-paper/data/chromadb_v4",
+  "CONFIDENCE_THRESHOLD": "0.7",
+  "EMBED_MODEL": "BAAI/bge-m3",
+  "FALLBACK_CTX_CHARS": "3900",
+  "GEN_PROMPT_VERSION": null,
+  "GOAL_STATE_HINT": null,
+  "GRAPH_VECTOR_AUX": "0",
+  "PARALLEL_RETRIEVAL": "1",
+  "POST_COMPLETION_MODE": "soft",
+  "RAG_KG_ENABLED": "0",
+  "RERANK_PROMPT_VERSION": "v3",
+  "ROUTED_VECTOR_QUERY": "goal",
+  "ROUTER_EVIDENCE_GATE": null,
+  "ROUTER_GRAPH_PRIOR": "1",
+  "ROUTER_MATCHER": "embedding",
+  "ROUTER_POOL_K": "5",
+  "ROUTER_TWO_STAGE": null,
+  "VISION_PROMPT_VERSION": "v3"
+ },
+ "code_version": {
+  "commit": "820e9933a6029bb01040f72f6740c424a4a755c8",
+  "branch": "v3-iter2",
+  "dirty": false,
+  "dirty_diff_sha256": null,
+  "worktree": "C:\\Users\\user\\Downloads\\GeoLens-paper-wt-iter2"
+ },
+ "reps": [
+  [
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 0,
+    "rep": 0,
+    "expected": "survey_setup",
+    "picked": "survey_setup_01_open_selection",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "horizon_tracking_01_data_load",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.87"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.791397344047991
+     ],
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.7322298117114013
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6806536391012
+     ],
+     [
+      "horizon_tracking_01_data_load",
+      0.6728024686884359
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.6723491018415684
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"survey_setup_01_open_selection\", \"confidence\": 0.95}",
+    "sec": 32.7,
+    "context_head": "[Current Step] survey_setup > Step 1: Survey Setup and Selection 창 열기\nDescription: OpendTect 첫 실행 시 Survey Setup and Selection 창이 최상단에 열림. Survey Data Root 리스트에서 새 survey를 만들거나 기존 survey를 선택.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 Create New Survey 다이얼로그 열기 — Add (+) 버튼을 클릭하여 Create New Survey 다이얼로그를 여세요\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, "
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 1,
+    "rep": 0,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "prior:1.00",
+       "emb:0.83"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "prior:1.00",
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "horizon_tracking_01_data_load",
+      "sources": [
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8333850222773247
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.752348342593639
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7512846138169553
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6912041291530532
+     ],
+     [
+      "horizon_tracking_01_data_load",
+      0.6483775883544414
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"survey_setup_03_choose_initial_setup\",\n  \"confidence\": 0.95\n}",
+    "sec": 8.83,
+    "context_head": "[Current Step] survey_setup > Step 3: Survey 이름 입력 및 Initial setup 선택\nDescription: Survey name을 입력하고 Initial setup에서 'Scan SEG-Y file(s)' 또는 'Enter X/Y ranges'를 선택. Scan SEG-Y 선택 시 SEG-Y 파일에서 geometry를 자동 추출.\n\n[Possible Next Steps]\n  - Next (sequential) [if: initial_setup == 'Scan SEG-Y file(s)']: Step 4 SEG-Y 파일 스캔 및 geometry 추출 — Next를 눌러 SEG-Y 파일 스캔 단계로 진행하세요\n  - Next (conditional) [if: initial"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 2,
+    "rep": 0,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00",
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00",
+       "emb:0.78"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8152010397187736
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.7821520536122818
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7620791640987566
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7413588970343268
+     ],
+     [
+      "survey_setup_04_scan_segy",
+      0.6544842576741943
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"survey_setup_03_choose_initial_setup\", \"confidence\": 0.95}",
+    "sec": 8.43,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 3,
+    "rep": 0,
+    "expected": "survey_setup",
+    "picked": "survey_setup_05_select_survey",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.66",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.64"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7001095308690509
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6644638514583184
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.662561574747495
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6572285095227658
+     ],
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.6432775891149827
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "survey_setup_05_select_survey",
+    "rerank_raw": "{\"id\": \"survey_setup_05_select_survey\", \"confidence\": 0.9}",
+    "sec": 12.85,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Survey Select — Main Window 진입' — Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 달성.\nCompletion state of this step: expected dialog/screen: OpendTect Main Window; expected elements: main menu bar, toolbar, tree scene panel, 3d scene panel, title bar survey n"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 0,
+    "rep": 0,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_01_main_window_ready",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.72",
+       "clip:0.76"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_05_all_slices_displayed",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7352697230841893
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7226464065708418
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.690798430083329
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6903418041071101
+     ],
+     [
+      "d3_visualization_05_all_slices_displayed",
+      0.6769249296086511
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"d3_visualization_01_main_window_ready\", \"confidence\": 0.9}",
+    "sec": 9.99,
+    "context_head": "[Current Step] d3_visualization > Step 1: Main Window / Tree scene 준비 상태\nDescription: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은 비어 있는 초기 상태.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 In-line 슬라이스 추가 — Tree scene의 In-line 카테고리를 우클릭하고 Add Data (첫번째 옵션) 또는 Add Default Data를 선택하세요\n\n[Manual Context (graph)]\n[Secti"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 1,
+    "rep": 0,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_02_add_inline",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "prior:1.00",
+       "emb:0.71",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7361835838061466
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.7152256987924862
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7116655811238299
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7101272711907646
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.7087010864434237
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_02_add_inline\",\n  \"confidence\": 0.9\n}",
+    "sec": 11.08,
+    "context_head": "[Current Step] d3_visualization > Step 2: In-line 슬라이스 추가\nDescription: Tree scene의 Elements > In-line 카테고리 노드를 우클릭하고 'Add Data' (첫번째 옵션) 또는 'Add Default Data'를 선택하여 3D Scene에 In-line 슬라이스를 표시. 'Add and Select Data...' 경로 진입 시 Select Cube 다이얼로그의 파란색 화살표 아이콘을 클릭.\n\n[Possible Next Steps]\n  - Next (sequential): Step 3 Cross-line 슬라이스 추가 — In-line이 표시되면 Cross-line 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Co"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 2,
+    "rep": 0,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_03_add_crossline",
+    "conf": 0.7,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.71",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_05_all_slices_displayed",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.83"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7158736182276344
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7063130077787179
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.690805191696585
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6691453989220056
+     ],
+     [
+      "d3_visualization_05_all_slices_displayed",
+      0.6569711512189437
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_03_add_crossline\",\n  \"confidence\": 0.7\n}",
+    "sec": 10.03,
+    "context_head": "[Current Step] d3_visualization > Step 3: Cross-line 슬라이스 추가\nDescription: Tree scene의 Elements > Cross-line 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Cross-line 슬라이스를 추가.\n\n[Possible Next Steps]\n  - Next (sequential): Step 4 Z-slice 슬라이스 추가 — Cross-line이 표시되면 Z-slice 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Context (graph)]\n[Section: 1.3.1 Tree, Scene & Elements, Page: 45, Source:"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 3,
+    "rep": 0,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_04_add_zslice",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "prior:1.00",
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.67",
+       "clip:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "fault_interpretation_01_data_load",
+      "sources": [
+       "emb:0.63"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.81"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.81"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_04_add_zslice",
+      0.6809178205968853
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.680556361724941
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6709463359166307
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6601141335096162
+     ],
+     [
+      "fault_interpretation_01_data_load",
+      0.6258336119536163
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "d3_visualization_04_add_zslice",
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_04_add_zslice\",\n  \"confidence\": 0.9\n}",
+    "sec": 11.71,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Z-slice 슬라이스 추가' — Tree scene의 Elements > Z-slice 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Z-slice(시간/깊이 슬라이스)를 추가.\nCompletion state of this step: expected dialog/screen: OpendTect Main Window (In-line + Cross-line displayed) / Context menu on Z-slice; expected elements: inline slice visible, crossline slic"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 0,
+    "rep": 0,
+    "expected": "seismic_attribute_02_open_attribute_tool",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.81"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.88"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.8133634475857469
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7373172136152919
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7369028081245454
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7003495548982654
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6868937625322302
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"seismic_attribute_04_configure\", \"confidence\": 0.9}",
+    "sec": 9.79,
+    "context_head": "[Current Step] seismic_attribute > Step 4: 속성 파라미터 최종 편집 + attribute set 저장\nDescription: 매뉴얼 §1.5.1a steps 3-5 결과의 통합 노드: Time gate 값 (-28..+28) 및 Attribute Name ('Energy [-28,+28]') 이미 입력 완료 → Add as new 로 set 에 추가 → Save on Close 체크 → Close 로 Attribute Set 3D 창 닫기 → Save Attribute Set 다이얼로그 오픈 → set 이름 'my first attribute set' 입력 → OK 로 저장. 이 세 스텝 (2, 3, 4) 을 모두 담당.\n\n[Possible Next Steps]\n  - Ne"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 1,
+    "rep": 0,
+    "expected": "seismic_attribute_03_select_type",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7868767707928669
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7572648465231623
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7435386844846502
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7313175817001142
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6986679641787834
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 11.29,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 2,
+    "rep": 0,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7878284979471949
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7649225365864167
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7429700784025065
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7302086198782992
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.69818758588906
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 9.14,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 3,
+    "rep": 0,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7700153546912369
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7598127617781417
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7549333572359617
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.723512532303911
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6817672652640444
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 10.65,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 4,
+    "rep": 0,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.91"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_04_configure",
+      0.7715685619995162
+     ],
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7624394489943759
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7060916661269129
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.6896329337390564
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6540948892581113
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 10.71,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 5,
+    "rep": 0,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.68",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_03_add_crossline",
+      0.6847321784708725
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6809313431654838
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6770658100483385
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6581770333179497
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.656059931467278
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 11.45,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 6,
+    "rep": 0,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.69",
+       "clip:0.85"
+      ]
+     },
+     {
+      "id": "fault_interpretation_01_data_load",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.87"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.7164580547187444
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7023958062704048
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6901055242364459
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6875233191411181
+     ],
+     [
+      "fault_interpretation_01_data_load",
+      0.6803497059995491
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 10.1,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 7,
+    "rep": 0,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.70",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_04_add_zslice",
+      0.7035978078005549
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6996103181819285
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.6955800917565454
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.672276749202489
+     ],
+     [
+      "d3_visualization_02_add_inline",
+      0.6699502254124109
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 12.22,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   }
+  ],
+  [
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 0,
+    "rep": 1,
+    "expected": "survey_setup",
+    "picked": "survey_setup_01_open_selection",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "horizon_tracking_01_data_load",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.87"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.791397344047991
+     ],
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.7322298117114013
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6806536391012
+     ],
+     [
+      "horizon_tracking_01_data_load",
+      0.6728024686884359
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.6723491018415684
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"survey_setup_01_open_selection\", \"confidence\": 0.95}",
+    "sec": 7.28,
+    "context_head": "[Current Step] survey_setup > Step 1: Survey Setup and Selection 창 열기\nDescription: OpendTect 첫 실행 시 Survey Setup and Selection 창이 최상단에 열림. Survey Data Root 리스트에서 새 survey를 만들거나 기존 survey를 선택.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 Create New Survey 다이얼로그 열기 — Add (+) 버튼을 클릭하여 Create New Survey 다이얼로그를 여세요\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, "
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 1,
+    "rep": 1,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "prior:1.00",
+       "emb:0.83"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "prior:1.00",
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8321867000064478
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.7551229863287248
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.752084377456881
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6918439784003668
+     ],
+     [
+      "survey_setup_04_scan_segy",
+      0.6531435695510343
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"survey_setup_03_choose_initial_setup\",\n  \"confidence\": 0.95\n}",
+    "sec": 7.82,
+    "context_head": "[Current Step] survey_setup > Step 3: Survey 이름 입력 및 Initial setup 선택\nDescription: Survey name을 입력하고 Initial setup에서 'Scan SEG-Y file(s)' 또는 'Enter X/Y ranges'를 선택. Scan SEG-Y 선택 시 SEG-Y 파일에서 geometry를 자동 추출.\n\n[Possible Next Steps]\n  - Next (sequential) [if: initial_setup == 'Scan SEG-Y file(s)']: Step 4 SEG-Y 파일 스캔 및 geometry 추출 — Next를 눌러 SEG-Y 파일 스캔 단계로 진행하세요\n  - Next (conditional) [if: initial"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 2,
+    "rep": 1,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00",
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00",
+       "emb:0.78"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8152010397187736
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.7821520536122818
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7620791640987566
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7413588970343268
+     ],
+     [
+      "survey_setup_04_scan_segy",
+      0.6544842576741943
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"survey_setup_03_choose_initial_setup\", \"confidence\": 0.95}",
+    "sec": 9.25,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 3,
+    "rep": 1,
+    "expected": "survey_setup",
+    "picked": "survey_setup_05_select_survey",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.66",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.64"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7001095308690509
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6644638514583184
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.662561574747495
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6572285095227658
+     ],
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.6432775891149827
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "survey_setup_05_select_survey",
+    "rerank_raw": "{\"id\": \"survey_setup_05_select_survey\", \"confidence\": 0.9}",
+    "sec": 14.76,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Survey Select — Main Window 진입' — Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 달성.\nCompletion state of this step: expected dialog/screen: OpendTect Main Window; expected elements: main menu bar, toolbar, tree scene panel, 3d scene panel, title bar survey n"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 0,
+    "rep": 1,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_01_main_window_ready",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.72",
+       "clip:0.76"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_05_all_slices_displayed",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7352697230841893
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7226464065708418
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.690798430083329
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6903418041071101
+     ],
+     [
+      "d3_visualization_05_all_slices_displayed",
+      0.6769249296086511
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"d3_visualization_01_main_window_ready\", \"confidence\": 0.9}",
+    "sec": 10.75,
+    "context_head": "[Current Step] d3_visualization > Step 1: Main Window / Tree scene 준비 상태\nDescription: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은 비어 있는 초기 상태.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 In-line 슬라이스 추가 — Tree scene의 In-line 카테고리를 우클릭하고 Add Data (첫번째 옵션) 또는 Add Default Data를 선택하세요\n\n[Manual Context (graph)]\n[Secti"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 1,
+    "rep": 1,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_02_add_inline",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "prior:1.00",
+       "emb:0.71",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7361835838061466
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.7152256987924862
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7116655811238299
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7101272711907646
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.7087010864434237
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"d3_visualization_02_add_inline\", \"confidence\": 0.9}",
+    "sec": 9.53,
+    "context_head": "[Current Step] d3_visualization > Step 2: In-line 슬라이스 추가\nDescription: Tree scene의 Elements > In-line 카테고리 노드를 우클릭하고 'Add Data' (첫번째 옵션) 또는 'Add Default Data'를 선택하여 3D Scene에 In-line 슬라이스를 표시. 'Add and Select Data...' 경로 진입 시 Select Cube 다이얼로그의 파란색 화살표 아이콘을 클릭.\n\n[Possible Next Steps]\n  - Next (sequential): Step 3 Cross-line 슬라이스 추가 — In-line이 표시되면 Cross-line 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Co"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 2,
+    "rep": 1,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_03_add_crossline",
+    "conf": 0.7,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.71",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_05_all_slices_displayed",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.83"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7158736182276344
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7063130077787179
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.690805191696585
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6691453989220056
+     ],
+     [
+      "d3_visualization_05_all_slices_displayed",
+      0.6569711512189437
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_03_add_crossline\",\n  \"confidence\": 0.7\n}",
+    "sec": 9.14,
+    "context_head": "[Current Step] d3_visualization > Step 3: Cross-line 슬라이스 추가\nDescription: Tree scene의 Elements > Cross-line 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Cross-line 슬라이스를 추가.\n\n[Possible Next Steps]\n  - Next (sequential): Step 4 Z-slice 슬라이스 추가 — Cross-line이 표시되면 Z-slice 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Context (graph)]\n[Section: 1.3.1 Tree, Scene & Elements, Page: 45, Source:"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 3,
+    "rep": 1,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_04_add_zslice",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "prior:1.00",
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00",
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.69",
+       "clip:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.81"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.81"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7021419523427612
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6946018290612745
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6914928901052448
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6729144040587488
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.646502661996982
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "d3_visualization_04_add_zslice",
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_04_add_zslice\",\n  \"confidence\": 0.9\n}",
+    "sec": 13.26,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Z-slice 슬라이스 추가' — Tree scene의 Elements > Z-slice 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Z-slice(시간/깊이 슬라이스)를 추가.\nCompletion state of this step: expected dialog/screen: OpendTect Main Window (In-line + Cross-line displayed) / Context menu on Z-slice; expected elements: inline slice visible, crossline slic"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 0,
+    "rep": 1,
+    "expected": "seismic_attribute_02_open_attribute_tool",
+    "picked": "seismic_attribute_03_select_type",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.81"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.88"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.8133634475857469
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7373172136152919
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7369028081245454
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7003495548982654
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6868937625322302
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_03_select_type\",\n  \"confidence\": 0.9\n}",
+    "sec": 10.04,
+    "context_head": "[Current Step] seismic_attribute > Step 3: 속성 유형 + 입력 데이터 선택 (파라미터 편집 직전)\nDescription: 매뉴얼 §1.5.1a step 2 결과: Attribute Type = Energy 선택 완료, Input Data = 4 Dip steered median filter 선택 완료. Energy-specific 파라미터 패널이 이제 표시되지만 사용자는 아직 Time gate 값을 편집하지 않음. Compute gradient 토글이 기본 No 상태. Attribute Name 필드는 blank 또는 default. 사용자가 이제 Time gate 값 (-28..+28) 을 입력하려는 시점.\n\n[Possible Next Steps]\n  - Next (seq"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 1,
+    "rep": 1,
+    "expected": "seismic_attribute_03_select_type",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "prior:1.00",
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7868767707928669
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7572648465231623
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7435386844846502
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7313175817001142
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6986679641787834
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.9\n}",
+    "sec": 9.77,
+    "context_head": "[Current Step] seismic_attribute > Step 4: 속성 파라미터 최종 편집 + attribute set 저장\nDescription: 매뉴얼 §1.5.1a steps 3-5 결과의 통합 노드: Time gate 값 (-28..+28) 및 Attribute Name ('Energy [-28,+28]') 이미 입력 완료 → Add as new 로 set 에 추가 → Save on Close 체크 → Close 로 Attribute Set 3D 창 닫기 → Save Attribute Set 다이얼로그 오픈 → set 이름 'my first attribute set' 입력 → OK 로 저장. 이 세 스텝 (2, 3, 4) 을 모두 담당.\n\n[Possible Next Steps]\n  - Ne"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 2,
+    "rep": 1,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7878284979471949
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7649225365864167
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7429700784025065
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7302086198782992
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.69818758588906
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 10.13,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 3,
+    "rep": 1,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7700153546912369
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7598127617781417
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7549333572359617
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.723512532303911
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6817672652640444
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 10.39,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 4,
+    "rep": 1,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.91"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_04_configure",
+      0.7739969402527701
+     ],
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7702311992192348
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.713991993827969
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.686625510366415
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6588971536316942
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.9\n}",
+    "sec": 9.96,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 5,
+    "rep": 1,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.67",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_03_add_crossline",
+      0.6801156818113315
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6744426761757774
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6726976758329513
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.663560006598154
+     ],
+     [
+      "d3_visualization_02_add_inline",
+      0.659818557998201
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_06_display\",\n  \"confidence\": 0.9\n}",
+    "sec": 13.37,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 6,
+    "rep": 1,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.69",
+       "clip:0.85"
+      ]
+     },
+     {
+      "id": "fault_interpretation_01_data_load",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.87"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.7164580547187444
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7023958062704048
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6901055242364459
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6875233191411181
+     ],
+     [
+      "fault_interpretation_01_data_load",
+      0.6803497059995491
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 10.51,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 7,
+    "rep": 1,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.69",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_04_add_zslice",
+      0.6939604172303093
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.6916861445404294
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.691575023508749
+     ],
+     [
+      "d3_visualization_02_add_inline",
+      0.669622800122091
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6578623806390154
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 10.97,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   }
+  ],
+  [
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 0,
+    "rep": 2,
+    "expected": "survey_setup",
+    "picked": "survey_setup_01_open_selection",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "horizon_tracking_01_data_load",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.87"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.791397344047991
+     ],
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.7322298117114013
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6806536391012
+     ],
+     [
+      "horizon_tracking_01_data_load",
+      0.6728024686884359
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.6723491018415684
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"survey_setup_01_open_selection\", \"confidence\": 0.95}",
+    "sec": 7.34,
+    "context_head": "[Current Step] survey_setup > Step 1: Survey Setup and Selection 창 열기\nDescription: OpendTect 첫 실행 시 Survey Setup and Selection 창이 최상단에 열림. Survey Data Root 리스트에서 새 survey를 만들거나 기존 survey를 선택.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 Create New Survey 다이얼로그 열기 — Add (+) 버튼을 클릭하여 Create New Survey 다이얼로그를 여세요\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, "
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 1,
+    "rep": 2,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "prior:1.00",
+       "emb:0.83"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "prior:1.00",
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8321867000064478
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.7551229863287248
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.752084377456881
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6918439784003668
+     ],
+     [
+      "survey_setup_04_scan_segy",
+      0.6531435695510343
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"survey_setup_03_choose_initial_setup\",\n  \"confidence\": 0.95\n}",
+    "sec": 8.4,
+    "context_head": "[Current Step] survey_setup > Step 3: Survey 이름 입력 및 Initial setup 선택\nDescription: Survey name을 입력하고 Initial setup에서 'Scan SEG-Y file(s)' 또는 'Enter X/Y ranges'를 선택. Scan SEG-Y 선택 시 SEG-Y 파일에서 geometry를 자동 추출.\n\n[Possible Next Steps]\n  - Next (sequential) [if: initial_setup == 'Scan SEG-Y file(s)']: Step 4 SEG-Y 파일 스캔 및 geometry 추출 — Next를 눌러 SEG-Y 파일 스캔 단계로 진행하세요\n  - Next (conditional) [if: initial"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 2,
+    "rep": 2,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00",
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00",
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.83"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8273963394374819
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.7861947722679072
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7448550009901569
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7365382065598145
+     ],
+     [
+      "survey_setup_04_scan_segy",
+      0.6569473393109249
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"survey_setup_03_choose_initial_setup\",\n  \"confidence\": 0.95\n}",
+    "sec": 10.78,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 3,
+    "rep": 2,
+    "expected": "survey_setup",
+    "picked": "survey_setup_05_select_survey",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.66",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.64"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7001095308690509
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6644638514583184
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.662561574747495
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6572285095227658
+     ],
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.6432775891149827
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "survey_setup_05_select_survey",
+    "rerank_raw": "{\"id\": \"survey_setup_05_select_survey\", \"confidence\": 0.9}",
+    "sec": 13.35,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Survey Select — Main Window 진입' — Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 달성.\nCompletion state of this step: expected dialog/screen: OpendTect Main Window; expected elements: main menu bar, toolbar, tree scene panel, 3d scene panel, title bar survey n"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 0,
+    "rep": 2,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_01_main_window_ready",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.72",
+       "clip:0.76"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_05_all_slices_displayed",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7352697230841893
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7226464065708418
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.690798430083329
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6903418041071101
+     ],
+     [
+      "d3_visualization_05_all_slices_displayed",
+      0.6769249296086511
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"d3_visualization_01_main_window_ready\", \"confidence\": 0.9}",
+    "sec": 9.92,
+    "context_head": "[Current Step] d3_visualization > Step 1: Main Window / Tree scene 준비 상태\nDescription: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은 비어 있는 초기 상태.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 In-line 슬라이스 추가 — Tree scene의 In-line 카테고리를 우클릭하고 Add Data (첫번째 옵션) 또는 Add Default Data를 선택하세요\n\n[Manual Context (graph)]\n[Secti"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 1,
+    "rep": 2,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_02_add_inline",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "prior:1.00",
+       "emb:0.70",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.733095304503885
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.7111929567995624
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.7080681863766941
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7034134112087529
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6992620809978428
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_02_add_inline\",\n  \"confidence\": 0.9\n}",
+    "sec": 11.34,
+    "context_head": "[Current Step] d3_visualization > Step 2: In-line 슬라이스 추가\nDescription: Tree scene의 Elements > In-line 카테고리 노드를 우클릭하고 'Add Data' (첫번째 옵션) 또는 'Add Default Data'를 선택하여 3D Scene에 In-line 슬라이스를 표시. 'Add and Select Data...' 경로 진입 시 Select Cube 다이얼로그의 파란색 화살표 아이콘을 클릭.\n\n[Possible Next Steps]\n  - Next (sequential): Step 3 Cross-line 슬라이스 추가 — In-line이 표시되면 Cross-line 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Co"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 2,
+    "rep": 2,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_03_add_crossline",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00",
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.72",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.83"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7155708668003263
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7092812392486552
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6863296582332039
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6706897966806219
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.6571733840535385
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_03_add_crossline\",\n  \"confidence\": 0.9\n}",
+    "sec": 9.38,
+    "context_head": "[Current Step] d3_visualization > Step 3: Cross-line 슬라이스 추가\nDescription: Tree scene의 Elements > Cross-line 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Cross-line 슬라이스를 추가.\n\n[Possible Next Steps]\n  - Next (sequential): Step 4 Z-slice 슬라이스 추가 — Cross-line이 표시되면 Z-slice 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Context (graph)]\n[Section: 1.3.1 Tree, Scene & Elements, Page: 45, Source:"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 3,
+    "rep": 2,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_04_add_zslice",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "prior:1.00",
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.67",
+       "clip:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "fault_interpretation_01_data_load",
+      "sources": [
+       "emb:0.63"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.81"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.81"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_04_add_zslice",
+      0.6809178205968853
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.680556361724941
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6709463359166307
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6601141335096162
+     ],
+     [
+      "fault_interpretation_01_data_load",
+      0.6258336119536163
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "d3_visualization_04_add_zslice",
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_04_add_zslice\",\n  \"confidence\": 0.9\n}",
+    "sec": 11.05,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Z-slice 슬라이스 추가' — Tree scene의 Elements > Z-slice 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Z-slice(시간/깊이 슬라이스)를 추가.\nCompletion state of this step: expected dialog/screen: OpendTect Main Window (In-line + Cross-line displayed) / Context menu on Z-slice; expected elements: inline slice visible, crossline slic"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 0,
+    "rep": 2,
+    "expected": "seismic_attribute_02_open_attribute_tool",
+    "picked": "seismic_attribute_03_select_type",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.81"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.88"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.8133634475857469
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7373172136152919
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7369028081245454
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7003495548982654
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6868937625322302
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_03_select_type\",\n  \"confidence\": 0.9\n}",
+    "sec": 11.72,
+    "context_head": "[Current Step] seismic_attribute > Step 3: 속성 유형 + 입력 데이터 선택 (파라미터 편집 직전)\nDescription: 매뉴얼 §1.5.1a step 2 결과: Attribute Type = Energy 선택 완료, Input Data = 4 Dip steered median filter 선택 완료. Energy-specific 파라미터 패널이 이제 표시되지만 사용자는 아직 Time gate 값을 편집하지 않음. Compute gradient 토글이 기본 No 상태. Attribute Name 필드는 blank 또는 default. 사용자가 이제 Time gate 값 (-28..+28) 을 입력하려는 시점.\n\n[Possible Next Steps]\n  - Next (seq"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 1,
+    "rep": 2,
+    "expected": "seismic_attribute_03_select_type",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "prior:1.00",
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7868767707928669
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7572648465231623
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7435386844846502
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7313175817001142
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6986679641787834
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.9\n}",
+    "sec": 9.94,
+    "context_head": "[Current Step] seismic_attribute > Step 4: 속성 파라미터 최종 편집 + attribute set 저장\nDescription: 매뉴얼 §1.5.1a steps 3-5 결과의 통합 노드: Time gate 값 (-28..+28) 및 Attribute Name ('Energy [-28,+28]') 이미 입력 완료 → Add as new 로 set 에 추가 → Save on Close 체크 → Close 로 Attribute Set 3D 창 닫기 → Save Attribute Set 다이얼로그 오픈 → set 이름 'my first attribute set' 입력 → OK 로 저장. 이 세 스텝 (2, 3, 4) 을 모두 담당.\n\n[Possible Next Steps]\n  - Ne"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 2,
+    "rep": 2,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7878284979471949
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7649225365864167
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7429700784025065
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7302086198782992
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.69818758588906
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 9.56,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 3,
+    "rep": 2,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7710384952277174
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7610644384404264
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7556963024707185
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.724636229895649
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6841812483253001
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 9.7,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 4,
+    "rep": 2,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.91"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_04_configure",
+      0.7715685619995162
+     ],
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7624394489943759
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7060916661269129
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.6896329337390564
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6540948892581113
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 8.87,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 5,
+    "rep": 2,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.67",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_03_add_crossline",
+      0.6801156818113315
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6744426761757774
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6726976758329513
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.663560006598154
+     ],
+     [
+      "d3_visualization_02_add_inline",
+      0.659818557998201
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 12.02,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 6,
+    "rep": 2,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "fault_interpretation_01_data_load",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "horizon_tracking_01_data_load",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.87"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.85"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.7195231117551899
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7035744206150236
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6978269316680145
+     ],
+     [
+      "fault_interpretation_01_data_load",
+      0.6919060337746614
+     ],
+     [
+      "horizon_tracking_01_data_load",
+      0.6904663180682107
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_06_display\",\n  \"confidence\": 0.9\n}",
+    "sec": 10.18,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 7,
+    "rep": 2,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.70",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_04_add_zslice",
+      0.7035978078005549
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6996103181819285
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.6955800917565454
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.672276749202489
+     ],
+     [
+      "d3_visualization_02_add_inline",
+      0.6699502254124109
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 12.89,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   }
+  ],
+  [
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 0,
+    "rep": 3,
+    "expected": "survey_setup",
+    "picked": "survey_setup_01_open_selection",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "horizon_tracking_01_data_load",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.87"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.791397344047991
+     ],
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.7322298117114013
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6806536391012
+     ],
+     [
+      "horizon_tracking_01_data_load",
+      0.6728024686884359
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.6723491018415684
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"survey_setup_01_open_selection\", \"confidence\": 0.95}",
+    "sec": 6.6,
+    "context_head": "[Current Step] survey_setup > Step 1: Survey Setup and Selection 창 열기\nDescription: OpendTect 첫 실행 시 Survey Setup and Selection 창이 최상단에 열림. Survey Data Root 리스트에서 새 survey를 만들거나 기존 survey를 선택.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 Create New Survey 다이얼로그 열기 — Add (+) 버튼을 클릭하여 Create New Survey 다이얼로그를 여세요\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, "
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 1,
+    "rep": 3,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "prior:1.00",
+       "emb:0.83"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "prior:1.00",
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "horizon_tracking_01_data_load",
+      "sources": [
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8333850222773247
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.752348342593639
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7512846138169553
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6912041291530532
+     ],
+     [
+      "horizon_tracking_01_data_load",
+      0.6483775883544414
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"survey_setup_03_choose_initial_setup\",\n  \"confidence\": 0.95\n}",
+    "sec": 8.52,
+    "context_head": "[Current Step] survey_setup > Step 3: Survey 이름 입력 및 Initial setup 선택\nDescription: Survey name을 입력하고 Initial setup에서 'Scan SEG-Y file(s)' 또는 'Enter X/Y ranges'를 선택. Scan SEG-Y 선택 시 SEG-Y 파일에서 geometry를 자동 추출.\n\n[Possible Next Steps]\n  - Next (sequential) [if: initial_setup == 'Scan SEG-Y file(s)']: Step 4 SEG-Y 파일 스캔 및 geometry 추출 — Next를 눌러 SEG-Y 파일 스캔 단계로 진행하세요\n  - Next (conditional) [if: initial"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 2,
+    "rep": 3,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00",
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00",
+       "emb:0.78"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8152010397187736
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.7821520536122818
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7620791640987566
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7413588970343268
+     ],
+     [
+      "survey_setup_04_scan_segy",
+      0.6544842576741943
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"survey_setup_03_choose_initial_setup\", \"confidence\": 0.95}",
+    "sec": 8.19,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 3,
+    "rep": 3,
+    "expected": "survey_setup",
+    "picked": "survey_setup_05_select_survey",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.66",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.64"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7001095308690509
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6644638514583184
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.662561574747495
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6572285095227658
+     ],
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.6432775891149827
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "survey_setup_05_select_survey",
+    "rerank_raw": "{\"id\": \"survey_setup_05_select_survey\", \"confidence\": 0.9}",
+    "sec": 13.75,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Survey Select — Main Window 진입' — Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 달성.\nCompletion state of this step: expected dialog/screen: OpendTect Main Window; expected elements: main menu bar, toolbar, tree scene panel, 3d scene panel, title bar survey n"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 0,
+    "rep": 3,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_01_main_window_ready",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.72",
+       "clip:0.76"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_05_all_slices_displayed",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7352697230841893
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7226464065708418
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.690798430083329
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6903418041071101
+     ],
+     [
+      "d3_visualization_05_all_slices_displayed",
+      0.6769249296086511
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"d3_visualization_01_main_window_ready\", \"confidence\": 0.9}",
+    "sec": 10.06,
+    "context_head": "[Current Step] d3_visualization > Step 1: Main Window / Tree scene 준비 상태\nDescription: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은 비어 있는 초기 상태.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 In-line 슬라이스 추가 — Tree scene의 In-line 카테고리를 우클릭하고 Add Data (첫번째 옵션) 또는 Add Default Data를 선택하세요\n\n[Manual Context (graph)]\n[Secti"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 1,
+    "rep": 3,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_02_add_inline",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "prior:1.00",
+       "emb:0.70",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.733095304503885
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.7111929567995624
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.7080681863766941
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7034134112087529
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6992620809978428
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_02_add_inline\",\n  \"confidence\": 0.9\n}",
+    "sec": 11.08,
+    "context_head": "[Current Step] d3_visualization > Step 2: In-line 슬라이스 추가\nDescription: Tree scene의 Elements > In-line 카테고리 노드를 우클릭하고 'Add Data' (첫번째 옵션) 또는 'Add Default Data'를 선택하여 3D Scene에 In-line 슬라이스를 표시. 'Add and Select Data...' 경로 진입 시 Select Cube 다이얼로그의 파란색 화살표 아이콘을 클릭.\n\n[Possible Next Steps]\n  - Next (sequential): Step 3 Cross-line 슬라이스 추가 — In-line이 표시되면 Cross-line 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Co"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 2,
+    "rep": 3,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_03_add_crossline",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00",
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.72",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.83"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7155708668003263
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7092812392486552
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6863296582332039
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6706897966806219
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.6571733840535385
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_03_add_crossline\",\n  \"confidence\": 0.9\n}",
+    "sec": 8.86,
+    "context_head": "[Current Step] d3_visualization > Step 3: Cross-line 슬라이스 추가\nDescription: Tree scene의 Elements > Cross-line 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Cross-line 슬라이스를 추가.\n\n[Possible Next Steps]\n  - Next (sequential): Step 4 Z-slice 슬라이스 추가 — Cross-line이 표시되면 Z-slice 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Context (graph)]\n[Section: 1.3.1 Tree, Scene & Elements, Page: 45, Source:"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 3,
+    "rep": 3,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_04_add_zslice",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "prior:1.00",
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.67",
+       "clip:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "fault_interpretation_01_data_load",
+      "sources": [
+       "emb:0.63"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.81"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.81"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_04_add_zslice",
+      0.6809178205968853
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.680556361724941
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6709463359166307
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6601141335096162
+     ],
+     [
+      "fault_interpretation_01_data_load",
+      0.6258336119536163
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "d3_visualization_04_add_zslice",
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_04_add_zslice\",\n  \"confidence\": 0.9\n}",
+    "sec": 12.0,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Z-slice 슬라이스 추가' — Tree scene의 Elements > Z-slice 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Z-slice(시간/깊이 슬라이스)를 추가.\nCompletion state of this step: expected dialog/screen: OpendTect Main Window (In-line + Cross-line displayed) / Context menu on Z-slice; expected elements: inline slice visible, crossline slic"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 0,
+    "rep": 3,
+    "expected": "seismic_attribute_02_open_attribute_tool",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.80"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.88"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.8045096601472803
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7388695710683303
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7315482918092097
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7126226209398486
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.699196658219872
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 10.71,
+    "context_head": "[Current Step] seismic_attribute > Step 4: 속성 파라미터 최종 편집 + attribute set 저장\nDescription: 매뉴얼 §1.5.1a steps 3-5 결과의 통합 노드: Time gate 값 (-28..+28) 및 Attribute Name ('Energy [-28,+28]') 이미 입력 완료 → Add as new 로 set 에 추가 → Save on Close 체크 → Close 로 Attribute Set 3D 창 닫기 → Save Attribute Set 다이얼로그 오픈 → set 이름 'my first attribute set' 입력 → OK 로 저장. 이 세 스텝 (2, 3, 4) 을 모두 담당.\n\n[Possible Next Steps]\n  - Ne"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 1,
+    "rep": 3,
+    "expected": "seismic_attribute_03_select_type",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.78"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.784268386720305
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7571069893539084
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7453087265401968
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7289137657430044
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.7032429433120964
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 11.19,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 2,
+    "rep": 3,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7878284979471949
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7649225365864167
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7429700784025065
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7302086198782992
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.69818758588906
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 9.26,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 3,
+    "rep": 3,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7710384952277174
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7610644384404264
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7556963024707185
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.724636229895649
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6841812483253001
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 8.75,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 4,
+    "rep": 3,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.91"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_04_configure",
+      0.7715685619995162
+     ],
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7624394489943759
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7060916661269129
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.6896329337390564
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6540948892581113
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 10.4,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 5,
+    "rep": 3,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.67",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_03_add_crossline",
+      0.6801156818113315
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6744426761757774
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6726976758329513
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.663560006598154
+     ],
+     [
+      "d3_visualization_02_add_inline",
+      0.659818557998201
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 12.34,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 6,
+    "rep": 3,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.69",
+       "clip:0.85"
+      ]
+     },
+     {
+      "id": "fault_interpretation_01_data_load",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.87"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.7164580547187444
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7023958062704048
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6901055242364459
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6875233191411181
+     ],
+     [
+      "fault_interpretation_01_data_load",
+      0.6803497059995491
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_06_display\",\n  \"confidence\": 0.9\n}",
+    "sec": 10.27,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 7,
+    "rep": 3,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.70",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_04_add_zslice",
+      0.7035978078005549
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6996103181819285
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.6955800917565454
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.672276749202489
+     ],
+     [
+      "d3_visualization_02_add_inline",
+      0.6699502254124109
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 12.93,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   }
+  ],
+  [
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 0,
+    "rep": 4,
+    "expected": "survey_setup",
+    "picked": "survey_setup_01_open_selection",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "horizon_tracking_01_data_load",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.87"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.791397344047991
+     ],
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.7322298117114013
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6806536391012
+     ],
+     [
+      "horizon_tracking_01_data_load",
+      0.6728024686884359
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.6723491018415684
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"survey_setup_01_open_selection\", \"confidence\": 0.95}",
+    "sec": 6.77,
+    "context_head": "[Current Step] survey_setup > Step 1: Survey Setup and Selection 창 열기\nDescription: OpendTect 첫 실행 시 Survey Setup and Selection 창이 최상단에 열림. Survey Data Root 리스트에서 새 survey를 만들거나 기존 survey를 선택.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 Create New Survey 다이얼로그 열기 — Add (+) 버튼을 클릭하여 Create New Survey 다이얼로그를 여세요\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, "
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 1,
+    "rep": 4,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "prior:1.00",
+       "emb:0.83"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "prior:1.00",
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "horizon_tracking_01_data_load",
+      "sources": [
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8333850222773247
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.752348342593639
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7512846138169553
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.6912041291530532
+     ],
+     [
+      "horizon_tracking_01_data_load",
+      0.6483775883544414
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"survey_setup_03_choose_initial_setup\",\n  \"confidence\": 0.95\n}",
+    "sec": 9.11,
+    "context_head": "[Current Step] survey_setup > Step 3: Survey 이름 입력 및 Initial setup 선택\nDescription: Survey name을 입력하고 Initial setup에서 'Scan SEG-Y file(s)' 또는 'Enter X/Y ranges'를 선택. Scan SEG-Y 선택 시 SEG-Y 파일에서 geometry를 자동 추출.\n\n[Possible Next Steps]\n  - Next (sequential) [if: initial_setup == 'Scan SEG-Y file(s)']: Step 4 SEG-Y 파일 스캔 및 geometry 추출 — Next를 눌러 SEG-Y 파일 스캔 단계로 진행하세요\n  - Next (conditional) [if: initial"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 2,
+    "rep": 4,
+    "expected": "survey_setup",
+    "picked": "survey_setup_03_choose_initial_setup",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00",
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00",
+       "emb:0.78"
+      ]
+     },
+     {
+      "id": "survey_setup_02_open_new_survey_dialog",
+      "sources": [
+       "emb:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.92"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_02_open_new_survey_dialog",
+      0.8152010397187736
+     ],
+     [
+      "survey_setup_03_choose_initial_setup",
+      0.7821520536122818
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7620791640987566
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7413588970343268
+     ],
+     [
+      "survey_setup_04_scan_segy",
+      0.6544842576741943
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"survey_setup_03_choose_initial_setup\", \"confidence\": 0.95}",
+    "sec": 10.47,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__survey_setup__01",
+    "step": 3,
+    "rep": 4,
+    "expected": "survey_setup",
+    "picked": "d3_visualization_01_main_window_ready",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "survey_setup_04_scan_segy",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "prior:1.00",
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "survey_setup_03_choose_initial_setup",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.72",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7268118409404322
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7242155516279805
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.7000045358346604
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6908337963921584
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.6841098491904183
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"d3_visualization_01_main_window_ready\", \"confidence\": 0.9}",
+    "sec": 9.82,
+    "context_head": "[Current Step] d3_visualization > Step 1: Main Window / Tree scene 준비 상태\nDescription: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은 비어 있는 초기 상태.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 In-line 슬라이스 추가 — Tree scene의 In-line 카테고리를 우클릭하고 Add Data (첫번째 옵션) 또는 Add Default Data를 선택하세요\n\n[Manual Context (graph)]\n[Secti"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 0,
+    "rep": 4,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_01_main_window_ready",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.71",
+       "clip:0.76"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_05_all_slices_displayed",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7227698565065224
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7069398796846526
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6931631286689068
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6804083773342012
+     ],
+     [
+      "d3_visualization_05_all_slices_displayed",
+      0.6643583716227244
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_01_main_window_ready\",\n  \"confidence\": 0.9\n}",
+    "sec": 9.86,
+    "context_head": "[Current Step] d3_visualization > Step 1: Main Window / Tree scene 준비 상태\nDescription: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은 비어 있는 초기 상태.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 In-line 슬라이스 추가 — Tree scene의 In-line 카테고리를 우클릭하고 Add Data (첫번째 옵션) 또는 Add Default Data를 선택하세요\n\n[Manual Context (graph)]\n[Secti"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 1,
+    "rep": 4,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_02_add_inline",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "prior:1.00",
+       "emb:0.70",
+       "clip:0.75"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.75"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.733095304503885
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.7111929567995624
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.7080681863766941
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.7034134112087529
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6992620809978428
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_02_add_inline\",\n  \"confidence\": 0.9\n}",
+    "sec": 9.98,
+    "context_head": "[Current Step] d3_visualization > Step 2: In-line 슬라이스 추가\nDescription: Tree scene의 Elements > In-line 카테고리 노드를 우클릭하고 'Add Data' (첫번째 옵션) 또는 'Add Default Data'를 선택하여 3D Scene에 In-line 슬라이스를 표시. 'Add and Select Data...' 경로 진입 시 Select Cube 다이얼로그의 파란색 화살표 아이콘을 클릭.\n\n[Possible Next Steps]\n  - Next (sequential): Step 3 Cross-line 슬라이스 추가 — In-line이 표시되면 Cross-line 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Co"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 2,
+    "rep": 4,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_03_add_crossline",
+    "conf": 0.7,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.71",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_05_all_slices_displayed",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.83"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7158736182276344
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.7063130077787179
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.690805191696585
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6691453989220056
+     ],
+     [
+      "d3_visualization_05_all_slices_displayed",
+      0.6569711512189437
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_03_add_crossline\",\n  \"confidence\": 0.7\n}",
+    "sec": 10.08,
+    "context_head": "[Current Step] d3_visualization > Step 3: Cross-line 슬라이스 추가\nDescription: Tree scene의 Elements > Cross-line 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Cross-line 슬라이스를 추가.\n\n[Possible Next Steps]\n  - Next (sequential): Step 4 Z-slice 슬라이스 추가 — Cross-line이 표시되면 Z-slice 카테고리를 우클릭하고 Add Data를 선택하세요\n\n[Manual Context (graph)]\n[Section: 1.3.1 Tree, Scene & Elements, Page: 45, Source:"
+   },
+   {
+    "scenario": "opendtect__3d_visualization__01",
+    "step": 3,
+    "rep": 4,
+    "expected": "d3_visualization",
+    "picked": "d3_visualization_04_add_zslice",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "prior:1.00",
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "prior:1.00",
+       "emb:0.65"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.69",
+       "clip:0.79"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.81"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.81"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_05_select_survey",
+      0.7021419523427612
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6946018290612745
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6914928901052448
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6729144040587488
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.646502661996982
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "d3_visualization_04_add_zslice",
+    "rerank_raw": "{\n  \"id\": \"d3_visualization_04_add_zslice\",\n  \"confidence\": 0.9\n}",
+    "sec": 13.61,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Z-slice 슬라이스 추가' — Tree scene의 Elements > Z-slice 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Z-slice(시간/깊이 슬라이스)를 추가.\nCompletion state of this step: expected dialog/screen: OpendTect Main Window (In-line + Cross-line displayed) / Context menu on Z-slice; expected elements: inline slice visible, crossline slic"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 0,
+    "rep": 4,
+    "expected": "seismic_attribute_02_open_attribute_tool",
+    "picked": "seismic_attribute_03_select_type",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.81"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.88"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.8133634475857469
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7373172136152919
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7369028081245454
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7003495548982654
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6868937625322302
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_03_select_type\",\n  \"confidence\": 0.9\n}",
+    "sec": 9.75,
+    "context_head": "[Current Step] seismic_attribute > Step 3: 속성 유형 + 입력 데이터 선택 (파라미터 편집 직전)\nDescription: 매뉴얼 §1.5.1a step 2 결과: Attribute Type = Energy 선택 완료, Input Data = 4 Dip steered median filter 선택 완료. Energy-specific 파라미터 패널이 이제 표시되지만 사용자는 아직 Time gate 값을 편집하지 않음. Compute gradient 토글이 기본 No 상태. Attribute Name 필드는 blank 또는 default. 사용자가 이제 Time gate 값 (-28..+28) 을 입력하려는 시점.\n\n[Possible Next Steps]\n  - Next (seq"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 1,
+    "rep": 4,
+    "expected": "seismic_attribute_03_select_type",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": false,
+    "candidates": [
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "prior:1.00",
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.79"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7868767707928669
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7572648465231623
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7435386844846502
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.7313175817001142
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6986679641787834
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\"id\": \"seismic_attribute_04_configure\", \"confidence\": 0.95}",
+    "sec": 9.64,
+    "context_head": "[Current Step] seismic_attribute > Step 4: 속성 파라미터 최종 편집 + attribute set 저장\nDescription: 매뉴얼 §1.5.1a steps 3-5 결과의 통합 노드: Time gate 값 (-28..+28) 및 Attribute Name ('Energy [-28,+28]') 이미 입력 완료 → Add as new 로 set 에 추가 → Save on Close 체크 → Close 로 Attribute Set 3D 창 닫기 → Save Attribute Set 다이얼로그 오픈 → set 이름 'my first attribute set' 입력 → OK 로 저장. 이 세 스텝 (2, 3, 4) 을 모두 담당.\n\n[Possible Next Steps]\n  - Ne"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 2,
+    "rep": 4,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.78"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.74"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.73"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7818583783497274
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7650691566160005
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7445525338712355
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.726328036557157
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6977165081956415
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 9.09,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 3,
+    "rep": 4,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.95,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.76"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.75"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.90"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.89"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7700153546912369
+     ],
+     [
+      "seismic_attribute_04_configure",
+      0.7598127617781417
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.7549333572359617
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.723512532303911
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6817672652640444
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.95\n}",
+    "sec": 11.03,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 4,
+    "rep": 4,
+    "expected": "seismic_attribute_04_configure",
+    "picked": "seismic_attribute_04_configure",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00",
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_02_open_attribute_tool",
+      "sources": [
+       "emb:0.77"
+      ]
+     },
+     {
+      "id": "seismic_attribute_01_ready_to_start",
+      "sources": [
+       "emb:0.71"
+      ]
+     },
+     {
+      "id": "seismic_attribute_03_select_type",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.91"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "clip:0.90"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "seismic_attribute_04_configure",
+      0.7739969402527701
+     ],
+     [
+      "seismic_attribute_02_open_attribute_tool",
+      0.7702311992192348
+     ],
+     [
+      "seismic_attribute_01_ready_to_start",
+      0.713991993827969
+     ],
+     [
+      "seismic_attribute_03_select_type",
+      0.686625510366415
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6588971536316942
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": null,
+    "rerank_raw": "{\n  \"id\": \"seismic_attribute_04_configure\",\n  \"confidence\": 0.9\n}",
+    "sec": 8.86,
+    "context_head": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actuall"
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 5,
+    "rep": 4,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_05_compute",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_04_configure",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.68",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.66"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_03_add_crossline",
+      0.6847321784708725
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6809313431654838
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6770658100483385
+     ],
+     [
+      "survey_setup_01_open_selection",
+      0.6581770333179497
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.656059931467278
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 11.37,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 6,
+    "rep": 4,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "survey_setup_01_open_selection",
+      "sources": [
+       "emb:0.72"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.69"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.69",
+       "clip:0.85"
+      ]
+     },
+     {
+      "id": "fault_interpretation_01_data_load",
+      "sources": [
+       "emb:0.68"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.87"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "survey_setup_01_open_selection",
+      0.7164580547187444
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.7023958062704048
+     ],
+     [
+      "d3_visualization_04_add_zslice",
+      0.6901055242364459
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6875233191411181
+     ],
+     [
+      "fault_interpretation_01_data_load",
+      0.6803497059995491
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 11.38,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   },
+   {
+    "scenario": "opendtect__attribute_computation__01",
+    "step": 7,
+    "rep": 4,
+    "expected": "seismic_attribute_06_display",
+    "picked": "seismic_attribute_06_display",
+    "conf": 0.9,
+    "method": "llm",
+    "fallback": false,
+    "gate_reason": "",
+    "route_ok": true,
+    "candidates": [
+     {
+      "id": "seismic_attribute_07_qc_analyze",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "seismic_attribute_06_display",
+      "sources": [
+       "prior:1.00"
+      ]
+     },
+     {
+      "id": "d3_visualization_04_add_zslice",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "d3_visualization_01_main_window_ready",
+      "sources": [
+       "emb:0.70",
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "d3_visualization_03_add_crossline",
+      "sources": [
+       "emb:0.70"
+      ]
+     },
+     {
+      "id": "survey_setup_05_select_survey",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "d3_visualization_02_add_inline",
+      "sources": [
+       "emb:0.67"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "sources": [
+       "clip:0.82"
+      ]
+     },
+     {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "sources": [
+       "clip:0.80"
+      ]
+     }
+    ],
+    "emb_top": [
+     [
+      "d3_visualization_04_add_zslice",
+      0.7035978078005549
+     ],
+     [
+      "d3_visualization_01_main_window_ready",
+      0.6996103181819285
+     ],
+     [
+      "d3_visualization_03_add_crossline",
+      0.6955800917565454
+     ],
+     [
+      "survey_setup_05_select_survey",
+      0.672276749202489
+     ],
+     [
+      "d3_visualization_02_add_inline",
+      0.6699502254124109
+     ]
+    ],
+    "evidence": null,
+    "goal_state_node": "seismic_attribute_06_display",
+    "rerank_raw": "{\"id\": \"seismic_attribute_06_display\", \"confidence\": 0.9}",
+    "sec": 14.53,
+    "context_head": "[Goal State Check]\nThe workflow's final step appears to be reached: 'Inline 우클릭 → Add > Attribute → Select dialog → Energy 렌더 (on-the-fly)' — 매뉴얼 §1.5.1a steps 6-9 통합: (a) Tree scene 에 In-line default data 추가 및 inline 번호 250 변경 후 표시된 inline 을 우클릭, (b) Add > Attribute submenu 선택으로 Select dialog 오픈 (label 'Select Layer 2'), Attributes radio (on-the-fly) 선택 시 'Energy [-28,+28]' 표시, (c) OK 로 렌더링 확정 → "
+   }
+  ]
+ ]
+}

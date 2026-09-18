@@ -102,7 +102,7 @@ PROFILES: Dict[str, Dict[str, str]] = {
         "ROUTER_POOL_K": "5",
         "ROUTER_GRAPH_PRIOR": "1",
         "VISION_PROMPT_VERSION": "v3",
-        "RERANK_PROMPT_VERSION": "v3",
+        "RERANK_PROMPT_VERSION": "v4",
         "POST_COMPLETION_MODE": "soft",
         "PARALLEL_RETRIEVAL": "1",
         "ROUTED_VECTOR_QUERY": "goal",
@@ -155,8 +155,15 @@ def _prepare_dev_dir(files: List[str]) -> Path:
     return DEV_DIR
 
 
+def _bench_python() -> str:
+    """Interpreter for the bench subprocess: BENCH_PYTHON env, else this repo's .venv,
+    else the interpreter running this script (git worktrees have no .venv of their own)."""
+    cand = os.environ.get("BENCH_PYTHON") or str(ROOT / ".venv" / "Scripts" / "python.exe")
+    return cand if os.path.exists(cand) else sys.executable
+
+
 def _run_bench(out_path: Path, backends: List[str], env: Dict[str, str], model: str) -> int:
-    cmd = [str(ROOT / ".venv/Scripts/python.exe"), "-u", "-m", "api.services.bench_runner",
+    cmd = [_bench_python(), "-u", "-m", "api.services.bench_runner",
            "--model", model, "--backends", *backends,
            "--scenarios", str(DEV_DIR), "--out", str(out_path)]
     log_path = out_path.with_suffix(".log")

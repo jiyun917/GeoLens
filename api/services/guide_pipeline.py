@@ -268,6 +268,11 @@ GOAL_STATE_MARGIN = float(os.environ.get("GOAL_STATE_MARGIN", "0.02"))
 # iteration 3 (c): near-tie graph-order prior among candidates sharing an expected_dialog.
 ROUTER_TIE_MARGIN = float(os.environ.get("ROUTER_TIE_MARGIN", "0.02"))
 ROUTER_TIE_PRIOR = os.environ.get("ROUTER_TIE_PRIOR", "1") != "0"
+# iteration 4 (final routing change): the graph-order prior applies to every group of
+# candidates that share an expected_dialog, regardless of score gap, and the rerank gets a
+# contrastive list of the members' distinguishing field states (ROUTER_GROUP_PRIOR=0 → the
+# iteration-3 near-tie rule).
+ROUTER_GROUP_PRIOR = os.environ.get("ROUTER_GROUP_PRIOR", "1") != "0"
 # iteration 3 (d, optional): parallel rerank calls with majority vote (1 = single call).
 RERANK_VOTES = max(1, int(os.environ.get("RERANK_VOTES", "1")))
 _TERMINAL_STEP_TYPES = {"verification", "terminal", "end"}
@@ -277,7 +282,7 @@ def _norm_text(s: Any) -> str:
     return re.sub(r"[^0-9a-z가-힣]+", "", str(s or "").lower())
 # v3 rerank prompt (calibrated confidence bands, session context); v2 = the
 # unified4 prompt with the 'bias toward picking' decision rule.
-RERANK_PROMPT_VERSION = os.environ.get("RERANK_PROMPT_VERSION", "v3").strip().lower()
+RERANK_PROMPT_VERSION = os.environ.get("RERANK_PROMPT_VERSION", "v4").strip().lower()
 
 _RERANK_RULE_V2 = """DECISION RULE — bias toward PICKING a candidate:
 - If ANY candidate's title/description shares the dialog name, screen name, or topic with the visual_state, PICK that candidate. Confidence in [0.5, 0.9] is fine for partial matches; use higher only when title essentially names what's on screen.
@@ -291,6 +296,21 @@ _RERANK_WIZARD_V2 = """IMPORTANT — wizard dialogs stay on screen after their a
 _RERANK_WIZARD_V3 = """NOTE — multi-action steps and dialogs that stay open:
 - A step may cover several actions. If the screen still shows that step's dialog and the instructions already given do not cover all of its actions, pick that step AGAIN (do not skip ahead).
 - If the instructions already given complete the step and the screen is unchanged, prefer the NEXT step of the same workflow; if none fits, still pick the current step."""
+
+_RERANK_RULE_V4 = """DECISION RULE (state match):
+- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.
+- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.
+- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.
+- Return "none" when NO candidate is even loosely related (different application, different module, totally unrelated topic).
+
+CONFIDENCE (recorded, not used as a gate; below {thr} is treated as unsure):
+- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.
+- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.
+- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate."""
+
+_RERANK_WIZARD_V4 = """NOTE — steps that span several actions and dialogs that stay open:
+- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.
+- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step."""
 
 _RERANK_RULE_V3 = """DECISION RULE:
 - Compare the EXACT on-screen strings in visual_state (window/dialog titles, button and field labels, tree entries) with each candidate's dialog/elements/keywords. A candidate whose expected dialog or elements literally appear on screen is a strong match.
@@ -620,11 +640,14 @@ class GuideRAGPipeline:
         _LAST_LOCALIZE_META["candidates"] = [{"id": c["node"].get("id"), "sources": cand_sources.get(c["node"].get("id"), [])}
                                              for c in candidates]
         tie_pref: Optional[str] = None
+        self._last_group = []
         if ROUTER_TIE_PRIOR and emb_top:
             tie_pref = self._tie_prior(emb_top, last_node_id)
             if tie_pref:
                 # list the preferred node first among the candidates
                 candidates.sort(key=lambda c: 0 if c["node"].get("id") == tie_pref else 1)
+        tie_group = list(getattr(self, "_last_group", []) or []) if tie_pref else []
+        _LAST_LOCALIZE_META["tie_group"] = tie_group
         _LAST_LOCALIZE_META["tie_prior"] = tie_pref
         _LAST_LOCALIZE_META["wf_scores"] = [(w, round(s, 3)) for w, s in wf_scores[:4]]
         _LAST_LOCALIZE_META["selected_wfs"] = list(selected_wfs)
@@ -646,6 +669,8 @@ class GuideRAGPipeline:
                 session_wf=session_wf,
                 selected_wfs=selected_wfs,
                 tie_pref=tie_pref,
+                tie_group=tie_group,
+                last_node_id=last_node_id,
             )
             if picked_id:
                 for c in candidates:
@@ -681,6 +706,8 @@ class GuideRAGPipeline:
         session_wf: Optional[str] = None,
         selected_wfs: Optional[List[str]] = None,
         tie_pref: Optional[str] = None,
+        tie_group: Optional[List[str]] = None,
+        last_node_id: Optional[str] = None,
     ) -> Tuple[Optional[str], float]:
         """Ask Gemini Flash to pick the candidate whose workflow step best
         matches the user's current situation. Returns (node_id, confidence 0-1)
@@ -748,9 +775,12 @@ class GuideRAGPipeline:
                 "\n".join(f"  {i + 1}. {s[:160]}" for i, s in enumerate(recent))
         tie_block = ""
         if RERANK_PROMPT_VERSION != "v2" and tie_pref:
-            tie_block = (f"\nGraph-order prior: several candidates share the same dialog and score almost equally; "
-                         f"by workflow order the expected one is {tie_pref}. Pick a different one of them only if a field "
-                         f"value in visual_state (field_values / labels) contradicts it.")
+            if ROUTER_GROUP_PRIOR and tie_group:
+                tie_block = self._group_contrast_block(tie_group, tie_pref, last_node_id)
+            else:
+                tie_block = (f"\nGraph-order prior: several candidates share the same dialog and score almost equally; "
+                             f"by workflow order the expected one is {tie_pref}. Pick a different one of them only if a field "
+                             f"value in visual_state (field_values / labels) contradicts it.")
         wf_block = ""
         if RERANK_PROMPT_VERSION != "v2" and ROUTER_TWO_STAGE and (selected_wfs or session_wf):
             wf_block = (f"\nWorkflow(s) selected from the user goal: {', '.join(selected_wfs or [])}."
@@ -767,10 +797,16 @@ class GuideRAGPipeline:
             expected_block = ""
             rule_block = _RERANK_RULE_V2
             wizard_block = _RERANK_WIZARD_V2
-        else:
+        elif RERANK_PROMPT_VERSION == "v3":
             rule_block = _RERANK_RULE_V3.replace("{thr}", f"{CONFIDENCE_THRESHOLD:.2f}")
             wizard_block = _RERANK_WIZARD_V3
+        else:
+            rule_block = _RERANK_RULE_V4.replace("{thr}", f"{CONFIDENCE_THRESHOLD:.2f}")
+            wizard_block = _RERANK_WIZARD_V4
 
+        task_line = ("Pick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given."
+                     if RERANK_PROMPT_VERSION not in ("v2", "v3") else
+                     "Pick the candidate whose step description best matches what the user is CURRENTLY doing or trying to do next — aligned to the goal, the visible UI state, and the instructions already given.")
         prompt = f"""You rank workflow steps by how well they match the user's current UI situation.
 
 {goal_line}
@@ -779,7 +815,7 @@ Current UI visual_state JSON: {vs_line}{visited_line}{session_block}{expected_bl
 Candidate workflow steps (from a software manual):
 {candidate_block}
 
-Pick the candidate whose step description best matches what the user is CURRENTLY doing or trying to do next — aligned to the goal, the visible UI state, and the instructions already given.
+{task_line}
 
 {rule_block}
 
@@ -1092,6 +1128,36 @@ Respond with JSON only:
                 print(f"[GUIDE] CLIP match failed: {e}")
         return clip_node, clip_score, clip_top
 
+    def _group_contrast_block(self, group: List[str], pref: str, last_node_id: Optional[str]) -> str:
+        """Iteration 4: contrastive description of candidates that share a dialog —
+        each member's keywords/elements that no other member of the group carries —
+        plus the graph-order expectation. Generic: built from the signatures only."""
+        members = [self.graph.get_node(nid) for nid in group if self.graph.get_node(nid)]
+        if len(members) < 2:
+            return ""
+        def kws(n):
+            sig = n.get("visual_signature") or {}
+            out = [str(k) for k in (sig.get("screenshot_keywords") or [])]
+            out += [str(e).replace("_", " ") for e in (sig.get("expected_ui_elements") or [])]
+            return out
+        norm_sets = {n["id"]: {_norm_text(k) for k in kws(n)} for n in members}
+        dialog = ((members[0].get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0].strip()
+        lines = [f"\nCandidates sharing the dialog '{dialog}' — tell them apart by FIELD STATES "
+                 f"(visual_state.field_values / labels), not by the dialog title:"]
+        for n in sorted(members, key=lambda m: m.get("step_number", 0)):
+            others = set().union(*(s for nid, s in norm_sets.items() if nid != n["id"]))
+            distinct = [k for k in kws(n) if _norm_text(k) not in others][:8]
+            lines.append(f"  - {n['id']} (step {n.get('step_number')}): " + ("; ".join(distinct) if distinct else "(no distinguishing state listed)"))
+        if last_node_id and last_node_id in group:
+            why = f"the last confirmed step {last_node_id} is in this group, so its successor is expected next"
+        elif last_node_id:
+            why = f"no step of this group is confirmed yet (last confirmed: {last_node_id}), so the earliest step of the group is expected"
+        else:
+            why = "no step is confirmed yet, so the earliest step of the group is expected"
+        lines.append(f"Graph-order prior: {pref} — {why}. Pick another member of the group ONLY if a field state listed for it "
+                     f"is literally present in visual_state and the prior's states are contradicted.")
+        return "\n".join(lines)
+
     def _tie_prior(self, emb_top: List[Tuple[str, float]], last_node_id: Optional[str]) -> Optional[str]:
         """Iteration 3 (c): among the top embedding candidates that share the same
         expected_dialog and lie within ROUTER_TIE_MARGIN of the group's best score,
@@ -1108,13 +1174,16 @@ Respond with JSON only:
             key = _norm_text(((n.get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0])
             if key:
                 groups.setdefault(key, []).append((nid, score))
-        for key, members in groups.items():
+        # iteration 4: consider the group holding the top-scoring candidate first
+        ordered = sorted(groups.items(), key=lambda kv: -max(s for _, s in kv[1]))
+        for key, members in ordered:
             if len(members) < 2:
                 continue
             best = max(s for _, s in members)
-            tied = [nid for nid, s in members if best - s <= ROUTER_TIE_MARGIN]
+            tied = [nid for nid, s in members if ROUTER_GROUP_PRIOR or best - s <= ROUTER_TIE_MARGIN]
             if len(tied) < 2:
                 continue
+            self._last_group = list(tied)
             if last_node_id and self.graph.get_node(last_node_id):
                 allowed = {last_node_id} | {n["id"] for n in self.graph.get_next_steps(last_node_id)}
                 by_graph = [nid for nid in tied if nid in allowed]
