@@ -243,3 +243,4 @@ QGIS 워크플로우는 노드 5개(01 setup, 02 action, 03 setup, 04 setup, 05 
 - 작성: 유지윤 / 검토: 외부 검토 Claude(채팅), 2026-09-18 / 확정 시각(UTC): 2026-09-18T08:09:04Z (서명 커밋 시각; 태그 `v3-prereg-signed`)
 - 동결 태그: `v3-freeze-c01fdda` @ a03ca59 (2026-09-18 16:46 KST; 코드 c01fdda, GT 2f3db66). 서명 전 run_v3.sh 미실행.
 - 서명 후 첫 벤치 실행 시각을 아래에 append한다.
+- 첫 벤치 실행 시각(UTC): 2026-09-18T08:09:34Z — `bash scripts/run_v3.sh` (순차: 3 모델 × 10회 → long_context ×10 → QGIS 3 모델 × 10회), 서명 커밋 0f52154 / 태그 `v3-prereg-signed`, 로그 `data/eval/results/v3_bench.log`.
