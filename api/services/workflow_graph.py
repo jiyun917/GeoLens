@@ -110,7 +110,17 @@ class WorkflowGraph:
     def get_top_k_nodes(
         self, visual_state: Dict, k: int = 3, hint_workflow_id: Optional[str] = None
     ) -> List[Tuple[Dict, float]]:
-        """Return top-k (node, score) matches by visual_signature keyword overlap."""
+        """Return top-k (node, score) candidates for the current visual state.
+
+        v3 (ROUTER_MATCHER=embedding, default): cosine similarity between the
+        vision output and each node's text under the retrieval embedder — see
+        node_matcher.py for the diagnosis that motivated it.
+        v2 (ROUTER_MATCHER=substring): fraction of visual_signature strings
+        found verbatim in the flattened visual state."""
+        from . import node_matcher
+        if node_matcher.matcher_kind() == "embedding":
+            return node_matcher.top_k(visual_state, self.get_all_nodes(), k=k,
+                                      hint_workflow_id=hint_workflow_id)
         vs_text = " ".join(
             [
                 str(visual_state.get("current_dialog", "")),
@@ -147,6 +157,11 @@ class WorkflowGraph:
           "current_action": "..."
         }
         """
+        from . import node_matcher
+        if node_matcher.matcher_kind() == "embedding":
+            top = node_matcher.top_k(visual_state, self.get_all_nodes(), k=1,
+                                     hint_workflow_id=hint_workflow_id)
+            return (top[0][0], top[0][1]) if top else (None, 0.0)
         # Flatten visual_state into a searchable text
         vs_text = " ".join(
             [

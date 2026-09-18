@@ -77,11 +77,20 @@ export function MultimodalInput({
 
     if (isDemo) return;
 
-    setSuggestedActions([
-      { text: "Pick horizons in OpendTect", icon: "monitor" },
-      { text: "Display well logs in Petrel", icon: "monitor" },
-      { text: "Create seismic cross-section", icon: "globe" },
-    ]);
+    const softwareId = (process.env.NEXT_PUBLIC_SOFTWARE_ID || "opendtect").toLowerCase();
+    if (softwareId === "qgis") {
+      setSuggestedActions([
+        { text: "Create a buffer around road network in QGIS", icon: "monitor" },
+        { text: "Clip vector layer by extent in QGIS", icon: "monitor" },
+        { text: "Load shapefile and view attribute table", icon: "globe" },
+      ]);
+    } else {
+      setSuggestedActions([
+        { text: "Pick horizons in OpendTect", icon: "monitor" },
+        { text: "Display well logs in Petrel", icon: "monitor" },
+        { text: "Create seismic cross-section", icon: "globe" },
+      ]);
+    }
   }, [customSuggestions]);
 
   useEffect(() => {

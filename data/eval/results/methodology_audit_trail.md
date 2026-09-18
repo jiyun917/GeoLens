@@ -251,15 +251,928 @@ Aggregation 스크립트의 glob 패턴이 top-level만 매칭하므로 discarde
 
 ---
 
+## 결함 #7 — unified3 longctx 연속 실행 → Gemini spend-based rate limit 연쇄 실패 (2026-08-07)
+
+### 증상
+unified3 Phase B-4 (Gemini long_context × 5 replicates) 를 wrapper 가
+간격 없이 순차 실행 → 총 76 × 429 (RESOURCE_EXHAUSTED) 발생 →
+replicate 별 empty response 비율:
+
+| Replicate | 시각 | Empty | 비율 |
+|---|---|---|---|
+| r1 | 17:07 | 2/16 | 12.5% |
+| r2 | 17:12 | 12/16 | 75% |
+| r3 | 17:16 | 4/16 | 25% |
+| r4 | 17:21 | 16/16 | **100%** |
+| r5 | 17:24 | 16/16 | **100%** |
+| **총합** | | 50/80 | **62.5%** |
+
+### 근본 원인
+두 종류의 429 가 겹침:
+1. **Per-minute token quota** (`generate_content_paid_tier_input_token_count`,
+   limit: 2,000,000 tokens/min): long_context 스텝당 ~226K token 이므로
+   9개 정도 스텝이면 이 quota 소진. retry 로직이 10-15초 대기 후 재시도
+   하면 회복.
+2. **Spend-based rate limit** ("You exceeded your spend-based rate limit"):
+   최근 소비 속도 대비 billing tier 상한 초과. 이건 명시적 retry_delay
+   없이 광범위 throttle → retry 성공 확률 시간 갈수록 낮아짐.
+
+간격 없는 순차 실행 → r1 (retries 성공) → r2 (일부 실패) → r3 (경계) →
+r4/r5 (spend-based limit 완전 발동, 모든 retry 실패).
+
+### 왜 unified2 때는 안 걸렸나
+unified2 longctx 는 2 시나리오 (survey_setup + 3d_visualization) × 4
+스텝 = 8 스텝/rep 로 스텝당 비용은 같아도 rep 당 API 콜 부하가 절반.
+unified3 는 3 시나리오 (attribute_computation 추가) × 평균 5.3 스텝 =
+16 스텝/rep 로 spend rate 가 두 배 이상 → 순차 실행 시 tier 초과.
+
+### 폐기 결정 근거 (unified2 qwen r2 선례 일관성)
+unified2 qwen r2 는 **단 1 step 의 aux 503** 열화만으로도 replicate 전체
+폐기. 이 기준 적용 시:
+- r1 (12.5% empty), r3 (25% empty) 도 폐기 대상 (>0% 열화 = 폐기)
+- **5개 replicate 전량 폐기 필요**
+
+더 중요한 규범적 이유: **long_context 는 논문에서 열세를 보여야 할
+비교군** (hybrid 대비 106.6× 비싸고 정확도 낮음). Empty 는 0점 처리
+되므로 열화된 데이터를 사용하면 long_context 점수가 실제보다 낮게
+나옴 → "자해된 상대를 이긴 기록" → 리뷰어가 empty count 발견 시
+핵심 반박 실험 (long_context 비교) 전체 의심 대상. **베이스라인에게도
+공정한 기회를 준 깨끗한 5 반복** 이 유일한 방어.
+
+### 재발 방지 (recovery wrapper 에 반영)
+`scripts/run_unified3_recovery.sh` 신규 작성:
+
+1. **Per-replicate quota probe**: 매 replicate 시작 전 tiny Gemini 요청으로
+   quota 여유 확인. 429 반환 시 최대 5분 대기 후 재확인. probe 통과 후
+   실제 replicate 시작. r4/r5 100% 실패의 근본 대응.
+2. **Inter-replicate sleep 60s**: replicate 간 60초 sleep 으로
+   per-minute quota (2M tokens/min) 회복 시간 확보.
+3. **Recovery 로그 별도 파일**: `data/eval/results/unified3_recovery.log`
+   에 quota probe 결과 + replicate 별 exit code + 최종 empty-response
+   audit 자동 실행.
+
+### 폐기 파일 위치
+- `data/eval/results/discarded/unified3_longctx/` — 5개 corrupt longctx 파일 보존 (감사)
+- `data/eval/results/discarded/unified3_qwen_r1_transient/` — Qwen r1 (아래 결함 #8)
+
+---
+
+## 결함 #8 — Qwen unified3 r1 transient <think>-only response (2026-08-07)
+
+### 증상
+Qwen r1 파일 480 스텝 중 1 스텝에서 empty response.
+- 시나리오: `opendtect__survey_setup__01`
+- 백엔드: `full_system`
+- Step: 1
+- Latency: 27.174s
+- output_tokens: **1024** (max-tokens 정확 도달)
+- cost_usd: 0 (self-hosted)
+
+### 근본 원인
+Qwen3-235B-Instruct 가 `<think>...</think>` 추론 블록만 max_tokens=1024
+까지 채우고 실제 answer text 를 생성하지 못한 채 종료. `bench_backends.py:
+_strip_thinking()` 이 think 블록을 제거하고 나면 남은 응답이 empty.
+Qwen instruct 모델의 알려진 transient 실패 패턴 (unified2 qwen r2 폐기
+사례와 동일).
+
+### 폐기 결정 근거
+- unified2 선례: qwen r2 는 aux 503 1 step 만으로도 전체 replicate 폐기
+- 0.2% empty (1/480) 도 위 원칙 적용 시 폐기 대상
+- "환경적 실패는 일괄 폐기·재실행" 원칙 (Methods 서술) 예외 없이 성립
+
+### 재실행 계획
+`run_unified3_recovery.sh` Phase R-1 에서 Qwen r1 만 재실행 (NAS vLLM
+서버 살아있음 확인, 30분 소요 예상).
+
+### 재실행 결과 (2026-08-07)
+- Qwen r1 재실행: **성공** (480 스텝 0 empty). NAS vLLM 서버 (<INTERNAL_HOST>
+  post-reboot 4-GPU 회복 상태) 로 정상 응답. Main matrix 최종:
+  **1920/1920 valid, 0 empty across 4 models**.
+
+---
+
+## 결함 #9 — Gemini prepayment credits depletion 중 recovery 실행 실패 (2026-08-07)
+
+### 증상
+Recovery run Phase R-2 longctx 반복 실행 중, r1-r3 은 완전 클린 (각 16 스텝
+0 empty) 로 성공. **r4 실행 중 429 급증** (14/16 empty, 87.5% 손실).
+Recovery 즉시 중단.
+
+### 근본 원인
+429 메시지 유형이 이전 rate-limit-류와 다름:
+```
+"Your prepayment credits are depleted. Please go to AI Studio at
+ https://ai.studio/projects to manage your project and billing."
+```
+= rate limit 이 아니라 **Gemini API 계정 prepayment 잔액 완전 소진**. Retry
+로 회복 불가. Sleep 이나 대기로도 해결 안 됨. 크레딧 재충전 없이는 무한
+실패.
+
+### 원인 시나리오 (누적 비용 계산)
+- unified2 초기 실행 (이전 세션): ~$15-20
+- unified3 초기 실행 (Phase B-3 3모델 + longctx 초기 실패): ~$30
+  - 3 모델 (gemini/claude/gpt) × 5 rep 정상
+  - Longctx r1-r5 초기 실행: 76 × 429 retry + 부분 성공 = ~$27 소진
+- unified3 recovery (Phase R-1 Qwen + Phase R-2 longctx r1-r3 성공): ~$18
+- **누계 ~$63-68** (사용자 초기 $70 잔액에 근접)
+- Recovery r4 시점에 잔액 완전 소진 → credit depletion 429
+
+### Wrapper probe 의 한계
+`gemini_quota_probe` 는 tiny 요청 (5 output tokens) 이라 credit 여유 여부
+검출 못 함:
+- Rate-limit throttle 은 감지 가능 (probe 자체가 429 받으므로)
+- Credit depletion 은 tiny 요청도 실패시키므로 감지되어야 하나, r4 pre-probe
+  당시 credit 은 아슬아슬 남아있었고 (probe 성공), 실제 replicate 실행 중
+  누적 스텝 비용이 잔액을 넘겨 실행 중반부부터 credit depletion 발동.
+- Pre-run probe 는 "실행 시점의 순간 잔액 확인" 이지 "이번 replicate 를
+  끝낼 수 있는 잔액 확인" 이 아님.
+
+### 방지 조치 (다음 recovery 재실행 전)
+1. **Credit-depletion 감지 로직 추가**: 429 메시지에 "prepayment credits are
+   depleted" 문자열 포함 시 retry 하지 말고 **즉시 abort** 로 wrapper 개선.
+   Rate-limit 429 와 credit-depletion 429 는 다른 대응 필요.
+2. **사전 잔액 추정**: 각 replicate 예상 비용 (~$4.5) 대비 현재 잔액 확인.
+   잔액 부족 예상 시 실행 전 abort + 사용자 알림.
+3. **사용자 크레딧 충전 요청**: r4/r5 재실행 최소 예산 $10-15 필요.
+
+### 폐기 파일
+`data/eval/results/discarded/unified3_longctx_r4_credit_depleted/` — r4
+14/16 empty 파일 보존.
+
+### 부산 결함 — TaskStop 후 zombie process 로 인한 r5 오염 (2026-08-07)
+Original recovery 스크립트를 TaskStop 으로 중단할 때 Windows Bash 의
+TaskStop 이 자식 프로세스까지 cascade kill 하지 못해서 bench_runner 가
+zombie 로 계속 실행됨. 그 zombie 가 사용자 결제 (credit 재충전) 직후
+retry 로 응답을 받으면서 `r5_011701` 파일을 만들어냄. Empty 는 0 이나
+"clean 실행 아님" 판정으로 폐기:
+`data/eval/results/discarded/unified3_longctx_zombie_r5/`. 
+Clean rerun 은 새 wrapper (`run_longctx_r4_r5.sh`) 로 별도 실행 중
+(`r5_012551`).
+
+**교훈**: Windows/Git Bash 환경에서 TaskStop 은 프로세스 트리 cascade
+아님. 향후 크리티컬 킬 필요 시 `taskkill //F //T //PID <parent>` 로
+프로세스 트리 강제 종료 필요.
+
+### 현재 unified3 상태 (crediting 대기 중)
+- Main matrix: **1920/1920 valid, 0 empty** ✅
+- Long_context (recovery): **3/5 valid** (r1, r2, r3 — 각 16/16 valid)
+- Long_context r4, r5: **크레딧 충전 후 재실행 대기**
+
+---
+
+## 시나리오 refinement #1 — 3d_visualization step_3 재정의 (2026-08-06)
+
+### 배경
+unified2 의 `opendtect__3d_visualization__01` step_3 은 "In-line + Cross-line
+displayed; Z-slice next" (penultimate 상태) 로 정의됨. 이 정의 하에서
+어떤 백엔드도 goal_completion 3-gate 를 구조적으로 통과 불가 (visual_state
+가 goal-reached 를 나타내지 않음 → sentinel 응답 거부). 논문 unified2 표에서
+3d_viz 의 goal_completion 상한이 사실상 50% 로 고정된 이유.
+
+### unified3 재캡처 결정 (사용자 승인 2026-08-06, opt B)
+수동 재캡처 세션에서 step_3 를 **all-three-slices-displayed goal state** 로
+잡음 (penultimate 아님). 이는 캡처 실체 변경이며, 이에 맞춰 시나리오 JSON
+도 정정:
+
+- `visual_state_gt.data_state`: "In-line + Cross-line displayed; Z-slice
+  next" → "Goal achieved — In-line + Cross-line + Z-slice all three
+  displayed" (goal marker 포함)
+- `expected_action_text_pattern`: "Z-slice|Add.*Data" → "^\s*(완료|Done)\.?\s*$"
+- `expected_action_keywords`: ["Z-slice", "Add"] → ["완료"]
+- `trap.type`: `category_vs_child_item` → `goal_completion_sentinel`
+- `allowed_alternatives` 에 grounding validator 용 요소 mention 키워드
+  ("In-line", "Cross-line", "Z-slice", "3D Scene", "Elements") 추가
+
+### 이 refinement 가 채점 완화가 아닌 이유
+- 3-gate 완료 체크 로직 자체는 변경 없음 (sentinel + grounded + visual
+  indicates goal)
+- 전 백엔드에 **대칭적으로** 열림 — hybrid만 이득 보는 게 아니라 no_rag
+  포함 모두 통과 가능해짐
+- 채점 rubric 완화가 아니라 시나리오 정의를 캡처 실체에 맞춘 정확화
+
+### Cross-version 비교 금지 명문화
+**unified2 와 unified3 의 goal_completion_rate 는 직접 비교 금지.** 시나리오
+정의 refinement 로 인해 unified3 에서 3d_viz goal 이 개선되어 보이는 것은
+시스템 개선 효과와 시나리오 정의 변경 효과가 섞이는 것. 논문 Table 6
+같은 교차버전 비교표에 goal_completion 열 절대 포함 금지. Table 1 은 unified3
+숫자만 사용.
+
+### 논문 서술 갱신 대상 (Results / 통합최종본)
+"3d_viz 는 goal_completion 구조적으로 통과 불가, 상한 50%" 문장 계열이
+아래 위치에 존재. unified3 결과 확정 후 전부 갱신 필요:
+
+- `data/eval/results/final_unified2_table.md` — footnote
+- `data/eval/results/pypdf_migration_audit.md` — Goal Comp 서술
+- `data/eval/results/direction_unified2.md` — goal_completion_rate 노트
+- `scripts/build_final_table.py` — hardcoded Goal Comp footnote
+- `scripts/compute_table1_sd.py` — Appendix A footnote
+- `data/eval/results/statistical_analysis.md` — On goal completion 문단
+- `data/eval/results/qwen_cost_estimation.md` — 참고
+- `GeoLens_최종결과_통합최종본.docx` (레포 밖) — P24, P55 등 goal-related
+  문장
+- Results 원고 초안 (별건) — 해당 서술 전부 갱신
+
+**갱신 원칙**: "unified3 재캡처로 3d_viz step_3 가 goal-reached 상태로
+재정의됨. 이제 이 시나리오도 goal_completion 이 구조적으로 측정 가능함.
+unified2 대비 goal_comp 개선은 시나리오 refinement 효과이며 시스템 개선
+효과와 구분해야 함 (cross-version 비교 금지)." 취지 반영.
+
+---
+
+## 결함 #6 — validate_screenshots.py 필드 혼용 설계 결함 (2026-08-06)
+
+### 증상
+`opendtect__attribute_computation__01` 시나리오 (매뉴얼 §1.5.1a, 8스텝)
+의 수동 재캡처 후 `scripts/validate_screenshots.py` 실행 시 8스텝 중
+3스텝이 FAIL 판정:
+- step_0 (Attribute Set 3D 창 방금 열림): expected `["Energy", "Attribute Type"]` 미매칭
+- step_5 (In-line 250 base seismic 표시): expected `["Add", "Attribute"]` 미매칭
+- step_7 (Energy 렌더링 완료 = 목표 상태): expected `["완료"]` 미매칭
+
+### 근본 원인
+`validate_screenshots.py` 는 각 스텝의 `expected_action_keywords`
+(**모델이 다음에 할 응답 검증용**)를 스크린샷에서 추출한
+`visual_state` 텍스트 (**현재 화면 내용 기술**)에 대조함. 두 필드는
+개념적으로 이질:
+- `expected_action_keywords` = "다음 스텝의 정답 응답에 포함돼야 할 단어"
+- `visual_state` = "현재 화면에 시각적으로 존재하는 UI 요소"
+
+**FAIL 3건의 패턴이 진단을 지지**: step_0 / step_5 는 "다음 행동이
+아직 화면에 나타나지 않은 pre-action 스텝", step_7 은 sentinel("완료")
+을 응답으로 기대하나 sentinel은 화면 내용이 아니라 응답 텍스트임. 즉
+**"다음 행동이 화면에 아직 없는 스텝"에서만 FAIL이 발생**했음. 실제
+bench 실행 시 `step_match()` 는 모델 응답을 keywords와 정확히 대조하므로
+채점에는 지장 없음 — validate 스크립트만의 사전 sanity check 편향.
+
+### 수정 방향 (unified3 이후 반영, 지금은 스키마 동결)
+시나리오 스키마에 별도 필드 `expected_visual_keywords` 신설:
+- `expected_action_keywords` (기존): 모델 응답 검증
+- `expected_visual_keywords` (신규): visual_state 추출 결과 검증
+
+`validate_screenshots.py` 는 `expected_visual_keywords` 만 대조하도록
+분리. 두 필드의 목적이 명확해지고 pre-action 스텝의 false FAIL 소멸.
+
+### 왜 지금 안 고치는가
+1. **동결 원칙**: `expected_action_keywords` 는 bench_runner 의
+   `step_match()` 와 공유되는 채점 필드. 이걸 튜닝해서 validate 만
+   통과시키면 실질적으로 채점 완화가 되어 unified2/3 비교 무효.
+2. **스키마 변경은 별건**: `expected_visual_keywords` 신설은 스키마
+   확장으로 vs. unified3는 스키마 고정에서 실행. 다음 iteration으로.
+
+### 벤치 실행에 미치는 영향
+없음. `validate_screenshots.py` 는 사전 sanity check 도구이며 bench
+채점 파이프라인과 독립. 3건 FAIL은 audit-only 기록으로 처리하며
+unified3 bench는 정상 진행.
+
+---
+
 ## Limitations 섹션 원자재
 
 이 audit trail에서 뽑을 limitations:
-1. **시나리오 수가 2개 (survey_setup + 3d_visualization)**로 제한적. 논문
-   external validity 서술 시 명시.
-2. **3d_visualization의 최종 스크린샷이 실제 goal-reached 상태를 담고
-   있지 않음** → 이 시나리오에서는 어떤 시스템도 goal_completion 3-gate
-   통과 불가. 이건 시나리오 설계 한계로 명시 (지표 실패가 아님).
+1. **시나리오 수가 3개 (survey_setup + 3d_visualization + attribute_computation)**
+   로 확장됨 (unified3 기준, unified2 는 2개). 여전히 external validity
+   제한.
+2. **3d_visualization 의 최종 스크린샷이 실제 goal-reached 상태를 담고
+   있지 않음** (unified2 관측) → 이 시나리오에서는 어떤 시스템도
+   goal_completion 3-gate 통과 불가. unified3 재캡처 시 이 이슈 재검토.
 3. **Fallback rate이 초기 관측에서 상당** — hybrid의 실제 우위는
    "fallback이 발동하지 않는 스텝"에서만 온다. v2 로그로 이 비율 정량화.
 4. **모델별 무관 컨텍스트 강건성 차이 (Claude 비대칭)**의 원인은 이
    벤치로 규명 불가 — 후속 연구.
+5. **`validate_screenshots.py` 필드 혼용 결함** (결함 #6): 사전
+   sanity check 정확도의 한계. 채점 파이프라인은 무관하며 unified3
+   이후 스키마 확장으로 해결 예정.
+6. **파라메트릭 마스킹 (parametric masking)** — 관측 #1 (unified3
+   attribute 시나리오, 2026-08-07): 발견 원문은 아래 § 관측 #1 참조.
+
+---
+
+## 관측 #1 — 파라메트릭 마스킹 (parametric masking, 2026-08-07)
+
+**정의**: RAG 시스템의 벤치 상대 (vanilla_vector, no_rag) 가 검색에서
+관련 청크를 확보하지 못했음에도 **모델의 사전학습 파라메트릭 지식**
+으로 부분 정답을 생성해 성능 하한이 인위적으로 올라가는 현상. 결과적
+으로 검색 정확도의 실제 개선분이 downstream task metric 상에서 압축
+되어 나타난다.
+
+**발견 경로 (unified3)**:
+
+증거 1 (검색 완전 실패에도 성능 유지):
+- `retrieval_attribution_unified3.md § opendtect__attribute_computation__01`
+  에서 vanilla_vector 는 §1.5.1a (p118-128, 목표 절차 페이지) 를 **0/15
+  hit**. 상위 15 청크가 §2.3.1g (fault filter), §1.5.2a (spectral),
+  §2.3.1f (diffusion), §2.3.2b (curvature), §2.5.1a (coloured inversion)
+  같은 **완전히 다른 attribute 계열 절차** 로 편향.
+- 그럼에도 vanilla_vector 의 attribute 시나리오 step_acc = 61.3% (macro),
+  full_system 의 60.0% 와 사실상 동등.
+- 즉 vanilla 는 매뉴얼의 정확한 절차를 못 봤음에도 "다른 attribute 절차"
+  를 근거로 (또는 파라메트릭 지식으로) 정답 근처의 답 생성.
+
+증거 2 (오라우팅 스텝에서 오히려 잘 통과):
+- `routing_score_concentration_unified3.md § 2` 에서 full_system 의 스텝
+  5-7 이 `d3_visualization_01_main_window_ready` 로 오라우팅됐음에도
+  통과율 **55/80/95%**. 정작 "정답 워크플로우" 인 `seismic_attribute`
+  로 라우팅된 스텝 1 은 5% 통과.
+- 즉 문맥이 부정확해도 모델이 파라메트릭 지식으로 채워 넣음.
+
+**해석 (open-book vs closed-book 비유)**:
+- 시험 상황: RAG 시스템은 오픈북, 상대 (no_rag, vanilla with wrong hits)
+  는 클로즈드북에 가까움.
+- 문제: 상대가 시험 문제집을 **통암기하고 왔음** (파라메트릭 사전지식이
+  OpendTect 를 이미 알고 있음).
+- 결과: 오픈북의 이점이 압축되어 정확히 측정되지 않음. 개선분이 있어도
+  metric 상 격차로 드러나지 않음.
+
+**논문 함의**:
+1. RAG 시스템 벤치의 **일반적 방법론 이슈**: 공개 소프트웨어 (OpendTect,
+   QGIS 등) 매뉴얼 기반 벤치는 파라메트릭 마스킹으로 hybrid 우위 측정이
+   구조적으로 낮게 나옴.
+2. **엄정한 hybrid 우위 측정 조건**: 모델의 학습 cutoff 이후 릴리즈된
+   신기능 문서, 또는 사내 비공개 문서 기반 시나리오. Zero-shot 과
+   vanilla 가 기댈 파라메트릭 지식이 없어 격차가 구조적으로 벌어짐.
+3. **본 연구의 유효 조건 서술**: unified3/4 의 결과는 파라메트릭 마스킹
+   환경에서의 "conservative lower bound" 로 해석. 실제 사용 환경 (사내
+   워크플로우, 신기능) 에서는 격차가 확대될 것으로 예상 (검증은 future
+   work).
+
+**논문 Discussion 초안 문장 후보** (2026-08-07 확정):
+
+> "Our attribute-computation scenario reveals a methodological artifact
+> we term **parametric masking**: the vanilla baseline retrieves zero
+> of the target §1.5.1a procedural chunks yet achieves step-accuracy
+> statistically indistinguishable from the hybrid full_system. The
+> mechanism is that the underlying language models — trained on
+> publicly indexed content that includes OpendTect documentation and
+> tutorials — can generate near-correct next-step instructions from
+> parametric knowledge alone, bypassing the retrieval pathway entirely.
+> This compresses the measurable hybrid advantage on public-manual
+> benchmarks. The corollary is that our reported gains understate the
+> gains one would observe in the intended deployment condition —
+> internal workflow documents or post-training-cutoff features — where
+> parametric knowledge does not substitute for retrieval. A controlled
+> evaluation on such private-knowledge material is left as future work."
+
+**독립성**: 이 관측은 unified3 결과 자체로 완결. unified4 성공/실패와
+무관하게 논문에 남는 finding.
+
+**Audit hash**: 이 관측의 원 데이터는 `retrieval_attribution_unified3.md`,
+`routing_score_concentration_unified3.md`, `per_scenario_unified3.md`,
+`complexity_gap_unified3.md` 네 산출물에서 교차 확인 가능.
+
+---
+
+## 결함 #10 — signature 과잉 흡수 (over-absorption, 2026-08-07)
+
+**발견 경로**: `routing_score_concentration_unified3.md` 에서
+`seismic_attribute_04_configure` 가 confidence 0.91 로 160 스텝 중 76
+을 흡수. 그러나 이 노드로 라우팅된 스텝의 통과율은 48.7% vs 오라우팅
+스텝의 73.1% — **성공 라우팅이 더 못한다** 는 역설.
+
+**원인**: `_04_configure` 의 signature (screenshot_keywords 12개 + UI
+elements 7개) 가 너무 넓어 스텝 0 (Attribute Set 3D 창 진입), 스텝 1
+(Attribute Type 선택), 스텝 2 (파라미터 입력), 스텝 3 (Save on Close 체크)
+을 모두 자기 것으로 잡음. 스텝 1 에서 통과율 **5%** — 노드가 담당해야
+할 문맥 (파라미터 편집) 과 스텝의 실제 요구 (다이얼로그 오픈) 가 어긋남.
+
+**함의**: workflow 저작 시점의 시그니처는 "커버리지 부족" 뿐 아니라
+"과잉 흡수" 도 결함이 될 수 있다. 특히 confidence 값이 높은 경우
+(0.9+) 는 오히려 진단 신호로 활용 가능 — 정확도가 낮은데 confidence
+가 높다면 signature 재검토 필요.
+
+**수리 계획**: unified4 사이클에서 `seismic_attribute.json` 재작성 (별건
+사전등록: `v2_pre_registration.md § unified4 signature refinement`).
+
+**동결 위반 아님 확인**: 채점기·시나리오·사전등록 예측 문구 모두 그대로.
+workflow signature 만 수정. Signature 자체는 사전등록 대상이 아님
+(사전등록은 시스템 우위 판정 프레임에 관한 것).
+
+---
+
+## 관측 #2 — Dry-run 게이트 vs 벤치 실제의 vision-noise 괴리 (2026-08-10)
+
+**발견 경로**: unified4 실행 결과 seismic_attribute workflow 라우팅률이
+dry-run 8/8 통과에도 불구하고 벤치 실제에서 **0/160 (0.0%)**. Signature
+재작성이 dry-run 은 통과했으나 실제 벤치는 완전 회피.
+
+**메커니즘**:
+- **Dry-run** 은 시나리오 JSON 의 hand-authored `visual_state_gt` 를 그대로
+  vs_text 에 flatten. 이 텍스트는 저자가 목표 노드 signature 를 알고 작성
+  하므로 quoted phrases (`'Select Layer 2'`, `on-the-fly energy overlay`,
+  `bright-spot highlights` 등) 가 그대로 포함됨.
+- **벤치 실제** 는 Gemini Vision 이 스크린샷에서 추출한 visual_state 를
+  사용. 이 텍스트는 자연스러운 요약체 (예: "Attribute Set 3D dialog with
+  Energy attribute type selected, parameters visible") 로 quoted phrase 는
+  거의 없음.
+- Signature 축소 (unified3 `_04_configure` 12 keywords → unified4 특정
+  값 `Time gate populated: -28 to +28` 등) 는 dry-run 매칭에는 정확하나
+  vision 요약체와는 mismatch.
+
+**결과**: unified4 attribute full_system 스텝 중 **65/160 (40.6%) 이 fallback**,
+나머지는 d3_visualization (79) + horizon_tracking (17) 로 오라우팅. Target
+seismic_attribute workflow 는 **완전 소멸**.
+
+**함의**:
+- Dry-run 게이트는 **필요조건이지만 충분조건이 아니다**. Signature 튜닝
+  검증에는 vision-noise 시뮬레이션 필수.
+- 방법론 개선 방향: (a) 스크린샷에서 실제 vision 추출을 dry-run 에 사용,
+  (b) 요약체 텍스트에 대한 robustness 테스트 세트 구축.
+- Future work: signature 자동 튜닝 파이프라인 (vision-extracted state 로
+  검증하는 A/B 프레임)
+
+**독립성**: 이 관측은 unified4 결과 자체로 완결. 논문 methodology 절 또는
+future work 로 삽입 가능.
+
+---
+
+## 관측 #3 — "의심될 때는 라우팅하지 마라" (when-in-doubt-don't-route, 2026-08-10)
+
+**발견 경로**: unified3 → unified4 에서 attribute full_system step_acc 가
+**60.0% → 58.8% (거의 동일)** 이나 vanilla 대비 격차는 **−1.3pp → +3.1pp
+(양전환)**. 원인은 vanilla 시나리오 성능 하락 (61.3% → 55.6%) 이 아니라
+전체 관점에서:
+- unified3: `_04_configure` 가 스텝 0-3 을 confidence 0.91 로 흡수 →
+  잘못된 문맥 (파라미터 편집 지침) → 스텝 1 통과율 5%
+- unified4: seismic_attribute 라우팅 자체 소멸 → 40% fallback (vector-only
+  RAG) + 60% d3_viz 오라우팅. Fallback 는 vanilla_vector 백엔드와 동일한
+  검색 결과를 받지만 "잘못 자신 있는 문맥" 은 없음.
+
+**해석**: **잘못된 라우팅으로 잘못된 문맥을 신뢰하게 만드는 것이 라우팅
+실패보다 나쁘다**. 워크플로우 signature 설계에서 confidence 가 높은데
+정확도가 낮은 패턴은 최악의 실패 모드.
+
+**설계 원칙 (관측에서 유도)**:
+- Signature 는 "잘 맞을 때만 자신 있게" 설계 — false positive 회피가
+  false negative 회피보다 중요.
+- Fallback threshold (0.70) 를 지금보다 더 보수적 (예: 0.80) 으로 설정
+  하는 것을 검토 가치. Fallback 은 예상보다 유용한 안전장치.
+- Confidence 0.90+ 인데 downstream 통과율 낮은 노드는 signature 재검토
+  1순위 신호.
+
+**논문 함의**: RAG + workflow routing 시스템의 방어적 설계 원칙. Discussion
+서브챕터로 승격 가능.
+
+---
+
+## 결함 #11 — signature 재작성의 기존 시나리오 부작용 (2026-08-10)
+
+**발견**: unified4 에서 `survey_setup × state_path` step_acc 가 unified3
+대비 **−7.5pp** (76.2% → 68.8%). 사전등록 비열화 tolerance (−5pp) 초과.
+
+**진단 후보**:
+- state_path 백엔드는 시나리오 목표까지의 워크플로우 노드 경로를 명시적
+  으로 계획함. Seismic_attribute workflow 의 edge 재작성 (특히 `_04_configure`
+  → `_05_compute` (conditional batch_path) 와 → `_06_display` (conditional
+  on_the_fly_path) 로 분기 추가) 이 어떤 방식으로 state_path 의 경로 계획
+  로직에 영향을 미쳤을 가능성.
+- Survey_setup 시나리오와 seismic_attribute workflow 는 무관해 보이나
+  workflow_graph 전역 스코어링 (get_top_k_nodes) 에서 순위 재조정이 일어
+  났을 수 있음.
+
+**대응 (사전등록 원칙)**: **억지로 되돌리지 않음**. 이는 signature 설계의
+트레이드오프 발견이므로 그대로 결함으로 기록. 논문 Discussion 에 "복잡한
+매트릭스에서 워크플로우 재설계는 국지적 트레이드오프를 유발한다" 로 서술.
+
+**정지 규칙 준수**: unified5 로 이 결함을 수정하려 시도하지 않음.
+
+---
+
+## QGIS Pilot 감사 기록 (tag: qgis_pilot, 착수 2026-08-12)
+
+### Pilot 스코프 및 격리 원칙
+
+Pilot 은 **이식의 존재 증명** 이 목적 — "4개 touch-point 수정 + 정규 업로드
+기능만으로 파이프라인이 새 소프트웨어에서 end-to-end 작동하고 벤치 지표가
+산출된다". 성능 우위 입증이 아님. Unified4 매트릭스 동결 유지, pilot 은
+별도 태그 (`qgis_pilot`) · 별도 산출물로 완전 분리.
+
+### P-0 리팩터 완료 (4 touch-point)
+
+| # | 파일 | 변경 | 스위칭 메커니즘 |
+|---|---|---|---|
+| 1 | `api/services/guide_pipeline.py:81` | `VISUAL_STATE_PROMPT` → `_build_visual_state_prompt(software_id)` + `SOFTWARE_PROFILES` dict | env `GEOLENS_SOFTWARE_ID` (default `opendtect`) |
+| 2 | `api/services/evaluation.py:578` | `_COMPLETION_CLAIM_PATTERNS` → `_COMPLETION_CLAIM_PATTERNS_BY_SOFTWARE` dict + `_get_completion_claim_patterns()` | 위와 동일 env |
+| 3 | `lib/prompts/action.ts:134-163` | 3D-scene block 을 `softwareSpecificSection` 변수로 추출, QGIS 용 Layers Panel + Processing Toolbox 블록 추가 | `NEXT_PUBLIC_SOFTWARE_ID` (frontend) |
+| 4 | `components/multimodal-input.tsx:81` | `NEXT_PUBLIC_SOFTWARE_ID` 조건부 suggested actions | 위와 동일 env |
+
+**Backward compat**: 모든 대체 지점에서 `default = "opendtect"` — env 미설정
+시 unified4 실행 조건과 완전 동일. `VISUAL_STATE_PROMPT`, `_COMPLETION_
+CLAIM_PATTERNS` 모듈-level 이름 유지 (외부 import 호환).
+
+### P-0 회귀 검증 결과
+
+- 2026-08-12: routing dry-run 실행 → 16/16 통과 (survey 4/4, 3d_viz 4/4,
+  attribute 8/8). Attribute step 2 confidence 0.75 → 0.80 소폭 상승, 나머지
+  0.90+ 유지. **OpendTect 회귀 없음 확인.**
+- Unified4 결과 파일 (`data/eval/results/run_*_unified4_r*.json`) 무변경
+  확인 — 리팩터가 결과 파일에 접근하지 않음.
+- 최초 dry-run 은 Gemini API credit depletion 으로 실패 (unified3 관측 #9
+  재발). Credit 재충전 후 재실행에서 16/16 확인.
+
+### Q2 결정: 워크플로우 격리 방식 (사용자 결정: 옵션 A)
+
+**결정**: **옵션 A** — QGIS 벤치 러너에서 `hint_workflow_id` prefix 로 QGIS
+workflows 만 검색 대상 명시.
+
+**채택 근거 (deployment reality 반영)**:
+배포 상황에서 GeoLens 는 사용자가 어떤 소프트웨어를 쓰는지 이미 알고 있다
+(`software_id` 필드의 존재 이유). 벤치에서 QGIS workflow 만 검색 대상으로
+한정하는 것은 **그 배포 현실을 반영** 하는 것이지, 시스템에 부당한 힌트를
+주는 것이 아니다. Pilot 러너의 hint_workflow_id 지정은 production 환경에서
+프론트엔드가 자연히 알고 있는 소프트웨어 컨텍스트를 벤치에 재현하는 것.
+
+**한계 (pilot 보고서에 명시)**:
+Pilot 의 워크플로우 격리는 **벤치 설정 수준** 에서 시행되며, **시스템 수준
+네임스페이싱 (production-grade workflow namespacing) 은 future work**.
+Loader 자체는 여전히 `data/workflows/` 전역 로드하며, software_id 기반 필터
+는 각 호출부의 책임.
+
+**옵션 B 기각 사유 (touch-point 4 유지)**:
+`data/workflows/` 를 `opendtect/`, `qgis/` 서브디렉토리로 분리하는 것이
+아키텍처적으로 가장 깔끔하나, `WorkflowGraph._load_workflow` 코어 수정을
+요구 → P-0 회귀 검증 사이클 재실행 필요 + **논문의 "4 touch-point" 이식
+비용 주장을 5 개로 바꿈**. Pilot 의 핵심 데이터가 이식 비용 정량이므로
+중간에 touch-point 를 늘리면 그 표의 의미가 흔들림. 디렉토리 분리는
+future work (production-grade workflow namespacing) 로 별도 기록.
+
+**옵션 C 기각 사유 (unified3→4 학습 역행)**:
+"오라우팅 나면 그때 대응" 은 unified3→4 에서 이틀 걸려 배운 패턴의 역행.
+d3_visualization 이 attribute 스텝을 흡수했던 것이 **같은 소프트웨어 안** 
+에서도 일어났는데, OpendTect workflow 와 QGIS workflow 가 한 풀에서 경쟁
+하게 두면 그 실패 모드를 **소프트웨어 단위로 재현**. 측정 후 발견 안 함.
+
+### 사전 확인 (Q1, Q2) 결과 요약 재기재
+
+- **Q1**: 정규 업로드는 vector 인덱싱 + auto workflow graph + knowledge graph
+  (LightRAG) + CLIP 이미지 인덱스 **4종 자동 구축** (`embedder.py:160-183`).
+  이식 비용 표에 수작업 항목 **없음**.
+- **Q2**: Manual/Vector 는 UUID 기반 컬렉션 (`manual_{uuid}`) 로 자연 격리
+  되나, Workflow 그래프는 `data/workflows/*.json` **전역 로드**. Cross-
+  software 오라우팅 위험 존재. 이에 대응해 옵션 A (hint_workflow_id 벤치
+  수준 격리) 채택.
+
+### P-1 소스 판단: 전체 매뉴얼 PDF 채택 (narrowed URL 기각)
+
+**최초 제안**: `https://docs.qgis.org/3.44/en/docs/training_manual/vector_analysis/`
+(module-narrowed URL, Vector Analysis 모듈만 depth-2 crawl).
+
+**결정: PDF (보유본, 전체 QGIS Training Manual 3.44)**.
+
+**Narrowed URL 기각 사유** (사용자 지시, 감사 기록 원문):
+
+1. **software_id 격리 논리 비적용**: software_id 로 QGIS workflow 만 검색
+   대상 한정하는 것은 "배포 현실 반영" (사용자가 어떤 SW 를 쓰는지는 시스템
+   이 아는 게 당연) 으로 정당화 가능. 그러나 **모듈 수준 사전 축소는 그
+   논리가 성립하지 않음** — 실제 사용자는 매뉴얼 전체를 업로드하지, 자기가
+   질문할 모듈만 골라 올리지 않음. 모듈 수준 사전 필터링 = "정답이 있는
+   장소를 미리 알려주는 힌트" = software_id 격리와 성격이 다름.
+
+2. **Vanilla_vector 비교 해석 가능성 훼손 (실질 피해)**: pilot 벤치에
+   vanilla_vector 백엔드 비교가 들어가는데, KB 에 관련 모듈만 있으면
+   **검색 난이도가 붕괴**. OpendTect 벤치에서는 454쪽 전체 매뉴얼 건초
+   더미에서 vanilla 가 §1.5.1a 를 0/15 hit 하는 관찰이 나왔음. QGIS
+   에서 건초더미를 미리 치워주면 fallback 발동률 예측 (~40%) 이든 파라
+   메트릭 마스킹 관찰이든 **OpendTect 결과와 나란히 해석 불가**. 리뷰어
+   가 "KB 를 해당 모듈로 사전 축소" 를 발견하면 pilot 관측 전체에 별표
+   가 붙음.
+
+3. **OpendTect 조건과의 대응 유지**: 전체 매뉴얼 인제스트 = OpendTect
+   unified4 와 동일 조건 (raw haystack). Cross-software 관측 (마스킹,
+   fallback 발동) 을 비교하려면 조건 통제 필요.
+
+**PDF 채택 사유**:
+- 결정적·오프라인·텍스트 기반 검증 완료 (사용자 사전 확인)
+- OpendTect PDF 의 스캔 이미지 문제 없음 → HTML 우선 이유 소멸
+- Full URL crawl 은 100+ 페이지 depth-2 로 네트워크 리스크
+- Full manual 인제스트 시간 자체가 이식 비용 표의 정직한 실측값
+
+**한계 기재 (pilot 보고서에 명시)**:
+- **CLIP 이미지 인덱스 감소** — PDF 에서 embedded images 는 추출되나 HTML
+  대비 커버리지 다를 수 있음. 시각 검색 (vision_only 백엔드) 성능에 영향
+  가능. 한계로 기록하고 진행.
+
+**Fallback 규칙**: PDF 업로드 자체가 실패하는 경우에 한해 full URL crawl 로
+전환. **10분 초과 시 중단** 규칙 유지. **Narrowed URL 은 사용 금지.**
+
+**업로드 실행 경로 (regular-path 원칙)**: 업로드는 UI 의 Submit 버튼이
+호출하는 것과 **동일한 HTTP 엔드포인트** (`POST /api/manual/upload`) 로 수행.
+내부 함수 직접 호출 (embedder.process_pdf 등) 금지 — 정규 업로드 경로
+사용 주장이 이식성 논거의 조건이므로 유지. 자동화 스크립트는 스톱워치·수동
+확인을 대체할 뿐, 시스템 경로 자체는 UI 와 동일.
+
+### KB 범위 결정: Training Manual 단독 (Desktop User Guide 제외)
+
+**최초 계획**: QGIS Training Manual + Desktop User Guide 두 PDF 를 순차 업로드
+(사용자가 두 파일 경로 제공).
+
+**변경 결정 (2026-08-12, 사용자 지시)**: **Training Manual 단독**. Desktop
+User Guide 업로드 취소.
+
+**근거**:
+1. **OpendTect 벤치 KB 와의 조건 대응 유지** — unified4 의 KB 는
+   OpendTect Training Manual 단독 (454p). QGIS 도 Training Manual 단독
+   (697p) 으로 통일해야 cross-software 관측 (파라메트릭 마스킹, fallback
+   발동, retrieval attribution) 이 나란히 해석 가능.
+2. **시나리오 정의 소스와 KB 정합** — pilot 시나리오는 Training Manual 의
+   레슨에서 추출. 시나리오와 KB 가 동일 문서에서 나와 절차 용어 매칭이
+   자연스럽고 hint 논란 소지 최소화.
+3. **이식 비용 계측 범위 명확화** — pilot 의 "이식 비용" 이 어느 문서
+   범위인지 명확 (Training Manual 인제스트 시간 = 실측값). User Guide
+   포함 시 계측 범위가 흐려짐.
+
+**User Guide 처리**: "실사용 시 추가 업로드 가능한 문서" 로 pilot 보고서에
+언급만 (실측 계측 없이 방법론 설명 목적).
+
+**실행 시점**: PDF 2 (User Guide) 는 업로드 큐 진입 전에 script 강제 종료로
+차단. Manual list 조회로 User Guide manual_id 생성 안 됨 확인 (컬렉션 오염
+없음, 삭제 작업 불필요). Training Manual (`1b63832805da406bab1e06567cac7c69`)
+인제스트는 FastAPI BackgroundTask 로 독립 실행 중이므로 script 종료와 무관
+하게 완료까지 계속 진행.
+
+### P-1 최종 결과 (Training Manual 인제스트 완료)
+
+**첫 시도 (`1b63832805da...`)**: 45분 monitor timeout 초과, chromadb mtime
+불변으로 확인 후 진단. 실제로는 hang 아니고 매우 느린 embedding 진행 중이
+었으나 monitor budget 부족으로 놓침. DELETE 후 재시도.
+
+**두 번째 시도 (`bf2804feea57434bb79b749134ed1df0`)**:
+- 업로드 시각 (t0, Manual.created_at): `2026-08-13T00:00:52 UTC`
+- ChromaDB 최종 write (t1_embed): `2026-08-13T00:56:23 UTC`
+- Auto workflow 파일 최종 write (t1_wf): `2026-08-13T00:56:30 UTC`
+- **총 소요 시간: 55.6 분 (약 56분)**
+- chunk_count: 733
+- workflow_count (auto): 1
+
+**Ingest throughput 계측**: 697 페이지 / 55.6 분 = **12.5 페이지/분** (Gemini
+Flash classifier + OpenAI-equivalent local embed + auto workflow build 포함).
+비교: OpendTect Training Manual 454p, chunk_count 486 (unified2 setup).
+
+**Auto workflow 관찰 특기**: AutoGraphBuilder 가 QGIS 매뉴얼에서 **1 개
+workflow** 만 추출 (`auto_bf2804feea57..._follow_along_implementing_a_systematic_s`,
+3 nodes). OpendTect (454p) 은 2 개 auto workflow. QGIS Training Manual 의
+"Follow Along" 절차형 튜토리얼 스타일 중 특정 섹션만 인식된 것으로 보임.
+Pilot 시나리오 정의 시 이 auto workflow 활용 또는 hand-author 추가 필요
+(OpendTect 의 seismic_attribute 와 동일 방식).
+
+**진단 스크립트 결과** (b6lc393wm, 격리 실행): parse 22.6s + chunk 0.3s +
+classifier 13.6s/batch of 5 = 733 chunks × ~2.7s/chunk = 33분 (classify only).
+남은 22분은 embed + store + auto workflow build + KG build.
+
+**교훈** (methodology 노트): 대용량 문서 인제스트 시 monitor budget 은 **문서
+크기 × 3-4 배 여유** 로 설정. QGIS 매뉴얼 697p → 56분 실측 → 최소 90-120분
+budget 필요 (내가 30분 monitor budget 으로는 놓친 이유).
+
+**Uvicorn stdout 캐치 이슈**: Windows 환경에서 `--reload` 자식 프로세스의
+stdout 이 부모에 파이프되지 않는 문제 확인. Pilot 스코프 밖 (별건 개선
+사항). 진단은 Manual API + 파일 mtime 으로 우회.
+
+**산출물**: `data/eval/results/qgis_pilot_upload_report.md` (이식 비용 표
+첫 실측값 + Auto workflow 목록 + QA 10-청크 샘플)
+
+### P-2 방향 결정: β (Vector Analysis Buffer, hand-author)
+
+**결정 (2026-08-13, 사용자 지시)**: **β — Vector Analysis Buffer 레슨을
+hand-author, attribute_computation__01 상세도 의무화**.
+
+**근거**:
+1. **사전 등록된 시나리오 기준 대비 α 미달**: α (Auto workflow — Systematic
+   Sampling, 3 nodes) 는 pilot 지시서의 "6~8스텝, 다이얼로그·파라미터
+   포함, 상세도 의무화" 조건에 미달. 시나리오 표준 (attribute_computation__01
+   템플릿) 을 pilot 에도 그대로 적용하는 것이 방법론 대응.
+2. **OpendTect 방법론 대응**: OpendTect 벤치의 seismic_attribute workflow
+   가 hand-authored + 시나리오 hand-authored (attribute_computation__01)
+   구성이었음. QGIS 도 동일 조건 (hand-authored workflow + hand-authored
+   시나리오) 으로 이식 비용 정량 측정.
+3. **hand-authoring 소요 시간이 이식 비용 표의 목적 데이터**: pilot 의
+   핵심 산출물은 "이식 비용 정량 (단계별 소요 시간)". Hand-authoring
+   실측값이 그 표의 필수 행. Auto workflow 만 사용하면 이 실측값 자체가
+   존재하지 않음.
+
+**α 는 관찰로 유지**: Systematic Sampling auto workflow (1 개 추출) 은
+"Auto extraction 의 현재 한계" 관찰로 pilot 보고서에 기재. Workflow 그래프
+에는 유지 (삭제 안 함) — hint_workflow_id 로 pilot 벤치 시 QGIS workflows
+만 검색 대상 지정할 때 이 auto wf 도 포함.
+
+**진행 순서**:
+1. Vector Analysis Buffer 레슨 스텝 목록 추출 (매뉴얼 chunks 검색 + 원문 대조)
+2. 시나리오 JSON + workflow hand-authoring (attribute_computation__01 상세도)
+3. 매뉴얼↔시나리오 스텝 대조표 제시 → **체크포인트 9 (사용자 응답 대기)**
+4. Dry-run + hint_workflow_id 격리 확인
+
+**Authoring 소요 시간 계측 시작**: `2026-08-13T01:28:52 UTC` (사용자
+β 결정 접수 직후, chunk 검색 시작 전).
+
+**초기 저작 (initial authoring) 완료**: `2026-08-13T01:35:56 UTC`.
+- 소요: **7분 4초**
+- 산출물: `data/workflows/qgis_vector_buffer.json` (5 nodes, 4 edges) +
+  `data/eval/scenarios/qgis__vector_buffer__01.json` (8 steps, attribute_
+  computation__01 상세도)
+- 이식 비용 표 행 라벨: **"P-2 초기 저작"**
+- 정제 (refinement) 발생 시 별도 행으로 기재 (dry-run 지적 반영·사용자
+  피드백 반영 등 재편집)
+
+**체크포인트 9 승인 후 goal 텍스트 dissolved 명시 확인** (2026-08-13):
+Goal 텍스트에 "dissolved" 관련 6 회 언급 확인 — Dissolve results 활성/체크,
+roads_buffer_50m_dissolved (레이어명 3회), dissolved 버퍼 렌더. 추가 편집
+불필요. 사전 조건 충족.
+
+### Dry-run 판정 기준 정정 (2026-08-13, 사용자 지시)
+
+**사전 지시된 관문 재확인**: workflow 8/8 만이 아니라 **node 레벨 8/8 이
+관문**. 초기 dry-run 리포트에서 workflow 8/8 만 확인 후 "PASS" 판정한
+것은 판정 기준 완화. 정정.
+
+**Step_5 dry-run 입력 정정 (충실도 개선)**:
+- 문제: step_5 의 `current_action` 이 "about to click the '…' button next
+  to Output to open **'Save to GeoPackage…' dialog**" 로 서술되어 있음.
+  "Save to GeoPackage" 는 화면 밖 서사 (다음 단계 예고) 이고, 실전 라우터
+  입력은 vision 추출로 오직 **화면에 표시된 것** 만 포함.
+- 이 forward-looking 문구가 `_04_save_output` signature (`Save to GeoPackage`,
+  `about to click Save`) 와 강 매칭되어 LLM rerank 가 다음 노드로 픽.
+- **정정**: step_5 의 `visual_state_gt.current_action` 을 "cursor near the
+  '…' button next to Output field" 로 재기술. `data_state` 도 "Ready to
+  configure save location" 문구 제거. 화면 상 실제 표시 요소만.
+- **근거**: dry-run 충실도 정정 (실전 vision 추출 반영), 관문 완화 아님.
+  Attribute_computation__01 step_5 (routing_note 참조) 도 화면 상태만
+  기술하고 forward action 은 최소화한 것과 동일 방침.
+
+**이식 비용 표 정제 (refinement) 행 시작**: dry-run 결과 반영 편집 시작.
+- 정제 소요 시간 계측 시작: `2026-08-13T01:41:20 UTC` (step_5 정정 편집 착수)
+- 정제 완료: `2026-08-13T02:05:26 UTC` (dry-run 재실행 8/8 확인)
+- **소요: 약 24 분** (편집 자체는 수 분, dry-run 재실행 + 결과 확인 포함)
+- 이식 비용 표 행 라벨: **"P-2 정제 (step_5 forward-looking 문구 제거)"**
+- 정제 결과: workflow 8/8 유지 + **node 8/8 신규 달성**. `_04` 시그니처
+  축소 검토 불필요 (관문 통과).
+
+### 정제 #2: 실측 데이터 불일치 정정 (2026-08-13, 사용자 실측 보고)
+
+**불일치**: 매뉴얼 §6.2 본문 표기 (`roads_34S`, `buildings_34S`, UTM zone 34S,
+EPSG:32734) vs 배포 QGIS Training Data 3.44 실제 (`roads_33S` 만, UTM zone
+33S, EPSG:32733). Buildings 계열 부재.
+
+**적용 원칙**: OpendTect `Seismic_data` 정정 선례 준수 — **실측 배포 데이터
+기준 채택**. Ground truth 는 매뉴얼 텍스트가 아니라 사용자가 실제로 조작할
+데이터.
+
+**일괄 정정 사항**:
+- `roads_34S` → `roads_33S` (scenario 23 곳, workflow 7 곳)
+- `buildings_34S` → 시나리오·workflow 에서 완전 제거 (배포 데이터 부재)
+- UTM zone 34S → 33S, EPSG:32734 → EPSG:32733 (프로세스 표기)
+- 출력 레이어명 `roads_buffer_50m_dissolved` 는 유지 (매뉴얼 지정 사용자
+  명명, 배포 데이터 의존 없음)
+- `manual_reference` 에 불일치 노트 + buildings 제외 근거 추가
+
+**Dry-run 재실행 필수 판단**: 레이어명 `roads_33S`, `buildings_34S` 가
+workflow `_01` 및 `_03` signature `screenshot_keywords` 에 포함되어 있어
+signature 매칭 대상 변경 → **재실행 실시**.
+
+**Dry-run #2 결과**: workflow 8/8 · **node 8/8 유지** (모든 conf 0.90+).
+`_03` 구분 step_3 (0.95), step_4 (0.90), step_5 (0.95) 정확. 관문 통과.
+
+**Refinement #2 계측**:
+- Start: `2026-08-13T02:20:48 UTC` (실측 불일치 보고 접수)
+- End: `2026-08-13T02:24:39 UTC` (dry-run #2 통과 확인)
+- 소요: **약 4 분**
+- 이식 비용 표 행 라벨: **"P-2 정제 #2 (실측 layer name 정정 · roads_33S · buildings 제외)"**
+
+**CRS 값 (EPSG:32733) 사용자 확인 대기**: 사용자가 "33S면 EPSG:32733 예상"
+이라 하셨음. 실측 CRS 다르면 후속 정제 필요 (그 경우 정제 #3 행 신설).
+
+**CRS 실측 확정 (2026-08-13, 사용자 실측 보고)**: **EPSG:32733 = WGS 84 / UTM
+zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_state.description`
+및 `must_be_true[2]` 의 EPSG:32733 표기는 실측 확정값이며 후속 편집 대상
+아님. 시나리오 `initial_state` 전체를 **FINALIZED** 처리.
+
+### P-3 캡처 진행 시작 (2026-08-13)
+
+- **관문 통과 확정**: node 8/8 + 데이터 정합성 (실측 layer name + CRS 실측
+  확정) 완료.
+- **캡처 대상**: 8 스크린샷 (`data/eval/screenshots/qgis__vector_buffer__01/step_{0..7}.jpg`)
+- **캡처 체크리스트**: 사용자 측 제공 완료 (직전 메시지 참조, layer 명칭은
+  `roads_33S` 로 읽음)
+- **진행 상태**: **IN PROGRESS** (사용자 QGIS 실행 → 8 스크린샷 저장 중)
+- 캡처 완료 후 회신 대기 → `validate_screenshots.py` 실행 → P-4 벤치 진입
+
+### P-3 캡처 완료 + validate 결과 (2026-08-13)
+
+- **캡처 완료**: 8/8 파일 (`step_0.jpg`~`step_7.jpg`, 총 ~1.7MB)
+- **validate_screenshots.py 결과**: 7/8 OK + 1 FAIL (step_7 false negative)
+- **Step_7 false negative 진단**: 결함 #6 (validate_screenshots 필드 혼용) 재현.
+  Validator 의 `_match_check` 가 `allowed_alternatives` 의 regex 패턴을 리터럴
+  substring 으로 취급 + `expected_action_keywords: ["완료"]` 는 한글이나 vision
+  extraction 은 영어 반환 → 매칭 실패.
+- **실제 vision 확인** (수동): step_7 은 goal state 정확 인식 —
+  `roads_buffer_50m_dissolved` 3회 명시 + `EPSG:32733` + `Layers panel` +
+  `Map canvas displaying road network`. 캡처 자체는 완벽 통과.
+- **판정**: 실측 vision 기준 **validate 통과**. Validator 결함은 audit-only
+  기록이며 벤치 채점 파이프라인 무관 (unified3/4 도 같은 조건에서 정상 진행).
+- **CRS 실측 재확인**: vision extraction 에서 `EPSG:32733` 명시 → 시나리오
+  JSON initial_state 의 `EPSG:32733` 확정값 벤치 시점에도 정합 확인.
+
+### P-4 벤치 실행 및 판정 결과 (2026-08-13, 프로젝트 마지막 벤치)
+
+**실행**: 2026-08-13T03:00:30 ~ 04:01:30 UTC (**61 분**), Wrapper
+`scripts/run_qgis_pilot.py` (recovery-aware, rc=4 credit-depletion 감지
+포함), Isolation: OpendTect workflows 5 개 `.pilot_backup/` 임시 이동 + QGIS
+시나리오만 있는 `.qgis_pilot_only/` 서브디렉토리.
+
+**Primary 성공 기준 (사전등록 §2.1) 판정: ✅ SUCCESS (이식성 존재 증명 완료)**:
+- ① End-to-end 완주 empty=0/120 ✓
+- ② 5 개 지표 산출 전 셀 ✓
+- ③ Fallback 로그 무결 ✓
+
+**Secondary 예측 대조**:
+- ✅ **예측 A (파라메트릭 마스킹) 확증**: vanilla_vector step_accuracy
+  **62.5%** (예측 ≥40% 만족). 파라메트릭 마스킹의 **세 번째 데이터 포인트**
+  — OpendTect attribute 시나리오 (0/15 검색 hit 에도 61.3% 유지) 와 유사
+  패턴 재현.
+- ✗ **예측 B (Fallback 30-50%) 반증**: 실측 **0.0%** (0/40). Hand-authored
+  QGIS workflow signature 가 unified4 attribute (40.6%) 대비 훨씬 vision-
+  extracted state 와 정합. 반증이지만 **긍정적 발견**.
+- ✗ **예측 C (NONE bucket ≥20%) 반증**: 실측 **0.0%** (0/40). Guard hole
+  재현 안 됨. Full_system 40 스텝 전량 `qgis_vector_buffer` workflow 로
+  정확 라우팅 (통과율 57.5%).
+
+**논문 함의**:
+1. **Unified4 attribute fallback 40.6% + NONE 40% 는 signature 부적합
+   특이 사례**. Signature 품질이 낮을 때 (unified4 attribute) 만 guard hole
+   대량 발현. QGIS pilot 처럼 hand-authored signature 가 vision 과 잘
+   매칭되면 fallback/NONE 은 0%. → "signature 품질이 시스템 안정성에 결정적"
+   이라는 새 관찰.
+2. **파라메트릭 마스킹은 재현 가능한 방법론적 이슈**: OpendTect + QGIS
+   두 소프트웨어에서 동일 패턴 (vanilla 검색 실패에도 40%+ 유지). 논문
+   `discussion_draft_parametric_masking.md` 의 lower-bound 서술 근거 강화.
+3. **이식 비용 실측**: 4 시간 (single engineer, one afternoon). 사전 조사
+   (7-10 인일) 는 다중 시나리오 + 여유 포함 예상. 1 시나리오 pilot 은 이
+   하한을 크게 하회.
+
+**성능 관찰 (판정 아님)**:
+- vanilla_vector 와 no_rag 가 step_acc 동률 (62.5%) — 파라메트릭 마스킹
+  극단 사례. Vector 검색 컨텍스트가 파라메트릭 지식 대비 이득 없음.
+- Full_system 57.5% (약간 낮음) — 파라메트릭 강한 지형에서 workflow 문맥이
+  오히려 방해 가능성 (attribute 시나리오와 유사).
+- Cost 역설 유지: full $2.45m vs vanilla $4.69m (1.9× 저렴)
+- Goal Completion 3 backends 모두 100% (3-gate 통과, 시나리오 goal state
+  캡처 정확)
+
+**정지 규칙 적용**: qgis_pilot2 없음. Primary 성공, 예측 B/C 반증도 그대로
+기록. 논문 Discussion 에 "signature 품질과 guard hole 발현의 상관" 관찰
+승격.
+
+**산출물**:
+- `data/eval/results/run_gemini_qgis_pilot_r{1..5}_*.json` (5 파일)
+- `data/eval/results/qgis_pilot_bench.log`
+- `data/eval/results/qgis_pilot_result_report.md` (최종 판정 보고 + 이식 비용 표)
+- `data/eval/results/qgis_pilot_prereg.md` (사전등록, 대조 대상)
+- `data/eval/results/qgis_pilot_upload_report.md` (P-1 인제스트)
+
+---
+
+## 저장소 정리 이력 (2026-08-13, 사용자 지시)
+
+**Pre-refinement 캡처 백업 삭제**: 아래 3 폴더 (총 12 파일) 삭제, 재캡처
+버전만 유지:
+- `data/eval/screenshots/opendtect__survey_setup__01.unified2_bak/` (4 파일)
+- `data/eval/screenshots/opendtect__3d_visualization__01.unified2_bak/` (4 파일)
+- `data/eval/screenshots/_stale/opendtect__3d_visualization__01_pre_20260707/` (4 파일)
+
+**정리 후 활성 시나리오 캡처 (4 폴더)**:
+- `opendtect__survey_setup__01/` (4)
+- `opendtect__3d_visualization__01/` (4)
+- `opendtect__attribute_computation__01/` (8)
+- `qgis__vector_buffer__01/` (8)
+
+**감사 영향**: unified2 시점 캡처 원본은 소실. 대신 methodology_audit_trail
+§ 시나리오 refinement #1 (2026-08-06) 에 refinement 사유 · 정의 변경 텍스트가
+남아있음 (파일 크기 비교 근거는 소실). Refinement 이력의 서술적 근거는 유지되나
+캡처 원본 대조는 불가.
+
+---
+
+## v3 재실행 준비 — 변경 기록 (2026-09-17 ~ 2026-09-18, append-only)
+
+**전제**: unified4 매트릭스는 검토 결과 양쪽(시스템·baseline) 결함이 확인되어 v3로 재실행하기로 함. 모든 수정은 사전등록 서명 전에 확정하고 전 백엔드에 동일 적용한다. 브랜치 `v3-rerun`. 사전등록 초안: `v3_pre_registration_DRAFT.md`.
+
+### V3-0. 2026-09-17 코드 변경 (사전등록 초안 §2에 대응)
+- 채점기 v3 (`api/services/evaluation.py`): (S1) 시나리오 패턴의 `\b( … )\b`를 ASCII 경계로 재작성 — Python `\b`가 한글 조사를 단어 문자로 취급해 'name에', 'Cross-line에서'가 불일치하던 결함. (S2) 환각 판정을 따옴표 무관하게 — 대문자 시작 라틴 라벨 구를 모두 추출, 근거 어휘 = visible_elements + current_dialog + active_menu + data_state + current_action + screen_state, 목표 문장의 값 제외. (S3) `_strip_thinking`이 미폐쇄 `<think>` 블록을 제거. `GEOLENS_SCORER=v2`로 구 채점기 재현(저장값과 2,120/2,120 일치 확인).
+- 비용 회계: 생성기 thinking 토큰(출력 단가)과 vision·rerank 보조 호출(캐시 적중 포함)을 기록, `cost_total_usd` 신설 (`guide_pipeline.record_aux_usage`, `bench_backends._record_usage`).
+- 하네스: visited_node_ids를 세션 상태로 유지(재-localize O(N²) 제거), state_path 텔레메트리 기록, rerank 'none' 경로를 fallback으로 라벨.
+- 컨텍스트 조립: KG triplet 블록을 뒤로(`RAG_KG_POSITION=last`); graph_only에 linked_chunks 본문 주입; `vanilla_budget` 백엔드(3,900자 예산) 추가.
+- 생성 설정 통일: temperature 0.2, 답변 1,024 토큰, Gemini thinking 예산 1,024 (`GEN_*`, `GEMINI_THINKING_BUDGET`). 보조 Flash 호출 thinking off(`AUX_THINKING_BUDGET=0`, dry-run으로 채택 근거 확보: 정답 12/24 vs 13/24, 비용 5.3배 절감).
+- 임베더: all-MiniLM-L6-v2(256 토큰 절단, 영어 중심) → BAAI/bge-m3, 같은 청크 id로 재임베딩한 `data/chromadb_v3` (OpendTect 521, QGIS 733). google-genai 1.3.0 → 1.75.0.
+- QGIS 실행 비격리(`run_qgis_pilot.py --isolate` 기본 off).
+- 재채점 자료: `rescore_v3_{unified4,longctx,qgis_pilot}.md`, 리플레이 `retrieval_replay_{minilm,bgem3}.md`, dry-run `routing_dryrun_vision_{think0,thinkdyn}.md`, 스모크 `run_gemini_v3smoke_r1_20260917T093224.json`.
+
+### V3-1. 작업 0 — Qwen 제외 (2026-09-18)
+- 사유: Qwen3-VL 서빙 불가(NAS 미접속), 텍스트 전용 Qwen은 스크린샷을 받지 못해 입력 조건이 다름(unified4에서 이미 그랬음: no_rag 입력 토큰 514 vs 550/1,394/2,056).
+- 변경: 집계 스크립트 9종의 `MODELS`를 `BENCH_MODELS` 환경변수(기본 gemini,claude,gpt)로, `run_all_models.py` 기본 모델 3종, `run_v3.sh`에서 Qwen 프로브·환경 제거. unified2/3/4 재집계는 `BENCH_MODELS=gemini,claude,gpt,qwen`으로 가능. `_call_qwen` 코드는 남기되 v3 파이프라인에서 호출하지 않음.
+
+### V3-2. 작업 2 — 사전등록 항목 점검 (2026-09-18)
+- 확인: vanilla_budget ✓, 생성 설정 통일 ✓, QGIS 비격리(41노드 풀) ✓, rerank none → fallback ✓, KG 블록 후순위 ✓, graph_only 청크 본문 ✓.
+- 추가 구현: `run_qgis_pilot.py --models gemini,claude,gpt` (3모델 전부), QGIS도 dev 세트와 같은 7 백엔드 실행(`--backends` 제한 제거).
+
+### V3-3. 작업 3 — 3d_visualization 목표 절 0/13 원인 (2026-09-18)
+- 인덱스의 `1.3.1a Display An Inline` 청크는 1개(p.46, 572자)이며 제목·라이선스·메모리 안내만 있고 절차 문장이 없다. pdfplumber 기준 p.46 텍스트 384자 + 이미지 1, p.47 53자 + 이미지 2. OCR 규칙은 `MIN_TEXT_LENGTH = 50` 미만 페이지만 OCR하므로 두 페이지 모두 OCR 대상에서 제외되어 그림 속 절차(우클릭 → Add Default Data 등)가 인덱스에 없다.
+- 결론: 목표 청크 정의 오류가 아니라 인덱스 내용 결손(OCR 임계값). 목표 문장의 어휘('Add Data', 'Select Cube')는 1.3.2a(p.52), 1.2.2a(p.27) 등 다른 절에만 존재. 조치는 사용자 결정 사항(OCR 임계 상향 재인제스트는 KB 변경이라 사전등록에 명시 필요).
+
+### V3-4. 작업 4 — rescore 요약 (2026-09-18)
+- `rescore_v3_summary.md`: 3모델 18셀의 v3 환각률 분포 {0: 1, 0–5: 3, 5–10: 3, 10–20: 8, >20: 3} — 0 근처가 아니므로 판정 지표에서 제외할 근거는 없음(단, GT visible_elements 보정 전 값). 채점기만 바꿨을 때 full vs vanilla step accuracy 방향: Gemini vanilla → full, Claude full → 동률, GPT 불변(full); 3모델 카운트 2/3 → 2/3.

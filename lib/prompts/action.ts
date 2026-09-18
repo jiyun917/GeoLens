@@ -4,8 +4,12 @@ export function buildActionPrompt(
   completedSteps?: string[],
   manualContext?: string,
   _plan?: string[],
-  language?: string
+  language?: string,
+  softwareId?: string
 ): string {
+  const activeSoftwareId = (softwareId
+    || (typeof process !== "undefined" ? process.env.NEXT_PUBLIC_SOFTWARE_ID : undefined)
+    || "opendtect").toLowerCase();
   let stepsSection = "";
   if (completedSteps && completedSteps.length > 0) {
     const total = completedSteps.length;
@@ -49,6 +53,59 @@ ${manualContext}`;
   const langInstruction = language === "ko"
     ? "\n# Language\nRespond in Korean (한국어). All instructions must be written in Korean.\n"
     : "\n# Language\nRespond in English.\n";
+
+  const softwareSpecificSection = activeSoftwareId === "qgis"
+    ? `# ██ QGIS-SPECIFIC — Layers Panel + Processing Toolbox ██
+QGIS is a 2D geographic information system. Data lives in the LAYERS PANEL (usually left) and is displayed on the MAP CANVAS (center). Analysis tools live in the PROCESSING TOOLBOX (usually right).
+
+Standard interaction patterns:
+- To add data: Layer menu → Add Layer → Add Vector/Raster Layer, OR drag from Browser Panel to Layers Panel.
+- To run a geoprocessing operation (Buffer, Clip, Intersect, Dissolve, etc.):
+  1. Open Processing Toolbox (Processing menu → Toolbox, or Ctrl+Alt+T).
+  2. Search the tool by name (e.g., "Buffer") in the toolbox search box.
+  3. Double-click the tool to open its parameter dialog.
+  4. Set Input Layer (dropdown of loaded layers), parameter values (Distance, Segments, etc.), and Output location (temporary or file).
+  5. Click "Run". The result layer appears in the Layers Panel and renders on the Map Canvas.
+- To inspect attribute data: right-click layer in Layers Panel → Open Attribute Table.
+- To change layer style: double-click layer in Layers Panel → Symbology tab.
+- CRS (Coordinate Reference System) is shown in the bottom-right status bar; changing it re-projects the display but not the underlying data.
+
+Disambiguation cues:
+- The Layers Panel is where DATA lives (loaded layers). Do not confuse with the Browser Panel (unloaded sources).
+- The Processing Toolbox is where TOOLS live. A tool becomes a Result Layer only after Run is clicked and produces output.
+- "Layer" in QGIS = a data source rendered on the map (vector shapefile, raster GeoTIFF, WMS, etc.), NOT a UI panel.
+`
+    : `# ██ DISPLAYING DATA IN A 3D SCENE — Right-Click is the Primary Path ██
+For 3D visualization apps (OpendTect, Petrel, GeoTeric, etc.), data is added to the Scene by RIGHT-CLICKING tree items, NOT by ticking checkboxes labelled "Volume" inside Elements > Volume.
+
+RIGHT-CLICK TARGET = the SLICE ORIENTATION / GEOMETRY CATEGORY node, NOT a child data item.
+
+In OpendTect the Scene tree contains category nodes such as:
+  - "Inline"  (or "In-line")
+  - "Crossline" (or "Cross-line")
+  - "Z-slice"  (or "Time slice" / "Depth slice")
+  - "Volume"
+  - "Horizon"
+  - "Well"
+  - "2D Line"
+
+Beneath each category, previously loaded DATA ITEMS (e.g. "Seismic 1", "Seismic Cube", "4 Dip steered median filter", horizon names) may appear as CHILDREN. Those child items are the wrong right-click target for adding a new slice — right-clicking them opens a per-item context (properties, remove, save-as), not the "Add and Select Data..." dialog you need.
+
+Standard pattern for "show seismic / horizon / well in 3D scene":
+1. Locate the appropriate CATEGORY node in the tree ("Inline", "Crossline", "Z-slice", "Horizon", "2D Line", etc.). NOT a data item that happens to sit under it.
+2. RIGHT-CLICK on the category node.
+3. From the context menu choose "Add" / "Add and Select" / "Add and Select Data..." / "Display" / "Add Default Data".
+4. The element appears in the scene tree under that category and is rendered.
+
+Disambiguation cues:
+- Category nodes typically have GENERIC geometry names (Inline / Crossline / Z-slice / Horizon).
+- Data items have SPECIFIC names the user has previously imported ("Seismic 1", "4 Dip steered median filter", "Top Foresets").
+- If both are visible, ALWAYS target the category node, not the data item, when the goal is to ADD a new display element.
+
+Only check/expand the Volume checkbox path when the manual context EXPLICITLY describes that exact element-by-element selection and the right-click context menu is NOT a viable alternative for the current target.
+
+If the screenshot shows the tree panel but the user has NOT right-clicked yet → instruct to right-click the appropriate CATEGORY node first; do NOT instruct right-clicking a child data item and do NOT instruct toggling checkboxes that may not be there.
+`;
 
   return `You are a UI navigation assistant. You give ONE instruction at a time based on what you SEE on the screen.
 ${langInstruction}
@@ -131,37 +188,7 @@ Many applications have tree/hierarchy panels (usually on the left side).
 - If data exists in the tree but is not shown in the main view, try: right-click → look for display/show/add options.
 - Expand collapsed tree nodes (+/▸ icons) to reveal child items.
 
-# ██ DISPLAYING DATA IN A 3D SCENE — Right-Click is the Primary Path ██
-For 3D visualization apps (OpendTect, Petrel, GeoTeric, etc.), data is added to the Scene by RIGHT-CLICKING tree items, NOT by ticking checkboxes labelled "Volume" inside Elements > Volume.
-
-RIGHT-CLICK TARGET = the SLICE ORIENTATION / GEOMETRY CATEGORY node, NOT a child data item.
-
-In OpendTect the Scene tree contains category nodes such as:
-  - "Inline"  (or "In-line")
-  - "Crossline" (or "Cross-line")
-  - "Z-slice"  (or "Time slice" / "Depth slice")
-  - "Volume"
-  - "Horizon"
-  - "Well"
-  - "2D Line"
-
-Beneath each category, previously loaded DATA ITEMS (e.g. "Seismic 1", "Seismic Cube", "4 Dip steered median filter", horizon names) may appear as CHILDREN. Those child items are the wrong right-click target for adding a new slice — right-clicking them opens a per-item context (properties, remove, save-as), not the "Add and Select Data..." dialog you need.
-
-Standard pattern for "show seismic / horizon / well in 3D scene":
-1. Locate the appropriate CATEGORY node in the tree ("Inline", "Crossline", "Z-slice", "Horizon", "2D Line", etc.). NOT a data item that happens to sit under it.
-2. RIGHT-CLICK on the category node.
-3. From the context menu choose "Add" / "Add and Select" / "Add and Select Data..." / "Display" / "Add Default Data".
-4. The element appears in the scene tree under that category and is rendered.
-
-Disambiguation cues:
-- Category nodes typically have GENERIC geometry names (Inline / Crossline / Z-slice / Horizon).
-- Data items have SPECIFIC names the user has previously imported ("Seismic 1", "4 Dip steered median filter", "Top Foresets").
-- If both are visible, ALWAYS target the category node, not the data item, when the goal is to ADD a new display element.
-
-Only check/expand the Volume checkbox path when the manual context EXPLICITLY describes that exact element-by-element selection and the right-click context menu is NOT a viable alternative for the current target.
-
-If the screenshot shows the tree panel but the user has NOT right-clicked yet → instruct to right-click the appropriate CATEGORY node first; do NOT instruct right-clicking a child data item and do NOT instruct toggling checkboxes that may not be there.
-
+${softwareSpecificSection}
 # Workflow Awareness
 - If the goal requires data to be loaded/imported before it can be used, check whether the data is already available. If not, guide the import first.
 - Importing/loading data and displaying/visualizing it are SEPARATE steps. Do NOT stop after import — continue until the data is visible.

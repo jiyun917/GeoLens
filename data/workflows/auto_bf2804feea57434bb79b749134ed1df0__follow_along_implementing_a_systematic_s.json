@@ -1,0 +1,124 @@
+{
+  "workflow_id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s",
+  "name": "★☆☆ Follow Along: Implementing a Systematic Sampling Plot Design",
+  "description": "Auto-generated from bf2804feea57434bb79b749134ed1df0: ★☆☆ Follow Along: Implementing a Systematic Sampling Plot Design",
+  "auto_generated": true,
+  "source_manual_id": "bf2804feea57434bb79b749134ed1df0",
+  "nodes": [
+    {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_01",
+      "workflow_id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s",
+      "step_number": 1,
+      "title": "Add Randomness to Systematic Points with Initial Inset",
+      "description": "QGIS Training Manual Note The suggested Regular points creates the systematic points starting in the upper-left corner of the extent of the selected polygon layer.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "",
+        "expected_ui_elements": [],
+        "screenshot_keywords": [
+          "Add",
+          "Randomness",
+          "Systematic",
+          "Points",
+          "Initial",
+          "Inset",
+          "QGIS",
+          "Training",
+          "Manual",
+          "Note",
+          "The",
+          "Regular",
+          "open"
+        ]
+      },
+      "linked_chunks": [
+        "b9ad85c469f74359aa9c29fc35af0f36",
+        "d4aeefa67b3247099c6338ced0bd3037"
+      ],
+      "parameters": [],
+      "page": 432
+    },
+    {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "workflow_id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s",
+      "step_number": 2,
+      "title": "Label Points with ID and Add a Text Buffer",
+      "description": "QGIS Training Manual 3.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "",
+        "expected_ui_elements": [],
+        "screenshot_keywords": [
+          "Label",
+          "Points",
+          "ID",
+          "Add",
+          "Text",
+          "Buffer",
+          "QGIS",
+          "Training",
+          "Manual",
+          "For",
+          "Go",
+          "Draw",
+          "select"
+        ]
+      },
+      "linked_chunks": [
+        "5cb74dd1620e48a29f88f932590e1e3b",
+        "d4aeefa67b3247099c6338ced0bd3037"
+      ],
+      "parameters": [],
+      "page": 433
+    },
+    {
+      "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "workflow_id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s",
+      "step_number": 3,
+      "title": "Save the Output File and Run the Algorithm",
+      "description": "indicate that the value represents the distance between the points.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "",
+        "expected_ui_elements": [],
+        "screenshot_keywords": [
+          "Save",
+          "Output",
+          "Run",
+          "Algorithm",
+          "Regular",
+          "Lesson",
+          "Systematic",
+          "Sampling",
+          "Design",
+          "indicate",
+          "represents",
+          "distance",
+          "save"
+        ]
+      },
+      "linked_chunks": [
+        "1886cbe508b545aaa1a2e393d325017d",
+        "d4aeefa67b3247099c6338ced0bd3037"
+      ],
+      "parameters": [],
+      "page": 431
+    }
+  ],
+  "edges": [
+    {
+      "source": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_01",
+      "target": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": ""
+    },
+    {
+      "source": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+      "target": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": ""
+    }
+  ]
+}

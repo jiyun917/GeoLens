@@ -10,6 +10,7 @@ data/eval/results/final_unified_table.md.
 
 from __future__ import annotations
 
+import os
 import glob
 import json
 import sys
@@ -24,8 +25,8 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parent.parent
 
-MODELS = ["gemini", "claude", "gpt", "qwen"]
-DEFAULT_BACKENDS = ["no_rag", "vanilla_vector", "graph_only",
+MODELS = [m.strip() for m in os.environ.get("BENCH_MODELS", "gemini,claude,gpt").split(",") if m.strip()]  # v3: Qwen excluded (VL serving unavailable); set BENCH_MODELS=gemini,claude,gpt,qwen for unified2/3/4 tags
+DEFAULT_BACKENDS = ["no_rag", "vanilla_vector", "vanilla_budget", "graph_only",
                     "vision_only", "full_system", "state_path"]
 METRICS = [
     ("step_accuracy",        "Step Acc",   "%", "higher"),
@@ -34,6 +35,7 @@ METRICS = [
     ("goal_completion_rate", "Goal Comp",  "%", "higher"),
     ("mean_latency_sec",     "Latency",    "s", "lower"),
     ("mean_cost_usd",        "Cost/step",  "$", "lower"),
+    ("mean_cost_total_usd",  "Cost total/step (gen+aux)", "$", "lower"),
 ]
 
 
@@ -92,27 +94,44 @@ def fmt(vals: list, unit: str) -> str:
     return f"{mean:.3f}±{sd:.3f}"
 
 
-def render(data: dict, backends: list) -> str:
+def render(data: dict, backends: list, tag: str = "unified") -> str:
     lines = []
-    lines.append(f"# Final 4-Model × {len(backends)}-Backend Matrix (n=5 replicates each)")
+    lines.append(f"# Final 4-Model × {len(backends)}-Backend Matrix (n=5 replicates each, tag={tag})")
     lines.append("")
-    lines.append("Statistical unit = replicate. Each cell reports mean ± std "
-                 "across 5 replicates, where each replicate averages the 2 "
-                 "scenarios (survey_setup + 3d_visualization).")
+    if tag == "unified2":
+        scen_note = "the 2 scenarios (survey_setup + 3d_visualization)"
+    else:
+        scen_note = "the 3 scenarios (survey_setup + 3d_visualization + attribute_computation)"
+    lines.append(f"Statistical unit = replicate. Each cell reports mean ± std "
+                 f"across 5 replicates, where each replicate averages "
+                 f"{scen_note}.")
     lines.append("")
     lines.append("Goal completion uses the 3-gate check: sentinel + grounded "
                  "+ visual_state confirms goal-reached.")
     lines.append("")
-    lines.append("**Goal Comp footnote**: 3d_visualization captures the "
-                 "penultimate state (In-line + Cross-line displayed, Z-slice "
-                 "not yet added). Its final visual_state does NOT indicate "
-                 "goal-reached, so no backend can achieve goal_completion on "
-                 "that scenario under the 3-gate check. Consequently the Goal "
-                 "Comp column is effectively a single-scenario measurement "
-                 "on survey_setup only — n=5 per (model, backend), not n=10. "
-                 "This is a scenario-capture limitation, not a metric flaw. "
-                 "Interpret Goal Comp differences with this reduced power in "
-                 "mind.")
+    if tag == "unified2":
+        lines.append("**Goal Comp footnote (unified2)**: 3d_visualization captures the "
+                     "penultimate state (In-line + Cross-line displayed, Z-slice "
+                     "not yet added). Its final visual_state does NOT indicate "
+                     "goal-reached, so no backend can achieve goal_completion on "
+                     "that scenario under the 3-gate check. Consequently the Goal "
+                     "Comp column is effectively a single-scenario measurement "
+                     "on survey_setup only — n=5 per (model, backend), not n=10. "
+                     "This is a scenario-capture limitation, not a metric flaw. "
+                     "Interpret Goal Comp differences with this reduced power in "
+                     "mind.")
+    else:
+        lines.append(f"**Goal Comp footnote ({tag})**: {tag} refined the "
+                     "3d_visualization step_3 capture to a goal-reached state "
+                     "(all three orthogonal slices displayed) and added the "
+                     "attribute_computation scenario whose step_7 also captures "
+                     "the goal state (Energy attribute rendered on In-line 250). "
+                     "All three scenarios therefore contribute to goal_completion. "
+                     "Effective n per (model, backend) = 3 scenarios × 5 "
+                     "replicates = 15 observations. **Cross-tag comparison with "
+                     "unified2 Goal Comp is prohibited** — the scoring target "
+                     "changed (see methodology_audit_trail.md § scenario "
+                     "refinement #1).")
     lines.append("")
 
     for model in MODELS:
@@ -145,7 +164,7 @@ def main():
     if not data:
         print(f"no data for tag={args.tag}")
         return
-    text = render(data, backends)
+    text = render(data, backends, tag=args.tag)
     print(text)
     out_name = args.out or f"final_{args.tag}_table.md"
     out = ROOT / "data" / "eval" / "results" / out_name

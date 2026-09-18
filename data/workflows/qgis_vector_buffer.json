@@ -1,0 +1,170 @@
+{
+  "workflow_id": "qgis_vector_buffer",
+  "name": "QGIS Vector Buffer Analysis (버퍼 분석)",
+  "description": "QGIS Training Manual §6.2.6 Follow Along: Analyzing the Problem — Distances From Schools and Roads. Processing Toolbox 의 Buffer 알고리즘으로 roads_33S 레이어 주변 50 m 버퍼 (Dissolve results 적용) 를 vector_analysis.gpkg 에 roads_buffer_50m_dissolved 로 저장. Hand-authored — QGIS pilot 이식 비용 표에 포함.",
+  "software_id": "qgis",
+  "manual_reference": "QGIS Training Manual 3.44 §6.2.6, pp. 212–218 (Follow Along: Analyzing the Problem: Distances From Schools and Roads). Straight-line dissolved path — 매뉴얼의 iterate-to-fix 서사 (먼저 dissolve 없이 실행 → 문제 인지 → dissolve 로 재실행) 는 pilot 스코프 밖 (§6.2.7 Try Yourself 도 out of scope).",
+  "nodes": [
+    {
+      "id": "qgis_vector_buffer_01_open_toolbox",
+      "workflow_id": "qgis_vector_buffer",
+      "step_number": 1,
+      "title": "Processing Toolbox 열기 준비 (레이어 준비 완료 상태)",
+      "description": "매뉴얼 §6.2.6 시작 문맥: roads_33S 레이어가 Layers Panel 에 로드되어 있고 Map Canvas 에 표시된 상태 (매뉴얼 표기 buildings_34S 는 배포 Training Data 3.44 부재로 제외). Processing Toolbox 는 아직 열려 있지 않음. 사용자가 Processing > Toolbox 메뉴 클릭 또는 Ctrl+Alt+T 로 Toolbox 를 열기 직전 상태.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "QGIS Main Window",
+        "expected_ui_elements": [
+          "layers_panel_with_roads",
+          "map_canvas_rendered",
+          "processing_menu",
+          "toolbox_menu_item",
+          "processing_toolbox_not_open"
+        ],
+        "screenshot_keywords": [
+          "Processing menu",
+          "Toolbox",
+          "roads_33S",
+          "Layers Panel",
+          "Map Canvas",
+          "about to open Processing Toolbox"
+        ]
+      },
+      "linked_chunks": [],
+      "parameters": [],
+      "signature_audit": {
+        "changed_on": "2026-08-13",
+        "reason": "hand-authored QGIS pilot signature. Narrow to pre-toolbox-open state markers. 'about to open Processing Toolbox' is step_0-unique phrase — later steps have toolbox already open."
+      }
+    },
+    {
+      "id": "qgis_vector_buffer_02_search_algorithm",
+      "workflow_id": "qgis_vector_buffer",
+      "step_number": 2,
+      "title": "Processing Toolbox 오픈 + Buffer 알고리즘 검색",
+      "description": "매뉴얼 §6.2.6 step 2-4: Processing > Toolbox 클릭으로 Processing Toolbox 패널이 열림 (기본 우측). 검색 창에 'buffer' 입력 시 Buffer (vector geometry) 알고리즘이 트리에서 필터되어 강조 표시. 사용자가 항목을 double-click 하여 알고리즘 다이얼로그 오픈 직전.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Processing Toolbox",
+        "expected_ui_elements": [
+          "processing_toolbox_panel_open",
+          "toolbox_search_field",
+          "buffer_algorithm_highlighted",
+          "vector_geometry_group"
+        ],
+        "screenshot_keywords": [
+          "Processing Toolbox",
+          "search",
+          "buffer",
+          "Buffer",
+          "Vector geometry",
+          "double click",
+          "algorithm dialog",
+          "type buffer in the search menu"
+        ]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    },
+    {
+      "id": "qgis_vector_buffer_03_configure_buffer",
+      "workflow_id": "qgis_vector_buffer",
+      "step_number": 3,
+      "title": "Buffer 다이얼로그: Input Layer + Distance + Dissolve 파라미터 설정",
+      "description": "매뉴얼 §6.2.6 step 5 + p217 dissolve 재실행 통합: Buffer 알고리즘 다이얼로그 오픈 → Input layer 드롭다운에서 roads_33S 선택 → Distance 필드에 50 입력 (단위 meters) → Segments 등 나머지 기본값 유지 → Dissolve results 체크박스 활성화 (매뉴얼 iterate 서사의 최종 상태). Output 저장 경로 지정 (…버튼) 직전.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Buffer",
+        "expected_ui_elements": [
+          "input_layer_dropdown",
+          "distance_field",
+          "distance_unit_meters",
+          "segments_field",
+          "dissolve_results_checkbox",
+          "output_save_button"
+        ],
+        "screenshot_keywords": [
+          "Buffer",
+          "Input layer",
+          "roads_33S",
+          "Distance",
+          "50",
+          "meters",
+          "Segments",
+          "Dissolve results",
+          "Dissolve results enabled",
+          "default values for the rest of the parameters"
+        ]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {"name": "Input layer", "default": "roads_33S", "description": "버퍼 대상 벡터 레이어"},
+        {"name": "Distance", "default": "50", "description": "버퍼 거리 (meters)"},
+        {"name": "Dissolve results", "default": "true", "description": "결과 폴리곤 병합 여부 (매뉴얼 iterate 최종 상태)"}
+      ]
+    },
+    {
+      "id": "qgis_vector_buffer_04_save_output",
+      "workflow_id": "qgis_vector_buffer",
+      "step_number": 4,
+      "title": "Save to GeoPackage 다이얼로그: 출력 레이어 명명",
+      "description": "매뉴얼 §6.2.6 step 7 + p218: Buffer 다이얼로그의 Output 오른쪽 '…' 버튼 클릭 → 'Save to GeoPackage…' 선택으로 파일 대화상자 오픈 → vector_analysis.gpkg 파일 선택 후 Layer name 필드에 'roads_buffer_50m_dissolved' 입력 → OK/Save 클릭 직전.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Save to GeoPackage",
+        "expected_ui_elements": [
+          "geopackage_file_field",
+          "layer_name_field",
+          "save_dialog_ok_button"
+        ],
+        "screenshot_keywords": [
+          "Save to GeoPackage",
+          "vector_analysis.gpkg",
+          "roads_buffer_50m_dissolved",
+          "Layer name",
+          "GeoPackage database",
+          "about to click OK",
+          "about to click Save"
+        ]
+      },
+      "linked_chunks": [],
+      "parameters": [
+        {"name": "GeoPackage", "default": "vector_analysis.gpkg", "description": "출력 저장할 GPKG 파일"},
+        {"name": "Layer name", "default": "roads_buffer_50m_dissolved", "description": "저장할 레이어 이름 (dissolved 결과)"}
+      ]
+    },
+    {
+      "id": "qgis_vector_buffer_05_run_and_render",
+      "workflow_id": "qgis_vector_buffer",
+      "step_number": 5,
+      "title": "Run 실행 → Dissolved Buffer 레이어 Map Canvas 렌더 (목표 도달)",
+      "description": "매뉴얼 §6.2.6 step 8 + p218 최종: Buffer 다이얼로그의 Run 버튼 클릭 → 알고리즘 실행 (짧은 진행 표시) → Buffer 다이얼로그 자동 닫힘 → Layers Panel 최상단에 roads_buffer_50m_dissolved 레이어 추가 → Map Canvas 에 단일 dissolved 폴리곤 (도로 네트워크 주변 50 m) 렌더. 매뉴얼 pp217-218 결과 이미지 상태 = 목표 달성.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "QGIS Main Window (buffer rendered)",
+        "expected_ui_elements": [
+          "layers_panel_with_new_buffer_layer",
+          "map_canvas_dissolved_buffer",
+          "buffer_dialog_closed"
+        ],
+        "screenshot_keywords": [
+          "roads_buffer_50m_dissolved",
+          "Layers Panel",
+          "dissolved buffer",
+          "Map Canvas",
+          "Buffer dialog closed",
+          "goal achieved",
+          "Run completed"
+        ]
+      },
+      "linked_chunks": [],
+      "parameters": []
+    }
+  ],
+  "edges": [
+    {"source": "qgis_vector_buffer_01_open_toolbox", "target": "qgis_vector_buffer_02_search_algorithm", "edge_type": "sequential", "condition": null, "instruction": "Processing > Toolbox 메뉴를 클릭해 Processing Toolbox 를 여세요"},
+    {"source": "qgis_vector_buffer_02_search_algorithm", "target": "qgis_vector_buffer_03_configure_buffer", "edge_type": "sequential", "condition": null, "instruction": "Toolbox 검색창에 'buffer' 를 입력하고 Buffer 알고리즘을 double-click 하세요"},
+    {"source": "qgis_vector_buffer_03_configure_buffer", "target": "qgis_vector_buffer_04_save_output", "edge_type": "sequential", "condition": null, "instruction": "Input layer = roads_33S, Distance = 50, Dissolve results 체크 후 Output 옆 '…' 버튼을 클릭하세요"},
+    {"source": "qgis_vector_buffer_04_save_output", "target": "qgis_vector_buffer_05_run_and_render", "edge_type": "sequential", "condition": null, "instruction": "Save to GeoPackage 에서 파일 vector_analysis.gpkg 선택, Layer name = roads_buffer_50m_dissolved 입력 후 OK 클릭, 다시 Buffer 다이얼로그에서 Run 을 클릭하세요"}
+  ]
+}

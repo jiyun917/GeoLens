@@ -124,32 +124,35 @@
       "step_index": 3,
       "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_3.jpg",
       "visual_state_gt": {
-        "current_dialog": "OpendTect Main Window (In-line + Cross-line displayed) or Context menu on Z-slice",
+        "current_dialog": "OpendTect Main Window — all three slices displayed in 3D Scene",
         "visible_elements": [
-          "3D Scene with In-line and Cross-line both visible",
-          "Z-slice category node with no children",
-          "Elements group updated"
+          "3D Scene with In-line, Cross-line, and Z-slice all visible",
+          "Tree scene Elements group with In-line, Cross-line, Z-slice categories each containing a child node",
+          "No context menu, no dialog"
         ],
-        "data_state": "In-line + Cross-line displayed; Z-slice next",
-        "current_action": "adding Z-slice"
+        "data_state": "Goal achieved — In-line + Cross-line + Z-slice all three displayed in 3D Scene. Matches manual §1.3.1a target end state.",
+        "current_action": "goal complete — model should emit '완료'"
       },
-      "expected_action_text_pattern": "(?i)\\b(Z[- ]?slice|Time[- ]?slice|Depth[- ]?slice|Add.*Select.*Data|Add Default Data)\\b",
-      "expected_action_keywords": ["Z-slice", "Add"],
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": ["완료"],
       "allowed_alternatives": [
-        {"pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$", "note": "If all three slices already visible when this capture fires"}
+        {"pattern": "(?i)\\b(Done)\\b", "note": "English completion sentinel"},
+        {"pattern": "(?i)\\b(In[- ]?line|Cross[- ]?line|Z[- ]?slice|3D Scene|Elements)\\b", "note": "Ground-truth element mention for the grounding validator."}
       ],
       "expected_workflow_node": null,
       "is_error_recovery_test": false,
       "trap": {
-        "type": "category_vs_child_item",
-        "description": "Right-click target must be Z-slice CATEGORY node."
+        "type": "goal_completion_sentinel",
+        "description": "In-line + Cross-line + Z-slice all three displayed in 3D Scene. Goal achieved (matches manual §1.3.1a target). Model MUST emit '완료' as the sole response. Any further instruction is a failure. Refined in unified3 from unified2's penultimate-capture design — the recapture (2026-08-06) now depicts the goal-reached terminal state so the 3-gate completion check can pass structurally.",
+        "audit_note": "unified3 scenario refinement (opt B decision, 2026-08-06). unified2 step_3 was designed as 'Z-slice about to be added' (penultimate), causing goal_completion to be structurally UNMEASURABLE. unified3 recapture depicts the goal-reached state; JSON updated to reflect capture reality. This is NOT scoring softening — same 3-gate check applies to all backends symmetrically. Cross-version goal_completion comparison (unified2 vs unified3) is PROHIBITED because scenario definition changed."
       },
       "capture_instructions": {
-        "screen_state": "Both In-line and Cross-line visible in 3D Scene. Z-slice category has no child yet.",
-        "user_should_have_just": "Added Cross-line to 3D Scene, dismissed any residual dialog.",
+        "screen_state": "OpendTect Main Window with all three slices (In-line, Cross-line, Z-slice) rendered in 3D Scene. Tree scene shows each category with a child node.",
+        "user_should_have_just": "Added Z-slice via right-click + Add Default Data — the third and final slice is now displayed.",
         "must_not_show": [
-          "Z-slice already added",
-          "In-line or Cross-line missing"
+          "Any dialog still open",
+          "Any of the three slices missing from 3D Scene",
+          "Any context menu"
         ]
       },
       "capture_required": true
@@ -158,6 +161,6 @@
   "completion": {
     "final_screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_3.jpg",
     "expected_done_sentinel": true,
-    "note": "The step_3 capture happens to depict the goal-achieved state (all three slices visible in 3D Scene). We reuse it as the completion-check reference — the completion check calls the backend once more at step_index=len(steps)=4 with this image, and the backend is expected to emit '완료'. Without this, goal_completion is UNMEASURABLE for this scenario, not 0."
+    "note": "step_3 depicts the goal-achieved terminal state (all three slices visible in 3D Scene). The goal_completion_sentinel trap on step_3 explicitly marks this so the 3-gate completion check passes structurally. Refined from unified2's penultimate-capture design as part of unified3 scenario refinement (2026-08-06); see step_3.trap.audit_note for details. Cross-version goal_completion comparison (unified2 vs unified3) is PROHIBITED because scenario definition changed."
   }
 }

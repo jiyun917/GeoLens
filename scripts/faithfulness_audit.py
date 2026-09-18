@@ -19,6 +19,7 @@ Output: data/eval/results/faithfulness_supplement.md
 
 from __future__ import annotations
 
+import os
 import glob
 import json
 import re
@@ -35,8 +36,8 @@ except Exception:
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS_DIR = ROOT / "data" / "eval" / "results"
 
-MODELS = ["gemini", "claude", "gpt", "qwen"]
-CORE_BACKENDS = ["no_rag", "vanilla_vector", "graph_only",
+MODELS = [m.strip() for m in os.environ.get("BENCH_MODELS", "gemini,claude,gpt").split(",") if m.strip()]  # v3: Qwen excluded (VL serving unavailable); set BENCH_MODELS=gemini,claude,gpt,qwen for unified2/3/4 tags
+CORE_BACKENDS = ["no_rag", "vanilla_vector", "vanilla_budget", "graph_only",
                  "vision_only", "full_system", "state_path"]
 CELLS = [(m, b) for m in MODELS for b in CORE_BACKENDS] + [("gemini", "long_context")]
 
@@ -51,6 +52,9 @@ DIRECTION_PAIRS = [
 ]
 
 
+TAG = "unified2"
+
+
 def per_replicate_faithfulness(model: str, backend: str) -> list[float]:
     """One value per replicate = mean of scenario-level faithfulness. Reads
     the `faithfulness` field directly (do not compute from hall_rate here,
@@ -58,7 +62,7 @@ def per_replicate_faithfulness(model: str, backend: str) -> list[float]:
     if backend == "long_context":
         pattern = f"data/eval/results/run_{model}_longctx_r*_*.json"
     else:
-        pattern = f"data/eval/results/run_{model}_unified2_r*_*.json"
+        pattern = f"data/eval/results/run_{model}_{TAG}_r*_*.json"
     files = sorted(glob.glob(str(ROOT / pattern)))
     out: list[float] = []
     for f in files:
@@ -81,7 +85,7 @@ def per_replicate_hall(model: str, backend: str) -> list[float]:
     if backend == "long_context":
         pattern = f"data/eval/results/run_{model}_longctx_r*_*.json"
     else:
-        pattern = f"data/eval/results/run_{model}_unified2_r*_*.json"
+        pattern = f"data/eval/results/run_{model}_{TAG}_r*_*.json"
     files = sorted(glob.glob(str(ROOT / pattern)))
     out: list[float] = []
     for f in files:
@@ -243,22 +247,14 @@ def render():
     lines.append("")
 
     lines.append(
-        "**Reproduction check** (against `data/eval/results/direction_unified2.md`):"
-    )
-    lines.append("")
-    lines.append(
-        "- `full_system vs vanilla_vector` on faithfulness: **3/4** "
-        "(Gemini, Claude, Qwen win; GPT loses) — matches the "
-        "\"3승 1무 0패\" narrative once tied cases are collapsed."
-    )
-    lines.append(
-        "- `graph_only vs vanilla_vector` on faithfulness: **4/4** "
-        "(all four models win) — matches the \"4/4 전승\" "
-        "citation in the paper's Table 3 discussion."
-    )
-    lines.append(
-        "- `full_system vs no_rag` on faithfulness: **3/4** — "
-        "matches direction_unified2.md."
+        f"**Reproduction check** (against `data/eval/results/direction_{TAG}.md`): "
+        f"the win counts in the table above are recomputed here from raw "
+        f"per-replicate faithfulness (n=5 per cell). Compare them column-by-"
+        f"column with the faithfulness section of direction_{TAG}.md — if "
+        f"they match, the deterministic identity `faithfulness = 1 − hall` "
+        f"holds all the way through aggregation. Any narrative citations "
+        f"such as \"3승\" or \"4/4 전승\" in downstream reports should be "
+        f"regenerated from these numbers, not carried over between tags."
     )
     lines.append("")
 
@@ -292,8 +288,15 @@ def render():
 
 
 def main():
+    global TAG
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--tag", default="unified2")
+    args = ap.parse_args()
+    TAG = args.tag
     text = render()
-    out = RESULTS_DIR / "faithfulness_supplement.md"
+    filename = "faithfulness_supplement.md" if TAG == "unified2" else f"faithfulness_supplement_{TAG}.md"
+    out = RESULTS_DIR / filename
     out.write_text(text, encoding="utf-8")
     print(text)
     print(f"\nsaved: {out}", file=sys.stderr)

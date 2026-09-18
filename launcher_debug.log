@@ -1,0 +1,7 @@
+[13:38:19] _setup_content: desktopMediaRequested signal exists = True
+[13:38:19] _setup_content: desktopMediaRequested handler attached
+[13:38:49] _on_desktop_media_requested: FIRED
+[13:38:49] _on_desktop_media_requested: windows=9 screens=2
+[13:38:49] _on_desktop_media_requested: dialog exec starting
+[13:39:00] _on_desktop_media_requested: dialog closed, result=1, selected=screen
+[13:39:00] _on_desktop_media_requested: selectScreen OK

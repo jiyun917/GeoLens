@@ -28,7 +28,7 @@
 **Step 1: Initialize git repo**
 
 ```bash
-cd C:\Users\user\Desktop\workspace\GeoLens
+cd ./workspace\GeoLens
 git init
 ```
 

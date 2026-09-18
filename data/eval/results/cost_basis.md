@@ -145,7 +145,7 @@ The vLLM endpoint used for all Qwen benchmark runs is:
 | Serving engine       | vLLM, TP=4 |
 | Max model length     | 32,768 tokens (vLLM `--max-model-len` at bench time) |
 | Hardware             | **4× NVIDIA RTX 6000 Ada 48GB** |
-| Endpoint             | `http://168.131.141.77:28000/v1` |
+| Endpoint             | `http://<INTERNAL_HOST>:28000/v1` |
 
 The earlier working assumption of `A100 80GB × 4` was an over-estimate of
 the GPU tier and has been retired.
@@ -262,12 +262,38 @@ paragraphs P19 (vanilla outlier note: `$60.45m` → `$39.36m` and
 > Qwen is excluded from the long_context ablation — the manual is
 > ~226K tokens, well above the deployment's context budget.
 
+## 6b. Post-unified2 cost ratio evolution (append 2026-08-13)
+
+The 106.6× long_context vs full_system cost ratio reported above is the
+**unified2 baseline** (Gemini full_system $2.66m/step × long_context
+$283.45m/step). The ratio evolved across subsequent bench iterations as
+the full_system cost per step drifted:
+
+| Tag | Gemini full_system cost/step | Gemini long_context cost/step | Ratio |
+|---|---|---|---|
+| unified2 (2 scenarios) | $2.66m | $283.45m | **106.6×** |
+| unified3 (3 scenarios) | $2.21m | $315.54m | **142.9×** |
+| unified4 (3 scenarios, sig-refactor) | $2.13m | $315.56m | **148×** |
+
+**Interpretive note.** long_context cost per step is flat by construction
+(fixed input-token count × flat rate); its slight drift across iterations
+reflects stored-token variance across rerun stanzas. full_system cost per
+step *decreases* across iterations as scenario coverage expands (more
+short-response steps enter the denominator, e.g. goal-sentinel steps
+after 3d_viz refinement in unified3). **The active-paper cost ratio
+citation is unified4's 148×**; the 106.6× and 142.9× figures are
+preserved as prior-iteration values in their respective judgment
+templates. Historical documents (`v2_judgment_report.md`,
+`unified3_judgment_template.md`) retain their contemporaneous ratios as
+timestamped truth; those figures should not be back-edited.
+
 ## 7. Summary of findings
 
 | Finding | Status |
 |---|---|
 | $283.45m / step long_context reproduces from stored token counts × flat $1.25/M input | Confirmed |
-| 106.6× ratio is arithmetically consistent with the flat-rate accounting | Confirmed |
+| 106.6× ratio is arithmetically consistent with the flat-rate accounting (unified2 baseline) | Confirmed |
+| Active-paper cost ratio = **148×** (unified4 tag; supersedes 106.6× / 142.9× for paper citations) | Confirmed 2026-08-13 |
 | Gemini long-context >200K tier surcharge NOT applied in code | Resolved 2026-07-27 — Option A (flat rate) confirmed; §4 records the decision, §6 Methods paragraph names both rates and states which was used |
 | Prompt caching NOT credited on any backend | Flagged — needs Methods sentence |
 | Qwen serving hardware confirmed: 4× RTX 6000 Ada 48GB, TP=4, GPTQ int4, max-model-len 32,768 | Confirmed (previously TENTATIVE assumption of A100×4 retired) |

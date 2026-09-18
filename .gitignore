@@ -54,3 +54,6 @@ data/manual_images/
 
 # Internal working docs — never push (per policy discussion 2026-07-24)
 NEXT_SESSION_TODO.md
+
+# v3 bge-m3 index (rebuild with scripts/reembed_index.py)
+data/chromadb_v3/

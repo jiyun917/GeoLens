@@ -50,6 +50,13 @@ The system's contribution is the hybrid retrieval pipeline (workflow
 graph + vector + vision) evaluated against the same LLM backbones with
 weaker retrieval variants and a long-context zero-retrieval baseline.
 
+The evaluation spans **two software packages**: OpendTect (three
+scenarios, main matrix) and QGIS 3.44 (one scenario, portability
+pilot). The portability pilot demonstrates end-to-end operation on an
+unrelated open-source geospatial application via four `software_id`
+touch-points and a hand-authored workflow signature; see §6 for data
+availability and §5 for the pilot reproduction command.
+
 Report and image-labeling modes present in other branches
 (`conference`, `develop`) are **not part of the paper's scope**. Only
 guide mode is retained on the `paper` and (post-merge) `main` branches.
@@ -127,20 +134,31 @@ route and no image-labeling UI.
 
 ## 5. Benchmark reproduction
 
-The paper reports a **4 LLM generators × 7 backends (long_context on
-Gemini only, yielding 25 model–backend cells) × 2 scenarios × 5
-replicates = 1,000 evaluated step responses** matrix.
+The active paper matrix is the **`unified4` tag**: 4 LLM generators ×
+7 backends (long_context on Gemini only, yielding 25 model–backend
+cells) × 3 scenarios × 5 replicates = **1,920 evaluated main-matrix
+step responses + 240 long-context step responses**.
 
 The four LLM generators are Gemini 2.5 Pro, Claude Sonnet 4.6, GPT-4o,
 and Qwen3-235B-A22B-Instruct. The seven backends are `no_rag`,
 `vanilla_vector`, `graph_only`, `vision_only`, `full_system` (the
-proposed hybrid), `state_path`, and `long_context` (the last is
-Gemini-only because the manual at ~226K tokens exceeds Claude Sonnet
-4.6's 200K window, GPT-4o's 128K window, and the Qwen deployment's
-vLLM `--max-model-len 32768` cap; see §9).
+proposed hybrid), `state_path`, and `long_context` (Gemini-only because
+the manual at ~226K tokens exceeds Claude Sonnet 4.6's 200K window,
+GPT-4o's 128K window, and the Qwen deployment's vLLM
+`--max-model-len 32768` cap; see §9).
 
-The two scenarios are `opendtect__survey_setup` and
-`opendtect__3d_visualization`, each 4 steps.
+The three OpendTect scenarios are `opendtect__survey_setup__01`
+(4 steps), `opendtect__3d_visualization__01` (4 steps), and
+`opendtect__attribute_computation__01` (8 steps, added in the
+unified3 → unified4 cycle). A separate **portability pilot** on
+`qgis__vector_buffer__01` (8 steps) runs Gemini × 3 backends × 5
+replicates = 120 additional steps; see §5.4.
+
+Prior tags (`unified2`, `unified3`) are preserved for provenance in
+`data/eval/results/.archive_unified2/` and in
+`data/eval/results/unified3_judgment_template.md` respectively.
+**Active-paper citations should use `unified4` and `qgis_pilot`
+outputs only.**
 
 ### 5.1 Prepare the index
 
@@ -156,36 +174,47 @@ paper numbers. Two paths:
   PyMuPDF 1.25.3 and reproduces the paper's numbers exactly. See §8
   for why the public code path uses the MIT-compatible parser instead.
 
-### 5.2 Run the matrix
+### 5.2 Run the main matrix (unified4)
 
 ```bash
-# Full v2 matrix — 4 models × 6 core backends × 2 scenarios × 5 reps
-.venv/Scripts/python.exe scripts/run_all_models.py \
-    --models gemini,claude,gpt,qwen --repeats 5 --tag unified2 \
-    --backends no_rag vanilla_vector graph_only vision_only full_system state_path
+# Full unified4 matrix + long_context, with credit-probe safety belt.
+# (Wraps run_all_models + long_context loop; ~4-6 h wall time.)
+bash scripts/run_unified4.sh
 
-# Long_context (Gemini only) — 5 replicates
-bash scripts/longctx_r5_rerun.sh
-
-# Aggregation and analysis
-.venv/Scripts/python.exe scripts/build_final_table.py --tag unified2
-.venv/Scripts/python.exe scripts/direction_consistency.py --tag unified2
-.venv/Scripts/python.exe scripts/stats_unified.py --tag unified2
-
-# Compact 25-cell Table 1 with sample SD on all 5 core metrics
-.venv/Scripts/python.exe scripts/compute_table1_sd.py
-
-# Pre-manuscript audits: stats corrections, cost basis, faithfulness
-.venv/Scripts/python.exe scripts/stats_audit.py
-.venv/Scripts/python.exe scripts/faithfulness_audit.py
+# Aggregation and analysis (all tag-aware, default = unified4)
+.venv/Scripts/python.exe scripts/qwen_cost_convert.py --tag unified4
+.venv/Scripts/python.exe scripts/build_final_table.py --tag unified4
+.venv/Scripts/python.exe scripts/compute_table1_sd.py --tag unified4
+.venv/Scripts/python.exe scripts/direction_consistency.py --tag unified4
+.venv/Scripts/python.exe scripts/stats_unified.py --tag unified4
+.venv/Scripts/python.exe scripts/stats_audit.py --tag unified4
+.venv/Scripts/python.exe scripts/faithfulness_audit.py --tag unified4
+.venv/Scripts/python.exe scripts/per_scenario_breakdown.py --tag unified4
 ```
 
-Wall time: full matrix takes ~6–8 hours end-to-end, dominated by
+Wall time: full matrix takes ~4–6 hours end-to-end, dominated by
 Qwen wall-clock latency and API rate limits. Approximate cost at
 2026-07 rates: ~USD $40 for the API portion (Qwen self-hosted; see
-§9 for GPU-time accounting).
+§9 for GPU-time accounting). The wrapper includes a credit-depletion
+probe (rc=4 immediate abort) and a 60 s inter-replicate sleep on the
+long-context loop, both inherited from the unified3-recovery lessons
+(see `data/eval/results/methodology_audit_trail.md § 관측 #9`).
 
-### 5.3 Sanity check without the real manual
+### 5.3 Run the QGIS portability pilot (qgis_pilot)
+
+```bash
+# Requires: a running FastAPI backend on :8000 with the QGIS manual
+# already ingested (see §6.2 for ingest, §6.3 for QGIS specifics).
+# The wrapper temporarily moves OpendTect workflow JSONs out of the
+# loader path, restores them on exit, and runs Gemini × 3 backends ×
+# 5 replicates × 1 scenario (~1 hour wall time).
+GEOLENS_SOFTWARE_ID=qgis .venv/Scripts/python.exe -u scripts/run_qgis_pilot.py
+
+# Post-run judgment (produces qgis_pilot_result_report.md)
+.venv/Scripts/python.exe scripts/qgis_pilot_judge.py
+```
+
+### 5.4 Sanity check without the real manual
 
 For reviewers who cannot obtain the OpenDtect manual, `scripts/
 verify_dummy_pipeline.py` runs the full pipeline (chunk → embed →
@@ -232,7 +261,30 @@ Timing on the OpendTect 454-page manual, MIT-compatible pipeline:
 The resulting index (521 chunks, ~1 GB) is what the pdfplumber column
 in the paper's benchmark was measured against.
 
-### 6.3 Synthetic corpus
+### 6.3 QGIS manual (portability pilot)
+
+The QGIS 3.44 Training Manual is authored by the QGIS project
+(<https://qgis.org>) and licensed under CC-BY-SA. **We do not
+redistribute the PDF here**; obtain it from the official QGIS
+documentation site
+(<https://docs.qgis.org/3.44/en/docs/training_manual/>) and either
+save the PDF locally or use the URL crawler.
+
+For the pilot as reported, the PDF form was used (697 pages, ingested
+in ~56 minutes at 12.5 pages/min throughput). Ingest command:
+
+```bash
+# Ingest the QGIS Training Manual — same POST /api/manual/upload as UI
+QGIS_TRAINING_MANUAL_PDF="/path/to/QGIS-3.44-TrainingManual-en.pdf" \
+  .venv/Scripts/python.exe -u scripts/qgis_pilot_upload.py
+```
+
+The QGIS pilot uses the same `POST /api/manual/upload` endpoint that
+the UI Submit button uses. No internal-function bypass. See
+`data/eval/results/methodology_audit_trail.md § P-1 최종 결과` for the
+ingest measurement provenance.
+
+### 6.4 Synthetic corpus
 
 `data/eval/dummy_manuals/` contains three original short markdown
 files intended for review-time reproducibility checks (see §5.3). They
@@ -299,6 +351,12 @@ an institution-hosted node:
 - `--max-model-len 32768`
 - Endpoint pattern: `http://<host>:28000/v1` (OpenAI-compatible)
 
+The endpoint is configured via the `QWEN_BASE_URL` environment
+variable in `api/services/bench_backends.py`; the default is
+`http://localhost:28000/v1`. Override with your own vLLM deployment
+before running Qwen backends. The `run_unified3.sh` / `run_unified4.sh`
+wrappers also honor `QWEN_URL` (health-check endpoint).
+
 **Qwen cost accounting.** Because there is no per-token API fee,
 `scripts/qwen_cost_convert.py` reports Qwen cost primarily as
 **GPU-time per step** (`latency × N_GPU`), with a dollar conversion
@@ -336,16 +394,24 @@ GeoLens/
 │   ├── manual_images/          # (gitignored) CLIP cache; regenerate with scripts/
 │   ├── workflows/              # hand-authored + auto-mapped workflow graphs
 │   └── eval/
-│       ├── scenarios/          # labeled scenario JSONs (survey_setup, 3d_visualization, ...)
+│       ├── scenarios/          # 4 scenario JSONs (3 OpendTect + 1 QGIS pilot)
+│       ├── screenshots/        # per-scenario per-step JPGs (24 images total)
 │       ├── dummy_manuals/      # synthetic corpus for review-time reproducibility check
-│       └── results/            # benchmark run logs, aggregated tables, audit docs
+│       └── results/            # unified4 + qgis_pilot artifacts + audit trail
+│           └── .archive_unified2/  # historical unified2 snapshots (SUPERSEDED, retained for provenance)
 ├── scripts/                    # bench runners, aggregators, migration audits
-│   ├── run_all_models.py       # main matrix driver
-│   ├── build_final_table.py    # per-model tables
-│   ├── compute_table1_sd.py    # compact 25-cell Table 1
-│   ├── stats_audit.py          # Table 2 corrections (Bonferroni/Holm/CI)
-│   ├── faithfulness_audit.py   # Table 3 direction-consistency reproduction
+│   ├── run_unified4.sh         # active main matrix wrapper (recovery-aware)
+│   ├── run_qgis_pilot.py       # portability pilot wrapper (isolation-aware)
+│   ├── qgis_pilot_dryrun.py    # QGIS routing dry-run
+│   ├── qgis_pilot_judge.py     # QGIS pilot pass/fail judgment
+│   ├── run_all_models.py       # underlying multi-model runner
+│   ├── build_final_table.py    # per-model tables (tag-aware)
+│   ├── compute_table1_sd.py    # compact 25-cell Table 1 (tag-aware)
+│   ├── stats_audit.py          # Table 2 corrections (Bonferroni/Holm/CI, tag-aware)
+│   ├── faithfulness_audit.py   # Table 3 direction-consistency reproduction (tag-aware)
+│   ├── per_scenario_breakdown.py # per-scenario × per-model breakdown
 │   ├── qwen_cost_convert.py    # Qwen effective-cost conversion
+│   ├── routing_dryrun.py       # OpendTect routing dry-run
 │   ├── secret_scan.py          # pre-push credential scanner
 │   ├── reindex_manual.py       # full production reindex path
 │   └── verify_dummy_pipeline.py # review-time end-to-end sanity check

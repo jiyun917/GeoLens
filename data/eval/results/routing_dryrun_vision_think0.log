@@ -1,0 +1,115 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+C:\Users\user\Downloads\GeoLens-paper\.venv\Lib\site-packages\open_clip\factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+[WorkflowGraph] Loaded 7 workflows, 41 nodes, 37 edges
+[VISUAL_MATCH] CLIP ViT-B-32/openai loaded on cpu
+[VISUAL_MATCH] rehydrating 765 images for manual=645b7cdf2690408da843b9ce63c52d5b from disk
+[VISUAL_MATCH] indexed 765 images for manual=645b7cdf2690408da843b9ce63c52d5b
+[GUIDE] visual_state: 'OpendTect 7.0.9 (Windows) "UPDATE AVAILA / Scene'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=d3_visualization_01_main_window_ready conf=0.80
+_3d_visualization__01  s0 picked=d3_visualization/d3_visualization_01_main_window_ready conf=0.8 method=llm kept=True aux=2calls think=0 $1.25m 43.4s
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) "UPDATE AVAIL / Scene'
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=d3_visualization_03_add_crossline conf=0.80
+_3d_visualization__01  s1 picked=d3_visualization/d3_visualization_03_add_crossline conf=0.8 method=llm kept=True aux=2calls think=0 $1.72m 11.4s
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) "UPDATE AVAIL / Scene'
+[GUIDE] candidates: 5 (kw_top=3, clip_top=3)
+[GUIDE] localize via LLM rerank: node=d3_visualization_05_all_slices_displayed conf=0.80
+_3d_visualization__01  s2 picked=d3_visualization/d3_visualization_05_all_slices_displayed conf=0.8 method=llm kept=True aux=2calls think=0 $1.28m 8.1s
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) / Scene'
+[GUIDE] candidates: 5 (kw_top=3, clip_top=3)
+[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)
+_3d_visualization__01  s3 picked=None/None conf=0.0 method=none kept=False aux=2calls think=0 $1.38m 8.4s
+[GUIDE] visual_state: 'Attribute Set 3D / '
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)
+_attribute_computation s0 picked=None/None conf=0.0 method=none kept=False aux=2calls think=0 $1.26m 8.3s
+[GUIDE] visual_state: 'Attribute Set 3D / '
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03 conf=0.50
+_attribute_computation s1 picked=auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s/auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03 conf=0.5 method=llm kept=False aux=2calls think=0 $1.20m 8.0s
+[GUIDE] visual_state: 'Attribute Set 3D / '
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)
+_attribute_computation s2 picked=None/None conf=0.0 method=none kept=False aux=2calls think=0 $1.22m 7.7s
+[GUIDE] visual_state: 'Attribute Set 3D / '
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)
+_attribute_computation s3 picked=None/None conf=0.0 method=none kept=False aux=2calls think=0 $1.50m 8.9s
+[GUIDE] visual_state: 'Attribute Set 3D / '
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=horizon_tracking_08_save conf=0.70
+_attribute_computation s4 picked=horizon_tracking/horizon_tracking_08_save conf=0.7 method=llm kept=True aux=2calls think=0 $1.17m 7.6s
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) / Scene'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=d3_visualization_01_main_window_ready conf=0.80
+_attribute_computation s5 picked=d3_visualization/d3_visualization_01_main_window_ready conf=0.8 method=llm kept=True aux=2calls think=0 $1.96m 8.6s
+[GUIDE] visual_state: 'Select Layer 2 / '
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)
+_attribute_computation s6 picked=None/None conf=0.0 method=none kept=False aux=2calls think=0 $1.52m 8.5s
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) / Scene'
+[GUIDE] candidates: 5 (kw_top=3, clip_top=3)
+[GUIDE] localize via LLM rerank: node=d3_visualization_01_main_window_ready conf=0.80
+_attribute_computation s7 picked=d3_visualization/d3_visualization_01_main_window_ready conf=0.8 method=llm kept=True aux=2calls think=0 $1.46m 8.6s
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_01_open_selection conf=0.90
+_survey_setup__01      s0 picked=survey_setup/survey_setup_01_open_selection conf=0.9 method=llm kept=True aux=2calls think=0 $0.84m 7.1s
+[GUIDE] visual_state: 'Create New Survey / '
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_03_choose_initial_setup conf=0.90
+_survey_setup__01      s1 picked=survey_setup/survey_setup_03_choose_initial_setup conf=0.9 method=llm kept=True aux=2calls think=0 $1.26m 7.9s
+[GUIDE] visual_state: 'Create New Survey / '
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_03_choose_initial_setup conf=0.90
+_survey_setup__01      s2 picked=survey_setup/survey_setup_03_choose_initial_setup conf=0.9 method=llm kept=True aux=2calls think=0 $1.26m 9.3s
+[GUIDE] visual_state: 'OpendTect 17.0.9 (Windows) "UPDATE AVAIL / Scene'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_05_select_survey conf=0.80
+_survey_setup__01      s3 picked=survey_setup/survey_setup_05_select_survey conf=0.8 method=llm kept=True aux=2calls think=0 $1.35m 8.7s
+[VISUAL_MATCH] rehydrating 673 images for manual=bf2804feea57434bb79b749134ed1df0 from disk
+[VISUAL_MATCH] indexed 673 images for manual=bf2804feea57434bb79b749134ed1df0
+[GUIDE] visual_state: 'None / None'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=qgis_vector_buffer_01_open_toolbox conf=0.80
+or_buffer__01          s0 picked=qgis_vector_buffer/qgis_vector_buffer_01_open_toolbox conf=0.8 method=llm kept=True aux=2calls think=0 $1.00m 29.7s
+[GUIDE] visual_state: 'Processing Toolbox / '
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=qgis_vector_buffer_02_search_algorithm conf=0.90
+or_buffer__01          s1 picked=qgis_vector_buffer/qgis_vector_buffer_02_search_algorithm conf=0.9 method=llm kept=True aux=2calls think=0 $1.36m 8.5s
+[GUIDE] visual_state: 'Processing Toolbox / Processing'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)
+or_buffer__01          s2 picked=None/None conf=0.0 method=none kept=False aux=2calls think=0 $1.09m 8.1s
+[GUIDE] visual_state: 'Vector Geometry - Buffer / Parameters'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=qgis_vector_buffer_03_configure_buffer conf=0.90
+or_buffer__01          s3 picked=qgis_vector_buffer/qgis_vector_buffer_03_configure_buffer conf=0.9 method=llm kept=True aux=2calls think=0 $1.10m 8.4s
+[GUIDE] visual_state: 'Vector Geometry - Buffer / Parameters'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03 conf=0.70
+or_buffer__01          s4 picked=auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s/auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03 conf=0.7 method=llm kept=True aux=2calls think=0 $1.19m 7.9s
+[GUIDE] visual_state: 'Vector Geometry - Buffer / Parameters'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=qgis_vector_buffer_03_configure_buffer conf=0.80
+or_buffer__01          s5 picked=qgis_vector_buffer/qgis_vector_buffer_03_configure_buffer conf=0.8 method=llm kept=True aux=2calls think=0 $1.24m 10.1s
+[GUIDE] visual_state: 'Buffer / Parameters'
+[GUIDE] candidates: 3 (kw_top=3, clip_top=1)
+[GUIDE] localize via LLM rerank: node=auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03 conf=0.70
+or_buffer__01          s6 picked=auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s/auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03 conf=0.7 method=llm kept=True aux=2calls think=0 $1.17m 8.3s
+[GUIDE] visual_state: 'None / None'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=qgis_vector_buffer_05_run_and_render conf=0.70
+or_buffer__01          s7 picked=qgis_vector_buffer/qgis_vector_buffer_05_run_and_render conf=0.7 method=llm kept=True aux=2calls think=0 $1.16m 7.8s
+# Vision-based routing dry-run — think0 (AUX_THINKING_BUDGET=0)
+
+| scenario | steps | correct workflow | kept (conf≥0.7) | rerank none | aux cost/step | thinking tok/step | latency/step |
+|---|---|---|---|---|---|---|---|
+| opendtect__3d_visualization__01 | 4 | 3/4 | 3/4 | 1 | $1.41m | 0 | 17.8s |
+| opendtect__attribute_computation__01 | 8 | 0/8 | 3/8 | 4 | $1.41m | 0 | 8.3s |
+| opendtect__survey_setup__01 | 4 | 4/4 | 4/4 | 0 | $1.18m | 0 | 8.2s |
+| qgis__vector_buffer__01 | 8 | 5/8 | 7/8 | 1 | $1.16m | 0 | 11.1s |
+saved: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\routing_dryrun_vision_think0.md

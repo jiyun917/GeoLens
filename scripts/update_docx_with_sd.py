@@ -25,7 +25,7 @@ except Exception:
 import docx  # python-docx
 
 ROOT = Path(__file__).resolve().parent.parent
-DOCX_PATH = Path(r"C:\Users\user\Downloads\GeoLens_최종결과_통합최종본.docx")
+DOCX_PATH = Path(r"./out/GeoLens_최종결과_통합최종본.docx")
 TABLE1_MD = ROOT / "data" / "eval" / "results" / "table1_full_sd.md"
 
 # Table index in the docx → model tag used in the md

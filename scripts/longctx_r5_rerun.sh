@@ -4,7 +4,7 @@
 # Cost estimate: ~$2.30 (8 steps × $0.283).
 # Duration estimate: ~10 minutes.
 
-cd /c/Users/user/Downloads/GeoLens-paper || exit 1
+cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.." || exit 1
 TS=$(date -u +%Y%m%dT%H%M%S)
 OUT="data/eval/results/run_gemini_longctx_r5_${TS}.json"
 LOG="data/eval/results/long_context_gemini_r5_rerun.log"

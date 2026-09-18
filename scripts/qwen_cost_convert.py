@@ -1,6 +1,6 @@
 """Qwen effective cost conversion — hardware confirmed 2026-07-27.
 
-Confirmed hardware at the vLLM endpoint (168.131.141.77:28000):
+Confirmed hardware at the vLLM endpoint (<INTERNAL_HOST>:28000):
     4× NVIDIA RTX 6000 Ada 48GB, TP=4, GPTQ int4, max-model-len=32,768.
 The earlier "A100 80GB × 4" placeholder was an over-estimate of the GPU
 tier and has been retired. Ratios between backends are unaffected by the
@@ -81,6 +81,8 @@ def convert_file(path: Path, hourly_rate: float, dry_run: bool = False) -> dict:
                 stats["steps_touched"] += 1
             if eff_costs:
                 b["mean_cost_usd_effective"] = round(fmean(eff_costs), 6)
+                # v3: total = time-based generator cost + logged auxiliary (Gemini Flash) cost
+                b["mean_cost_total_usd_effective"] = round(b["mean_cost_usd_effective"] + float(b.get("mean_aux_cost_usd") or 0.0), 6)
                 b["total_cost_usd_effective"] = round(sum(eff_costs), 6)
                 stats["cells_updated"] += 1
     # Also recompute aggregate section if present
@@ -94,6 +96,7 @@ def convert_file(path: Path, hourly_rate: float, dry_run: bool = False) -> dict:
                     eff_vals.append(b["mean_cost_usd_effective"])
             if eff_vals:
                 agg["mean_cost_usd_effective"] = round(fmean(eff_vals), 6)
+                agg["mean_cost_total_usd_effective"] = round(agg["mean_cost_usd_effective"] + float(agg.get("mean_aux_cost_usd") or 0.0), 6)
     if not dry_run:
         path.write_text(json.dumps(d, ensure_ascii=False, indent=2),
                         encoding="utf-8")

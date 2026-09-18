@@ -1,0 +1,55 @@
+[2026-08-13T03:00:28+00:00] ======================================================================
+[2026-08-13T03:00:28+00:00] QGIS Pilot bench kickoff
+[2026-08-13T03:00:28+00:00] ======================================================================
+[2026-08-13T03:00:28+00:00] pre-flight Gemini quota probe
+[2026-08-13T03:00:30+00:00] probe OK — proceed
+[2026-08-13T03:00:30+00:00] isolated 5 OpendTect workflows → .pilot_backup/: ['survey_setup.json', 'd3_visualization.json', 'seismic_attribute.json', 'fault_interpretation.json', 'horizon_tracking.json']
+[2026-08-13T03:00:30+00:00] active workflow set for pilot: ['auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s.json', 'qgis_vector_buffer.json']
+[2026-08-13T03:00:30+00:00] scenarios subdir prepared: data\eval\scenarios\.qgis_pilot_only/qgis__vector_buffer__01.json
+[2026-08-13T03:00:30+00:00] --- replicate 1/5 pre-run probe ---
+[2026-08-13T03:00:32+00:00] probe OK — proceed
+[2026-08-13T03:00:32+00:00] replicate 1/5 starting → run_gemini_qgis_pilot_r1_20260813T030032.json
+[2026-08-13T03:13:25+00:00] replicate 1 exit=0
+[2026-08-13T03:13:25+00:00] replicate 1 empty audit: 0/24
+[2026-08-13T03:13:25+00:00] CHECKPOINT after replicate 1: 0/24 empty
+[2026-08-13T03:13:25+00:00] inter-replicate cooldown 30s
+[2026-08-13T03:13:55+00:00] --- replicate 2/5 pre-run probe ---
+[2026-08-13T03:13:57+00:00] probe OK — proceed
+[2026-08-13T03:13:57+00:00] replicate 2/5 starting → run_gemini_qgis_pilot_r2_20260813T031357.json
+[2026-08-13T03:24:39+00:00] replicate 2 exit=0
+[2026-08-13T03:24:39+00:00] replicate 2 empty audit: 0/24
+[2026-08-13T03:24:39+00:00] inter-replicate cooldown 30s
+[2026-08-13T03:25:09+00:00] --- replicate 3/5 pre-run probe ---
+[2026-08-13T03:25:11+00:00] probe OK — proceed
+[2026-08-13T03:25:11+00:00] replicate 3/5 starting → run_gemini_qgis_pilot_r3_20260813T032511.json
+[2026-08-13T03:38:01+00:00] replicate 3 exit=0
+[2026-08-13T03:38:01+00:00] replicate 3 empty audit: 0/24
+[2026-08-13T03:38:01+00:00] inter-replicate cooldown 30s
+[2026-08-13T03:38:31+00:00] --- replicate 4/5 pre-run probe ---
+[2026-08-13T03:38:33+00:00] probe OK — proceed
+[2026-08-13T03:38:33+00:00] replicate 4/5 starting → run_gemini_qgis_pilot_r4_20260813T033833.json
+[2026-08-13T03:49:50+00:00] replicate 4 exit=0
+[2026-08-13T03:49:50+00:00] replicate 4 empty audit: 0/24
+[2026-08-13T03:49:50+00:00] inter-replicate cooldown 30s
+[2026-08-13T03:50:20+00:00] --- replicate 5/5 pre-run probe ---
+[2026-08-13T03:50:23+00:00] probe OK — proceed
+[2026-08-13T03:50:23+00:00] replicate 5/5 starting → run_gemini_qgis_pilot_r5_20260813T035023.json
+[2026-08-13T04:01:30+00:00] replicate 5 exit=0
+[2026-08-13T04:01:30+00:00] replicate 5 empty audit: 0/24
+[2026-08-13T04:01:30+00:00] cleaned up scenarios subdir: data\eval\scenarios\.qgis_pilot_only
+[2026-08-13T04:01:30+00:00] restored 5 OpendTect workflows: ['survey_setup.json', 'd3_visualization.json', 'seismic_attribute.json', 'fault_interpretation.json', 'horizon_tracking.json']
+[2026-08-13T04:01:30+00:00] ======================================================================
+[2026-08-13T04:01:30+00:00] QGIS Pilot bench complete — 5 replicate files
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r1_20260813T030032.json
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r2_20260813T031357.json
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r3_20260813T032511.json
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r4_20260813T033833.json
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r5_20260813T035023.json
+[2026-08-13T04:01:30+00:00] ======================================================================
+[2026-08-13T04:01:30+00:00] Final empty audit across all pilot replicates:
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r1_20260813T030032.json: empty=0/24
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r2_20260813T031357.json: empty=0/24
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r3_20260813T032511.json: empty=0/24
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r4_20260813T033833.json: empty=0/24
+[2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r5_20260813T035023.json: empty=0/24
+[2026-08-13T04:01:30+00:00] TOTAL: empty=0/120

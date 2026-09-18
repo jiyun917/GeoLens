@@ -1,0 +1,609 @@
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:71: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+
+=== opendtect__survey_setup__01 (4 steps) ===
+  - no_rag         step_acc=1.00 hall=0.00 loop=0.00 latency=45.8s
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 43440.69it/s]
+C:\Users\user\Downloads\GeoLens-paper\api\services\embedder.py:32: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  f"dim={_model.get_sentence_embedding_dimension()}")
+[EMBED] model=BAAI/bge-m3 max_seq_length=8192 dim=1024
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.74it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.74it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.45it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.45it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.35it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.35it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.56it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.51it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.78it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.73it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+  - vanilla_vector step_acc=0.75 hall=0.00 loop=0.00 latency=67.06s
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.62it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.56it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.56it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.66it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.45it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.45it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D survey (My_F3_Survey)를 생성한다. 매뉴얼 1.2.2a에 따라 ini, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.58it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.58it/s]
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '실행', '창에서']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+  - vanilla_budget step_acc=1.00 hall=0.00 loop=0.00 latency=43.7s
+[WorkflowGraph] Loaded 7 workflows, 41 nodes, 37 edges
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+  - graph_only     step_acc=1.00 hall=0.00 loop=0.00 latency=62.01s
+C:\Users\user\Downloads\GeoLens-paper\.venv\Lib\site-packages\open_clip\factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+[VISUAL_MATCH] CLIP ViT-B-32/openai loaded on cpu
+[VISUAL_MATCH] rehydrating 765 images for manual=645b7cdf2690408da843b9ce63c52d5b from disk
+[VISUAL_MATCH] indexed 765 images for manual=645b7cdf2690408da843b9ce63c52d5b
+  - vision_only    step_acc=1.00 hall=0.00 loop=0.00 latency=63.17s
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_01_open_selection conf=0.90
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Query: Create New Survey 다이얼로그 열기 Survey Setup and Selection 창에서 Add (+) 버튼을 클릭하여 Create New Survey 다이얼로그를 , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 21.43it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Create New Survey', 'Survey Setup', 'Selection', 'Add', '다이얼로그', '열기', '창에서', '버튼을', '클릭하여', '다이얼로그를', '연다', 'd:\n\n7. Choose the time survey and click OK.\n\nSurvey\nSelect Survey\nFilter *\nF3_Demo_training\nOK\nCancel\nHelp\n\nWorkflow cont', 'Section', 'Setup Survey For Depth Converted Data', 'Page']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: [survey_setup > Survey Setup and Selection 창 열기] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.76it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.73it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Survey Setup', 'Selection', 'Opend', 'Tect', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '열기', '실행']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[GUIDE] visual_state: 'Create New Survey / '
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_03_choose_initial_setup conf=0.90
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Query: SEG-Y 파일 스캔 및 geometry 추출 Scan SEG-Y 방식 선택 시 SEG-Y 파일 경로를 지정하고 (예: Rawdata\Seismic_data.sgy), 파일 스캔을, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 11.24it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Scan', 'Rawdata', 'Seismic', 'Inline', 'Crossline', '파일', '스캔', '추출', '방식', '선택', '경로를', '지정하고', '스캔을', '실행하여', 'Section']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: Survey Select — Main Window 진입 Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendT, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 17.13it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 2 additional chunks
+[RAG] Extracted entities: ['Survey Select', 'Main Window', 'Survey Setup', 'Selection', 'Select', 'Opend', 'Tect Main Window', 'Title', '진입', '창에서', '새로', '생성된', '선택', '클릭하여', '이름이']
+[RAG] Graph triplets found: 111
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: [survey_setup > Survey 이름 입력 및 Initial setup 선택] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.86it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.86it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Survey', 'Initial', 'Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '이름']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[GUIDE] visual_state: 'Create New Survey / '
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_03_choose_initial_setup conf=0.90
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Query: SEG-Y 파일 스캔 및 geometry 추출 Scan SEG-Y 방식 선택 시 SEG-Y 파일 경로를 지정하고 (예: Rawdata\Seismic_data.sgy), 파일 스캔을, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 12.19it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Scan', 'Rawdata', 'Seismic', 'Inline', 'Crossline', '파일', '스캔', '추출', '방식', '선택', '경로를', '지정하고', '스캔을', '실행하여', 'Section']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[RAG] Query: Survey Select — Main Window 진입 Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendT, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 16.95it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 2 additional chunks
+[RAG] Extracted entities: ['Survey Select', 'Main Window', 'Survey Setup', 'Selection', 'Select', 'Opend', 'Tect Main Window', 'Title', '진입', '창에서', '새로', '생성된', '선택', '클릭하여', '이름이']
+[RAG] Graph triplets found: 111
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: [survey_setup > Survey 이름 입력 및 Initial setup 선택] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.91it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.91it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Survey', 'Initial', 'Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select', '이름']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[GUIDE] post-completion detected — node survey_setup_03_choose_initial_setup visited at history[1] (within last 3)
+[GUIDE] visual_state: 'OpendTect 17.0.9 (Windows) "UPDATE AVAIL / Scene'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_05_select_survey conf=0.80
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Query: Survey Select — Main Window 진입 Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendT, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 17.19it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 2 additional chunks
+[RAG] Extracted entities: ['Survey Select', 'Main Window', 'Survey Setup', 'Selection', 'Select', 'Opend', 'Tect Main Window', 'Title', '진입', '창에서', '새로', '생성된', '선택', '클릭하여', '이름이']
+[RAG] Graph triplets found: 111
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: [survey_setup > Survey Select — Main Window 진입] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 새 3D, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.55it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.52it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 4 additional chunks
+[RAG] Extracted entities: ['Survey Select', 'Main Window', 'Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+[GUIDE] visual_state: 'OpendTect 17.0.9 (Windows) "UPDATE AVAIL / Scene'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=d3_visualization_01_main_window_ready conf=0.80
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Query: In-line 슬라이스 추가 Tree scene의 Elements > In-line 카테고리 노드를 우클릭하고 'Add Data' (첫번째 옵션) 또는 'Add Default Da, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  9.68it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  9.68it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 3 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 6 additional chunks
+[RAG] Extracted entities: ['Add Data', 'Add Default Data', 'Add and Select Data...', 'In', 'Tree', 'Elements', 'Scene', 'Add', 'Select Data', 'Select Cube', '슬라이스', '추가', '카테고리', '노드를', '우클릭하고']
+[RAG] Graph triplets found: 111
+  정단층 (Normal Fault) --[형성환경]--> 신장 환경 (Extensional)
+  역단층 (Reverse Fault) --[형성환경]--> 압축 환경 (Compressional)
+  충상단층 (Thrust Fault) --[형성환경]--> 압축 환경 (Compressional)
+  습곡 (Fold) --[형성환경]--> 압축 환경 (Compressional)
+  틸트 블록 (Tilted Block) --[혼동주의: 경사 반사면이 유사하나 형성환경 다름]--> 습곡 (Fold)
+[RAG] Query: [d3_visualization > Main Window / Tree scene 준비 상태] OpendTect 첫 실행 후 Survey Setup and Selection 창에서 , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.06it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.06it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Neighbor expansion: 3 additional chunks
+[RAG] Extracted entities: ['Main Window', 'Tree', 'Opend', 'Tect', 'Survey Setup', 'Selection', 'My', 'Survey', 'Scan', 'Users', 'Downloads', 'Demo', 'Rawdata', 'Seismic', 'Select']
+[RAG] Graph triplets found: 13
+  반사면 (Reflector) --[관찰대상]--> 탄성파 탐사 (Seismic)
+  부정합 (Unconformity) --[탄성파 지시자]--> Onlap
+  Onlap --[종결패턴]--> 반사면 (Reflector)
+  Onlap --[지시패턴]--> 해침체계역 (TST)
+  Downlap --[종결패턴]--> 반사면 (Reflector)
+  - full_system    step_acc=1.00 hall=0.00 loop=0.00 latency=65.37s
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_01_open_selection conf=0.90
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] visual_state: 'Create New Survey / '
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_03_choose_initial_setup conf=0.90
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] visual_state: 'Create New Survey / '
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_03_choose_initial_setup conf=0.90
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] visual_state: 'OpendTect 17.0.9 (Windows) "UPDATE AVAIL / Scene'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_05_select_survey conf=0.80
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] visual_state: 'OpendTect 17.0.9 (Windows) "UPDATE AVAIL / Scene'
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=d3_visualization_01_main_window_ready conf=0.80
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+  - state_path     step_acc=0.75 hall=0.00 loop=0.00 latency=58.65s
+
+# Benchmark Results
+
+Started: 2026-09-17T09:32:24.360040Z
+Scenarios: 1
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 1.000 | 0.000 | 0.000 | 1.000 | — | 1.000 |
+| vanilla_vector | 0.750 | 0.000 | 0.000 | 1.000 | — | 1.000 |
+| vanilla_budget | 1.000 | 0.000 | 0.000 | 1.000 | — | 1.000 |
+| graph_only | 1.000 | 0.000 | 0.000 | 1.000 | — | 1.000 |
+| vision_only | 1.000 | 0.000 | 0.000 | 1.000 | — | 1.000 |
+| full_system | 1.000 | 0.000 | 0.000 | 1.000 | — | 1.000 |
+| state_path | 0.750 | 0.000 | 0.000 | 1.000 | — | 1.000 |
+
+
+Results written: data/eval/results/run_gemini_v3smoke_r1_20260917T093224.json
+Markdown:        data/eval/results/run_gemini_v3smoke_r1_20260917T093224.md

@@ -30,6 +30,7 @@ group A + group B, seed=42. Matches stats_unified.py.
 
 from __future__ import annotations
 
+import os
 import glob
 import json
 import math
@@ -50,8 +51,8 @@ except Exception:
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS_DIR = ROOT / "data" / "eval" / "results"
 
-MODELS = ["gemini", "claude", "gpt", "qwen"]
-BACKENDS = ["no_rag", "vanilla_vector", "graph_only",
+MODELS = [m.strip() for m in os.environ.get("BENCH_MODELS", "gemini,claude,gpt").split(",") if m.strip()]  # v3: Qwen excluded (VL serving unavailable); set BENCH_MODELS=gemini,claude,gpt,qwen for unified2/3/4 tags
+BACKENDS = ["no_rag", "vanilla_vector", "vanilla_budget", "graph_only",
             "vision_only", "full_system", "state_path"]
 # CI direction convention: whenever full_system is one of the two
 # backends in a pair, it is placed on the LEFT (A). Δ mean, Cohen's d,
@@ -73,6 +74,7 @@ QUALITY_METRICS = [
 STRUCTURAL_METRICS = [
     ("mean_latency_sec",     "lower"),
     ("mean_cost_usd",        "lower"),
+    ("mean_cost_total_usd",  "lower"),
 ]
 ALL_METRICS = QUALITY_METRICS + STRUCTURAL_METRICS
 
@@ -433,12 +435,17 @@ def render(rows: List[dict]) -> str:
 
 
 def main():
-    data = load_replicates("unified2")
-    print(f"Loaded {len(data)} (model, backend, metric) cells", file=sys.stderr)
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--tag", default="unified2")
+    args = ap.parse_args()
+    data = load_replicates(args.tag)
+    print(f"Loaded {len(data)} (model, backend, metric) cells for tag={args.tag}", file=sys.stderr)
     rows = run_family(data)
     print(f"Ran {len(rows)} pairwise tests", file=sys.stderr)
     text = render(rows)
-    out = RESULTS_DIR / "stats_audit.md"
+    filename = "stats_audit.md" if args.tag == "unified2" else f"stats_audit_{args.tag}.md"
+    out = RESULTS_DIR / filename
     out.write_text(text, encoding="utf-8")
     print(f"saved: {out}", file=sys.stderr)
 

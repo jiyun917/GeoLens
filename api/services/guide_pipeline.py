@@ -53,6 +53,122 @@ def reset_last_localize_meta() -> None:
     })
 
 
+def _set_localize_meta(node: Optional[Dict], confidence: float, method: str) -> None:
+    """Record the localization outcome. Called from localize_to_graph() itself
+    (v3) so every backend that localizes — full_system AND state_path — leaves
+    routing telemetry; process_guide_request() then overlays the fallback
+    flag. In v2 only process_guide_request() wrote this, so state_path's
+    240 unified4 steps carry no routing telemetry."""
+    node = node or {}
+    _LAST_LOCALIZE_META.update({
+        "confidence": float(confidence or 0.0),
+        "picked_node_id": node.get("id"),
+        "picked_workflow_id": node.get("workflow_id"),
+        "match_method": method,
+        "fallback_activated": False,
+        "threshold": CONFIDENCE_THRESHOLD,
+    })
+
+
+# ─── Auxiliary-call usage accounting (v3) ──────────────────────────────
+# Every Gemini Flash call the pipeline makes on behalf of a request (vision
+# state extraction, LLM rerank) is appended here. The bench evaluator resets
+# it before each step and reads it afterwards, so auxiliary cost is reported
+# next to generator cost. The unified2/3/4 logs did not record these calls.
+# Pricing mirrors bench_backends.MODEL_PRICING (2026-07 base rates); thinking
+# tokens are billed at the output rate.
+_AUX_PRICING: Dict[str, Dict[str, float]] = {
+    "gemini-2.5-flash": {"in_per_m": 0.30, "out_per_m": 2.50},
+}
+_AUX_USAGE: Dict[str, Any] = {"calls": []}
+
+# Thinking budget for the two auxiliary Flash calls. v2 left thinking_config
+# unset (model default = dynamic thinking, ~650 / ~1,600 thinking tokens per
+# vision / rerank call in a 2026-09-17 probe). v3 default 0 = thinking off;
+# AUX_THINKING_BUDGET=-1 restores the model default for A/B checks.
+def _aux_thinking_config(types_mod):
+    raw = os.environ.get("AUX_THINKING_BUDGET", "0").strip()
+    try:
+        budget = int(raw)
+    except ValueError:
+        return None
+    if budget < 0:
+        return None
+    try:
+        return types_mod.ThinkingConfig(thinking_budget=budget)
+    except Exception:
+        return None
+
+
+def record_aux_usage(kind: str, model: str, usage_metadata: Any) -> None:
+    if usage_metadata is None:
+        return
+    pt = int(getattr(usage_metadata, "prompt_token_count", 0) or 0)
+    ct = int(getattr(usage_metadata, "candidates_token_count", 0) or 0)
+    tt = getattr(usage_metadata, "thoughts_token_count", None)
+    if tt is None:
+        total = int(getattr(usage_metadata, "total_token_count", 0) or 0)
+        tt = max(0, total - pt - ct)
+    tt = int(tt or 0)
+    price = _AUX_PRICING.get(model, {"in_per_m": 0.0, "out_per_m": 0.0})
+    cost = (pt / 1_000_000) * price["in_per_m"] + ((ct + tt) / 1_000_000) * price["out_per_m"]
+    _AUX_USAGE["calls"].append({
+        "kind": kind, "model": model,
+        "input_tokens": pt, "output_tokens": ct, "thoughts_tokens": tt,
+        "cost_usd": round(cost, 6),
+    })
+
+
+# usage_metadata of the vision call that produced each cached visual_state,
+# replayed on cache hits so every request is charged for its own vision call.
+_VISUAL_STATE_USAGE: Dict[str, Dict[str, int]] = {}
+
+
+def _usage_snapshot(usage_metadata: Any) -> Dict[str, int]:
+    if usage_metadata is None:
+        return {}
+    pt = int(getattr(usage_metadata, "prompt_token_count", 0) or 0)
+    ct = int(getattr(usage_metadata, "candidates_token_count", 0) or 0)
+    tt = getattr(usage_metadata, "thoughts_token_count", None)
+    if tt is None:
+        total = int(getattr(usage_metadata, "total_token_count", 0) or 0)
+        tt = max(0, total - pt - ct)
+    return {"prompt_token_count": pt, "candidates_token_count": ct, "thoughts_token_count": int(tt or 0)}
+
+
+class _UsageLike:
+    def __init__(self, d: Dict[str, int]):
+        self.prompt_token_count = d.get("prompt_token_count", 0)
+        self.candidates_token_count = d.get("candidates_token_count", 0)
+        self.thoughts_token_count = d.get("thoughts_token_count", 0)
+        self.total_token_count = self.prompt_token_count + self.candidates_token_count + self.thoughts_token_count
+
+
+def _replay_cached_usage(cache_key: str) -> None:
+    snap = _VISUAL_STATE_USAGE.get(cache_key)
+    if snap:
+        record_aux_usage("vision_cached", "gemini-2.5-flash", _UsageLike(snap))
+
+
+def get_aux_usage() -> Dict[str, Any]:
+    calls = list(_AUX_USAGE["calls"])
+    by_kind: Dict[str, int] = {}
+    for c in calls:
+        by_kind[c["kind"]] = by_kind.get(c["kind"], 0) + 1
+    return {
+        "calls": len(calls),
+        "input_tokens": sum(c["input_tokens"] for c in calls),
+        "output_tokens": sum(c["output_tokens"] for c in calls),
+        "thoughts_tokens": sum(c["thoughts_tokens"] for c in calls),
+        "cost_usd": round(sum(c["cost_usd"] for c in calls), 6),
+        "by_kind": by_kind,
+    }
+
+
+def reset_aux_usage() -> None:
+    _AUX_USAGE["calls"] = []
+
+
 # Screenshot-content-addressed cache for recognize_visual_state results.
 # Keyed by SHA-256 of raw decoded image bytes so identical screenshots hit
 # the cache regardless of base64 padding or data-URL prefix. Bounded via
@@ -78,18 +194,45 @@ def reset_visual_state_cache() -> None:
     _VISUAL_STATE_CACHE_STATS["misses"] = 0
 
 
-VISUAL_STATE_PROMPT = """You are analyzing a screenshot of the OpendTect geophysics software.
+SOFTWARE_PROFILES = {
+    "opendtect": {
+        "display_name": "OpendTect geophysics software",
+        "data_state_example": "3D seismic loaded",
+    },
+    "qgis": {
+        "display_name": "QGIS geographic information system",
+        "data_state_example": "vector layers loaded",
+    },
+}
+
+_ACTIVE_SOFTWARE_ID = os.environ.get("GEOLENS_SOFTWARE_ID", "opendtect").lower()
+
+
+def get_active_software_id() -> str:
+    return os.environ.get("GEOLENS_SOFTWARE_ID", "opendtect").lower()
+
+
+def _build_visual_state_prompt(software_id: str) -> str:
+    profile = SOFTWARE_PROFILES.get(software_id, SOFTWARE_PROFILES["opendtect"])
+    name = profile["display_name"]
+    ex = profile["data_state_example"]
+    return f"""You are analyzing a screenshot of the {name}.
 Extract the current UI state into JSON:
 
-{
+{{
   "current_dialog": "name of the currently visible dialog/window",
   "active_menu": "currently active menu or tab, if visible",
   "visible_elements": ["key UI elements visible on screen"],
-  "data_state": "state of data loaded (e.g., '3D seismic loaded', 'none')",
+  "data_state": "state of data loaded (e.g., '{ex}', 'none')",
   "current_action": "what action appears to be in progress"
-}
+}}
 
 Respond with JSON only, no markdown fences, no explanation."""
+
+
+# Kept as module-level for backward-compatibility with any external import.
+# Runtime code uses _build_visual_state_prompt(get_active_software_id()).
+VISUAL_STATE_PROMPT = _build_visual_state_prompt("opendtect")
 
 
 def _extract_json(text: str) -> Optional[Dict]:
@@ -166,6 +309,12 @@ class GuideRAGPipeline:
             cached = _VISUAL_STATE_CACHE.get(cache_key)
             if cached is not None:
                 _VISUAL_STATE_CACHE_STATS["hits"] += 1
+                # v3 accounting: a cache hit still counts as this request's
+                # vision call. In the bench several backends analyse the same
+                # screenshot inside one process; without this the vision cost
+                # lands on whichever backend ran first (graph_only) and
+                # full_system/state_path look artificially cheap.
+                _replay_cached_usage(cache_key)
                 return dict(cached)  # defensive copy — callers may mutate
             _VISUAL_STATE_CACHE_STATS["misses"] += 1
 
@@ -178,7 +327,7 @@ class GuideRAGPipeline:
                 types.Content(
                     role="user",
                     parts=[
-                        types.Part.from_text(text=VISUAL_STATE_PROMPT),
+                        types.Part.from_text(text=_build_visual_state_prompt(get_active_software_id())),
                         types.Part.from_bytes(data=image_bytes, mime_type=mime),
                     ],
                 )
@@ -186,6 +335,7 @@ class GuideRAGPipeline:
             config = types.GenerateContentConfig(
                 response_mime_type="application/json",
                 temperature=0,
+                thinking_config=_aux_thinking_config(types),
             )
 
             MAX_RETRY = 3
@@ -194,6 +344,9 @@ class GuideRAGPipeline:
                     response = client.models.generate_content(
                         model="gemini-2.5-flash", contents=contents, config=config
                     )
+                    um = getattr(response, "usage_metadata", None)
+                    record_aux_usage("vision", "gemini-2.5-flash", um)
+                    _VISUAL_STATE_USAGE[cache_key] = _usage_snapshot(um)
                     result = _extract_json(response.text) or {}
                     # Only cache non-empty results — an empty dict typically
                     # means Gemini returned something we couldn't parse, and
@@ -255,10 +408,8 @@ class GuideRAGPipeline:
 
         # CLIP is a weak-to-ambiguous signal for UI screenshots — two different
         # OpendTect panes routinely cosine ≥0.85 because they share UI chrome.
-        # So we prefer keyword matching whenever it has real signal, and only
-        # fall back to CLIP when keyword gives no answer at all.
-        KW_TRUST_FLOOR = 0.20      # kw ≥ this → trust keyword, ignore CLIP
-        CLIP_MIN_SCORE = 0.85      # CLIP must be this confident to override silence
+        # Keyword top-k and CLIP top-k are therefore pooled as candidates and
+        # the LLM rerank decides; neither score is used as a threshold.
 
         clip_node = None
         clip_score = 0.0
@@ -325,6 +476,7 @@ class GuideRAGPipeline:
                     if c["node"].get("id") == picked_id:
                         node = c["node"]
                         print(f"[GUIDE] localize via LLM rerank: node={picked_id} conf={picked_conf:.2f}")
+                        _set_localize_meta(node, picked_conf, "llm")
                         return {"node": node, "confidence": picked_conf, "match_method": "llm"}
 
             # LLM rerank returned "none" OR failed after retries.
@@ -334,10 +486,12 @@ class GuideRAGPipeline:
             # LLM. Returning node=None lets RAG vector search supply chunks
             # by user_message similarity instead — better than wrong context.
             print(f"[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)")
+            _set_localize_meta(None, 0.0, "none")
             return {"node": None, "confidence": 0.0, "match_method": "none"}
 
         # No candidates at all — fall back to single-best keyword
         print(f"[GUIDE] no candidates; fallback node={kw_node.get('id') if kw_node else None} score={kw_score:.3f}")
+        _set_localize_meta(kw_node, kw_score, "keyword")
         return {"node": kw_node, "confidence": kw_score, "match_method": "keyword"}
 
     def _llm_rerank_candidates(
@@ -415,6 +569,7 @@ Respond with JSON only:
         cfg = types.GenerateContentConfig(
             response_mime_type="application/json",
             temperature=0,
+            thinking_config=_aux_thinking_config(types),
         )
 
         RERANK_MAX_RETRIES = 3
@@ -428,6 +583,8 @@ Respond with JSON only:
                     contents=prompt,
                     config=cfg,
                 )
+                record_aux_usage("rerank", "gemini-2.5-flash",
+                                 getattr(response, "usage_metadata", None))
                 raw = (response.text or "").strip()
                 if attempt > 0:
                     print(f"[GUIDE] rerank recovered on retry {attempt}")
@@ -526,6 +683,13 @@ Respond with JSON only:
             fallback_activated = True
             current_node = None
             current_node_id = None
+        elif current_node_id is None and match_method == "none":
+            # v3: the rerank rejected every candidate. Retrieval is identical
+            # to the confidence fallback (vector-only), so label it as such.
+            # In v2 this path left fallback_activated=False (the "NONE
+            # bucket": 64/160 attribute steps in unified4 logged as
+            # "no routing" although they received fallback semantics).
+            fallback_activated = True
 
         # Record for the benchmark harness (module-level, read via
         # get_last_localize_meta() after the pipeline call returns).

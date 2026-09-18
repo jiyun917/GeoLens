@@ -29,8 +29,8 @@ if len(_sys.argv) >= 3:
     SRC = Path(_sys.argv[1])
     OUT = Path(_sys.argv[2])
 else:
-    SRC = Path(r"C:\Users\user\Downloads\GeoLens_v2_최종보고서.md")
-    OUT = Path(r"C:\Users\user\Downloads\GeoLens_v2_최종보고서.docx")
+    SRC = Path("GeoLens_v2_최종보고서.md")
+    OUT = Path("out/GeoLens_v2_최종보고서.docx")
 
 
 def add_inline_runs(paragraph, text: str) -> None:

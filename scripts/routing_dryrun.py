@@ -43,9 +43,36 @@ except ImportError:
 
 
 SCENARIO_TO_EXPECTED_WORKFLOW = {
-    "opendtect__survey_setup__01": "survey_setup",
-    "opendtect__3d_visualization__01": "d3_visualization",
+    "opendtect__survey_setup__01":         "survey_setup",
+    "opendtect__3d_visualization__01":     "d3_visualization",
+    "opendtect__attribute_computation__01": "seismic_attribute",
 }
+
+
+def _build_node_to_workflow_map() -> dict[str, str]:
+    """Scan all workflow JSONs, return {node_id: workflow_id}. Used to derive
+    per-step expected workflow from the scenario's `expected_workflow_node`
+    when the scenario legitimately spans multiple workflows (e.g. an
+    attribute scenario whose display-prep step routes through the
+    visualization workflow)."""
+    out: dict[str, str] = {}
+    wf_dir = ROOT / "data" / "workflows"
+    for p in sorted(wf_dir.glob("*.json")):
+        try:
+            wf = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        wf_id = wf.get("workflow_id")
+        if not wf_id:
+            continue
+        for n in wf.get("nodes") or []:
+            nid = n.get("id")
+            if nid:
+                out[nid] = wf_id
+    return out
+
+
+NODE_TO_WORKFLOW = _build_node_to_workflow_map()
 
 
 def _load_scenario(scenario_id: str) -> dict | None:
@@ -63,7 +90,7 @@ def run_dryrun(scenario_id: str) -> dict:
     if not scen:
         return {"scenario_id": scenario_id, "error": "scenario file not found"}
 
-    expected_wf = SCENARIO_TO_EXPECTED_WORKFLOW.get(scenario_id)
+    scenario_wf = SCENARIO_TO_EXPECTED_WORKFLOW.get(scenario_id)
     goal = scen.get("goal", "")
     manual_id = scen.get("manual_id")
 
@@ -92,6 +119,18 @@ def run_dryrun(scenario_id: str) -> dict:
         conf = loc.get("confidence", 0.0)
         method = loc.get("match_method")
 
+        # Per-step expected workflow: if the scenario has an explicit
+        # expected_workflow_node for this step, use its workflow (this
+        # handles legitimately cross-workflow scenarios like
+        # attribute_computation whose display-prep step routes through
+        # d3_visualization). Otherwise fall back to the scenario-level
+        # expected workflow.
+        expected_node_id = step.get("expected_workflow_node")
+        if expected_node_id:
+            expected_wf = NODE_TO_WORKFLOW.get(expected_node_id, scenario_wf)
+        else:
+            expected_wf = scenario_wf
+
         matches_expected = (picked_wf == expected_wf)
         if matches_expected:
             exact_matches += 1
@@ -112,7 +151,7 @@ def run_dryrun(scenario_id: str) -> dict:
     match_rate = exact_matches / total if total else 0.0
     return {
         "scenario_id": scenario_id,
-        "expected_workflow": expected_wf,
+        "scenario_workflow": scenario_wf,
         "n_steps": total,
         "exact_workflow_matches": exact_matches,
         "match_rate": match_rate,
@@ -138,14 +177,15 @@ def main():
         if "error" in rep:
             print(f"  ERROR: {rep['error']}")
             continue
-        print(f"expected workflow: {rep['expected_workflow']}")
+        print(f"scenario workflow: {rep['scenario_workflow']} (per-step expected shown when different)")
         for st in rep["steps"]:
             flag = "OK " if st["matches_expected"] else "MISS"
             conf = st["confidence"]
+            wf_note = f" exp={st['expected_workflow']}" if st['expected_workflow'] != rep['scenario_workflow'] else ""
             print(
                 f"  step {st['step_index']}: [{flag}] "
                 f"node={st['picked_node']} "
-                f"wf={st['picked_workflow']} "
+                f"wf={st['picked_workflow']}{wf_note} "
                 f"conf={conf:.2f} "
                 f"method={st['method']}"
             )

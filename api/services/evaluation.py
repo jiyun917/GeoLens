@@ -441,7 +441,25 @@ def load_test_screenshots(manifest: Optional[str] = None) -> List[Dict]:
 
 # Standard backend names — used as keys in result dicts.
 # state_path is the novel contribution (Procedural State-Path Retrieval).
-BACKENDS = ("no_rag", "vanilla_vector", "graph_only", "vision_only", "full_system", "state_path")
+BACKENDS = ("no_rag", "vanilla_vector", "vanilla_budget", "graph_only", "vision_only", "full_system", "state_path")
+
+# Scorer version. "v3" (default, v3 rerun) applies (a) the ASCII-only word-
+# boundary rewrite to regex patterns — Python's \b treats Hangul as \w, so
+# "Survey name에" never matched \b(Survey name)\b in v2 — and (b) the
+# quote-independent hallucination extractor. "v2" reproduces the
+# unified2/3/4 scorer bit-for-bit for re-scoring audits
+# (GEOLENS_SCORER=v2).
+SCORER_VERSION = os.environ.get("GEOLENS_SCORER", "v3").lower()
+
+
+def _ascii_boundary(pattern: str) -> str:
+    """Rewrite the \\b( ... )\\b group boundaries of a scenario pattern as
+    ASCII-alnum lookarounds so a Latin UI token directly followed by a Hangul
+    particle (e.g. 'name에', 'Cross-line에서', '250을') still matches. Only the
+    \\b( and )\\b pair is rewritten; other \\b occurrences are untouched."""
+    if not pattern:
+        return pattern
+    return pattern.replace(r"\b(", r"(?<![A-Za-z0-9])(").replace(r")\b", r")(?![A-Za-z0-9])")
 
 
 def _normalize_instruction(text: str) -> str:
@@ -492,7 +510,7 @@ def _visual_state_indicates_goal_reached(step_gt: Dict) -> bool:
     return any(m in hay for m in goal_markers)
 
 
-def step_match(response: str, step_gt: Dict) -> bool:
+def _step_match_impl(response: str, step_gt: Dict, ascii_boundary: bool) -> bool:
     """True if `response` satisfies the step's expected_action_text_pattern,
     expected_action_keywords, OR any allowed_alternatives pattern.
 
@@ -502,7 +520,11 @@ def step_match(response: str, step_gt: Dict) -> bool:
     completion prematurely and the response is a MISS, even if some
     allowed_alternatives pattern would have matched '완료' by regex. This
     stops zero-shot baselines from silently satisfying intermediate steps
-    with an over-eager 'Done'."""
+    with an over-eager 'Done'.
+
+    ascii_boundary=True (scorer v3) rewrites \\b(...)\\b in the scenario
+    patterns so Hangul particles glued to a Latin token do not block a
+    match; False reproduces the v2 scorer exactly."""
     if not response:
         return False
     text = response.strip()
@@ -514,7 +536,7 @@ def step_match(response: str, step_gt: Dict) -> bool:
     pat = step_gt.get("expected_action_text_pattern")
     if pat:
         try:
-            if re.search(pat, text):
+            if re.search(_ascii_boundary(pat) if ascii_boundary else pat, text):
                 return True
         except re.error:
             pass
@@ -529,35 +551,191 @@ def step_match(response: str, step_gt: Dict) -> bool:
         ap = alt.get("pattern")
         if ap:
             try:
-                if re.search(ap, text):
+                if re.search(_ascii_boundary(ap) if ascii_boundary else ap, text):
                     return True
             except re.error:
                 continue
     return False
 
 
-def hallucinated_elements(response: str, visible_elements_gt: List[str]) -> List[str]:
-    """Return list of UI-element-like tokens in `response` that are NOT in the
-    ground-truth visible_elements list. Heuristic: looks at quoted strings
-    'X' / "X" / 'X 버튼' since those are how the AI references UI items."""
-    visible_lc = [e.lower() for e in (visible_elements_gt or [])]
+def step_match(response: str, step_gt: Dict) -> bool:
+    """Active scorer (GEOLENS_SCORER: v3 default, v2 legacy)."""
+    return _step_match_impl(response, step_gt, ascii_boundary=(SCORER_VERSION != "v2"))
+
+
+def step_match_v2(response: str, step_gt: Dict) -> bool:
+    """unified2/3/4 scorer, kept for re-scoring audits."""
+    return _step_match_impl(response, step_gt, ascii_boundary=False)
+
+
+def step_match_v3(response: str, step_gt: Dict) -> bool:
+    return _step_match_impl(response, step_gt, ascii_boundary=True)
+
+
+# Tokens that look like UI labels but are software / sentinel names, never
+# on-screen elements to be checked against visible_elements.
+_HALL_STOPLIST = {"opendtect", "qgis", "done", "f3", "f3 demo", "f3_demo", "f3_demo_2023", "windows"}
+
+
+def _referenced_ui_tokens(response: str, quote_independent: bool) -> set:
     referenced = set()
-    # quoted tokens: 'X', "X", `X`, X 버튼, X 메뉴, X 탭, X button
-    for m in re.findall(r"['\"`]([^'\"`\n]{1,40})['\"`]", response or ""):
+    text = response or ""
+    # quoted tokens: 'X', "X", `X`
+    for m in re.findall(r"['\"`]([^'\"`\n]{1,40})['\"`]", text):
         referenced.add(m.strip())
-    for m in re.findall(r"\b([A-Z][\w \-/]{1,30}?)\s*(?:버튼|메뉴|탭|button|menu|tab)\b",
-                       response or ""):
+    # X 버튼 / X 메뉴 / X 탭 / X button ...
+    for m in re.findall(r"\b([A-Z][\w \-/]{1,30}?)\s*(?:버튼|메뉴|탭|button|menu|tab)\b", text):
         referenced.add(m.strip())
+    if quote_independent:
+        # v3: any Latin-script label phrase starting with an uppercase letter,
+        # regardless of quoting — "Survey Data Root 경로", "Add Default Data를",
+        # "Energy [-28,+28]가", "roads_33S". A Hangul particle, punctuation or
+        # any non-Latin character ends the phrase, so quoting habits no
+        # longer decide whether a mention is checked. English function words
+        # and imperative verbs are excluded so English prose (Qwen) does not
+        # turn "Click OK to continue" into a phantom element.
+        for ph in _latin_label_phrases(text):
+            referenced.add(ph)
+    return referenced
+
+
+# English tokens that never start or continue a UI label phrase.
+_EN_PHRASE_STOP = {
+    "click", "select", "press", "type", "enter", "input", "open", "choose", "pick",
+    "then", "now", "next", "the", "a", "an", "in", "on", "at", "to", "of", "and", "or",
+    "use", "go", "wait", "scroll", "please", "you", "your", "this", "that", "these",
+    "from", "with", "after", "before", "if", "when", "once", "it", "is", "are", "will",
+    "make", "sure", "ensure", "confirm", "set", "under", "into", "for", "by", "via",
+    "right", "double", "left", "first", "again", "here", "there", "should", "must",
+    "user", "goal", "step", "steps", "so", "but", "not", "no", "yes", "okay", "let",
+    "we", "i", "they", "he", "she", "which", "what", "where", "how", "since", "because",
+}
+_LATIN_RUN = re.compile(r"[A-Za-z0-9_\-/\.\(\)\[\]\+]+(?: [A-Za-z0-9_\-/\.\(\)\[\]\+]+)*")
+_MAX_PHRASE_TOKENS = 5
+
+
+def _latin_label_phrases(text: str) -> List[str]:
+    phrases: List[str] = []
+    for m in _LATIN_RUN.finditer(text or ""):
+        cur: List[str] = []
+        for tok in m.group(0).split(" "):
+            t = tok.strip(".,;:!?")
+            if not t:
+                continue
+            tl = t.lower()
+            starts_upper = t[:1].isupper()
+            if cur:
+                if tl in _EN_PHRASE_STOP or len(cur) >= _MAX_PHRASE_TOKENS:
+                    phrases.append(" ".join(cur)); cur = []
+                    if starts_upper and tl not in _EN_PHRASE_STOP:
+                        cur = [t]
+                else:
+                    cur.append(t)
+            elif starts_upper and tl not in _EN_PHRASE_STOP:
+                cur = [t]
+        if cur:
+            phrases.append(" ".join(cur))
+    out = []
+    for p in phrases:
+        p = p.strip(" .,")
+        if len(p) >= 2 and not p.isdigit() and re.search(r"[A-Za-z]", p):
+            out.append(p)
+    return out
+
+
+def _canon_loose(s: str) -> str:
+    """lowercase, drop everything that is not a letter or digit."""
+    return re.sub(r"[^a-z0-9가-힣]+", "", (s or "").lower())
+
+
+def _screen_vocabulary(step_gt: Optional[Dict]) -> List[str]:
+    """v3 on-screen vocabulary: every GT field that describes the screen at
+    this step, not only visible_elements — current_dialog (window title),
+    active_menu, data_state, current_action and capture_instructions.
+    screen_state. visible_elements lists 'key' elements, not every label,
+    so a window title such as 'Survey Setup and Selection' must not be
+    counted as a phantom element."""
+    if not step_gt:
+        return []
+    vs = step_gt.get("visual_state_gt") or {}
+    parts: List[str] = list(vs.get("visible_elements") or [])
+    for k in ("current_dialog", "active_menu", "data_state", "current_action"):
+        v = vs.get(k)
+        if isinstance(v, str) and v:
+            parts.append(v)
+    ss = (step_gt.get("capture_instructions") or {}).get("screen_state")
+    if isinstance(ss, str) and ss:
+        parts.append(ss)
+    return [p for p in parts if isinstance(p, str)]
+
+
+def _hallucinated_elements_impl(response: str, visible_elements_gt: List[str],
+                                quote_independent: bool,
+                                step_gt: Optional[Dict] = None,
+                                goal: str = "") -> List[str]:
+    visible_lc = [e.lower() for e in (visible_elements_gt or [])]
+    if quote_independent:
+        vocab = _screen_vocabulary(step_gt) or list(visible_elements_gt or [])
+        vocab_canon = [_canon_loose(v) for v in vocab if v]
+        vocab_join = "".join(vocab_canon)
+        goal_canon = _canon_loose(goal)
     halls = []
-    for r in referenced:
+    for r in _referenced_ui_tokens(response, quote_independent):
         if not r or len(r) < 2:
             continue
         rlc = r.lower()
-        # Lenient: skip if any visible element substring-contains it
-        if any(rlc in v or v in rlc for v in visible_lc):
+        if not quote_independent:
+            # v2 rule: lenient substring test against visible_elements only
+            if any(rlc in v or v in rlc for v in visible_lc):
+                continue
+            halls.append(r)
+            continue
+        if rlc in _HALL_STOPLIST:
+            continue
+        rc = _canon_loose(re.sub(r"\s*\(.*?\)\s*", " ", r))       # "Add (+)" -> "add"
+        rc_nodigit = re.sub(r"\d+$", "", rc)                       # "treescene1" -> "treescene"
+        if not rc:
+            continue
+        # user-provided specifics (names, paths, values quoted from the goal)
+        # are things to TYPE, not phantom UI elements
+        if goal_canon and len(rc) >= 3 and rc in goal_canon:
+            continue
+        # grounded if the mention is contained in the screen vocabulary or
+        # any vocabulary entry is contained in the mention (both loose)
+        if rc in vocab_join or (rc_nodigit and len(rc_nodigit) >= 3 and rc_nodigit in vocab_join):
+            continue
+        if any(v and (v in rc) for v in vocab_canon):
             continue
         halls.append(r)
     return halls
+
+
+def hallucinated_elements(response: str, visible_elements_gt: List[str],
+                          step_gt: Optional[Dict] = None, goal: str = "") -> List[str]:
+    """Return list of UI-element-like tokens in `response` that are NOT
+    supported by the step's ground truth.
+
+    v2: quoted strings and 'X 버튼'-style mentions only, lenient substring
+    test against visible_elements — so the metric depended on whether a
+    model quotes UI names.
+    v3 (default): every Latin-script label phrase is extracted regardless of
+    quoting; a mention is grounded if it appears (loose canonical substring)
+    in the full screen vocabulary of the step (visible_elements +
+    current_dialog + active_menu + data_state + current_action +
+    screen_state) or is a value quoted from the user goal."""
+    return _hallucinated_elements_impl(response, visible_elements_gt,
+                                       quote_independent=(SCORER_VERSION != "v2"),
+                                       step_gt=step_gt, goal=goal)
+
+
+def hallucinated_elements_v2(response: str, visible_elements_gt: List[str]) -> List[str]:
+    return _hallucinated_elements_impl(response, visible_elements_gt, quote_independent=False)
+
+
+def hallucinated_elements_v3(response: str, visible_elements_gt: List[str],
+                             step_gt: Optional[Dict] = None, goal: str = "") -> List[str]:
+    return _hallucinated_elements_impl(response, visible_elements_gt, quote_independent=True,
+                                       step_gt=step_gt, goal=goal)
 
 
 def has_done_sentinel(response: str) -> bool:
@@ -575,11 +753,30 @@ def has_done_sentinel(response: str) -> bool:
 # on screen. If a completion declaration NAMES one of these but the actual
 # final visual_state does not confirm its presence, the declaration is
 # hallucinated — the model claimed to see something that wasn't there.
-_COMPLETION_CLAIM_PATTERNS = [
-    r"(In[- ]?line|Inline|Cross[- ]?line|Crossline|Z[- ]?slice|Time[- ]?slice|Depth[- ]?slice)",
-    r"(3D Scene|Main Window|Tree scene)",
-    r"(Seismic_data|F3[_ ]?Demo|Similarity|Curvature|Frequency)",
-]
+_COMPLETION_CLAIM_PATTERNS_BY_SOFTWARE = {
+    "opendtect": [
+        r"(In[- ]?line|Inline|Cross[- ]?line|Crossline|Z[- ]?slice|Time[- ]?slice|Depth[- ]?slice)",
+        r"(3D Scene|Main Window|Tree scene)",
+        r"(Seismic_data|F3[_ ]?Demo|Similarity|Curvature|Frequency)",
+    ],
+    "qgis": [
+        r"(Layers Panel|Map Canvas|Processing Toolbox|Attribute Table|Browser Panel)",
+        r"(Buffer|Dissolve|Clip|Intersect|Union|Difference|Distance)",
+        r"(roads_buffer|buildings|urban|CRS|EPSG:\d+|shapefile|geopackage)",
+    ],
+}
+
+
+def _get_completion_claim_patterns() -> list:
+    """Return regex patterns for completion-claim UI tokens for the active software."""
+    software_id = os.environ.get("GEOLENS_SOFTWARE_ID", "opendtect").lower()
+    return _COMPLETION_CLAIM_PATTERNS_BY_SOFTWARE.get(
+        software_id, _COMPLETION_CLAIM_PATTERNS_BY_SOFTWARE["opendtect"]
+    )
+
+
+# Backward-compat alias — code that still references the old name gets OpendTect patterns.
+_COMPLETION_CLAIM_PATTERNS = _COMPLETION_CLAIM_PATTERNS_BY_SOFTWARE["opendtect"]
 
 
 def _canon(token: str) -> str:
@@ -611,7 +808,7 @@ def completion_visually_grounded(
         return True, []
 
     claims: List[str] = []
-    for pat in _COMPLETION_CLAIM_PATTERNS:
+    for pat in _get_completion_claim_patterns():
         for m in re.findall(pat, response, flags=re.IGNORECASE):
             token = m if isinstance(m, str) else m[0]
             claims.append(token)
@@ -670,19 +867,26 @@ class ScenarioEvaluator:
         try:
             from api.services.guide_pipeline import (
                 get_last_localize_meta, reset_last_localize_meta,
+                get_aux_usage, reset_aux_usage,
             )
         except ImportError:
             get_last_localize_meta = lambda: {}
             reset_last_localize_meta = lambda: None
+            get_aux_usage = lambda: {"calls": 0, "input_tokens": 0, "output_tokens": 0,
+                                     "thoughts_tokens": 0, "cost_usd": 0.0, "by_kind": {}}
+            reset_aux_usage = lambda: None
 
         per_step: List[Dict] = []
         prior_responses: List[str] = []
         step_latencies: List[float] = []
         step_costs: List[float] = []
+        step_aux_costs: List[float] = []
+        step_aux_calls: List[int] = []
         step_input_toks: List[int] = []
         step_output_toks: List[int] = []
         for i, step in enumerate(self.steps):
             reset_last_localize_meta()
+            reset_aux_usage()
             t0 = _time.time()
             try:
                 response = backend_callable(i, self.scenario, prior_responses) or ""
@@ -692,15 +896,19 @@ class ScenarioEvaluator:
             latency = round(_time.time() - t0, 3)
             usage = get_last_usage()
             loc_meta = get_last_localize_meta()
+            aux = get_aux_usage()
 
             matched = step_match(response, step)
             halls = hallucinated_elements(
-                response, (step.get("visual_state_gt") or {}).get("visible_elements", [])
+                response, (step.get("visual_state_gt") or {}).get("visible_elements", []),
+                step_gt=step, goal=self.scenario.get("goal", ""),
             )
             looped = bool(
                 prior_responses and
                 _normalize_instruction(response) == _normalize_instruction(prior_responses[-1])
             )
+            gen_cost = float(usage.get("cost_usd") or 0.0)
+            aux_cost = float(aux.get("cost_usd") or 0.0)
             per_step.append({
                 "step_index": i,
                 "response": response,
@@ -712,8 +920,19 @@ class ScenarioEvaluator:
                 "latency_sec":   latency,
                 "input_tokens":  usage.get("input_tokens", 0),
                 "output_tokens": usage.get("output_tokens", 0),
-                "cost_usd":      usage.get("cost_usd", 0.0),
+                "thoughts_tokens": usage.get("thoughts_tokens", 0),
+                "cost_usd":      gen_cost,               # generator call only (v2-compatible)
                 "model":         usage.get("model", ""),
+                # Auxiliary LLM calls made by the backend for THIS step
+                # (vision state extraction, LLM rerank). v3 addition — the
+                # unified2/3/4 logs did not record these.
+                "aux_calls":         int(aux.get("calls", 0)),
+                "aux_input_tokens":  int(aux.get("input_tokens", 0)),
+                "aux_output_tokens": int(aux.get("output_tokens", 0)),
+                "aux_thoughts_tokens": int(aux.get("thoughts_tokens", 0)),
+                "aux_cost_usd":      round(aux_cost, 6),
+                "aux_by_kind":       aux.get("by_kind", {}),
+                "cost_total_usd":    round(gen_cost + aux_cost, 6),
                 # Routing telemetry (only meaningful for backends that call
                 # guide_pipeline.process_guide_request or localize_to_graph;
                 # zeros for vanilla_vector, no_rag, vision_only, graph_only).
@@ -724,7 +943,9 @@ class ScenarioEvaluator:
                 "fallback_activated": bool(loc_meta.get("fallback_activated", False)),
             })
             step_latencies.append(latency)
-            step_costs.append(float(usage.get("cost_usd") or 0.0))
+            step_costs.append(gen_cost)
+            step_aux_costs.append(aux_cost)
+            step_aux_calls.append(int(aux.get("calls", 0)))
             step_input_toks.append(int(usage.get("input_tokens") or 0))
             step_output_toks.append(int(usage.get("output_tokens") or 0))
             prior_responses.append(response)
@@ -779,6 +1000,9 @@ class ScenarioEvaluator:
         mean_lat = round(sum(step_latencies) / n, 3) if step_latencies else 0.0
         total_cost = round(sum(step_costs), 6)
         mean_cost = round(total_cost / n, 6) if n else 0.0
+        total_aux_cost = round(sum(step_aux_costs), 6)
+        mean_aux_cost = round(total_aux_cost / n, 6) if n else 0.0
+        mean_cost_total = round((total_cost + total_aux_cost) / n, 6) if n else 0.0
         # Route confidence + fallback aggregate. Only meaningful for backends
         # that touch guide_pipeline (full_system, state_path). For others the
         # confidence field stays at zero and fallback_rate reads 0 — that's
@@ -801,8 +1025,13 @@ class ScenarioEvaluator:
             "recovery_rate":        (sum(1 for s in recovery_steps if s["matched"]) / len(recovery_steps)) if recovery_steps else None,
             "goal_completion_rate": 1.0 if done_ok else 0.0,
             "mean_latency_sec":     mean_lat,
-            "mean_cost_usd":        mean_cost,
+            "mean_cost_usd":        mean_cost,          # generator only
             "total_cost_usd":       total_cost,
+            "mean_aux_cost_usd":    mean_aux_cost,      # vision + rerank calls
+            "total_aux_cost_usd":   total_aux_cost,
+            "mean_cost_total_usd":  mean_cost_total,    # generator + auxiliary (v3 primary cost metric)
+            "total_aux_calls":      sum(step_aux_calls),
+            "scorer_version":       SCORER_VERSION,
             "total_input_tokens":   sum(step_input_toks),
             "total_output_tokens":  sum(step_output_toks),
             "fallback_rate":        fallback_rate,
@@ -851,6 +1080,7 @@ def aggregate_scenario_results(results: List[Dict]) -> Dict:
             "dwell_loop_rate", "loop_rate",
             "trap_pass_rate", "recovery_rate", "goal_completion_rate",
             "mean_latency_sec", "mean_cost_usd", "total_cost_usd",
+            "mean_aux_cost_usd", "total_aux_cost_usd", "mean_cost_total_usd", "total_aux_calls",
             "total_input_tokens", "total_output_tokens",
             "fallback_rate", "mean_route_confidence"]
     out: Dict = {"n_scenarios": len(results)}

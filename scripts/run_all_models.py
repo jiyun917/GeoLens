@@ -5,7 +5,7 @@ are used to compute mean ± std (paper reports variance).
 
 Usage:
     .venv/Scripts/python.exe scripts/run_all_models.py \\
-        [--models gemini,claude,qwen,gpt] [--repeats 3] [--judge consensus]
+        [--models gemini,claude,gpt] [--repeats 3] [--judge consensus]
 """
 
 from __future__ import annotations
@@ -59,7 +59,7 @@ def run_one(model: str, replicate: int, judge: str | None, backends: list[str] |
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--models", default="gemini,claude,qwen,gpt",
+    ap.add_argument("--models", default="gemini,claude,gpt",
                     help="Comma-separated model names to run (default: all 4)")
     ap.add_argument("--repeats", type=int, default=3,
                     help="Number of replicate runs per model (default: 3)")

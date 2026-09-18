@@ -18,6 +18,7 @@ Usage:
 
 from __future__ import annotations
 
+import os
 import glob
 import json
 import math
@@ -37,8 +38,8 @@ except Exception:
 ROOT = Path(__file__).resolve().parent.parent
 RESULTS_DIR = ROOT / "data" / "eval" / "results"
 
-MODELS = ["gemini", "claude", "gpt", "qwen"]
-DEFAULT_BACKENDS = ["no_rag", "vanilla_vector", "graph_only",
+MODELS = [m.strip() for m in os.environ.get("BENCH_MODELS", "gemini,claude,gpt").split(",") if m.strip()]  # v3: Qwen excluded (VL serving unavailable); set BENCH_MODELS=gemini,claude,gpt,qwen for unified2/3/4 tags
+DEFAULT_BACKENDS = ["no_rag", "vanilla_vector", "vanilla_budget", "graph_only",
                     "vision_only", "full_system", "state_path"]
 METRICS = [
     ("step_accuracy",        "higher"),
@@ -47,6 +48,7 @@ METRICS = [
     ("goal_completion_rate", "higher"),
     ("mean_latency_sec",     "lower"),
     ("mean_cost_usd",        "lower"),
+    ("mean_cost_total_usd",  "lower"),
 ]
 # Accept any tag between model and r<N>, e.g. _unified_ or _unified2_ .
 RE_UNIFIED = re.compile(

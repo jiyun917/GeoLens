@@ -18,6 +18,7 @@ Usage:
 
 from __future__ import annotations
 
+import os
 import argparse
 import glob
 import json
@@ -35,8 +36,8 @@ except Exception:
     pass
 
 
-MODELS = ["gemini", "claude", "gpt", "qwen"]
-BACKENDS = ["no_rag", "vanilla_vector", "graph_only",
+MODELS = [m.strip() for m in os.environ.get("BENCH_MODELS", "gemini,claude,gpt").split(",") if m.strip()]  # v3: Qwen excluded (VL serving unavailable); set BENCH_MODELS=gemini,claude,gpt,qwen for unified2/3/4 tags
+BACKENDS = ["no_rag", "vanilla_vector", "vanilla_budget", "graph_only",
             "vision_only", "full_system", "state_path"]
 METRICS = [
     ("step_accuracy",        "higher"),
@@ -45,6 +46,7 @@ METRICS = [
     ("goal_completion_rate", "higher"),
     ("mean_latency_sec",     "lower"),
     ("mean_cost_usd",        "lower"),
+    ("mean_cost_total_usd",  "lower"),
 ]
 
 # The pairs we score for direction consistency. Each pair is (A, B): we
@@ -89,7 +91,7 @@ def load(tag: str) -> dict:
     return out
 
 
-def report(data: dict) -> str:
+def report(data: dict, tag: str = "unified2") -> str:
     lines = []
     lines.append("# Direction consistency — v2 unified matrix\n")
     lines.append("For each metric and each candidate pair (A vs B), we count "
@@ -144,16 +146,28 @@ def report(data: dict) -> str:
             lines.append("| " + " | ".join(row) + " |")
 
     lines.append("\n## Note on goal_completion_rate interpretation\n")
-    lines.append("The 3d_visualization scenario captures the *penultimate* state "
-                 "(In-line + Cross-line displayed, Z-slice not yet added). Its "
-                 "final visual_state does NOT indicate goal-reached, so under "
-                 "the 3-gate check, no backend can achieve goal_completion for "
-                 "that scenario. Effectively goal_completion_rate is a "
-                 "**single-scenario measurement** on survey_setup only — n=5 "
-                 "per (model, backend) instead of n=10. This is a scenario "
-                 "capture limitation, not a metric flaw. Any goal_completion "
-                 "differences observed should be interpreted with this reduced "
-                 "power in mind.\n")
+    if tag == "unified2":
+        lines.append("The 3d_visualization scenario captures the *penultimate* state "
+                     "(In-line + Cross-line displayed, Z-slice not yet added). Its "
+                     "final visual_state does NOT indicate goal-reached, so under "
+                     "the 3-gate check, no backend can achieve goal_completion for "
+                     "that scenario. Effectively goal_completion_rate is a "
+                     "**single-scenario measurement** on survey_setup only — n=5 "
+                     "per (model, backend) instead of n=10. This is a scenario "
+                     "capture limitation, not a metric flaw. Any goal_completion "
+                     "differences observed should be interpreted with this reduced "
+                     "power in mind.\n")
+    else:
+        lines.append(f"unified3 refined the 3d_visualization step_3 capture to a "
+                     "goal-reached state (all three orthogonal slices displayed) "
+                     "and the new attribute_computation step_7 also captures the "
+                     "goal state (Energy layer displayed on In-line > 250). All "
+                     "three scenarios therefore contribute to goal_completion. "
+                     "Effective n per (model, backend) = 3 scenarios × 5 "
+                     "replicates = 15 observations. **Cross-tag comparison with "
+                     "unified2 goal_completion is prohibited** — the scoring "
+                     "target changed (see methodology_audit_trail.md § scenario "
+                     "refinement #1).\n")
 
     return "\n".join(lines) + "\n"
 
@@ -167,7 +181,7 @@ def main():
     if not data:
         print(f"no data for tag={args.tag}")
         return
-    md = report(data)
+    md = report(data, tag=args.tag)
     print(md)
     out = ROOT / "data" / "eval" / "results" / (args.out or f"direction_{args.tag}.md")
     out.write_text(md, encoding="utf-8")

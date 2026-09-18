@@ -1,3 +1,4 @@
+import os
 import uuid
 from typing import List, Optional, Tuple
 
@@ -12,14 +13,29 @@ from .chunk_classifier import ChunkClassifier
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 100
 
+# Embedding model. v3 default: BAAI/bge-m3 (multilingual, 8,192-token window,
+# 1,024-d, L2-normalised dense vectors). The v2 model all-MiniLM-L6-v2 is
+# English-centric and truncates at 256 word-piece tokens, so an 800-token
+# chunk (~2,500 MiniLM tokens for Korean/English mixed text) was embedded
+# from its first ~10% only, while the benchmark queries are Korean.
+# Set EMBED_MODEL=all-MiniLM-L6-v2 to reproduce the v2 index.
+EMBED_MODEL = os.environ.get("EMBED_MODEL", "BAAI/bge-m3")
+
 _model = None
 
 
 def _get_model():
     global _model
     if _model is None:
-        _model = SentenceTransformer("all-MiniLM-L6-v2")
+        _model = SentenceTransformer(EMBED_MODEL)
+        print(f"[EMBED] model={EMBED_MODEL} max_seq_length={_model.max_seq_length} "
+              f"dim={_model.get_sentence_embedding_dimension()}")
     return _model
+
+
+def _normalize() -> bool:
+    # bge-m3 dense retrieval is defined on unit vectors; MiniLM was used raw.
+    return "minilm" not in EMBED_MODEL.lower()
 
 
 def _chunk_single_text(text: str) -> List[str]:
@@ -86,7 +102,7 @@ def _contextualize_chunk(chunk: str, metadata: dict) -> str:
 
 def get_embeddings(texts: List[str]) -> List[List[float]]:
     model = _get_model()
-    embeddings = model.encode(texts, show_progress_bar=True)
+    embeddings = model.encode(texts, show_progress_bar=True, normalize_embeddings=_normalize())
     return embeddings.tolist()
 
 

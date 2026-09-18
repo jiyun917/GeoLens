@@ -1,0 +1,117 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[WorkflowGraph] Loaded 7 workflows, 41 nodes, 37 edges
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 65171.39it/s]
+C:\Users\user\Downloads\GeoLens-paper\api\services\embedder.py:32: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  f"dim={_model.get_sentence_embedding_dimension()}")
+[EMBED] model=BAAI/bge-m3 max_seq_length=8192 dim=1024
+Batches:   0%|          | 0/2 [00:00<?, ?it/s]Batches:  50%|█████     | 1/2 [00:09<00:09,  9.80s/it]Batches: 100%|██████████| 2/2 [00:10<00:00,  4.33s/it]Batches: 100%|██████████| 2/2 [00:10<00:00,  5.15s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.35it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.33it/s]
+C:\Users\user\Downloads\GeoLens-paper\.venv\Lib\site-packages\open_clip\factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+[VISUAL_MATCH] CLIP ViT-B-32/openai loaded on cpu
+[VISUAL_MATCH] rehydrating 765 images for manual=645b7cdf2690408da843b9ce63c52d5b from disk
+[VISUAL_MATCH] indexed 765 images for manual=645b7cdf2690408da843b9ce63c52d5b
+[GUIDE] visual_state: 'OpendTect 7.0.9 (Windows) "UPDATE AVAILA / Scene'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.34it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=d3_visualization_01_main_window_ready conf=0.80
+_3d_visualization__01  s0 picked=d3_visualization/d3_visualization_01_main_window_ready conf=0.8 method=llm kept=True aux=2calls think=0 $1.17m 44.9s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.98it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.98it/s]
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) "UPDATE AVAIL / Scene'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.92it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.91it/s]
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=d3_visualization_04_add_zslice conf=0.80
+_3d_visualization__01  s1 picked=d3_visualization/d3_visualization_04_add_zslice conf=0.8 method=llm kept=True aux=2calls think=0 $1.54m 9.8s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.89it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.89it/s]
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) "UPDATE AVAIL / Scene'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.93it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.93it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=3)
+[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)
+_3d_visualization__01  s2 picked=None/None conf=0.0 method=none kept=False aux=2calls think=0 $1.41m 8.2s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.07it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.07it/s]
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) / Scene'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.18it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.17it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=3)
+[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)
+_3d_visualization__01  s3 picked=None/None conf=0.0 method=none kept=False aux=2calls think=0 $1.38m 10.0s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.98it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.98it/s]
+[GUIDE] visual_state: 'Attribute Set 3D / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.12it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.12it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_04_configure conf=0.90
+_attribute_computation s0 picked=seismic_attribute/seismic_attribute_04_configure conf=0.9 method=llm kept=True aux=2calls think=0 $1.32m 7.5s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.54it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.54it/s]
+[GUIDE] visual_state: 'Attribute Set 3D / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.32it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.30it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_04_configure conf=0.90
+_attribute_computation s1 picked=seismic_attribute/seismic_attribute_04_configure conf=0.9 method=llm kept=True aux=2calls think=0 $1.26m 9.1s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.48it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.48it/s]
+[GUIDE] visual_state: 'Attribute Set 3D / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.45it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.45it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_04_configure conf=0.85
+_attribute_computation s2 picked=seismic_attribute/seismic_attribute_04_configure conf=0.85 method=llm kept=True aux=2calls think=0 $1.25m 7.0s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.04it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.04it/s]
+[GUIDE] visual_state: 'Attribute Set 3D / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.07it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.07it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_04_configure conf=0.90
+_attribute_computation s3 picked=seismic_attribute/seismic_attribute_04_configure conf=0.9 method=llm kept=True aux=2calls think=0 $1.47m 8.2s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 11.52it/s]
+[GUIDE] visual_state: 'Save Attribute as / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 11.91it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_04_configure conf=0.80
+_attribute_computation s4 picked=seismic_attribute/seismic_attribute_04_configure conf=0.8 method=llm kept=True aux=2calls think=0 $0.87m 7.1s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.11it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.11it/s]
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) / Scene'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.36it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.36it/s]
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=d3_visualization_01_main_window_ready conf=0.70
+_attribute_computation s5 picked=d3_visualization/d3_visualization_01_main_window_ready conf=0.7 method=llm kept=True aux=2calls think=0 $1.32m 9.8s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.14it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.14it/s]
+[GUIDE] visual_state: 'Select Layer 2 / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.24it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.24it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=seismic_attribute_06_display conf=0.90
+_attribute_computation s6 picked=seismic_attribute/seismic_attribute_06_display conf=0.9 method=llm kept=True aux=2calls think=0 $1.56m 7.6s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.94it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.94it/s]
+[GUIDE] visual_state: 'OpendTect V7.0.9 (Windows) / Scene'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.01it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.01it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=3)
+[GUIDE] LLM rerank gave no answer - node=None (vector RAG will provide context)
+_attribute_computation s7 picked=None/None conf=0.0 method=none kept=False aux=2calls think=0 $1.41m 7.7s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 10.87it/s]
+[GUIDE] visual_state: 'Survey Setup and Selection / Information'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 11.70it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_02_open_new_survey_dialog conf=0.80
+_survey_setup__01      s0 picked=survey_setup/survey_setup_02_open_new_survey_dialog conf=0.8 method=llm kept=True aux=2calls think=0 $0.85m 5.6s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.00it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.00it/s]
+[GUIDE] visual_state: 'Create New Survey / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.09it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.09it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_03_choose_initial_setup conf=0.90
+_survey_setup__01      s1 picked=survey_setup/survey_setup_03_choose_initial_setup conf=0.9 method=llm kept=True aux=2calls think=0 $1.36m 8.5s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.51it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.49it/s]
+[GUIDE] visual_state: 'Create New Survey / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.68it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.68it/s]
+[GUIDE] candidates: 5 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_03_choose_initial_setup conf=0.80
+_survey_setup__01      s2 picked=survey_setup/survey_setup_03_choose_initial_setup conf=0.8 method=llm kept=True aux=2calls think=0 $1.25m 7.9s
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.70it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.70it/s]
+[GUIDE] visual_state: 'OpendTect 17.0.9 (Windows) "UPDATE AVAIL / Scene'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.66it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.66it/s]
+[GUIDE] candidates: 4 (kw_top=3, clip_top=2)
+[GUIDE] localize via LLM rerank: node=survey_setup_05_select_survey conf=0.70
+_survey_setup__01      s3 picked=survey_setup/survey_setup_05_select_survey conf=0.7 method=llm kept=True aux=2calls think=0 $1.43m 10.3s
+# Vision-based routing dry-run — dev_embed (AUX_THINKING_BUDGET=0)
+
+| scenario | steps | correct workflow | kept (conf≥0.7) | rerank none | aux cost/step | thinking tok/step | latency/step |
+|---|---|---|---|---|---|---|---|
+| opendtect__3d_visualization__01 | 4 | 2/4 | 2/4 | 2 | $1.37m | 0 | 18.2s |
+| opendtect__attribute_computation__01 | 8 | 6/8 | 7/8 | 1 | $1.31m | 0 | 8.0s |
+| opendtect__survey_setup__01 | 4 | 4/4 | 4/4 | 0 | $1.22m | 0 | 8.1s |
+
+saved: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\routing_dryrun_vision_dev_embed.md

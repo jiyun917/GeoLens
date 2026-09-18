@@ -18,6 +18,7 @@ Usage:
 
 from __future__ import annotations
 
+import os
 import argparse
 import glob
 import json
@@ -35,8 +36,8 @@ except Exception:
     pass
 
 
-MODELS = ["gemini", "claude", "gpt", "qwen"]
-BACKENDS = ["no_rag", "vanilla_vector", "graph_only",
+MODELS = [m.strip() for m in os.environ.get("BENCH_MODELS", "gemini,claude,gpt").split(",") if m.strip()]  # v3: Qwen excluded (VL serving unavailable); set BENCH_MODELS=gemini,claude,gpt,qwen for unified2/3/4 tags
+BACKENDS = ["no_rag", "vanilla_vector", "vanilla_budget", "graph_only",
             "vision_only", "full_system", "state_path"]
 
 

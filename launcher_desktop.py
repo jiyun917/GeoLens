@@ -288,6 +288,15 @@ class MainWindow(QMainWindow):
 
         self._setup_content()
 
+    def _log(self, msg: str):
+        """Write to launcher_debug.log so we can verify behavior without stdout."""
+        try:
+            log_path = PROJECT_DIR / "launcher_debug.log"
+            with open(log_path, "a", encoding="utf-8") as f:
+                f.write(f"[{time.strftime('%H:%M:%S')}] {msg}\n")
+        except Exception:
+            pass
+
     def _setup_content(self):
         try:
             from PySide6.QtWebEngineWidgets import QWebEngineView
@@ -301,12 +310,154 @@ class MainWindow(QMainWindow):
             settings.setAttribute(QWebEngineSettings.ScreenCaptureEnabled, True)
             settings.setAttribute(QWebEngineSettings.PlaybackRequiresUserGesture, False)
 
+            # Wire up screen-share picker so getDisplayMedia() doesn't hang.
+            # Without a handler, Qt WebEngine's default behavior on this version
+            # of Chromium is to leave the JS request unresolved → GeoLens shows
+            # 'Starting...' forever.
+            page = self.browser.page()
+            has_signal = hasattr(page, "desktopMediaRequested")
+            self._log(f"_setup_content: desktopMediaRequested signal exists = {has_signal}")
+            if has_signal:
+                page.desktopMediaRequested.connect(self._on_desktop_media_requested)
+                self._log("_setup_content: desktopMediaRequested handler attached")
+
             self.browser.setUrl(QUrl(FRONTEND_URL))
             self.setCentralWidget(self.browser)
             self._use_webengine = True
         except ImportError:
             self._use_webengine = False
             self._show_fallback()
+
+    def _on_desktop_media_requested(self, request):
+        """Show a picker dialog listing windows + screens for screen sharing."""
+        self._log("_on_desktop_media_requested: FIRED")
+        try:
+            wm = request.windowsModel()
+            sm = request.screensModel()
+            wn = wm.rowCount() if wm else 0
+            sn = sm.rowCount() if sm else 0
+            self._log(f"_on_desktop_media_requested: windows={wn} screens={sn}")
+        except Exception as e:
+            self._log(f"_on_desktop_media_requested: model probe error: {e!r}")
+
+        from PySide6.QtWidgets import (
+            QDialog, QVBoxLayout, QLabel, QListView, QPushButton,
+            QHBoxLayout, QAbstractItemView,
+        )
+        from PySide6.QtCore import QSize
+
+        dlg = QDialog(self)
+        dlg.setWindowTitle("Choose what to share")
+        dlg.resize(720, 620)
+        dlg.setStyleSheet(
+            "QDialog { background-color: #18181b; color: #e4e4e7; }"
+            "QLabel { color: #e4e4e7; font-size: 13px; font-weight: 600; }"
+            "QListView { background-color: #27272a; color: #e4e4e7; "
+            "border: 1px solid #3f3f46; padding: 4px; }"
+            "QPushButton { background-color: #3b82f6; color: white; "
+            "border: none; padding: 8px 16px; border-radius: 4px; }"
+            "QPushButton:disabled { background-color: #52525b; }"
+        )
+        layout = QVBoxLayout(dlg)
+        layout.setContentsMargins(16, 16, 16, 16)
+        layout.setSpacing(8)
+
+        # Icon grid mode with thumbnail previews. Qt models exposed by
+        # QWebEngineDesktopMediaRequest provide the thumbnail via
+        # Qt.DecorationRole — setting a non-zero icon size makes QListView
+        # actually render it.
+        def _mk_thumb_list(model):
+            v = QListView()
+            v.setModel(model)
+            v.setViewMode(QListView.IconMode)
+            v.setIconSize(QSize(200, 130))
+            v.setGridSize(QSize(220, 180))
+            v.setSpacing(8)
+            v.setResizeMode(QListView.Adjust)
+            v.setMovement(QListView.Static)
+            v.setUniformItemSizes(True)
+            v.setWordWrap(True)
+            v.setSelectionMode(QAbstractItemView.SingleSelection)
+            v.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            return v
+
+        layout.addWidget(QLabel("Windows"))
+        win_view = _mk_thumb_list(request.windowsModel())
+        layout.addWidget(win_view, 2)
+
+        layout.addSpacing(6)
+        layout.addWidget(QLabel("Entire screens"))
+        scr_view = _mk_thumb_list(request.screensModel())
+        layout.addWidget(scr_view, 1)
+
+        btn_row = QHBoxLayout()
+        btn_row.addStretch(1)
+        btn_cancel = QPushButton("Cancel")
+        btn_share = QPushButton("Share")
+        btn_share.setEnabled(False)
+        btn_row.addWidget(btn_cancel)
+        btn_row.addWidget(btn_share)
+        layout.addLayout(btn_row)
+
+        # Only one list can have a selection at a time (mutual exclusivity).
+        def on_win_selected(*_):
+            if win_view.selectionModel().hasSelection():
+                scr_view.selectionModel().clearSelection()
+            btn_share.setEnabled(
+                win_view.selectionModel().hasSelection()
+                or scr_view.selectionModel().hasSelection()
+            )
+
+        def on_scr_selected(*_):
+            if scr_view.selectionModel().hasSelection():
+                win_view.selectionModel().clearSelection()
+            btn_share.setEnabled(
+                win_view.selectionModel().hasSelection()
+                or scr_view.selectionModel().hasSelection()
+            )
+
+        win_view.selectionModel().selectionChanged.connect(on_win_selected)
+        scr_view.selectionModel().selectionChanged.connect(on_scr_selected)
+
+        selected = {"kind": None, "index": None}
+
+        def on_share():
+            if win_view.selectionModel().hasSelection():
+                selected["kind"] = "window"
+                selected["index"] = win_view.selectionModel().selectedIndexes()[0]
+            elif scr_view.selectionModel().hasSelection():
+                selected["kind"] = "screen"
+                selected["index"] = scr_view.selectionModel().selectedIndexes()[0]
+            dlg.accept()
+
+        def on_cancel():
+            dlg.reject()
+
+        btn_share.clicked.connect(on_share)
+        btn_cancel.clicked.connect(on_cancel)
+
+        self._log("_on_desktop_media_requested: dialog exec starting")
+        result = dlg.exec()
+        self._log(f"_on_desktop_media_requested: dialog closed, result={result}, selected={selected['kind']}")
+        if result == QDialog.Accepted and selected["index"] is not None:
+            try:
+                if selected["kind"] == "window":
+                    request.selectWindow(selected["index"])
+                    self._log("_on_desktop_media_requested: selectWindow OK")
+                else:
+                    request.selectScreen(selected["index"])
+                    self._log("_on_desktop_media_requested: selectScreen OK")
+            except Exception as e:
+                self._log(f"_on_desktop_media_requested: select* raised: {e!r}")
+        else:
+            for meth in ("cancel", "reject"):
+                if hasattr(request, meth):
+                    try:
+                        getattr(request, meth)()
+                        self._log(f"_on_desktop_media_requested: {meth}() called")
+                        break
+                    except Exception as e:
+                        self._log(f"_on_desktop_media_requested: {meth}() raised: {e!r}")
 
     def _show_fallback(self):
         """Fallback if WebEngine is not available."""

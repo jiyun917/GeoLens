@@ -1,0 +1,113 @@
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[reembed] manual_645b7cdf2690408da843b9ce63c52d5b: 521 chunks from data/chromadb -> data/chromadb_v3 with BAAI/bge-m3
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 40981.90it/s]
+C:\Users\user\Downloads\GeoLens-paper\api\services\embedder.py:32: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  f"dim={_model.get_sentence_embedding_dimension()}")
+[EMBED] model=BAAI/bge-m3 max_seq_length=8192 dim=1024
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.29s/it]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.29s/it]
+Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+  16/521 (19s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:15<00:00, 15.21s/it]Batches: 100%|██████████| 1/1 [00:15<00:00, 15.21s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.65s/it]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.65s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.46s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.46s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.30s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.30s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.82s/it]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.82s/it]
+  96/521 (69s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.23s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.52s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.52s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.04s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.04s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.96s/it]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.96s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.34s/it]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.34s/it]
+  176/521 (119s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.44s/it]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.44s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.44s/it]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.44s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.84s/it]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.84s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.27s/it]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.27s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it]
+  256/521 (175s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.32s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.32s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.06s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.06s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.32s/it]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.32s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.93s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.93s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.92s/it]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.92s/it]
+  336/521 (227s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:13<00:00, 13.22s/it]Batches: 100%|██████████| 1/1 [00:13<00:00, 13.22s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.35s/it]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.35s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.80s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.80s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.55s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.55s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.57s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.57s/it]
+  416/521 (275s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.69s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.69s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.06s/it]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.06s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.37s/it]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.37s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.15s/it]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.15s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.19s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.19s/it]
+  496/521 (329s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.76s/it]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.76s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.13s/it]
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[reembed] done manual_645b7cdf2690408da843b9ce63c52d5b: 521 chunks, dim=1024, 350s
+[reembed] manual_bf2804feea57434bb79b749134ed1df0: 733 chunks from data/chromadb -> data/chromadb_v3 with BAAI/bge-m3
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:23<00:00, 23.32s/it]Batches: 100%|██████████| 1/1 [00:23<00:00, 23.32s/it]
+Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+  16/733 (23s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:23<00:00, 23.69s/it]Batches: 100%|██████████| 1/1 [00:23<00:00, 23.69s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:24<00:00, 24.53s/it]Batches: 100%|██████████| 1/1 [00:24<00:00, 24.53s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.50s/it]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.50s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.22s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.22s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:04<00:00,  4.16s/it]Batches: 100%|██████████| 1/1 [00:04<00:00,  4.16s/it]
+  96/733 (95s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.91s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.91s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.41s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.41s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.18s/it]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.18s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.38s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.39s/it]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.39s/it]
+  176/733 (142s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.33s/it]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.33s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.66s/it]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.67s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.72s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.73s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:14<00:00, 14.31s/it]Batches: 100%|██████████| 1/1 [00:14<00:00, 14.31s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.00s/it]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.00s/it]
+  256/733 (185s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:04<00:00,  4.24s/it]Batches: 100%|██████████| 1/1 [00:04<00:00,  4.24s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.12s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.12s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.84s/it]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.84s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.53s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.53s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.12s/it]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.12s/it]
+  336/733 (217s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.49s/it]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.49s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.05s/it]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.05s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.29s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.29s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.68s/it]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.68s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.27s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.27s/it]
+  416/733 (267s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.42s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.42s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.16s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.16s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:13<00:00, 13.38s/it]Batches: 100%|██████████| 1/1 [00:13<00:00, 13.38s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:16<00:00, 16.36s/it]Batches: 100%|██████████| 1/1 [00:16<00:00, 16.36s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.41s/it]Batches: 100%|██████████| 1/1 [00:12<00:00, 12.41s/it]
+  496/733 (328s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.08s/it]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.08s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.45s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.45s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.68s/it]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.68s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.14s/it]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.14s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.63s/it]Batches: 100%|██████████| 1/1 [00:07<00:00,  7.63s/it]
+  576/733 (377s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.95s/it]Batches: 100%|██████████| 1/1 [00:10<00:00, 10.95s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:05<00:00,  5.65s/it]Batches: 100%|██████████| 1/1 [00:05<00:00,  5.65s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:05<00:00,  5.47s/it]Batches: 100%|██████████| 1/1 [00:05<00:00,  5.47s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.70s/it]Batches: 100%|██████████| 1/1 [00:06<00:00,  6.70s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.05s/it]
+  656/733 (415s)
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:05<00:00,  5.75s/it]Batches: 100%|██████████| 1/1 [00:05<00:00,  5.75s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.16s/it]Batches: 100%|██████████| 1/1 [00:11<00:00, 11.16s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.18s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.18s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.42s/it]Batches: 100%|██████████| 1/1 [00:09<00:00,  9.42s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.64s/it]Batches: 100%|██████████| 1/1 [00:08<00:00,  8.64s/it]
+  733/733 (459s)
+[reembed] done manual_bf2804feea57434bb79b749134ed1df0: 733 chunks, dim=1024, 459s

@@ -59,9 +59,21 @@ except Exception:
 # ─────────────────────────────────────────────────────────────────────
 
 DEFAULT_MODEL = "gemini"
-QWEN_BASE_URL = "http://168.131.141.77:28000/v1"
-QWEN_MODEL = "qwen3-235b-a22b-instruct"
+QWEN_BASE_URL = os.environ.get("QWEN_BASE_URL", "http://localhost:28000/v1")
+# v3: the served model must be a vision-language model (Qwen3-VL). The
+# unified2/3/4 runs used the text-only "qwen3-235b-a22b-instruct" and
+# stripped the screenshot — see QWEN_TEXT_ONLY below.
+QWEN_MODEL = os.environ.get("QWEN_MODEL", "qwen3-vl-235b-a22b-instruct")
 QWEN_API_KEY = "EMPTY"  # vLLM does not validate the key
+QWEN_TEXT_ONLY = os.environ.get("QWEN_TEXT_ONLY", "0") == "1"
+
+# v3: one generation setting for every generator (the unified4 matrix used
+# max_tokens 512 for Claude/GPT, 1024 for Qwen, none for Gemini, and
+# temperature 0.2 for Qwen only). Gemini 2.5 Pro cannot disable thinking, so
+# it gets a fixed thinking budget on top of the shared answer budget.
+GEN_TEMPERATURE = float(os.environ.get("GEN_TEMPERATURE", "0.2"))
+GEN_MAX_TOKENS = int(os.environ.get("GEN_MAX_TOKENS", "1024"))
+GEMINI_THINKING_BUDGET = int(os.environ.get("GEMINI_THINKING_BUDGET", "1024"))
 
 
 # Per-model USD per 1M tokens (input, output). Self-hosted = 0 (or GPU-time
@@ -71,28 +83,35 @@ MODEL_PRICING: Dict[str, Dict[str, float]] = {
     "gemini_flash": {"in_per_m": 0.30, "out_per_m": 2.50,  "label": "gemini-2.5-flash"},
     "claude":       {"in_per_m": 3.00, "out_per_m": 15.00, "label": "claude-sonnet-4-6"},
     "gpt":          {"in_per_m": 2.50, "out_per_m": 10.00, "label": "gpt-4o"},
-    "qwen":         {"in_per_m": 0.00, "out_per_m": 0.00,  "label": "qwen3-235b-a22b-instruct (self-hosted)"},
+    "qwen":         {"in_per_m": 0.00, "out_per_m": 0.00,  "label": f"{QWEN_MODEL} (self-hosted)"},
 }
 
 
 # Module-level scratch space for the most recent call's token usage. The
 # bench_runner reads this immediately after each backend call so we don't
 # have to refactor every backend signature. Reset before each call.
-_LAST_USAGE: Dict[str, float] = {"input_tokens": 0, "output_tokens": 0, "cost_usd": 0.0, "model": ""}
+_LAST_USAGE: Dict[str, float] = {"input_tokens": 0, "output_tokens": 0, "thoughts_tokens": 0,
+                                 "cost_usd": 0.0, "model": ""}
 
 
 def _reset_usage() -> None:
     _LAST_USAGE["input_tokens"] = 0
     _LAST_USAGE["output_tokens"] = 0
+    _LAST_USAGE["thoughts_tokens"] = 0
     _LAST_USAGE["cost_usd"] = 0.0
     _LAST_USAGE["model"] = ""
 
 
-def _record_usage(model: str, input_tokens: int, output_tokens: int) -> None:
+def _record_usage(model: str, input_tokens: int, output_tokens: int, thoughts_tokens: int = 0) -> None:
+    """Generator-call cost. thoughts_tokens (Gemini reasoning) are billed at
+    the output rate; v2 recorded candidates_token_count only, which under-
+    reported Gemini generator cost."""
     price = MODEL_PRICING.get(model, {"in_per_m": 0.0, "out_per_m": 0.0})
-    cost = (input_tokens / 1_000_000) * price["in_per_m"] + (output_tokens / 1_000_000) * price["out_per_m"]
+    cost = ((input_tokens / 1_000_000) * price["in_per_m"]
+            + ((output_tokens + thoughts_tokens) / 1_000_000) * price["out_per_m"])
     _LAST_USAGE["input_tokens"] = int(input_tokens)
     _LAST_USAGE["output_tokens"] = int(output_tokens)
+    _LAST_USAGE["thoughts_tokens"] = int(thoughts_tokens or 0)
     _LAST_USAGE["cost_usd"] = round(cost, 6)
     _LAST_USAGE["model"] = model
 
@@ -115,6 +134,13 @@ def _strip_thinking(text: str) -> str:
         return ""
     text = re.sub(r"<think>.*?</think>\s*", "", text, flags=re.DOTALL)
     text = re.sub(r"^\s*</think>\s*", "", text)
+    # v3: an UNCLOSED <think> block (max_tokens hit while reasoning) carries
+    # no instruction at all. v2 left it in place, so the reasoning text was
+    # scored as the answer (55/480 unified4 Qwen steps: 100% "matched" and
+    # 100% "hallucinated" by keyword coincidence). Drop it → empty response.
+    i = text.find("<think>")
+    if i >= 0:
+        text = text[:i]
     return text.strip()
 
 
@@ -244,7 +270,8 @@ def _call_claude(messages: List[Dict]) -> str:
                     claude_msgs.append({"role": role, "content": parts})
         resp = client.messages.create(
             model="claude-sonnet-4-6",
-            max_tokens=512,
+            max_tokens=GEN_MAX_TOKENS,
+            temperature=GEN_TEMPERATURE,
             system=sys_text,
             messages=claude_msgs,
         )
@@ -288,17 +315,31 @@ def _call_gemini_variant(messages: List[Dict], model_id: str, usage_tag: str) ->
         else:
             non_sys.append(m)
     contents = convert_openai_to_gemini(non_sys)
-    # NOTE: Do NOT set max_output_tokens for Gemini 2.5 thinking models.
-    # Thinking tokens (`thoughts_token_count`) are billed separately but
-    # observably eat into the completion budget under load — an explicit
-    # small ceiling here caused a repeatable "thinks a lot, returns empty"
-    # failure pattern in earlier runs. Leave it unset (Google default is
-    # generous enough for our 1-instruction responses).
+    # v3: shared generation settings. Gemini 2.5 thinking tokens count
+    # against max_output_tokens, so the ceiling is the shared answer budget
+    # PLUS a fixed thinking budget (earlier runs with a small bare ceiling
+    # produced "thinks a lot, returns empty"). thoughts_token_count is
+    # recorded and billed at the output rate.
+    try:
+        thinking_cfg = types.ThinkingConfig(thinking_budget=GEMINI_THINKING_BUDGET)
+    except Exception:
+        thinking_cfg = None
     config = types.GenerateContentConfig(
         system_instruction=types.Content(
             parts=[types.Part.from_text(text=sys_text)]
         ) if sys_text else None,
+        temperature=GEN_TEMPERATURE,
+        max_output_tokens=GEN_MAX_TOKENS + max(0, GEMINI_THINKING_BUDGET),
+        thinking_config=thinking_cfg,
     )
+
+    def _thoughts(um) -> int:
+        tt = getattr(um, "thoughts_token_count", None)
+        if tt is None:
+            total = getattr(um, "total_token_count", 0) or 0
+            tt = max(0, total - (getattr(um, "prompt_token_count", 0) or 0)
+                     - (getattr(um, "candidates_token_count", 0) or 0))
+        return int(tt or 0)
 
     last_um = None
     for attempt in range(1, 4):
@@ -322,6 +363,7 @@ def _call_gemini_variant(messages: List[Dict], model_id: str, usage_tag: str) ->
                     usage_tag,
                     getattr(last_um, "prompt_token_count", 0) or 0,
                     getattr(last_um, "candidates_token_count", 0) or 0,
+                    _thoughts(last_um),
                 )
             return text
 
@@ -345,6 +387,7 @@ def _call_gemini_variant(messages: List[Dict], model_id: str, usage_tag: str) ->
             usage_tag,
             getattr(last_um, "prompt_token_count", 0) or 0,
             getattr(last_um, "candidates_token_count", 0) or 0,
+            _thoughts(last_um),
         )
     print(f"[BENCH] {usage_tag} exhausted 3 retries, returning empty")
     return ""
@@ -374,7 +417,8 @@ def _call_gpt(messages: List[Dict]) -> str:
         resp = client.chat.completions.create(
             model="gpt-4o",
             messages=messages,
-            max_tokens=512,
+            max_tokens=GEN_MAX_TOKENS,
+            temperature=GEN_TEMPERATURE,
         )
         u = getattr(resp, "usage", None)
         if u is not None:
@@ -386,22 +430,28 @@ def _call_gpt(messages: List[Dict]) -> str:
 
 
 def _call_qwen(messages: List[Dict]) -> str:
-    """Qwen3-235B-A22B-Instruct (INT4 GPTQ) hosted at NAS vLLM endpoint.
-    Text-only variant — images are stripped from messages. Reasoning
-    <think>...</think> blocks are removed from the response."""
+    """Self-hosted Qwen at the NAS vLLM endpoint (OpenAI-compatible).
+
+    v3: QWEN_MODEL is expected to be a Qwen3-VL model and receives the
+    screenshot as an OpenAI-style image_url part, exactly like GPT-4o.
+    QWEN_TEXT_ONLY=1 reproduces the unified2/3/4 behaviour (text-only
+    qwen3-235b-a22b-instruct, screenshot stripped). Any <think> block is
+    removed from the response; thinking is disabled via chat_template_kwargs
+    for hybrid Qwen3 checkpoints (ignored by templates without the flag)."""
     try:
         from openai import OpenAI
         client = OpenAI(
             base_url=QWEN_BASE_URL,
             api_key=QWEN_API_KEY,
-            timeout=90.0,
+            timeout=180.0,
         )
-        flat = _messages_to_text_only(messages)
+        payload = _messages_to_text_only(messages) if QWEN_TEXT_ONLY else messages
         resp = client.chat.completions.create(
             model=QWEN_MODEL,
-            messages=flat,
-            max_tokens=1024,   # room for <think> block plus final answer
-            temperature=0.2,
+            messages=payload,
+            max_tokens=GEN_MAX_TOKENS,
+            temperature=GEN_TEMPERATURE,
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}},
         )
         u = getattr(resp, "usage", None)
         if u is not None:
@@ -434,6 +484,44 @@ def _call_generator(messages: List[Dict]) -> str:
 
 
 # ─────────────────────────────────────────────────────────────────────
+# Session state for the bench harness (v3)
+#
+# unified2/3/4 reconstructed visited_node_ids by RE-LOCALIZING every prior
+# step's screenshot on every step (O(N²): i+1 rerank calls at step i, 75
+# per run per backend). Production keeps visited_node_ids in the session,
+# so the bench now does the same: one localization per step, stored per
+# (scenario, backend) and reset when a scenario starts at step 0.
+# ─────────────────────────────────────────────────────────────────────
+
+_SESSION_VISITED: Dict[str, List[str]] = {}
+
+
+def _session_key(scenario: Dict, backend: str) -> str:
+    return f"{scenario.get('scenario_id', '?')}::{backend}"
+
+
+def _session_visited(scenario: Dict, backend: str, step_index: int) -> List[str]:
+    key = _session_key(scenario, backend)
+    if step_index == 0 or key not in _SESSION_VISITED:
+        _SESSION_VISITED[key] = []
+    return _SESSION_VISITED[key]
+
+
+def _session_note_visit(scenario: Dict, backend: str, node_id: Optional[str]) -> None:
+    if not node_id:
+        return
+    lst = _SESSION_VISITED.setdefault(_session_key(scenario, backend), [])
+    if node_id not in lst:
+        lst.append(node_id)
+
+
+# Character budget applied to the manual context of the budgeted baseline.
+# full_system's assembler caps graph context at 3 × 800 chars and vector
+# context at 1,500 chars (build_context_block) = 3,900 chars of manual text.
+VANILLA_BUDGET_CHARS = int(os.environ.get("VANILLA_BUDGET_CHARS", "3900"))
+
+
+# ─────────────────────────────────────────────────────────────────────
 # Backend 1: vanilla_vector
 # ─────────────────────────────────────────────────────────────────────
 
@@ -449,12 +537,32 @@ def backend_vanilla_vector(step_index: int, scenario: Dict,
 
 
 # ─────────────────────────────────────────────────────────────────────
+# Backend 1b: vanilla_budget — vanilla_vector under full_system's context
+# budget (v3). Same retrieval, same query, but the context is truncated to
+# VANILLA_BUDGET_CHARS so that cost and accuracy differences between this
+# backend and full_system can be attributed to routing rather than to the
+# amount of context injected.
+# ─────────────────────────────────────────────────────────────────────
+
+def backend_vanilla_budget(step_index: int, scenario: Dict,
+                           prior_responses: List[str]) -> str:
+    from .rag import get_manual_context
+    manual_ids = [scenario["manual_id"]]
+    query = scenario.get("goal", "")
+    ctx = get_manual_context(manual_ids, query, top_k=5) or ""
+    ctx = ctx[:VANILLA_BUDGET_CHARS]
+    messages = _build_messages(scenario, step_index, prior_responses, context_block=ctx)
+    return _call_generator(messages)
+
+
+# ─────────────────────────────────────────────────────────────────────
 # Backend 2: graph_only — keyword localizer + linked_chunks
 # ─────────────────────────────────────────────────────────────────────
 
 def backend_graph_only(step_index: int, scenario: Dict,
                        prior_responses: List[str]) -> str:
     from .guide_pipeline import get_guide_pipeline
+    from . import vectorstore
     pipeline = get_guide_pipeline()
     screenshot_b64 = _load_screenshot_b64(scenario, step_index)
     visual_state = pipeline.recognize_visual_state(screenshot_b64) if screenshot_b64 else {}
@@ -472,6 +580,18 @@ def backend_graph_only(step_index: int, scenario: Dict,
             ctx_parts.append(
                 f"[Possible Next] Step {n.get('step_number','?')} {n.get('title','')}"
             )
+        # v3: linked_chunks manual text (3 chunks × 800 chars, the same
+        # per-node budget full_system's graph_context uses). v2 injected
+        # node title/description only, so graph_only carried no manual text.
+        ids = (node.get("linked_chunks") or [])[:3]
+        if ids:
+            try:
+                got = vectorstore.get_chunks_by_ids(scenario["manual_id"], ids)
+                for doc in (got.get("documents") or []):
+                    if doc:
+                        ctx_parts.append(f"[Manual Context (graph)]\n{doc[:800]}")
+            except Exception as e:
+                print(f"[BENCH] graph_only linked_chunks fetch failed: {e}")
     context_block = "\n\n".join(ctx_parts)
     messages = _build_messages(scenario, step_index, prior_responses, context_block=context_block)
     return _call_generator(messages)
@@ -511,28 +631,12 @@ def backend_vision_only(step_index: int, scenario: Dict,
 def backend_full_system(step_index: int, scenario: Dict,
                         prior_responses: List[str]) -> str:
     from .rag_router import get_rag_router
+    from .guide_pipeline import get_last_localize_meta
     screenshot_b64 = _load_screenshot_b64(scenario, step_index)
-    visited_node_ids: List[str] = []
-    # Reconstruct visited by re-running localizer on each prior step's screenshot
-    # — heuristic; for honest benchmarking we accept that visited tracking
-    # depends on what the same backend matched at earlier steps.
-    if step_index > 0:
-        from .guide_pipeline import get_guide_pipeline
-        pipeline = get_guide_pipeline()
-        for j in range(step_index):
-            prev_b64 = _load_screenshot_b64(scenario, j)
-            if not prev_b64:
-                continue
-            vs = pipeline.recognize_visual_state(prev_b64)
-            loc = pipeline.localize_to_graph(
-                vs, None, screenshot_b64=prev_b64,
-                manual_ids=[scenario["manual_id"]],
-                user_goal=scenario.get("goal", ""),
-                visited_node_ids=list(visited_node_ids),
-            )
-            n = loc.get("node")
-            if n and n["id"] not in visited_node_ids:
-                visited_node_ids.append(n["id"])
+    # v3: visited_node_ids is session state carried across steps (as in
+    # production) instead of being rebuilt by re-localizing every prior
+    # screenshot on every step.
+    visited_node_ids = list(_session_visited(scenario, "full_system", step_index))
 
     session_state = {
         "mode": "guide",
@@ -544,6 +648,9 @@ def backend_full_system(step_index: int, scenario: Dict,
         session_state=session_state,
         manual_ids=[scenario["manual_id"]],
     )
+    # Same semantics as the v2 reconstruction: the node the localizer picked
+    # (before the confidence gate) counts as visited.
+    _session_note_visit(scenario, "full_system", get_last_localize_meta().get("picked_node_id"))
     context_block = result.get("context_block", "") or ""
     messages = _build_messages(scenario, step_index, prior_responses, context_block=context_block)
     return _call_generator(messages)
@@ -567,25 +674,11 @@ def backend_state_path(step_index: int, scenario: Dict,
     pipeline = get_guide_pipeline()
     retriever = get_state_path_retriever()
 
-    # Reconstruct visited by re-localizing earlier steps (same as full_system)
-    visited: List[str] = []
-    if step_index > 0:
-        for j in range(step_index):
-            prev_b64 = _load_screenshot_b64(scenario, j)
-            if not prev_b64:
-                continue
-            vs = pipeline.recognize_visual_state(prev_b64)
-            loc = pipeline.localize_to_graph(
-                vs, None, screenshot_b64=prev_b64,
-                manual_ids=[scenario["manual_id"]],
-                user_goal=scenario.get("goal", ""),
-                visited_node_ids=list(visited),
-            )
-            n = loc.get("node")
-            if n and n["id"] not in visited:
-                visited.append(n["id"])
+    # v3: session-carried visited list (see full_system).
+    visited = list(_session_visited(scenario, "state_path", step_index))
 
-    # Anchor localization for THIS step
+    # Anchor localization for THIS step (writes routing telemetry via
+    # _set_localize_meta inside localize_to_graph — v2 recorded none here)
     visual_state = pipeline.recognize_visual_state(screenshot_b64) if screenshot_b64 else {}
     loc = pipeline.localize_to_graph(
         visual_state, None,
@@ -597,6 +690,7 @@ def backend_state_path(step_index: int, scenario: Dict,
     anchor_node = loc.get("node")
     anchor_id = anchor_node.get("id") if anchor_node else None
     conf = float(loc.get("confidence") or 0.0)
+    _session_note_visit(scenario, "state_path", anchor_id)
 
     # Expand sub-path
     path = retriever.retrieve(
@@ -690,6 +784,7 @@ def backend_long_context(step_index: int, scenario: Dict,
 BACKEND_REGISTRY: Dict[str, Callable[[int, Dict, List[str]], str]] = {
     "no_rag":         backend_no_rag,
     "vanilla_vector": backend_vanilla_vector,
+    "vanilla_budget": backend_vanilla_budget,
     "graph_only":     backend_graph_only,
     "vision_only":    backend_vision_only,
     "full_system":    backend_full_system,

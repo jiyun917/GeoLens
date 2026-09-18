@@ -19,6 +19,8 @@ per scripts/qwen_cost_convert.py — self-hosted marginal is $0.
 
 from __future__ import annotations
 
+import os
+import argparse
 import glob
 import json
 import re
@@ -35,8 +37,8 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parent.parent
 
-MODELS = ["gemini", "claude", "gpt", "qwen"]
-CORE_BACKENDS = ["no_rag", "vanilla_vector", "graph_only",
+MODELS = [m.strip() for m in os.environ.get("BENCH_MODELS", "gemini,claude,gpt").split(",") if m.strip()]  # v3: Qwen excluded (VL serving unavailable); set BENCH_MODELS=gemini,claude,gpt,qwen for unified2/3/4 tags
+CORE_BACKENDS = ["no_rag", "vanilla_vector", "vanilla_budget", "graph_only",
                  "vision_only", "full_system", "state_path"]
 
 # Display labels for the 25 cells (model, backend) — long_context only for gemini.
@@ -48,8 +50,12 @@ CORE_METRICS = [
     ("loop_rate",          "Loop Rate", "%"),
     ("mean_latency_sec",   "Latency",   "s"),
     ("mean_cost_usd",      "Cost/step", "$"),
+    ("mean_cost_total_usd", "Cost total/step", "$"),
 ]
 GOAL_METRIC = ("goal_completion_rate", "Goal Comp", "%")
+
+
+TAG = "unified2"  # set by main() from CLI
 
 
 def per_replicate_values(model: str, backend: str, mkey: str) -> list[float]:
@@ -60,7 +66,7 @@ def per_replicate_values(model: str, backend: str, mkey: str) -> list[float]:
     if backend == "long_context":
         pattern = f"data/eval/results/run_{model}_longctx_r*_*.json"
     else:
-        pattern = f"data/eval/results/run_{model}_unified2_r*_*.json"
+        pattern = f"data/eval/results/run_{model}_{TAG}_r*_*.json"
     files = sorted(glob.glob(str(ROOT / pattern)))
     out: list[float] = []
     for f in files:
@@ -141,6 +147,7 @@ def parse_final_table(path: Path) -> dict:
         "Goal Comp": "goal_completion_rate",
         "Latency":   "mean_latency_sec",
         "Cost/step": "mean_cost_usd",
+        "Cost total/step": "mean_cost_total_usd",
     }
     for line in text.splitlines():
         m = re.match(r"^## (\w+)$", line.strip())
@@ -193,6 +200,7 @@ def crosscheck(existing_path: Path) -> list[str]:
         "goal_completion_rate": ("%", 1.0),
         "mean_latency_sec":     ("s", 1.0),
         "mean_cost_usd":        ("$", 1000.0),
+        "mean_cost_total_usd":  ("$", 1000.0),
     }
     tolerance = 0.15
     for model in MODELS:
@@ -222,10 +230,17 @@ def crosscheck(existing_path: Path) -> list[str]:
 
 
 def main():
+    global TAG
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--tag", default="unified2",
+                        help="Run tag to aggregate (default: unified2)")
+    args = parser.parse_args()
+    TAG = args.tag
+
     # 1. Cross-check against existing table
-    existing_path = ROOT / "data" / "eval" / "results" / "final_unified2_table.md"
+    existing_path = ROOT / "data" / "eval" / "results" / f"final_{TAG}_table.md"
     if existing_path.exists():
-        print("=== Cross-check vs final_unified2_table.md ===", file=sys.stderr)
+        print(f"=== Cross-check vs final_{TAG}_table.md ===", file=sys.stderr)
         diffs = crosscheck(existing_path)
         if not diffs:
             print("  no mismatches (tolerance 0.15 on printed units).", file=sys.stderr)
@@ -238,10 +253,14 @@ def main():
         print(f"[warn] {existing_path} not found — skipping cross-check", file=sys.stderr)
 
     # 2. Build the two tables
+    scen_note = (
+        "survey_setup + 3d_visualization" if TAG == "unified2"
+        else "survey_setup + 3d_visualization + attribute_computation"
+    )
     header = (
-        "# Paper Table 1 — full mean ± sample SD for all 25 cells\n\n"
+        f"# Paper Table 1 — full mean ± sample SD for all 25 cells ({TAG})\n\n"
         "Statistical unit = replicate (n=5 per cell). Each replicate value "
-        "is the mean across the 2 scenarios (survey_setup + 3d_visualization). "
+        f"is the mean across the scenarios ({scen_note}). "
         "SD is sample SD (n-1 denominator).\n\n"
         "Cells: 4 models × 6 backends + Gemini × long_context = 25.\n"
         "long_context runs Gemini only. The manual is ~226K tokens; Claude "
@@ -265,13 +284,25 @@ def main():
         core_note,
     )
 
-    goal_note = (
-        "**Effective n footnote**: 3d_visualization captures the "
-        "penultimate state, so no backend can pass the 3-gate check on that "
-        "scenario. Goal Completion in each replicate is therefore effectively "
-        "a survey_setup-only measurement (n=5 per cell, not n=10). Interpret "
-        "differences with reduced power in mind."
-    )
+    if TAG == "unified2":
+        goal_note = (
+            "**Effective n footnote**: 3d_visualization captures the "
+            "penultimate state, so no backend can pass the 3-gate check on that "
+            "scenario. Goal Completion in each replicate is therefore effectively "
+            "a survey_setup-only measurement (n=5 per cell, not n=10). Interpret "
+            "differences with reduced power in mind."
+        )
+    else:
+        goal_note = (
+            "**Effective n footnote (unified3)**: 3d_visualization step_3 was "
+            "refined to a goal-reached state (all three slices displayed) for "
+            "this run, so it now contributes to Goal Completion. "
+            "attribute_computation step_7 also captures the goal state (Energy "
+            "layer displayed on In-line > 250). Effective n per cell = "
+            "3 scenarios × 5 replicates = 15 observations. Cross-tag comparison "
+            "with unified2 Goal Comp is prohibited (see "
+            "methodology_audit_trail.md — scenario refinement #1)."
+        )
     goal_table = render_table(
         "Appendix A — Goal Completion",
         [GOAL_METRIC],
@@ -279,7 +310,8 @@ def main():
     )
 
     out_text = header + core_table + "\n" + goal_table
-    out_path = ROOT / "data" / "eval" / "results" / "table1_full_sd.md"
+    out_filename = "table1_full_sd.md" if TAG == "unified2" else f"table1_full_sd_{TAG}.md"
+    out_path = ROOT / "data" / "eval" / "results" / out_filename
     out_path.write_text(out_text, encoding="utf-8")
     print(out_text)
     print(f"\nsaved: {out_path}", file=sys.stderr)

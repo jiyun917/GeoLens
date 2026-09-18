@@ -205,16 +205,28 @@ def _merge_contexts(
 ) -> Optional[str]:
     """
     Merge all retrieval results into a single context string.
-    Deduplicates by text content. Orders: graph context first, then specific, then neighbors.
+    Deduplicates by text content.
+
+    Order (v3 default, RAG_KG_POSITION=last): specific chunks, then neighbor
+    chunks, then the knowledge-graph triplet block. The v2 order put the
+    triplet block FIRST, so any downstream character budget (guide-mode
+    vector_context is capped at 1,500 chars) was spent on ~1,100 chars of
+    base-graph geology triplets and only ~300 chars of manual text reached
+    the generator. RAG_KG_POSITION=first reproduces the v2 order;
+    RAG_KG_ENABLED=0 omits the block entirely.
     """
     context_parts = []
+    kg_position = os.environ.get("RAG_KG_POSITION", "last").lower()
+    kg_enabled = os.environ.get("RAG_KG_ENABLED", "1") != "0"
 
     # 1. Graph context (abstract/relational)
-    graph_context = _format_graph_context(graph_triplets)
-    if graph_context:
-        context_parts.append(
-            f"[Knowledge Graph - Related Entities & Relationships]\n{graph_context}"
-        )
+    graph_context = _format_graph_context(graph_triplets) if kg_enabled else ""
+    kg_block = (
+        f"[Knowledge Graph - Related Entities & Relationships]\n{graph_context}"
+        if graph_context else ""
+    )
+    if kg_block and kg_position == "first":
+        context_parts.append(kg_block)
 
     # 2. Specific + Neighbor chunks (deduplicated by text)
     seen_texts = set()
@@ -244,6 +256,9 @@ def _merge_contexts(
         if r["source_type"] == "neighbor":
             tag += " (adjacent context)"
         context_parts.append(f"{tag}\n{r['text']}")
+
+    if kg_block and kg_position != "first":
+        context_parts.append(kg_block)
 
     if not context_parts:
         return None
