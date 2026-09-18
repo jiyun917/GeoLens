@@ -179,6 +179,7 @@ Qwen 제외 사유: Qwen3-VL 서빙 불가(NAS 미접속), 텍스트 전용 Qwen
 | 3 (dry-run ×5) | 820e993 | seismic_attribute 02·03·04 signature 관찰 상태 재작성, vision field_values, 근소차 prior, 종료 상태 앵커 | 14, 14, 14, 14, 13 | attribute s0 5/5 (04·03), s1 5/5 (04), survey s3 1/5 | — | 일관된 편향 → 다수결 미사용; rerank 기준 불일치 가설 확인 |
 | 4 (dry-run ×5) | d064577 → 21f0dec | rerank 프롬프트 v4(상태 일치 기준), 같은 다이얼로그 묶음 그래프 순서 prior(워크플로우 내), 03·04 비기본 상태 요구 | 첫 run 16,16,15,15,15 → 정정 후 **16/16 ×5** | 0 (정정 후) | — | 첫 run의 survey s3 오라우팅 3건은 묶음 범위 버그(교차 워크플로우) |
 | 4 개발 벤치 | 21f0dec | Gemini ×2, Claude ×1, GPT ×1 (단독 실행) | 64/64 | 0 | 16/16 / 12/16 | 아래 표 |
+| 5 (조립 v4, 마지막 개발 변경) | fcfa184 | [Current State (reached)] = signature 상태만, [Next Action] = 엣지 지시, 예시 값 주의 문구 | dry-run 16/16 ×5 | 0 | — | Gemini 2회: full 0.854 = vv 0.854 > vb 0.750; attribute s1 손실 소멸; Claude·GPT는 Gemini 크레딧 소진으로 미완(충전 후 재실행) |
 
 개발 벤치 4건 step accuracy(시나리오 평균): full / vanilla_vector / vanilla_budget / no_rag — Gemini(2회) 0.792 / 0.771 / 0.771 / 0.708, Claude 0.875 / 0.875 / 0.875 / 0.875, GPT 0.833 / 0.833 / 0.667 / 0.750. 방향: Gemini full > 두 vanilla; Claude 동률; GPT vanilla_vector 동률·vanilla_budget 우위. n = 1~2라 잡음 범위이며 판정에 쓰지 않는다. full_system 손실 12건 = 라우팅 0 · 컨텍스트 0 · 생성 9 · 표기 3.
 
