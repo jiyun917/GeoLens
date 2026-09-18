@@ -92,6 +92,10 @@ PROFILES: Dict[str, Dict[str, str]] = {
         "GRAPH_CTX_CHARS": "800",
         "GRAPH_CTX_ITEMS": "3",
         "CONFIDENCE_THRESHOLD": "0.7",
+        "GOAL_STATE_HINT": "0",
+        "ROUTER_TWO_STAGE": "0",
+        "ROUTER_EVIDENCE_GATE": "0",
+        "GEN_PROMPT_VERSION": "v2",
     },
     "v3": {
         "ROUTER_MATCHER": "embedding",
@@ -109,6 +113,14 @@ PROFILES: Dict[str, Dict[str, str]] = {
         "GRAPH_CTX_CHARS": "800",
         "GRAPH_CTX_ITEMS": "3",
         "CONFIDENCE_THRESHOLD": "0.7",
+        # iteration 2 (reduced scope, 2026-09-18): goal-state block ON; two-stage
+        # routing ON HOLD; evidence gate only if the offline table meets the
+        # user criterion (set ROUTER_EVIDENCE_GATE=1 via --env then); generator
+        # naming rule not enabled.
+        "GOAL_STATE_HINT": "1",
+        "ROUTER_TWO_STAGE": "0",
+        "ROUTER_EVIDENCE_GATE": "0",
+        "GEN_PROMPT_VERSION": "v2",
     },
 }
 # Fixed for every profile (Task A / v3 evaluation settings).
