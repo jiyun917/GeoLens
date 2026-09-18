@@ -243,6 +243,13 @@ ROUTER_GRAPH_PRIOR = os.environ.get("ROUTER_GRAPH_PRIOR", "1") != "0"
 # v3: how a re-matched node is rendered in the context (override = v2 dismiss
 # override at the top of the context; soft = continue-with-next-action note; off).
 POST_COMPLETION_MODE = os.environ.get("POST_COMPLETION_MODE", "soft").strip().lower()
+# v3 last development change (2026-09-18): context assembly v4 — the routed node is
+# rendered as the STATE reached (signature states only, no description with manual
+# example values) and the guidance comes from the outgoing edge ("[Next Action]").
+# v3 = the previous [Current Step] (title + description) / [Possible Next Steps] block.
+CONTEXT_ASSEMBLY = os.environ.get("CONTEXT_ASSEMBLY", "v4").strip().lower()
+_CTX_NOTE = ("Note: 매뉴얼의 예시 값(파일명·파라미터)은 사용자의 데이터와 다를 수 있다. 화면에 이미 설정된 값을 고치도록 안내하지 않는다. "
+             "(Manual example values may differ from the user's data; do not instruct the user to change a value that is already set on screen.)")
 # v3 iteration 2 — two-stage routing: (i) workflow from the user goal (goal ↔
 # name+description+node titles similarity, top ROUTER_WF_TOPN kept, plus the
 # session's confirmed workflow), (ii) node within those workflows. A pick from
@@ -1350,24 +1357,49 @@ Respond with JSON only:
             )
 
         current = pipeline_output.get("current_node")
-        if current:
+        next_nodes = pipeline_output.get("next_nodes") or []
+        if current and CONTEXT_ASSEMBLY != "v3":
+            sig = current.get("visual_signature") or {}
+            state_bits = []
+            if sig.get("expected_dialog"):
+                state_bits.append(f"dialog/screen: {sig['expected_dialog']}")
+            els = [str(e).replace("_", " ") for e in (sig.get("expected_ui_elements") or [])]
+            if els:
+                state_bits.append("elements: " + ", ".join(els))
+            kws = [str(k) for k in (sig.get("screenshot_keywords") or [])]
+            if kws:
+                state_bits.append("states: " + "; ".join(kws))
+            parts.append(
+                f"[Current State (reached)] {current.get('workflow_id', '')} > "
+                f"Step {current.get('step_number', '?')}: {current.get('title', '')}\n"
+                + ("The screen at this step shows — " + " | ".join(state_bits) if state_bits else "")
+            )
+            if next_nodes:
+                act_lines = []
+                for n in next_nodes:
+                    cond = f" [if: {n.get('edge_condition')}]" if n.get("edge_condition") else ""
+                    instr = n.get("edge_instruction") or f"Step {n.get('step_number', '?')} {n.get('title', '')}"
+                    act_lines.append(f"  - {instr}{cond}  (→ Step {n.get('step_number', '?')}: {n.get('title', '')})")
+                parts.append("[Next Action] (from the workflow edge)\n" + "\n".join(act_lines))
+            else:
+                parts.append("[Next Action] This is the final step of the workflow; if the screen shows the goal achieved, answer with the completion sentinel.")
+            parts.append(_CTX_NOTE)
+        elif current:
             parts.append(
                 f"[Current Step] {current.get('workflow_id', '')} > "
                 f"Step {current.get('step_number', '?')}: {current.get('title', '')}\n"
                 f"Description: {current.get('description', '')}"
             )
-
-        next_nodes = pipeline_output.get("next_nodes") or []
-        if next_nodes:
-            next_lines = []
-            for n in next_nodes:
-                cond = f" [if: {n.get('edge_condition')}]" if n.get("edge_condition") else ""
-                next_lines.append(
-                    f"  - Next ({n.get('edge_type', 'sequential')}){cond}: "
-                    f"Step {n.get('step_number', '?')} {n.get('title', '')} — "
-                    f"{n.get('edge_instruction') or n.get('description', '')}"
-                )
-            parts.append("[Possible Next Steps]\n" + "\n".join(next_lines))
+            if next_nodes:
+                next_lines = []
+                for n in next_nodes:
+                    cond = f" [if: {n.get('edge_condition')}]" if n.get("edge_condition") else ""
+                    next_lines.append(
+                        f"  - Next ({n.get('edge_type', 'sequential')}){cond}: "
+                        f"Step {n.get('step_number', '?')} {n.get('title', '')} — "
+                        f"{n.get('edge_instruction') or n.get('description', '')}"
+                    )
+                parts.append("[Possible Next Steps]\n" + "\n".join(next_lines))
 
         correction = pipeline_output.get("correction")
         if correction and correction.get("case") not in (None, "on_target", "unknown", "no_target"):

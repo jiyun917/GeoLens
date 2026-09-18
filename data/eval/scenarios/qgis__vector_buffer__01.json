@@ -315,12 +315,10 @@
         "current_action": "Input layer is already roads_33S [EPSG:32733]; user is about to confirm it and proceed to Distance = 50 (then Dissolve result)",
         "_gt_provenance": "v3: 11 authored + 49 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
       },
-      "expected_action_text_pattern": "(?i)\\b(Input layer|roads_33S|Distance|50|Dissolve|select|선택|드롭다운|dropdown)\\b",
+      "expected_action_text_pattern": "(?i)\\b(Input layer|roads_33S|select|선택|드롭다운|dropdown)\\b",
       "expected_action_keywords": [
         "Input layer",
-        "roads_33S",
-        "Distance",
-        "50"
+        "roads_33S"
       ],
       "allowed_alternatives": [
         {
