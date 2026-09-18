@@ -69,7 +69,7 @@
         ],
         "data_state": "F3 Demo loaded; no slices added to 3D scene yet",
         "current_action": "user is inspecting the Tree scene, about to add first slice",
-        "_gt_provenance": "v3: 6 authored + 37 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 6 authored + 37 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 43 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Tree|Scene|Elements|In[- ]?line)\\b",
       "expected_action_keywords": [
@@ -143,7 +143,7 @@
         ],
         "data_state": "user just right-clicked In-line",
         "current_action": "picking seismic data to display as In-line",
-        "_gt_provenance": "v3: 3 authored + 36 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 3 authored + 36 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 38 items"
       },
       "expected_action_text_pattern": "(?i)\\b(In[- ]?line|Add Data|Add Default Data|파란|blue arrow|화살표|Select Cube|Seismic|f3_demo)\\b",
       "expected_action_keywords": [
@@ -229,7 +229,7 @@
         ],
         "data_state": "In-line displayed; Cross-line still empty",
         "current_action": "user targets Cross-line next",
-        "_gt_provenance": "v3: 3 authored + 36 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 3 authored + 36 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 39 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Cross[- ]?line|Add.*Select.*Data|Add Default Data)\\b",
       "expected_action_keywords": [
@@ -261,7 +261,6 @@
         "visible_elements": [
           "3D Scene with In-line, Cross-line, and Z-slice all visible",
           "Tree scene Elements group with In-line, Cross-line, Z-slice categories each containing a child node",
-          "No context menu, no dialog",
           "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]",
           "Analysis",
           "Processing",
@@ -306,9 +305,9 @@
           "Time",
           "[free mem] 101.4/127.8 GB"
         ],
-        "data_state": "Goal achieved — In-line + Cross-line + Z-slice all three displayed in 3D Scene. Matches manual §1.3.1a target end state.",
+        "data_state": "Goal achieved — In-line + Cross-line + Z-slice all three displayed in 3D Scene. Matches manual §1.3.1a target end state. No context menu or dialog is open.",
         "current_action": "goal complete — model should emit '완료'",
-        "_gt_provenance": "v3: 3 authored + 43 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 3 authored + 43 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 45 items"
       },
       "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
       "expected_action_keywords": [

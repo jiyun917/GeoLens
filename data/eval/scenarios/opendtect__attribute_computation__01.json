@@ -27,7 +27,6 @@
           "Attribute Set 3D window (freshly opened, empty attribute set)",
           "Attribute Type dropdown (default entry visible)",
           "Input Data selector (empty or default)",
-          "Parameter panel (empty / disabled until type chosen)",
           "Attribute Name field (blank)",
           "Add as new button",
           "Save on Close checkbox (unchecked)",
@@ -83,9 +82,9 @@
           "Inl: 343-506, Crl: 656-893, Time: 696-1156",
           "[free mem] 101.4/127.8 GB"
         ],
-        "data_state": "Attribute Set 3D just opened via toolbar Attribute 3D icon; no attribute defined yet",
+        "data_state": "Attribute Set 3D just opened via toolbar Attribute 3D icon; no attribute defined yet. Parameter panel is active and pre-filled with the default attribute type (Similarity) parameters.",
         "current_action": "user is about to choose an Attribute Type",
-        "_gt_provenance": "v3: 8 authored + 50 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 8 authored + 50 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 57 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Energy|Attribute Type|Similarity|Bright Spot|type|dropdown|선택)\\b",
       "expected_action_keywords": [
@@ -175,7 +174,7 @@
         ],
         "data_state": "Energy type chosen; Input Data linked to 4 Dip steered median filter; parameters still at defaults (Time gate not yet edited to -28..+28)",
         "current_action": "user is about to enter Time gate and Attribute Name",
-        "_gt_provenance": "v3: 7 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 7 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 55 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Time gate|-?28|Attribute Name|이름|입력|Enter)\\b",
       "expected_action_keywords": [
@@ -269,7 +268,7 @@
         ],
         "data_state": "All Energy parameters entered per manual (Time gate -28..+28, Compute gradient No, Attribute Name 'Energy [-28,+28]'); ready to click Add as new",
         "current_action": "user is about to click Add as new",
-        "_gt_provenance": "v3: 8 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 8 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 55 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Add as new|Add|추가|new)\\b",
       "expected_action_keywords": [
@@ -304,7 +303,7 @@
           "Attribute list panel (left) showing 'Energy [-28,+28]' entry (just added)",
           "Save on Close checkbox = CHECKED",
           "Close button",
-          "OK / Save button",
+          "Save as (icon)",
           "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
           "Survey",
           "Analysis",
@@ -326,7 +325,7 @@
           "Input Data (Seismic_data)",
           "Time gate (ms) (-28, 28)",
           "Output (Energy)",
-          "Attribute Name (Energy [-28, +28])",
+          "Attribute Name (Energy [-28,+28])",
           "Elements",
           "In-line",
           "425",
@@ -359,7 +358,7 @@
         ],
         "data_state": "Energy attribute added to set (visible in list). Save on Close checked so closing the window will trigger the attribute-set save dialog.",
         "current_action": "user is about to click Close to trigger the save dialog",
-        "_gt_provenance": "v3: 5 authored + 51 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 5 authored + 51 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 56 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Close|Save on Close|Save|닫기|저장)\\b",
       "expected_action_keywords": [
@@ -414,7 +413,6 @@
           "<All>",
           "Energy",
           "Filter",
-          "Name (my first attribute set)",
           "Elements",
           "Color",
           "In-line",
@@ -445,7 +443,7 @@
         ],
         "data_state": "Attribute-set save dialog is open. User has typed 'my first attribute set' as the set name. OK not yet clicked.",
         "current_action": "user is about to click OK to save the attribute set",
-        "_gt_provenance": "v3: 4 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 4 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 51 items"
       },
       "expected_action_text_pattern": "(?i)\\b(OK|Save|저장|확인|my first attribute set)\\b",
       "expected_action_keywords": [
@@ -480,8 +478,6 @@
           "Tree scene: In-line category with child node (inline 250) — result of right-click Add Default Data",
           "3D Scene showing an In-line slice at inline position 250 (Seismic_data / f3_demo default)",
           "No attribute overlay on the inline yet",
-          "Attribute Set 3D closed",
-          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
           "Survey",
           "Analysis",
           "Processing",
@@ -524,9 +520,9 @@
           "Time",
           "[free mem] 101.5/127.8 GB"
         ],
-        "data_state": "User performed Tree scene In-line right-click → Add Default Data to add the base Seismic_data / f3_demo inline, then changed inline position to 250. This is the d3_visualization primitive that prepares the display target; no attribute rendered yet.",
+        "data_state": "User performed Tree scene In-line right-click → Add Default Data to add the base Seismic_data / f3_demo inline, then changed inline position to 250. This is the d3_visualization primitive that prepares the display target; no attribute rendered yet. Attribute Set 3D window is closed.",
         "current_action": "user is about to right-click the inline number 250 to open Add > Attribute submenu for on-the-fly Energy overlay",
-        "_gt_provenance": "v3: 5 authored + 42 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 5 authored + 42 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 45 items"
       },
       "expected_action_text_pattern": "(?i)\\b(우클릭|right[- ]?click|Add.*Attribute|In[- ]?line|inline)\\b",
       "expected_action_keywords": [
@@ -613,7 +609,7 @@
         ],
         "data_state": "User right-clicked the inline number and chose Add > Attribute; the Select dialog is open with the Attributes radio (on-the-fly) selected on the left and 'Energy [-28,+28]' listed on the right.",
         "current_action": "user is about to click 'Energy [-28,+28]' and OK to render the attribute",
-        "_gt_provenance": "v3: 5 authored + 41 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 5 authored + 41 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 46 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Energy|Attributes|Select|OK|선택|\\[-28,\\+28\\])\\b",
       "expected_action_keywords": [
@@ -671,7 +667,6 @@
           "Scene 1 (checked)",
           "In-line (checked)",
           "250 (checked)",
-          "Energy [-28,+28] (checked)",
           "Seismic_data (checked)",
           "425 (checked)",
           "Cross-line (checked)",
@@ -705,7 +700,7 @@
         ],
         "data_state": "Goal achieved — Energy attribute computed on-the-fly and added as a layer under In-line > 250 alongside the base '4 Dip steered median filter' layer. On-the-fly attributes appear as inline-scoped layers, NOT under a separate top-level Attributes category (that only happens for stored volumes from the batch path). Matches manual §1.5.1a page-120 result image (bright-spot targets visible as high-energy zones).",
         "current_action": "goal complete — model should emit '완료'",
-        "_gt_provenance": "v3: 4 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 4 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 51 items"
       },
       "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
       "expected_action_keywords": [

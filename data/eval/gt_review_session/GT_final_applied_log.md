@@ -1,0 +1,61 @@
+# GT final edits applied (external review decisions, 2026-09-18)
+
+- opendtect__attribute_computation__01 s0: visible_elements -= 'Parameter panel (empty / disabled until type chosen)' (H2: panel shows the default Similarity parameters, active)
+- opendtect__attribute_computation__01 s0: data_state += 'Parameter panel is active and pre-filled with the default attribute type (Similarity) parameters.' (H2 screen fact)
+- opendtect__attribute_computation__01 s3: 'OK / Save button' -> 'Save as (icon)' (H3: no OK button; manual p.119 'Save as icon')
+- opendtect__attribute_computation__01 s3: 'Attribute Name (Energy [-28, +28])' -> 'Attribute Name (Energy [-28,+28])' (H10: on-screen string has no space)
+- opendtect__attribute_computation__01 s5: visible_elements -= 'Attribute Set 3D closed' (H4: absence statement moved to data_state)
+- opendtect__attribute_computation__01 s5: data_state += 'Attribute Set 3D window is closed.' (H4)
+- opendtect__attribute_computation__01 s4: duplicate removed 'Name (my first attribute set)' (H9)
+- opendtect__attribute_computation__01 s5: duplicate removed 'OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]' (H9)
+- opendtect__attribute_computation__01 s7: duplicate removed 'Energy [-28,+28] (checked)' (H9)
+- opendtect__attribute_computation__01 s0: _gt_provenance count updated -> 57
+- opendtect__attribute_computation__01 s1: _gt_provenance count updated -> 55
+- opendtect__attribute_computation__01 s2: _gt_provenance count updated -> 55
+- opendtect__attribute_computation__01 s3: _gt_provenance count updated -> 56
+- opendtect__attribute_computation__01 s4: _gt_provenance count updated -> 51
+- opendtect__attribute_computation__01 s5: _gt_provenance count updated -> 45
+- opendtect__attribute_computation__01 s6: _gt_provenance count updated -> 46
+- opendtect__attribute_computation__01 s7: _gt_provenance count updated -> 51
+- opendtect__3d_visualization__01 s3: visible_elements -= 'No context menu, no dialog' (H1: absence statement moved to data_state)
+- opendtect__3d_visualization__01 s3: data_state += 'No context menu or dialog is open.' (H1)
+- opendtect__3d_visualization__01 s0: _gt_provenance count updated -> 43
+- opendtect__3d_visualization__01 s1: _gt_provenance count updated -> 38
+- opendtect__3d_visualization__01 s2: _gt_provenance count updated -> 39
+- opendtect__3d_visualization__01 s3: _gt_provenance count updated -> 45
+- opendtect__survey_setup__01 s2: duplicate removed 'Survey name (My_F3_Survey)' (H9)
+- opendtect__survey_setup__01 s3: duplicate removed 'OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]' (H9)
+- opendtect__survey_setup__01 s0: _gt_provenance count updated -> 11
+- opendtect__survey_setup__01 s1: _gt_provenance count updated -> 24
+- opendtect__survey_setup__01 s2: _gt_provenance count updated -> 23
+- opendtect__survey_setup__01 s3: _gt_provenance count updated -> 36
+- qgis__vector_buffer__01 s3: expected_action_text_pattern -> '(?i)\\b(Input layer|roads_33S|Distance|50|Dissolve|select|선택|드롭다운|dropdown)\\b' (#18 approved)
+- qgis__vector_buffer__01 s3: expected_action_keywords stay ['Input layer', 'roads_33S'] (#19 reverted, AND semantics)
+- qgis__vector_buffer__01 s3: visible_elements -= 'End cap style, Join style dropdowns' (H6: composite label; individual items exist)
+- qgis__vector_buffer__01 s3: visible_elements -= 'Distance (10.000000)' (H10: dot-decimal duplicate of 'Distance (10,000000)')
+- qgis__vector_buffer__01 s3: 'Miter limit (2.000000)' -> 'Miter limit (2,000000)' (H10: comma decimal)
+- qgis__vector_buffer__01 s3: 'Coordinate 1026658, 6236015' -> 'Coordinate 1028658, 6236015' (H10: status-bar coordinate (8× zoom))
+- qgis__vector_buffer__01 s3: 'Rotation 0.0°' -> 'Rotation 0,0 °' (H10: comma decimal, space before °)
+- qgis__vector_buffer__01 s0: 'Rotation (0.0 °)' -> 'Rotation (0,0 °)' (H10: QGIS comma decimal)
+- qgis__vector_buffer__01 s1: 'Rotation (0.0 °)' -> 'Rotation (0,0 °)' (H10: QGIS comma decimal)
+- qgis__vector_buffer__01 s2: 'Rotation (0.0°)' -> 'Rotation (0,0 °)' (H10: QGIS comma decimal)
+- qgis__vector_buffer__01 s5: '50.000000' -> '50,000000' (H10: QGIS comma decimal)
+- qgis__vector_buffer__01 s5: '2.000000' -> '2,000000' (H10: QGIS comma decimal)
+- qgis__vector_buffer__01 s6: 'Distance (50.000000)' -> 'Distance (50,000000)' (H10: QGIS comma decimal)
+- qgis__vector_buffer__01 s6: 'Miter limit (2.000000)' -> 'Miter limit (2,000000)' (H10: QGIS comma decimal)
+- qgis__vector_buffer__01 s6: 'Rotation (0.0 °)' -> 'Rotation (0,0 °)' (H10: QGIS comma decimal)
+- qgis__vector_buffer__01 s7: 'Rotation (0.0 °)' -> 'Rotation (0,0 °)' (H10: QGIS comma decimal)
+- qgis__vector_buffer__01 s7: visible_elements -= 'QGIS main window with Buffer dialog and Save-to-GeoPackage dialog both CLOSED' (H8: main-window part already listed; absence moved to data_state)
+- qgis__vector_buffer__01 s7: data_state += 'Buffer and Save-to-GeoPackage dialogs are closed.' (H8)
+- qgis__vector_buffer__01 s3: capture_instructions rewritten to the actual screen (H11)
+- qgis__vector_buffer__01 s4: capture_instructions rewritten to the actual screen (H11)
+- qgis__vector_buffer__01 s4: data_state wording aligned to the auto-filled Input layer (H11)
+- qgis__vector_buffer__01 s3: duplicate removed 'Segments (5)' (H9)
+- qgis__vector_buffer__01 s0: _gt_provenance count updated -> 12
+- qgis__vector_buffer__01 s1: _gt_provenance count updated -> 42
+- qgis__vector_buffer__01 s2: _gt_provenance count updated -> 39
+- qgis__vector_buffer__01 s3: _gt_provenance count updated -> 57
+- qgis__vector_buffer__01 s4: _gt_provenance count updated -> 59
+- qgis__vector_buffer__01 s5: _gt_provenance count updated -> 60
+- qgis__vector_buffer__01 s6: _gt_provenance count updated -> 60
+- qgis__vector_buffer__01 s7: _gt_provenance count updated -> 22

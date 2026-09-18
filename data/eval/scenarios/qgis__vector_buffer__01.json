@@ -38,12 +38,12 @@
           "Coordinate (1054725, 6221612)",
           "Scale (1:240882)",
           "Magnifier (100%)",
-          "Rotation (0.0 °)",
+          "Rotation (0,0 °)",
           "Render (checked)"
         ],
         "data_state": "roads_33S loaded and displayed. Processing Toolbox not opened yet. No dialog open.",
         "current_action": "user is about to open Processing Toolbox via Processing menu",
-        "_gt_provenance": "v3: 5 authored + 7 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 5 authored + 7 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 12 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Processing|Toolbox|메뉴|열기|Ctrl\\+Alt\\+T)\\b",
       "expected_action_keywords": [
@@ -101,7 +101,7 @@
           "Coordinate (1043954, 6244110)",
           "Scale (1:240882)",
           "Magnifier (100%)",
-          "Rotation (0.0 °)",
+          "Rotation (0,0 °)",
           "3D Tiles",
           "Check geometry",
           "Fix geometry",
@@ -128,7 +128,7 @@
         ],
         "data_state": "Processing Toolbox has just been opened. Search field is empty. Full algorithm tree is showing. No algorithm selected.",
         "current_action": "user is about to type 'buffer' in the toolbox search field",
-        "_gt_provenance": "v3: 5 authored + 37 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 5 authored + 37 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 42 items"
       },
       "expected_action_text_pattern": "(?i)\\b(buffer|검색|search|입력|type)\\b",
       "expected_action_keywords": [
@@ -187,7 +187,7 @@
           "Coordinate (1045420, 6224416)",
           "Scale (1:240882)",
           "Magnifier (100%)",
-          "Rotation (0.0°)",
+          "Rotation (0,0 °)",
           "roads_33S",
           "Create wedge buffers",
           "Multi-ring buffer (constant distance)",
@@ -210,7 +210,7 @@
         ],
         "data_state": "Search term 'buffer' entered. Toolbox has filtered to show buffer-related algorithms. Buffer (canonical) is visible in the tree.",
         "current_action": "user is about to double-click the Buffer algorithm entry to open its dialog",
-        "_gt_provenance": "v3: 4 authored + 35 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 4 authored + 35 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 39 items"
       },
       "expected_action_text_pattern": "(?i)\\b(double.click|더블.?클릭|열기|open|dialog|Buffer)\\b",
       "expected_action_keywords": [
@@ -256,7 +256,6 @@
           "Distance (10,000000)",
           "Distance unit dropdown showing meters",
           "Segments (5)",
-          "End cap style, Join style dropdowns",
           "Miter limit",
           "Dissolve results checkbox (unchecked)",
           "Buffered output field with '[Create temporary layer]' default + '…' button",
@@ -277,11 +276,9 @@
           "Cancel",
           "Parameters",
           "Input layer (roads_33S [EPSG:32733])",
-          "Distance (10.000000)",
-          "Segments (5)",
           "End cap style (Round)",
           "Join style (Round)",
-          "Miter limit (2.000000)",
+          "Miter limit (2,000000)",
           "Buffered ([Create temporary layer])",
           "Type to locate (Ctrl+K)",
           "Create wedge buffers",
@@ -306,16 +303,16 @@
           "The segments parameter controls the number of line segments to use to approximate a quarter circle when creating rounded offsets.",
           "The end cap style parameter controls how line endings are handled in the buffer.",
           "The miter limit parameter is only applicable for miter join styles, and controls the maximum distance from the offset curve to use when creating a mitered join.",
-          "Coordinate 1026658, 6236015",
+          "Coordinate 1028658, 6236015",
           "Scale 1:240882",
           "Magnifier 100%",
-          "Rotation 0.0°"
+          "Rotation 0,0 °"
         ],
         "data_state": "Buffer dialog just opened. Input layer already shows roads_33S [EPSG:32733] (auto-filled; no user selection needed). Other fields at defaults: Distance 10,000000 meters, Segments 5, End cap style Round, Join style Round, Miter limit 2,000000, Dissolve result unchecked, Buffered = [Create temporary layer].",
         "current_action": "Input layer is already roads_33S [EPSG:32733]; user is about to confirm it and proceed to Distance = 50 (then Dissolve result)",
-        "_gt_provenance": "v3: 11 authored + 49 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 11 authored + 49 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 57 items"
       },
-      "expected_action_text_pattern": "(?i)\\b(Input layer|roads_33S|select|선택|드롭다운|dropdown)\\b",
+      "expected_action_text_pattern": "(?i)\\b(Input layer|roads_33S|Distance|50|Dissolve|select|선택|드롭다운|dropdown)\\b",
       "expected_action_keywords": [
         "Input layer",
         "roads_33S"
@@ -329,10 +326,9 @@
       "expected_workflow_node": "qgis_vector_buffer_03_configure_buffer",
       "is_error_recovery_test": false,
       "capture_instructions": {
-        "screen_state": "Buffer dialog OPEN. All fields at default state (no Input layer chosen yet, Distance at default 10, Dissolve unchecked). No 'Run' click yet.",
-        "user_should_have_just": "Double-clicked Buffer algorithm in Toolbox. Dialog appeared with defaults.",
+        "screen_state": "Buffer dialog OPEN. Input layer auto-filled with roads_33S [EPSG:32733] (no user selection needed); Distance at default 10,000000 meters; Segments 5; Dissolve result unchecked; Buffered = [Create temporary layer]. No 'Run' click yet.",
+        "user_should_have_just": "Double-clicked Buffer algorithm in Toolbox. Dialog appeared with defaults (Input layer pre-filled with the only loaded layer).",
         "must_not_show": [
-          "roads_33S already selected as Input",
           "Distance already changed to 50",
           "Dissolve results checkbox already checked",
           "Output path already set to roads_buffer_50m_dissolved"
@@ -410,9 +406,9 @@
           "Layers",
           "This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance."
         ],
-        "data_state": "roads_33S chosen as Input layer. Distance and Dissolve options at defaults — user is about to change Distance to 50 and check Dissolve results.",
+        "data_state": "Input layer shows roads_33S [EPSG:32733] (auto-filled; screen identical to step 3). Distance and Dissolve options at defaults — user is about to change Distance to 50 and check Dissolve results.",
         "current_action": "user is about to set Distance = 50 and enable Dissolve results checkbox",
-        "_gt_provenance": "v3: 8 authored + 51 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 8 authored + 51 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 59 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Distance|50|Dissolve|입력|체크|check)\\b",
       "expected_action_keywords": [
@@ -433,8 +429,8 @@
       "expected_workflow_node": "qgis_vector_buffer_03_configure_buffer",
       "is_error_recovery_test": false,
       "capture_instructions": {
-        "screen_state": "Buffer dialog with Input layer = roads_33S selected. Distance field visible at DEFAULT value (NOT yet 50). Dissolve results checkbox visible but UNCHECKED. Output still '[Create temporary layer]'.",
-        "user_should_have_just": "Selected roads_33S from Input layer dropdown.",
+        "screen_state": "Buffer dialog with Input layer = roads_33S [EPSG:32733] (auto-filled; this screen is identical to step 3). Distance field at DEFAULT 10,000000 (NOT yet 50). Dissolve results checkbox UNCHECKED. Output still '[Create temporary layer]'.",
+        "user_should_have_just": "Confirmed the auto-filled Input layer (no dropdown selection was needed); nothing else changed.",
         "must_not_show": [
           "Distance already 50 (that is step_5)",
           "Dissolve results already checked",
@@ -477,12 +473,12 @@
           "Close",
           "Parameters",
           "roads_33S [EPSG:32733]",
-          "50.000000",
+          "50,000000",
           "End cap style",
           "Round",
           "Join style",
           "Miter limit",
-          "2.000000",
+          "2,000000",
           "Buffered",
           "Type to locate (Ctrl+K)",
           "Coordinate",
@@ -516,7 +512,7 @@
         ],
         "data_state": "Buffer dialog fully parameterized: Input=roads_33S, Distance=50 m, Dissolve results checked. Output field still at default temporary-layer value.",
         "current_action": "cursor near the '…' button next to Output field",
-        "_gt_provenance": "v3: 7 authored + 53 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 7 authored + 53 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 60 items"
       },
       "expected_action_text_pattern": "(?i)\\b(\\.\\.\\.|출력|Output|Save|GeoPackage|저장)\\b",
       "expected_action_keywords": [
@@ -577,18 +573,18 @@
           "Close",
           "Parameters",
           "Input layer (roads_33S [EPSG:32733])",
-          "Distance (50.000000)",
+          "Distance (50,000000)",
           "Segments (5)",
           "End cap style (Round)",
           "Join style (Round)",
-          "Miter limit (2.000000)",
+          "Miter limit (2,000000)",
           "Buffered ([Create temporary layer])",
           "Layer name (roads_buffer_50m_dissolved)",
           "Type to locate (Ctrl+K)",
           "Coordinate (1028212, 6215621)",
           "Scale (1:240882)",
           "Magnifier (100%)",
-          "Rotation (0.0 °)",
+          "Rotation (0,0 °)",
           "Create wedge buffers",
           "Multi-ring buffer (constant distance)",
           "Rectangles, ovals, diamonds",
@@ -618,7 +614,7 @@
         ],
         "data_state": "Save to GeoPackage dialog is open. User has selected vector_analysis.gpkg as the target GeoPackage file and typed 'roads_buffer_50m_dissolved' as the Layer name. OK/Save not yet clicked.",
         "current_action": "user is about to click OK / Save to confirm the output path",
-        "_gt_provenance": "v3: 5 authored + 55 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 5 authored + 55 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 60 items"
       },
       "expected_action_text_pattern": "(?i)\\b(OK|Save|저장|확인|roads_buffer_50m_dissolved)\\b",
       "expected_action_keywords": [
@@ -653,7 +649,6 @@
       "visual_state_gt": {
         "current_dialog": "QGIS Main Window (buffer rendered)",
         "visible_elements": [
-          "QGIS main window with Buffer dialog and Save-to-GeoPackage dialog both CLOSED",
           "Layers Panel now containing roads_buffer_50m_dissolved layer at the TOP (checked/visible)",
           "roads_33S still present below",
           "Map Canvas rendering the dissolved buffer as a single polygon covering 50 m around the road network (semi-transparent overlay over the roads)",
@@ -674,12 +669,12 @@
           "Coordinate (1055235, 6207527)",
           "Scale (1:240882)",
           "Magnifier (100%)",
-          "Rotation (0.0 °)",
+          "Rotation (0,0 °)",
           "Render (checked)"
         ],
-        "data_state": "Goal achieved — Buffer algorithm executed successfully with Dissolve results. roads_buffer_50m_dissolved layer created in vector_analysis.gpkg AND added to project. Rendered on Map Canvas as a continuous 50 m buffer polygon around the road network. Matches manual §6.2.6 pp217-218 dissolved-result screenshot.",
+        "data_state": "Goal achieved — Buffer algorithm executed successfully with Dissolve results. roads_buffer_50m_dissolved layer created in vector_analysis.gpkg AND added to project. Rendered on Map Canvas as a continuous 50 m buffer polygon around the road network. Matches manual §6.2.6 pp217-218 dissolved-result screenshot. Buffer and Save-to-GeoPackage dialogs are closed.",
         "current_action": "goal complete — model should emit '완료'",
-        "_gt_provenance": "v3: 5 authored + 18 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 5 authored + 18 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 22 items"
       },
       "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
       "expected_action_keywords": [

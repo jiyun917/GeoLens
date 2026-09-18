@@ -38,7 +38,7 @@
         ],
         "data_state": "no survey created yet",
         "current_action": "user is on the initial survey selection window",
-        "_gt_provenance": "v3: 6 authored + 4 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 6 authored + 4 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 11 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Survey|Create|New|Add)\\b",
       "expected_action_keywords": [
@@ -98,7 +98,7 @@
         ],
         "data_state": "Create New Survey dialog just opened, survey name empty",
         "current_action": "user is about to fill survey parameters",
-        "_gt_provenance": "v3: 7 authored + 17 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 7 authored + 17 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 24 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Survey name|Available data|3D|Wells|Initial setup)\\b",
       "expected_action_keywords": [
@@ -143,7 +143,6 @@
           "Information",
           "Notes",
           "C:\\Users\\user\\Downloads\\GeoLens_test",
-          "Survey name (My_F3_Survey)",
           "Initial setup (Enter X/Y ranges)",
           "Scan Navigation Data",
           "Read from Survey Setup file",
@@ -158,7 +157,7 @@
         ],
         "data_state": "Survey name filled; initial setup method needs to be chosen",
         "current_action": "user is deciding how to define geometry",
-        "_gt_provenance": "v3: 7 authored + 17 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 7 authored + 17 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 23 items"
       },
       "expected_action_text_pattern": "(?i)\\b(Scan SEG-Y|Enter X/Y|Initial setup|Next)\\b",
       "expected_action_keywords": [
@@ -196,7 +195,6 @@
           "Tree scene panel",
           "3D Scene / Cross-line panels (empty)",
           "Survey name in title bar (My_F3_Survey)",
-          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]",
           "TerraNubis",
           "SEG-Y",
           "Tree scene 1",
@@ -230,7 +228,7 @@
         ],
         "data_state": "Select clicked — Main Window loaded with newly created survey active. Goal achieved.",
         "current_action": "goal complete — model should emit '완료'",
-        "_gt_provenance": "v3: 6 authored + 31 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+        "_gt_provenance": "v3: 6 authored + 31 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 36 items"
       },
       "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
       "expected_action_keywords": [
