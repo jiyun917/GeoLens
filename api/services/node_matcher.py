@@ -73,6 +73,8 @@ def visual_state_text(visual_state: Dict) -> str:
         lines.append("Buttons: " + ", ".join(_lst(vs, "buttons")))
     if _lst(vs, "labels"):
         lines.append("Labels: " + ", ".join(_lst(vs, "labels")))
+    if _lst(vs, "field_values"):
+        lines.append("Field values: " + ", ".join(_lst(vs, "field_values")))
     lines.append("Elements: " + ", ".join(_lst(vs, "visible_elements")))
     lines.append(f"Data: {vs.get('data_state') or ''}")
     lines.append(f"Action: {vs.get('current_action') or ''}")
@@ -84,7 +86,7 @@ def flatten_visual_state(visual_state: Dict) -> str:
     vs = visual_state or {}
     parts = [str(vs.get("current_dialog") or ""), str(vs.get("active_menu") or ""),
              str(vs.get("data_state") or ""), str(vs.get("current_action") or "")]
-    for k in ("window_titles", "menu_items", "buttons", "labels", "visible_elements"):
+    for k in ("window_titles", "menu_items", "buttons", "labels", "field_values", "visible_elements"):
         parts += _lst(vs, k)
     return " ".join(parts).lower()
 

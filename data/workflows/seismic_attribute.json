@@ -66,18 +66,22 @@
       "visual_signature": {
         "expected_dialog": "Attribute Set 3D",
         "expected_ui_elements": [
-          "attribute_type_dropdown_default",
-          "empty_attribute_set_list",
-          "input_data_selector_empty",
-          "parameter_panel_disabled"
+          "attribute_type_dropdown_default_similarity",
+          "attribute_set_not_saved",
+          "attribute_list_empty",
+          "attribute_name_blank",
+          "time_gate_default_-28_28",
+          "add_as_new_button"
         ],
         "screenshot_keywords": [
           "Attribute Set 3D",
-          "freshly opened",
-          "empty attribute set",
-          "Attribute Type dropdown",
-          "default entry",
-          "about to choose an Attribute Type"
+          "Attribute set (<not saved>)",
+          "attribute type: Similarity (default, not yet changed)",
+          "Time gate (ms) (-28) 28 (default values)",
+          "Input Data (Seismic_data)",
+          "Attribute Name (empty)",
+          "attribute list <All> empty — no attribute added yet",
+          "Add as new"
         ]
       },
       "linked_chunks": [
@@ -87,9 +91,31 @@
       ],
       "parameters": [],
       "signature_audit": {
-        "changed_on": "2026-08-07",
-        "reason": "unified3 signature refinement. Original signature described the batch path (Processing > Create Seismic Attribute dialog) which does not match the §1.5.1a on-the-fly path used by the attribute_computation scenario step_0. Rewritten to match the on-the-fly opening state: window just opened, empty set, Type dropdown at default, parameter panel disabled. 'freshly opened' + 'empty attribute set' + 'about to choose an Attribute Type' are step_0-unique phrases; steps 1-4 have Type already selected and parameters filled in, so these keywords will not leak.",
-        "impact_on_prior_runs": "unified3 attribute scenario step_0: was captured by _04_configure (over-absorption). This refactor targets step_0 back to _02. Existing scenarios: unaffected."
+        "changed_on": "2026-09-18",
+        "reason": "v3 iteration 3 (2026-09-18, user directive): the real Attribute Set 3D dialog shows OpendTect defaults the moment it opens (attribute type Similarity, Time gate -28/28, Input Data set), so the 2026-08-07 signature of node 02 ('empty attribute set, parameter panel disabled') never matched the freshly-opened screen and node 04 ('Time gate populated') matched it instead (iteration 0 misroutes s0/s1 -> 04; iteration-1 offline reconstruction flipped 02/03 -> 04). The three nodes are now distinguished by observable field states: 02 = type Similarity (default) + empty attribute list + Attribute Name empty; 03 = type Energy + Attribute Name empty + empty list; 04 = Attribute Name filled 'Energy [-28,+28]' / Energy entry in the list / Save on Close / 'Save Attribute as' dialog. Titles, descriptions and edges unchanged.",
+        "previous_signature": {
+          "expected_dialog": "Attribute Set 3D",
+          "expected_ui_elements": [
+            "attribute_type_dropdown_default",
+            "empty_attribute_set_list",
+            "input_data_selector_empty",
+            "parameter_panel_disabled"
+          ],
+          "screenshot_keywords": [
+            "Attribute Set 3D",
+            "freshly opened",
+            "empty attribute set",
+            "Attribute Type dropdown",
+            "default entry",
+            "about to choose an Attribute Type"
+          ]
+        },
+        "previous_audit": {
+          "changed_on": "2026-08-07",
+          "reason": "unified3 signature refinement. Original signature described the batch path (Processing > Create Seismic Attribute dialog) which does not match the §1.5.1a on-the-fly path used by the attribute_computation scenario step_0. Rewritten to match the on-the-fly opening state: window just opened, empty set, Type dropdown at default, parameter panel disabled. 'freshly opened' + 'empty attribute set' + 'about to choose an Attribute Type' are step_0-unique phrases; steps 1-4 have Type already selected and parameters filled in, so these keywords will not leak.",
+          "impact_on_prior_runs": "unified3 attribute scenario step_0: was captured by _04_configure (over-absorption). This refactor targets step_0 back to _02. Existing scenarios: unaffected."
+        },
+        "impact_on_prior_runs": "dev-set iterations 0-2 and unified2-4 used the previous signature; iteration 3 onwards uses this one (dry-run x5 + dev benches)."
       },
       "linked_chunks_provenance": {
         "index": "chromadb_v4",
@@ -119,17 +145,20 @@
         "expected_dialog": "Attribute Set 3D",
         "expected_ui_elements": [
           "attribute_type_energy_selected",
-          "input_data_selector_populated",
-          "energy_parameter_panel_visible",
-          "compute_gradient_toggle_default"
+          "output_energy",
+          "compute_gradient_toggle",
+          "attribute_name_blank",
+          "attribute_list_empty"
         ],
         "screenshot_keywords": [
-          "Energy (selected)",
-          "Input Data = 4 Dip steered median filter",
-          "Energy-specific parameter panel",
-          "Compute gradient",
-          "default values, not yet edited",
-          "about to enter Time gate and Attribute Name"
+          "Attribute Set 3D",
+          "attribute type: Energy (selected)",
+          "Output (Energy)",
+          "Compute gradient Yes / No",
+          "Time gate (ms) (-28) 28",
+          "Attribute Name (empty) — not yet entered",
+          "attribute list still empty — Add as new not yet clicked",
+          "Attribute set (<not saved>)"
         ]
       },
       "linked_chunks": [
@@ -150,9 +179,31 @@
         }
       ],
       "signature_audit": {
-        "changed_on": "2026-08-07",
-        "reason": "unified3 signature refinement. Original keywords 'Similarity/Curvature/Frequency/Energy/Instantaneous' were too generic and had low match density on step_1's actual visual state (which specifies Energy + Input Data + Compute gradient default). Refined to step_1-unique phrases: 'Energy (selected)', 'Input Data = 4 Dip steered median filter', 'default values, not yet edited', 'about to enter Time gate'. These do not appear in step_0 (Type not yet chosen) or step_2 (Time gate already edited).",
-        "impact_on_prior_runs": "unified3 attribute scenario step_1: was captured by _04_configure with 5% pass rate (over-absorption + wrong context). Refactor targets step_1 back to _03. Existing scenarios: unaffected."
+        "changed_on": "2026-09-18",
+        "reason": "v3 iteration 3 (2026-09-18, user directive): the real Attribute Set 3D dialog shows OpendTect defaults the moment it opens (attribute type Similarity, Time gate -28/28, Input Data set), so the 2026-08-07 signature of node 02 ('empty attribute set, parameter panel disabled') never matched the freshly-opened screen and node 04 ('Time gate populated') matched it instead (iteration 0 misroutes s0/s1 -> 04; iteration-1 offline reconstruction flipped 02/03 -> 04). The three nodes are now distinguished by observable field states: 02 = type Similarity (default) + empty attribute list + Attribute Name empty; 03 = type Energy + Attribute Name empty + empty list; 04 = Attribute Name filled 'Energy [-28,+28]' / Energy entry in the list / Save on Close / 'Save Attribute as' dialog. Titles, descriptions and edges unchanged.",
+        "previous_signature": {
+          "expected_dialog": "Attribute Set 3D",
+          "expected_ui_elements": [
+            "attribute_type_energy_selected",
+            "input_data_selector_populated",
+            "energy_parameter_panel_visible",
+            "compute_gradient_toggle_default"
+          ],
+          "screenshot_keywords": [
+            "Energy (selected)",
+            "Input Data = 4 Dip steered median filter",
+            "Energy-specific parameter panel",
+            "Compute gradient",
+            "default values, not yet edited",
+            "about to enter Time gate and Attribute Name"
+          ]
+        },
+        "previous_audit": {
+          "changed_on": "2026-08-07",
+          "reason": "unified3 signature refinement. Original keywords 'Similarity/Curvature/Frequency/Energy/Instantaneous' were too generic and had low match density on step_1's actual visual state (which specifies Energy + Input Data + Compute gradient default). Refined to step_1-unique phrases: 'Energy (selected)', 'Input Data = 4 Dip steered median filter', 'default values, not yet edited', 'about to enter Time gate'. These do not appear in step_0 (Type not yet chosen) or step_2 (Time gate already edited).",
+          "impact_on_prior_runs": "unified3 attribute scenario step_1: was captured by _04_configure with 5% pass rate (over-absorption + wrong context). Refactor targets step_1 back to _03. Existing scenarios: unaffected."
+        },
+        "impact_on_prior_runs": "dev-set iterations 0-2 and unified2-4 used the previous signature; iteration 3 onwards uses this one (dry-run x5 + dev benches)."
       },
       "linked_chunks_provenance": {
         "index": "chromadb_v4",
@@ -179,24 +230,23 @@
       "description": "매뉴얼 §1.5.1a steps 3-5 결과의 통합 노드: Time gate 값 (-28..+28) 및 Attribute Name ('Energy [-28,+28]') 이미 입력 완료 → Add as new 로 set 에 추가 → Save on Close 체크 → Close 로 Attribute Set 3D 창 닫기 → Save Attribute Set 다이얼로그 오픈 → set 이름 'my first attribute set' 입력 → OK 로 저장. 이 세 스텝 (2, 3, 4) 을 모두 담당.",
       "step_type": "setup",
       "visual_signature": {
-        "expected_dialog": "Attribute Set 3D / Save Attribute Set",
+        "expected_dialog": "Attribute Set 3D / Save Attribute as / Save Attribute Set",
         "expected_ui_elements": [
-          "add_as_new_button_highlighted",
-          "save_on_close_checkbox_checked",
-          "save_attribute_set_dialog",
-          "attribute_set_name_field",
-          "energy_entry_in_list"
+          "attribute_name_filled_energy_-28_28",
+          "energy_entry_in_attribute_list",
+          "save_on_close_checkbox",
+          "save_attribute_as_dialog",
+          "attribute_set_name_field"
         ],
         "screenshot_keywords": [
-          "Time gate populated: -28 to +28",
-          "Attribute Name field = 'Energy [-28,+28]'",
-          "Add as new button (highlighted",
-          "Save on Close checkbox = CHECKED",
-          "Save Attribute Set",
-          "my first attribute set",
-          "about to click Close to trigger the save dialog",
-          "about to click OK to save the attribute set",
-          "attribute list panel (left) showing 'Energy [-28,+28]'"
+          "Attribute Name (Energy [-28,+28])",
+          "Energy [-28,+28] listed in the attribute set",
+          "Save on Close (checked)",
+          "Save Attribute as",
+          "Select Output Attribute",
+          "Name (my first attribute set)",
+          "OK",
+          "Attribute set (<not saved>)"
         ]
       },
       "linked_chunks": [
@@ -222,9 +272,35 @@
         }
       ],
       "signature_audit": {
-        "changed_on": "2026-08-07",
-        "reason": "unified3 signature refinement — CRITICAL over-absorption fix (결함 #10). Original signature had 12 broad keywords (Time gate, Window, Step out, Parameter, Attribute Name, Add as new, Save on Close, Save Attribute Set, attribute set name, Close, my first attribute set) that matched steps 0-3 all at confidence 0.91, but only step 2-4 are this node's actual scope. Result: step_1 routed here at 5% pass rate. Refactor narrows to step_2-4-unique phrases using specific values ('-28 to +28', 'Energy [-28,+28]', 'CHECKED', 'about to click Close'/'about to click OK'). Step_0 (empty set) and step_1 (Type=Energy, default values not edited) do not contain these specific value strings, so this node will no longer absorb them.",
-        "impact_on_prior_runs": "unified3 attribute scenario: absorbed 76 steps at 48.7% pass, especially step_1 at 5% pass. Refactor should retain steps 2-4 (~60 steps) at higher confidence, release steps 0-1 to _02/_03. Existing scenarios: unaffected (no survey_setup or 3d_visualization step uses these specific values)."
+        "changed_on": "2026-09-18",
+        "reason": "v3 iteration 3 (2026-09-18, user directive): the real Attribute Set 3D dialog shows OpendTect defaults the moment it opens (attribute type Similarity, Time gate -28/28, Input Data set), so the 2026-08-07 signature of node 02 ('empty attribute set, parameter panel disabled') never matched the freshly-opened screen and node 04 ('Time gate populated') matched it instead (iteration 0 misroutes s0/s1 -> 04; iteration-1 offline reconstruction flipped 02/03 -> 04). The three nodes are now distinguished by observable field states: 02 = type Similarity (default) + empty attribute list + Attribute Name empty; 03 = type Energy + Attribute Name empty + empty list; 04 = Attribute Name filled 'Energy [-28,+28]' / Energy entry in the list / Save on Close / 'Save Attribute as' dialog. Titles, descriptions and edges unchanged.",
+        "previous_signature": {
+          "expected_dialog": "Attribute Set 3D / Save Attribute Set",
+          "expected_ui_elements": [
+            "add_as_new_button_highlighted",
+            "save_on_close_checkbox_checked",
+            "save_attribute_set_dialog",
+            "attribute_set_name_field",
+            "energy_entry_in_list"
+          ],
+          "screenshot_keywords": [
+            "Time gate populated: -28 to +28",
+            "Attribute Name field = 'Energy [-28,+28]'",
+            "Add as new button (highlighted",
+            "Save on Close checkbox = CHECKED",
+            "Save Attribute Set",
+            "my first attribute set",
+            "about to click Close to trigger the save dialog",
+            "about to click OK to save the attribute set",
+            "attribute list panel (left) showing 'Energy [-28,+28]'"
+          ]
+        },
+        "previous_audit": {
+          "changed_on": "2026-08-07",
+          "reason": "unified3 signature refinement — CRITICAL over-absorption fix (결함 #10). Original signature had 12 broad keywords (Time gate, Window, Step out, Parameter, Attribute Name, Add as new, Save on Close, Save Attribute Set, attribute set name, Close, my first attribute set) that matched steps 0-3 all at confidence 0.91, but only step 2-4 are this node's actual scope. Result: step_1 routed here at 5% pass rate. Refactor narrows to step_2-4-unique phrases using specific values ('-28 to +28', 'Energy [-28,+28]', 'CHECKED', 'about to click Close'/'about to click OK'). Step_0 (empty set) and step_1 (Type=Energy, default values not edited) do not contain these specific value strings, so this node will no longer absorb them.",
+          "impact_on_prior_runs": "unified3 attribute scenario: absorbed 76 steps at 48.7% pass, especially step_1 at 5% pass. Refactor should retain steps 2-4 (~60 steps) at higher confidence, release steps 0-1 to _02/_03. Existing scenarios: unaffected (no survey_setup or 3d_visualization step uses these specific values)."
+        },
+        "impact_on_prior_runs": "dev-set iterations 0-2 and unified2-4 used the previous signature; iteration 3 onwards uses this one (dry-run x5 + dev benches)."
       },
       "linked_chunks_provenance": {
         "index": "chromadb_v4",

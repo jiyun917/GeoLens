@@ -262,6 +262,14 @@ ROUTER_CONF_FLOOR = float(os.environ.get("ROUTER_CONF_FLOOR", "0.0"))
 # completion sentinel if the goal is visibly achieved. Uses workflow
 # structure, session state and the vision output only.
 GOAL_STATE_HINT = os.environ.get("GOAL_STATE_HINT", "1") != "0"
+# iteration 3: condition B of the goal-state check accepts a terminal node whose
+# score is within GOAL_STATE_MARGIN of the workflow's top-scoring node (0 = must be top-1).
+GOAL_STATE_MARGIN = float(os.environ.get("GOAL_STATE_MARGIN", "0.02"))
+# iteration 3 (c): near-tie graph-order prior among candidates sharing an expected_dialog.
+ROUTER_TIE_MARGIN = float(os.environ.get("ROUTER_TIE_MARGIN", "0.02"))
+ROUTER_TIE_PRIOR = os.environ.get("ROUTER_TIE_PRIOR", "1") != "0"
+# iteration 3 (d, optional): parallel rerank calls with majority vote (1 = single call).
+RERANK_VOTES = max(1, int(os.environ.get("RERANK_VOTES", "1")))
 _TERMINAL_STEP_TYPES = {"verification", "terminal", "end"}
 
 
@@ -333,6 +341,7 @@ Extract the current UI state into JSON. Copy every on-screen string VERBATIM (sa
   "menu_items": ["exact text of visible menu-bar entries and any open context-menu / submenu items"],
   "buttons": ["exact labels of visible buttons (OK, Cancel, Next, Add as new, ...)"],
   "labels": ["exact labels of fields, dropdowns, checkboxes, radio buttons, with the current value in parentheses if readable"],
+  "field_values": ["one entry per field/dropdown/checkbox/radio/list as 'Label: value' with the value copied verbatim — dropdown: the selected entry; text field: its content or (empty); checkbox/radio: checked/unchecked; list/table: '(empty)' or its entries"],
   "visible_elements": ["other key UI elements visible on screen: panels, trees, list/tree entries, toolbars"],
   "data_state": "state of data loaded (e.g., '{ex}', 'none')",
   "current_action": "what action appears to be in progress"
@@ -610,6 +619,13 @@ class GuideRAGPipeline:
                                    "other_workflow": bool(selected_wfs and node.get("workflow_id") not in selected_wfs)})
         _LAST_LOCALIZE_META["candidates"] = [{"id": c["node"].get("id"), "sources": cand_sources.get(c["node"].get("id"), [])}
                                              for c in candidates]
+        tie_pref: Optional[str] = None
+        if ROUTER_TIE_PRIOR and emb_top:
+            tie_pref = self._tie_prior(emb_top, last_node_id)
+            if tie_pref:
+                # list the preferred node first among the candidates
+                candidates.sort(key=lambda c: 0 if c["node"].get("id") == tie_pref else 1)
+        _LAST_LOCALIZE_META["tie_prior"] = tie_pref
         _LAST_LOCALIZE_META["wf_scores"] = [(w, round(s, 3)) for w, s in wf_scores[:4]]
         _LAST_LOCALIZE_META["selected_wfs"] = list(selected_wfs)
         _LAST_LOCALIZE_META["session_wf"] = session_wf
@@ -629,6 +645,7 @@ class GuideRAGPipeline:
                 completed_steps=completed_steps,
                 session_wf=session_wf,
                 selected_wfs=selected_wfs,
+                tie_pref=tie_pref,
             )
             if picked_id:
                 for c in candidates:
@@ -663,6 +680,7 @@ class GuideRAGPipeline:
         completed_steps: Optional[List[str]] = None,
         session_wf: Optional[str] = None,
         selected_wfs: Optional[List[str]] = None,
+        tie_pref: Optional[str] = None,
     ) -> Tuple[Optional[str], float]:
         """Ask Gemini Flash to pick the candidate whose workflow step best
         matches the user's current situation. Returns (node_id, confidence 0-1)
@@ -701,7 +719,7 @@ class GuideRAGPipeline:
         candidate_block = "\n".join(lines)
 
         goal_line = f"User goal: {user_goal.strip()}" if user_goal.strip() else "User goal: (unspecified)"
-        vs_line = json.dumps(visual_state, ensure_ascii=False)[:500]
+        vs_line = json.dumps(visual_state, ensure_ascii=False)[:1400 if RERANK_PROMPT_VERSION != "v2" else 500]
 
         visited_line = ""
         if visited_node_ids:
@@ -728,6 +746,11 @@ class GuideRAGPipeline:
             recent = completed_steps[-6:]
             session_block = "\nInstructions already given to the user in this session (oldest first):\n" + \
                 "\n".join(f"  {i + 1}. {s[:160]}" for i, s in enumerate(recent))
+        tie_block = ""
+        if RERANK_PROMPT_VERSION != "v2" and tie_pref:
+            tie_block = (f"\nGraph-order prior: several candidates share the same dialog and score almost equally; "
+                         f"by workflow order the expected one is {tie_pref}. Pick a different one of them only if a field "
+                         f"value in visual_state (field_values / labels) contradicts it.")
         wf_block = ""
         if RERANK_PROMPT_VERSION != "v2" and ROUTER_TWO_STAGE and (selected_wfs or session_wf):
             wf_block = (f"\nWorkflow(s) selected from the user goal: {', '.join(selected_wfs or [])}."
@@ -751,7 +774,7 @@ class GuideRAGPipeline:
         prompt = f"""You rank workflow steps by how well they match the user's current UI situation.
 
 {goal_line}
-Current UI visual_state JSON: {vs_line}{visited_line}{session_block}{expected_block}{wf_block}
+Current UI visual_state JSON: {vs_line}{visited_line}{session_block}{expected_block}{wf_block}{tie_block}
 
 Candidate workflow steps (from a software manual):
 {candidate_block}
@@ -769,17 +792,38 @@ Respond with JSON only:
         from google.genai import types
         import time as _time, random as _random
 
-        client = genai.Client(
-            api_key=api_key,
-            http_options=types.HttpOptions(timeout=40_000),
-        )
+        _LAST_LOCALIZE_META["rerank_prompt"] = prompt
+        if RERANK_VOTES > 1:
+            return self._rerank_vote(prompt, candidates)
+        return self._rerank_once(prompt)
+
+    def _rerank_vote(self, prompt: str, candidates: List[Dict]) -> Tuple[Optional[str], float]:
+        """RERANK_VOTES parallel rerank calls; majority id wins (ties → the answer with the
+        highest confidence); confidence = mean confidence of the winning votes."""
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=RERANK_VOTES) as ex:
+            answers = list(ex.map(lambda _: self._rerank_once(prompt), range(RERANK_VOTES)))
+        tally: Dict[str, List[float]] = {}
+        for pid, conf in answers:
+            tally.setdefault(pid or "none", []).append(conf)
+        best = max(tally.items(), key=lambda kv: (len(kv[1]), max(kv[1])))
+        _LAST_LOCALIZE_META["rerank_votes"] = [(pid or "none", round(c, 2)) for pid, c in answers]
+        print(f"[GUIDE] rerank vote: {_LAST_LOCALIZE_META['rerank_votes']} -> {best[0]}")
+        if best[0] == "none":
+            return None, 0.0
+        return best[0], sum(best[1]) / len(best[1])
+
+    def _rerank_once(self, prompt: str) -> Tuple[Optional[str], float]:
+        from google import genai
+        from google.genai import types
+        import time as _time, random as _random
+        api_key = os.environ.get("GEMINI_API_KEY")
+        client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=40_000))
         cfg = types.GenerateContentConfig(
             response_mime_type="application/json",
             temperature=0,
             thinking_config=_aux_thinking_config(types),
         )
-
-        _LAST_LOCALIZE_META["rerank_prompt"] = prompt
         RERANK_MAX_RETRIES = 3
         RERANK_BASE_BACKOFF = 1.5
         raw = ""
@@ -1048,6 +1092,43 @@ Respond with JSON only:
                 print(f"[GUIDE] CLIP match failed: {e}")
         return clip_node, clip_score, clip_top
 
+    def _tie_prior(self, emb_top: List[Tuple[str, float]], last_node_id: Optional[str]) -> Optional[str]:
+        """Iteration 3 (c): among the top embedding candidates that share the same
+        expected_dialog and lie within ROUTER_TIE_MARGIN of the group's best score,
+        return the node preferred by graph order — the successor of the last
+        confirmed node (or that node itself) if it is in the group, otherwise the
+        node with the smallest step_number. None when there is no near-tie."""
+        if not emb_top:
+            return None
+        groups: Dict[str, List[Tuple[str, float]]] = {}
+        for nid, score in emb_top:
+            n = self.graph.get_node(nid)
+            if not n:
+                continue
+            key = _norm_text(((n.get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0])
+            if key:
+                groups.setdefault(key, []).append((nid, score))
+        for key, members in groups.items():
+            if len(members) < 2:
+                continue
+            best = max(s for _, s in members)
+            tied = [nid for nid, s in members if best - s <= ROUTER_TIE_MARGIN]
+            if len(tied) < 2:
+                continue
+            if last_node_id and self.graph.get_node(last_node_id):
+                allowed = {last_node_id} | {n["id"] for n in self.graph.get_next_steps(last_node_id)}
+                by_graph = [nid for nid in tied if nid in allowed]
+                if by_graph:
+                    # successor preferred over the last node itself
+                    succ = [nid for nid in by_graph if nid != last_node_id]
+                    pick = min(succ or by_graph, key=lambda nid: self.graph.get_node(nid).get("step_number", 0))
+                    print(f"[GUIDE] tie prior: {tied} -> {pick} (graph successor of {last_node_id})")
+                    return pick
+            pick = min(tied, key=lambda nid: self.graph.get_node(nid).get("step_number", 0))
+            print(f"[GUIDE] tie prior: {tied} -> {pick} (earliest step)")
+            return pick
+        return None
+
     def _evidence_check(self, node: Dict, visual_state: Dict, last_node_id: Optional[str]) -> Dict[str, Any]:
         """Evidence-based verification of a rerank pick (v3 iteration 2)."""
         from . import node_matcher
@@ -1088,7 +1169,15 @@ Respond with JSON only:
         from . import node_matcher
         if not visual_state:
             return None
-        anchors = [nid for nid in (last_node_id, picked_id) if nid and self.graph.get_node(nid)]
+        # iteration 3: anchors = the last confirmed node (user spec), plus the current
+        # pre-gate pick only when it is a successor of the last confirmed node (the
+        # router believes the final action was reached through a valid transition).
+        anchors: List[str] = []
+        if last_node_id and self.graph.get_node(last_node_id):
+            anchors.append(last_node_id)
+            if (picked_id and picked_id != last_node_id and self.graph.get_node(picked_id)
+                    and picked_id in {n["id"] for n in self.graph.get_next_steps(last_node_id)}):
+                anchors.append(picked_id)
         for nid in anchors:
             wf = self.graph.get_node(nid).get("workflow_id")
             terminals = self._terminal_nodes(wf)
@@ -1104,6 +1193,13 @@ Respond with JSON only:
                 node = top[0][0]
                 print(f"[GUIDE] goal-state hint: anchor={nid} screen≈{node['id']} (cos={top[0][1]:.3f})")
                 return node
+            if top and GOAL_STATE_MARGIN > 0:
+                scored = sorted(node_matcher.score_nodes(visual_state, self.graph.get_workflow_nodes(wf)), key=lambda p: -p[1])
+                best = scored[0][1] if scored else 0.0
+                for n, s in scored:
+                    if n.get("id") in term_ids and best - s <= GOAL_STATE_MARGIN:
+                        print(f"[GUIDE] goal-state hint (margin): anchor={nid} terminal {n['id']} cos={s:.3f} vs top {scored[0][0]['id']} {best:.3f}")
+                        return n
         return None
 
     # ═══════════════════════════════════════════════════════════

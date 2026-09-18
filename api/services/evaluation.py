@@ -978,6 +978,8 @@ class ScenarioEvaluator:
                 "route_rerank_raw":   loc_meta.get("rerank_raw"),
                 "route_rerank_prompt": (loc_meta.get("rerank_prompt") if save_context else None),
                 "goal_state_node":    loc_meta.get("goal_state_node"),
+                "route_tie_prior":    loc_meta.get("tie_prior"),
+                "route_rerank_votes": loc_meta.get("rerank_votes"),
             })
             step_latencies.append(latency)
             step_costs.append(gen_cost)
