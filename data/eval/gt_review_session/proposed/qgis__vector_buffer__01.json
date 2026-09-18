@@ -1,0 +1,728 @@
+{
+  "scenario_id": "qgis__vector_buffer__01",
+  "software_id": "qgis",
+  "manual_id": "bf2804feea57434bb79b749134ed1df0",
+  "manual_name": "QGIS Training Manual 3.44",
+  "manual_reference": "QGIS Training Manual 3.44 §6.2.6 'Follow Along: Analyzing the Problem: Distances From Schools and Roads', steps 1–8 + p217-218 dissolve iteration (straight-line dissolved path). Out of scope: §6.2.7 'Try Yourself: Distance from schools' (schools 1 km buffer 는 별개 연습), §6.2.6 의 iterate-to-fix 서사 (먼저 non-dissolve → 문제 인지 → dissolve 재실행) 는 pilot 스코프에서 단일 straight-line 로 통합. **Layer 명명 실측 정정 (2026-08-13)**: 매뉴얼 §6.2 본문은 roads_34S / buildings_34S 로 표기 (UTM zone 34S, EPSG:32734) 하나 배포 QGIS Training Data 3.44 의 실제 레이어는 roads_33S (UTM zone 33S, EPSG:32733) 이며 buildings 계열은 부재. OpendTect Seismic_data 정정 선례 준수 — 실측 배포 데이터 기준을 채택. **buildings_34S 제외 근거**: 매뉴얼 §6.2 는 buildings_34S 를 배경/컨텍스트 레이어로 포함하나 배포 Training Data 에 부재. 버퍼 연산과 무관한 표시용 레이어이므로 시나리오에서 제외해도 절차 영향 없음.",
+  "category": "vector_analysis",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "QGIS Training Data 의 roads_33S 레이어에 대해 Processing Toolbox 의 Buffer 알고리즘으로 50 m 반경 버퍼 (Dissolve results 활성) 를 계산하고, 결과를 vector_analysis.gpkg 파일의 roads_buffer_50m_dissolved 레이어로 저장한다. 매뉴얼 §6.2.6 에 따라 Processing > Toolbox 를 열고 검색창에 'buffer' 를 입력해 Buffer 알고리즘을 double-click, 대화상자에서 Input layer = roads_33S, Distance = 50 (meters), Dissolve results 체크 후 나머지 파라미터는 기본값을 유지한다. Output 옆 '…' 버튼으로 'Save to GeoPackage…' 선택 → vector_analysis.gpkg 선택 → Layer name = roads_buffer_50m_dissolved 입력 → OK. Buffer 다이얼로그에서 Run 클릭 시 알고리즘이 실행되고 다이얼로그가 닫히며 Layers Panel 최상단에 roads_buffer_50m_dissolved 레이어가 추가되고 Map Canvas 에 도로 네트워크 주변 50 m dissolved 버퍼가 렌더링되면 목표 달성 (매뉴얼 pp217-218 결과 이미지 상태).",
+  "initial_state": {
+    "description": "QGIS Desktop 3.44 실행. 프로젝트에 roads_33S 벡터 레이어 단독이 Layers Panel 에 로드되어 있고 Map Canvas 에 표시된 상태 (매뉴얼 §6.2.5 완료 이후 상태 — buildings 계열은 배포 Training Data 3.44 에 부재로 제외). Project CRS = UTM zone 33S (EPSG:32733, meters). vector_analysis.gpkg 파일은 접근 가능한 위치에 존재 (QGIS Training Data 3.44 배포판 포함). Processing Toolbox 는 아직 열려 있지 않음. Buffer 대화상자·Save to GeoPackage 대화상자 모두 닫힌 상태. roads_buffer_50m_dissolved 레이어는 아직 vector_analysis.gpkg 에 존재하지 않음.",
+    "must_be_true": [
+      "QGIS Desktop 3.44 main window is visible",
+      "Layers Panel contains roads_33S (checked/visible) as the sole loaded vector layer",
+      "Map Canvas shows road network in UTM 33S projection (meters)",
+      "Processing Toolbox panel is NOT currently open",
+      "No Buffer or Save-to-GeoPackage dialog is open",
+      "roads_buffer_50m_dissolved layer does NOT yet exist in the project or in vector_analysis.gpkg",
+      "vector_analysis.gpkg exists at a writable path"
+    ]
+  },
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_0.jpg",
+      "visual_state_gt": {
+        "current_dialog": "QGIS Main Window",
+        "active_menu": "",
+        "visible_elements": [
+          "QGIS main window with Layers Panel (left) containing roads_33S (single vector layer, checked)",
+          "Map Canvas (center) rendering road network",
+          "Menu bar with Project / Edit / View / Layer / Settings / Plugins / Vector / Raster / Database / Web / Mesh / Processing / Help",
+          "Processing Toolbox panel NOT visible",
+          "Bottom status bar showing coordinate + scale + EPSG:32733",
+          "*Untitled Project — QGIS",
+          "Type to locate (Ctrl+K)",
+          "Coordinate (1054725, 6221612)",
+          "Scale (1:240882)",
+          "Magnifier (100%)",
+          "Rotation (0.0 °)",
+          "Render (checked)"
+        ],
+        "data_state": "roads_33S loaded and displayed. Processing Toolbox not opened yet. No dialog open.",
+        "current_action": "user is about to open Processing Toolbox via Processing menu",
+        "_gt_provenance": "v3: 5 authored + 7 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Processing|Toolbox|메뉴|열기|Ctrl\\+Alt\\+T)\\b",
+      "expected_action_keywords": [
+        "Processing",
+        "Toolbox"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Processing).{0,30}(Toolbox)\\b",
+          "note": "Processing menu → Toolbox path"
+        },
+        {
+          "pattern": "(?i)Ctrl\\+Alt\\+T",
+          "note": "shortcut equivalent"
+        }
+      ],
+      "expected_workflow_node": "qgis_vector_buffer_01_open_toolbox",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "QGIS main window. Layers Panel visible on left with roads_33S checked (sole loaded layer). Map Canvas rendering. Processing Toolbox NOT open (panel absent from view). No dialog window overlaying.",
+        "user_should_have_just": "Loaded roads_33S per §6.2.5 (OSM data reprojected to UTM 33S — buildings 계열은 배포 데이터 부재로 제외). Positioned mouse near Processing menu, no click yet.",
+        "must_not_show": [
+          "Processing Toolbox already open",
+          "Buffer dialog open",
+          "roads_buffer_50m_dissolved layer already in Layers Panel"
+        ]
+      },
+      "capture_required": true,
+      "provenance": {
+        "manual_page": 212,
+        "manual_step": 1
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_1.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Processing Toolbox",
+        "visible_elements": [
+          "Processing Toolbox panel opened (typically docked right side)",
+          "Toolbox search field at top (empty, cursor blinking)",
+          "Algorithm tree visible: Cartography, Database, File tools, Vector geometry, Vector analysis, etc.",
+          "roads_33S still visible in Layers Panel (left)",
+          "Map Canvas unchanged from step_0",
+          "*Untitled Project — QGIS",
+          "Edit",
+          "View",
+          "Settings",
+          "Plugins",
+          "Raster",
+          "Web",
+          "Mesh",
+          "Help",
+          "Type to locate (Ctrl+K)",
+          "Coordinate (1043954, 6244110)",
+          "Scale (1:240882)",
+          "Magnifier (100%)",
+          "Rotation (0.0 °)",
+          "3D Tiles",
+          "Check geometry",
+          "Fix geometry",
+          "GPS",
+          "Interpolation",
+          "Layer tools",
+          "Metadata tools",
+          "Network analysis",
+          "Plots",
+          "Point cloud conversion",
+          "Point cloud data management",
+          "Point cloud extraction",
+          "Vector coverage",
+          "Vector creation",
+          "Vector general",
+          "Vector overlay",
+          "Vector selection",
+          "Vector table",
+          "Vector tiles",
+          "GDAL",
+          "GRASS",
+          "Render [checked]",
+          "EPSG:32733"
+        ],
+        "data_state": "Processing Toolbox has just been opened. Search field is empty. Full algorithm tree is showing. No algorithm selected.",
+        "current_action": "user is about to type 'buffer' in the toolbox search field",
+        "_gt_provenance": "v3: 5 authored + 37 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(buffer|검색|search|입력|type)\\b",
+      "expected_action_keywords": [
+        "buffer",
+        "search"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(type|input|입력).{0,20}(buffer)\\b",
+          "note": "type buffer in search"
+        },
+        {
+          "pattern": "(?i)\\b(search).{0,20}(buffer)\\b",
+          "note": "search for buffer"
+        }
+      ],
+      "expected_workflow_node": "qgis_vector_buffer_02_search_algorithm",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Processing Toolbox panel just opened (empty search, full algorithm tree). Layers Panel and Map Canvas unchanged.",
+        "user_should_have_just": "Clicked Processing > Toolbox menu (or Ctrl+Alt+T). Toolbox appeared. Has not yet typed anything.",
+        "must_not_show": [
+          "'buffer' already typed in search",
+          "Buffer algorithm highlighted",
+          "Buffer dialog open"
+        ]
+      },
+      "capture_required": true,
+      "provenance": {
+        "manual_page": 212,
+        "manual_step": 2
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_2.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Processing Toolbox",
+        "visible_elements": [
+          "Toolbox search field showing 'buffer' text",
+          "Filtered algorithm tree showing Buffer (under Vector geometry) and related algorithms (Fixed distance buffer, Variable distance buffer, etc.)",
+          "Buffer algorithm entry highlighted/selectable",
+          "Layers Panel and Map Canvas unchanged",
+          "*Untitled Project — QGIS",
+          "Edit",
+          "View",
+          "Settings",
+          "Plugins",
+          "Raster",
+          "Database",
+          "Web",
+          "Mesh",
+          "Processing",
+          "Help",
+          "Type to locate (Ctrl+K)",
+          "Coordinate (1045420, 6224416)",
+          "Scale (1:240882)",
+          "Magnifier (100%)",
+          "Rotation (0.0°)",
+          "roads_33S",
+          "Create wedge buffers",
+          "Multi-ring buffer (constant distance)",
+          "Rectangles, ovals, diamonds",
+          "Single sided buffer",
+          "Tapered buffers",
+          "Variable width buffer (by M value)",
+          "Vector selection",
+          "Extract within distance",
+          "Select within distance",
+          "GDAL",
+          "Buffer vectors",
+          "One side buffer",
+          "GRASS",
+          "r.buffer",
+          "Vector (v.*)",
+          "v.buffer",
+          "Render [checked]",
+          "EPSG:32733"
+        ],
+        "data_state": "Search term 'buffer' entered. Toolbox has filtered to show buffer-related algorithms. Buffer (canonical) is visible in the tree.",
+        "current_action": "user is about to double-click the Buffer algorithm entry to open its dialog",
+        "_gt_provenance": "v3: 4 authored + 35 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(double.click|더블.?클릭|열기|open|dialog|Buffer)\\b",
+      "expected_action_keywords": [
+        "Buffer",
+        "double click"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(double.?click).{0,20}(Buffer|algorithm)\\b",
+          "note": "double click Buffer"
+        },
+        {
+          "pattern": "(?i)\\b(open).{0,20}(dialog|Buffer)\\b",
+          "note": "open Buffer dialog"
+        }
+      ],
+      "expected_workflow_node": "qgis_vector_buffer_02_search_algorithm",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Processing Toolbox with 'buffer' typed in search. Filtered tree showing Buffer algorithm entry (and related). No dialog opened yet.",
+        "user_should_have_just": "Typed 'buffer' in Toolbox search. Filter narrowed to buffer-related algorithms.",
+        "must_not_show": [
+          "Buffer dialog already opened",
+          "Any algorithm being executed",
+          "roads_buffer_50m_dissolved layer in Layers Panel"
+        ]
+      },
+      "capture_required": true,
+      "provenance": {
+        "manual_page": 214,
+        "manual_step": 4
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_3.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Buffer",
+        "visible_elements": [
+          "Buffer algorithm dialog opened (modal on top of main window)",
+          "Input layer dropdown (roads_33S [EPSG:32733] already filled)",
+          "Selected features only checkbox (unchecked)",
+          "Distance (10,000000)",
+          "Distance unit dropdown showing meters",
+          "Segments (5)",
+          "End cap style, Join style dropdowns",
+          "Miter limit",
+          "Dissolve results checkbox (unchecked)",
+          "Buffered output field with '[Create temporary layer]' default + '…' button",
+          "Run / Close / Help buttons at bottom",
+          "*Untitled Project — QGIS",
+          "Vector Geometry - Buffer",
+          "Edit",
+          "View",
+          "Settings",
+          "Plugins",
+          "Raster",
+          "Database",
+          "Web",
+          "Mesh",
+          "Processing",
+          "Advanced",
+          "Run as Batch Process...",
+          "Cancel",
+          "Parameters",
+          "Input layer (roads_33S [EPSG:32733])",
+          "Distance (10.000000)",
+          "Segments (5)",
+          "End cap style (Round)",
+          "Join style (Round)",
+          "Miter limit (2.000000)",
+          "Buffered ([Create temporary layer])",
+          "Type to locate (Ctrl+K)",
+          "Create wedge buffers",
+          "Multi-ring buffer (constant distance)",
+          "Rectangles, ovals, diamonds",
+          "Single sided buffer",
+          "Tapered buffers",
+          "Variable width buffer (by M value)",
+          "Vector selection",
+          "Extract within distance",
+          "Select within distance",
+          "GDAL",
+          "Buffer vectors",
+          "One side buffer",
+          "GRASS",
+          "r.buffer",
+          "Vector (v.*)",
+          "v.buffer",
+          "Render",
+          "Layers",
+          "This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance.",
+          "The segments parameter controls the number of line segments to use to approximate a quarter circle when creating rounded offsets.",
+          "The end cap style parameter controls how line endings are handled in the buffer.",
+          "The miter limit parameter is only applicable for miter join styles, and controls the maximum distance from the offset curve to use when creating a mitered join.",
+          "Coordinate 1026658, 6236015",
+          "Scale 1:240882",
+          "Magnifier 100%",
+          "Rotation 0.0°"
+        ],
+        "data_state": "Buffer dialog just opened. Input layer already shows roads_33S [EPSG:32733] (auto-filled; no user selection needed). Other fields at defaults: Distance 10,000000 meters, Segments 5, End cap style Round, Join style Round, Miter limit 2,000000, Dissolve result unchecked, Buffered = [Create temporary layer].",
+        "current_action": "Input layer is already roads_33S [EPSG:32733]; user is about to confirm it and proceed to Distance = 50 (then Dissolve result)",
+        "_gt_provenance": "v3: 11 authored + 49 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Input layer|roads_33S|Distance|50|Dissolve|select|선택|드롭다운|dropdown)\\b",
+      "expected_action_keywords": [
+        "Input layer",
+        "roads_33S",
+        "Distance",
+        "50"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(select|choose).{0,20}(roads_33S|Input)\\b",
+          "note": "select roads_33S"
+        }
+      ],
+      "expected_workflow_node": "qgis_vector_buffer_03_configure_buffer",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Buffer dialog OPEN. All fields at default state (no Input layer chosen yet, Distance at default 10, Dissolve unchecked). No 'Run' click yet.",
+        "user_should_have_just": "Double-clicked Buffer algorithm in Toolbox. Dialog appeared with defaults.",
+        "must_not_show": [
+          "roads_33S already selected as Input",
+          "Distance already changed to 50",
+          "Dissolve results checkbox already checked",
+          "Output path already set to roads_buffer_50m_dissolved"
+        ]
+      },
+      "capture_required": true,
+      "provenance": {
+        "manual_page": 214,
+        "manual_step": 5
+      }
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_4.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Buffer",
+        "visible_elements": [
+          "Buffer dialog still open",
+          "Input layer = roads_33S (selected in dropdown)",
+          "Selected features only unchecked",
+          "Distance field still at default (e.g., 10, NOT yet changed to 50)",
+          "Distance unit meters",
+          "Other parameters at default",
+          "Dissolve results checkbox still unchecked",
+          "Output field still default '[Create temporary layer]'",
+          "*Untitled Project — QGIS",
+          "Vector Geometry - Buffer",
+          "Edit",
+          "View",
+          "Settings",
+          "Plugins",
+          "Raster",
+          "Database",
+          "Web",
+          "Mesh",
+          "Processing",
+          "Help",
+          "Advanced",
+          "Run as Batch Process...",
+          "Close",
+          "Cancel",
+          "roads_33S [EPSG:32733]",
+          "10,000000",
+          "Segments",
+          "End cap style",
+          "Round",
+          "Join style",
+          "Miter limit",
+          "2,000000",
+          "Buffered",
+          "Type to locate (Ctrl+K)",
+          "Coordinate",
+          "1044336, 6233594",
+          "Scale",
+          "1:240882",
+          "Magnifier",
+          "Rotation",
+          "Create wedge buffers",
+          "Multi-ring buffer (constant distance)",
+          "Rectangles, ovals, diamonds",
+          "Single sided buffer",
+          "Tapered buffers",
+          "Variable width buffer (by M value)",
+          "Vector selection",
+          "Extract within distance",
+          "Select within distance",
+          "GDAL",
+          "Buffer vectors",
+          "One side buffer",
+          "GRASS",
+          "r.buffer",
+          "Vector (v.*)",
+          "v.buffer",
+          "Render",
+          "Layers",
+          "This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance."
+        ],
+        "data_state": "roads_33S chosen as Input layer. Distance and Dissolve options at defaults — user is about to change Distance to 50 and check Dissolve results.",
+        "current_action": "user is about to set Distance = 50 and enable Dissolve results checkbox",
+        "_gt_provenance": "v3: 8 authored + 51 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Distance|50|Dissolve|입력|체크|check)\\b",
+      "expected_action_keywords": [
+        "Distance",
+        "50",
+        "Dissolve"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(set|입력).{0,10}(Distance|50)\\b",
+          "note": "set distance"
+        },
+        {
+          "pattern": "(?i)\\b(Dissolve results)\\b",
+          "note": "Dissolve results toggle"
+        }
+      ],
+      "expected_workflow_node": "qgis_vector_buffer_03_configure_buffer",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Buffer dialog with Input layer = roads_33S selected. Distance field visible at DEFAULT value (NOT yet 50). Dissolve results checkbox visible but UNCHECKED. Output still '[Create temporary layer]'.",
+        "user_should_have_just": "Selected roads_33S from Input layer dropdown.",
+        "must_not_show": [
+          "Distance already 50 (that is step_5)",
+          "Dissolve results already checked",
+          "Output path modified"
+        ]
+      },
+      "capture_required": true,
+      "provenance": {
+        "manual_page": 214,
+        "manual_step": 5
+      }
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_5.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Buffer",
+        "visible_elements": [
+          "Buffer dialog with Input layer = roads_33S",
+          "Distance field = 50 (typed)",
+          "Distance unit meters",
+          "Segments at default 5",
+          "Dissolve results checkbox CHECKED",
+          "Output field showing '[Create temporary layer]' with '…' button on right",
+          "Run button visible at bottom",
+          "*Untitled Project - QGIS",
+          "Vector Geometry - Buffer",
+          "Edit",
+          "View",
+          "Settings",
+          "Plugins",
+          "Raster",
+          "Database",
+          "Web",
+          "Mesh",
+          "Processing",
+          "Help",
+          "Advanced",
+          "Run as Batch Process...",
+          "Close",
+          "Parameters",
+          "roads_33S [EPSG:32733]",
+          "50.000000",
+          "End cap style",
+          "Round",
+          "Join style",
+          "Miter limit",
+          "2.000000",
+          "Buffered",
+          "Type to locate (Ctrl+K)",
+          "Coordinate",
+          "1044846, 6212179",
+          "Scale",
+          "1:240882",
+          "Magnifier",
+          "100%",
+          "Rotation",
+          "Create wedge buffers",
+          "Multi-ring buffer (constant distance)",
+          "Rectangles, ovals, diamonds",
+          "Single sided buffer",
+          "Tapered buffers",
+          "Variable width buffer (by M value)",
+          "Vector selection",
+          "Extract within distance",
+          "Select within distance",
+          "GDAL",
+          "Buffer vectors",
+          "One side buffer",
+          "GRASS",
+          "r.buffer",
+          "Vector (v.*)",
+          "v.buffer",
+          "Selected features only",
+          "Open output file after running algorithm",
+          "Render",
+          "Layers",
+          "This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance."
+        ],
+        "data_state": "Buffer dialog fully parameterized: Input=roads_33S, Distance=50 m, Dissolve results checked. Output field still at default temporary-layer value.",
+        "current_action": "cursor near the '…' button next to Output field",
+        "_gt_provenance": "v3: 7 authored + 53 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(\\.\\.\\.|출력|Output|Save|GeoPackage|저장)\\b",
+      "expected_action_keywords": [
+        "Output",
+        "Save to GeoPackage"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(click|클릭).{0,10}(\\.\\.\\.|…|Output)\\b",
+          "note": "click ellipsis or Output"
+        },
+        {
+          "pattern": "(?i)Save to GeoPackage",
+          "note": "save-to-GPKG menu"
+        }
+      ],
+      "expected_workflow_node": "qgis_vector_buffer_03_configure_buffer",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Buffer dialog with Input=roads_33S, Distance = 50, Dissolve results CHECKED. Output still '[Create temporary layer]' (NOT yet clicked '…'). Save-to-GeoPackage dialog NOT open.",
+        "user_should_have_just": "Typed 50 in Distance field AND checked Dissolve results checkbox.",
+        "must_not_show": [
+          "Save to GeoPackage dialog already open (that is step_6)",
+          "Output field already showing roads_buffer_50m_dissolved path"
+        ]
+      },
+      "capture_required": true,
+      "provenance": {
+        "manual_page": 216,
+        "manual_step": 7
+      }
+    },
+    {
+      "step_index": 6,
+      "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_6.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Save to GeoPackage",
+        "visible_elements": [
+          "Save to GeoPackage dialog OPEN (file browser)",
+          "File field showing vector_analysis.gpkg selected",
+          "Layer name field showing 'roads_buffer_50m_dissolved' (typed)",
+          "OK / Save button + Cancel button",
+          "Underlying: Buffer dialog visible behind",
+          "*Untitled Project — QGIS",
+          "Vector Geometry - Buffer",
+          "Edit",
+          "View",
+          "Settings",
+          "Plugins",
+          "Raster",
+          "Database",
+          "Web",
+          "Mesh",
+          "Processing",
+          "Help",
+          "Advanced",
+          "Run as Batch Process...",
+          "Close",
+          "Parameters",
+          "Input layer (roads_33S [EPSG:32733])",
+          "Distance (50.000000)",
+          "Segments (5)",
+          "End cap style (Round)",
+          "Join style (Round)",
+          "Miter limit (2.000000)",
+          "Buffered ([Create temporary layer])",
+          "Layer name (roads_buffer_50m_dissolved)",
+          "Type to locate (Ctrl+K)",
+          "Coordinate (1028212, 6215621)",
+          "Scale (1:240882)",
+          "Magnifier (100%)",
+          "Rotation (0.0 °)",
+          "Create wedge buffers",
+          "Multi-ring buffer (constant distance)",
+          "Rectangles, ovals, diamonds",
+          "Single sided buffer",
+          "Tapered buffers",
+          "Variable width buffer (by M value)",
+          "Vector selection",
+          "Extract within distance",
+          "Select within distance",
+          "GDAL",
+          "Buffer vectors",
+          "One side buffer",
+          "GRASS",
+          "r.buffer",
+          "Vector (v.*)",
+          "v.buffer",
+          "roads 33S (checked)",
+          "Selected features only (unchecked)",
+          "Dissolve result (checked)",
+          "Open output file after running algorithm (checked)",
+          "Render (checked)",
+          "Layers",
+          "This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance.",
+          "The segments parameter controls the number of line segments to use to approximate a quarter circle when creating rounded offsets.",
+          "The end cap style parameter controls how line endings are handled in the buffer.",
+          "A miter limit parameter is only applicable for miter join styles, and controls the maximum distance from the offset curve to the vertex when creating a mitered join."
+        ],
+        "data_state": "Save to GeoPackage dialog is open. User has selected vector_analysis.gpkg as the target GeoPackage file and typed 'roads_buffer_50m_dissolved' as the Layer name. OK/Save not yet clicked.",
+        "current_action": "user is about to click OK / Save to confirm the output path",
+        "_gt_provenance": "v3: 5 authored + 55 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+      },
+      "expected_action_text_pattern": "(?i)\\b(OK|Save|저장|확인|roads_buffer_50m_dissolved)\\b",
+      "expected_action_keywords": [
+        "OK",
+        "Save"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Save|확인|OK)\\b",
+          "note": "confirm save"
+        }
+      ],
+      "expected_workflow_node": "qgis_vector_buffer_04_save_output",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Save to GeoPackage dialog OPEN. File = vector_analysis.gpkg. Layer name = 'roads_buffer_50m_dissolved' typed. OK/Save button visible and NOT yet clicked.",
+        "user_should_have_just": "Clicked '…' button next to Output on Buffer dialog, chose 'Save to GeoPackage…', selected vector_analysis.gpkg, typed 'roads_buffer_50m_dissolved' in Layer name.",
+        "must_not_show": [
+          "Save dialog closed and Run already executed",
+          "roads_buffer_50m_dissolved layer already in Layers Panel"
+        ]
+      },
+      "capture_required": true,
+      "provenance": {
+        "manual_page": 216,
+        "manual_step": 7
+      }
+    },
+    {
+      "step_index": 7,
+      "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_7.jpg",
+      "visual_state_gt": {
+        "current_dialog": "QGIS Main Window (buffer rendered)",
+        "visible_elements": [
+          "QGIS main window with Buffer dialog and Save-to-GeoPackage dialog both CLOSED",
+          "Layers Panel now containing roads_buffer_50m_dissolved layer at the TOP (checked/visible)",
+          "roads_33S still present below",
+          "Map Canvas rendering the dissolved buffer as a single polygon covering 50 m around the road network (semi-transparent overlay over the roads)",
+          "Bottom status bar unchanged (EPSG:32733)",
+          "*Untitled Project — QGIS",
+          "Edit",
+          "View",
+          "Settings",
+          "Plugins",
+          "Vector",
+          "Raster",
+          "Database",
+          "Web",
+          "Mesh",
+          "Processing",
+          "Help",
+          "Type to locate (Ctrl+K)",
+          "Coordinate (1055235, 6207527)",
+          "Scale (1:240882)",
+          "Magnifier (100%)",
+          "Rotation (0.0 °)",
+          "Render (checked)"
+        ],
+        "data_state": "Goal achieved — Buffer algorithm executed successfully with Dissolve results. roads_buffer_50m_dissolved layer created in vector_analysis.gpkg AND added to project. Rendered on Map Canvas as a continuous 50 m buffer polygon around the road network. Matches manual §6.2.6 pp217-218 dissolved-result screenshot.",
+        "current_action": "goal complete — model should emit '완료'",
+        "_gt_provenance": "v3: 5 authored + 18 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
+      },
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": [
+        "완료"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Done)\\b",
+          "note": "English completion sentinel"
+        },
+        {
+          "pattern": "(?i)\\b(roads_buffer_50m_dissolved|dissolved buffer|Buffer|Layers Panel|Map Canvas)\\b",
+          "note": "grounded element mention for the visual-grounding validator"
+        }
+      ],
+      "expected_workflow_node": "qgis_vector_buffer_05_run_and_render",
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "goal_completion_sentinel",
+        "description": "roads_buffer_50m_dissolved layer visible in Layers Panel AND dissolved buffer polygon rendered on Map Canvas AND both dialogs closed. Goal achieved (matches manual §6.2.6 pp217-218 dissolved-result end state). Model MUST emit '완료' as the sole response. Any further instruction is a failure. Note: unlike some earlier scenarios' penultimate captures, this scenario's final capture DOES depict the goal-achieved terminal state, so the 3-gate completion check is expected to pass."
+      },
+      "capture_instructions": {
+        "screen_state": "QGIS main window post-Run. Both Buffer and Save-to-GeoPackage dialogs CLOSED. Layers Panel shows roads_buffer_50m_dissolved at top (checked). Map Canvas renders a single continuous buffer polygon (50 m radius, dissolved) around the road network, semi-transparent so underlying roads visible. No dialog windows on top.",
+        "user_should_have_just": "Clicked Save on the Save-to-GeoPackage dialog and then clicked Run on the Buffer dialog. Both dialogs closed. New dissolved buffer layer appeared and rendered.",
+        "must_not_show": [
+          "Buffer dialog still open",
+          "Save-to-GeoPackage dialog still open",
+          "roads_buffer_50m (non-dissolved) layer instead of roads_buffer_50m_dissolved",
+          "Multiple distinct buffer polygons visible (that would be non-dissolved)"
+        ]
+      },
+      "capture_required": true,
+      "provenance": {
+        "manual_page": 218,
+        "manual_step": 8
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_7.jpg",
+    "expected_done_sentinel": true,
+    "note": "step_7 captures the goal-achieved terminal state (roads_buffer_50m_dissolved layer rendered on Map Canvas as continuous dissolved polygon). Matches manual §6.2.6 pp217-218 result. The goal_completion_sentinel trap on step_7 explicitly marks this — 3-gate completion check expected to pass all gates."
+  }
+}

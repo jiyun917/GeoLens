@@ -24,8 +24,8 @@
         "current_dialog": "Survey Setup and Selection",
         "active_menu": "Survey Data Root",
         "visible_elements": [
-          "Survey Data Root tab",
-          "Add button",
+          "Survey Data Root ...",
+          "New Survey (+)",
           "Edit button",
           "Select button",
           "Cancel button",
@@ -131,7 +131,7 @@
         "active_menu": "Survey Data Root...",
         "visible_elements": [
           "Create New Survey dialog",
-          "Survey name field with 'My_F3_Survey' typed",
+          "Survey name (My_F3_Survey)",
           "Available data (3D, 2D, Wells)",
           "Initial setup options list (Enter X/Y ranges, Scan SEG-Y file(s), Copy from other survey)",
           "Z Domain radio buttons (Time, Depth)",
@@ -189,7 +189,7 @@
       "visual_state_gt": {
         "current_dialog": "OpendTect Main Window",
         "visible_elements": [
-          "OpendTect V7.0.9 application window",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]",
           "Main menu bar (Survey, Analysis, Processing, Scene, View, Utilities, Help)",
           "Toolbar",
           "Tree scene panel",

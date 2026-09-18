@@ -251,13 +251,13 @@
         "current_dialog": "Buffer",
         "visible_elements": [
           "Buffer algorithm dialog opened (modal on top of main window)",
-          "Input layer dropdown (default entry or empty)",
+          "Input layer dropdown (roads_33S [EPSG:32733] already filled)",
           "Selected features only checkbox (unchecked)",
-          "Distance field (default 10 or similar)",
+          "Distance (10,000000)",
           "Distance unit dropdown showing meters",
-          "Segments field (default 5)",
+          "Segments (5)",
           "End cap style, Join style dropdowns",
-          "Miter limit field",
+          "Miter limit",
           "Dissolve results checkbox (unchecked)",
           "Buffered output field with '[Create temporary layer]' default + '…' button",
           "Run / Close / Help buttons at bottom",
@@ -311,14 +311,16 @@
           "Magnifier 100%",
           "Rotation 0.0°"
         ],
-        "data_state": "Buffer dialog just opened. All fields at defaults. No input layer selected yet.",
-        "current_action": "user is about to select roads_33S from Input layer dropdown",
+        "data_state": "Buffer dialog just opened. Input layer already shows roads_33S [EPSG:32733] (auto-filled; no user selection needed). Other fields at defaults: Distance 10,000000 meters, Segments 5, End cap style Round, Join style Round, Miter limit 2,000000, Dissolve result unchecked, Buffered = [Create temporary layer].",
+        "current_action": "Input layer is already roads_33S [EPSG:32733]; user is about to confirm it and proceed to Distance = 50 (then Dissolve result)",
         "_gt_provenance": "v3: 11 authored + 49 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
       },
-      "expected_action_text_pattern": "(?i)\\b(Input layer|roads_33S|select|선택|드롭다운|dropdown)\\b",
+      "expected_action_text_pattern": "(?i)\\b(Input layer|roads_33S|Distance|50|Dissolve|select|선택|드롭다운|dropdown)\\b",
       "expected_action_keywords": [
         "Input layer",
-        "roads_33S"
+        "roads_33S",
+        "Distance",
+        "50"
       ],
       "allowed_alternatives": [
         {

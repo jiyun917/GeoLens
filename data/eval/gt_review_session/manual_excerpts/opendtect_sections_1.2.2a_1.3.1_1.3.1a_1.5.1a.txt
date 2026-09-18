@@ -1,0 +1,1385 @@
+
+
+===== [1.2 Set up a Survey & Load Data] page 18 =====
+[Section: 1.2 Set up a Survey & Load Data, Page: 18, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+1.2 Set up a Survey & Load Data
+In this Chapter you will learn how to set up a new survey (a project) and how to
+load seismic data, horizons and well data using industry-standard file formats
+such as SEGY, LAS and ASCII.
+In many oil companies setting up surveys and loading data is done by specialists.
+OpendTect Pro users who want to use OpendTect in combination with Petrel*
+can simply copy the Petrel project information to setup the OpendTect survey
+(Exercise 2.1.1a). They can then either work directly on the Petrel data store, or
+they can copy data from Petrel into OpendTect and back to Petrel when they are
+finished. The first option saves disk space but ties the Petrel license. The second
+option saves money as it allows you to work with many OpendTect interpreters on
+a project without tying the Petrel license. In addition to the PetrelDirect link in
+OpendTect Pro there are also several commercial plug-ins that support easy pro-
+ject setup and data IO to and from SeisWorks/OpenWorks**, GeoFrame-IESX***
+data stores.
+Since not everybody needs (or wants) to know how to do this it is possible to skip
+this entire Chapter. F3 Demo is already set up for OpendTect, hence there is no
+need to start from scratch. Simply go to the next Chapter to start your training.
+The raw data for our new survey are located in a folder called Raw_Data in the F3
+Demo directory.
+* Is a mark of Schlumberger.
+** Registered Trademark of Landmark Graphics Corporation.
+*** Registered Trademark of Schlumberger.
+- 18 -
+
+
+===== [1.2.2a Survey Setup & Load SEG-Y] page 21 =====
+[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+1.2.2a Survey Setup & Load SEG-Y
+Required licenses: OpendTect.
+For a video of these exercises: OpendTect video resources
+- 21 -
+
+[Figure OCR p.21 #1]
+Exercise objective:
+Set up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.
+
+Workflow:
+
+1. Go to Survey > Select/Setup...
+   or click on the Survey Setup icon .
+2. Click on the New Survey icon .
+
+Survey Analysis P
+Select/Setup ...
+Session
+Import
+
+List of all Surveys in this Survey Data Root
+directory.
+
+Survey Setup and Selection
+Survey Data Root: ... C:\Surveys
+
+F3_Demo_2020
+F3_Demo_2020_20jul21
+F3_Demo_2020_old
+My_New_Survey_AL
+My_survey_AL
+
+F3 Demo 2020
+750/300 750/1250
+100/300 100/1250
+
+When starting OpendTect for the first time, you
+arrive directly in the Survey Setup & Selection
+window.
+
+Information Notes Log
+In-line range: 100 - 750 - 1; Total: 651
+Cross-line range: 300 - 1250 - 1; Total: 951
+Z range (ms): 0 - 1848 - 4; Total: 463
+Inl/Crl bin size: 25.00 / 25.00 (m/line)
+CRS: Projection: [EPSG:23031] ED50 / UTM zone 31N
+Area: 386.93 (sq Km)
+Survey Type: Both 2D and 3D
+In-line Orientation: 88.40 Degrees from N
+Location: C:\Surveys\F3_Demo_2020
+
+Select Cancel ?
+
+[Figure OCR p.21 #2]
+Workflow cont'd:
+
+3. Specify a Survey name and
+
+(a) select Scan SEG-Y file(s),
+
+(b) set Time for Z Domain,
+
+(c) Press Next.
+
+OpendTect display scenes are in Time or Depth. Transformation is done on-the-fly using a given velocity model. In the Survey Setup you choose the primary Z Domain. In the case of depth survey, Z Domain should be Depth.
+
+Create New Survey
+Specify new survey parameters
+Survey name My New Survey
+Available data ☑ 3D ☑ 2D ☐ Wells
+Initial setup
+Scan Navigation Data
+Copy from other survey
+Read from Survey Setup file
+Scan VDS file
+Scan ZGY file
+Scan SEG-Y file(s)
+Scan LAS Well Data
+Get from Petrel
+Enter by hand
+Z Domain ⦿ Time ○ Depth
+Next Cancel ?
+
+
+===== [1.2.2a Survey Setup & Load SEG-Y] page 22 =====
+[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \Raw data\Seismic_data.sgy.
+
+Workflow cont'd:
+5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.
+If needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.
+The bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.
+
+- 22 -
+
+
+===== [1.2.2a Survey Setup & Load SEG-Y] page 23 =====
+[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+6. Optionally, click on the icon to scan the entire input SEG-Y file.
+7. Click on the icon to examine in detail, first '1000' traces (changeable) of the file.
+
+Edit option can be used if the SEG-Y
+file needs to be modified. You can
+update binary headers and trace
+headers using mathematical formulae
+and information from other headers.
+
+Input file *-wildcard (C:\Surveys\F3_Demo_2023\Rawdata\Seismic_data.sgy
+Data type 3D Seismic Data
+Coordinate System [EPSG:23031] ED50 / UTM zone 31N
+Full scan result
+Source
+SEG Y revision 1 Revision 1
+Data format 3- Integer (16 bits) From file header
+Number of samples 462 (600515 traces) From header 462
+Z range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004
+In-line range 100 - 750 From header Inline (byte 189) -"Inline num" 4 bytes scale XY
+Cross-line range 300 - 1250 From header Crossline (byte 193) -"Crosslin" 4 bytes
+X-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - "X coordinat" 4 bytes
+Y-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - "Y coordinat" 4 bytes
+Select...
+Actually use
+
+Scanning the entire SEG-Y file
+is useful when the survey
+geometry extracted from the
+quick scan looks doubtful.
+
+Resulting survey setup
+750/1250
+100/300 100/1250
+0.1%
+Zeros
+-10000 -5000 0 5000
+Value
+OK Cancel
+
+Workflow cont'd:
+8. Examiner window:
+Use this to find out
+what is inside the file.
+9. Check the Inline,
+Crossline and X/Y
+coordinates : find the
+corresponding byte
+and observe the
+associated plot.
+10. Optionally, check
+Seismic viewer and
+histogram windows.
+
+File header in
+Cor1
+Cor1
+Bin
+EPSG:23031
+In-line: in: 1
+Cross-Line: in: 1
+Z (ms): in: 4
+Dump of EBCIDIC and
+Binary headers
+
+In-line byte: 189-192
+Cross-line byte: 193-196
+X-Coord byte: 181-184
+Y-Coord byte: 185-188
+
+tracl (trace sequence number within line)
+1 [tracl] 1 2 3
+5 [tracr] 1 2 3
+9 [fldr] 100 100 100
+13 [tracf] 0 0 0
+17 [ep] 0 0 0
+21 [cdp] 300 301 302
+25 [cdpt] 0 0 0
+29 [trid] 1 1 1
+
+Trace header name +
+byte position.
+
+Trace header Plot
+Trace / Step 1 1
+
+First 1000 Trace header Nos.
+Total traces: 600515
+Range: [1,951] (N=1000)
+
+Close ?
+C:\Surveys\F3_Demo_2023\Rawdata\Seismic_data.sgy
+
+- 23 -
+
+
+===== [1.2.2a Survey Setup & Load SEG-Y] page 23 =====
+[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Total traces: 600515
+Range: [1,951] (N=1000)
+
+Close ?
+C:\Surveys\F3_Demo_2023\Rawdata\Seismic_data.sgy
+
+- 23 -
+
+
+===== [1.2.2a Survey Setup & Load SEG-Y] page 24 =====
+[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 24, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+11. Click on OK. Optionally, click on the icon to save the import set-up parameters.
+
+Extract Survey Setup from SEG-Y
+Input file *=wildcard C:\Surveys\F3_Demo_2023\Rawdata\Seismic_data.sgy Select ... Edit ...
+Data type 3D Seismic Data
+Coordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N Select ...
+
+Full scan result
+Source Actually use
+SEG-Y revision 1
+Revision 1
+Data format 3 - Integer (16 bits) From file header
+Number of samples 462 (600515 traces) From header 462
+Z range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004 1000 scale XY
+In-line range 100 - 750 From header Inline (byte 189) - "Inline numt" 4 bytes
+Cross-line range 300 - 1250 From header Crossline (byte 193) - "Crosslin" 4 bytes
+X-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - "X coordinate" 4 bytes
+Y-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - "Y coordinate" 4 bytes
+
+Resulting survey setup
+750/300 750/1250
+100/300 100/1250
+0.1%
+Zeros
+Value
+-10000 -5000 0 5000
+OK Cancel ?
+
+Workflow cont'd:
+
+12. Survey definition is set now. Click on OK to proceed further.
+
+Edit Survey Parameters
+Survey name My new Survey
+Location on disk C:\Surveys
+Survey type Both 2D and 3D
+Ranges/coordinate settings Enter below
+Survey ranges Coordinate settings I/C to X/Y transformation Coordinate System
+
+In-line range 100 750 Step 1 Nr. In-lines: 651
+Cross-line range 300 1250 Step 1 Nr. Cross-lines: 951
+Z range 4 1848 Step 4 millisecond
+Display depths in Meter Feet
+Seismic Reference Datum (m) 0
+
+Apply
+OK Cancel ?
+
+Free space on disk: 52.56 GB
+
+- 24 -
+
+
+===== [1.2.2a Survey Setup & Load SEG-Y] page 25 =====
+[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+13. Go inside the newly created survey by either double-clicking on it or clicking on Select.
+14. Press Yes when asked to import the SEG-Y file used to set-up the survey.
+
+Specify
+? Import the SEG-Y data used for survey setup now?
+Yes No
+
+Survey Setup and Selection
+Survey Data Root ... C:\Surveys
+F3_Demo_2020
+F3_Demo_2020_20jul21
+F3_Demo_2020_old
+My_New_Survey
+My_survey_AL
+
+My New Survey
+750/300 750/1250
+
+100/300 100/1250
+
+Information Notes Log
+In-line range : 100 - 750 - 1; Total: 651
+Cross-line range : 300 - 1250 - 1; Total: 951
+Z range (ms) : 4 - 1848 - 4; Total: 462
+Inl/Crl bin size : 25.00 / 25.00 (m/line)
+CRS : Unlocated XY
+Area : 386.93 (sq Km)
+Survey type : Both 2D and 3D
+In-line Orientation : 88.40 Degrees from N
+Location : C:\Surveys\My_New_Survey
+
+Select Cancel ?
+
+Workflow cont'd:
+
+15. Keep the default Yes (import) toggled on, in front of Copy data. Optionally, it is possible to make a link to the input SEG-Y file in OpendTect.
+16. Specify an Output Cube name (by default name of the input file is copied here).
+17. Press Import.
+
+Import 3D Volume
+Importing C:\Surveys\F3_Demo_2023\Rawdata\Seismic_data.sgy
+Import as OpendTect CBVS (copy&import) SEGYDirect (scan&link)
+Volume subselection - Select ...
+Null traces Discard Pass
+Scale values: Shift/Factor
+Output Cube Seismic_data Select ... CBVS Depth
+Execute in Batch Options ...
+Import Cancel ?
+
+- 25 -
+
+
+===== [1.2.2a Survey Setup & Load SEG-Y] page 26 =====
+[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 26, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+18. Once the import is finished, press OK on the notification window. Next, OpendTect will
+automatically open the option to change the Z-scaling of the newly created survey. Move
+the slider to set an appropriate Z scaling factor and press OK.
+Information
+The cube is available for work.
+The cube has varying cross-line ranges.
+In-line range: 100 - 750 (step 1).
+X-line range: 300 - 1250 (step 1).
+Z start: 0.004 step: 0.004
+Number of samples: 462
+Gaps: Gaps present.
+OK
+Z Scaling
+Set Z scaling factor
+Apparent velocity (m/s)
+18425
+Fit to scene!
+To Home
+Save as default
+OK ?
+
+Workflow cont'd:
+19. Check in the seismic manager the
+newly imported cube; Survey >
+Manage > Seismic > 3D.
+OpendTect Pro V7.2.3 (Windows) *UPDATE AVAILABLE!* My New Survey (tree project) -
+Survey Analysis Processing Scene View Utilities Terramodel Help
+Section
+Import
+Export
+Manage ▸
+Pre-loc
+Restart
+Exit
+Attribute Solu.
+Color Tables ...
+Cross plot Data ...
+Faults ...
+FaultsStickSets ...
+Faultset ...
+Geobody ...
+Geometry 2D ...
+Geometry 3D ...
+Horizons
+Layer Properties ...
+PointSets/Polygons ...
+Probability Density Functions ...
+Random Lines ...
+Seismic Data ▸
+Prostack Seismic Data
+Sessions ...
+Stratigraphy ...
+Shapefile ...
+Wavelets ...
+Wells ...
+Machine Learning
+Seismic ...
+STI like ...
+Mistic Corrections
+HorizonCube
+SSIS Interpretations
+2D
+3D
+Manage 3D Seismics
+Filter
+> Seismic_data <
+OpendTect automatically
+marks the imported seismic
+volume as the default data.
+In-line range: 100 - 750 [1]
+Cross-line range: 300 - 1250 [1]
+Area: 375.31 (sq km)
+Time range(ms): 4 - 1040 [4]
+Storage: 16 bit signed
+File name: Seismic_data.cbvs
+Location: C:\Surveys\My_New_Survey\Seismics
+Size: 540.64 MB
+Last modified: Fri 20 Aug 2021, 17:01:53
+Created by: assia
+Created at: Fri 20 Aug 2021, 17:00:39
+Check info on seismic volume; e.g.
+inline/crossline ranges, storage etc.
+Close ?
+Free space on disk: 52.51 GB
+
+- 26 -
+
+
+===== [1.2.2a Survey Setup & Load SEG-Y] page 27 =====
+[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 27, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+Tips:
+• Changing the default Z-scale setting manually at any time
+• Saving color settings with the loaded data set
+• Manually making a seismic cube the default data set
+
+Changing the Z-scale at any time:
+1. Add an inline:
+    • Right-click in the tree on Inline > Add and Select Data.
+    • Left-click on the selected seismic data or press OK in
+    the window that pops-up after step 1.
+2. Go to View > Z-scale.
+3. Use the slider to change Z. Toggle on Save as default and
+press OK.
+
+Workflow cont'd:
+
+Saving color settings with stored volumes:
+1. Select a color bar.
+2. Right-click on the color-bar and select Ranges/Clipping.
+3. Change the Percentage clipped and Apply a few times.
+When satisfied Press Close.
+4. By default, clipping is used meaning every line will be scaled
+slightly different. To set the extreme values: manually
+overwrite the values next to the color bar and press Enter.
+5. Right-click on an attribute in the tree and select Save Color
+(& scaling) Settings to save it as default for this attribute.
+
+- 27 -
+
+
+===== [1.2.2a Survey Setup & Load SEG-Y] page 28 =====
+[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 28, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+This is just for information purpose and is not part of the current exercise.
+2D Seismics
+2D Prestack Seismics
+3D Seismics
+3D Prestack Seismics
+
+Manually setting a default data set :
+
+1. Press the Manage Seismic icon and Select
+   3D Seismics or go to Survey > Manage >
+   Seismics > 3D.
+
+2. Select a Seismic data set from the list and
+   click on the Default icon. The default
+   file is marked by the >< symbol.
+
+Manage 3D Seismics
+Filter *
+> Seismic_data <
+
+In-line range: 300 - 750 [1]
+Cross-line range: 300 - 1250 [1]
+Area: 375.31 (sq km)
+Time range (ms): 4 - 1848 [4]
+Storage: 16 bit signed
+File name: Seismic_data.cbvs
+Location: C:\Surveys\My_New_Survey\Seismics
+Size: 540.64 MB
+Last modified: Fri 20 Aug 2021, 17:01:53
+Created by: assia
+Created at: Fri 20 Aug 2021, 17:00:39
+
+The advantage of having a default data set is that it
+saves many clicks to select data in various places in
+OpendTect. For example in this exercise we used
+option “Add and Select” to see the data. We then had
+to select the data. From now on we can use “Add
+default data” for in-lines, crosslines and Z-slices.
+
+Close ?
+
+Free space on disk: 52.50 GB
+
+- 28 -
+
+
+===== [1.3.1 Tree, Scene & Elements] page 45 =====
+[Section: 1.3.1 Tree, Scene & Elements, Page: 45, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+1.3.1 Tree, Scene & Elements
+Each 3D scene has a tree and each tree controls a set of display elements: In-
+lines, Cross-lines, Horizons, Wells etc. Via the tree a user controls what is dis-
+played in the 3D scene. (OpendTect Pro users can also do this via the basemap.)
+Display elements can be toggled on and off and display parameters can be
+changed from the tree menu, which is opened by right-clicking on the element.
+Section elements such as In-line, Cross-line can be filled up to 8 layers deep with
+data for co-rendering. The layers can be moved up and down in the tree. For co-
+rendering the user can change the layer's transparency and / or change the opa-
+city curve of the chosen color bar.
+Display elements can be filled with stored data and data that is calculated on-the-
+fly. The latter option is used to test attributes and to evaluate their parameters
+before (optionally) computing an attribute volume in batch mode. This way of
+working improves efficiency.
+- 45 -
+
+[Figure OCR p.45 #1]
+Elements Color
+Scene 1 Tree
+In-line
+425
+4 Dip ste...
+Cross-line
+Z-slice
+Volume Display
+Rando element
+2D Lin
+3D Horizon
+2D Horizon
+Fault
+Fault Stick Set
+Body
+Well
+Pickset
+Polygon
+Prestack Events
+Annotations
+OpenDtect V6.0.0pred-30150831-F1_Demo_
+Survey Analysis Processing Scenes Vi
+Inl 425 Step 1
+3D Scene 1
+Scene 1
+In-line
+425
+4 Dip ste...
+Cross-line
+Z-slice
+Volume
+Random Line
+2D Line
+3D Horizon
+2D Horizon
+Fault
+Fault Stick Set
+Body
+Well
+Pickset
+Polygon
+Prestack Events
+Annotations
+Done. Rea
+3D-scene
+Skype™ - digbpaul
+Price_list_Oct_20...
+OpenDtect V6.0.0...
+Introduction to O...
+Than mom! 21.11.17 GB
+14:31
+31-8-2015
+ENG
+
+
+===== [1.3.1a Display An Inline] page 46 =====
+[Section: 1.3.1a Display An Inline, Page: 46, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+1.3.1a Display An Inline
+Required licenses: OpendTect.
+For a video of these exercises: OpendTect video resources
+Visualization and processing goes faster when you load the relevant data set(s)
+into memory. If you do not have sufficient memory to load an entire volume load
+only the part you intend to work on. Another way to reduce memory consumption
+is to re-scale data to 8-bit during pre-load.
+- 46 -
+
+[Figure OCR p.46 #1]
+Exercise objective:
+Display an inline in the 3D scene.
+
+Workflow:
+
+1. Right-click on Inline in the tree and select Add
+and Select Data.
+
+Scene 1
+In-line
+Cross-
+Z-slice
+Volume
+Rando
+Add Default Data
+Add and Select Data
+Add at Well Location ...
+Add Color Blended
+
+2. In the pop up window, select 4 Dip steered
+median filter.
+
+Select
+Select first layer
+
+Stored
+Steering
+Attributes
+1 Original Seismics
+3D UVQ 6 biased Texture+Energy+SystemsTracts
+3D UVQ Texture+HC attribs+Energy disk
+4 Dip steered median filter
+5 ChimneyCube
+7a Al Cube Std
+7b Al Cube from HorizonCube
+8a PorosityCube from HC-NN
+
+Filter *
+
+OK
+Cancel
+Help
+
+3. Click OK to display data in the scene.
+
+
+===== [1.3.1b Pre-load Data] page 47 =====
+[Section: 1.3.1b Pre-load Data, Page: 47, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+1.3.1b Pre-load Data
+Required licenses: OpendTect.
+- 47 -
+
+[Figure OCR p.47 #1]
+Exercise objective:
+Pre-load data
+
+In the lower-right corner of the main window you can see how much memory is free.
+
+[free mem] 23.8/31.7 GB
+
+Workflow:
+
+1. Use it only if you have sufficient memory. To Pre-load a stored seismic cube go to Survey > Pre-load > Seismic.
+
+Survey
+Pre-load
+Seismics
+
+2. Click on Add Cube.
+
+Seismic Data Pre-load Manager
+Add Cube ...
+Add 2D DataSet ...
+Unload Checked ...
+Close
+Help
+
+[Figure OCR p.47 #2]
+Workflow cont'd:
+3. Select 4 Dip steered median filter as input cube. Optionally, specify a volume subselection and the loading format. Press OK.
+
+To reduce memory consumption:
+1) load in a smaller volume range
+2) load in a different format e.g. as 8-bit
+
+Pre-load 3D Data
+Input Cube 4 Dip steered median filter Select... Nr Traces 1000 Scan
+Volume subselection 100/300-750/1250 (463 samples) Select...
+Load as 0 - auto
+Scale Values
+0 - auto
+1 - 8 bit signed
+2 - 8 bit unsigned
+3 - 16 bit signed
+4 - 16 bit unsigned
+5 - 32 bit signed
+6 - 32 bit unsigned
+7 - 32 bit floating point
+8 - 64 bit floating point
+9 - 64 bit signed
+OK Cancel
+Data format on disk: 16 bit signed. Estimated memory usage: 546.73 MB
+
+Position
+Specify Position
+Volume subselection Range
+In-line Range 100 750 Step 1
+Cross-line Range 300 1250 Step 1
+Time Range (ms) 0 1848 Step 4
+OK Cancel Help
+
+Seismic Data Pre-load Manager
+4 Dip steered median filter
+Add Cube...
+Add 2D Data Set...
+Unload Checked...
+Category: Attribute.V
+Name: 4 Dip steered median filter
+Pack ID: 1
+Nr users: 1
+Memory consumption: 546.73 MB
+In-line range: 100 750 1
+Cross-line range: 300 1250 1
+T range: 0 1848 0.004
+Close Help
+
+
+===== [1.5.1 Bright Spot Detection and Visualization] page 117 =====
+[Section: 1.5.1 Bright Spot Detection and Visualization, Page: 117, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+1.5.1 Bright Spot Detection and Visualization
+What you should know about bright spot detection OpendTect
+Bright spots are seismic anomalies that are often related to hydrocarbons. How
+the seismic response varies as a result of a change in fluid-content depends on
+the geologic setting and rock-physics / fluid properties. Forward modeling helps
+to increase the understanding of the seismic behavior as a function of changes in
+rock and fluid properties. such understanding is important for selecting the
+optimal attributes and tools for qualitative and quantitative analysis of bright
+spots.
+OpendTect offers a range of pre- and post-stack analysis tools to investigate
+bright spots, especially in the domain of commercial plugins. Examples are seis-
+mic inversion plugins and hydrocarbon anomaly enhancement techniques such
+as Fluid Contact Finder and Seismic Feature Enhancement.
+Seismic attribute analysis is a simple and effective tool to enhance bright spots
+and to study their areal extent in 3 dimensions. In the exercise a gas-related
+bright spot is visualized in 3D using volume rendering of the energy attribute. The
+volume rendered object can be saved as a 3D object for further study, e.g. to com-
+pute the body's volume.
+- 117 -
+
+
+===== [1.5.1a Bright Spot] page 118 =====
+[Section: 1.5.1a Bright Spot, Page: 118, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+1.5.1a Bright Spot
+Required licenses: OpendTect.
+For a video of these exercises: OpendTect video resources
+- 118 -
+
+[Figure OCR p.118 #1]
+Exercise objective:
+Isolate an amplitude anomaly (bright-spot) using attribute analysis and visualize the anomaly in 3D using volume rendering
+
+Workflow:
+
+1. Launch the attribute set window: click on the Attribute 3D icon and select 3D.
+2. Define the Energy attribute with default parameters.
+
+Attribute Set 3D
+File
+Attribute set <not saved>
+Basic
+Energy
+Input Data 4 Dip steered median filter
+Select...
+Time gate (ms) -20 20
+Compute gradient Yes No
+Output Energy
+Energy [-28, +28]
+Attribute Name Energy [-28, +28]
+Add as new
+Save on Close
+Close
+Help
+
+
+===== [1.5.1a Bright Spot] page 119 =====
+[Section: 1.5.1a Bright Spot, Page: 119, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+3. Provide an attribute name as Energy [-28,+28] and press Add as new.
+
+Attribute set 3D
+File
+Attribute set <not saved>
+Basic
+Input Data 4 Dip steered median filter Select...
+Time gate (ms) -28 28
+Compute gradient Yes No
+Output Energy
+Defined
+attribute(s)
+appears
+here.
+Attribute Name Energy [-28,+28] Add as new
+Save on Close
+Close Help
+
+There are no restrictions on the length of the name; it may contain spaces. It is recommended to use a name that contains all essential information of the attribute. It helps you remember what this attribute does, and prevents having to go back to this attribute window to see the exact definition of the attribute.
+
+Workflow cont'd:
+
+4. Tick the Save on Close box and press Close.
+Alternatively, press the Save as icon and press Close.
+5. Provide a (new) name for the attribute set like my first attribute set and press OK.
+
+Attribute Name Energy [-28,+28] Add as new
+Save on Close
+Close Help
+
+OR
+File
+Add as new
+Close Help
+Select output Attribute
+Filter *
+Save Attribute as
+Name my first attribute set
+OK Cancel Help
+
+- 119 -
+
+
+===== [1.5.1a Bright Spot] page 120 =====
+[Section: 1.5.1a Bright Spot, Page: 120, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+6. In the tree, right-click on In-line and
+select Add Default Data.
+7. Change the inline position to 250: select
+the inline in the tree and type the position
+using the position toolbar.
+8. Add an extra attribute layer to inline 250:
+right-click on the inline number in the tree
+and go Add > Attribute.
+9. The attributes available are organized in
+three categories: Stored, Steering and
+Attributes (from the active attribute set and
+calculated on-the-fly).
+Go to the Attributes section, select your
+attribute Energy [-28, +28] and click Ok.
+
+Workflow cont'd:
+
+Results should look like this.
+
+- 120 -
+
+
+===== [1.5.1a Bright Spot] page 121 =====
+[Section: 1.5.1a Bright Spot, Page: 121, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+Color-bar
+
+Visualizing the results is almost as important as the results themselves. Therefore, try different color-bars for your attribute. Each attribute layer has its own color-bar.
+The color-bar is displayed by default above the 3D scene and can be edited by selecting a new color-scheme.
+
+1. Click on the attribute from the tree and change the color-bar.
+Try: Chimney, Faults and Grey scales.
+
+In-line
+250
+Energy [-28,+28]
+4 Dip steered ...
+
+Dip2
+Double Rainbow
+Double Tasty
+Energy
+Experimental
+Extremes
+Faults
+Flames
+Grey scales
+Greyn
+
+Workflow cont'd:
+
+2. Right-click on the color bar: select Manage...
+
+Edit color markers
+from the main window
+The color can be edited by double clicking on one black marker below the histogram. To add a new marker, double click at the position you want, select the appropriate color and click Ok. Drag the marker to change its position. Right-click on a marker and chose Remove color to delete it.
+From the table
+Right-click in the white section of the color-bar displayed under the histogram and chose Edit markers... In the table that pops up, the colors and position of every marker can be edited: for a specific marker, you can type in a new position and change the color by double-clicking on the used color. When right-clicking on a marker, you can either delete the selected marker or add a new one above or below.
+
+Flipped
+Ranges/Clipping ...
+Manage ...
+Set as default
+
+Add, remove, change color tables
+Color table Status
+Matteo ter... Default
+Matteo ter... Default
+Pastel Default
+Porosity Default
+Pressure Default
+Rainbow Default
+Rainbow ... Default
+Red-Whit... Default
+Red-Whit... Default
+SandShale Default
+Seismics Default
+Similarity Default
+SunRise Default
+Tasty Default
+UVQs Ex... Default
+Remove Import ...
+
+Segmentation None
+Undefined color Transp 0%
+Marker color
+Flip Save as ...
+
+OK Cancel Help
+
+- 121 -
+
+
+===== [1.5.1a Bright Spot] page 122 =====
+[Section: 1.5.1a Bright Spot, Page: 122, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+Segmented vs Continuous
+The color-bar can be continuous or
+segmented. When changing the Segmentation
+from None to fixed, you define the number of
+the segment. Segmented color-bars are in
+particular used when displaying a discrete
+attribute, for example a Neural Network result:
+one color corresponding to one class.
+
+Transparency
+The red line in the histogram represents the
+transparency: changing the transparency line
+alters the parts of the spectrum that are
+displayed. Drag the seeds up to modify the
+transparency. You need to have a seed at each
+extremity of the histogram: add new seeds by
+double-clicking on the red line and drag the
+seed laterally and vertically. To remove a seed,
+do ctrl+click on the seed.
+
+Manage ColorTable
+Add, remove, change color tables-
+Color table Status
+Matteo ter... Default
+Matteo ter... Default
+Pastel Default
+Porosity Default
+Pressure Default
+Rainbow Default
+Rainbow... Default
+Red-Wht... Default
+Red-Wht... Default
+SandShale Default
+Seismics Default
+Similarity Default
+SunRise Default
+Tasty Default
+UVQS Ex... Default
+Remove... Import ...
+Segmentation None
+Undefined color Transp 0%
+Marker color
+Flip Save as ...
+OK Cancel Help
+
+Workflow cont'd:
+
+3. Press Cancel to close the color-bar manager.
+
+The undefined color is the color that will be
+used for undefined values. You can adjust its
+transparency.
+
+The changes you are making are applied in the
+same time in your scene: you can actually QC
+the color-bar edition.
+
+Once you are done with the color-bar editing,
+you can save it with another name or overwrite
+the color-bar you were using (not
+recommended) by just clicking OK and
+Continue. If you do not wish to save the
+modifications, click on Cancel.
+
+Manage ColorTable
+Add, remove, change color tables-
+Color table Status
+Matteo ter... Default
+Matteo ter... Default
+Pastel Default
+Porosity Default
+Pressure Default
+Rainbow Default
+Rainbow... Default
+Red-Wht... Default
+Red-Wht... Default
+SandShale Default
+Seismics Default
+Similarity Default
+SunRise Default
+Tasty Default
+UVQS Ex... Default
+Remove... Import ...
+Segmentation None
+Undefined color Transp 0%
+Marker color
+Flip Save as ...
+OK Cancel Help
+
+- 122 -
+
+
+===== [1.5.1a Bright Spot] page 123 =====
+[Section: 1.5.1a Bright Spot, Page: 123, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+4. Right-click on the color-bar and select Set as default: it will set the specific color bar
+by default for all the attributes to be displayed that do not have a specific color bar
+attached to them.
+
+309857
+Flipped
+Ranges/Clipping ...
+Manage ...
+Set as default
+
+5. Optionally, right-click on a stored attribute (volume) in the tree and select Save
+Color Settings to save the color-bar and the color range: it will be used when loading
+this specific attribute again.
+
+Scene 1
+In-line
+250
+Energy [-28,+28]
+4 Dip steered
+Cross-line
+Z-slice
+Volume
+Random Line
+2D Line
+3D Horizon
+Select Attribute
+Save Color Settings
+Move
+Display
+Remove
+
+The color-bar right-click menu allows you to flip the color bar, change the
+Ranges/Clipping (to set the scaling values symmetrical around zero), Manage the color
+bar, Set as default.
+
+Workflow cont'd:
+
+Evaluate attribute parameters
+
+Now we are going to evaluate the Time gate parameter of the energy attribute by
+interactively (movie-style) evaluating its parameter settings:
+
+1. Open the Attribute Set window: click on the Attribute
+set icon and select 3D.
+2. Activate the Energy [-28,+28] attribute displayed on
+inline 250 in the tree.
+3. In the Attribute Set window, select the Energy attribute
+again and press the Evaluate attribute icon .
+
+In-line
+250
+Energy [-28,+28]
+4 Dip steered
+
+Evaluate attribute
+Set parameters
+Evaluate Time gate
+Initial value -28
+28
+Increment -4
+4
+Nr of steps 2
+Calculate
+Slice
+Store slices on 'Accept'
+Accept
+Help
+
+Attribute Set 3D
+File
+Attribute set <not saved>
+Energy [-28,+26]
+Basic
+Energy
+Input Data 4 Dip steered median filter
+Time gate (ms) -28
+28
+Compute gradient Yes No
+Output Energy
+
+- 123 -
+
+
+===== [1.5.1a Bright Spot] page 124 =====
+[Section: 1.5.1a Bright Spot, Page: 124, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+4. Select the parameter to evaluate: Time gate
+(in this case, there is only one type of
+parameter to evaluate so it is selected by
+default).
+5. Provide the parameters for the time gate as
+shown in the image on the right.
+6. Press the Calculate button.
+7. The slider becomes active once the on-the-
+fly processing is finished.
+Move the slider to see the results for a
+certain slider position, corresponding to a
+time gate in this case: observe the changes
+in the 3D scene (see the following slides, for
+instance).
+
+If an attribute is defined using a time gate and/or
+a step out, these parameters can be evaluated
+the same way.
+
+Evaluate attribute
+Set parameters
+Evaluate Time gate
+Initial value -4
+Increment -4
+Nr of steps 10
+Calculate
+Slice
+Store slices on 'Accept'
+Accept
+Help
+Slice
+Store slices on 'Accept'
+Time gate [-16,16]
+
+Workflow cont'd:
+8. Evaluate the attribute by moving the slider position.
+
+Time gate [-8,+8]ms
+
+Evaluate attribute
+Set parameters
+Evaluate Time gate
+Initial value -4
+Increment -4
+Nr of steps 10
+Calculate
+Slice
+Store slices on 'Accept'
+Time gate [-8,8]
+Accept
+Help
+
+- 124 -
+
+
+===== [1.5.1a Bright Spot] page 125 =====
+[Section: 1.5.1a Bright Spot, Page: 125, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+Time gate [-20,+20]ms
+Evaluate attribute
+Set parameters
+Evaluate Time gate
+Initial value -4 4
+Increment -4 4
+Nr of steps 10 Calculate
+Slice
+Store slices on 'Accept'
+Time gate [-20,20]
+Accept Help
+
+Workflow cont'd:
+Time gate [-36,+36]ms
+Evaluate attribute
+Set parameters
+Evaluate Time gate
+Initial value -4 4
+Increment -4 4
+Nr of steps 10 Calculate
+Slice
+Store slices on 'Accept'
+Time gate [-36,36]
+Accept Help
+
+If you Accept at this point, [-36,36]ms will become the time gate of the attribute that you were evaluating. In this manner, you decide the optimum time gate.
+You may also say that this might be a too large time gate for this feature when compared with a narrow time gate e.g. [-16,16]ms.
+
+- 125 -
+
+
+===== [1.5.1a Bright Spot] page 126 =====
+[Section: 1.5.1a Bright Spot, Page: 126, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+9. Once the best time gate has been decided, press
+Accept to update the attribute with the selected time
+gate.
+10. Update the attribute name according to the selected
+time gate
+11. Optionally, click on the icon to save the attribute set
+window or tick the Save on close box, and close the
+window.
+
+Evaluate attribute
+Set parameters
+Evaluate Time gate
+Initial value -4
+Increment -4
+Nr of steps 10 Calculate
+Slice
+Store slices on 'Accept'
+Time gate [-20,20]
+Accept ? Help
+
+Workflow cont'd:
+
+Create a seismic output
+
+So far, everything was done in memory. We are now going to calculate and store the
+Energy attribute on disk as an OpendTect volume.
+
+1. Click on the Create Seismic Output icon and select 3D or go to Processing >
+Create Seismic Output > Attribute > Single Attribute > 3D
+
+is Processing Scene View Utilities Help
+Create Seismic Output Attributes
+Create Horizon Output 2D <=> 3D
+Wells Angle Mute Function ...
+(Re-)Start Batch Job ... Bayesian Classification ...
+From Well Logs ...
+Dip Steering Prestack Processing
+GMT Mapping Tool ... Velocity
+HorizonCube Volume Builder ...
+0 Madagascar ... Re-sort Scanned SEG-Y ...
+Er SSIS
+4
+
+Single Attribute
+Multi Attribute ...
+MultiCube DataStore ...
+Along Horizon
+Between Horizons
+2D ...
+3D ...
+
+- 126 -
+
+
+===== [1.5.1a Bright Spot] page 127 =====
+[Section: 1.5.1a Bright Spot, Page: 127, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+2. Select Energy as the Quantity to output.
+3. Select a volume sub-selection:
+Inline range: 100 – 300, Crossline range: 900 –
+1150, Time range: 432 - 600 ms
+Press OK.
+4. Press Run to start the processing.
+
+Create Volume Attribute
+Quantity to output Energy [-16,+16]
+Volume subselection 100/900-300/1150 (43 samples)
+Null traces ● Discard ○ Pass
+Scale values: Shift/Factor
+Output Cube Energy [-16,+16]
+Batch execution Single Process
+Options
+Specify Position
+Volume subselection Range
+In-line Range 100 300 Step 1
+Cross-line Range 900 1150 Step 1
+Time Range (ms) 432 600 Step 4
+OK Cancel Help
+Run Cancel Help
+By default the processing is single-machine, To speed up, you can use the multi-machine processing (requires plugin).
+
+Workflow cont'd:
+
+Volume Rendering
+
+The objective of the last step of this exercise is to fully visualize the bright-spot in 3D.
+
+1. Right-click on Volume and Add. It will insert an empty volume in the tree which is
+centrally positioned in the scene.
+
+2. Position the volume: Right-click on <343-506 / 656-893 / 692-1156> and go to
+Display > Position.
+
+Volume
+4 Dip ...
+Add
+Add Color Blended
+4 Dip ...
+Volume
+✓ 343-506 / 656-893 / 692-1156
+<right-click>
+Random Line
+2D Line
+3D Horizon
+2D Horizon
+Fault
+FaultStickSet
+Add
+Display
+Duplicate
+Reset Manipulation
+Lock Treeitem
+Remove from Tree
+Histogram ...
+Properties ...
+Position ...
+
+- 127 -
+
+
+===== [1.5.1a Bright Spot] page 128 =====
+[Section: 1.5.1a Bright Spot, Page: 128, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+3. It will launch a position dialog: fill in the ranges:
+Inline range: 100 – 300, Crossline range 900 – 1150, Time range: 432 – 600ms.
+Press OK.
+
+4. Select Energy from the window in the Stored category and Press OK again.
+
+Positioning
+Specify the element’s position
+In-line Range 100 300
+Cross-line Range 900 1150
+Z Range (ms) 432 600
+OK Cancel Help
+
+Select
+Select Layer 1
+Stored
+Steering
+Attributes
+9-1 Similarity on FEF seismic
+9-2 Dip-steered diffusion filter
+9-3 Fault enhancement filter
+9-7 Thickness UVQ6 segment slice520
+9-8 UVQ6 Hor 4-8 segment
+energy [-28,+28]
+Filter *
+OK Cancel Help
+
+Workflow cont'd:
+
+5. Change the color-bar to Chimney and optionally adjust the color range.
+2800000 8100000 Chimney
+
+6. In Position mode , left-click (keep pressed) and drag to re-position the surfaces of
+the volume or just scroll through in this manner to view the contents.
+
+Attributes calculated on the fly can
+be displayed using the volume
+rendering. For large volumes, it is
+recommended to store them prior
+displaying to save time.
+
+- 128 -

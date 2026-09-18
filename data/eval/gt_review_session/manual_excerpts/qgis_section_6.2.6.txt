@@ -1,0 +1,302 @@
+
+
+===== [★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads] page 212 =====
+[Section: ★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads, Page: 212, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+10. Once you have completed the process for all the layers, right click on any layer and click Zoom to layer extent
+to focus the map to the area of interest.
+Now that we have converted OSM data to a UTM projection, we can begin our calculations.
+6.2.6 ★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and
+Roads
+QGIS allows you to calculate distances between any vector object.
+1. Make sure that only the roads_34S and buildings_34S layers are visible (to simplify the map while you’re
+working)
+2. Click on the Processing ► Toolbox to open the analytical core of QGIS. Basically, all algorithms (for vector
+and raster analysis) are available in this toolbox.
+3. We start by calculating the area around the roads_34S by using the Buffer algorithm. You can find it in the
+Vector Geometry group.
+198 Chapter 6. Module: Vector Analysis
+
+
+===== [★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads] page 213 =====
+[Section: ★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads, Page: 213, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+6.2. Lesson: Vector Analysis 199
+
+[Figure OCR p.213 #1]
+Processing Toolbox
+Q Search...
+Recently used
+Cartography
+Database
+File tools
+Graphics
+Interpolation
+Layer tools
+Network analysis
+Raster analysis
+Raster terrain analysis
+Raster tools
+Vector analysis
+Vector creation
+Vector general
+Vector geometry
+Add geometry attributes
+Aggregate
+Boundary
+Bounding boxes
+Buffer
+Centroids
+Check validity
+Collect geometries
+Concave hull (alpha shapes)
+Concave hull (k-nearest neighbor)
+Convert geometry type
+Convex hull
+Create layer from extent
+Create wedge buffers
+Delaunay triangulation
+Delete holes
+Densify by count
+Densify by interval
+Dissolve
+Drape (set z-value from raster)
+Drop M/Z values
+Eliminate selected polygons
+Explode lines
+Extend lines
+Extract specific vertices
+Extract vertices
+Filter vertices by m value
+Filter vertices by z value
+Fix geometries
+Geometry by expression
+Interpolate point on line
+Keep N biggest parts
+
+You can add more algorithms to the toolbox, enable additional providers. [close]
+
+
+===== [★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads] page 214 =====
+[Section: ★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads, Page: 214, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+Or you can type buffer in the search menu in the upper part of the toolbox:
+4. Double click on it to open the algorithm dialog
+5. Select roads_34S as Input layer, set Distance to 50 and use the default values for the rest of the parameters.
+200 Chapter 6. Module: Vector Analysis
+
+[Figure OCR p.214 #1]
+Strumenti di Processing
+buffer
+Geometria vettore
+Buffer
+Buffer multi-anello (distanza costante)
+Buffer su singolo lato
+Create wedge buffers
+Tapered buffers
+Variable width buffer (by m-value)
+GDAL
+Geoprocessing di Vettori
+Buffer su singolo lato
+Vettori buffer
+GRASS
+Raster (r.*)
+r.buffer
+r.buffer.lowmem
+Vettore (v.*)
+v.buffer
+SAGA
+Raster tools
+Raster buffer
+Raster proximity buffer
+Threshold raster buffer
+Vector general
+
+
+===== [★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads] page 215 =====
+[Section: ★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads, Page: 215, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+6. The default Distance is in meters because our input dataset is in a Projected Coordinate System that uses meter
+as its basic measurement unit. You can use the combo box to choose other projected units like kilometers,
+yards, etc.
+6.2. Lesson: Vector Analysis 201
+
+[Figure OCR p.215 #1]
+Buffer
+Parameters Log
+Buffer
+This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance.
+The segments parameter controls the number of line segments to use to approximate a quarter circle when creating rounded offsets.
+The end cap style parameter controls how line endings are handled in the buffer.
+The join style parameter specifies whether round, miter or beveled joins should be used when offsetting corners in a line.
+The miter limit parameter is only applicable for miter join styles, and controls the maximum distance from the offset curve to use when creating a mitered join.
+
+Input layer
+roads_34S [EPSG:32734]
+Selected features only
+Distance
+50,000000 meters
+Segments
+5
+End cap style
+Round
+Join style
+Round
+Miter limit
+2,000000
+Dissolve result
+Buffered
+[Create temporary layer]
+Open output file after running algorithm
+
+0%
+Cancel
+Help Run as Batch Process... Close Run
+
+
+===== [★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads] page 216 =====
+[Section: ★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads, Page: 216, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+Note
+If you are trying to make a buffer on a layer with a Geographical Coordinate System, Processing will warn
+you and suggest to reproject the layer to a metric Coordinate System.
+7. By default, Processing creates temporary layers and adds them to the Layers panel. You can also append the
+result to the GeoPackage database by:
+1. Clicking on the … button and choose Save to GeoPackage…
+2. Naming the new layer roads_buffer_50m
+3. Saving it in the vector_analysis.gpkg file
+8. Click on Run, and then close the Buffer dialog
+Now your map will look something like this:
+202 Chapter 6. Module: Vector Analysis
+
+[Figure OCR p.216 #1]
+Buffer
+Parameters Log
+Buffer
+Input layer
+roads_34S [EPSG:32734]
+This algorithm computes a buffer area for all the
+Selected features only
+features in an input layer, using a fixed or dynamic
+Distance
+distance.
+50,000000
+meters
+The segments parameter controls the number of
+Segments
+line segments to use to approximate a quarter circle
+5
+when creating rounded offsets.
+End cap style
+The end cap style parameter controls how line
+Round
+endings are handled in the buffer.
+Join style
+The join style parameter specifies whether round,
+Round
+miter or beveled joins should be used when
+Miter limit
+offsetting corners in a line.
+2,000000
+The miter limit parameter is only applicable for
+Dissolve result
+miter join styles, and controls the maximum
+Buffered
+distance from the offset curve to use when creating
+pkg' table="roads_buffer_50m" (geom)
+a mitered join.
+Open output file after running algorithm
+
+0%
+Cancel
+Help
+Run as Batch Process...
+Close
+Run
+
+
+===== [★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads] page 217 =====
+[Section: ★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads, Page: 217, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+If your new layer is at the top of the Layers list, it will probably obscure much of your map, but this gives you all the
+areas in your region which are within 50m of a road.
+Notice that there are distinct areas within your buffer, which correspond to each individual road. To get rid of this
+problem:
+1. Uncheck the roads_buffer_50m layer and re-create the buffer with Dissolve results enabled.
+6.2. Lesson: Vector Analysis 203
+
+[Figure OCR p.217 #1]
+Project Edit View Layer Settings Plugins Vector Raster Database Web Mesh Processing Help
+*tm_ch72 - QGIS
+Layers
+roads_34S
+schools_34S
+restaurants_34S
+roads_buffer_50m
+buildings_34S
+landuse_34S
+OpenStreetMap
+Browser
+Favorites
+Spatial Bookmarks
+Project Home
+Home
+/
+GeoPackage
+SpatiaLite
+PostGIS
+MSSQL
+DB2
+WMTS
+XYZ Tiles
+WCS
+Type to locate (Ctrl+K)
+Coordinate 2271541,-4028794
+Scale 1:51359
+Magnifier 100%
+Rotation 0,0°
+Render EPSG:3857
+
+
+===== [★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads] page 218 =====
+[Section: ★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads, Page: 218, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+2. Save the output as roads_buffer_50m_dissolved
+3. Click Run and close the Buffer dialog
+Once you have added the layer to the Layers panel, it will look like this:
+204 Chapter 6. Module: Vector Analysis
+
+[Figure OCR p.218 #1]
+Buffer
+Parameters Log
+Input layer
+roads_34S [EPSG:32734]
+Selected features only
+Distance
+50,000000 meters
+Segments
+5
+End cap style
+Round
+Join style
+Round
+Miter limit
+2,000000
+Dissolve result
+Dissolve result
+Python identifier: 'DISSOLVE' geom)
+Open output file after running algorithm
+
+Buffer
+This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance.
+
+The segments parameter controls the number of line segments to use to approximate a quarter circle when creating rounded offsets.
+
+The end cap style parameter controls how line endings are handled in the buffer.
+
+The join style parameter specifies whether round, miter or beveled joins should be used when offsetting corners in a line.
+
+The miter limit parameter is only applicable for miter join styles, and controls the maximum distance from the offset curve to use when creating a mitered join.
+
+0%
+Help Run as Batch Process... Cancel Close Run

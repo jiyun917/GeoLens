@@ -213,8 +213,7 @@
         "visible_elements": [
           "Attribute Set 3D window",
           "Attribute Type = Energy",
-          "Input Data = 4 Dip steered median filter",
-          "Time gate populated: -28 to +28",
+          "Time gate (ms) (-28, 28)",
           "Compute gradient = No",
           "Attribute Name field = 'Energy [-28,+28]'",
           "Add as new button (highlighted / ready)",
@@ -392,8 +391,8 @@
         "current_dialog": "Save Attribute Set (attribute-set naming dialog)",
         "visible_elements": [
           "Save Attribute Set dialog (triggered by Save on Close + Close)",
-          "Attribute set Name field = 'my first attribute set'",
-          "OK button",
+          "Name (my first attribute set)",
+          "OK",
           "Cancel button",
           "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
           "Attribute Set 3D",
@@ -477,7 +476,7 @@
         "current_dialog": "OpendTect Main Window (In-line default data added via right-click Add Default Data, inline position 250)",
         "active_menu": "Tree scene In-line context (Add Default Data just used)",
         "visible_elements": [
-          "OpendTect Main Window",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
           "Tree scene: In-line category with child node (inline 250) — result of right-click Add Default Data",
           "3D Scene showing an In-line slice at inline position 250 (Seismic_data / f3_demo default)",
           "No attribute overlay on the inline yet",
@@ -654,7 +653,7 @@
           "3D Scene: In-line slice at position 250 rendered with Energy attribute color mapping (bright-spot highlights visible)",
           "Color bar visible (Energy palette)",
           "Tree scene: In-line > 250 branch expanded with two child layers listed side by side: '4 Dip steered median filter' (base) and 'Energy [-28,+28]' (on-the-fly attribute) — each with its own checkbox",
-          "'Energy [-28,+28]' layer checkbox is checked (currently rendered on the inline)",
+          "Energy [-28,+28] (checked)",
           "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
           "Survey",
           "Analysis",
