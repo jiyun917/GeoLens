@@ -1,0 +1,27 @@
+{
+  "source": "data/eval/screenshots/opendtect__survey_setup__01/step_0.jpg",
+  "button_box_2d_norm1000": [
+    60,
+    470,
+    85,
+    495
+  ],
+  "window_box_2d_norm1000": [
+    0,
+    0,
+    1000,
+    1000
+  ],
+  "button_crop_px": [
+    872,
+    31,
+    980,
+    117
+  ],
+  "window_crop_px": [
+    0,
+    0,
+    1920,
+    1032
+  ]
+}

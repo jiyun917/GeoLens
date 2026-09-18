@@ -57,3 +57,9 @@ NEXT_SESSION_TODO.md
 
 # v3 bge-m3 index (rebuild with scripts/reembed_index.py)
 data/chromadb_v3/
+data/chromadb_v4/
+
+# v3 dev loop scratch (scenario subsets copied per run, run stdout captures)
+data/eval/scenarios/.dev_opendtect/
+data/eval/scenarios/.qgis_pilot_only/
+data/eval/results/*.out

@@ -28,6 +28,12 @@ def add_chunks(manual_id: str, ids: list, documents: list, metadatas: list, embe
 
 
 def search(manual_id: str, query_embedding: list, top_k: int = 5):
+    from . import stage_timer
+    with stage_timer.timed("vector_search"):
+        return _search_impl(manual_id, query_embedding, top_k)
+
+
+def _search_impl(manual_id: str, query_embedding: list, top_k: int = 5):
     collection = get_collection(manual_id)
     results = collection.query(
         query_embeddings=[query_embedding],
@@ -37,6 +43,12 @@ def search(manual_id: str, query_embedding: list, top_k: int = 5):
 
 
 def search_by_section(manual_id: str, section: str, chunk_indices: list[int]) -> dict:
+    from . import stage_timer
+    with stage_timer.timed("neighbor_fetch"):
+        return _search_by_section_impl(manual_id, section, chunk_indices)
+
+
+def _search_by_section_impl(manual_id: str, section: str, chunk_indices: list[int]) -> dict:
     """
     Retrieve specific chunks by section name and chunk_index values.
     Used for neighbor chunk expansion in LightRAG dual-level retrieval.
@@ -60,6 +72,12 @@ def search_by_section(manual_id: str, section: str, chunk_indices: list[int]) ->
 
 
 def get_chunks_by_ids(manual_id: str, ids: list) -> dict:
+    from . import stage_timer
+    with stage_timer.timed("chunk_fetch"):
+        return _get_chunks_by_ids_impl(manual_id, ids)
+
+
+def _get_chunks_by_ids_impl(manual_id: str, ids: list) -> dict:
     """Fetch chunks by their ChromaDB document ids. Used by the procedural
     state-path retriever to materialize workflow-node linked_chunks. Returns
     {"documents": [...], "metadatas": [...]} ordered to match the input ids

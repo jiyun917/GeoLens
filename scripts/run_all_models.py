@@ -33,7 +33,7 @@ PYTHON = ROOT / ".venv" / "Scripts" / "python.exe"
 
 
 def run_one(model: str, replicate: int, judge: str | None, backends: list[str] | None = None,
-            tag: str | None = None) -> tuple[int, str]:
+            tag: str | None = None, scenarios: str | None = None) -> tuple[int, str]:
     """Invoke bench_runner once. Returns (exit_code, out_path)."""
     ts = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%S")
     suffix = f"_{tag}" if tag else ""
@@ -48,6 +48,8 @@ def run_one(model: str, replicate: int, judge: str | None, backends: list[str] |
         cmd += ["--judge", judge]
     if backends:
         cmd += ["--backends", *backends]
+    if scenarios:
+        cmd += ["--scenarios", scenarios]
     print(f"\n{'=' * 70}")
     print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] Starting {model.upper()} replicate {replicate}")
     print(f"{'=' * 70}")
@@ -69,6 +71,9 @@ def main():
                     help="Subset of backends to run (default: all). Pass e.g. --backends no_rag")
     ap.add_argument("--tag", default=None,
                     help="Optional suffix included in output filename to distinguish partial runs")
+    ap.add_argument("--scenarios", default=None,
+                    help="Scenario directory passed to bench_runner (v3: the OpendTect-only dev-set dir, "
+                         "so the QGIS test scenario is run only by run_qgis_pilot.py)")
     args = ap.parse_args()
 
     models = [m.strip().lower() for m in args.models.split(",") if m.strip()]
@@ -82,7 +87,7 @@ def main():
     summary: list[tuple[str, int, int, str]] = []
     for m in models:
         for r in range(1, args.repeats + 1):
-            code, out = run_one(m, r, args.judge, backends=args.backends, tag=args.tag)
+            code, out = run_one(m, r, args.judge, backends=args.backends, tag=args.tag, scenarios=args.scenarios)
             summary.append((m, r, code, out))
             if code != 0:
                 print(f"\n[WARN] {m} replicate {r} exited with code {code} — continuing.")

@@ -27,16 +27,34 @@
         ]
       },
       "linked_chunks": [
-        "b7adc791af824d38ae7a6beeb15a6ccd",
-        "e0b9063bac6744a28b16817c1bb910f0",
-        "6157ae534c83463bb99b0a02f623f213"
+        "da51498f6b7445b7b3ff9bfcf79e26b6",
+        "c45e16fc52d04adf99556d7fb07c9ad3",
+        "f7998ab5cba74fd890670570ed6f9d66"
       ],
       "parameters": [],
       "signature_audit": {
         "changed_on": "2026-08-07",
         "reason": "unified3 signature refinement (over-absorption fix). Original signature had generic keywords like 'Analysis', 'Attributes', 'Attribute Set 3D' that leaked into steps 0-3 (where the Attribute Set 3D window is already open). Narrowed to pre-open state markers only: 'menu (unclicked)', 'toolbar icon (unclicked)', 'no attribute dialog open'. No scenario step captures this pre-open state, so this node should route rarely — that is intended.",
         "impact_on_prior_runs": "unified3 attribute scenario: this node was not a primary attractor. Change is mostly protective (prevents accidental absorption of step 0). Existing 2 scenarios do not touch this workflow."
-      }
+      },
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "b7adc791af824d38ae7a6beeb15a6ccd",
+          "e0b9063bac6744a28b16817c1bb910f0",
+          "6157ae534c83463bb99b0a02f623f213"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.5.1a",
+        "1.5.1 ",
+        "1.5 "
+      ]
     },
     {
       "id": "seismic_attribute_02_open_attribute_tool",
@@ -63,16 +81,32 @@
         ]
       },
       "linked_chunks": [
-        "e0b9063bac6744a28b16817c1bb910f0",
-        "6157ae534c83463bb99b0a02f623f213",
-        "5159644ebc2a4a0abae99f97e39957d3"
+        "50d3b459232b4c59bfa573a07b629216",
+        "f7998ab5cba74fd890670570ed6f9d66",
+        "637ea91dc96046d3b3e588b327fd96ac"
       ],
       "parameters": [],
       "signature_audit": {
         "changed_on": "2026-08-07",
         "reason": "unified3 signature refinement. Original signature described the batch path (Processing > Create Seismic Attribute dialog) which does not match the §1.5.1a on-the-fly path used by the attribute_computation scenario step_0. Rewritten to match the on-the-fly opening state: window just opened, empty set, Type dropdown at default, parameter panel disabled. 'freshly opened' + 'empty attribute set' + 'about to choose an Attribute Type' are step_0-unique phrases; steps 1-4 have Type already selected and parameters filled in, so these keywords will not leak.",
         "impact_on_prior_runs": "unified3 attribute scenario step_0: was captured by _04_configure (over-absorption). This refactor targets step_0 back to _02. Existing scenarios: unaffected."
-      }
+      },
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "e0b9063bac6744a28b16817c1bb910f0",
+          "6157ae534c83463bb99b0a02f623f213",
+          "5159644ebc2a4a0abae99f97e39957d3"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.5.1a"
+      ]
     },
     {
       "id": "seismic_attribute_03_select_type",
@@ -99,9 +133,9 @@
         ]
       },
       "linked_chunks": [
-        "5159644ebc2a4a0abae99f97e39957d3",
-        "4367389c21594d7eaad7a1a6e96870db",
-        "6157ae534c83463bb99b0a02f623f213"
+        "c45e16fc52d04adf99556d7fb07c9ad3",
+        "50d3b459232b4c59bfa573a07b629216",
+        "637ea91dc96046d3b3e588b327fd96ac"
       ],
       "parameters": [
         {
@@ -119,7 +153,23 @@
         "changed_on": "2026-08-07",
         "reason": "unified3 signature refinement. Original keywords 'Similarity/Curvature/Frequency/Energy/Instantaneous' were too generic and had low match density on step_1's actual visual state (which specifies Energy + Input Data + Compute gradient default). Refined to step_1-unique phrases: 'Energy (selected)', 'Input Data = 4 Dip steered median filter', 'default values, not yet edited', 'about to enter Time gate'. These do not appear in step_0 (Type not yet chosen) or step_2 (Time gate already edited).",
         "impact_on_prior_runs": "unified3 attribute scenario step_1: was captured by _04_configure with 5% pass rate (over-absorption + wrong context). Refactor targets step_1 back to _03. Existing scenarios: unaffected."
-      }
+      },
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "5159644ebc2a4a0abae99f97e39957d3",
+          "4367389c21594d7eaad7a1a6e96870db",
+          "6157ae534c83463bb99b0a02f623f213"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.5.1a"
+      ]
     },
     {
       "id": "seismic_attribute_04_configure",
@@ -150,9 +200,9 @@
         ]
       },
       "linked_chunks": [
-        "5159644ebc2a4a0abae99f97e39957d3",
-        "d16403884b2c4abc886c2ca223ed9076",
-        "dd88e41c323c41a08e8f679a3bf99281"
+        "50d3b459232b4c59bfa573a07b629216",
+        "c45e16fc52d04adf99556d7fb07c9ad3",
+        "637ea91dc96046d3b3e588b327fd96ac"
       ],
       "parameters": [
         {
@@ -175,7 +225,23 @@
         "changed_on": "2026-08-07",
         "reason": "unified3 signature refinement — CRITICAL over-absorption fix (결함 #10). Original signature had 12 broad keywords (Time gate, Window, Step out, Parameter, Attribute Name, Add as new, Save on Close, Save Attribute Set, attribute set name, Close, my first attribute set) that matched steps 0-3 all at confidence 0.91, but only step 2-4 are this node's actual scope. Result: step_1 routed here at 5% pass rate. Refactor narrows to step_2-4-unique phrases using specific values ('-28 to +28', 'Energy [-28,+28]', 'CHECKED', 'about to click Close'/'about to click OK'). Step_0 (empty set) and step_1 (Type=Energy, default values not edited) do not contain these specific value strings, so this node will no longer absorb them.",
         "impact_on_prior_runs": "unified3 attribute scenario: absorbed 76 steps at 48.7% pass, especially step_1 at 5% pass. Refactor should retain steps 2-4 (~60 steps) at higher confidence, release steps 0-1 to _02/_03. Existing scenarios: unaffected (no survey_setup or 3d_visualization step uses these specific values)."
-      }
+      },
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "5159644ebc2a4a0abae99f97e39957d3",
+          "d16403884b2c4abc886c2ca223ed9076",
+          "dd88e41c323c41a08e8f679a3bf99281"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.5.1a"
+      ]
     },
     {
       "id": "seismic_attribute_05_compute",
@@ -200,16 +266,32 @@
         ]
       },
       "linked_chunks": [
-        "5159644ebc2a4a0abae99f97e39957d3",
-        "e0b9063bac6744a28b16817c1bb910f0",
-        "6157ae534c83463bb99b0a02f623f213"
+        "c45e16fc52d04adf99556d7fb07c9ad3",
+        "c441d9e77be34ae8bcd601b92898ee44",
+        "cdeee937502c4747b64640915a6f68b1"
       ],
       "parameters": [],
       "signature_audit": {
         "changed_on": "2026-08-07",
         "reason": "unified3 signature refinement — narrowing to batch-only. Original keywords 'Go/Start/Running/Processing' were too generic ('Processing' menu keyword leaked). Rewritten to batch-specific: 'Batch Processing dialog', 'Go button', 'Running batch', 'stored attribute volume'. attribute_computation scenario is on-the-fly path, so this node should score 0 for all its steps — that is correct behavior.",
         "impact_on_prior_runs": "unified3 attribute scenario: 0 hits before (on-the-fly path skips this). Should remain 0 hits after."
-      }
+      },
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "5159644ebc2a4a0abae99f97e39957d3",
+          "e0b9063bac6744a28b16817c1bb910f0",
+          "6157ae534c83463bb99b0a02f623f213"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.5.1a"
+      ]
     },
     {
       "id": "seismic_attribute_06_display",
@@ -249,16 +331,32 @@
         ]
       },
       "linked_chunks": [
-        "5159644ebc2a4a0abae99f97e39957d3",
-        "6093080a64164f73b64be2498e283d62",
-        "5f0e69d5130143039558bbb124cf4960"
+        "76d568de875f4cee82851480f621738a",
+        "637ea91dc96046d3b3e588b327fd96ac",
+        "50d3b459232b4c59bfa573a07b629216"
       ],
       "parameters": [],
       "signature_audit": {
         "changed_on": "2026-08-07",
         "reason": "unified3 signature refinement — CRITICAL absent-node fix, second iteration. First iteration used generic phrases and was outcompeted by d3_visualization_02_add_inline (step 5) and fault_interpretation_02_display (step 7). Diagnosis via top-k probe: my node ranked 6th/8th, not in top-3 for LLM rerank. Second iteration replaces generic keywords with dense step-5/6/7-unique quoted phrases: 'on-the-fly energy overlay', 'no attribute overlay on the inline yet', 'prepares the display target', '\\'Select Layer 2\\'', '\\'Energy [-28,+28]\\'', 'energy attribute color mapping', 'bright-spot highlights', 'color bar visible (energy palette)', 'In-line > 250 branch expanded'. Reduced UI elements to 2 and dialog to a broad-matching '3D Scene' (matches all three target steps' vs_text via 'in-line slice at inline position 250' or '3d scene rendered' substrings). Result: expected top-3 for steps 5, 6, 7.",
         "impact_on_prior_runs": "unified3 attribute scenario: 0 hits before. Refactor v2 targets steps 5-7 routed here. Existing scenarios (survey_setup, 3d_visualization): none of the added quoted phrases ('Energy', 'attribute overlay', 'bright-spot', 'Select Layer 2', 'attribute rendered') appear in those scenarios' visual_states, so no leakage. '3D Scene' as dialog is broad but numerator will be near 0 for non-attribute scenarios (only dialog matches, no keywords)."
-      }
+      },
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "5159644ebc2a4a0abae99f97e39957d3",
+          "6093080a64164f73b64be2498e283d62",
+          "5f0e69d5130143039558bbb124cf4960"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.5.1a"
+      ]
     },
     {
       "id": "seismic_attribute_07_qc_analyze",
@@ -282,16 +380,32 @@
         ]
       },
       "linked_chunks": [
-        "e0b9063bac6744a28b16817c1bb910f0",
-        "43b91cf526054c94b255bddc16ec0f35",
-        "6157ae534c83463bb99b0a02f623f213"
+        "c45e16fc52d04adf99556d7fb07c9ad3",
+        "f7998ab5cba74fd890670570ed6f9d66",
+        "93904f3776bf4ae497ccdb4d7d32fd5d"
       ],
       "parameters": [],
       "signature_audit": {
         "changed_on": "2026-08-07",
         "reason": "unified3 signature refinement — narrow to QC-specific vocabulary to prevent leakage. Original keywords 'Analyze/Interpret/Statistics' were generic. Rewritten to 'Attribute Statistics', 'histogram', 'amplitude distribution' which do not appear in any current scenario.",
         "impact_on_prior_runs": "0 hits before, 0 hits expected after."
-      }
+      },
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "e0b9063bac6744a28b16817c1bb910f0",
+          "43b91cf526054c94b255bddc16ec0f35",
+          "6157ae534c83463bb99b0a02f623f213"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.5.1a"
+      ]
     }
   ],
   "edges": [

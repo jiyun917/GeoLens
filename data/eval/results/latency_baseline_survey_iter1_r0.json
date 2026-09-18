@@ -1,0 +1,858 @@
+{
+  "started_at": "2026-09-18T02:15:25.275965Z",
+  "scenarios": [
+    {
+      "scenario_id": "opendtect__survey_setup__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "setup",
+      "difficulty": "medium",
+      "backends": {
+        "vanilla_vector": {
+          "backend": "vanilla_vector",
+          "n_steps": 4,
+          "step_accuracy": 1.0,
+          "hallucination_rate": 0.0,
+          "faithfulness": 1.0,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 9.553,
+          "mean_cost_usd": 0.012194,
+          "total_cost_usd": 0.048777,
+          "mean_aux_cost_usd": 0.0,
+          "total_aux_cost_usd": 0.0,
+          "mean_cost_total_usd": 0.012194,
+          "total_aux_calls": 0,
+          "scorer_version": "v3",
+          "total_input_tokens": 28309,
+          "total_output_tokens": 40,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": null,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "새 survey 아이콘을 클릭합니다.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 15.189,
+              "latency_wall_sec": 15.189,
+              "stage_latency": {
+                "embed": {
+                  "sec": 6.922,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.205,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.17,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 7.889,
+                  "n": 1
+                }
+              },
+              "context_chars": 16582,
+              "context_block": "[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelect Cancel ?\n\n[Figure OCR p.21 #2]\nWorkflow cont'd:\n\n3. Specify a Survey name and\n\n(a) select Scan SEG-Y file(s),\n\n(b) set Time for Z Domain,\n\n(c) Press Next.\n\nOpendTect display scenes are in Time or Depth. Transformation is done on-the-fly using a given velocity model. In the Survey Setup you choose the primary Z Domain. In the case of depth survey, Z Domain should be Depth.\n\nCreate New Survey\nSpecify new survey parameters\nSurvey name My New Survey\nAvailable data ☑ 3D ☑ 2D ☐ Wells\nInitial setup\nScan Navigation Data\nCopy from other survey\nRead from Survey Setup file\nScan VDS file\nScan ZGY file\nScan SEG-Y file(s)\nScan LAS Well Data\nGet from Petrel\nEnter by hand\nZ Domain ⦿ Time ○ Depth\nNext Cancel ?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nWorkflow cont'd:\n5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nThe bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.\n\n- 22 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation Notes Log\nIn-line range : 100 - 750 - 1; Total: 651\nCross-line range : 300 - 1250 - 1; Total: 951\nZ range (ms) : 4 - 1848 - 4; Total: 462\nInl/Crl bin size : 25.00 / 25.00 (m/line)\nCRS : Unlocated XY\nArea : 386.93 (sq Km)\nSurvey type : Both 2D and 3D\nIn-line Orientation : 88.40 Degrees from N\nLocation : C:\\Surveys\\My_New_Survey\n\nSelect Cancel ?\n\nWorkflow cont'd:\n\n15. Keep the default Yes (import) toggled on, in front of Copy data. Optionally, it is possible to make a link to the input SEG-Y file in OpendTect.\n16. Specify an Output Cube name (by default name of the input file is copied here).\n17. Press Import.\n\nImport 3D Volume\nImporting C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\nImport as OpendTect CBVS (copy&import) SEGYDirect (scan&link)\nVolume subselection - Select ...\nNull traces Discard Pass\nScale values: Shift/Factor\nOutput Cube Seismic_data Select ... CBVS Depth\nExecute in Batch Options ...\nImport Cancel ?\n\n- 25 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y]\n[Section: 1.2.2b Load SEG-Y, Page: 29, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2b Load SEG-Y\nRequired licenses: OpendTect.\n- 29 -\n\n[Figure OCR p.29 #1]\nExercise objective:\nLoad a seismic SEG-Y volume in OpendTect.\n\nWorkflow:\n1. Go to Survey > Import >\nSeismic > SEG-Y > 3D\nor click on the SEG-Y import\nicon SEG-Y in the OpendTect\nmain toolbar.\n\nSurvey\nAnalysis\nProcessing\nScene\nView\nUtilities\nTerraNubis\nHelp\n\nSelect/Setup ...\nSession\nImport\nExport\nManage\nPre-load\n\nRestart\nExit\n\nAttribute Set\nColor Table ...\nCross-plot Data\nFaults\nFaultStickSets\nFaultSet\nGeobody\nHorizons\nMute Functions\nNavigation Data / 2D Geometry\nPointSets/Polygons\nProbability Density Functions\nSeismic Data\nVelocity Functions\nWavelets\nWells\nPre-Trained Model ...\nShapefile ...\nHorizonCube Data ...\nPrestack Events ...\n\nSEG-Y\nOpen VDS ...\nOpen ZGY ...\nCBVS\nSimple File\nPetrel ...\nGPR: DZT ...\n\n2D ...\nPrestack 2D ...\n3D ...\nPrestack 3D ...\n\n[Figure OCR p.29 #2]\nWorkflow cont'd:\n2. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *wildcard\n\nSEG-Y revision\nData format\nNumber of samples\nZ range\nIn-line range\nCross-line range\nX-coordinate range\nY-coordinate range\n\n0\n\nSelect (one of) the SEG-Y file(s)\n<< F3_Dem... > Rawdata >\nOrganize New folder\nDesktop\nDocuments\nDownloads\nMusic\nPictures\nVideos\nOS (C:)\nd29 (\\\\192.16\nd25 (\\\\192.16\nd34 (\\\\192.16\nd46 (\\\\192.16\nd39 (\\\\192.16\nd52 (\\\\192.16\nusers (\\\\192.1\ndata (\\\\192.1\n\nName\nFaults\nSurface_data\nWell_data\nSeismic_data.sgy\n\nSearch Rawdata\n\n1000\nUse I/C\nUse (X,Y)\n\n0.1%\nZeros\n\nFile name: Seismic_data.sgy\nSEG-Y files (*.sgy *.SGY *.segy)\nOpen\nCancel\n\nClose\n?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 24, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n11. Click on OK. Optionally, click on the icon to save the import set-up parameters.\n\nExtract Survey Setup from SEG-Y\nInput file *=wildcard C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy Select ... Edit ...\nData type 3D Seismic Data\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N Select ...\n\nFull scan result\nSource Actually use\nSEG-Y revision 1\nRevision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (600515 traces) From header 462\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004 1000 scale XY\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline numt\" 4 bytes\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Crosslin\" 4 bytes\nX-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - \"X coordinate\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - \"Y coordinate\" 4 bytes\n\nResulting survey setup\n750/300 750/1250\n100/300 100/1250\n0.1%\nZeros\nValue\n-10000 -5000 0 5000\nOK Cancel ?\n\nWorkflow cont'd:\n\n12. Survey definition is set now. Click on OK to proceed further.\n\nEdit Survey Parameters\nSurvey name My new Survey\nLocation on disk C:\\Surveys\nSurvey type Both 2D and 3D\nRanges/coordinate settings Enter below\nSurvey ranges Coordinate settings I/C to X/Y transformation Coordinate System\n\nIn-line range 100 750 Step 1 Nr. In-lines: 651\nCross-line range 300 1250 Step 1 Nr. Cross-lines: 951\nZ range 4 1848 Step 4 millisecond\nDisplay depths in Meter Feet\nSeismic Reference Datum (m) 0\n\nApply\nOK Cancel ?\n\nFree space on disk: 52.56 GB\n\n- 24 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n6. Optionally, click on the icon to scan the entire input SEG-Y file.\n7. Click on the icon to examine in detail, first '1000' traces (changeable) of the file.\n\nEdit option can be used if the SEG-Y\nfile needs to be modified. You can\nupdate binary headers and trace\nheaders using mathematical formulae\nand information from other headers.\n\nInput file *-wildcard (C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\nData type 3D Seismic Data\nCoordinate System [EPSG:23031] ED50 / UTM zone 31N\nFull scan result\nSource\nSEG Y revision 1 Revision 1\nData format 3- Integer (16 bits) From file header\nNumber of samples 462 (600515 traces) From header 462\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) -\"Inline num\" 4 bytes scale XY\nCross-line range 300 - 1250 From header Crossline (byte 193) -\"Crosslin\" 4 bytes\nX-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - \"X coordinat\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - \"Y coordinat\" 4 bytes\nSelect...\nActually use\n\nScanning the entire SEG-Y file\nis useful when the survey\ngeometry extracted from the\nquick scan looks doubtful.\n\nResulting survey setup\n750/1250\n100/300 100/1250\n0.1%\nZeros\n-10000 -5000 0 5000\nValue\nOK Cancel\n\nWorkflow cont'd:\n8. Examiner window:\nUse this to find out\nwhat is inside the file.\n9. Check the Inline,\nCrossline and X/Y\ncoordinates : find the\ncorresponding byte\nand observe the\nassociated plot.\n10. Optionally, check\nSeismic viewer and\nhistogram windows.\n\nFile header in\nCor1\nCor1\nBin\nEPSG:23031\nIn-line: in: 1\nCross-Line: in: 1\nZ (ms): in: 4\nDump of EBCIDIC and\nBinary headers\n\nIn-line byte: 189-192\nCross-line byte: 193-196\nX-Coord byte: 181-184\nY-Coord byte: 185-188\n\ntracl (trace sequence number within line)\n1 [tracl] 1 2 3\n5 [tracr] 1 2 3\n9 [fldr] 100 100 100\n13 [tracf] 0 0 0\n17 [ep] 0 0 0\n21 [cdp] 300 301 302\n25 [cdpt] 0 0 0\n29 [trid] 1 1 1\n\nTrace header name +\nbyte position.\n\nTrace header Plot\nTrace / Step 1 1\n\nFirst 1000 Trace header Nos.\nTotal traces: 600515\nRange: [1,951] (N=1000)\n\nClose ?\nC:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\n\n- 23 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 26, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n18. Once the import is finished, press OK on the notification window. Next, OpendTect will\nautomatically open the option to change the Z-scaling of the newly created survey. Move\nthe slider to set an appropriate Z scaling factor and press OK.\nInformation\nThe cube is available for work.\nThe cube has varying cross-line ranges.\nIn-line range: 100 - 750 (step 1).\nX-line range: 300 - 1250 (step 1).\nZ start: 0.004 step: 0.004\nNumber of samples: 462\nGaps: Gaps present.\nOK\nZ Scaling\nSet Z scaling factor\nApparent velocity (m/s)\n18425\nFit to scene!\nTo Home\nSave as default\nOK ?\n\nWorkflow cont'd:\n19. Check in the seismic manager the\nnewly imported cube; Survey >\nManage > Seismic > 3D.\nOpendTect Pro V7.2.3 (Windows) *UPDATE AVAILABLE!* My New Survey (tree project) -\nSurvey Analysis Processing Scene View Utilities Terramodel Help\nSection\nImport\nExport\nManage ▸\nPre-loc\nRestart\nExit\nAttribute Solu.\nColor Tables ...\nCross plot Data ...\nFaults ...\nFaultsStickSets ...\nFaultset ...\nGeobody ...\nGeometry 2D ...\nGeometry 3D ...\nHorizons\nLayer Properties ...\nPointSets/Polygons ...\nProbability Density Functions ...\nRandom Lines ...\nSeismic Data ▸\nProstack Seismic Data\nSessions ...\nStratigraphy ...\nShapefile ...\nWavelets ...\nWells ...\nMachine Learning\nSeismic ...\nSTI like ...\nMistic Corrections\nHorizonCube\nSSIS Interpretations\n2D\n3D\nManage 3D Seismics\nFilter\n> Seismic_data <\nOpendTect automatically\nmarks the imported seismic\nvolume as the default data.\nIn-line range: 100 - 750 [1]\nCross-line range: 300 - 1250 [1]\nArea: 375.31 (sq km)\nTime range(ms): 4 - 1040 [4]\nStorage: 16 bit signed\nFile name: Seismic_data.cbvs\nLocation: C:\\Surveys\\My_New_Survey\\Seismics\nSize: 540.64 MB\nLast modified: Fri 20 Aug 2021, 17:01:53\nCreated by: assia\nCreated at: Fri 20 Aug 2021, 17:00:39\nCheck info on seismic volume; e.g.\ninline/crossline ranges, storage etc.\nClose ?\nFree space on disk: 52.51 GB\n\n- 26 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y] (adjacent context)\n[Section: 1.2.2b Load SEG-Y, Page: 30, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n3. The import wizard makes a quick scan of part of the seismic volume and automatically fills in relevant parameters required for import.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *=wildcard C:\\Surveys\\T3_Demo_2023\\Rawdata\\Seismic_data.sgy\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N\nQuick scan result Source Actually use\nSEG-Y revision 1 Revision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (500515 traces) From header\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline\" 4 bytes Use I/C\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Cl\" 4 bytes Use (X,Y)\nX-coordinate range 605835.52 - 629122.55 Calculated Xcdp (byte 181) - \"X coo\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.28 Calculated Ycdp (byte 185) - \"Y coo\" 4 bytes\n0.1%\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nIn the bottom part, histogram of seismic amplitudes of traces used for the quick scan can be seen.\nZeros\nNext >> Close ?\n\nWorkflow cont'd:\n4. Optionally, click on the icon to scan the entire input SEG-Y file.\n5. Click on the icon to examine in detail, first '1000' traces (changeable) of the file.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *=wildcard C:\\Surveys\\T3_Demo_2023\\Rawdata\\Seismic_data.sgy\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N\nQuick scan result Source Actually use\nSEG-Y revision 1 Revision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (500515 traces) From header\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline\" 4 bytes\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Cl\" 4 bytes\nX-coordinate range 605835.52 - 629122.55 Calculated Xcdp (byte 181) - \"X coo\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.28 Calculated Ycdp (byte 185) - \"Y coo\" 4 bytes\nNow in the bottom part, histogram of seismic amplitudes of all the traces in the input SEG-Y volume can be seen.\n0.1%\nZeros\nNext >> Close ?\n\n- 30 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nTotal traces: 600515\nRange: [1,951] (N=1000)\n\nClose ?\nC:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\n\n- 23 -",
+              "input_tokens": 7051,
+              "output_tokens": 8,
+              "thoughts_tokens": 299,
+              "cost_usd": 0.011884,
+              "model": "gemini",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.011884,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false
+            },
+            {
+              "step_index": 1,
+              "response": "Survey name 텍스트 필드에 My_F3_Survey를 입력합니다.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 6.562,
+              "latency_wall_sec": 6.562,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.168,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.245,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 6.143,
+                  "n": 1
+                }
+              },
+              "context_chars": 16582,
+              "context_block": "[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelect Cancel ?\n\n[Figure OCR p.21 #2]\nWorkflow cont'd:\n\n3. Specify a Survey name and\n\n(a) select Scan SEG-Y file(s),\n\n(b) set Time for Z Domain,\n\n(c) Press Next.\n\nOpendTect display scenes are in Time or Depth. Transformation is done on-the-fly using a given velocity model. In the Survey Setup you choose the primary Z Domain. In the case of depth survey, Z Domain should be Depth.\n\nCreate New Survey\nSpecify new survey parameters\nSurvey name My New Survey\nAvailable data ☑ 3D ☑ 2D ☐ Wells\nInitial setup\nScan Navigation Data\nCopy from other survey\nRead from Survey Setup file\nScan VDS file\nScan ZGY file\nScan SEG-Y file(s)\nScan LAS Well Data\nGet from Petrel\nEnter by hand\nZ Domain ⦿ Time ○ Depth\nNext Cancel ?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nWorkflow cont'd:\n5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nThe bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.\n\n- 22 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation Notes Log\nIn-line range : 100 - 750 - 1; Total: 651\nCross-line range : 300 - 1250 - 1; Total: 951\nZ range (ms) : 4 - 1848 - 4; Total: 462\nInl/Crl bin size : 25.00 / 25.00 (m/line)\nCRS : Unlocated XY\nArea : 386.93 (sq Km)\nSurvey type : Both 2D and 3D\nIn-line Orientation : 88.40 Degrees from N\nLocation : C:\\Surveys\\My_New_Survey\n\nSelect Cancel ?\n\nWorkflow cont'd:\n\n15. Keep the default Yes (import) toggled on, in front of Copy data. Optionally, it is possible to make a link to the input SEG-Y file in OpendTect.\n16. Specify an Output Cube name (by default name of the input file is copied here).\n17. Press Import.\n\nImport 3D Volume\nImporting C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\nImport as OpendTect CBVS (copy&import) SEGYDirect (scan&link)\nVolume subselection - Select ...\nNull traces Discard Pass\nScale values: Shift/Factor\nOutput Cube Seismic_data Select ... CBVS Depth\nExecute in Batch Options ...\nImport Cancel ?\n\n- 25 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y]\n[Section: 1.2.2b Load SEG-Y, Page: 29, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2b Load SEG-Y\nRequired licenses: OpendTect.\n- 29 -\n\n[Figure OCR p.29 #1]\nExercise objective:\nLoad a seismic SEG-Y volume in OpendTect.\n\nWorkflow:\n1. Go to Survey > Import >\nSeismic > SEG-Y > 3D\nor click on the SEG-Y import\nicon SEG-Y in the OpendTect\nmain toolbar.\n\nSurvey\nAnalysis\nProcessing\nScene\nView\nUtilities\nTerraNubis\nHelp\n\nSelect/Setup ...\nSession\nImport\nExport\nManage\nPre-load\n\nRestart\nExit\n\nAttribute Set\nColor Table ...\nCross-plot Data\nFaults\nFaultStickSets\nFaultSet\nGeobody\nHorizons\nMute Functions\nNavigation Data / 2D Geometry\nPointSets/Polygons\nProbability Density Functions\nSeismic Data\nVelocity Functions\nWavelets\nWells\nPre-Trained Model ...\nShapefile ...\nHorizonCube Data ...\nPrestack Events ...\n\nSEG-Y\nOpen VDS ...\nOpen ZGY ...\nCBVS\nSimple File\nPetrel ...\nGPR: DZT ...\n\n2D ...\nPrestack 2D ...\n3D ...\nPrestack 3D ...\n\n[Figure OCR p.29 #2]\nWorkflow cont'd:\n2. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *wildcard\n\nSEG-Y revision\nData format\nNumber of samples\nZ range\nIn-line range\nCross-line range\nX-coordinate range\nY-coordinate range\n\n0\n\nSelect (one of) the SEG-Y file(s)\n<< F3_Dem... > Rawdata >\nOrganize New folder\nDesktop\nDocuments\nDownloads\nMusic\nPictures\nVideos\nOS (C:)\nd29 (\\\\192.16\nd25 (\\\\192.16\nd34 (\\\\192.16\nd46 (\\\\192.16\nd39 (\\\\192.16\nd52 (\\\\192.16\nusers (\\\\192.1\ndata (\\\\192.1\n\nName\nFaults\nSurface_data\nWell_data\nSeismic_data.sgy\n\nSearch Rawdata\n\n1000\nUse I/C\nUse (X,Y)\n\n0.1%\nZeros\n\nFile name: Seismic_data.sgy\nSEG-Y files (*.sgy *.SGY *.segy)\nOpen\nCancel\n\nClose\n?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 24, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n11. Click on OK. Optionally, click on the icon to save the import set-up parameters.\n\nExtract Survey Setup from SEG-Y\nInput file *=wildcard C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy Select ... Edit ...\nData type 3D Seismic Data\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N Select ...\n\nFull scan result\nSource Actually use\nSEG-Y revision 1\nRevision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (600515 traces) From header 462\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004 1000 scale XY\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline numt\" 4 bytes\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Crosslin\" 4 bytes\nX-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - \"X coordinate\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - \"Y coordinate\" 4 bytes\n\nResulting survey setup\n750/300 750/1250\n100/300 100/1250\n0.1%\nZeros\nValue\n-10000 -5000 0 5000\nOK Cancel ?\n\nWorkflow cont'd:\n\n12. Survey definition is set now. Click on OK to proceed further.\n\nEdit Survey Parameters\nSurvey name My new Survey\nLocation on disk C:\\Surveys\nSurvey type Both 2D and 3D\nRanges/coordinate settings Enter below\nSurvey ranges Coordinate settings I/C to X/Y transformation Coordinate System\n\nIn-line range 100 750 Step 1 Nr. In-lines: 651\nCross-line range 300 1250 Step 1 Nr. Cross-lines: 951\nZ range 4 1848 Step 4 millisecond\nDisplay depths in Meter Feet\nSeismic Reference Datum (m) 0\n\nApply\nOK Cancel ?\n\nFree space on disk: 52.56 GB\n\n- 24 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n6. Optionally, click on the icon to scan the entire input SEG-Y file.\n7. Click on the icon to examine in detail, first '1000' traces (changeable) of the file.\n\nEdit option can be used if the SEG-Y\nfile needs to be modified. You can\nupdate binary headers and trace\nheaders using mathematical formulae\nand information from other headers.\n\nInput file *-wildcard (C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\nData type 3D Seismic Data\nCoordinate System [EPSG:23031] ED50 / UTM zone 31N\nFull scan result\nSource\nSEG Y revision 1 Revision 1\nData format 3- Integer (16 bits) From file header\nNumber of samples 462 (600515 traces) From header 462\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) -\"Inline num\" 4 bytes scale XY\nCross-line range 300 - 1250 From header Crossline (byte 193) -\"Crosslin\" 4 bytes\nX-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - \"X coordinat\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - \"Y coordinat\" 4 bytes\nSelect...\nActually use\n\nScanning the entire SEG-Y file\nis useful when the survey\ngeometry extracted from the\nquick scan looks doubtful.\n\nResulting survey setup\n750/1250\n100/300 100/1250\n0.1%\nZeros\n-10000 -5000 0 5000\nValue\nOK Cancel\n\nWorkflow cont'd:\n8. Examiner window:\nUse this to find out\nwhat is inside the file.\n9. Check the Inline,\nCrossline and X/Y\ncoordinates : find the\ncorresponding byte\nand observe the\nassociated plot.\n10. Optionally, check\nSeismic viewer and\nhistogram windows.\n\nFile header in\nCor1\nCor1\nBin\nEPSG:23031\nIn-line: in: 1\nCross-Line: in: 1\nZ (ms): in: 4\nDump of EBCIDIC and\nBinary headers\n\nIn-line byte: 189-192\nCross-line byte: 193-196\nX-Coord byte: 181-184\nY-Coord byte: 185-188\n\ntracl (trace sequence number within line)\n1 [tracl] 1 2 3\n5 [tracr] 1 2 3\n9 [fldr] 100 100 100\n13 [tracf] 0 0 0\n17 [ep] 0 0 0\n21 [cdp] 300 301 302\n25 [cdpt] 0 0 0\n29 [trid] 1 1 1\n\nTrace header name +\nbyte position.\n\nTrace header Plot\nTrace / Step 1 1\n\nFirst 1000 Trace header Nos.\nTotal traces: 600515\nRange: [1,951] (N=1000)\n\nClose ?\nC:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\n\n- 23 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 26, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n18. Once the import is finished, press OK on the notification window. Next, OpendTect will\nautomatically open the option to change the Z-scaling of the newly created survey. Move\nthe slider to set an appropriate Z scaling factor and press OK.\nInformation\nThe cube is available for work.\nThe cube has varying cross-line ranges.\nIn-line range: 100 - 750 (step 1).\nX-line range: 300 - 1250 (step 1).\nZ start: 0.004 step: 0.004\nNumber of samples: 462\nGaps: Gaps present.\nOK\nZ Scaling\nSet Z scaling factor\nApparent velocity (m/s)\n18425\nFit to scene!\nTo Home\nSave as default\nOK ?\n\nWorkflow cont'd:\n19. Check in the seismic manager the\nnewly imported cube; Survey >\nManage > Seismic > 3D.\nOpendTect Pro V7.2.3 (Windows) *UPDATE AVAILABLE!* My New Survey (tree project) -\nSurvey Analysis Processing Scene View Utilities Terramodel Help\nSection\nImport\nExport\nManage ▸\nPre-loc\nRestart\nExit\nAttribute Solu.\nColor Tables ...\nCross plot Data ...\nFaults ...\nFaultsStickSets ...\nFaultset ...\nGeobody ...\nGeometry 2D ...\nGeometry 3D ...\nHorizons\nLayer Properties ...\nPointSets/Polygons ...\nProbability Density Functions ...\nRandom Lines ...\nSeismic Data ▸\nProstack Seismic Data\nSessions ...\nStratigraphy ...\nShapefile ...\nWavelets ...\nWells ...\nMachine Learning\nSeismic ...\nSTI like ...\nMistic Corrections\nHorizonCube\nSSIS Interpretations\n2D\n3D\nManage 3D Seismics\nFilter\n> Seismic_data <\nOpendTect automatically\nmarks the imported seismic\nvolume as the default data.\nIn-line range: 100 - 750 [1]\nCross-line range: 300 - 1250 [1]\nArea: 375.31 (sq km)\nTime range(ms): 4 - 1040 [4]\nStorage: 16 bit signed\nFile name: Seismic_data.cbvs\nLocation: C:\\Surveys\\My_New_Survey\\Seismics\nSize: 540.64 MB\nLast modified: Fri 20 Aug 2021, 17:01:53\nCreated by: assia\nCreated at: Fri 20 Aug 2021, 17:00:39\nCheck info on seismic volume; e.g.\ninline/crossline ranges, storage etc.\nClose ?\nFree space on disk: 52.51 GB\n\n- 26 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y] (adjacent context)\n[Section: 1.2.2b Load SEG-Y, Page: 30, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n3. The import wizard makes a quick scan of part of the seismic volume and automatically fills in relevant parameters required for import.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *=wildcard C:\\Surveys\\T3_Demo_2023\\Rawdata\\Seismic_data.sgy\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N\nQuick scan result Source Actually use\nSEG-Y revision 1 Revision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (500515 traces) From header\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline\" 4 bytes Use I/C\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Cl\" 4 bytes Use (X,Y)\nX-coordinate range 605835.52 - 629122.55 Calculated Xcdp (byte 181) - \"X coo\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.28 Calculated Ycdp (byte 185) - \"Y coo\" 4 bytes\n0.1%\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nIn the bottom part, histogram of seismic amplitudes of traces used for the quick scan can be seen.\nZeros\nNext >> Close ?\n\nWorkflow cont'd:\n4. Optionally, click on the icon to scan the entire input SEG-Y file.\n5. Click on the icon to examine in detail, first '1000' traces (changeable) of the file.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *=wildcard C:\\Surveys\\T3_Demo_2023\\Rawdata\\Seismic_data.sgy\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N\nQuick scan result Source Actually use\nSEG-Y revision 1 Revision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (500515 traces) From header\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline\" 4 bytes\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Cl\" 4 bytes\nX-coordinate range 605835.52 - 629122.55 Calculated Xcdp (byte 181) - \"X coo\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.28 Calculated Ycdp (byte 185) - \"Y coo\" 4 bytes\nNow in the bottom part, histogram of seismic amplitudes of all the traces in the input SEG-Y volume can be seen.\n0.1%\nZeros\nNext >> Close ?\n\n- 30 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nTotal traces: 600515\nRange: [1,951] (N=1000)\n\nClose ?\nC:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\n\n- 23 -",
+              "input_tokens": 7067,
+              "output_tokens": 18,
+              "thoughts_tokens": 221,
+              "cost_usd": 0.011224,
+              "model": "gemini",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.011224,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false
+            },
+            {
+              "step_index": 2,
+              "response": "Scan SEG-Y file(s)를 클릭합니다.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 8.15,
+              "latency_wall_sec": 8.15,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.183,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.244,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 7.718,
+                  "n": 1
+                }
+              },
+              "context_chars": 16582,
+              "context_block": "[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelect Cancel ?\n\n[Figure OCR p.21 #2]\nWorkflow cont'd:\n\n3. Specify a Survey name and\n\n(a) select Scan SEG-Y file(s),\n\n(b) set Time for Z Domain,\n\n(c) Press Next.\n\nOpendTect display scenes are in Time or Depth. Transformation is done on-the-fly using a given velocity model. In the Survey Setup you choose the primary Z Domain. In the case of depth survey, Z Domain should be Depth.\n\nCreate New Survey\nSpecify new survey parameters\nSurvey name My New Survey\nAvailable data ☑ 3D ☑ 2D ☐ Wells\nInitial setup\nScan Navigation Data\nCopy from other survey\nRead from Survey Setup file\nScan VDS file\nScan ZGY file\nScan SEG-Y file(s)\nScan LAS Well Data\nGet from Petrel\nEnter by hand\nZ Domain ⦿ Time ○ Depth\nNext Cancel ?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nWorkflow cont'd:\n5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nThe bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.\n\n- 22 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation Notes Log\nIn-line range : 100 - 750 - 1; Total: 651\nCross-line range : 300 - 1250 - 1; Total: 951\nZ range (ms) : 4 - 1848 - 4; Total: 462\nInl/Crl bin size : 25.00 / 25.00 (m/line)\nCRS : Unlocated XY\nArea : 386.93 (sq Km)\nSurvey type : Both 2D and 3D\nIn-line Orientation : 88.40 Degrees from N\nLocation : C:\\Surveys\\My_New_Survey\n\nSelect Cancel ?\n\nWorkflow cont'd:\n\n15. Keep the default Yes (import) toggled on, in front of Copy data. Optionally, it is possible to make a link to the input SEG-Y file in OpendTect.\n16. Specify an Output Cube name (by default name of the input file is copied here).\n17. Press Import.\n\nImport 3D Volume\nImporting C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\nImport as OpendTect CBVS (copy&import) SEGYDirect (scan&link)\nVolume subselection - Select ...\nNull traces Discard Pass\nScale values: Shift/Factor\nOutput Cube Seismic_data Select ... CBVS Depth\nExecute in Batch Options ...\nImport Cancel ?\n\n- 25 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y]\n[Section: 1.2.2b Load SEG-Y, Page: 29, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2b Load SEG-Y\nRequired licenses: OpendTect.\n- 29 -\n\n[Figure OCR p.29 #1]\nExercise objective:\nLoad a seismic SEG-Y volume in OpendTect.\n\nWorkflow:\n1. Go to Survey > Import >\nSeismic > SEG-Y > 3D\nor click on the SEG-Y import\nicon SEG-Y in the OpendTect\nmain toolbar.\n\nSurvey\nAnalysis\nProcessing\nScene\nView\nUtilities\nTerraNubis\nHelp\n\nSelect/Setup ...\nSession\nImport\nExport\nManage\nPre-load\n\nRestart\nExit\n\nAttribute Set\nColor Table ...\nCross-plot Data\nFaults\nFaultStickSets\nFaultSet\nGeobody\nHorizons\nMute Functions\nNavigation Data / 2D Geometry\nPointSets/Polygons\nProbability Density Functions\nSeismic Data\nVelocity Functions\nWavelets\nWells\nPre-Trained Model ...\nShapefile ...\nHorizonCube Data ...\nPrestack Events ...\n\nSEG-Y\nOpen VDS ...\nOpen ZGY ...\nCBVS\nSimple File\nPetrel ...\nGPR: DZT ...\n\n2D ...\nPrestack 2D ...\n3D ...\nPrestack 3D ...\n\n[Figure OCR p.29 #2]\nWorkflow cont'd:\n2. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *wildcard\n\nSEG-Y revision\nData format\nNumber of samples\nZ range\nIn-line range\nCross-line range\nX-coordinate range\nY-coordinate range\n\n0\n\nSelect (one of) the SEG-Y file(s)\n<< F3_Dem... > Rawdata >\nOrganize New folder\nDesktop\nDocuments\nDownloads\nMusic\nPictures\nVideos\nOS (C:)\nd29 (\\\\192.16\nd25 (\\\\192.16\nd34 (\\\\192.16\nd46 (\\\\192.16\nd39 (\\\\192.16\nd52 (\\\\192.16\nusers (\\\\192.1\ndata (\\\\192.1\n\nName\nFaults\nSurface_data\nWell_data\nSeismic_data.sgy\n\nSearch Rawdata\n\n1000\nUse I/C\nUse (X,Y)\n\n0.1%\nZeros\n\nFile name: Seismic_data.sgy\nSEG-Y files (*.sgy *.SGY *.segy)\nOpen\nCancel\n\nClose\n?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 24, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n11. Click on OK. Optionally, click on the icon to save the import set-up parameters.\n\nExtract Survey Setup from SEG-Y\nInput file *=wildcard C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy Select ... Edit ...\nData type 3D Seismic Data\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N Select ...\n\nFull scan result\nSource Actually use\nSEG-Y revision 1\nRevision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (600515 traces) From header 462\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004 1000 scale XY\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline numt\" 4 bytes\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Crosslin\" 4 bytes\nX-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - \"X coordinate\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - \"Y coordinate\" 4 bytes\n\nResulting survey setup\n750/300 750/1250\n100/300 100/1250\n0.1%\nZeros\nValue\n-10000 -5000 0 5000\nOK Cancel ?\n\nWorkflow cont'd:\n\n12. Survey definition is set now. Click on OK to proceed further.\n\nEdit Survey Parameters\nSurvey name My new Survey\nLocation on disk C:\\Surveys\nSurvey type Both 2D and 3D\nRanges/coordinate settings Enter below\nSurvey ranges Coordinate settings I/C to X/Y transformation Coordinate System\n\nIn-line range 100 750 Step 1 Nr. In-lines: 651\nCross-line range 300 1250 Step 1 Nr. Cross-lines: 951\nZ range 4 1848 Step 4 millisecond\nDisplay depths in Meter Feet\nSeismic Reference Datum (m) 0\n\nApply\nOK Cancel ?\n\nFree space on disk: 52.56 GB\n\n- 24 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n6. Optionally, click on the icon to scan the entire input SEG-Y file.\n7. Click on the icon to examine in detail, first '1000' traces (changeable) of the file.\n\nEdit option can be used if the SEG-Y\nfile needs to be modified. You can\nupdate binary headers and trace\nheaders using mathematical formulae\nand information from other headers.\n\nInput file *-wildcard (C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\nData type 3D Seismic Data\nCoordinate System [EPSG:23031] ED50 / UTM zone 31N\nFull scan result\nSource\nSEG Y revision 1 Revision 1\nData format 3- Integer (16 bits) From file header\nNumber of samples 462 (600515 traces) From header 462\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) -\"Inline num\" 4 bytes scale XY\nCross-line range 300 - 1250 From header Crossline (byte 193) -\"Crosslin\" 4 bytes\nX-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - \"X coordinat\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - \"Y coordinat\" 4 bytes\nSelect...\nActually use\n\nScanning the entire SEG-Y file\nis useful when the survey\ngeometry extracted from the\nquick scan looks doubtful.\n\nResulting survey setup\n750/1250\n100/300 100/1250\n0.1%\nZeros\n-10000 -5000 0 5000\nValue\nOK Cancel\n\nWorkflow cont'd:\n8. Examiner window:\nUse this to find out\nwhat is inside the file.\n9. Check the Inline,\nCrossline and X/Y\ncoordinates : find the\ncorresponding byte\nand observe the\nassociated plot.\n10. Optionally, check\nSeismic viewer and\nhistogram windows.\n\nFile header in\nCor1\nCor1\nBin\nEPSG:23031\nIn-line: in: 1\nCross-Line: in: 1\nZ (ms): in: 4\nDump of EBCIDIC and\nBinary headers\n\nIn-line byte: 189-192\nCross-line byte: 193-196\nX-Coord byte: 181-184\nY-Coord byte: 185-188\n\ntracl (trace sequence number within line)\n1 [tracl] 1 2 3\n5 [tracr] 1 2 3\n9 [fldr] 100 100 100\n13 [tracf] 0 0 0\n17 [ep] 0 0 0\n21 [cdp] 300 301 302\n25 [cdpt] 0 0 0\n29 [trid] 1 1 1\n\nTrace header name +\nbyte position.\n\nTrace header Plot\nTrace / Step 1 1\n\nFirst 1000 Trace header Nos.\nTotal traces: 600515\nRange: [1,951] (N=1000)\n\nClose ?\nC:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\n\n- 23 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 26, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n18. Once the import is finished, press OK on the notification window. Next, OpendTect will\nautomatically open the option to change the Z-scaling of the newly created survey. Move\nthe slider to set an appropriate Z scaling factor and press OK.\nInformation\nThe cube is available for work.\nThe cube has varying cross-line ranges.\nIn-line range: 100 - 750 (step 1).\nX-line range: 300 - 1250 (step 1).\nZ start: 0.004 step: 0.004\nNumber of samples: 462\nGaps: Gaps present.\nOK\nZ Scaling\nSet Z scaling factor\nApparent velocity (m/s)\n18425\nFit to scene!\nTo Home\nSave as default\nOK ?\n\nWorkflow cont'd:\n19. Check in the seismic manager the\nnewly imported cube; Survey >\nManage > Seismic > 3D.\nOpendTect Pro V7.2.3 (Windows) *UPDATE AVAILABLE!* My New Survey (tree project) -\nSurvey Analysis Processing Scene View Utilities Terramodel Help\nSection\nImport\nExport\nManage ▸\nPre-loc\nRestart\nExit\nAttribute Solu.\nColor Tables ...\nCross plot Data ...\nFaults ...\nFaultsStickSets ...\nFaultset ...\nGeobody ...\nGeometry 2D ...\nGeometry 3D ...\nHorizons\nLayer Properties ...\nPointSets/Polygons ...\nProbability Density Functions ...\nRandom Lines ...\nSeismic Data ▸\nProstack Seismic Data\nSessions ...\nStratigraphy ...\nShapefile ...\nWavelets ...\nWells ...\nMachine Learning\nSeismic ...\nSTI like ...\nMistic Corrections\nHorizonCube\nSSIS Interpretations\n2D\n3D\nManage 3D Seismics\nFilter\n> Seismic_data <\nOpendTect automatically\nmarks the imported seismic\nvolume as the default data.\nIn-line range: 100 - 750 [1]\nCross-line range: 300 - 1250 [1]\nArea: 375.31 (sq km)\nTime range(ms): 4 - 1040 [4]\nStorage: 16 bit signed\nFile name: Seismic_data.cbvs\nLocation: C:\\Surveys\\My_New_Survey\\Seismics\nSize: 540.64 MB\nLast modified: Fri 20 Aug 2021, 17:01:53\nCreated by: assia\nCreated at: Fri 20 Aug 2021, 17:00:39\nCheck info on seismic volume; e.g.\ninline/crossline ranges, storage etc.\nClose ?\nFree space on disk: 52.51 GB\n\n- 26 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y] (adjacent context)\n[Section: 1.2.2b Load SEG-Y, Page: 30, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n3. The import wizard makes a quick scan of part of the seismic volume and automatically fills in relevant parameters required for import.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *=wildcard C:\\Surveys\\T3_Demo_2023\\Rawdata\\Seismic_data.sgy\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N\nQuick scan result Source Actually use\nSEG-Y revision 1 Revision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (500515 traces) From header\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline\" 4 bytes Use I/C\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Cl\" 4 bytes Use (X,Y)\nX-coordinate range 605835.52 - 629122.55 Calculated Xcdp (byte 181) - \"X coo\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.28 Calculated Ycdp (byte 185) - \"Y coo\" 4 bytes\n0.1%\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nIn the bottom part, histogram of seismic amplitudes of traces used for the quick scan can be seen.\nZeros\nNext >> Close ?\n\nWorkflow cont'd:\n4. Optionally, click on the icon to scan the entire input SEG-Y file.\n5. Click on the icon to examine in detail, first '1000' traces (changeable) of the file.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *=wildcard C:\\Surveys\\T3_Demo_2023\\Rawdata\\Seismic_data.sgy\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N\nQuick scan result Source Actually use\nSEG-Y revision 1 Revision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (500515 traces) From header\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline\" 4 bytes\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Cl\" 4 bytes\nX-coordinate range 605835.52 - 629122.55 Calculated Xcdp (byte 181) - \"X coo\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.28 Calculated Ycdp (byte 185) - \"Y coo\" 4 bytes\nNow in the bottom part, histogram of seismic amplitudes of all the traces in the input SEG-Y volume can be seen.\n0.1%\nZeros\nNext >> Close ?\n\n- 30 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nTotal traces: 600515\nRange: [1,951] (N=1000)\n\nClose ?\nC:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\n\n- 23 -",
+              "input_tokens": 7088,
+              "output_tokens": 12,
+              "thoughts_tokens": 291,
+              "cost_usd": 0.01189,
+              "model": "gemini",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.01189,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false
+            },
+            {
+              "step_index": 3,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 8.309,
+              "latency_wall_sec": 8.309,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.161,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.007,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.207,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 7.933,
+                  "n": 1
+                }
+              },
+              "context_chars": 16582,
+              "context_block": "[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelect Cancel ?\n\n[Figure OCR p.21 #2]\nWorkflow cont'd:\n\n3. Specify a Survey name and\n\n(a) select Scan SEG-Y file(s),\n\n(b) set Time for Z Domain,\n\n(c) Press Next.\n\nOpendTect display scenes are in Time or Depth. Transformation is done on-the-fly using a given velocity model. In the Survey Setup you choose the primary Z Domain. In the case of depth survey, Z Domain should be Depth.\n\nCreate New Survey\nSpecify new survey parameters\nSurvey name My New Survey\nAvailable data ☑ 3D ☑ 2D ☐ Wells\nInitial setup\nScan Navigation Data\nCopy from other survey\nRead from Survey Setup file\nScan VDS file\nScan ZGY file\nScan SEG-Y file(s)\nScan LAS Well Data\nGet from Petrel\nEnter by hand\nZ Domain ⦿ Time ○ Depth\nNext Cancel ?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nWorkflow cont'd:\n5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nThe bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.\n\n- 22 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation Notes Log\nIn-line range : 100 - 750 - 1; Total: 651\nCross-line range : 300 - 1250 - 1; Total: 951\nZ range (ms) : 4 - 1848 - 4; Total: 462\nInl/Crl bin size : 25.00 / 25.00 (m/line)\nCRS : Unlocated XY\nArea : 386.93 (sq Km)\nSurvey type : Both 2D and 3D\nIn-line Orientation : 88.40 Degrees from N\nLocation : C:\\Surveys\\My_New_Survey\n\nSelect Cancel ?\n\nWorkflow cont'd:\n\n15. Keep the default Yes (import) toggled on, in front of Copy data. Optionally, it is possible to make a link to the input SEG-Y file in OpendTect.\n16. Specify an Output Cube name (by default name of the input file is copied here).\n17. Press Import.\n\nImport 3D Volume\nImporting C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\nImport as OpendTect CBVS (copy&import) SEGYDirect (scan&link)\nVolume subselection - Select ...\nNull traces Discard Pass\nScale values: Shift/Factor\nOutput Cube Seismic_data Select ... CBVS Depth\nExecute in Batch Options ...\nImport Cancel ?\n\n- 25 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y]\n[Section: 1.2.2b Load SEG-Y, Page: 29, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2b Load SEG-Y\nRequired licenses: OpendTect.\n- 29 -\n\n[Figure OCR p.29 #1]\nExercise objective:\nLoad a seismic SEG-Y volume in OpendTect.\n\nWorkflow:\n1. Go to Survey > Import >\nSeismic > SEG-Y > 3D\nor click on the SEG-Y import\nicon SEG-Y in the OpendTect\nmain toolbar.\n\nSurvey\nAnalysis\nProcessing\nScene\nView\nUtilities\nTerraNubis\nHelp\n\nSelect/Setup ...\nSession\nImport\nExport\nManage\nPre-load\n\nRestart\nExit\n\nAttribute Set\nColor Table ...\nCross-plot Data\nFaults\nFaultStickSets\nFaultSet\nGeobody\nHorizons\nMute Functions\nNavigation Data / 2D Geometry\nPointSets/Polygons\nProbability Density Functions\nSeismic Data\nVelocity Functions\nWavelets\nWells\nPre-Trained Model ...\nShapefile ...\nHorizonCube Data ...\nPrestack Events ...\n\nSEG-Y\nOpen VDS ...\nOpen ZGY ...\nCBVS\nSimple File\nPetrel ...\nGPR: DZT ...\n\n2D ...\nPrestack 2D ...\n3D ...\nPrestack 3D ...\n\n[Figure OCR p.29 #2]\nWorkflow cont'd:\n2. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *wildcard\n\nSEG-Y revision\nData format\nNumber of samples\nZ range\nIn-line range\nCross-line range\nX-coordinate range\nY-coordinate range\n\n0\n\nSelect (one of) the SEG-Y file(s)\n<< F3_Dem... > Rawdata >\nOrganize New folder\nDesktop\nDocuments\nDownloads\nMusic\nPictures\nVideos\nOS (C:)\nd29 (\\\\192.16\nd25 (\\\\192.16\nd34 (\\\\192.16\nd46 (\\\\192.16\nd39 (\\\\192.16\nd52 (\\\\192.16\nusers (\\\\192.1\ndata (\\\\192.1\n\nName\nFaults\nSurface_data\nWell_data\nSeismic_data.sgy\n\nSearch Rawdata\n\n1000\nUse I/C\nUse (X,Y)\n\n0.1%\nZeros\n\nFile name: Seismic_data.sgy\nSEG-Y files (*.sgy *.SGY *.segy)\nOpen\nCancel\n\nClose\n?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 24, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n11. Click on OK. Optionally, click on the icon to save the import set-up parameters.\n\nExtract Survey Setup from SEG-Y\nInput file *=wildcard C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy Select ... Edit ...\nData type 3D Seismic Data\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N Select ...\n\nFull scan result\nSource Actually use\nSEG-Y revision 1\nRevision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (600515 traces) From header 462\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004 1000 scale XY\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline numt\" 4 bytes\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Crosslin\" 4 bytes\nX-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - \"X coordinate\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - \"Y coordinate\" 4 bytes\n\nResulting survey setup\n750/300 750/1250\n100/300 100/1250\n0.1%\nZeros\nValue\n-10000 -5000 0 5000\nOK Cancel ?\n\nWorkflow cont'd:\n\n12. Survey definition is set now. Click on OK to proceed further.\n\nEdit Survey Parameters\nSurvey name My new Survey\nLocation on disk C:\\Surveys\nSurvey type Both 2D and 3D\nRanges/coordinate settings Enter below\nSurvey ranges Coordinate settings I/C to X/Y transformation Coordinate System\n\nIn-line range 100 750 Step 1 Nr. In-lines: 651\nCross-line range 300 1250 Step 1 Nr. Cross-lines: 951\nZ range 4 1848 Step 4 millisecond\nDisplay depths in Meter Feet\nSeismic Reference Datum (m) 0\n\nApply\nOK Cancel ?\n\nFree space on disk: 52.56 GB\n\n- 24 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n6. Optionally, click on the icon to scan the entire input SEG-Y file.\n7. Click on the icon to examine in detail, first '1000' traces (changeable) of the file.\n\nEdit option can be used if the SEG-Y\nfile needs to be modified. You can\nupdate binary headers and trace\nheaders using mathematical formulae\nand information from other headers.\n\nInput file *-wildcard (C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\nData type 3D Seismic Data\nCoordinate System [EPSG:23031] ED50 / UTM zone 31N\nFull scan result\nSource\nSEG Y revision 1 Revision 1\nData format 3- Integer (16 bits) From file header\nNumber of samples 462 (600515 traces) From header 462\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) -\"Inline num\" 4 bytes scale XY\nCross-line range 300 - 1250 From header Crossline (byte 193) -\"Crosslin\" 4 bytes\nX-coordinate range 605416.70 - 629576.30 From header Xcdp (byte 181) - \"X coordinat\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.30 From header Ycdp (byte 185) - \"Y coordinat\" 4 bytes\nSelect...\nActually use\n\nScanning the entire SEG-Y file\nis useful when the survey\ngeometry extracted from the\nquick scan looks doubtful.\n\nResulting survey setup\n750/1250\n100/300 100/1250\n0.1%\nZeros\n-10000 -5000 0 5000\nValue\nOK Cancel\n\nWorkflow cont'd:\n8. Examiner window:\nUse this to find out\nwhat is inside the file.\n9. Check the Inline,\nCrossline and X/Y\ncoordinates : find the\ncorresponding byte\nand observe the\nassociated plot.\n10. Optionally, check\nSeismic viewer and\nhistogram windows.\n\nFile header in\nCor1\nCor1\nBin\nEPSG:23031\nIn-line: in: 1\nCross-Line: in: 1\nZ (ms): in: 4\nDump of EBCIDIC and\nBinary headers\n\nIn-line byte: 189-192\nCross-line byte: 193-196\nX-Coord byte: 181-184\nY-Coord byte: 185-188\n\ntracl (trace sequence number within line)\n1 [tracl] 1 2 3\n5 [tracr] 1 2 3\n9 [fldr] 100 100 100\n13 [tracf] 0 0 0\n17 [ep] 0 0 0\n21 [cdp] 300 301 302\n25 [cdpt] 0 0 0\n29 [trid] 1 1 1\n\nTrace header name +\nbyte position.\n\nTrace header Plot\nTrace / Step 1 1\n\nFirst 1000 Trace header Nos.\nTotal traces: 600515\nRange: [1,951] (N=1000)\n\nClose ?\nC:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\n\n- 23 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 26, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n18. Once the import is finished, press OK on the notification window. Next, OpendTect will\nautomatically open the option to change the Z-scaling of the newly created survey. Move\nthe slider to set an appropriate Z scaling factor and press OK.\nInformation\nThe cube is available for work.\nThe cube has varying cross-line ranges.\nIn-line range: 100 - 750 (step 1).\nX-line range: 300 - 1250 (step 1).\nZ start: 0.004 step: 0.004\nNumber of samples: 462\nGaps: Gaps present.\nOK\nZ Scaling\nSet Z scaling factor\nApparent velocity (m/s)\n18425\nFit to scene!\nTo Home\nSave as default\nOK ?\n\nWorkflow cont'd:\n19. Check in the seismic manager the\nnewly imported cube; Survey >\nManage > Seismic > 3D.\nOpendTect Pro V7.2.3 (Windows) *UPDATE AVAILABLE!* My New Survey (tree project) -\nSurvey Analysis Processing Scene View Utilities Terramodel Help\nSection\nImport\nExport\nManage ▸\nPre-loc\nRestart\nExit\nAttribute Solu.\nColor Tables ...\nCross plot Data ...\nFaults ...\nFaultsStickSets ...\nFaultset ...\nGeobody ...\nGeometry 2D ...\nGeometry 3D ...\nHorizons\nLayer Properties ...\nPointSets/Polygons ...\nProbability Density Functions ...\nRandom Lines ...\nSeismic Data ▸\nProstack Seismic Data\nSessions ...\nStratigraphy ...\nShapefile ...\nWavelets ...\nWells ...\nMachine Learning\nSeismic ...\nSTI like ...\nMistic Corrections\nHorizonCube\nSSIS Interpretations\n2D\n3D\nManage 3D Seismics\nFilter\n> Seismic_data <\nOpendTect automatically\nmarks the imported seismic\nvolume as the default data.\nIn-line range: 100 - 750 [1]\nCross-line range: 300 - 1250 [1]\nArea: 375.31 (sq km)\nTime range(ms): 4 - 1040 [4]\nStorage: 16 bit signed\nFile name: Seismic_data.cbvs\nLocation: C:\\Surveys\\My_New_Survey\\Seismics\nSize: 540.64 MB\nLast modified: Fri 20 Aug 2021, 17:01:53\nCreated by: assia\nCreated at: Fri 20 Aug 2021, 17:00:39\nCheck info on seismic volume; e.g.\ninline/crossline ranges, storage etc.\nClose ?\nFree space on disk: 52.51 GB\n\n- 26 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y] (adjacent context)\n[Section: 1.2.2b Load SEG-Y, Page: 30, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n3. The import wizard makes a quick scan of part of the seismic volume and automatically fills in relevant parameters required for import.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *=wildcard C:\\Surveys\\T3_Demo_2023\\Rawdata\\Seismic_data.sgy\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N\nQuick scan result Source Actually use\nSEG-Y revision 1 Revision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (500515 traces) From header\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline\" 4 bytes Use I/C\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Cl\" 4 bytes Use (X,Y)\nX-coordinate range 605835.52 - 629122.55 Calculated Xcdp (byte 181) - \"X coo\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.28 Calculated Ycdp (byte 185) - \"Y coo\" 4 bytes\n0.1%\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nIn the bottom part, histogram of seismic amplitudes of traces used for the quick scan can be seen.\nZeros\nNext >> Close ?\n\nWorkflow cont'd:\n4. Optionally, click on the icon to scan the entire input SEG-Y file.\n5. Click on the icon to examine in detail, first '1000' traces (changeable) of the file.\n\nImport SEG-Y Data\nImport 3D Seismic Data\nInput file *=wildcard C:\\Surveys\\T3_Demo_2023\\Rawdata\\Seismic_data.sgy\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N\nQuick scan result Source Actually use\nSEG-Y revision 1 Revision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (500515 traces) From header\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004\nIn-line range 100 - 750 From header Inline (byte 189) - \"Inline\" 4 bytes\nCross-line range 300 - 1250 From header Crossline (byte 193) - \"Cl\" 4 bytes\nX-coordinate range 605835.52 - 629122.55 Calculated Xcdp (byte 181) - \"X coo\" 4 bytes\nY-coordinate range 6073556.50 - 6090463.28 Calculated Ycdp (byte 185) - \"Y coo\" 4 bytes\nNow in the bottom part, histogram of seismic amplitudes of all the traces in the input SEG-Y volume can be seen.\n0.1%\nZeros\nNext >> Close ?\n\n- 30 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y] (adjacent context)\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 23, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nTotal traces: 600515\nRange: [1,951] (N=1000)\n\nClose ?\nC:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy\n\n- 23 -",
+              "input_tokens": 7103,
+              "output_tokens": 2,
+              "thoughts_tokens": 488,
+              "cost_usd": 0.013779,
+              "model": "gemini",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.013779,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false
+            }
+          ],
+          "latency_sec": 56.1
+        },
+        "vanilla_budget": {
+          "backend": "vanilla_budget",
+          "n_steps": 4,
+          "step_accuracy": 1.0,
+          "hallucination_rate": 0.0,
+          "faithfulness": 1.0,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 7.843,
+          "mean_cost_usd": 0.005777,
+          "total_cost_usd": 0.02311,
+          "mean_aux_cost_usd": 0.0,
+          "total_aux_cost_usd": 0.0,
+          "mean_cost_total_usd": 0.005777,
+          "total_aux_calls": 0,
+          "scorer_version": "v3",
+          "total_input_tokens": 7953,
+          "total_output_tokens": 44,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": null,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "새 survey 아이콘을 클릭합니다.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 6.653,
+              "latency_wall_sec": 6.653,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.164,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.244,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 6.239,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": "[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelect Cancel ?\n\n[Figure OCR p.21 #2]\nWorkflow cont'd:\n\n3. Specify a Survey name and\n\n(a) select Scan SEG-Y file(s),\n\n(b) set Time for Z Domain,\n\n(c) Press Next.\n\nOpendTect display scenes are in Time or Depth. Transformation is done on-the-fly using a given velocity model. In the Survey Setup you choose the primary Z Domain. In the case of depth survey, Z Domain should be Depth.\n\nCreate New Survey\nSpecify new survey parameters\nSurvey name My New Survey\nAvailable data ☑ 3D ☑ 2D ☐ Wells\nInitial setup\nScan Navigation Data\nCopy from other survey\nRead from Survey Setup file\nScan VDS file\nScan ZGY file\nScan SEG-Y file(s)\nScan LAS Well Data\nGet from Petrel\nEnter by hand\nZ Domain ⦿ Time ○ Depth\nNext Cancel ?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nWorkflow cont'd:\n5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nThe bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.\n\n- 22 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation ",
+              "input_tokens": 1961,
+              "output_tokens": 8,
+              "thoughts_tokens": 268,
+              "cost_usd": 0.005211,
+              "model": "gemini",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.005211,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false
+            },
+            {
+              "step_index": 1,
+              "response": "Survey name 텍스트 필드에 My_F3_Survey를 입력합니다.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 5.943,
+              "latency_wall_sec": 5.943,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.172,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.237,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 5.528,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": "[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelect Cancel ?\n\n[Figure OCR p.21 #2]\nWorkflow cont'd:\n\n3. Specify a Survey name and\n\n(a) select Scan SEG-Y file(s),\n\n(b) set Time for Z Domain,\n\n(c) Press Next.\n\nOpendTect display scenes are in Time or Depth. Transformation is done on-the-fly using a given velocity model. In the Survey Setup you choose the primary Z Domain. In the case of depth survey, Z Domain should be Depth.\n\nCreate New Survey\nSpecify new survey parameters\nSurvey name My New Survey\nAvailable data ☑ 3D ☑ 2D ☐ Wells\nInitial setup\nScan Navigation Data\nCopy from other survey\nRead from Survey Setup file\nScan VDS file\nScan ZGY file\nScan SEG-Y file(s)\nScan LAS Well Data\nGet from Petrel\nEnter by hand\nZ Domain ⦿ Time ○ Depth\nNext Cancel ?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nWorkflow cont'd:\n5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nThe bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.\n\n- 22 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation ",
+              "input_tokens": 1977,
+              "output_tokens": 18,
+              "thoughts_tokens": 197,
+              "cost_usd": 0.004621,
+              "model": "gemini",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.004621,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false
+            },
+            {
+              "step_index": 2,
+              "response": "Initial setup 목록에서 Scan SEG-Y file(s)를 클릭합니다.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 9.015,
+              "latency_wall_sec": 9.015,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.159,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.229,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 8.62,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": "[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelect Cancel ?\n\n[Figure OCR p.21 #2]\nWorkflow cont'd:\n\n3. Specify a Survey name and\n\n(a) select Scan SEG-Y file(s),\n\n(b) set Time for Z Domain,\n\n(c) Press Next.\n\nOpendTect display scenes are in Time or Depth. Transformation is done on-the-fly using a given velocity model. In the Survey Setup you choose the primary Z Domain. In the case of depth survey, Z Domain should be Depth.\n\nCreate New Survey\nSpecify new survey parameters\nSurvey name My New Survey\nAvailable data ☑ 3D ☑ 2D ☐ Wells\nInitial setup\nScan Navigation Data\nCopy from other survey\nRead from Survey Setup file\nScan VDS file\nScan ZGY file\nScan SEG-Y file(s)\nScan LAS Well Data\nGet from Petrel\nEnter by hand\nZ Domain ⦿ Time ○ Depth\nNext Cancel ?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nWorkflow cont'd:\n5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nThe bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.\n\n- 22 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation ",
+              "input_tokens": 1998,
+              "output_tokens": 16,
+              "thoughts_tokens": 440,
+              "cost_usd": 0.007057,
+              "model": "gemini",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.007057,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false
+            },
+            {
+              "step_index": 3,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 9.76,
+              "latency_wall_sec": 9.76,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.171,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.246,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 9.336,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": "[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelect Cancel ?\n\n[Figure OCR p.21 #2]\nWorkflow cont'd:\n\n3. Specify a Survey name and\n\n(a) select Scan SEG-Y file(s),\n\n(b) set Time for Z Domain,\n\n(c) Press Next.\n\nOpendTect display scenes are in Time or Depth. Transformation is done on-the-fly using a given velocity model. In the Survey Setup you choose the primary Z Domain. In the case of depth survey, Z Domain should be Depth.\n\nCreate New Survey\nSpecify new survey parameters\nSurvey name My New Survey\nAvailable data ☑ 3D ☑ 2D ☐ Wells\nInitial setup\nScan Navigation Data\nCopy from other survey\nRead from Survey Setup file\nScan VDS file\nScan ZGY file\nScan SEG-Y file(s)\nScan LAS Well Data\nGet from Petrel\nEnter by hand\nZ Domain ⦿ Time ○ Depth\nNext Cancel ?\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nWorkflow cont'd:\n5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nThe bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.\n\n- 22 -\n\n---\n\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation ",
+              "input_tokens": 2017,
+              "output_tokens": 2,
+              "thoughts_tokens": 368,
+              "cost_usd": 0.006221,
+              "model": "gemini",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.006221,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false
+            }
+          ],
+          "latency_sec": 40.18
+        },
+        "full_system": {
+          "backend": "full_system",
+          "n_steps": 4,
+          "step_accuracy": 1.0,
+          "hallucination_rate": 0.0,
+          "faithfulness": 1.0,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 24.105,
+          "mean_cost_usd": 0.008721,
+          "total_cost_usd": 0.034883,
+          "mean_aux_cost_usd": 0.001582,
+          "total_aux_cost_usd": 0.006326,
+          "mean_cost_total_usd": 0.010302,
+          "total_aux_calls": 8,
+          "scorer_version": "v3",
+          "total_input_tokens": 8611,
+          "total_output_tokens": 45,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": 0.938,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "새 survey 아이콘을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 47.127,
+              "latency_wall_sec": 47.127,
+              "stage_latency": {
+                "embed": {
+                  "sec": 10.374,
+                  "n": 4
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.224,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.414,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 3.807,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 16.042,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.362,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 29.945,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 12.457,
+                  "n": 1
+                }
+              },
+              "context_chars": 4328,
+              "context_block": "[Current Step] survey_setup > Step 1: Survey Setup and Selection 창 열기\nDescription: OpendTect 첫 실행 시 Survey Setup and Selection 창이 최상단에 열림. Survey Data Root 리스트에서 새 survey를 만들거나 기존 survey를 선택.\n\n[Possible Next Steps]\n  - Next (sequential): Step 2 Create New Survey 다이얼로그 열기 — Add (+) 버튼을 클릭하여 Create New Survey 다이얼로그를 여세요\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 24, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n11. Click on OK. Optionally, click on the icon to save the import set-up parameters.\n\nExtract Survey Setup from SEG-Y\nInput file *=wildcard C:\\Surveys\\F3_Demo_2023\\Rawdata\\Seismic_data.sgy Select ... Edit ...\nData type 3D Seismic Data\nCoordinate System Projection: [EPSG:23031] ED50 / UTM zone 31N Select ...\n\nFull scan result\nSource Actually use\nSEG-Y revision 1\nRevision 1\nData format 3 - Integer (16 bits) From file header\nNumber of samples 462 (600515 traces) From header 462\nZ range 0.004 - 1.848 - 0.004 (s or m) From header Start 0.004 Step 0.004 1000 scale XY\nIn-line range 100 - 750 From header I\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation Notes Log\nIn-line range : 100 - 750 - 1; Total: 651\nCross-line range : 300 - 1250 - 1; Total: 951\nZ range (ms) : 4 - 1848 - 4; Total: 462\nInl/Crl bin size : 25.00 / 2\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelec",
+              "input_tokens": 2212,
+              "output_tokens": 8,
+              "thoughts_tokens": 964,
+              "cost_usd": 0.012485,
+              "model": "gemini",
+              "aux_calls": 2,
+              "aux_input_tokens": 2175,
+              "aux_output_tokens": 172,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.001082,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.013567,
+              "route_confidence": 0.95,
+              "picked_node_id": "survey_setup_01_open_selection",
+              "picked_workflow_id": "survey_setup",
+              "route_method": "llm",
+              "fallback_activated": false
+            },
+            {
+              "step_index": 1,
+              "response": "'Survey name' 텍스트 상자에 'My_F3_Survey'를 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 15.608,
+              "latency_wall_sec": 15.608,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.687,
+                  "n": 5
+                },
+                "vector_search": {
+                  "sec": 0.016,
+                  "n": 3
+                },
+                "neighbor_fetch": {
+                  "sec": 0.528,
+                  "n": 11
+                },
+                "goal_retrieval": {
+                  "sec": 0.418,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 3.791,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.042,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.278,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 2.528,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.47,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 7.957,
+                  "n": 1
+                }
+              },
+              "context_chars": 3737,
+              "context_block": "[Current Step] survey_setup > Step 3: Survey 이름 입력 및 Initial setup 선택\nDescription: Survey name을 입력하고 Initial setup에서 'Scan SEG-Y file(s)' 또는 'Enter X/Y ranges'를 선택. Scan SEG-Y 선택 시 SEG-Y 파일에서 geometry를 자동 추출.\n\n[Possible Next Steps]\n  - Next (sequential) [if: initial_setup == 'Scan SEG-Y file(s)']: Step 4 SEG-Y 파일 스캔 및 geometry 추출 — Next를 눌러 SEG-Y 파일 스캔 단계로 진행하세요\n  - Next (conditional) [if: initial_setup == 'Enter X/Y ranges' (수동 geometry 입력 완료 후)]: Step 5 Survey Select — Main Window 진입 — 수동으로 X/Y range 입력 후 survey를 선택하고 Select를 눌러 Main Window로 진입하세요\n\n[Manual Context (graph)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y]\n[Section: 1.2.2b Load SEG-Y, Page: 31, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n6. Examiner window:\nUse this to find out\nwhat is inside the file.\n\nSEG-Y Examiner\n\nFile header in\nC07 cor?\nC08 Cori\nC09 Cori\nC10 Bin\nC11\nPro:(Incl:0)6\n(621405.05, 621307.70, 616)\nC12\nC13 In-line:\nC14 Cross-line:\nC15 Z (ms):\nC16\nC17 In-line byte:\nC18 Cross-line byte:\nC19 X-Coord byte:\nC20 Y-Coord byte:\nC21\n\nIL: 750\nIL: 750\nIL: 750\n\nXL: 1250\nXL: 300\nXL: 300\n\none 31N\nVal = 2052 (sample value)\n\nDump of EBCIDIC and\nBinary headers\n\n100-750\n300-1250\n4-1848\n\ninC: 1\ninC: 1\n\n[Manual Context (graph)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 2.1.1b Set up Survey using PetrelDirect]\n[Section: 2.1.1b Set up Survey using PetrelDirect, Page: 164, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n2.1.1b Set up Survey using PetrelDirect\nRequired licenses: OpendTect Pro.\n- 164 -\n\n[Figure OCR p.164 #1]\nExercise objective:\n\nTo show how an OpendTect survey can be quickly set up from an existing Petrel* project\nusing PetrelDirect.\n\n**Workflow:**\n\n1. **Choose** Select/Setup option under the Survey menu\nor **click** on the Survey Setup icon.\n\n2. **Click** on the *Create New Survey* icon in the\n*Survey Setup and Selection* window.\n\n* Petr\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelec",
+              "input_tokens": 2074,
+              "output_tokens": 21,
+              "thoughts_tokens": 387,
+              "cost_usd": 0.006672,
+              "model": "gemini",
+              "aux_calls": 2,
+              "aux_input_tokens": 2404,
+              "aux_output_tokens": 318,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.001517,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.008189,
+              "route_confidence": 0.95,
+              "picked_node_id": "survey_setup_03_choose_initial_setup",
+              "picked_workflow_id": "survey_setup",
+              "route_method": "llm",
+              "fallback_activated": false
+            },
+            {
+              "step_index": 2,
+              "response": "'Scan SEG-Y file(s)' 항목을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 18.372,
+              "latency_wall_sec": 18.372,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.643,
+                  "n": 5
+                },
+                "vector_search": {
+                  "sec": 0.017,
+                  "n": 3
+                },
+                "neighbor_fetch": {
+                  "sec": 0.574,
+                  "n": 11
+                },
+                "goal_retrieval": {
+                  "sec": 0.4,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 5.493,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.041,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.599,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 2.81,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.501,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 8.702,
+                  "n": 1
+                }
+              },
+              "context_chars": 4188,
+              "context_block": "[Same Step As Previous Turn]\nThe matched workflow step is the same one matched in a previous turn. A step can span several actions. Using the list of instructions already given, continue with the NEXT action of this step that has not been given yet; do not repeat an instruction already given. If every action of this step is done, tell the user to confirm or close the dialog with the button actually visible on screen and move on to the next step.\n\n[Current Step] survey_setup > Step 3: Survey 이름 입력 및 Initial setup 선택\nDescription: Survey name을 입력하고 Initial setup에서 'Scan SEG-Y file(s)' 또는 'Enter X/Y ranges'를 선택. Scan SEG-Y 선택 시 SEG-Y 파일에서 geometry를 자동 추출.\n\n[Possible Next Steps]\n  - Next (sequential) [if: initial_setup == 'Scan SEG-Y file(s)']: Step 4 SEG-Y 파일 스캔 및 geometry 추출 — Next를 눌러 SEG-Y 파일 스캔 단계로 진행하세요\n  - Next (conditional) [if: initial_setup == 'Enter X/Y ranges' (수동 geometry 입력 완료 후)]: Step 5 Survey Select — Main Window 진입 — 수동으로 X/Y range 입력 후 survey를 선택하고 Select를 눌러 Main Window로 진입하세요\n\n[Manual Context (graph)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2b Load SEG-Y]\n[Section: 1.2.2b Load SEG-Y, Page: 31, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n6. Examiner window:\nUse this to find out\nwhat is inside the file.\n\nSEG-Y Examiner\n\nFile header in\nC07 cor?\nC08 Cori\nC09 Cori\nC10 Bin\nC11\nPro:(Incl:0)6\n(621405.05, 621307.70, 616)\nC12\nC13 In-line:\nC14 Cross-line:\nC15 Z (ms):\nC16\nC17 In-line byte:\nC18 Cross-line byte:\nC19 X-Coord byte:\nC20 Y-Coord byte:\nC21\n\nIL: 750\nIL: 750\nIL: 750\n\nXL: 1250\nXL: 300\nXL: 300\n\none 31N\nVal = 2052 (sample value)\n\nDump of EBCIDIC and\nBinary headers\n\n100-750\n300-1250\n4-1848\n\ninC: 1\ninC: 1\n\n[Manual Context (graph)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 2.1.1b Set up Survey using PetrelDirect]\n[Section: 2.1.1b Set up Survey using PetrelDirect, Page: 164, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n2.1.1b Set up Survey using PetrelDirect\nRequired licenses: OpendTect Pro.\n- 164 -\n\n[Figure OCR p.164 #1]\nExercise objective:\n\nTo show how an OpendTect survey can be quickly set up from an existing Petrel* project\nusing PetrelDirect.\n\n**Workflow:**\n\n1. **Choose** Select/Setup option under the Survey menu\nor **click** on the Survey Setup icon.\n\n2. **Click** on the *Create New Survey* icon in the\n*Survey Setup and Selection* window.\n\n* Petr\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelec",
+              "input_tokens": 2192,
+              "output_tokens": 14,
+              "thoughts_tokens": 625,
+              "cost_usd": 0.00913,
+              "model": "gemini",
+              "aux_calls": 2,
+              "aux_input_tokens": 2452,
+              "aux_output_tokens": 314,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.001521,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.010651,
+              "route_confidence": 0.95,
+              "picked_node_id": "survey_setup_03_choose_initial_setup",
+              "picked_workflow_id": "survey_setup",
+              "route_method": "llm",
+              "fallback_activated": false
+            },
+            {
+              "step_index": 3,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 15.312,
+              "latency_wall_sec": 15.312,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.932,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.247,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.422,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 4.96,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.04,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.076,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 2.735,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 6.728,
+                  "n": 1
+                }
+              },
+              "context_chars": 4128,
+              "context_block": "[Current Step] survey_setup > Step 5: Survey Select — Main Window 진입\nDescription: Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 달성.\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 22, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n4. Go to the Rawdata directory of F3 Demo and Select the Input SEG-Y file: \\Raw data\\Seismic_data.sgy.\n\nWorkflow cont'd:\n5. The import wizard makes a quick scan of the SEG-Y volume and automatically fills-in relevant parameters for survey set-up and import.\nIf needed, the parameters required for SEG-Y import (under the Actually Use column) can be changed manually.\nThe bottom part shows the extracted geometry of the survey and the histogram of seismic amplitudes from the quick scan of the input SEG-Y volume.\n\n- 22 -\n\n[Manual Context (graph)]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 25, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n13. Go inside the newly created survey by either double-clicking on it or clicking on Select.\n14. Press Yes when asked to import the SEG-Y file used to set-up the survey.\n\nSpecify\n? Import the SEG-Y data used for survey setup now?\nYes No\n\nSurvey Setup and Selection\nSurvey Data Root ... C:\\Surveys\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey\nMy_survey_AL\n\nMy New Survey\n750/300 750/1250\n\n100/300 100/1250\n\nInformation Notes Log\nIn-line range : 100 - 750 - 1; Total: 651\nCross-line range : 300 - 1250 - 1; Total: 951\nZ range (ms) : 4 - 1848 - 4; Total: 462\nInl/Crl bin size : 25.00 / 2\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.2.2a Survey Setup & Load SEG-Y]\n[Section: 1.2.2a Survey Setup & Load SEG-Y, Page: 21, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.2.2a Survey Setup & Load SEG-Y\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 21 -\n\n[Figure OCR p.21 #1]\nExercise objective:\nSet up a new OpendTect survey and load 3D seismic data from SEGY using the SEGY scan wizard.\n\nWorkflow:\n\n1. Go to Survey > Select/Setup...\n   or click on the Survey Setup icon .\n2. Click on the New Survey icon .\n\nSurvey Analysis P\nSelect/Setup ...\nSession\nImport\n\nList of all Surveys in this Survey Data Root\ndirectory.\n\nSurvey Setup and Selection\nSurvey Data Root: ... C:\\Surveys\n\nF3_Demo_2020\nF3_Demo_2020_20jul21\nF3_Demo_2020_old\nMy_New_Survey_AL\nMy_survey_AL\n\nF3 Demo 2020\n750/300 750/1250\n100/300 100/1250\n\nWhen starting OpendTect for the first time, you\narrive directly in the Survey Setup & Selection\nwindow.\n\nInformation Notes Log\nIn-line range: 100 - 750 - 1; Total: 651\nCross-line range: 300 - 1250 - 1; Total: 951\nZ range (ms): 0 - 1848 - 4; Total: 463\nInl/Crl bin size: 25.00 / 25.00 (m/line)\nCRS: Projection: [EPSG:23031] ED50 / UTM zone 31N\nArea: 386.93 (sq Km)\nSurvey Type: Both 2D and 3D\nIn-line Orientation: 88.40 Degrees from N\nLocation: C:\\Surveys\\F3_Demo_2020\n\nSelec",
+              "input_tokens": 2133,
+              "output_tokens": 2,
+              "thoughts_tokens": 391,
+              "cost_usd": 0.006596,
+              "model": "gemini",
+              "aux_calls": 2,
+              "aux_input_tokens": 2727,
+              "aux_output_tokens": 555,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002206,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.008802,
+              "route_confidence": 0.9,
+              "picked_node_id": "survey_setup_05_select_survey",
+              "picked_workflow_id": "survey_setup",
+              "route_method": "llm",
+              "fallback_activated": false
+            }
+          ],
+          "latency_sec": 107.98
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "vanilla_vector": {
+      "n_scenarios": 1,
+      "step_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "hallucination_rate": 0.0,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 9.553,
+      "mean_cost_usd": 0.012194,
+      "total_cost_usd": 0.048777,
+      "mean_aux_cost_usd": 0.0,
+      "total_aux_cost_usd": 0.0,
+      "mean_cost_total_usd": 0.012194,
+      "total_aux_calls": 0.0,
+      "total_input_tokens": 28309.0,
+      "total_output_tokens": 40.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": null
+    },
+    "vanilla_budget": {
+      "n_scenarios": 1,
+      "step_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "hallucination_rate": 0.0,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 7.843,
+      "mean_cost_usd": 0.005777,
+      "total_cost_usd": 0.02311,
+      "mean_aux_cost_usd": 0.0,
+      "total_aux_cost_usd": 0.0,
+      "mean_cost_total_usd": 0.005777,
+      "total_aux_calls": 0.0,
+      "total_input_tokens": 7953.0,
+      "total_output_tokens": 44.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": null
+    },
+    "full_system": {
+      "n_scenarios": 1,
+      "step_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "hallucination_rate": 0.0,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 24.105,
+      "mean_cost_usd": 0.008721,
+      "total_cost_usd": 0.034883,
+      "mean_aux_cost_usd": 0.001582,
+      "total_aux_cost_usd": 0.006326,
+      "mean_cost_total_usd": 0.010302,
+      "total_aux_calls": 8.0,
+      "total_input_tokens": 8611.0,
+      "total_output_tokens": 45.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": 0.938
+    }
+  }
+}

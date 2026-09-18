@@ -701,10 +701,15 @@ def _hallucinated_elements_impl(response: str, visible_elements_gt: List[str],
         if goal_canon and len(rc) >= 3 and rc in goal_canon:
             continue
         # grounded if the mention is contained in the screen vocabulary or
-        # any vocabulary entry is contained in the mention (both loose)
+        # any vocabulary entry is contained in the mention (both loose).
+        # Entries shorter than 3 canonical characters ('OK', '...', '3D')
+        # ground a mention by EXACT match only (v3 GT rule, 2026-09-18).
         if rc in vocab_join or (rc_nodigit and len(rc_nodigit) >= 3 and rc_nodigit in vocab_join):
+            if len(rc) >= 3 or rc in vocab_canon:
+                continue
+        if any(v and len(v) >= 3 and (v in rc) for v in vocab_canon):
             continue
-        if any(v and (v in rc) for v in vocab_canon):
+        if any(v and len(v) < 3 and v == rc for v in vocab_canon):
             continue
         halls.append(r)
     return halls
@@ -865,6 +870,16 @@ class ScenarioEvaluator:
         except ImportError:
             get_last_usage = lambda: {"input_tokens": 0, "output_tokens": 0, "cost_usd": 0.0, "model": ""}
         try:
+            from api.services.bench_backends import get_last_context_block  # type: ignore
+        except ImportError:
+            get_last_context_block = lambda: ""
+        save_context = os.environ.get("BENCH_SAVE_CONTEXT", "0") == "1"
+        try:
+            from api.services import stage_timer as _stage_timer  # type: ignore
+            _stage_reset, _stage_snapshot = _stage_timer.reset, _stage_timer.snapshot
+        except ImportError:
+            _stage_reset, _stage_snapshot = (lambda: None), (lambda: {})
+        try:
             from api.services.guide_pipeline import (
                 get_last_localize_meta, reset_last_localize_meta,
                 get_aux_usage, reset_aux_usage,
@@ -887,16 +902,23 @@ class ScenarioEvaluator:
         for i, step in enumerate(self.steps):
             reset_last_localize_meta()
             reset_aux_usage()
+            _stage_reset()
             t0 = _time.time()
             try:
                 response = backend_callable(i, self.scenario, prior_responses) or ""
             except Exception as e:
                 print(f"[EVAL] backend {backend_name} step {i} failed: {e}")
                 response = ""
-            latency = round(_time.time() - t0, 3)
+            latency_wall = round(_time.time() - t0, 3)
             usage = get_last_usage()
             loc_meta = get_last_localize_meta()
             aux = get_aux_usage()
+            # v3: several backends analyse the same screenshot inside one
+            # process and hit the in-process vision cache. The original
+            # vision call's wall-clock is replayed on hits so every backend
+            # is charged the latency it would pay in production.
+            latency = round(latency_wall + float(aux.get("replayed_latency_sec") or 0.0), 3)
+            ctx_block = get_last_context_block() or ""
 
             matched = step_match(response, step)
             halls = hallucinated_elements(
@@ -918,6 +940,10 @@ class ScenarioEvaluator:
                 "is_trap": bool(step.get("trap")),
                 "is_recovery": bool(step.get("is_error_recovery_test")),
                 "latency_sec":   latency,
+                "latency_wall_sec": latency_wall,
+                "stage_latency": _stage_snapshot(),   # v3: per-stage seconds (see stage_timer.py)
+                "context_chars": len(ctx_block),
+                "context_block": ctx_block if save_context else None,
                 "input_tokens":  usage.get("input_tokens", 0),
                 "output_tokens": usage.get("output_tokens", 0),
                 "thoughts_tokens": usage.get("thoughts_tokens", 0),

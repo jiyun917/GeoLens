@@ -23,11 +23,27 @@
         ]
       },
       "linked_chunks": [
-        "148fa270411d48d0871be7fbca051022",
-        "4c8c54195354436c8258414368312ef0",
-        "3abcdb2fd8394441820eead5d8caaab0"
+        "c0775e7424324cdfa9215db68242c6f2",
+        "cf4aee888a93491198cfabd1cc09c8b6",
+        "5fbea13bd9864d1498469c8fd55199bd"
       ],
-      "parameters": []
+      "parameters": [],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "148fa270411d48d0871be7fbca051022",
+          "4c8c54195354436c8258414368312ef0",
+          "3abcdb2fd8394441820eead5d8caaab0"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.4.3"
+      ]
     },
     {
       "id": "fault_interpretation_02_display",
@@ -49,11 +65,27 @@
         ]
       },
       "linked_chunks": [
-        "148fa270411d48d0871be7fbca051022",
-        "3abcdb2fd8394441820eead5d8caaab0",
-        "a44f031fcf664a18a7a69a4f2fd918ba"
+        "7ea55c6370bf40aba1f15d8ed5103ce4",
+        "93c6e9e0661b4b1eafa2bac9ef084682",
+        "5fbea13bd9864d1498469c8fd55199bd"
       ],
-      "parameters": []
+      "parameters": [],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "148fa270411d48d0871be7fbca051022",
+          "3abcdb2fd8394441820eead5d8caaab0",
+          "a44f031fcf664a18a7a69a4f2fd918ba"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.4.3"
+      ]
     },
     {
       "id": "fault_interpretation_03_apply_attribute",
@@ -76,9 +108,9 @@
         ]
       },
       "linked_chunks": [
-        "8ad69e2711a943429d8086ca69796187",
-        "4c8c54195354436c8258414368312ef0",
-        "3abcdb2fd8394441820eead5d8caaab0"
+        "1e2265073e874f3e8781a00c4260e9d3",
+        "c0775e7424324cdfa9215db68242c6f2",
+        "7ea55c6370bf40aba1f15d8ed5103ce4"
       ],
       "parameters": [
         {
@@ -86,6 +118,22 @@
           "default": "Similarity",
           "description": "Similarity, Curvature, Coherence 등 단층 강조 속성"
         }
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "8ad69e2711a943429d8086ca69796187",
+          "4c8c54195354436c8258414368312ef0",
+          "3abcdb2fd8394441820eead5d8caaab0"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.4.3"
       ]
     },
     {
@@ -108,11 +156,27 @@
         ]
       },
       "linked_chunks": [
-        "148fa270411d48d0871be7fbca051022",
-        "4c8c54195354436c8258414368312ef0",
-        "3abcdb2fd8394441820eead5d8caaab0"
+        "ebaeb084b7704c43b74846f12c93e133",
+        "c0775e7424324cdfa9215db68242c6f2",
+        "5fbea13bd9864d1498469c8fd55199bd"
       ],
-      "parameters": []
+      "parameters": [],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "148fa270411d48d0871be7fbca051022",
+          "4c8c54195354436c8258414368312ef0",
+          "3abcdb2fd8394441820eead5d8caaab0"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.4.3"
+      ]
     },
     {
       "id": "fault_interpretation_05_pick_fault",
@@ -134,9 +198,9 @@
         ]
       },
       "linked_chunks": [
-        "148fa270411d48d0871be7fbca051022",
-        "3abcdb2fd8394441820eead5d8caaab0",
-        "9553897ff0d14cd0aa14028b02aaad76"
+        "c0775e7424324cdfa9215db68242c6f2",
+        "42aed453c78340c0b9e6d7648bb09fc3",
+        "7ea55c6370bf40aba1f15d8ed5103ce4"
       ],
       "parameters": [
         {
@@ -144,6 +208,22 @@
           "default": "Every 10 inlines",
           "description": "단층 포인트 샘플링 간격"
         }
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "148fa270411d48d0871be7fbca051022",
+          "3abcdb2fd8394441820eead5d8caaab0",
+          "9553897ff0d14cd0aa14028b02aaad76"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.4.3"
       ]
     },
     {
@@ -167,11 +247,27 @@
         ]
       },
       "linked_chunks": [
-        "3abcdb2fd8394441820eead5d8caaab0",
-        "148fa270411d48d0871be7fbca051022",
-        "4c8c54195354436c8258414368312ef0"
+        "c0775e7424324cdfa9215db68242c6f2",
+        "5fbea13bd9864d1498469c8fd55199bd",
+        "ebaeb084b7704c43b74846f12c93e133"
       ],
-      "parameters": []
+      "parameters": [],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "3abcdb2fd8394441820eead5d8caaab0",
+          "148fa270411d48d0871be7fbca051022",
+          "4c8c54195354436c8258414368312ef0"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.4.3"
+      ]
     },
     {
       "id": "fault_interpretation_07_qc",
@@ -194,11 +290,27 @@
         ]
       },
       "linked_chunks": [
-        "148fa270411d48d0871be7fbca051022",
-        "4c8c54195354436c8258414368312ef0",
-        "3abcdb2fd8394441820eead5d8caaab0"
+        "c0775e7424324cdfa9215db68242c6f2",
+        "a9b02af663a047e4bb85550696860a8f",
+        "ebaeb084b7704c43b74846f12c93e133"
       ],
-      "parameters": []
+      "parameters": [],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "148fa270411d48d0871be7fbca051022",
+          "4c8c54195354436c8258414368312ef0",
+          "3abcdb2fd8394441820eead5d8caaab0"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.4.3"
+      ]
     },
     {
       "id": "fault_interpretation_08_save",
@@ -219,9 +331,9 @@
         ]
       },
       "linked_chunks": [
-        "148fa270411d48d0871be7fbca051022",
-        "3abcdb2fd8394441820eead5d8caaab0",
-        "4c8c54195354436c8258414368312ef0"
+        "c0775e7424324cdfa9215db68242c6f2",
+        "1e2265073e874f3e8781a00c4260e9d3",
+        "ebaeb084b7704c43b74846f12c93e133"
       ],
       "parameters": [
         {
@@ -229,6 +341,22 @@
           "default": "F1",
           "description": "저장할 단층 이름"
         }
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [
+          "148fa270411d48d0871be7fbca051022",
+          "3abcdb2fd8394441820eead5d8caaab0",
+          "4c8c54195354436c8258414368312ef0"
+        ],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "ids from the April-2026 chunk_mapper run; none resolve in data/chromadb (unified2-4 index) or chromadb_v3"
+      },
+      "manual_sections": [
+        "1.4.3"
       ]
     }
   ],

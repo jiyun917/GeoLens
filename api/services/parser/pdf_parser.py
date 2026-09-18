@@ -23,6 +23,9 @@ import pypdf
 
 # Minimum text length to consider a page as text-based (not image-based)
 MIN_TEXT_LENGTH = 50
+# v3: figure OCR on text pages (general, image-area based). See parse_pdf().
+OCR_FIGURES = os.environ.get("OCR_FIGURES", "1") != "0"
+OCR_FIGURE_AREA_MIN = float(os.environ.get("OCR_FIGURE_AREA_MIN", "0.03"))
 
 # pdfplumber x_tolerance controls how close (in points) two characters must
 # be along the x-axis to be considered part of the same word. The default
@@ -157,11 +160,34 @@ def parse_pdf(file_path: str) -> List[Tuple[str, dict]]:
             }
 
             needs_ocr = len(text) < MIN_TEXT_LENGTH and gemini_api_key
+            # v3 general figure-OCR rule (image-area based, both manuals):
+            # on pages that DO have body text, every embedded image whose
+            # area is >= OCR_FIGURE_AREA_MIN of the page is cropped and
+            # OCR'd separately; its text is appended to the page text as a
+            # "[Figure OCR]" block. The v2 rule OCR'd only pages with fewer
+            # than MIN_TEXT_LENGTH characters, so procedures printed inside
+            # figures (e.g. OpendTect §1.3.1a, p.46: 384 chars + 1 figure)
+            # never reached the index. OCR_FIGURES=0 restores v2.
+            figure_boxes = []
+            if OCR_FIGURES and gemini_api_key and not needs_ocr:
+                page_area = float(page.width * page.height) or 1.0
+                for im in page.images:
+                    try:
+                        x0, top, x1, bottom = float(im["x0"]), float(im["top"]), float(im["x1"]), float(im["bottom"])
+                    except Exception:
+                        continue
+                    x0, x1 = max(0.0, x0), min(float(page.width), x1)
+                    top, bottom = max(0.0, top), min(float(page.height), bottom)
+                    if x1 <= x0 or bottom <= top:
+                        continue
+                    if (x1 - x0) * (bottom - top) / page_area >= OCR_FIGURE_AREA_MIN:
+                        figure_boxes.append((x0, top, x1, bottom))
             pages_data.append({
                 "page_num": page_num,
                 "text": text,
                 "metadata": metadata,
                 "needs_ocr": needs_ocr,
+                "figure_boxes": figure_boxes,
             })
 
         # OCR pass: process image-based pages with Gemini Vision
@@ -198,6 +224,44 @@ def parse_pdf(file_path: str) -> List[Tuple[str, dict]]:
                         print(f"[OCR] Progress: {completed}/{total} pages")
 
             print(f"[OCR] Complete: {completed}/{total} pages processed")
+
+        # Figure-OCR pass (v3): crop each qualifying image and OCR it
+        fig_jobs = [(p, k, box) for p in pages_data for k, box in enumerate(p.get("figure_boxes") or [])]
+        if fig_jobs:
+            total_f = len(fig_jobs)
+            print(f"[OCR] {total_f} figures on text pages (area >= {OCR_FIGURE_AREA_MIN:.0%}). Starting figure OCR...")
+            rendered = []
+            for p, k, box in fig_jobs:
+                try:
+                    crop = doc.pages[p["page_num"]].crop(box)
+                    img = crop.to_image(resolution=200)
+                    buf = io.BytesIO()
+                    img.save(buf, format="PNG")
+                    rendered.append((p, k, buf.getvalue()))
+                except Exception as e:
+                    print(f"[OCR] figure crop failed p.{p['page_num'] + 1} #{k}: {e}")
+            completed_f = 0
+
+            def process_fig(job):
+                p, k, png = job
+                return p["page_num"], k, _ocr_page_gemini(png, p["page_num"], gemini_api_key)
+
+            fig_text = {}
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                futures = {executor.submit(process_fig, j): j for j in rendered}
+                for future in as_completed(futures):
+                    page_num, k, t = future.result()
+                    completed_f += 1
+                    if t and t.strip():
+                        fig_text.setdefault(page_num, []).append((k, t.strip()))
+                    if completed_f % 50 == 0:
+                        print(f"[OCR] Figure progress: {completed_f}/{total_f}")
+            for p in pages_data:
+                blocks = sorted(fig_text.get(p["page_num"], []))
+                if blocks:
+                    p["text"] = (p["text"] + "\n\n" + "\n\n".join(
+                        f"[Figure OCR p.{p['page_num'] + 1} #{k + 1}]\n{t}" for k, t in blocks)).strip()
+            print(f"[OCR] Figure OCR complete: {completed_f}/{total_f} figures, text on {len(fig_text)} pages")
 
     # Build results
     results = []

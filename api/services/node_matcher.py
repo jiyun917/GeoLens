@@ -51,16 +51,42 @@ def node_text(node: Dict) -> str:
     return "\n".join(parts)
 
 
+def _lst(vs: Dict, key: str) -> List[str]:
+    v = vs.get(key) or []
+    if isinstance(v, str):
+        v = [v]
+    return [str(x) for x in v if str(x).strip()]
+
+
 def visual_state_text(visual_state: Dict) -> str:
+    """Text rendering of the vision output used for embedding similarity.
+    v3 vision output adds verbatim window_titles / menu_items / buttons /
+    labels; they are included when present."""
     vs = visual_state or {}
-    elems = vs.get("visible_elements") or []
-    return "\n".join([
-        f"Dialog: {vs.get('current_dialog') or ''}",
-        f"Menu: {vs.get('active_menu') or ''}",
-        "Elements: " + ", ".join(str(e) for e in elems),
-        f"Data: {vs.get('data_state') or ''}",
-        f"Action: {vs.get('current_action') or ''}",
-    ])
+    lines = [f"Dialog: {vs.get('current_dialog') or ''}"]
+    if _lst(vs, "window_titles"):
+        lines.append("Windows: " + ", ".join(_lst(vs, "window_titles")))
+    lines.append(f"Menu: {vs.get('active_menu') or ''}")
+    if _lst(vs, "menu_items"):
+        lines.append("Menu items: " + ", ".join(_lst(vs, "menu_items")))
+    if _lst(vs, "buttons"):
+        lines.append("Buttons: " + ", ".join(_lst(vs, "buttons")))
+    if _lst(vs, "labels"):
+        lines.append("Labels: " + ", ".join(_lst(vs, "labels")))
+    lines.append("Elements: " + ", ".join(_lst(vs, "visible_elements")))
+    lines.append(f"Data: {vs.get('data_state') or ''}")
+    lines.append(f"Action: {vs.get('current_action') or ''}")
+    return "\n".join(lines)
+
+
+def flatten_visual_state(visual_state: Dict) -> str:
+    """Lower-cased flat string of every vision field (substring scorer)."""
+    vs = visual_state or {}
+    parts = [str(vs.get("current_dialog") or ""), str(vs.get("active_menu") or ""),
+             str(vs.get("data_state") or ""), str(vs.get("current_action") or "")]
+    for k in ("window_titles", "menu_items", "buttons", "labels", "visible_elements"):
+        parts += _lst(vs, k)
+    return " ".join(parts).lower()
 
 
 def _ensure_node_embeddings(nodes: List[Dict]) -> None:

@@ -38,6 +38,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--label", required=True)
     ap.add_argument("--budget", type=int, default=1500)
+    ap.add_argument("--include-qgis", action="store_true",
+                    help="v3 dev loop: the QGIS test scenario is skipped unless this flag is given "
+                         "(no QGIS execution, dry-runs included, before the freeze commit)")
     args = ap.parse_args()
     from api.services.rag import get_manual_context
     from api.services.embedder import EMBED_MODEL
@@ -50,6 +53,9 @@ def main():
         scen = json.load(open(f, encoding="utf-8"))
         sid = scen.get("scenario_id")
         if not sid or sid == "EXAMPLE_PLACEHOLDER":
+            continue
+        if sid.startswith("qgis") and not args.include_qgis:
+            print(f"[replay] skip {sid} (QGIS test set; --include-qgis to run)")
             continue
         ctx = get_manual_context([scen["manual_id"]], scen["goal"], top_k=5) or ""
         secs = re.findall(r"\[Source: [^\]]*?Section: ([^\]]+)\]", ctx)

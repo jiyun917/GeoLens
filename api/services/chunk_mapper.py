@@ -36,6 +36,35 @@ def _collect_chunk_candidates(manual_id: str) -> List[Dict]:
         return []
 
 
+def _section_candidates(manual_id: str, query_emb: List[float], prefixes: List[str], top_k: int) -> List[tuple]:
+    """(chunk_id, distance) for chunks whose section starts with one of the
+    prefixes, ranked by embedding distance (v3 section provenance)."""
+    try:
+        collection = vectorstore.get_collection(manual_id)
+        if collection is None:
+            return []
+        res = collection.get(include=["metadatas", "embeddings"])
+    except Exception as e:
+        print(f"[ChunkMapper] section fetch failed for {manual_id}: {e}")
+        return []
+    out = []
+    ids = res.get("ids") or []
+    metas = res.get("metadatas") or []
+    embs = res.get("embeddings")
+    if embs is None:
+        return []
+    for i, cid in enumerate(ids):
+        sec = str((metas[i] or {}).get("section", "")) if i < len(metas) else ""
+        if not any(sec.startswith(p) for p in prefixes):
+            continue
+        e = list(embs[i])
+        # squared L2 on normalized vectors (= chroma's default distance)
+        dist = float(sum((a - b) ** 2 for a, b in zip(query_emb, e)))
+        out.append((cid, dist))
+    out.sort(key=lambda x: x[1])
+    return out[:top_k]
+
+
 def map_node_to_chunks(
     node: Dict,
     manual_ids: List[str],
@@ -47,6 +76,13 @@ def map_node_to_chunks(
     max_distance: upper bound on cosine/L2 distance (larger = more permissive).
     Returns list of chunk IDs (always up to top_k, even if matches are weak —
     weak matches still provide some context for rare workflow steps).
+
+    v3 — section provenance: when the node carries ``manual_sections`` (a list
+    of section-number prefixes the node was authored from, e.g. ["1.3.1a"]),
+    candidates are restricted to chunks of those sections (ranked by the same
+    embedding distance) and the global top-k only fills remaining slots. The
+    auto-generated workflows carry their source chunks by construction; this
+    gives hand-authored workflows the same manual provenance.
     """
     title = node.get("title") or ""
     description = node.get("description") or ""
@@ -64,6 +100,11 @@ def map_node_to_chunks(
         return []
 
     best_chunks: List[tuple] = []  # (chunk_id, distance)
+    prefixes = [str(p) for p in (node.get("manual_sections") or []) if str(p).strip()]
+    if prefixes:
+        for mid in manual_ids:
+            for cid, dist in _section_candidates(mid, query_emb, prefixes, top_k):
+                best_chunks.append((cid, -1.0 + dist * 1e-6))   # section chunks rank first, in distance order
     for mid in manual_ids:
         try:
             res = vectorstore.search(mid, query_emb, top_k=top_k)

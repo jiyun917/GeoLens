@@ -1,5 +1,7 @@
 # Paper Table 1 — full mean ± sample SD for all 25 cells (unified4)
 
+> **Annotation (V3-9, 2026-09-18)**: the unified2–4 `full_system` (and `state_path`) figures in this file were measured WITHOUT linked_chunks text — every linked_chunks id in the workflow JSONs had been dangling since the 2026-07-27 re-ingest, so graph_context held only the per-node title/description vector search. See `methodology_audit_trail.md` V3-9.
+
 Statistical unit = replicate (n=5 per cell). Each replicate value is the mean across the scenarios (survey_setup + 3d_visualization + attribute_computation). SD is sample SD (n-1 denominator).
 
 Cells: 4 models × 6 backends + Gemini × long_context = 25.

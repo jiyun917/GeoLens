@@ -13,6 +13,7 @@ from typing import Dict, List, Optional
 from .embedder import get_embeddings
 from . import vectorstore
 from . import graphstore
+from . import stage_timer
 
 
 def _extract_entities_from_query(query: str) -> List[str]:
@@ -186,7 +187,8 @@ def _abstract_search(manual_ids: List[str], query: str, specific_results: List[D
     print(f"[RAG] Extracted entities: {unique_entities[:15]}")
 
     try:
-        unique_triplets = graphstore.query_subgraph_with_base(manual_ids, unique_entities, max_hops=2, data_types=data_types)
+        with stage_timer.timed("kg_search"):
+            unique_triplets = graphstore.query_subgraph_with_base(manual_ids, unique_entities, max_hops=2, data_types=data_types)
     except Exception as e:
         print(f"[RAG] Graph search error: {e}")
         unique_triplets = []
@@ -217,7 +219,9 @@ def _merge_contexts(
     """
     context_parts = []
     kg_position = os.environ.get("RAG_KG_POSITION", "last").lower()
-    kg_enabled = os.environ.get("RAG_KG_ENABLED", "1") != "0"
+    # v3 default: the geology base-graph triplets are excluded from guide-mode
+    # context for every backend (RAG_KG_ENABLED=1 restores the block).
+    kg_enabled = os.environ.get("RAG_KG_ENABLED", "0") != "0"
 
     # 1. Graph context (abstract/relational)
     graph_context = _format_graph_context(graph_triplets) if kg_enabled else ""
@@ -288,8 +292,13 @@ def get_manual_context(manual_ids: List[str], query: str, top_k: int = 5, data_t
     # 2. Neighbor Expansion
     neighbor_results = _expand_neighbors(ids, specific_results)
 
-    # 3. Abstract Retrieval (graph search — includes data-type-specific base graphs)
-    graph_triplets = _abstract_search(ids, query, specific_results, data_types)
+    # 3. Abstract Retrieval (graph search — includes data-type-specific base graphs).
+    #    v3: skipped entirely when the KG block is disabled (RAG_KG_ENABLED=0,
+    #    the v3 default) — it would be computed and then dropped by _merge_contexts.
+    if os.environ.get("RAG_KG_ENABLED", "0") != "0":
+        graph_triplets = _abstract_search(ids, query, specific_results, data_types)
+    else:
+        graph_triplets = []
 
     # 4. Merge all contexts
     return _merge_contexts(specific_results, neighbor_results, graph_triplets)

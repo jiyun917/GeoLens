@@ -30,11 +30,28 @@
           "about to open Processing Toolbox"
         ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "1139d3a80e9049daab9d9c2789708595",
+        "0e4ff7e05f4a4572b9bd651e1eb42e50",
+        "4d535b9ff9984a978211cf643ddc694d"
+      ],
       "parameters": [],
       "signature_audit": {
         "changed_on": "2026-08-13",
         "reason": "hand-authored QGIS pilot signature. Narrow to pre-toolbox-open state markers. 'about to open Processing Toolbox' is step_0-unique phrase — later steps have toolbox already open."
+      },
+      "manual_sections": [
+        "★☆☆ Follow Along: Analyzing the Problem"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "the QGIS workflow never had linked_chunks before this v3 relink (QGIS results not yet seen; deployment configuration before the freeze)",
+        "section_label": "★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads (= QGIS Training Manual 3.44 §6.2.6, pp. 212-218)"
       }
     },
     {
@@ -63,8 +80,25 @@
           "type buffer in the search menu"
         ]
       },
-      "linked_chunks": [],
-      "parameters": []
+      "linked_chunks": [
+        "1139d3a80e9049daab9d9c2789708595",
+        "0e4ff7e05f4a4572b9bd651e1eb42e50",
+        "4d535b9ff9984a978211cf643ddc694d"
+      ],
+      "parameters": [],
+      "manual_sections": [
+        "★☆☆ Follow Along: Analyzing the Problem"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "the QGIS workflow never had linked_chunks before this v3 relink (QGIS results not yet seen; deployment configuration before the freeze)",
+        "section_label": "★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads (= QGIS Training Manual 3.44 §6.2.6, pp. 212-218)"
+      }
     },
     {
       "id": "qgis_vector_buffer_03_configure_buffer",
@@ -96,12 +130,41 @@
           "default values for the rest of the parameters"
         ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "1139d3a80e9049daab9d9c2789708595",
+        "e10a82f49d644e6db6ec67173977c431",
+        "4d535b9ff9984a978211cf643ddc694d"
+      ],
       "parameters": [
-        {"name": "Input layer", "default": "roads_33S", "description": "버퍼 대상 벡터 레이어"},
-        {"name": "Distance", "default": "50", "description": "버퍼 거리 (meters)"},
-        {"name": "Dissolve results", "default": "true", "description": "결과 폴리곤 병합 여부 (매뉴얼 iterate 최종 상태)"}
-      ]
+        {
+          "name": "Input layer",
+          "default": "roads_33S",
+          "description": "버퍼 대상 벡터 레이어"
+        },
+        {
+          "name": "Distance",
+          "default": "50",
+          "description": "버퍼 거리 (meters)"
+        },
+        {
+          "name": "Dissolve results",
+          "default": "true",
+          "description": "결과 폴리곤 병합 여부 (매뉴얼 iterate 최종 상태)"
+        }
+      ],
+      "manual_sections": [
+        "★☆☆ Follow Along: Analyzing the Problem"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "the QGIS workflow never had linked_chunks before this v3 relink (QGIS results not yet seen; deployment configuration before the freeze)",
+        "section_label": "★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads (= QGIS Training Manual 3.44 §6.2.6, pp. 212-218)"
+      }
     },
     {
       "id": "qgis_vector_buffer_04_save_output",
@@ -127,11 +190,36 @@
           "about to click Save"
         ]
       },
-      "linked_chunks": [],
+      "linked_chunks": [
+        "4d535b9ff9984a978211cf643ddc694d",
+        "1139d3a80e9049daab9d9c2789708595",
+        "e10a82f49d644e6db6ec67173977c431"
+      ],
       "parameters": [
-        {"name": "GeoPackage", "default": "vector_analysis.gpkg", "description": "출력 저장할 GPKG 파일"},
-        {"name": "Layer name", "default": "roads_buffer_50m_dissolved", "description": "저장할 레이어 이름 (dissolved 결과)"}
-      ]
+        {
+          "name": "GeoPackage",
+          "default": "vector_analysis.gpkg",
+          "description": "출력 저장할 GPKG 파일"
+        },
+        {
+          "name": "Layer name",
+          "default": "roads_buffer_50m_dissolved",
+          "description": "저장할 레이어 이름 (dissolved 결과)"
+        }
+      ],
+      "manual_sections": [
+        "★☆☆ Follow Along: Analyzing the Problem"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "the QGIS workflow never had linked_chunks before this v3 relink (QGIS results not yet seen; deployment configuration before the freeze)",
+        "section_label": "★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads (= QGIS Training Manual 3.44 §6.2.6, pp. 212-218)"
+      }
     },
     {
       "id": "qgis_vector_buffer_05_run_and_render",
@@ -157,14 +245,55 @@
           "Run completed"
         ]
       },
-      "linked_chunks": [],
-      "parameters": []
+      "linked_chunks": [
+        "e10a82f49d644e6db6ec67173977c431",
+        "1139d3a80e9049daab9d9c2789708595",
+        "4d535b9ff9984a978211cf643ddc694d"
+      ],
+      "parameters": [],
+      "manual_sections": [
+        "★☆☆ Follow Along: Analyzing the Problem"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-18",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0,
+        "previous_ids_note": "the QGIS workflow never had linked_chunks before this v3 relink (QGIS results not yet seen; deployment configuration before the freeze)",
+        "section_label": "★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads (= QGIS Training Manual 3.44 §6.2.6, pp. 212-218)"
+      }
     }
   ],
   "edges": [
-    {"source": "qgis_vector_buffer_01_open_toolbox", "target": "qgis_vector_buffer_02_search_algorithm", "edge_type": "sequential", "condition": null, "instruction": "Processing > Toolbox 메뉴를 클릭해 Processing Toolbox 를 여세요"},
-    {"source": "qgis_vector_buffer_02_search_algorithm", "target": "qgis_vector_buffer_03_configure_buffer", "edge_type": "sequential", "condition": null, "instruction": "Toolbox 검색창에 'buffer' 를 입력하고 Buffer 알고리즘을 double-click 하세요"},
-    {"source": "qgis_vector_buffer_03_configure_buffer", "target": "qgis_vector_buffer_04_save_output", "edge_type": "sequential", "condition": null, "instruction": "Input layer = roads_33S, Distance = 50, Dissolve results 체크 후 Output 옆 '…' 버튼을 클릭하세요"},
-    {"source": "qgis_vector_buffer_04_save_output", "target": "qgis_vector_buffer_05_run_and_render", "edge_type": "sequential", "condition": null, "instruction": "Save to GeoPackage 에서 파일 vector_analysis.gpkg 선택, Layer name = roads_buffer_50m_dissolved 입력 후 OK 클릭, 다시 Buffer 다이얼로그에서 Run 을 클릭하세요"}
+    {
+      "source": "qgis_vector_buffer_01_open_toolbox",
+      "target": "qgis_vector_buffer_02_search_algorithm",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Processing > Toolbox 메뉴를 클릭해 Processing Toolbox 를 여세요"
+    },
+    {
+      "source": "qgis_vector_buffer_02_search_algorithm",
+      "target": "qgis_vector_buffer_03_configure_buffer",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Toolbox 검색창에 'buffer' 를 입력하고 Buffer 알고리즘을 double-click 하세요"
+    },
+    {
+      "source": "qgis_vector_buffer_03_configure_buffer",
+      "target": "qgis_vector_buffer_04_save_output",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Input layer = roads_33S, Distance = 50, Dissolve results 체크 후 Output 옆 '…' 버튼을 클릭하세요"
+    },
+    {
+      "source": "qgis_vector_buffer_04_save_output",
+      "target": "qgis_vector_buffer_05_run_and_render",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Save to GeoPackage 에서 파일 vector_analysis.gpkg 선택, Layer name = roads_buffer_50m_dissolved 입력 후 OK 클릭, 다시 Buffer 다이얼로그에서 Run 을 클릭하세요"
+    }
   ]
 }

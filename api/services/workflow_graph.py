@@ -121,15 +121,15 @@ class WorkflowGraph:
         if node_matcher.matcher_kind() == "embedding":
             return node_matcher.top_k(visual_state, self.get_all_nodes(), k=k,
                                       hint_workflow_id=hint_workflow_id)
-        vs_text = " ".join(
-            [
-                str(visual_state.get("current_dialog", "")),
-                str(visual_state.get("active_menu", "")),
-                " ".join(visual_state.get("visible_elements", []) or []),
-                str(visual_state.get("data_state", "")),
-                str(visual_state.get("current_action", "")),
-            ]
-        ).lower()
+        return self.get_top_k_nodes_substring(visual_state, k=k, hint_workflow_id=hint_workflow_id)
+
+    def get_top_k_nodes_substring(
+        self, visual_state: Dict, k: int = 3, hint_workflow_id: Optional[str] = None
+    ) -> List[Tuple[Dict, float]]:
+        """v2 candidate scorer: fraction of visual_signature strings found
+        verbatim in the flattened visual state."""
+        from . import node_matcher
+        vs_text = node_matcher.flatten_visual_state(visual_state)
 
         scored: List[Tuple[Dict, float]] = []
         for node_id in self.graph.nodes:
@@ -163,15 +163,7 @@ class WorkflowGraph:
                                      hint_workflow_id=hint_workflow_id)
             return (top[0][0], top[0][1]) if top else (None, 0.0)
         # Flatten visual_state into a searchable text
-        vs_text = " ".join(
-            [
-                str(visual_state.get("current_dialog", "")),
-                str(visual_state.get("active_menu", "")),
-                " ".join(visual_state.get("visible_elements", []) or []),
-                str(visual_state.get("data_state", "")),
-                str(visual_state.get("current_action", "")),
-            ]
-        ).lower()
+        vs_text = node_matcher.flatten_visual_state(visual_state)
 
         best_node = None
         best_score = 0.0

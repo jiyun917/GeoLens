@@ -1176,3 +1176,55 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 
 ### V3-4. 작업 4 — rescore 요약 (2026-09-18)
 - `rescore_v3_summary.md`: 3모델 18셀의 v3 환각률 분포 {0: 1, 0–5: 3, 5–10: 3, 10–20: 8, >20: 3} — 0 근처가 아니므로 판정 지표에서 제외할 근거는 없음(단, GT visible_elements 보정 전 값). 채점기만 바꿨을 때 full vs vanilla step accuracy 방향: Gemini vanilla → full, Claude full → 동률, GPT 불변(full); 3모델 카운트 2/3 → 2/3.
+
+### V3-5. 작업 1 — 라우팅 진단과 메커니즘 수정, 동결 (2026-09-18)
+- 진단(개발 세트 16스텝, 저장된 vision 출력으로 오프라인 재계산, `routing_diag_dev_v2.md`): 실패 9 = 후보 단계 탈락 8(attribute 전부) + rerank 거절 1(3d_viz s3). seismic_attribute 노드의 v2 부분문자열 점수 0.18–0.20 vs 타 워크플로우 0.47–0.67. CLIP 후보는 모든 OpendTect 화면에서 d3_visualization·auto_bf2804(QGIS) 노드에 0.82–0.91.
+- 결정: 개별 signature 수정 금지 원칙에 따라 후보 단계의 매칭 함수만 교체 — 부분문자열 비율 → bge-m3 코사인(vision 출력 ↔ 노드 제목·설명·expected_dialog·UI 요소·키워드). `api/services/node_matcher.py`, `WorkflowGraph.get_top_k_nodes/get_current_node`가 `ROUTER_MATCHER=embedding`(기본)일 때 위임, `substring`으로 v2 재현. vision 프롬프트 변경(a)은 화면 문자열이 이미 보고되므로 채택하지 않음.
+- 오프라인 확인(같은 vision 출력): 기대 워크플로우가 top-3 풀에 8/16 → 14/16.
+- dry-run(vision+rerank, thinking off, 개발 세트만): 정답 워크플로우 7/16 → 12/16 (survey 4/4→4/4, 3d_viz 3/4→**2/4**, attribute 0/8→6/8), 유지 10→13, none 5→3, 보조비용 $1.35m→$1.30m/스텝, 지연 10.7→10.6 s. 불리한 변화: 3d_viz s2가 d3_visualization(0.8)→none. attribute s5는 d3_visualization으로 오라우팅, s7은 none.
+- QGIS 테스트 세트는 실행하지 않음(동결 전 금지 준수).
+- **메커니즘 동결 커밋**: `bacfde7f79b2dff13361a159767339d9a4e36061` (branch v3-rerun, 2026-09-18 09:46 KST). 이 커밋 이후 라우팅 메커니즘(후보 단계·CLIP·rerank·confidence 게이트)은 QGIS 결과와 무관하게 변경하지 않는다. 커밋에는 unified3/4·QGIS 파일럿의 미커밋 산출물, 2026-08-07 seismic_attribute signature 재작성, v3 코드·문서가 함께 들어감(로그 unified3/4_bench.log는 제외).
+
+### V3-6. 작업 6 — 사전등록 초안 v2 (2026-09-18)
+- `v3_pre_registration_DRAFT.md` 전면 개정: |M|=3, 층화 순열검정(`scripts/stats_stratified.py`) 1차, A 조건(방향 3/3 또는 2/3+층화 p<0.05), Qwen 제외 사유, 재개 사유 D1–D12, 세트 구분·이력, 금지 사항·동결 해시, QGIS 실행 전 예측(P5), hall 처리 규칙(S6 후 중앙값 <5%면 기술 지표), judge κ 보조 지표, S6 절차, n=10, v4 없음, 열세 시 보고, unified4 비용 직접 비교 불가, 한계.
+
+### V3-7. 작업 5 — GT visible_elements 전수 열거 (2026-09-18, 반영 전)
+- 절차: 24장(OpendTect 16 + QGIS 8) 전부에 같은 프롬프트로 gemini-2.5-pro, temperature 0, JSON 출력. 화면의 창 제목·메뉴·버튼·탭·필드 라벨·리스트/트리 항목·체크박스/라디오·기타 텍스트를 원문 그대로 열거. 모델 응답 로그는 참조하지 않음. 스크립트 `scripts/gt_enumerate_visible_elements.py`, 원자료 `gt_visible_elements_enum_v3.json`, 검수용 diff `gt_visible_elements_review_v3.md`.
+- 결과: 현 GT 137항목 vs vision 열거 1,378항목. 후보 추가(A) 1,129, vision이 읽지 못한 현 GT 항목(B) 25. B의 다수는 텍스트 없는 아이콘 버튼(survey s0의 Add/Edit)이나 GT의 서술형 표기('Survey Data Root tab')로, 사람이 판단할 항목.
+- 반영하지 않음. 사용자 검수 후 반영하며, 반영 시 unified4 로그를 구·신 GT로 재채점해 백엔드별 변화량을 사전등록 §3에 추가한다. QGIS 라우팅 dry-run이 아니며 QGIS 파일은 GT 필드만 대상.
+
+---
+
+## v3 개발 루프 (2026-09-18 ~) — 목표: full_system이 vanilla_vector·vanilla_budget보다 step accuracy·총비용·지연에서 앞서도록 개선. 개발 세트 = OpendTect 3 시나리오, 테스트 세트 = QGIS(동결 전 미실행). 채점기·GT·판정 기준은 개발 결과를 이유로 바꾸지 않는다.
+
+### V3-8. 작업 A — 선행 정리 (2026-09-18)
+- Qwen: 3모델 고정(BENCH_MODELS 기본값). held-out 초안(`scenarios/excluded/heldout_drafts/`) 삭제 — 테스트 세트는 QGIS 하나.
+- KB 재인제스트: `pdf_parser.py`에 이미지 면적 기준 일반 OCR 규칙 추가 — 본문이 있는 페이지의 임베디드 이미지 중 면적 ≥ 3%(`OCR_FIGURE_AREA_MIN`)를 각각 잘라 Gemini Flash OCR 후 `[Figure OCR p.N #k]` 블록으로 본문에 덧붙임(`OCR_FIGURES=0`이면 v2). 근거: OpendTect §1.3.1a(p.46)의 절차가 그림에만 있음 — 프로브 OCR로 "1. Right-click on Inline in the tree and select Add and Select Data. 2. … 4 Dip steered median filter. 3. Click OK" 복원 확인. 대상: OpendTect 텍스트 페이지 중 이미지 ≥10% 104p(+기존 <50자 279p), QGIS 541p. 양쪽 매뉴얼을 같은 규칙으로 `scripts/reindex_v4.py`(파싱→청킹→bge-m3→`data/chromadb_v4`; 분류기·자동 워크플로우·KG·CLIP 재생성은 하지 않음)로 재인제스트 시작. linked_chunks는 완료 후 (section, page, 텍스트 중복도)로 재매핑 예정.
+- GT: `scripts/gt_apply_visible_elements.py`로 24장 전부에 vision 열거 A 항목 반영(902개 추가; 스텝별 GT 크기 10~60). 3자 미만 항목은 정확 일치만 인정(`evaluation._hallucinated_elements_impl`). B 25건과 표본 3장(survey s0, attribute s3, QGIS s3)은 `gt_review_B_and_samples.md`로 사용자 검수용 정리. 패턴(survey s0 '+', QGIS s3)은 변경하지 않음.
+- 새 GT로 unified4 재채점(`rescore_v3_unified4_gtv3.md`): v3 hall 3모델 18셀 5.8~13.3%(중앙값 8.3%) → 사전등록 규칙(중앙값 <5%면 기술 지표)에 따라 hall은 판정 지표로 유지. full vs vanilla_vector: step_acc Gemini full/Claude 동률/GPT full, hall 3/3 full 우세. (v2 채점기 재현이 저장값과 110/1,920 불일치하는 것은 GT 변경 때문이며 예상된 결과.)
+
+### V3-9. 작업 B 준비 — 메커니즘 구현과 linked_chunks 결손 발견 (2026-09-18)
+- **발견**: `data/workflows/*.json`의 linked_chunks id 98개(OpendTect 5개 파일 92 + QGIS auto 6)가 unified2–4에 쓰인 `data/chromadb`에도, `data/chromadb_v3`에도 하나도 존재하지 않는다. 원인: 2026-04-16 `chunk_mapper`로 생성된 id가 2026-07-27 pdfplumber+pypdf 재인제스트(청크 uuid 전부 재생성)로 무효화됨. 따라서 unified2–4의 full_system graph_context에는 linked_chunks 본문이 한 번도 들어가지 않았고, 노드 제목·설명으로 한 벡터 검색(graph_vector) 결과만 들어갔다(v3에서 추가한 graph_only의 linked_chunks 주입도 v3 인덱스에서는 빈 값이었음). 대응: 옛 청크 본문이 없어 id 재매핑이 불가능하므로, 원래 메커니즘(`chunk_mapper.map_node_to_chunks`: 쿼리 = 워크플로우명+제목+설명+screenshot_keywords, 임베딩 top-3)을 v4 인덱스·bge-m3로 재실행해 OpendTect 5개 워크플로우만 재링크한다(`scripts/relink_chunks_v4.py`, 노드별 provenance와 옛 id 기록). QGIS auto 워크플로우(auto_bf2804…)는 손대지 않음 — v2와 같은 dangling 상태이며 런타임은 graph_vector로 대체된다.
+- **구현**(전부 env 스위치, v2 동작 재현 가능; 채점기·GT·판정 기준은 변경 없음):
+  - 후보 풀: `ROUTER_MATCHER=embedding|substring|hybrid`; 임베딩 top-`ROUTER_POOL_K`(기본 5) ∪ CLIP top-3 ∪ 그래프 prior(직전에 게이트를 통과한 노드의 후속 노드 + 그 노드, `ROUTER_GRAPH_PRIOR=1`). 부분문자열 경로도 v3 vision 필드(window_titles/menu_items/buttons/labels)를 포함(`node_matcher.flatten_visual_state`).
+  - vision 프롬프트 v3(`VISION_PROMPT_VERSION=v3`): 화면 문자열을 원문 그대로 window_titles·menu_items·buttons·labels로 보고(기존 5개 키 유지).
+  - rerank 프롬프트 v3(`RERANK_PROMPT_VERSION=v3`): 세션에서 이미 준 지시(최근 6개)와 그래프 prior(expected-next)를 입력에 포함, 화면 문자열 대조 규칙, confidence 구간 정의(≥0.9 문자 증거 / 0.7–0.85 같은 워크플로우·화면 일치 / ≤0.65 불확실). v2의 'bias toward picking' 규칙은 `v2`로 재현.
+  - confidence 게이트: `CONFIDENCE_THRESHOLD` env(기본 0.7). 개발 세트에서 정답/오답 pick의 confidence 분포로 보정 예정.
+  - 검색·컨텍스트: 목표 질의 벡터 검색(vanilla와 동일한 검색)을 vision 호출과 병렬 스레드로 실행(`PARALLEL_RETRIEVAL=1`). fallback(rerank none·게이트 미달) 컨텍스트 = 그 결과를 `FALLBACK_CTX_CHARS`=3,900(= vanilla_budget) 예산으로 매뉴얼 본문만. 라우팅 시 = linked_chunks 본문 `GRAPH_CTX_ITEMS`×`GRAPH_CTX_CHARS`(3×800) 우선 + 같은 목표 질의 결과 `VECTOR_CTX_CHARS`(1,500) (합계 3,900). 라우팅 시 벡터 질의는 v2의 '[wf > title] goal' 대신 목표 질의 결과 재사용(`ROUTED_VECTOR_QUERY=goal`, v2는 `enriched`); linked_chunks가 있으면 노드별 제목 검색 생략(`GRAPH_VECTOR_AUX=0`). 지질 KG 블록은 전 백엔드에서 제외(`RAG_KG_ENABLED=0`).
+  - 세션 상태: bench의 full_system·state_path가 `completed_steps`(이전 스텝 응답)와 `last_confirmed_node_id`(게이트 통과한 마지막 노드)를 파이프라인에 전달.
+  - 계측(불리한 방향): vision 캐시 적중 시 원 호출의 벽시계 지연을 재계상(`replayed_latency_sec`; 평가기 `latency_sec` = 측정 벽시계 + 재계상, `latency_wall_sec` 별도 저장). 같은 프로세스에서 여러 백엔드가 같은 스크린샷을 분석해 캐시에 맞으면 full_system 지연이 과소평가되던 것을 막는다. rerank 지연도 보조 호출 기록에 포함. 스텝별 컨텍스트 길이(`context_chars`)와 본문(`BENCH_SAVE_CONTEXT=1`) 기록.
+  - 개발 루프 도구 `scripts/dev_iter.py`: OpendTect 3 시나리오만 담은 임시 디렉터리로 bench 실행(QGIS 시나리오 미적재; 워크플로우 7개는 전부 적재), 프로파일 `v2mech`(동결 커밋 bacfde7f 시점 메커니즘을 knob으로 재현: pool 3, prior 없음, v2 프롬프트, 순차 검색, enriched 질의, KG 블록 포함, fallback 1,500자)와 `v3`, 스텝별 라우팅 표·손실 분류(misrouting / fallback_quality / context_or_generation)·정답/오답 confidence 분포·정지 조건 판정.
+- QGIS 시나리오·signature 미접촉, 미실행(dry-run 포함).
+
+### V3-10. 사용자 결정·확인 사항 반영 (2026-09-18, 개발 루프 중)
+- **QGIS linked_chunks 연결 결정**: QGIS 워크플로우(`qgis_vector_buffer.json`, 노드 5개, linked_chunks 없음)에도 OpendTect와 같은 절 출처 규칙을 적용한다 — `manual_sections = ["6.2.6"]`(QGIS Training Manual 3.44 §6.2.6, 워크플로우 파일 자체의 manual_reference), `chunk_mapper.map_node_to_chunks`로 해당 절 청크를 임베딩 거리순 top-3. signature·노드 제목·설명·시나리오 파일은 건드리지 않는다. QGIS 재인제스트 완료 후, 동결 커밋 전에, QGIS 시나리오를 실행하지 않은 상태에서 수행한다(`scripts/relink_chunks_v4.py --manual qgis`; 소요 시간을 보고서에 기록해 이식 비용 표에 넣는다). 사전등록 초안에는 "QGIS 결과를 보기 전에 수행한 배포 설정"으로 적는다.
+- **그래프 prior·완료 지시문의 출처 확인**(코드 근거): full_system의 `last_confirmed_node_id`는 `bench_backends._session_last_confirmed()`가 돌려주는 값으로, 앞 스텝에서 파이프라인이 스스로 고른 노드가 confidence 게이트를 통과했을 때 `_session_note_confirmed()`로 기록된 세션 상태다(스텝 0에서 초기화). `completed_steps`는 평가기가 넘겨주는 `prior_responses`, 즉 같은 백엔드가 앞 스텝에서 생성한 응답 원문이다. `visited_node_ids`도 앞 스텝의 파이프라인 pick(게이트 전)이다. `bench_backends.py`·`guide_pipeline.py` 어디에서도 시나리오의 `expected_workflow_node`·`visual_state_gt` 등 GT 필드를 읽지 않는다(grep 확인). 생성기 프롬프트의 완료 스텝(`_build_messages`의 `completed = prior_responses`)은 모든 백엔드에 동일하게 주어지는 기존 방식 그대로다. 변경 없음.
+- **보고 방식**: 각 iteration 보고에서 full_system을 vanilla_vector(무절단)와 vanilla_budget(3,900자) 양쪽과 비교하고, fallback 스텝만 따로 떼어 fs / vanilla_vector / vanilla_budget 정답 여부와 컨텍스트 길이를 표로 낸다. fs ✗·vanilla_vector ✓·vanilla_budget ✗인 스텝(절단 귀속 손실)이 있으면 FALLBACK_CTX_CHARS와 VANILLA_BUDGET_CHARS를 함께 올리는 예산안을 제시한다(`dev_iter.py` 분석 확장).
+- **V3-9 주석 위치 정리**: unified2–4 full_system 수치를 인용하는 문서를 스캔해 `data/eval/results/v3_linked_chunks_annotation_sites.md`에 정리(마크다운 153개 파일의 절/표 제목, Downloads의 논문 원고 2종·종합결과보고서 1종의 단락/표). 붙일 문구: "unified2–4 full_system은 linked_chunks 본문 없이 측정됨(2026-07-27 재인제스트 이후 id 전부 무효, graph_context = 노드 제목·설명 벡터 검색만; V3-9)".
+- **기록해 둘 실수**: `scripts/retrieval_replay_v3.py`가 시나리오 디렉터리 전체를 돌기 때문에, v4 리플레이(`retrieval_replay_bgem3_v4.md`) 실행 시 QGIS 시나리오의 목표 문장으로 벡터 검색 1회가 호출됐다. 그 시점에 QGIS v4 컬렉션이 없어 결과는 0청크였고 vision·라우팅·생성은 없었다. 스크립트는 이제 `--include-qgis` 없이는 QGIS를 건너뛴다.
+
+### V3-11. QGIS linked_chunks 연결 완료, 지연 계측 분해, 판단 기준 변경 (2026-09-18)
+- **QGIS 연결(사용자 결정 V3-10)**: QGIS v4 재인제스트 완료(745청크, 1,507 s, 그림 OCR 668건) 직후, QGIS 시나리오를 실행하지 않은 상태에서 `scripts/relink_chunks_v4.py --manual qgis` 실행. QGIS 파서는 절 번호가 아니라 절 제목(난이도 별 포함)을 section 라벨로 저장하므로 §6.2.6은 라벨 "★☆☆ Follow Along: Analyzing the Problem: Distances From Schools and Roads"(pp. 212–218, 7청크, 유일)로 지정했다. 첫 실행은 접두사 "6.2.6"으로 해 절 청크가 0개 매칭되어 전역 top-3으로 떨어졌고(노드 01·04가 다른 절), 라벨 접두사로 고쳐 재실행했다 — 최종: 노드 5개 전부 §6.2.6 청크 3개씩(pp. 213–218). 이식 비용: 스크립트 벽시계 15.8 s(모델 로드 포함, 노드 5개), 사람 작업(라벨 형식 확인 + 매핑 한 줄) 약 5분. 바뀐 필드는 `linked_chunks`·`manual_sections`·`linked_chunks_provenance`뿐임을 git HEAD와 비교해 확인(signature·제목·설명·edges·시나리오 파일 불변). 사전등록 초안에 "QGIS 결과를 보기 전에 수행한 배포 설정"으로 기재.
+- **지연 분해 계측**(`api/services/stage_timer.py`): 스텝마다 vision / vision_replayed(캐시 재계상) / embed(질의·노드 임베딩) / clip / rerank / vector_search / neighbor_fetch / chunk_fetch / kg_search / generate 와 포함 단계 localize·goal_retrieval·routed_retrieval 초를 기록해 `per_step.stage_latency`에 저장. `dev_iter.py` 보고서에 단계별 표와 "vanilla 대비 추가 지연"을 넣음. iteration 0(v2mech)은 계측 전 코드로 실행돼 단계 값이 없고, 실행 중 QGIS 재인제스트(그림 OCR·bge-m3 임베딩)가 돌아 지연 절대값은 "오염 가능"으로 표시한다. iteration 1(v3)은 재인제스트 종료 후 단독 실행.
+- **판단 기준 변경(사용자 지시)**: 1~2회 실행의 step accuracy 차이는 잡음이므로 1차 근거에서 제외. 1차 = (a) full_system 라우팅 정답률과 confidence ≥ 0.7 오라우팅 건수, (b) 스텝별 목표 절 검색 적중(컨텍스트의 [Section] 태그가 시나리오 목표 절로 시작하는지; fs vs vanilla 양쪽), (c) 스텝별 손실 분류 + 네 백엔드 전부 실패한 스텝의 응답 원문·GT 패턴 보고. 2차 = step acc(vanilla_vector·vanilla_budget 양쪽), 총비용, 단계별 지연. 지연 목표는 "vanilla보다 빠름"이 아니라 "vanilla 대비 추가 지연 최소화". 채점 패턴은 바꾸지 않는다.
+- **V3-9 주석 배치(사용자 지시)**: 과거 결과 파일 153개는 수정하지 않음. `data/eval/results/README.md`(신규) 1회, `final_unified4_table.md`·`table1_full_sd_unified4.md`·`qgis_pilot_result_report.md` 머리에 한 줄씩. 종합결과보고서는 Word에서 열려 있어 원본 저장이 거부되어(`PermissionError`) 백업 `GeoLens_종합결과보고서_final.backup_20260918.docx`를 만든 뒤 주석본 `GeoLens_종합결과보고서_final.annotated_V3-9_20260918.docx`로 저장(§1.2 백엔드 정의 단락 뒤 굵은 한 단락). ACAGS 원고는 건드리지 않음.

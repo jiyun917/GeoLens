@@ -3,12 +3,24 @@ Graph Retriever: Hybrid retrieval combining workflow graph traversal
 with ChromaDB vector search.
 """
 
+import os
 from typing import Dict, List, Optional
 
 from .workflow_graph import WorkflowGraph, get_workflow_graph
 from .rag import get_manual_context
 from . import vectorstore
 from .embedder import get_embeddings
+
+
+# v3 knobs. GRAPH_VECTOR_AUX=1 restores the v2 per-node title/description
+# vector searches even when linked_chunks were found (they were appended
+# after the linked chunks and almost always truncated away by the 3-item
+# graph budget, at the cost of one embedding + search per next node).
+# ROUTED_VECTOR_QUERY=enriched restores the v2 '[workflow > title] goal'
+# query for the routed vector block; 'goal' (default) reuses the goal-query
+# retrieval computed in parallel with the vision call.
+GRAPH_VECTOR_AUX = os.environ.get("GRAPH_VECTOR_AUX", "0") == "1"
+ROUTED_VECTOR_QUERY = os.environ.get("ROUTED_VECTOR_QUERY", "goal").strip().lower()
 
 
 class GraphRetriever:
@@ -68,8 +80,9 @@ class GraphRetriever:
                     "node_id": doc.get("node_id"),
                 })
 
-        # 2. Vector search using node title + description as query
-        if manual_ids:
+        # 2. Vector search using node title + description as query (v3: only
+        # when no linked chunk was found, unless GRAPH_VECTOR_AUX=1)
+        if manual_ids and (not results or GRAPH_VECTOR_AUX):
             for n in nodes:
                 query = f"{n.get('title', '')} {n.get('description', '')}".strip()
                 if query:
@@ -106,9 +119,12 @@ class GraphRetriever:
         query: str,
         intent: str = "next_step",
         manual_ids: Optional[List[str]] = None,
+        precomputed_vector_context: Optional[str] = None,
     ) -> Dict:
         """
         Combined graph + vector retrieval.
+        precomputed_vector_context (v3): result of retrieve_by_vector(query)
+        computed by the caller (in parallel with the vision call).
         Returns structured context:
         {
           "graph_context": [...],
@@ -136,14 +152,21 @@ class GraphRetriever:
                 result["graph_context"] = self.retrieve_by_graph(
                     current_node_id, intent=intent, manual_ids=manual_ids
                 )
-                # Vector search with enriched query
-                result["vector_context"] = self.retrieve_by_vector(
-                    enriched_query, manual_ids=manual_ids
-                )
+                if ROUTED_VECTOR_QUERY == "enriched":
+                    result["vector_context"] = self.retrieve_by_vector(
+                        enriched_query, manual_ids=manual_ids
+                    )
+                elif precomputed_vector_context is not None:
+                    result["vector_context"] = precomputed_vector_context
+                else:
+                    result["vector_context"] = self.retrieve_by_vector(query, manual_ids=manual_ids)
                 return result
 
-        # No current node → plain vector search
-        result["vector_context"] = self.retrieve_by_vector(query, manual_ids=manual_ids)
+        # No current node → plain vector search (identical to the vanilla baseline)
+        if precomputed_vector_context is not None:
+            result["vector_context"] = precomputed_vector_context
+        else:
+            result["vector_context"] = self.retrieve_by_vector(query, manual_ids=manual_ids)
         return result
 
     # ═══════════════════════════════════════════════════════════

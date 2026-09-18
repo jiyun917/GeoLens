@@ -1,5 +1,7 @@
 # QGIS Pilot — 벤치 결과 + 사전등록 대조 판정
 
+> **주석 (V3-9, 2026-09-18)**: 이 문서의 unified2–4 `full_system`(및 `state_path`) 수치는 linked_chunks 본문 없이 측정된 것이다. 2026-07-27 재인제스트 이후 워크플로우 JSON의 linked_chunks id가 전부 인덱스에 없었고, graph_context에는 노드 제목·설명 벡터 검색 결과만 들어갔다. 상세: `methodology_audit_trail.md` V3-9.
+
 **실행 완료 (UTC)**: 2026-08-13T04:01:30
 **총 실행 시간**: 약 61 분 (03:00:30 ~ 04:01:30)
 **Wrapper**: `scripts/run_qgis_pilot.py` (recovery-aware, rc=4 abort inherited)

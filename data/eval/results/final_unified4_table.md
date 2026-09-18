@@ -1,5 +1,7 @@
 # Final 4-Model × 6-Backend Matrix (n=5 replicates each, tag=unified4)
 
+> **Annotation (V3-9, 2026-09-18)**: the unified2–4 `full_system` (and `state_path`) figures in this file were measured WITHOUT linked_chunks text — every linked_chunks id in the workflow JSONs had been dangling since the 2026-07-27 re-ingest, so graph_context held only the per-node title/description vector search. See `methodology_audit_trail.md` V3-9.
+
 Statistical unit = replicate. Each cell reports mean ± std across 5 replicates, where each replicate averages the 3 scenarios (survey_setup + 3d_visualization + attribute_computation).
 
 Goal completion uses the 3-gate check: sentinel + grounded + visual_state confirms goal-reached.

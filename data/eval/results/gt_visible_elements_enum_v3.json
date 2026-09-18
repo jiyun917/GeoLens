@@ -1,0 +1,1784 @@
+{
+ "opendtect__3d_visualization__01#0": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Cross-line (0)",
+   "Step (0)",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Scene 1 [checked]",
+   "In-line [checked]",
+   "Cross-line [checked]",
+   "Z-slice [checked]",
+   "Volume [checked]",
+   "Random Line [checked]",
+   "2D Line [checked]",
+   "3D Horizon [checked]",
+   "2D Horizon [checked]",
+   "Fault [checked]",
+   "FaultSet [checked]",
+   "FaultStickSet [checked]",
+   "Geobody [checked]",
+   "Well [checked]",
+   "PointSet [checked]",
+   "Polygon [checked]",
+   "Prestack Events [checked]"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Elements",
+   "Color",
+   "200",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "Cross-line",
+   "In-line",
+   "500",
+   "Time",
+   "1000",
+   "1500",
+   "N",
+   "E",
+   "Z",
+   "[free mem] 101.4/127.8 GB"
+  ]
+ },
+ "opendtect__3d_visualization__01#1": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help",
+   "Add Default Data",
+   "Add and Select Data ...",
+   "Add at Well Location ...",
+   "Add Color Blended"
+  ],
+  "buttons": [
+   "SEG-Y"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Cross-line (0)",
+   "Step (0)",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "Elements",
+   "Color",
+   "200",
+   "400",
+   "600",
+   "Cross-line",
+   "800",
+   "1000",
+   "1200",
+   "In-line",
+   "500",
+   "Time",
+   "1000",
+   "1500",
+   "N",
+   "E",
+   "Z",
+   "[free mem] 101.5/127.8 GB"
+  ]
+ },
+ "opendtect__3d_visualization__01#2": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line 425",
+   "Step 1",
+   "-9968",
+   "9968",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "200",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "Cross-line",
+   "500",
+   "1500",
+   "Time",
+   "In-line",
+   "N",
+   "E",
+   "Z",
+   "In-line: 425",
+   "[free mem] 101.4/127.8 GB"
+  ]
+ },
+ "opendtect__3d_visualization__01#3": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Step 4",
+   "ppt",
+   "SEG-Y"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Z (924)",
+   "-9968",
+   "9968",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Scene 1",
+   "In-line",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Scene 1 (checked)",
+   "In-line (checked)",
+   "425 (checked)",
+   "Seismic_data (checked)",
+   "Cross-line (checked)",
+   "775 (checked)",
+   "Seismic_data (checked)",
+   "Z-slice (checked)",
+   "924 (checked)",
+   "Seismic_data (checked)",
+   "Volume (checked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "3D Horizon (checked)",
+   "2D Horizon (checked)",
+   "Fault (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events (checked)"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Elements",
+   "Color",
+   "200",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "Cross-line",
+   "In-line",
+   "500",
+   "Time",
+   "1000",
+   "1500",
+   "N",
+   "E",
+   "Z",
+   "Time: 924",
+   "[free mem] 101.4/127.8 GB"
+  ]
+ },
+ "opendtect__attribute_computation__01#0": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+   "Attribute Set 3D"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help",
+   "File"
+  ],
+  "buttons": [
+   "Step 4",
+   "Select ...",
+   "Add as new",
+   "Close"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Z 924",
+   "-9968",
+   "9968",
+   "OD Seismic 1",
+   "Attribute set (<not saved>)",
+   "<All>",
+   "Similarity",
+   "Input Data (Seismic_data)",
+   "Time gate (ms) (-28)",
+   "28",
+   "Extension (Cross)",
+   "Stepout (inl: 1)",
+   "crl: 1",
+   "Steering (None)",
+   "Output statistic (Average)",
+   "Attribute Name"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Save on Close (checked)"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "1200",
+   "N",
+   "E",
+   "Z",
+   "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+   "[free mem] 101.4/127.8 GB"
+  ]
+ },
+ "opendtect__attribute_computation__01#1": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+   "Attribute Set 3D"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help",
+   "File"
+  ],
+  "buttons": [
+   "Step 4",
+   "SEG-Y",
+   "Select ...",
+   "Add as new",
+   "Close"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Z 924",
+   "-9968",
+   "9968",
+   "OD Seismic 1",
+   "Attribute set (<not saved>)",
+   "<All>",
+   "Energy",
+   "Input Data (Seismic_data)",
+   "Time gate (ms) (-28)",
+   "28",
+   "Output (Energy)",
+   "Attribute Name"
+  ],
+  "list_or_tree_entries": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Compute gradient",
+   "Yes",
+   "No",
+   "Save on Close"
+  ],
+  "other_text": [
+   "Color",
+   "1200",
+   "N",
+   "E",
+   "Z",
+   "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+   "[free mem] 101.5/127.8 GB"
+  ]
+ },
+ "opendtect__attribute_computation__01#2": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+   "Attribute Set 3D"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help",
+   "File"
+  ],
+  "buttons": [
+   "Step 4",
+   "SEG-Y",
+   "Select ...",
+   "Add as new",
+   "Close"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Z (924)",
+   "-9968",
+   "9968",
+   "OD Seismic 1",
+   "Attribute set (<not saved>)",
+   "<All>",
+   "Energy",
+   "Input Data (Seismic_data)",
+   "Time gate (ms)",
+   "-28",
+   "28",
+   "Compute gradient",
+   "Output (Energy)",
+   "Attribute Name (Energy [-28,+28])"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Yes",
+   "No (selected)",
+   "Save on Close (checked)"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "1200",
+   "N",
+   "E",
+   "Z",
+   "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+   "[free mem] 101.5/127.8 GB"
+  ]
+ },
+ "opendtect__attribute_computation__01#3": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+   "Attribute Set 3D"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help",
+   "File"
+  ],
+  "buttons": [
+   "Step 4",
+   "SEG-Y",
+   "Select ...",
+   "Add as new",
+   "Close"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Z (924)",
+   "-9968",
+   "9968",
+   "OD Seismic 1",
+   "Attribute set (<not saved>)",
+   "<All>",
+   "Energy",
+   "Input Data (Seismic_data)",
+   "Time gate (ms) (-28, 28)",
+   "Output (Energy)",
+   "Attribute Name (Energy [-28, +28])"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Energy [-28, +28]"
+  ],
+  "checkbox_radio_labels": [
+   "Save on Close (checked)",
+   "Compute gradient",
+   "Yes (unchecked)",
+   "No (checked)"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "1200",
+   "N",
+   "E",
+   "Z",
+   "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+   "[free mem] 101.6/127.8 GB"
+  ]
+ },
+ "opendtect__attribute_computation__01#4": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+   "Attribute Set 3D",
+   "Save Attribute as"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Select ...",
+   "Add as new",
+   "OK",
+   "Cancel",
+   "Close"
+  ],
+  "tabs": [
+   "Tree scene 1"
+  ],
+  "field_labels": [
+   "Z (924)",
+   "Step (4)",
+   "Attribute set (<not saved>)",
+   "<All>",
+   "Energy",
+   "Filter",
+   "Name (my first attribute set)",
+   "Attribute Name (Energy [-28,+28])"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Color",
+   "Scene 1",
+   "In-line",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Energy [-28, +28]"
+  ],
+  "checkbox_radio_labels": [
+   "Save on Close"
+  ],
+  "other_text": [
+   "-9968",
+   "9968",
+   "OD Seismic 1",
+   "File",
+   "Select Output Attribute",
+   "1200",
+   "N",
+   "E",
+   "Z",
+   "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+   "[free mem] 101.3/127.8 GB"
+  ]
+ },
+ "opendtect__attribute_computation__01#5": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line (250)",
+   "Step (1)",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "250",
+   "Seismic_data",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "-9968",
+   "9968",
+   "Tree scene 1",
+   "Color",
+   "200",
+   "400",
+   "600",
+   "Cross-line",
+   "800",
+   "1000",
+   "1200",
+   "500",
+   "Time",
+   "1000",
+   "1500",
+   "N",
+   "E",
+   "Z",
+   "In-line: 250",
+   "[free mem] 101.5/127.8 GB"
+  ]
+ },
+ "opendtect__attribute_computation__01#6": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+   "Select"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "OK",
+   "Cancel",
+   "?"
+  ],
+  "tabs": [
+   "Tree scene 1"
+  ],
+  "field_labels": [
+   "In-line (250)",
+   "Step (1)",
+   "-9968",
+   "9968",
+   "OD Seismic 1",
+   "Filter"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Color",
+   "Scene 1",
+   "In-line",
+   "250",
+   "<right-click>",
+   "Seismic_data",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Energy [-28,+28]"
+  ],
+  "checkbox_radio_labels": [
+   "Stored",
+   "Steering",
+   "Attributes"
+  ],
+  "other_text": [
+   "Select Layer 2",
+   "200",
+   "400",
+   "500",
+   "1000",
+   "1200",
+   "1500",
+   "Time",
+   "N",
+   "E",
+   "Z",
+   "In-line: 250",
+   "[free mem] 101.4/127.8 GB"
+  ]
+ },
+ "opendtect__attribute_computation__01#7": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "SEG-Y"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line 250",
+   "Step 1",
+   "0",
+   "7.7334e+07",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Scene 1 (checked)",
+   "In-line (checked)",
+   "250 (checked)",
+   "Energy [-28,+28] (checked)",
+   "Seismic_data (checked)",
+   "425 (checked)",
+   "Seismic_data (checked)",
+   "Cross-line (checked)",
+   "775 (checked)",
+   "Seismic_data (checked)",
+   "Z-slice (checked)",
+   "924 (checked)",
+   "Seismic_data (checked)",
+   "Volume (checked)",
+   "343-506 / 656-893 / 69... (checked)",
+   "<right-click> (unchecked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "3D Horizon (checked)",
+   "2D Horizon (checked)",
+   "Fault (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events (checked)"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "Time",
+   "500",
+   "1000",
+   "1500",
+   "Cross-line",
+   "200",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "N",
+   "E",
+   "Z",
+   "In-line: 250",
+   "[free mem] 101.4/127.8 GB"
+  ]
+ },
+ "opendtect__survey_setup__01#0": {
+  "window_titles": [
+   "Survey Setup and Selection"
+  ],
+  "menu_items": [],
+  "buttons": [
+   "...",
+   "Select",
+   "Cancel"
+  ],
+  "tabs": [
+   "Information",
+   "Notes",
+   "Log"
+  ],
+  "field_labels": [
+   "Survey Data Root (C:\\Users\\user\\Downloads\\GeoLens_test)"
+  ],
+  "list_or_tree_entries": [],
+  "checkbox_radio_labels": [],
+  "other_text": []
+ },
+ "opendtect__survey_setup__01#1": {
+  "window_titles": [
+   "Survey Setup and Selection",
+   "Create New Survey"
+  ],
+  "menu_items": [],
+  "buttons": [
+   "Survey Data Root ...",
+   "Next",
+   "Cancel",
+   "Select",
+   "Cancel"
+  ],
+  "tabs": [
+   "Information",
+   "Notes",
+   "Log"
+  ],
+  "field_labels": [
+   "C:\\Users\\user\\Downloads\\GeoLens_test",
+   "Survey name",
+   "Available data",
+   "Initial setup",
+   "Z Domain"
+  ],
+  "list_or_tree_entries": [
+   "Enter X/Y ranges",
+   "Scan Navigation Data",
+   "Copy from other survey",
+   "Read from Survey Setup file",
+   "Scan SEG-Y file(s)",
+   "Scan LAS Well Data",
+   "Enter by hand"
+  ],
+  "checkbox_radio_labels": [
+   "3D [checked]",
+   "2D [checked]",
+   "Wells [unchecked]",
+   "Time [selected]",
+   "Depth [unselected]"
+  ],
+  "other_text": [
+   "Specify new survey parameters"
+  ]
+ },
+ "opendtect__survey_setup__01#2": {
+  "window_titles": [
+   "Survey Setup and Selection",
+   "Create New Survey"
+  ],
+  "menu_items": [],
+  "buttons": [
+   "Survey Data Root ...",
+   "Next",
+   "Cancel",
+   "Select",
+   "Cancel"
+  ],
+  "tabs": [
+   "Information",
+   "Notes",
+   "Log"
+  ],
+  "field_labels": [
+   "C:\\Users\\user\\Downloads\\GeoLens_test",
+   "Survey name (My_F3_Survey)",
+   "Available data",
+   "Initial setup (Enter X/Y ranges)",
+   "Z Domain"
+  ],
+  "list_or_tree_entries": [
+   "Enter X/Y ranges",
+   "Scan Navigation Data",
+   "Copy from other survey",
+   "Read from Survey Setup file",
+   "Scan SEG-Y file(s)",
+   "Scan LAS Well Data",
+   "Enter by hand"
+  ],
+  "checkbox_radio_labels": [
+   "3D (checked)",
+   "2D (checked)",
+   "Wells (unchecked)",
+   "Time (selected)",
+   "Depth (unselected)"
+  ],
+  "other_text": [
+   "Specify new survey parameters"
+  ]
+ },
+ "opendtect__survey_setup__01#3": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y"
+  ],
+  "tabs": [
+   "Tree scene 1"
+  ],
+  "field_labels": [
+   "Cross-line (0)",
+   "Step (0)",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Color",
+   "Cross-line",
+   "200",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "In-line",
+   "Time",
+   "500",
+   "1500",
+   "N",
+   "E",
+   "Z",
+   "[free mem] 101.1/127.8 GB"
+  ]
+ },
+ "qgis__vector_buffer__01#0": {
+  "window_titles": [
+   "*Untitled Project — QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "Type to locate (Ctrl+K)",
+   "Coordinate (1054725, 6221612)",
+   "Scale (1:240882)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)"
+  ],
+  "list_or_tree_entries": [
+   "roads_33S"
+  ],
+  "checkbox_radio_labels": [
+   "Render (checked)"
+  ],
+  "other_text": [
+   "Layers",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__vector_buffer__01#1": {
+  "window_titles": [
+   "*Untitled Project — QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "Search...",
+   "Type to locate (Ctrl+K)",
+   "Coordinate (1043954, 6244110)",
+   "Scale (1:240882)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)"
+  ],
+  "list_or_tree_entries": [
+   "roads_33S",
+   "3D Tiles",
+   "Cartography",
+   "Check geometry",
+   "Database",
+   "File tools",
+   "Fix geometry",
+   "GPS",
+   "Interpolation",
+   "Layer tools",
+   "Mesh",
+   "Metadata tools",
+   "Network analysis",
+   "Plots",
+   "Point cloud conversion",
+   "Point cloud data management",
+   "Point cloud extraction",
+   "Raster analysis",
+   "Raster creation",
+   "Raster terrain analysis",
+   "Raster tools",
+   "Vector analysis",
+   "Vector coverage",
+   "Vector creation",
+   "Vector general",
+   "Vector geometry",
+   "Vector overlay",
+   "Vector selection",
+   "Vector table",
+   "Vector tiles",
+   "GDAL",
+   "GRASS"
+  ],
+  "checkbox_radio_labels": [
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__vector_buffer__01#2": {
+  "window_titles": [
+   "*Untitled Project — QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "buffer",
+   "Type to locate (Ctrl+K)",
+   "Coordinate (1045420, 6224416)",
+   "Scale (1:240882)",
+   "Magnifier (100%)",
+   "Rotation (0.0°)"
+  ],
+  "list_or_tree_entries": [
+   "roads_33S",
+   "Vector geometry",
+   "Buffer",
+   "Create wedge buffers",
+   "Multi-ring buffer (constant distance)",
+   "Rectangles, ovals, diamonds",
+   "Single sided buffer",
+   "Tapered buffers",
+   "Variable width buffer (by M value)",
+   "Vector selection",
+   "Extract within distance",
+   "Select within distance",
+   "GDAL",
+   "Vector geoprocessing",
+   "Buffer vectors",
+   "One side buffer",
+   "GRASS",
+   "Raster (r.*)",
+   "r.buffer",
+   "r.buffer.lowmem",
+   "Vector (v.*)",
+   "v.buffer"
+  ],
+  "checkbox_radio_labels": [
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__vector_buffer__01#3": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Vector Geometry - Buffer"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Advanced",
+   "Run as Batch Process...",
+   "Run",
+   "Close",
+   "Help",
+   "Cancel"
+  ],
+  "tabs": [
+   "Parameters",
+   "Log"
+  ],
+  "field_labels": [
+   "Input layer (roads_33S [EPSG:32733])",
+   "Distance (10.000000)",
+   "meters",
+   "Segments (5)",
+   "End cap style (Round)",
+   "Join style (Round)",
+   "Miter limit (2.000000)",
+   "Buffered ([Create temporary layer])",
+   "buffer",
+   "Type to locate (Ctrl+K)"
+  ],
+  "list_or_tree_entries": [
+   "roads_33S",
+   "Vector geometry",
+   "Buffer",
+   "Create wedge buffers",
+   "Multi-ring buffer (constant distance)",
+   "Rectangles, ovals, diamonds",
+   "Single sided buffer",
+   "Tapered buffers",
+   "Variable width buffer (by M value)",
+   "Vector selection",
+   "Extract within distance",
+   "Select within distance",
+   "GDAL",
+   "Vector geoprocessing",
+   "Buffer vectors",
+   "One side buffer",
+   "GRASS",
+   "Raster (r.*)",
+   "r.buffer",
+   "r.buffer.lowmem",
+   "Vector (v.*)",
+   "v.buffer"
+  ],
+  "checkbox_radio_labels": [
+   "Selected features only",
+   "Dissolve result",
+   "Render"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "Buffer",
+   "This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance.",
+   "The segments parameter controls the number of line segments to use to approximate a quarter circle when creating rounded offsets.",
+   "The end cap style parameter controls how line endings are handled in the buffer.",
+   "The join style parameter specifies whether round, miter or beveled joins should be used when offsetting corners in a line.",
+   "The miter limit parameter is only applicable for miter join styles, and controls the maximum distance from the offset curve to use when creating a mitered join.",
+   "This algorithm may drop existing primary keys or FID values and regenerate them in output layers, depending on the input parameters.",
+   "Advanced Parameters",
+   "0%",
+   "Coordinate 1026658, 6236015",
+   "Scale 1:240882",
+   "Magnifier 100%",
+   "Rotation 0.0°",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__vector_buffer__01#4": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Vector Geometry - Buffer"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Advanced",
+   "Run as Batch Process...",
+   "Run",
+   "Close",
+   "Help",
+   "Cancel"
+  ],
+  "tabs": [
+   "Parameters",
+   "Log"
+  ],
+  "field_labels": [
+   "Input layer",
+   "roads_33S [EPSG:32733]",
+   "Distance",
+   "10,000000",
+   "meters",
+   "Segments",
+   "5",
+   "End cap style",
+   "Round",
+   "Join style",
+   "Round",
+   "Miter limit",
+   "2,000000",
+   "Buffered",
+   "[Create temporary layer]",
+   "Type to locate (Ctrl+K)",
+   "Coordinate",
+   "1044336, 6233594",
+   "Scale",
+   "1:240882",
+   "Magnifier",
+   "100%",
+   "Rotation",
+   "0,0°"
+  ],
+  "list_or_tree_entries": [
+   "roads_33S",
+   "buffer",
+   "Vector geometry",
+   "Buffer",
+   "Create wedge buffers",
+   "Multi-ring buffer (constant distance)",
+   "Rectangles, ovals, diamonds",
+   "Single sided buffer",
+   "Tapered buffers",
+   "Variable width buffer (by M value)",
+   "Vector selection",
+   "Extract within distance",
+   "Select within distance",
+   "GDAL",
+   "Vector geoprocessing",
+   "Buffer vectors",
+   "One side buffer",
+   "GRASS",
+   "Raster (r.*)",
+   "r.buffer",
+   "r.buffer.lowmem",
+   "Vector (v.*)",
+   "v.buffer"
+  ],
+  "checkbox_radio_labels": [
+   "Selected features only",
+   "Dissolve result",
+   "Render"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "Buffer",
+   "This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance.",
+   "The segments parameter controls the number of line segments to use to approximate a quarter circle when creating rounded offsets.",
+   "The end cap style parameter controls how line endings are handled in the buffer.",
+   "The join style parameter specifies whether round, miter or beveled joins should be used when offsetting corners in a line.",
+   "The miter limit parameter is only applicable for miter join styles, and controls the maximum distance from the offset curve to use when creating a mitered join.",
+   "This algorithm may drop existing primary keys or FID values and regenerate them in output layers, depending on the input parameters.",
+   "Advanced Parameters",
+   "0%",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__vector_buffer__01#5": {
+  "window_titles": [
+   "*Untitled Project - QGIS",
+   "Vector Geometry - Buffer"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Advanced",
+   "Run as Batch Process...",
+   "Run",
+   "Close",
+   "Help"
+  ],
+  "tabs": [
+   "Parameters",
+   "Log"
+  ],
+  "field_labels": [
+   "Input layer",
+   "roads_33S [EPSG:32733]",
+   "Distance",
+   "50.000000",
+   "meters",
+   "Segments",
+   "5",
+   "End cap style",
+   "Round",
+   "Join style",
+   "Round",
+   "Miter limit",
+   "2.000000",
+   "Buffered",
+   "[Create temporary layer]",
+   "Type to locate (Ctrl+K)",
+   "Coordinate",
+   "1044846, 6212179",
+   "Scale",
+   "1:240882",
+   "Magnifier",
+   "100%",
+   "Rotation",
+   "0.0 °",
+   "EPSG:32733"
+  ],
+  "list_or_tree_entries": [
+   "roads_33S",
+   "buffer",
+   "Vector geometry",
+   "Buffer",
+   "Create wedge buffers",
+   "Multi-ring buffer (constant distance)",
+   "Rectangles, ovals, diamonds",
+   "Single sided buffer",
+   "Tapered buffers",
+   "Variable width buffer (by M value)",
+   "Vector selection",
+   "Extract within distance",
+   "Select within distance",
+   "GDAL",
+   "Vector geoprocessing",
+   "Buffer vectors",
+   "One side buffer",
+   "GRASS",
+   "Raster (r.*)",
+   "r.buffer",
+   "r.buffer.lowmem",
+   "Vector (v.*)",
+   "v.buffer"
+  ],
+  "checkbox_radio_labels": [
+   "Selected features only",
+   "Dissolve result",
+   "Open output file after running algorithm",
+   "Render"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "Buffer",
+   "This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance.",
+   "The segments parameter controls the number of line segments to use to approximate a quarter circle when creating rounded offsets.",
+   "The end cap style parameter controls how line endings are handled in the buffer.",
+   "The join style parameter specifies whether round, miter or beveled joins should be used when offsetting corners in a line.",
+   "The miter limit parameter is only applicable for miter join styles, and controls the maximum distance from the offset curve to use when creating a mitered join.",
+   "This algorithm may drop existing primary keys or FID values and regenerate them in output layers, depending on the input parameters.",
+   "Advanced Parameters",
+   "0%"
+  ]
+ },
+ "qgis__vector_buffer__01#6": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Vector Geometry - Buffer",
+   "Save to GeoPackage"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "OK",
+   "Cancel",
+   "Advanced",
+   "Run as Batch Process...",
+   "Run",
+   "Close",
+   "Help"
+  ],
+  "tabs": [
+   "Parameters",
+   "Log"
+  ],
+  "field_labels": [
+   "Input layer (roads_33S [EPSG:32733])",
+   "Distance (50.000000)",
+   "meters",
+   "Segments (5)",
+   "End cap style (Round)",
+   "Join style (Round)",
+   "Miter limit (2.000000)",
+   "Buffered ([Create temporary layer])",
+   "Layer name (roads_buffer_50m_dissolved)",
+   "Type to locate (Ctrl+K)",
+   "Coordinate (1028212, 6215621)",
+   "Scale (1:240882)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)",
+   "EPSG (32733)"
+  ],
+  "list_or_tree_entries": [
+   "roads 33S",
+   "buffer",
+   "Vector geometry",
+   "Buffer",
+   "Create wedge buffers",
+   "Multi-ring buffer (constant distance)",
+   "Rectangles, ovals, diamonds",
+   "Single sided buffer",
+   "Tapered buffers",
+   "Variable width buffer (by M value)",
+   "Vector selection",
+   "Extract within distance",
+   "Select within distance",
+   "GDAL",
+   "Vector geoprocessing",
+   "Buffer vectors",
+   "One side buffer",
+   "GRASS",
+   "Raster (r.*)",
+   "r.buffer",
+   "r.buffer.lowmem",
+   "Vector (v.*)",
+   "v.buffer"
+  ],
+  "checkbox_radio_labels": [
+   "roads 33S (checked)",
+   "Selected features only (unchecked)",
+   "Dissolve result (checked)",
+   "Open output file after running algorithm (checked)",
+   "Render (checked)"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "Buffer",
+   "This algorithm computes a buffer area for all the features in an input layer, using a fixed or dynamic distance.",
+   "The segments parameter controls the number of line segments to use to approximate a quarter circle when creating rounded offsets.",
+   "The end cap style parameter controls how line endings are handled in the buffer.",
+   "The join style parameter specifies whether round, miter or beveled joins should be used when offsetting corners in a line.",
+   "A miter limit parameter is only applicable for miter join styles, and controls the maximum distance from the offset curve to the vertex when creating a mitered join.",
+   "This algorithm may drop existing primary keys or FID values and regenerate them in output layers, depending on the input parameters.",
+   "Advanced Parameters",
+   "0%"
+  ]
+ },
+ "qgis__vector_buffer__01#7": {
+  "window_titles": [
+   "*Untitled Project — QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "Type to locate (Ctrl+K)",
+   "Coordinate (1055235, 6207527)",
+   "Scale (1:240882)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)"
+  ],
+  "list_or_tree_entries": [
+   "roads_buffer_50m_dissolved",
+   "roads_33S"
+  ],
+  "checkbox_radio_labels": [
+   "Render (checked)"
+  ],
+  "other_text": [
+   "Layers",
+   "EPSG:32733"
+  ]
+ }
+}

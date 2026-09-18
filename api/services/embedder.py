@@ -101,6 +101,12 @@ def _contextualize_chunk(chunk: str, metadata: dict) -> str:
 
 
 def get_embeddings(texts: List[str]) -> List[List[float]]:
+    from . import stage_timer
+    with stage_timer.timed("embed"):
+        return _get_embeddings_impl(texts)
+
+
+def _get_embeddings_impl(texts: List[str]) -> List[List[float]]:
     model = _get_model()
     embeddings = model.encode(texts, show_progress_bar=True, normalize_embeddings=_normalize())
     return embeddings.tolist()

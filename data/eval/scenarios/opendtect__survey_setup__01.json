@@ -29,15 +29,27 @@
           "Edit button",
           "Select button",
           "Cancel button",
-          "Information tab"
+          "Information tab",
+          "Survey Setup and Selection",
+          "Notes",
+          "Log",
+          "Survey Data Root (C:\\Users\\user\\Downloads\\GeoLens_test)"
         ],
         "data_state": "no survey created yet",
-        "current_action": "user is on the initial survey selection window"
+        "current_action": "user is on the initial survey selection window",
+        "_gt_provenance": "v3: 6 authored + 4 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
       },
       "expected_action_text_pattern": "(?i)\\b(Survey|Create|New|Add)\\b",
-      "expected_action_keywords": ["Survey", "Create", "New"],
+      "expected_action_keywords": [
+        "Survey",
+        "Create",
+        "New"
+      ],
       "allowed_alternatives": [
-        {"pattern": "(?i)\\b(Add)\\b", "note": "The Add / '+' button opens Create New Survey dialog"}
+        {
+          "pattern": "(?i)\\b(Add)\\b",
+          "note": "The Add / '+' button opens Create New Survey dialog"
+        }
       ],
       "expected_workflow_node": null,
       "is_error_recovery_test": false,
@@ -64,15 +76,40 @@
           "Initial setup list (Enter X/Y ranges selected)",
           "Z Domain radio buttons (Time, Depth)",
           "Next button",
-          "Cancel button"
+          "Cancel button",
+          "Survey Setup and Selection",
+          "Survey Data Root ...",
+          "Information",
+          "Notes",
+          "C:\\Users\\user\\Downloads\\GeoLens_test",
+          "Scan Navigation Data",
+          "Copy from other survey",
+          "Read from Survey Setup file",
+          "Scan SEG-Y file(s)",
+          "Scan LAS Well Data",
+          "Enter by hand",
+          "3D [checked]",
+          "2D [checked]",
+          "Wells [unchecked]",
+          "Time [selected]",
+          "Depth [unselected]",
+          "Specify new survey parameters"
         ],
         "data_state": "Create New Survey dialog just opened, survey name empty",
-        "current_action": "user is about to fill survey parameters"
+        "current_action": "user is about to fill survey parameters",
+        "_gt_provenance": "v3: 7 authored + 17 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
       },
       "expected_action_text_pattern": "(?i)\\b(Survey name|Available data|3D|Wells|Initial setup)\\b",
-      "expected_action_keywords": ["Survey name", "Available data", "3D"],
+      "expected_action_keywords": [
+        "Survey name",
+        "Available data",
+        "3D"
+      ],
       "allowed_alternatives": [
-        {"pattern": "(?i)\\b(Type|Enter|Input).*(name|My_F3)\\b", "note": "Model may instruct to type a name"}
+        {
+          "pattern": "(?i)\\b(Type|Enter|Input).*(name|My_F3)\\b",
+          "note": "Model may instruct to type a name"
+        }
       ],
       "expected_workflow_node": null,
       "is_error_recovery_test": false,
@@ -99,15 +136,40 @@
           "Initial setup options list (Enter X/Y ranges, Scan SEG-Y file(s), Copy from other survey)",
           "Z Domain radio buttons (Time, Depth)",
           "Next button",
-          "Cancel button"
+          "Cancel button",
+          "Survey Setup and Selection",
+          "Survey Data Root ...",
+          "Information",
+          "Notes",
+          "C:\\Users\\user\\Downloads\\GeoLens_test",
+          "Survey name (My_F3_Survey)",
+          "Initial setup (Enter X/Y ranges)",
+          "Scan Navigation Data",
+          "Read from Survey Setup file",
+          "Scan LAS Well Data",
+          "Enter by hand",
+          "3D (checked)",
+          "2D (checked)",
+          "Wells (unchecked)",
+          "Time (selected)",
+          "Depth (unselected)",
+          "Specify new survey parameters"
         ],
         "data_state": "Survey name filled; initial setup method needs to be chosen",
-        "current_action": "user is deciding how to define geometry"
+        "current_action": "user is deciding how to define geometry",
+        "_gt_provenance": "v3: 7 authored + 17 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
       },
       "expected_action_text_pattern": "(?i)\\b(Scan SEG-Y|Enter X/Y|Initial setup|Next)\\b",
-      "expected_action_keywords": ["Scan SEG-Y", "Enter X/Y ranges", "Initial setup"],
+      "expected_action_keywords": [
+        "Scan SEG-Y",
+        "Enter X/Y ranges",
+        "Initial setup"
+      ],
       "allowed_alternatives": [
-        {"pattern": "(?i)\\b(Next)\\b", "note": "After choosing initial setup, Next proceeds"}
+        {
+          "pattern": "(?i)\\b(Next)\\b",
+          "note": "After choosing initial setup, Next proceeds"
+        }
       ],
       "expected_workflow_node": null,
       "is_error_recovery_test": false,
@@ -132,17 +194,60 @@
           "Toolbar",
           "Tree scene panel",
           "3D Scene / Cross-line panels (empty)",
-          "Survey name in title bar (My_F3_Survey)"
+          "Survey name in title bar (My_F3_Survey)",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]",
+          "TerraNubis",
+          "SEG-Y",
+          "Tree scene 1",
+          "Cross-line (0)",
+          "Step (0)",
+          "OD Seismic 1",
+          "Elements",
+          "In-line",
+          "Z-slice",
+          "Volume",
+          "Random Line",
+          "2D Line",
+          "3D Horizon",
+          "2D Horizon",
+          "Fault",
+          "Geobody",
+          "Well",
+          "PointSet",
+          "Polygon",
+          "Prestack Events",
+          "Annotations",
+          "Color",
+          "200",
+          "400",
+          "600",
+          "800",
+          "1000",
+          "Time",
+          "500",
+          "[free mem] 101.1/127.8 GB"
         ],
         "data_state": "Select clicked — Main Window loaded with newly created survey active. Goal achieved.",
-        "current_action": "goal complete — model should emit '완료'"
+        "current_action": "goal complete — model should emit '완료'",
+        "_gt_provenance": "v3: 6 authored + 31 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18)"
       },
       "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
-      "expected_action_keywords": ["완료"],
+      "expected_action_keywords": [
+        "완료"
+      ],
       "allowed_alternatives": [
-        {"pattern": "(?i)\\b(Done)\\b", "note": "English completion sentinel"},
-        {"pattern": "OpendTect", "note": "Screen shows OpendTect Main Window — validator checks this"},
-        {"pattern": "Main Window", "note": "Alternative main window marker for validator"}
+        {
+          "pattern": "(?i)\\b(Done)\\b",
+          "note": "English completion sentinel"
+        },
+        {
+          "pattern": "OpendTect",
+          "note": "Screen shows OpendTect Main Window — validator checks this"
+        },
+        {
+          "pattern": "Main Window",
+          "note": "Alternative main window marker for validator"
+        }
       ],
       "expected_workflow_node": null,
       "is_error_recovery_test": false,

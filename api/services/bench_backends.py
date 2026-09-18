@@ -116,6 +116,16 @@ def _record_usage(model: str, input_tokens: int, output_tokens: int, thoughts_to
     _LAST_USAGE["model"] = model
 
 
+# Context block of the most recent _build_messages() call (v3 dev-loop
+# telemetry; the evaluator stores its length, and the full text when
+# BENCH_SAVE_CONTEXT=1).
+_LAST_CONTEXT: Dict[str, str] = {"block": ""}
+
+
+def get_last_context_block() -> str:
+    return _LAST_CONTEXT.get("block", "")
+
+
 def get_last_usage() -> Dict[str, float]:
     """Snapshot of the token usage + cost of the most recent LLM call.
     bench_runner uses this to attach per-step cost."""
@@ -201,6 +211,7 @@ def _build_messages(scenario: Dict, step_index: int, prior_responses: List[str],
     language = scenario.get("language", "en")
     completed = list(prior_responses)
     sys_text = _inline_action_prompt(goal, completed, context_block, language)
+    _LAST_CONTEXT["block"] = context_block or ""
     user_content: List[Dict] = []
     b64 = _load_screenshot_b64(scenario, step_index)
     if b64:
@@ -464,6 +475,13 @@ def _call_qwen(messages: List[Dict]) -> str:
 
 
 def _call_generator(messages: List[Dict]) -> str:
+    """Timed wrapper (v3 stage latency: 'generate')."""
+    from . import stage_timer
+    with stage_timer.timed("generate"):
+        return _call_generator_impl(messages)
+
+
+def _call_generator_impl(messages: List[Dict]) -> str:
     """Dispatch to the model selected via BENCH_MODEL env var.
     Defaults to Gemini 2.5 Pro (production primary).
     Also resets and populates _LAST_USAGE — read via get_last_usage()."""
@@ -513,6 +531,23 @@ def _session_note_visit(scenario: Dict, backend: str, node_id: Optional[str]) ->
     lst = _SESSION_VISITED.setdefault(_session_key(scenario, backend), [])
     if node_id not in lst:
         lst.append(node_id)
+
+
+# v3 graph prior: the last node that passed the confidence gate in this
+# session (its successors get prior weight in the next localization).
+_SESSION_CONFIRMED: Dict[str, Optional[str]] = {}
+
+
+def _session_last_confirmed(scenario: Dict, backend: str, step_index: int) -> Optional[str]:
+    key = _session_key(scenario, backend)
+    if step_index == 0 or key not in _SESSION_CONFIRMED:
+        _SESSION_CONFIRMED[key] = None
+    return _SESSION_CONFIRMED[key]
+
+
+def _session_note_confirmed(scenario: Dict, backend: str, node_id: Optional[str]) -> None:
+    if node_id:
+        _SESSION_CONFIRMED[_session_key(scenario, backend)] = node_id
 
 
 # Character budget applied to the manual context of the budgeted baseline.
@@ -641,6 +676,9 @@ def backend_full_system(step_index: int, scenario: Dict,
     session_state = {
         "mode": "guide",
         "visited_node_ids": visited_node_ids,
+        # v3: graph prior + completed instructions for the rerank
+        "last_confirmed_node_id": _session_last_confirmed(scenario, "full_system", step_index),
+        "completed_steps": list(prior_responses),
     }
     result = get_rag_router().route(
         user_message=scenario.get("goal", ""),
@@ -650,7 +688,10 @@ def backend_full_system(step_index: int, scenario: Dict,
     )
     # Same semantics as the v2 reconstruction: the node the localizer picked
     # (before the confidence gate) counts as visited.
-    _session_note_visit(scenario, "full_system", get_last_localize_meta().get("picked_node_id"))
+    meta = get_last_localize_meta()
+    _session_note_visit(scenario, "full_system", meta.get("picked_node_id"))
+    if meta.get("picked_node_id") and not meta.get("fallback_activated"):
+        _session_note_confirmed(scenario, "full_system", meta.get("picked_node_id"))
     context_block = result.get("context_block", "") or ""
     messages = _build_messages(scenario, step_index, prior_responses, context_block=context_block)
     return _call_generator(messages)
@@ -686,11 +727,16 @@ def backend_state_path(step_index: int, scenario: Dict,
         manual_ids=[scenario["manual_id"]],
         user_goal=scenario.get("goal", ""),
         visited_node_ids=visited,
+        last_node_id=_session_last_confirmed(scenario, "state_path", step_index),
+        completed_steps=list(prior_responses),
     )
     anchor_node = loc.get("node")
     anchor_id = anchor_node.get("id") if anchor_node else None
     conf = float(loc.get("confidence") or 0.0)
     _session_note_visit(scenario, "state_path", anchor_id)
+    from .guide_pipeline import CONFIDENCE_THRESHOLD as _CT
+    if anchor_id and conf >= _CT:
+        _session_note_confirmed(scenario, "state_path", anchor_id)
 
     # Expand sub-path
     path = retriever.retrieve(
