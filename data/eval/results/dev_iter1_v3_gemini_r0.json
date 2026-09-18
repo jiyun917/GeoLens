@@ -3811,5 +3811,10 @@
       "fallback_rate": 0.0,
       "mean_route_confidence": 0.8896666666666667
     }
+  },
+  "code_version": {
+    "commit": "c15259f0b4cb88356050d054523c9a76db7933a1",
+    "post_hoc": true,
+    "note": "api/ identical to this commit; data/workflows/qgis_vector_buffer.json was relinked (linked_chunks/manual_sections only) after the run started, so the run loaded the pre-relink QGIS distractor workflow; env knobs in dev_iter1_v3_gemini_knobs.json"
   }
 }

@@ -854,5 +854,10 @@
       "fallback_rate": 0.0,
       "mean_route_confidence": 0.938
     }
+  },
+  "code_version": {
+    "commit": "c15259f0b4cb88356050d054523c9a76db7933a1",
+    "post_hoc": true,
+    "note": "identical to this commit (clean run, nothing else running)"
   }
 }

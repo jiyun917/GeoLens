@@ -2471,5 +2471,10 @@
       "fallback_rate": 0.125,
       "mean_route_confidence": 0.7163333333333334
     }
+  },
+  "code_version": {
+    "commit": "c15259f0b4cb88356050d054523c9a76db7933a1",
+    "post_hoc": true,
+    "note": "run started before stage_timer instrumentation was added (telemetry only: stage_latency absent) and before the QGIS workflow relink; api/ otherwise identical to this commit; env knobs in dev_iter0_v2mech_gemini_knobs.json"
   }
 }
