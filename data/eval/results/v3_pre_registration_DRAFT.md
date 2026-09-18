@@ -2,6 +2,7 @@
 
 **작성 시점**: 2026-09-18, 0단계(수정·재채점·dry-run·스모크) 완료, 메커니즘 동결 커밋 직후(초안 v2). v3 벤치 숫자는 아직 하나도 없음.
 **최종화 시점**: 2026-09-18 (KST), 개발 루프 종료 후. 동결 태그 `v3-freeze-c01fdda` @ a03ca59 — 코드(`api/`, `data/workflows/`)는 c01fdda, GT(`data/eval/scenarios/`)는 2f3db66과 동일(§2.5). QGIS 테스트 세트는 dry-run 포함 한 번도 실행하지 않았다. v3 확인적 벤치(run_v3.sh) 숫자는 없다; 개발 세트의 개발 벤치 수치는 §2.5에 있다.
+**외부 검토 반영**: 2026-09-18, 문서만 수정(코드·GT·워크플로우 불변): §6.1 hall 규칙 결과대로 hall 판정 지표 유지·A′ 복원, 비교 1/2 명명과 판정 조건 문구, held-out 삭제, QGIS 파일럿 이력 한계, P8, D8 수치 실측, 절 구조 정리.
 **상태**: 최종안. §9의 서명 항목을 채운 뒤에만 3단계(전체 실행)로 진행한다. 서명 후 이 문서는 add-only.
 **원칙**: (1) 모든 수정은 실행 전에 확정한다. (2) 수정은 모든 백엔드·모델에 같이 적용한다. (3) 판정 기준을 먼저 고정한다. (4) 시스템 쪽 결함과 baseline 쪽 결함을 함께 고친다. (5) 결과 예상은 양방향으로 열어 두고, 불리한 결과도 그대로 보고한다.
 
@@ -14,8 +15,6 @@
 | 개발 세트 | opendtect__survey_setup__01, opendtect__3d_visualization__01 | unified2부터 사용. 라우팅 결함 진단·수정, 캡처 정제(3d_viz step 3, unified3)에 사용됨 | 라우팅 진단·메커니즘 수정은 여기서만 |
 | 개발 세트 | opendtect__attribute_computation__01 | unified3에서 사전등록 예측과 함께 처음 실행(당시 테스트). unified4에서 seismic_attribute signature를 재작성한 뒤로는 개발용 | 위와 같음 |
 | 테스트 세트 | qgis__vector_buffer__01 (8스텝) | 2026-08-13 파일럿 1회. 결과를 보고 시스템·signature를 고친 적 없음. v3에서는 메커니즘 동결 커밋 이후에만 실행. **2026-09-18, QGIS 결과를 보기 전에 수행한 배포 설정**: QGIS 매뉴얼 v4 재인제스트(그림 OCR 규칙, bge-m3)와 `qgis_vector_buffer` 노드 5개의 linked_chunks 연결(절 출처 §6.2.6, OpendTect와 같은 규칙, 스크립트 15.8 s + 사람 약 5분; V3-11). signature·제목·설명·시나리오 파일 불변 | 라우팅 관련 판정의 기준 세트 |
-
-held-out 예비: horizon_tracking·fault_interpretation 시나리오 초안(`data/eval/scenarios/excluded/heldout_drafts/`). 워크플로우 JSON을 보지 않은 연구원이 저작·캡처한 뒤 signature 수정 없이 별도 표로 실행 `[사용자 결정: 담당자·일정]`.
 
 ---
 
@@ -32,7 +31,7 @@ unified4 사전등록의 정지 규칙("unified5 없음")을 다음 결함 때�
 | D5 | 비용이 생성기 입력·candidates 토큰만 집계: 보조 Flash 호출 미기록, Gemini 생성기 thinking 미기록(no_rag 약 6배 과소) | 시스템 비용 과소 | 프로브·스모크 |
 | D6 | 검색 컨텍스트가 KG triplet 블록을 맨 앞에 두어 1,500자 예산의 ~1,100자를 지질 개념이 차지 | fallback 스텝이 매뉴얼 본문 ~300자만 받음 | rag v2 |
 | D7 | 하네스가 매 스텝 이전 스텝 전부를 재-localize(rerank i+1회/스텝) | 지연·보조비용 3.5배 과대 | bench_backends v2 |
-| D8 | 임베더 MiniLM: 256 토큰 절단(800토큰 청크의 앞 ~10%), 영어 중심, 질의는 한국어 | vanilla 검색 실패(attribute 0/15, 3d_viz 0/11, QGIS 2/5) → baseline 과소 | retrieval_replay_minilm.md |
+| D8 | 임베더 MiniLM: 256 word-piece 절단, 영어 중심, 질의는 한국어. 실측(구 인덱스 `data/chromadb` 1,254청크, MiniLM 토크나이저, 저장된 문서 = `[Section: …, Page: …, Source: …]` 접두 약 76 피스 + 본문): 800토큰(tiktoken ≥ 700) 가득 찬 청크 114개는 MiniLM 피스 중앙값 OpendTect 952·QGIS 847 → 256 피스는 앞 27–30%(본문은 약 180 피스); 페이지 경계로 짧은 청크가 많아 554/1,254는 256 이내(OpendTect 190/521, QGIS 364/733). 초안 v2의 "앞 ~10%"는 오기 | vanilla 검색 실패(attribute 0/15, 3d_viz 0/11, QGIS 2/5) → baseline 과소 | retrieval_replay_minilm.md |
 | D9 | 생성 설정 불일치(max_tokens 512/1024/미설정, temperature Qwen만 0.2) | 모델 간 비교 오염 | bench_backends v2 |
 | D10 | QGIS 파일럿이 OpendTect 워크플로우를 격리한 채 실행 | 라우팅 난이도 과소 | run_qgis_pilot v2 |
 | D11 | graph_only 청크 본문 미주입, state_path 텔레메트리 미기록, rerank 'none'이 fallback으로 라벨되지 않음 | ablation 해석 오류 | v2 코드 |
@@ -81,6 +80,49 @@ Qwen 제외 사유: Qwen3-VL 서빙 불가(NAS 미접속), 텍스트 전용 Qwen
 - 모든 변경은 `methodology_audit_trail.md`에 append (§V3-*).
 - 3d_visualization의 목표 절 결손(§4 작업 3)은 KB(OCR 임계) 문제였고, 사용자 결정(2026-09-18)으로 양쪽 매뉴얼을 같은 그림 면적 OCR 규칙으로 재인제스트한 `chromadb_v4`를 쓴다(V3-8). §1.3.1a의 그림 속 절차가 인덱스에 들어갔음을 확인(`relink_chunks_v4.md`, `retrieval_replay_bgem3_v4.md`).
 
+### 2.5 개발 이력 요약 (v3 개발 루프, 2026-09-18; 상세 methodology_audit_trail.md V3-8 … V3-23)
+
+개발 세트 = OpendTect 3 시나리오(16스텝). 테스트 세트(QGIS)는 동결 전까지 실행하지 않았다(dry-run 포함). 개발 판단의 1차 근거는 step accuracy가 아니라 (a) 라우팅 정답률·confident-wrong 건수, (b) 목표 절 검색 적중, (c) 스텝별 손실 분류였다. 모든 실행 결과 JSON에 코드 커밋 해시가 기록된다(iteration 0·1은 사후 표기).
+
+| iteration | 코드 | 주요 변경 | 라우팅 정답(16스텝) | confident-wrong | 목표 절 적중 full / vanilla | 비고 |
+|---|---|---|---|---|---|---|
+| 0 (v2mech knob) | c15259f(사후) | 동결 시점 메커니즘 재현 + v4 KB + linked_chunks 재연결 | 11/14 통과 | 3 | 15/16 / 12/16 | 3d_viz s3·attribute s1 전 백엔드 실패; 지연 오염 가능 |
+| 1 (v3) | c15259f | 임베딩 풀 5 + CLIP + 그래프 prior, vision/rerank 프롬프트 v3, 병렬 검색, fallback 예산 3,900, soft post-completion, KG 제외 | 16/16 | 0 | 16/16 / 12/16 | 손실 1 (3d_viz s3, 패턴 기인) |
+| 2 (dry-run ×3) | f3ee78a | 종료 상태 블록, CLIP‖vision, 텔레메트리, 코드 해시 기록 | 16, 14, 16 | attribute s0·s1 → 04 (1회) | — | 벤치 미실행(사용자 규칙) |
+| 3 (dry-run ×5) | 820e993 | seismic_attribute 02·03·04 signature 관찰 상태 재작성, vision field_values, 근소차 prior, 종료 상태 앵커 | 14, 14, 14, 14, 13 | attribute s0 5/5 (04·03), s1 5/5 (04), survey s3 1/5 | — | 일관된 편향 → 다수결 미사용; rerank 기준 불일치 가설 확인 |
+| 4 (dry-run ×5) | d064577 → 21f0dec | rerank 프롬프트 v4(상태 일치 기준), 같은 다이얼로그 묶음 그래프 순서 prior(워크플로우 내), 03·04 비기본 상태 요구 | 첫 run 16,16,15,15,15 → 정정 후 **16/16 ×5** | 0 (정정 후) | — | 첫 run의 survey s3 오라우팅 3건은 묶음 범위 버그(교차 워크플로우) |
+| 4 개발 벤치 (조립 v3) | 21f0dec | Gemini ×2, Claude ×1, GPT ×1 (단독 실행) | 62/64 (최종화 시 재집계, dry-run과 같은 규칙: Gemini r0 attribute s2→03, survey s3→d3_01, 둘 다 응답은 정답; 보고서의 '라우팅 손실 0'은 손실만 센 값) | 0 | 16/16 / 12/16 | 아래 표 |
+| 5 (조립 v4 — **동결 구성**) | fcfa184 / 34c06aa | [Current State (reached)] = signature 상태만, [Next Action] = 엣지 지시, 예시 값 주의 문구 | dry-run 16/16 ×5; 벤치 64/64(재집계 확인) | 0 | 16/16 / 12/16 | Gemini 2회 full 0.854 = vv 0.854 > vb 0.750; Claude 1.000 > 0.875 = 0.875; GPT 0.792 < vv 0.833, > vb 0.667. attribute s1~s3 손실 5건 → 0; 신규 손실 2(GPT attribute s7·survey s1: verification 엣지·노드 단위 라우팅 오차가 [Next Action]으로 드러남, 미수정) |
+| 6 (조립 v5: verification 엣지 제외 + [This Step]) — **미채택** | d326838 (branch v3-iter2, 미병합) | 규칙 1·2 | dry-run 16/16 ×5; 벤치 라우팅 61/64(V3-22 정정; v4는 64/64) | 0 | — | full 0.875/1.000/0.833 vs vv 0.792/0.875/0.750, vb 0.792/0.875/0.667(세 모델 우위)이나 기준 (b)(d) 미충족(Gemini attribute s1 'Seismic_data 드롭다운', GPT survey s3 교차 워크플로우 오라우팅) → iteration 5로 되돌림 |
+| 6 채택 검토 → 동결 | — | 사용자가 v5 채택을 결정했으나 조건부(rerank 입력이 v4/v5에서 동일할 것). 확인(V3-22): 라우팅 코드는 동일하지만 rerank 프롬프트의 세션 블록(직전 생성기 응답)이 조립에 따라 달라짐 → 채택 중단. 사용자 결정으로 **c01fdda(조립 v4) 동결**, rerank 재생 실험 없음(V3-23) | — | — | — | 태그 `v3-freeze-c01fdda` @ a03ca59 |
+
+iteration 4 개발 벤치 4건 step accuracy(시나리오 평균): full / vanilla_vector / vanilla_budget / no_rag — Gemini(2회) 0.792 / 0.771 / 0.771 / 0.708, Claude 0.875 / 0.875 / 0.875 / 0.875, GPT 0.833 / 0.833 / 0.667 / 0.750. 방향: Gemini full > 두 vanilla; Claude 동률; GPT vanilla_vector 동률·vanilla_budget 우위. n = 1~2라 잡음 범위이며 판정에 쓰지 않는다. full_system 손실 12건 = 라우팅 0 · 컨텍스트 0 · 생성 9 · 표기 3.
+
+**벤치 모드 라우팅 안정성(개발 세트 16스텝 × 4회; expected_workflow_node가 있는 8스텝은 노드, 나머지는 워크플로우 일치; dry-run 수치는 세션 블록이 없어 쓰지 않음)**:
+
+| 구성 | 코드 | 라우팅 정답 | 오라우팅 |
+|---|---|---|---|
+| 조립 v3 (iteration 4) | 21f0dec | 62/64 | Gemini r0: attribute s2→03, survey s3→d3_01 |
+| **조립 v4 (iteration 5, 동결)** | fcfa184/34c06aa | **64/64** | — |
+| 조립 v5 (iteration 6, 미채택) | d326838 | 61/64 | Claude attribute s2→03; Gemini r1 survey s3→d3_01; GPT survey s3→d3_01(손실) |
+
+세 구성의 라우팅 코드는 같고 조립(→ 직전 응답 → rerank 세션 블록)만 다르다. 동결 구성의 64/64는 4회 관측이며 라우팅이 100% 안정적이라는 근거는 아니다.
+
+채택하지 않은 것(근거와 함께):
+- **rerank confidence 게이트**: iteration 0에서 오라우팅 3건의 confidence(0.7, 0.9, 0.9)가 정답 분포와 겹쳐 0.95 미만 어떤 임계값도 오라우팅만 걸러내지 못했다(`dev_iter0_v2mech_gemini.md` 보정표). confidence는 기록만 한다.
+- **증거 기반 gate**((i) expected_dialog ⊂ 창 제목, (ii) 직전 확정 노드/후속, (iii) 임베딩 1–2위 격차): 오프라인 표(`evidence_gate_offline_iter0.md`, `_iter1.md`)에서 iteration 0 오라우팅 3건 중 최대 1건만 걸러지고(02·03·04가 같은 expected_dialog), 전체 노드 풀에서는 iteration 1 정답 1건이 탈락 → 미채택(코드는 비활성).
+- **2단계 라우팅(목표→워크플로우→노드)**: 보류. attribute s0·s1 재구성(`recon_iter1_attribute_s0s1.md`)과 진단(`diag_attribute_s0s1_iter3.md`)에서 문제가 같은 다이얼로그를 공유하는 노드 간 rerank 기준 불일치임이 확인되어 프롬프트 v4·signature 정정으로 대응.
+- **다수결 rerank**: iteration 3의 오답이 회차마다 같은 방향이라 규칙상 미사용(코드는 `RERANK_VOTES=1`).
+- **종료 상태 블록의 좁힌 발동 조건**: 개발 벤치 4건의 조기 발동 8건에서 조기 '완료' 응답이 0건이라 규칙상 적용하지 않음(오프라인 검사 스크립트만 보관).
+
+GT 검수(2026-09-18): 스크린샷만 본 별도 세션이 고정 규칙(RULES.md)으로 수행 — 실행 로그·모델 응답·채점 결과 접근 없이 24장, 검수 목록, 시나리오, 매뉴얼 발췌만 제공. 표본 오독률 0.96%(< 5%), 변경 19·보류 11, survey s0 Add 버튼 패턴은 보류(매뉴얼 표기 "New Survey icon"), QGIS s3는 Input layer가 이미 채워진 화면 상태에 맞춰 GT 필드만 정정(패턴에 `Distance|50|Dissolve` 추가). 구·신 GT 재채점: step accuracy 변화 0, 환각률 −6.2 pp(라벨 원문화), survey s0에서 `New Survey (+)` 표기로 "Add (+)" 응답이 환각으로 잡히는 부작용 33건 → 사용자 결정으로 두 표기 병기(2f3db66). 상세 `data/eval/gt_review_session/`, V3-16.
+
+### 2.6 GT 확정 절차와 채점 관련 기록 (2026-09-18, 동결 전)
+- GT 검수: 모델 응답을 보지 않은 별도 세션이 고정 규칙으로 수행(스크린샷 24장·검수 목록·시나리오·매뉴얼 발췌만 제공). 외부 검토(스크린샷 대조)에서 변경 19건 중 18건 확인, 1건(QGIS s3 keywords 추가) 되돌림, 보류 11건 결정. 수치 표기는 별도 세션의 3배 확대 대조(33건 중 14건 수정, 사용자 명시 수정과 일치). 적용 커밋 2f3db66. 구·신 GT 재채점: step accuracy 변화 0, 환각률 대부분 −6.2 pp(라벨 원문화). 이 시점 이후 GT와 채점기는 서명 전까지 변경하지 않는다.
+- QGIS s3 GT 정정(Input layer가 이미 채워진 화면 상태 반영, 패턴에 Distance|50|Dissolve 추가)의 근거는 화면 사실이며, 화면을 읽는 백엔드(full_system·vision_only·state_path)에 유리할 수 있다 — 확인적 판정 해석 시 명시한다.
+- QGIS s3와 s4는 화면이 같으므로(Input layer 자동 채움) 같은 정답 응답이 s4에서 loop(직전 응답과 동일)로 집계될 수 있다. loop는 판정 지표가 아니다.
+- 3d_viz step_3의 허용 대안 패턴(요소 언급)은 sentinel이 아닌 지시도 정답으로 통과시킬 수 있다(한계, 사용자 결정으로 유지).
+
 ---
 
 ## 3. 채점기 변경만의 효과 (재채점, API 비용 0)
@@ -118,35 +160,49 @@ Qwen 제외 사유: Qwen3-VL 서빙 불가(NAS 미접속), 텍스트 전용 Qwen
 | **P5 (QGIS, 테스트 세트, 방해 워크플로우 41노드 포함)** | (a) 정답 워크플로우(qgis_vector_buffer) 선택률 ≥ 5/8 스텝(모델 공통, vision·rerank는 모델 무관), (b) fallback+none 비율 ≤ 3/8, (c) full_system ≥ vanilla_budget step_acc 방향이 3모델 중 2 이상, (d) vanilla_vector > no_rag(P1) | 명시 | (a)(b) 반증 시 메커니즘을 고치지 않고 일반화 실패로 보고; (c) 반증 시 §6.5 |
 | P6 | 3d_viz 시나리오는 KB 결손(§4) 때문에 vanilla·full 모두 매뉴얼 근거 없이 파라메트릭 지식으로 답한다: no_rag ≈ vanilla ≈ full (±5pp) | — | — |
 | P7 | GeoLens가 열세일 수 있는 축: hall(v3에서 Claude vanilla 우세), step_acc(Gemini·Claude 동률권) | — | §6.5대로 보고 |
+| P8 | **QGIS에서 full_system 대 vanilla_vector(비교 2)의 step_acc 방향은 예측하지 않는다** — 개발 세트 iteration 5(동결 구성)에서 Gemini 동률(0.854 = 0.854)·Claude 우위(1.000 > 0.875)·GPT 열세(0.792 < 0.833)로 모델마다 달랐다 | — | 관측된 방향을 그대로 보고(§6.3 종합 서술) |
 
 최종화 시점 주석(결과 관측 전): P4의 기준값은 개발 루프 후 벤치 모드 라우팅 64/64(동결 구성, §2.5)로 갱신하되 개발 세트이므로 판정에 쓰지 않는다. P5(a)의 "모델 공통" 가정은 근사다 — rerank 프롬프트가 직전 생성기 응답을 포함하므로 라우팅은 생성기에 완전히 독립이 아니다(§5.x (iv)); P5(a)는 모델별로 따로 집계해 보고한다. QGIS에 특유한 위험은 §5.x (i)–(v).
+
+### 5.x QGIS 예측에 덧붙이는 위험 (동결 시점 기재, QGIS 미실행 상태)
+
+QGIS 워크플로우는 노드 5개(01 setup, 02 action, 03 setup, 04 setup, 05 action; 검증 노드 없음, 05가 말단)가 8스텝을 다룬다: s0→01, s1·s2→02, s3·s4·s5→03, s6→04, s7→05. 동결 구성(조립 v4)에서 예측되는 위험:
+
+- **(i) 여러 스텝에 걸친 노드에서 [Next Action]의 조기 제시**: 조립 v4의 [Next Action]은 현재 노드의 나가는 엣지 지시이므로, 노드 03에 머무는 s3·s4(Distance·Dissolve를 아직 설정하는 중)에서 03→04 "출력 저장" 동작을, 노드 02의 s1에서 02→03 동작을 일찍 제시할 수 있다. 개발 세트에서 같은 기제로 GPT survey s1·attribute s7 손실이 났고(V3-20), QGIS는 노드당 스텝이 더 많아 구조적으로 재현될 수 있다. 예측: 이 유형의 손실이 s1·s3·s4 중 적어도 한 스텝에서 모델 1개 이상에 나타난다.
+- **(ii) 마지막 스텝(s7)에서 엣지 지시가 '완료'를 대체**: 05는 말단이라 라우팅이 05이면 v4는 "final step … completion sentinel" 문구를 준다. 그러나 s7 화면(렌더된 레이어)이 04로 라우팅되거나 05 확정 전이면 04→05 "Run" 엣지가 [Next Action]으로 제시되어 '완료' 응답을 놓칠 수 있다(개발 세트의 verification 엣지 제시와 같은 기제; QGIS에는 verification 노드가 없으므로 검증 엣지 자체는 없다).
+- **(iii) 종료 상태 블록 조기 발동**: 말단 노드 05가 후보 pick이거나 확정된 뒤(s6 Save 다이얼로그, s7 이전 화면) 렌더 전 화면에서도 발동할 수 있다(attribute 06_display에서 본 것과 같음). 개발 벤치에서는 조기 발동 8건 모두 조기 '완료' 0건이었으나 QGIS에서는 보장하지 않는다.
+- **(iv) 세션 블록을 통한 생성기→라우팅 결합**: rerank 프롬프트가 직전 생성기 응답을 포함하므로(iteration 1부터, V3-22) 같은 스크린샷에서도 생성기 모델에 따라 라우팅이 달라질 수 있다. QGIS 8스텝 중 s1–s7이 세션 블록을 가진다. 따라서 P5(a)는 모델별로 따로 집계하고, 라우팅 안정성은 벤치 모드 수치로만 서술한다(개발 세트: 조립 v3 62/64, v4 64/64, v5 61/64).
+- **(v) s3·s4 화면 동일로 인한 loop 집계**: Input layer가 자동 채워져 s3와 s4 화면이 같으므로 같은 정답 응답이 s4에서 loop(직전 응답과 동일)로 집계될 수 있다. loop_rate는 판정 지표가 아니며 표에 이 사유를 주석으로 단다.
+- 라우팅 정답률 예측은 "워크플로우 단위 정답 ≥ 5/8(P5(a))"로 두되, 노드 단위(스텝별 expected_workflow_node)는 다단계 노드 경계(s2, s4·s5, s7)에서 낮아질 수 있음을 예측에 포함한다.
 
 ---
 
 ## 6. 판정 기준 (실행 전 고정)
 
 ### 6.1 지표
-- **판정 지표(최종, 사용자 결정 2026-09-18, 결과 관측 전)**: step_accuracy(v3 채점기, 최종 GT 2f3db66)만. hallucination_rate(v3), goal_completion_rate(3-gate), cost_total_usd/step, latency(단계 분해)는 기술 지표로 표에 보고하되 A/B/C 판정 조건에 넣지 않는다. faithfulness 보고만.
-- hall 처리 규칙(작업 4): 현재 3모델 18셀 hall 분포가 0 근처가 아니므로 hall은 1차 지표로 유지한다. 단, S6 반영 후 unified4 재채점에서 18셀의 중앙값이 5% 미만이면 hall은 판정 조건에서 제외하고 기술 지표로만 보고한다(규칙은 S6 결과를 보기 전인 지금 고정). **결과**: 최종 GT(2f3db66)로 unified4 3모델 18셀을 재채점한 hall 중앙값은 6.2%(≥ 5%; `rescore_gt_final_vs_fcfa184.md`)이므로 이 규칙만으로는 hall이 1차 지표로 남았을 것이다. 그러나 위 사용자 결정으로 판정은 step_accuracy만으로 하고 hall은 기술 지표로 보고한다 — 이 변경은 v3 확인적 결과를 보기 전에 이루어졌음을 명시한다.
+- 1차(판정 지표): step_accuracy(v3 채점기, 최종 GT 2f3db66), hallucination_rate(v3, 최종 GT; 아래 규칙의 결과에 따라 유지). 기술 지표(표에 보고하되 판정 조건에 넣지 않음): goal_completion_rate(3-gate), cost_total_usd/step, latency(단계 분해). faithfulness 보고만.
+- hall 처리 규칙(작업 4): 현재 3모델 18셀 hall 분포가 0 근처가 아니므로 hall은 1차 지표로 유지한다. 단, S6 반영 후 unified4 재채점에서 18셀의 중앙값이 5% 미만이면 hall은 판정 조건에서 제외하고 기술 지표로만 보고한다(규칙은 S6 결과를 보기 전인 지금 고정). **결과(최종화 시점)**: 최종 GT(2f3db66)로 unified4 3모델 18셀을 재채점한 hall 중앙값은 6.2%(≥ 5%; `rescore_gt_final_vs_fcfa184.md`)이므로 규칙대로 hall은 판정 지표로 유지한다.
 - 2차: loop_rate, latency, fallback_rate, 라우팅 텔레메트리(정답 워크플로우 선택률), cost_usd(생성기만), LLM judge 일치도(consensus judge vs v3 step_match의 agreement와 Cohen's κ; unified4 참고값 80.3% / 0.572).
 - 집계: 스텝 → 시나리오 → replicate → 셀(mean ± 표본 SD). 검정 단위 replicate. **n = 10**.
 
 ### 6.2 비교
-- **판정은 QGIS 테스트 세트 기준**이다. 1차 비교 대상 두 개: **비교 A = full_system vs vanilla_budget**(같은 매뉴얼 예산 3,900자, 라우팅·조립의 순효과), **비교 B = full_system vs vanilla_vector**(무절단 벡터 검색). 두 비교 각각에 §6.3의 A/B/C를 적용하고 둘 다 보고한다. 보조(기술 보고): vs no_rag, graph_only, vision_only, state_path, long_context(Gemini).
+- **판정은 QGIS 테스트 세트 기준**이다. 1차 비교 대상 두 개: **비교 1 = full_system vs vanilla_budget**(같은 매뉴얼 예산 3,900자, 라우팅·조립의 순효과), **비교 2 = full_system vs vanilla_vector**(무절단 벡터 검색). 두 비교 각각에 §6.3의 A/A′/B/C를 적용하고 둘 다 보고한다. 보조(기술 보고): vs no_rag, graph_only, vision_only, state_path, long_context(Gemini).
 - OpendTect 매트릭스(3 시나리오 × 7 백엔드 × 3 모델 × 10회 + long_context)는 **개발 세트 성능**으로 별도 표에 보고하며 판정에 쓰지 않는다(라우팅·signature·조립을 이 세트로 고쳤다, §2.5).
 
 ### 6.3 1차 검정과 스토리 판정 (|M| = 3)
-- 1차 검정: 모델을 층으로 하는 층화 순열검정(`scripts/stats_stratified.py`): 모델별로 A/B 라벨을 그 모델의 2n replicate 안에서 섞고, 통계량 = 모델별 (mean_A − mean_B)의 평균, 10,000회, seed 42, 양측. 모델별 raw 순열 p와 패밀리(5 pairs × 5 metrics = 25) Holm 보정값 병기.
-- 비교 A(vs vanilla_budget)와 비교 B(vs vanilla_vector) 각각에 대해, QGIS step_accuracy(replicate 단위, n = 10, 모델 3개)로:
-- **A (시스템 우위)**: full_system > 비교 대상 방향이 3/3, 또는 2/3이면서 층화 순열검정 raw p < 0.05.
-- **B (조건부)**: 방향 2/3이나 층화 p ≥ 0.05, 또는 모델 의존 역전(한 모델에서 유의한 역방향).
+- 1차 검정: 모델을 층으로 하는 층화 순열검정(`scripts/stats_stratified.py`): 모델별로 두 arm의 라벨을 그 모델의 2n replicate 안에서 섞고, 통계량 = 모델별 (mean_full − mean_비교대상)의 평균, 10,000회, seed 42, 양측. 모델별 raw 순열 p도 함께 구한다.
+- 방향 카운트 규칙: 분모는 항상 3(모델 수). 모델별 replicate 평균의 차이가 양(+)이면 우위 1, 음(−)이면 역방향 1, 동률(차이 0)은 우위로 세지 않는다(어느 쪽에도 넣지 않고 분모 3은 유지).
+- **step accuracy 조건**(비교 1·2 각각): full_system > 비교 대상 방향이 ≥ 2/3이면서 층화 순열검정 raw p < 0.05이고, 어느 모델에서도 유의한 역방향(그 모델의 순열 p < 0.05인 역방향 차이)이 없을 것.
+- **hall 조건**(비교 1·2 각각): hallucination_rate에서 full_system ≤ 비교 대상 방향이 2/3 이상.
+- **A (시스템 우위)**: step accuracy 조건과 hall 조건이 모두 성립.
+- **A′**: step accuracy 조건만 성립(hall 조건 불성립). cost_total은 조건이 아니라 함께 보고(P2).
+- **B (조건부)**: 방향 ≥ 2/3이나 raw p ≥ 0.05, 또는 모델 의존 역전(한 모델에서 유의한 역방향).
 - **C (비등/열세)**: 방향 ≤ 1/3.
-- 방향 카운트 규칙: 3/3 일관, 2/3 다수, ≤1/3 역효과. 동률(차이 0)은 카운트하지 않는다. Holm 보정값(보고 패밀리 전체)은 병기하되 조건은 raw p로 판정한다(초안 v2와 동일).
-- 종합 서술: 비교 A·B 모두 A이면 "우위"; A만 A이고 B가 B/C이면 "같은 예산에서의 라우팅·조립 효과"로만 서술하고 무절단 검색 대비 우위는 주장하지 않는다; B만 A이면 "예산 절단 효과 없이 검색 대비 우위"로 서술하되 라우팅 순효과 주장은 하지 않는다; 둘 다 B/C이면 §6.5. hall·cost·latency는 판정에 들어가지 않고 P2·P7대로 방향을 그대로 보고한다.
-- (초안 v2의 A′ 등급은 hall 조건이 사라져 A에 흡수된다.)
+- 다중 비교: 두 1차 검정(비교 1·2의 step accuracy)에 대한 Holm 보정값(패밀리 2)을 raw p와 함께 병기한다. 판정은 raw p로 한다. 보고 패밀리 전체(모든 pair × metric)의 Holm 보정값은 부록 표에 둔다.
+- 종합 서술: 비교 1·2 모두 A(또는 A′)이면 "우위"(A′만이면 hall 열세를 함께 명시); 비교 1만 A/A′이고 비교 2가 B/C이면 "같은 예산에서의 라우팅·조립 효과"로만 서술하고 무절단 검색 대비 우위는 주장하지 않는다; 비교 2만 A/A′이면 "검색 대비 우위"로 서술하되 같은 예산에서의 라우팅 순효과 주장은 하지 않는다; 둘 다 B/C이면 §6.5. cost·latency·goal completion은 판정에 들어가지 않고 P2·P7대로 방향을 그대로 보고한다.
 
 ### 6.4 정지 규칙
-- v4(개발 재개) 없음. 결과가 어떻게 나오든 이 기준으로 A/B/C를 판정해 그대로 보고한다. 실행 중 장애(API 크레딧 소진·네트워크)로 재실행할 때는 사유를 로그와 audit trail에 남기고, 중단된 replicate는 버리고 처음부터 다시 돈다.
+- v4(개발 재개) 없음. 결과가 어떻게 나오든 이 기준으로 A/A′/B/C를 판정해 그대로 보고한다. 실행 중 장애(API 크레딧 소진·네트워크)로 재실행할 때는 사유를 로그와 audit trail에 남기고, 중단된 replicate는 버리고 처음부터 다시 돈다.
 
 ### 6.5 열세 시 보고
 - Table 1에 열세인 비교 대상(vanilla_budget 또는 vanilla_vector)을 권장 구성으로 표시; full − vanilla_budget, full − vanilla_vector를 축별 부호 그대로 보고; 총비용에서 보조 호출 몫을 분해; 제목·초록의 "우위"를 "조건부"로; 재실행·시나리오 교체·채점기 재조정 금지.
@@ -161,71 +217,16 @@ Qwen 제외 사유: Qwen3-VL 서빙 불가(NAS 미접속), 텍스트 전용 Qwen
 - 서명 후 순서: 서명된 사전등록 커밋(코드 태그 `v3-freeze-c01fdda`는 이미 있음; 서명 커밋에 `v3-prereg-signed` 태그) → run_v3.sh(서명 전 실행 금지) → 집계(build_final_table, compute_table1_sd, stats_stratified, stats_unified, direction_consistency, per_scenario_breakdown, output_token_analysis) → audit trail 기록. 실행 중 API 크레딧 소진 시 즉시 중단·보고(§6.4).
 
 ## 8. 한계 (명시)
-- 시나리오·GT·워크플로우가 단일 저자 작업(held-out 저작자 확보 전까지).
+- 시나리오·GT·워크플로우가 단일 저자 작업.
 - 테스트 세트가 시나리오 1개·8스텝(QGIS)이라 라우팅 일반화 판정의 검정력이 낮다.
+- 테스트 세트(QGIS)는 2026-08-13 파일럿에서 한 번 실행·분석된 시나리오이며, v3 개발은 그 결과(파일럿 수치와 실패 양상)를 아는 상태에서 이루어졌다. v3 개발 중에는 dry-run을 포함해 실행하지 않았다.
 - 3d_visualization은 KB 결손으로 매뉴얼 근거 검색이 구조적으로 불가(P6).
 - 매뉴얼이 공개 문서라 파라메트릭 마스킹이 hybrid 이득을 압축한다(unified3 관측 #1 유지).
 - rerank confidence는 정오답을 가르지 못한다(iteration 0 오라우팅 3건의 confidence 0.7·0.9·0.9가 정답 분포와 겹침; 개발 벤치의 pick은 사실상 전부 0.9). confidence는 기록만 하고 gate로 쓰지 않는다.
 - 생성기→라우팅 결합: rerank 프롬프트가 세션의 직전 생성기 응답을 포함하므로 full_system의 라우팅은 생성기 모델과 조립 버전에 독립이 아니다(V3-22). 라우팅 안정성은 dry-run(세션 블록 없음)이 아니라 벤치 모드 수치로 적는다: 동결 구성(조립 v4) 64/64(4회), 인접 구성 조립 v3 62/64·조립 v5 61/64 — 라우팅은 100% 안정적이지 않다(§2.5 표).
 - 개발 루프의 판단은 n = 1~2 개발 벤치와 dry-run에 기반했고, 개발 세트의 signature·조립·GT를 이 결과를 보며 고쳤다(§2.5). 확인적 판정은 QGIS에서만 한다.
 
-## 9. 서명
-- 작성: `[사용자 결정]` / 검토: `[사용자 결정]` / 확정 시각(UTC): `[사용자 결정]`
-- 동결 태그: `v3-freeze-c01fdda` @ a03ca59 (2026-09-18 16:46 KST; 코드 c01fdda, GT 2f3db66). 서명 전 run_v3.sh 미실행.
-- 서명 후 첫 벤치 실행 시각을 아래에 append한다.
-
-
----
-
-## 2.5 개발 이력 요약 (v3 개발 루프, 2026-09-18; 상세 methodology_audit_trail.md V3-8 … V3-23)
-
-개발 세트 = OpendTect 3 시나리오(16스텝). 테스트 세트(QGIS)는 동결 전까지 실행하지 않았다(dry-run 포함). 개발 판단의 1차 근거는 step accuracy가 아니라 (a) 라우팅 정답률·confident-wrong 건수, (b) 목표 절 검색 적중, (c) 스텝별 손실 분류였다. 모든 실행 결과 JSON에 코드 커밋 해시가 기록된다(iteration 0·1은 사후 표기).
-
-| iteration | 코드 | 주요 변경 | 라우팅 정답(16스텝) | confident-wrong | 목표 절 적중 full / vanilla | 비고 |
-|---|---|---|---|---|---|---|
-| 0 (v2mech knob) | c15259f(사후) | 동결 시점 메커니즘 재현 + v4 KB + linked_chunks 재연결 | 11/14 통과 | 3 | 15/16 / 12/16 | 3d_viz s3·attribute s1 전 백엔드 실패; 지연 오염 가능 |
-| 1 (v3) | c15259f | 임베딩 풀 5 + CLIP + 그래프 prior, vision/rerank 프롬프트 v3, 병렬 검색, fallback 예산 3,900, soft post-completion, KG 제외 | 16/16 | 0 | 16/16 / 12/16 | 손실 1 (3d_viz s3, 패턴 기인) |
-| 2 (dry-run ×3) | f3ee78a | 종료 상태 블록, CLIP‖vision, 텔레메트리, 코드 해시 기록 | 16, 14, 16 | attribute s0·s1 → 04 (1회) | — | 벤치 미실행(사용자 규칙) |
-| 3 (dry-run ×5) | 820e993 | seismic_attribute 02·03·04 signature 관찰 상태 재작성, vision field_values, 근소차 prior, 종료 상태 앵커 | 14, 14, 14, 14, 13 | attribute s0 5/5 (04·03), s1 5/5 (04), survey s3 1/5 | — | 일관된 편향 → 다수결 미사용; rerank 기준 불일치 가설 확인 |
-| 4 (dry-run ×5) | d064577 → 21f0dec | rerank 프롬프트 v4(상태 일치 기준), 같은 다이얼로그 묶음 그래프 순서 prior(워크플로우 내), 03·04 비기본 상태 요구 | 첫 run 16,16,15,15,15 → 정정 후 **16/16 ×5** | 0 (정정 후) | — | 첫 run의 survey s3 오라우팅 3건은 묶음 범위 버그(교차 워크플로우) |
-| 4 개발 벤치 (조립 v3) | 21f0dec | Gemini ×2, Claude ×1, GPT ×1 (단독 실행) | 62/64 (최종화 시 재집계, dry-run과 같은 규칙: Gemini r0 attribute s2→03, survey s3→d3_01, 둘 다 응답은 정답; 보고서의 '라우팅 손실 0'은 손실만 센 값) | 0 | 16/16 / 12/16 | 아래 표 |
-| 5 (조립 v4 — **동결 구성**) | fcfa184 / 34c06aa | [Current State (reached)] = signature 상태만, [Next Action] = 엣지 지시, 예시 값 주의 문구 | dry-run 16/16 ×5; 벤치 64/64(재집계 확인) | 0 | 16/16 / 12/16 | Gemini 2회 full 0.854 = vv 0.854 > vb 0.750; Claude 1.000 > 0.875 = 0.875; GPT 0.792 < vv 0.833, > vb 0.667. attribute s1~s3 손실 5건 → 0; 신규 손실 2(GPT attribute s7·survey s1: verification 엣지·노드 단위 라우팅 오차가 [Next Action]으로 드러남, 미수정) |
-| 6 (조립 v5: verification 엣지 제외 + [This Step]) — **미채택** | d326838 (branch v3-iter2, 미병합) | 규칙 1·2 | dry-run 16/16 ×5; 벤치 라우팅 61/64(V3-22 정정; v4는 64/64) | 0 | — | full 0.875/1.000/0.833 vs vv 0.792/0.875/0.750, vb 0.792/0.875/0.667(세 모델 우위)이나 기준 (b)(d) 미충족(Gemini attribute s1 'Seismic_data 드롭다운', GPT survey s3 교차 워크플로우 오라우팅) → iteration 5로 되돌림 |
-| 6 채택 검토 → 동결 | — | 사용자가 v5 채택을 결정했으나 조건부(rerank 입력이 v4/v5에서 동일할 것). 확인(V3-22): 라우팅 코드는 동일하지만 rerank 프롬프트의 세션 블록(직전 생성기 응답)이 조립에 따라 달라짐 → 채택 중단. 사용자 결정으로 **c01fdda(조립 v4) 동결**, rerank 재생 실험 없음(V3-23) | — | — | — | 태그 `v3-freeze-c01fdda` @ a03ca59 |
-
-iteration 4 개발 벤치 4건 step accuracy(시나리오 평균): full / vanilla_vector / vanilla_budget / no_rag — Gemini(2회) 0.792 / 0.771 / 0.771 / 0.708, Claude 0.875 / 0.875 / 0.875 / 0.875, GPT 0.833 / 0.833 / 0.667 / 0.750. 방향: Gemini full > 두 vanilla; Claude 동률; GPT vanilla_vector 동률·vanilla_budget 우위. n = 1~2라 잡음 범위이며 판정에 쓰지 않는다. full_system 손실 12건 = 라우팅 0 · 컨텍스트 0 · 생성 9 · 표기 3.
-
-**벤치 모드 라우팅 안정성(개발 세트 16스텝 × 4회; expected_workflow_node가 있는 8스텝은 노드, 나머지는 워크플로우 일치; dry-run 수치는 세션 블록이 없어 쓰지 않음)**:
-
-| 구성 | 코드 | 라우팅 정답 | 오라우팅 |
-|---|---|---|---|
-| 조립 v3 (iteration 4) | 21f0dec | 62/64 | Gemini r0: attribute s2→03, survey s3→d3_01 |
-| **조립 v4 (iteration 5, 동결)** | fcfa184/34c06aa | **64/64** | — |
-| 조립 v5 (iteration 6, 미채택) | d326838 | 61/64 | Claude attribute s2→03; Gemini r1 survey s3→d3_01; GPT survey s3→d3_01(손실) |
-
-세 구성의 라우팅 코드는 같고 조립(→ 직전 응답 → rerank 세션 블록)만 다르다. 동결 구성의 64/64는 4회 관측이며 라우팅이 100% 안정적이라는 근거는 아니다.
-
-채택하지 않은 것(근거와 함께):
-- **rerank confidence 게이트**: iteration 0에서 오라우팅 3건의 confidence(0.7, 0.9, 0.9)가 정답 분포와 겹쳐 0.95 미만 어떤 임계값도 오라우팅만 걸러내지 못했다(`dev_iter0_v2mech_gemini.md` 보정표). confidence는 기록만 한다.
-- **증거 기반 gate**((i) expected_dialog ⊂ 창 제목, (ii) 직전 확정 노드/후속, (iii) 임베딩 1–2위 격차): 오프라인 표(`evidence_gate_offline_iter0.md`, `_iter1.md`)에서 iteration 0 오라우팅 3건 중 최대 1건만 걸러지고(02·03·04가 같은 expected_dialog), 전체 노드 풀에서는 iteration 1 정답 1건이 탈락 → 미채택(코드는 비활성).
-- **2단계 라우팅(목표→워크플로우→노드)**: 보류. attribute s0·s1 재구성(`recon_iter1_attribute_s0s1.md`)과 진단(`diag_attribute_s0s1_iter3.md`)에서 문제가 같은 다이얼로그를 공유하는 노드 간 rerank 기준 불일치임이 확인되어 프롬프트 v4·signature 정정으로 대응.
-- **다수결 rerank**: iteration 3의 오답이 회차마다 같은 방향이라 규칙상 미사용(코드는 `RERANK_VOTES=1`).
-- **종료 상태 블록의 좁힌 발동 조건**: 개발 벤치 4건의 조기 발동 8건에서 조기 '완료' 응답이 0건이라 규칙상 적용하지 않음(오프라인 검사 스크립트만 보관).
-
-GT 검수(2026-09-18): 스크린샷만 본 별도 세션이 고정 규칙(RULES.md)으로 수행 — 실행 로그·모델 응답·채점 결과 접근 없이 24장, 검수 목록, 시나리오, 매뉴얼 발췌만 제공. 표본 오독률 0.96%(< 5%), 변경 19·보류 11, survey s0 Add 버튼 패턴은 보류(매뉴얼 표기 "New Survey icon"), QGIS s3는 Input layer가 이미 채워진 화면 상태에 맞춰 GT 필드만 정정(패턴에 `Distance|50|Dissolve` 추가). 구·신 GT 재채점: step accuracy 변화 0, 환각률 −6.2 pp(라벨 원문화), survey s0에서 `New Survey (+)` 표기로 "Add (+)" 응답이 환각으로 잡히는 부작용 33건 → 사용자 결정으로 두 표기 병기(2f3db66). 상세 `data/eval/gt_review_session/`, V3-16.
-
-## 5.x QGIS 예측에 덧붙이는 위험 (동결 시점 기재, QGIS 미실행 상태)
-
-QGIS 워크플로우는 노드 5개(01 setup, 02 action, 03 setup, 04 setup, 05 action; 검증 노드 없음, 05가 말단)가 8스텝을 다룬다: s0→01, s1·s2→02, s3·s4·s5→03, s6→04, s7→05. 동결 구성(조립 v4)에서 예측되는 위험:
-
-- **(i) 여러 스텝에 걸친 노드에서 [Next Action]의 조기 제시**: 조립 v4의 [Next Action]은 현재 노드의 나가는 엣지 지시이므로, 노드 03에 머무는 s3·s4(Distance·Dissolve를 아직 설정하는 중)에서 03→04 "출력 저장" 동작을, 노드 02의 s1에서 02→03 동작을 일찍 제시할 수 있다. 개발 세트에서 같은 기제로 GPT survey s1·attribute s7 손실이 났고(V3-20), QGIS는 노드당 스텝이 더 많아 구조적으로 재현될 수 있다. 예측: 이 유형의 손실이 s1·s3·s4 중 적어도 한 스텝에서 모델 1개 이상에 나타난다.
-- **(ii) 마지막 스텝(s7)에서 엣지 지시가 '완료'를 대체**: 05는 말단이라 라우팅이 05이면 v4는 "final step … completion sentinel" 문구를 준다. 그러나 s7 화면(렌더된 레이어)이 04로 라우팅되거나 05 확정 전이면 04→05 "Run" 엣지가 [Next Action]으로 제시되어 '완료' 응답을 놓칠 수 있다(개발 세트의 verification 엣지 제시와 같은 기제; QGIS에는 verification 노드가 없으므로 검증 엣지 자체는 없다).
-- **(iii) 종료 상태 블록 조기 발동**: 말단 노드 05가 후보 pick이거나 확정된 뒤(s6 Save 다이얼로그, s7 이전 화면) 렌더 전 화면에서도 발동할 수 있다(attribute 06_display에서 본 것과 같음). 개발 벤치에서는 조기 발동 8건 모두 조기 '완료' 0건이었으나 QGIS에서는 보장하지 않는다.
-- **(iv) 세션 블록을 통한 생성기→라우팅 결합**: rerank 프롬프트가 직전 생성기 응답을 포함하므로(iteration 1부터, V3-22) 같은 스크린샷에서도 생성기 모델에 따라 라우팅이 달라질 수 있다. QGIS 8스텝 중 s1–s7이 세션 블록을 가진다. 따라서 P5(a)는 모델별로 따로 집계하고, 라우팅 안정성은 벤치 모드 수치로만 서술한다(개발 세트: 조립 v3 62/64, v4 64/64, v5 61/64).
-- **(v) s3·s4 화면 동일로 인한 loop 집계**: Input layer가 자동 채워져 s3와 s4 화면이 같으므로 같은 정답 응답이 s4에서 loop(직전 응답과 동일)로 집계될 수 있다. loop_rate는 판정 지표가 아니며 표에 이 사유를 주석으로 단다.
-- 라우팅 정답률 예측은 "워크플로우 단위 정답 ≥ 5/8(P5(a))"로 두되, 노드 단위(스텝별 expected_workflow_node)는 다단계 노드 경계(s2, s4·s5, s7)에서 낮아질 수 있음을 예측에 포함한다.
-
-## 8.x 한계 (개발 루프에서 드러난 것, 수치)
+### 8.x 한계 (개발 루프에서 드러난 것, 수치)
 - **같은 다이얼로그를 공유하는 노드의 구별은 signature와 rerank 기준의 정합에 의존한다.** seismic_attribute 02·03·04는 모두 "Attribute Set 3D" 창이며, 2026-08-07 signature가 실제 화면(열리자마자 기본값 채워짐)과 어긋난 채로 "다음에 하려는 단계" 기준의 rerank가 03/04로 일관되게 밀렸다(iteration 3: s0 5/5·s1 5/5 오답). iteration 4(상태 일치 기준 + 워크플로우 내 그래프 순서 prior + 비기본 상태 signature)에서 dry-run 5회·벤치 4건 모두 정답이었으나, 이는 OpendTect 개발 세트의 signature를 고친 결과이며 QGIS signature는 손대지 않았다.
 - **3d_visualization 노드 단위 라우팅**: v4 상태 일치 기준에서 s2·s3 화면이 d3_01(main window ready)로 수렴한다(5회 dry-run 전부). 워크플로우 단위로는 정답이고 노드 GT가 없어 채점에는 영향이 없지만, 그 결과 3d_viz s3에서 종료 상태 블록이 발동하지 않는다.
 - **종료 상태 블록 오발동**: 다단계 노드(attribute 06_display, 스텝 5–7)에서 rep당 2/4 발동이 조기(5회 dry-run 합계 10/20; 벤치 4건 8/8 조기 발동에서 조기 '완료' 0건).
@@ -238,9 +239,7 @@ QGIS 워크플로우는 노드 5개(01 setup, 02 action, 03 setup, 04 setup, 05 
 - **rerank confidence**: 개발 루프 전체에서 오라우팅과 정답의 confidence가 겹쳐(0.7–0.9 대 0.9) 어떤 임계값도 오라우팅만 걸러내지 못했다. 기록만 한다.
 - **세션 블록 결합과 라우팅 안정성(벤치 모드)**: rerank 입력에 직전 생성기 응답이 들어가므로 라우팅은 생성기·조립에 독립이 아니다(V3-22). 동결 구성 64/64(4회), 조립 v3 62/64, 조립 v5 61/64(§2.5 표). 교차 워크플로우 오라우팅(survey s3 → d3_visualization_01)은 최종 라우팅 코드에서 v5 벤치 2건에서만 관측됐고, v4에서 0/4·dry-run 0/15였다.
 
-
-## 2.6 GT 확정 절차와 채점 관련 기록 (2026-09-18, 동결 전)
-- GT 검수: 모델 응답을 보지 않은 별도 세션이 고정 규칙으로 수행(스크린샷 24장·검수 목록·시나리오·매뉴얼 발췌만 제공). 외부 검토(스크린샷 대조)에서 변경 19건 중 18건 확인, 1건(QGIS s3 keywords 추가) 되돌림, 보류 11건 결정. 수치 표기는 별도 세션의 3배 확대 대조(33건 중 14건 수정, 사용자 명시 수정과 일치). 적용 커밋 2f3db66. 구·신 GT 재채점: step accuracy 변화 0, 환각률 대부분 −6.2 pp(라벨 원문화). 이 시점 이후 GT와 채점기는 서명 전까지 변경하지 않는다.
-- QGIS s3 GT 정정(Input layer가 이미 채워진 화면 상태 반영, 패턴에 Distance|50|Dissolve 추가)의 근거는 화면 사실이며, 화면을 읽는 백엔드(full_system·vision_only·state_path)에 유리할 수 있다 — 확인적 판정 해석 시 명시한다.
-- QGIS s3와 s4는 화면이 같으므로(Input layer 자동 채움) 같은 정답 응답이 s4에서 loop(직전 응답과 동일)로 집계될 수 있다. loop는 판정 지표가 아니다.
-- 3d_viz step_3의 허용 대안 패턴(요소 언급)은 sentinel이 아닌 지시도 정답으로 통과시킬 수 있다(한계, 사용자 결정으로 유지).
+## 9. 서명
+- 작성: `[사용자 결정]` / 검토: `[사용자 결정]` / 확정 시각(UTC): `[사용자 결정]`
+- 동결 태그: `v3-freeze-c01fdda` @ a03ca59 (2026-09-18 16:46 KST; 코드 c01fdda, GT 2f3db66). 서명 전 run_v3.sh 미실행.
+- 서명 후 첫 벤치 실행 시각을 아래에 append한다.
