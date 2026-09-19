@@ -1,0 +1,4860 @@
+{
+  "started_at": "2026-09-19T01:41:26.834761Z",
+  "code_version": {
+    "commit": "1a639cd3630c3b23a095c05c0ce7c081a664c187",
+    "branch": "v3-rerun",
+    "dirty": false,
+    "dirty_diff_sha256": null,
+    "worktree": "C:\\Users\\user\\Downloads\\GeoLens-paper"
+  },
+  "env_knobs": {
+    "CHROMADB_PATH": "./data/chromadb_v4",
+    "EMBED_MODEL": "BAAI/bge-m3",
+    "GEOLENS_SCORER": "v3",
+    "RAG_KG_ENABLED": "0",
+    "RAG_KG_POSITION": "last",
+    "AUX_THINKING_BUDGET": "0",
+    "GEN_TEMPERATURE": "0.2",
+    "GEN_MAX_TOKENS": "1024",
+    "GEMINI_THINKING_BUDGET": "1024",
+    "VANILLA_BUDGET_CHARS": "3900",
+    "BENCH_MODEL": "claude",
+    "ROUTER_MATCHER": "embedding",
+    "ROUTER_POOL_K": "5",
+    "ROUTER_GRAPH_PRIOR": "1",
+    "ROUTER_TWO_STAGE": "0",
+    "ROUTER_EVIDENCE_GATE": "0",
+    "GOAL_STATE_HINT": "1",
+    "VISION_PROMPT_VERSION": "v3",
+    "RERANK_PROMPT_VERSION": "v4",
+    "POST_COMPLETION_MODE": "soft",
+    "GEN_PROMPT_VERSION": "v2",
+    "CONFIDENCE_THRESHOLD": "0.7",
+    "PARALLEL_RETRIEVAL": "1",
+    "ROUTED_VECTOR_QUERY": "goal",
+    "GRAPH_VECTOR_AUX": "0",
+    "FALLBACK_CTX_CHARS": "3900",
+    "VECTOR_CTX_CHARS": "1500",
+    "GRAPH_CTX_CHARS": "800",
+    "GRAPH_CTX_ITEMS": "3",
+    "GEOLENS_SOFTWARE_ID": "qgis"
+  },
+  "scenarios": [
+    {
+      "scenario_id": "qgis__vector_buffer__01",
+      "manual_id": "bf2804feea57434bb79b749134ed1df0",
+      "category": "vector_analysis",
+      "difficulty": "medium",
+      "backends": {
+        "no_rag": {
+          "backend": "no_rag",
+          "n_steps": 8,
+          "step_accuracy": 1.0,
+          "hallucination_rate": 0.125,
+          "faithfulness": 0.875,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 2.662,
+          "mean_cost_usd": 0.007102,
+          "total_cost_usd": 0.056814,
+          "mean_aux_cost_usd": 0.0,
+          "total_aux_cost_usd": 0.0,
+          "mean_cost_total_usd": 0.007102,
+          "total_aux_calls": 0,
+          "scorer_version": "v3",
+          "total_input_tokens": 17468,
+          "total_output_tokens": 294,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": null,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "Processing 메뉴를 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.886,
+              "latency_wall_sec": 2.886,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.886,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2059,
+              "output_tokens": 18,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.006447,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.006447,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 1,
+              "response": "Processing Toolbox 검색창에 'buffer'를 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.086,
+              "latency_wall_sec": 2.086,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.084,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2083,
+              "output_tokens": 24,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.006609,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.006609,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 2,
+              "response": "Processing Toolbox에서 **Buffer** 항목을 더블클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.379,
+              "latency_wall_sec": 2.379,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.378,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2107,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.006726,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.006726,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 3,
+              "response": "Distance 필드의 값을 10.000000에서 50으로 변경하세요. Distance 입력란을 클릭하고 기존 값을 지운 후 50을 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.99,
+              "latency_wall_sec": 2.99,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.989,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2134,
+              "output_tokens": 62,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.007332,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.007332,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 4,
+              "response": "Distance 필드의 값을 50으로 변경하기 위해 Distance 입력란을 클릭하고 기존 값(10.000000)을 모두 지운 후 50을 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.19,
+              "latency_wall_sec": 3.19,
+              "stage_latency": {
+                "generate": {
+                  "sec": 3.189,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2196,
+              "output_tokens": 66,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.007578,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.007578,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 5,
+              "response": "Buffered 출력 옆의 '…' 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.805,
+              "latency_wall_sec": 2.805,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.803,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2262,
+              "output_tokens": 30,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.007236,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.007236,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 6,
+              "response": "\"Save to GeoPackage\" 대화상자에서 Layer name이 'roads_buffer_50m_dissolved'로 입력되어 있으므로 **OK** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [
+                "OK"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.272,
+              "latency_wall_sec": 3.272,
+              "stage_latency": {
+                "generate": {
+                  "sec": 3.271,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2292,
+              "output_tokens": 61,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.007791,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.007791,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 7,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 1.686,
+              "latency_wall_sec": 1.686,
+              "stage_latency": {
+                "generate": {
+                  "sec": 1.685,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2335,
+              "output_tokens": 6,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.007095,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.007095,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            }
+          ],
+          "latency_sec": 29.14
+        },
+        "vanilla_vector": {
+          "backend": "vanilla_vector",
+          "n_steps": 8,
+          "step_accuracy": 0.875,
+          "hallucination_rate": 0.375,
+          "faithfulness": 0.625,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 3.888,
+          "mean_cost_usd": 0.017888,
+          "total_cost_usd": 0.143103,
+          "mean_aux_cost_usd": 0.0,
+          "total_aux_cost_usd": 0.0,
+          "mean_cost_total_usd": 0.017888,
+          "total_aux_calls": 0,
+          "scorer_version": "v3",
+          "total_input_tokens": 46581,
+          "total_output_tokens": 224,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": null,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "상단 메뉴에서 **Processing** 을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 9.93,
+              "latency_wall_sec": 9.93,
+              "stage_latency": {
+                "embed": {
+                  "sec": 7.104,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.217,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.267,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.342,
+                  "n": 1
+                }
+              },
+              "context_chars": 11851,
+              "context_block": null,
+              "input_tokens": 5713,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.017544,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.017544,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 1,
+              "response": "Processing Toolbox 검색창에 'buffer'를 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.709,
+              "latency_wall_sec": 2.709,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.327,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.332,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.044,
+                  "n": 1
+                }
+              },
+              "context_chars": 11851,
+              "context_block": null,
+              "input_tokens": 5746,
+              "output_tokens": 24,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.017598,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.017598,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 2,
+              "response": "Processing Toolbox에서 **Buffer** 항목을 더블클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.757,
+              "latency_wall_sec": 2.757,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.313,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.328,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.11,
+                  "n": 1
+                }
+              },
+              "context_chars": 11851,
+              "context_block": null,
+              "input_tokens": 5770,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.017715,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.017715,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 3,
+              "response": "Distance 필드의 값을 클릭하여 '10.000000'을 '50'으로 변경하세요.",
+              "matched": true,
+              "hallucinated": [
+                "50"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.386,
+              "latency_wall_sec": 3.386,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.34,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.332,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.708,
+                  "n": 1
+                }
+              },
+              "context_chars": 11851,
+              "context_block": null,
+              "input_tokens": 5797,
+              "output_tokens": 38,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.017961,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.017961,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 4,
+              "response": "Distance 필드의 값을 '10.000000'에서 '50'으로 변경하세요 (필드를 클릭하고 값을 지운 후 50 입력).",
+              "matched": true,
+              "hallucinated": [
+                "50"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.662,
+              "latency_wall_sec": 3.662,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.311,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.318,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 3.026,
+                  "n": 1
+                }
+              },
+              "context_chars": 11851,
+              "context_block": null,
+              "input_tokens": 5835,
+              "output_tokens": 57,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.01836,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.01836,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 5,
+              "response": "Buffered 행의 '…' 버튼을 클릭하세요.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.315,
+              "latency_wall_sec": 3.315,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.33,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.34,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.64,
+                  "n": 1
+                }
+              },
+              "context_chars": 11851,
+              "context_block": null,
+              "input_tokens": 5892,
+              "output_tokens": 26,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.018066,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.018066,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 6,
+              "response": "**OK** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [
+                "OK"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.81,
+              "latency_wall_sec": 2.81,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.325,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.317,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.161,
+                  "n": 1
+                }
+              },
+              "context_chars": 11851,
+              "context_block": null,
+              "input_tokens": 5918,
+              "output_tokens": 19,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.018039,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.018039,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 7,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 2.534,
+              "latency_wall_sec": 2.534,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.313,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.324,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 1.891,
+                  "n": 1
+                }
+              },
+              "context_chars": 11851,
+              "context_block": null,
+              "input_tokens": 5910,
+              "output_tokens": 6,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.01782,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.01782,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            }
+          ],
+          "latency_sec": 33.41
+        },
+        "vanilla_budget": {
+          "backend": "vanilla_budget",
+          "n_steps": 8,
+          "step_accuracy": 0.875,
+          "hallucination_rate": 0.375,
+          "faithfulness": 0.625,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 3.188,
+          "mean_cost_usd": 0.010448,
+          "total_cost_usd": 0.08358,
+          "mean_aux_cost_usd": 0.0,
+          "total_aux_cost_usd": 0.0,
+          "mean_cost_total_usd": 0.010448,
+          "total_aux_calls": 0,
+          "scorer_version": "v3",
+          "total_input_tokens": 26595,
+          "total_output_tokens": 253,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": null,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "Processing 메뉴를 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.717,
+              "latency_wall_sec": 2.717,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.339,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.312,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.061,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": null,
+              "input_tokens": 3219,
+              "output_tokens": 18,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.009927,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.009927,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 1,
+              "response": "Processing Toolbox 검색창에 'buffer'를 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.926,
+              "latency_wall_sec": 2.926,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.312,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.336,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.272,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": null,
+              "input_tokens": 3243,
+              "output_tokens": 24,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010089,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.010089,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 2,
+              "response": "Processing Toolbox에서 **Buffer** 항목을 더블클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.699,
+              "latency_wall_sec": 2.699,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.34,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.303,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.05,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": null,
+              "input_tokens": 3267,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010206,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.010206,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 3,
+              "response": "Distance 필드의 값을 클릭하여 '10.000000'을 지우고 '50'을 입력하세요.",
+              "matched": true,
+              "hallucinated": [
+                "50"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.491,
+              "latency_wall_sec": 3.491,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.317,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.337,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.831,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": null,
+              "input_tokens": 3294,
+              "output_tokens": 41,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010497,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.010497,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 4,
+              "response": "Distance 필드의 값 '10.000000'을 클릭하여 선택한 후 '50'으로 변경하세요.",
+              "matched": true,
+              "hallucinated": [
+                "50"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.24,
+              "latency_wall_sec": 3.24,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.323,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.376,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.535,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": null,
+              "input_tokens": 3335,
+              "output_tokens": 43,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.01065,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.01065,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 5,
+              "response": "Buffered 옆의 '…' 버튼을 클릭하세요.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.195,
+              "latency_wall_sec": 3.195,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.329,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.338,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.524,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": null,
+              "input_tokens": 3378,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010539,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.010539,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 6,
+              "response": "\"Save to GeoPackage\" 대화상자에서 Layer name 필드에 'roads_buffer_50m_dissolved'가 이미 입력되어 있으므로 **OK** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [
+                "OK"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 3.985,
+              "latency_wall_sec": 3.985,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.331,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.342,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 3.306,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": null,
+              "input_tokens": 3405,
+              "output_tokens": 67,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.01122,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.01122,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 7,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 3.248,
+              "latency_wall_sec": 3.248,
+              "stage_latency": {
+                "embed": {
+                  "sec": 0.311,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.348,
+                  "n": 5
+                },
+                "generate": {
+                  "sec": 2.581,
+                  "n": 1
+                }
+              },
+              "context_chars": 3900,
+              "context_block": null,
+              "input_tokens": 3454,
+              "output_tokens": 6,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010452,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.010452,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            }
+          ],
+          "latency_sec": 28.32
+        },
+        "graph_only": {
+          "backend": "graph_only",
+          "n_steps": 8,
+          "step_accuracy": 0.875,
+          "hallucination_rate": 0.125,
+          "faithfulness": 0.875,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 26.671,
+          "mean_cost_usd": 0.00964,
+          "total_cost_usd": 0.077121,
+          "mean_aux_cost_usd": 0.001927,
+          "total_aux_cost_usd": 0.015412,
+          "mean_cost_total_usd": 0.011567,
+          "total_aux_calls": 7,
+          "scorer_version": "v3",
+          "total_input_tokens": 24522,
+          "total_output_tokens": 237,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": null,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "Processing 메뉴를 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 130.518,
+              "latency_wall_sec": 130.518,
+              "stage_latency": {
+                "generate": {
+                  "sec": 3.111,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2059,
+              "output_tokens": 18,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.006447,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.006447,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 1,
+              "response": "Processing Toolbox 검색창에 'buffer'를 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 20.416,
+              "latency_wall_sec": 20.416,
+              "stage_latency": {
+                "vision": {
+                  "sec": 6.175,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 10.809,
+                  "n": 2
+                },
+                "chunk_fetch": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.72,
+                  "n": 1
+                }
+              },
+              "context_chars": 2873,
+              "context_block": null,
+              "input_tokens": 3098,
+              "output_tokens": 24,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.009654,
+              "model": "claude",
+              "aux_calls": 1,
+              "aux_input_tokens": 618,
+              "aux_output_tokens": 810,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.00221,
+              "aux_by_kind": {
+                "vision": 1
+              },
+              "cost_total_usd": 0.011864,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 2,
+              "response": "Processing Toolbox에서 **Buffer** 항목을 더블클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 9.734,
+              "latency_wall_sec": 9.734,
+              "stage_latency": {
+                "vision": {
+                  "sec": 5.819,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 0.407,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.792,
+                  "n": 1
+                }
+              },
+              "context_chars": 2849,
+              "context_block": null,
+              "input_tokens": 3096,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.009693,
+              "model": "claude",
+              "aux_calls": 1,
+              "aux_input_tokens": 618,
+              "aux_output_tokens": 592,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.001665,
+              "aux_by_kind": {
+                "vision": 1
+              },
+              "cost_total_usd": 0.011358,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 3,
+              "response": "Distance 필드의 값을 10.000000에서 50으로 변경하기 위해 Distance 입력란을 클릭하고 값을 지운 후 50을 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 9.627,
+              "latency_wall_sec": 9.627,
+              "stage_latency": {
+                "vision": {
+                  "sec": 5.652,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 0.553,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.697,
+                  "n": 1
+                }
+              },
+              "context_chars": 2886,
+              "context_block": null,
+              "input_tokens": 3163,
+              "output_tokens": 61,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010404,
+              "model": "claude",
+              "aux_calls": 1,
+              "aux_input_tokens": 618,
+              "aux_output_tokens": 833,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002268,
+              "aux_by_kind": {
+                "vision": 1
+              },
+              "cost_total_usd": 0.012672,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 4,
+              "response": "Distance 필드의 값을 50으로 변경하기 위해 Distance 입력란을 클릭하고 기존 값을 지운 후 50을 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 11.109,
+              "latency_wall_sec": 11.109,
+              "stage_latency": {
+                "vision": {
+                  "sec": 7.257,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 0.569,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.567,
+                  "n": 1
+                }
+              },
+              "context_chars": 2886,
+              "context_block": null,
+              "input_tokens": 3224,
+              "output_tokens": 57,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010527,
+              "model": "claude",
+              "aux_calls": 1,
+              "aux_input_tokens": 618,
+              "aux_output_tokens": 882,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.00239,
+              "aux_by_kind": {
+                "vision": 1
+              },
+              "cost_total_usd": 0.012917,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 5,
+              "response": "Buffered 옆의 '…' 버튼을 클릭하세요.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 10.833,
+              "latency_wall_sec": 10.833,
+              "stage_latency": {
+                "vision": {
+                  "sec": 6.736,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 0.658,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.729,
+                  "n": 1
+                }
+              },
+              "context_chars": 2886,
+              "context_block": null,
+              "input_tokens": 3281,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010248,
+              "model": "claude",
+              "aux_calls": 1,
+              "aux_input_tokens": 618,
+              "aux_output_tokens": 901,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002438,
+              "aux_by_kind": {
+                "vision": 1
+              },
+              "cost_total_usd": 0.012686,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 6,
+              "response": "OK 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [
+                "OK"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 11.483,
+              "latency_wall_sec": 11.483,
+              "stage_latency": {
+                "vision": {
+                  "sec": 7.811,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 0.858,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.104,
+                  "n": 1
+                }
+              },
+              "context_chars": 2886,
+              "context_block": null,
+              "input_tokens": 3308,
+              "output_tokens": 17,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010179,
+              "model": "claude",
+              "aux_calls": 1,
+              "aux_input_tokens": 618,
+              "aux_output_tokens": 1091,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002913,
+              "aux_by_kind": {
+                "vision": 1
+              },
+              "cost_total_usd": 0.013092,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 7,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 9.65,
+              "latency_wall_sec": 9.65,
+              "stage_latency": {
+                "vision": {
+                  "sec": 6.896,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 0.369,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 1.667,
+                  "n": 1
+                }
+              },
+              "context_chars": 2873,
+              "context_block": null,
+              "input_tokens": 3293,
+              "output_tokens": 6,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.009969,
+              "model": "claude",
+              "aux_calls": 1,
+              "aux_input_tokens": 618,
+              "aux_output_tokens": 537,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.001528,
+              "aux_by_kind": {
+                "vision": 1
+              },
+              "cost_total_usd": 0.011497,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            }
+          ],
+          "latency_sec": 215.74
+        },
+        "vision_only": {
+          "backend": "vision_only",
+          "n_steps": 8,
+          "step_accuracy": 1.0,
+          "hallucination_rate": 0.125,
+          "faithfulness": 0.875,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 4.237,
+          "mean_cost_usd": 0.007127,
+          "total_cost_usd": 0.057015,
+          "mean_aux_cost_usd": 0.0,
+          "total_aux_cost_usd": 0.0,
+          "mean_cost_total_usd": 0.007127,
+          "total_aux_calls": 0,
+          "scorer_version": "v3",
+          "total_input_tokens": 17880,
+          "total_output_tokens": 225,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": null,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "상단 메뉴에서 **Processing** 을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 16.036,
+              "latency_wall_sec": 16.036,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.042,
+                  "n": 1
+                }
+              },
+              "context_chars": 228,
+              "context_block": null,
+              "input_tokens": 2126,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.006783,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.006783,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 1,
+              "response": "Processing Toolbox 검색창에 'buffer'를 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.352,
+              "latency_wall_sec": 2.352,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.31,
+                  "n": 1
+                }
+              },
+              "context_chars": 228,
+              "context_block": null,
+              "input_tokens": 2159,
+              "output_tokens": 24,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.006837,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.006837,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 2,
+              "response": "Processing Toolbox에서 **Buffer** 항목을 더블클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.276,
+              "latency_wall_sec": 2.276,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.237,
+                  "n": 1
+                }
+              },
+              "context_chars": 228,
+              "context_block": null,
+              "input_tokens": 2183,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.006954,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.006954,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 3,
+              "response": "Distance 필드의 값을 클릭하여 선택한 후 **50**으로 변경하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.981,
+              "latency_wall_sec": 2.981,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.94,
+                  "n": 1
+                }
+              },
+              "context_chars": 228,
+              "context_block": null,
+              "input_tokens": 2210,
+              "output_tokens": 36,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.00717,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.00717,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 4,
+              "response": "Distance 필드의 값을 **50**으로 변경하세요 (현재 10.000000으로 되어 있으므로 클릭 후 50 입력).",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.792,
+              "latency_wall_sec": 2.792,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.753,
+                  "n": 1
+                }
+              },
+              "context_chars": 228,
+              "context_block": null,
+              "input_tokens": 2246,
+              "output_tokens": 54,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.007548,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.007548,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 5,
+              "response": "Buffered 출력 옆의 **'…'** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.692,
+              "latency_wall_sec": 2.692,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.651,
+                  "n": 1
+                }
+              },
+              "context_chars": 228,
+              "context_block": null,
+              "input_tokens": 2300,
+              "output_tokens": 32,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.00738,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.00738,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 6,
+              "response": "**OK** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [
+                "OK"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 2.151,
+              "latency_wall_sec": 2.151,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.112,
+                  "n": 1
+                }
+              },
+              "context_chars": 228,
+              "context_block": null,
+              "input_tokens": 2332,
+              "output_tokens": 19,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.007281,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.007281,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 7,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 2.619,
+              "latency_wall_sec": 2.619,
+              "stage_latency": {
+                "generate": {
+                  "sec": 2.581,
+                  "n": 1
+                }
+              },
+              "context_chars": 228,
+              "context_block": null,
+              "input_tokens": 2324,
+              "output_tokens": 6,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.007062,
+              "model": "claude",
+              "aux_calls": 0,
+              "aux_input_tokens": 0,
+              "aux_output_tokens": 0,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.0,
+              "aux_by_kind": {},
+              "cost_total_usd": 0.007062,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "",
+              "fallback_activated": false,
+              "route_candidates": null,
+              "route_emb_top": null,
+              "route_wf_scores": null,
+              "route_selected_wfs": null,
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": null,
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": null,
+              "route_rerank_votes": null
+            }
+          ],
+          "latency_sec": 35.66
+        },
+        "full_system": {
+          "backend": "full_system",
+          "n_steps": 8,
+          "step_accuracy": 0.875,
+          "hallucination_rate": 0.375,
+          "faithfulness": 0.625,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 27.414,
+          "mean_cost_usd": 0.011428,
+          "total_cost_usd": 0.091425,
+          "mean_aux_cost_usd": 0.002648,
+          "total_aux_cost_usd": 0.021182,
+          "mean_cost_total_usd": 0.014076,
+          "total_aux_calls": 15,
+          "scorer_version": "v3",
+          "total_input_tokens": 29425,
+          "total_output_tokens": 210,
+          "fallback_rate": 0.125,
+          "mean_route_confidence": 0.787,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "Processing 메뉴를 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 129.994,
+              "latency_wall_sec": 129.994,
+              "stage_latency": {
+                "clip": {
+                  "sec": 0.128,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 0.346,
+                  "n": 1
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.366,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.718,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 0.908,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 1.613,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.0,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.095,
+                  "n": 1
+                }
+              },
+              "context_chars": 3926,
+              "context_block": null,
+              "input_tokens": 3226,
+              "output_tokens": 18,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.009948,
+              "model": "claude",
+              "aux_calls": 1,
+              "aux_input_tokens": 907,
+              "aux_output_tokens": 14,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.000307,
+              "aux_by_kind": {
+                "rerank": 1
+              },
+              "cost_total_usd": 0.010255,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "none",
+              "fallback_activated": true,
+              "route_candidates": [
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.91"
+                  ]
+                }
+              ],
+              "route_emb_top": [],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": null,
+              "route_gate_reason": "rerank_none",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"none\", \"confidence\": 0.5}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 1,
+              "response": "Processing Toolbox 검색창을 클릭하고 'buffer'를 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 12.903,
+              "latency_wall_sec": 6.728,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 6.175,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.145,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.912,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.386,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.936,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.769,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 3.954,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.623,
+                  "n": 1
+                }
+              },
+              "context_chars": 4798,
+              "context_block": null,
+              "input_tokens": 3596,
+              "output_tokens": 30,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011238,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 2635,
+              "aux_output_tokens": 836,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.00288,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.014118,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_02_search_algorithm",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_01_open_toolbox",
+                  "sources": [
+                    "emb:0.67"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.66"
+                  ]
+                },
+                {
+                  "id": "horizon_tracking_07_qc_review",
+                  "sources": [
+                    "emb:0.64"
+                  ]
+                },
+                {
+                  "id": "fault_interpretation_07_qc",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.62"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.90"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_01_open_toolbox",
+                  0.6662014628580998
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.6588583050653981
+                ],
+                [
+                  "horizon_tracking_07_qc_review",
+                  0.6418937906350637
+                ],
+                [
+                  "fault_interpretation_07_qc",
+                  0.6347923670134655
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.6215072067450963
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"qgis_vector_buffer_02_search_algorithm\", \"confidence\": 0.9}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 2,
+              "response": "Processing Toolbox에서 **Buffer** 항목을 더블클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 11.137,
+              "latency_wall_sec": 5.318,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 5.819,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.144,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.457,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.42,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.867,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.205,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 3.029,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.136,
+                  "n": 1
+                }
+              },
+              "context_chars": 5249,
+              "context_block": null,
+              "input_tokens": 3721,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011568,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3048,
+              "aux_output_tokens": 624,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002474,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.014042,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_02_search_algorithm",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_01_open_toolbox",
+                  "sources": [
+                    "emb:0.67"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "horizon_tracking_07_qc_review",
+                  "sources": [
+                    "emb:0.61"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "emb:0.60"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.90"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.6820094412193888
+                ],
+                [
+                  "qgis_vector_buffer_01_open_toolbox",
+                  0.6662473569136592
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.6316537751020118
+                ],
+                [
+                  "horizon_tracking_07_qc_review",
+                  0.6138676805923189
+                ],
+                [
+                  "qgis_vector_buffer_04_save_output",
+                  0.6004851683222555
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"qgis_vector_buffer_02_search_algorithm\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 3,
+              "response": "Distance 필드의 값을 클릭하여 '10.000000'을 '50'으로 변경하세요.",
+              "matched": true,
+              "hallucinated": [
+                "50"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 11.712,
+              "latency_wall_sec": 6.06,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 5.652,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.114,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.819,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.434,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.974,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.038,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 3.136,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.801,
+                  "n": 1
+                }
+              },
+              "context_chars": 4856,
+              "context_block": null,
+              "input_tokens": 3678,
+              "output_tokens": 38,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011604,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 2975,
+              "aux_output_tokens": 859,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.00304,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.014644,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_03_configure_buffer",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.72"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.71"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "emb:0.66"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.92"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_03_configure_buffer",
+                  0.7278520683695052
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.7153072926155654
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.7139323776816374
+                ],
+                [
+                  "qgis_vector_buffer_04_save_output",
+                  0.6618681881593158
+                ],
+                [
+                  "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  0.6255443047182611
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"qgis_vector_buffer_03_configure_buffer\", \"confidence\": 0.9}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 4,
+              "response": "Distance 필드의 값 '10.000000'을 클릭하여 선택한 후 '50'으로 변경하세요.",
+              "matched": true,
+              "hallucinated": [
+                "50"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 13.825,
+              "latency_wall_sec": 6.568,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 7.257,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.146,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.932,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.418,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 1.015,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.11,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 3.226,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 3.188,
+                  "n": 1
+                }
+              },
+              "context_chars": 5307,
+              "context_block": null,
+              "input_tokens": 3811,
+              "output_tokens": 43,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.012078,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 2978,
+              "aux_output_tokens": 908,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003163,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.015241,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_03_configure_buffer",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.67"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.75"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.72"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.92"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_03_configure_buffer",
+                  0.7503957356639823
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.7326187353571361
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.723704308831686
+                ],
+                [
+                  "qgis_vector_buffer_04_save_output",
+                  0.6651374623363809
+                ],
+                [
+                  "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  0.6341161099045654
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"qgis_vector_buffer_03_configure_buffer\", \"confidence\": 0.9}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 5,
+              "response": "Buffered 옆의 **'…'** 버튼을 클릭하세요.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 13.215,
+              "latency_wall_sec": 6.479,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 6.736,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.147,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 2.08,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.419,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.915,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.114,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 3.513,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.813,
+                  "n": 1
+                }
+              },
+              "context_chars": 5307,
+              "context_block": null,
+              "input_tokens": 3854,
+              "output_tokens": 29,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011997,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3021,
+              "aux_output_tokens": 933,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003239,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.015236,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_03_configure_buffer",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.70"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.70"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.69"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "emb:0.61"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_05_compute",
+                  "sources": [
+                    "emb:0.59"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.92"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_03_configure_buffer",
+                  0.7012946208059953
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.6987254146669329
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.6856166931743372
+                ],
+                [
+                  "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  0.6088951020110419
+                ],
+                [
+                  "seismic_attribute_05_compute",
+                  0.5869456290536864
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"qgis_vector_buffer_03_configure_buffer\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 6,
+              "response": "**OK** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [
+                "OK"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 13.857,
+              "latency_wall_sec": 6.046,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 7.811,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.135,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 2.459,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.413,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 1.034,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.056,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 3.7,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.2,
+                  "n": 1
+                }
+              },
+              "context_chars": 4840,
+              "context_block": null,
+              "input_tokens": 3818,
+              "output_tokens": 19,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011739,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3054,
+              "aux_output_tokens": 1117,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003709,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.015448,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_04_save_output",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.75"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_01_open_toolbox",
+                  "sources": [
+                    "emb:0.64"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.90"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_03_configure_buffer",
+                  0.7483492450427923
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.7333675746631358
+                ],
+                [
+                  "qgis_vector_buffer_04_save_output",
+                  0.72879200802771
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.7270414461298783
+                ],
+                [
+                  "qgis_vector_buffer_01_open_toolbox",
+                  0.6441788827541792
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"qgis_vector_buffer_04_save_output\", \"confidence\": 0.9}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 7,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 12.667,
+              "latency_wall_sec": 5.771,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 6.896,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.158,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 2.105,
+                  "n": 5
+                },
+                "vector_search": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.387,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.851,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.273,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 2.991,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 1.882,
+                  "n": 1
+                }
+              },
+              "context_chars": 4766,
+              "context_block": null,
+              "input_tokens": 3721,
+              "output_tokens": 6,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011253,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3141,
+              "aux_output_tokens": 571,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.00237,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.013623,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_05_run_and_render",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.62"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_01_open_toolbox",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.64"
+                  ]
+                },
+                {
+                  "id": "horizon_tracking_07_qc_review",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "fault_interpretation_07_qc",
+                  "sources": [
+                    "emb:0.60"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.89"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "clip:0.86"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_01_open_toolbox",
+                  0.679165119182479
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.6364261009765333
+                ],
+                [
+                  "horizon_tracking_07_qc_review",
+                  0.6253281871958537
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.6211969336261379
+                ],
+                [
+                  "fault_interpretation_07_qc",
+                  0.5957311400712806
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"qgis_vector_buffer_05_run_and_render\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            }
+          ],
+          "latency_sec": 179.07
+        },
+        "state_path": {
+          "backend": "state_path",
+          "n_steps": 8,
+          "step_accuracy": 0.875,
+          "hallucination_rate": 0.125,
+          "faithfulness": 0.875,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": 1.0,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 26.967,
+          "mean_cost_usd": 0.010214,
+          "total_cost_usd": 0.081708,
+          "mean_aux_cost_usd": 0.002661,
+          "total_aux_cost_usd": 0.021285,
+          "mean_cost_total_usd": 0.012874,
+          "total_aux_calls": 15,
+          "scorer_version": "v3",
+          "total_input_tokens": 25816,
+          "total_output_tokens": 284,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": 0.787,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "Processing 메뉴를 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 128.5,
+              "latency_wall_sec": 128.5,
+              "stage_latency": {
+                "clip": {
+                  "sec": 0.129,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 0.958,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.049,
+                  "n": 1
+                }
+              },
+              "context_chars": 0,
+              "context_block": null,
+              "input_tokens": 2059,
+              "output_tokens": 18,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.006447,
+              "model": "claude",
+              "aux_calls": 1,
+              "aux_input_tokens": 907,
+              "aux_output_tokens": 14,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.000307,
+              "aux_by_kind": {
+                "rerank": 1
+              },
+              "cost_total_usd": 0.006754,
+              "route_confidence": 0.0,
+              "picked_node_id": null,
+              "picked_workflow_id": null,
+              "route_method": "none",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.91"
+                  ]
+                }
+              ],
+              "route_emb_top": [],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"none\", \"confidence\": 0.5}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 1,
+              "response": "Processing Toolbox 검색창을 클릭하고 'buffer'를 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 11.328,
+              "latency_wall_sec": 5.153,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 6.175,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.136,
+                  "n": 2
+                },
+                "clip": {
+                  "sec": 0.09,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 0.955,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.006,
+                  "n": 3
+                },
+                "generate": {
+                  "sec": 2.149,
+                  "n": 1
+                }
+              },
+              "context_chars": 3248,
+              "context_block": null,
+              "input_tokens": 3287,
+              "output_tokens": 30,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010311,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 2635,
+              "aux_output_tokens": 836,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.00288,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.013191,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_02_search_algorithm",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_01_open_toolbox",
+                  "sources": [
+                    "emb:0.67"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.66"
+                  ]
+                },
+                {
+                  "id": "horizon_tracking_07_qc_review",
+                  "sources": [
+                    "emb:0.64"
+                  ]
+                },
+                {
+                  "id": "fault_interpretation_07_qc",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.62"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.90"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_01_open_toolbox",
+                  0.6662014628580998
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.6588583050653981
+                ],
+                [
+                  "horizon_tracking_07_qc_review",
+                  0.6418937906350637
+                ],
+                [
+                  "fault_interpretation_07_qc",
+                  0.6347923670134655
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.6215072067450963
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"qgis_vector_buffer_02_search_algorithm\", \"confidence\": 0.9}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 2,
+              "response": "Processing Toolbox에서 **Buffer** 항목을 더블클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 11.206,
+              "latency_wall_sec": 5.387,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 5.819,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 0.811,
+                  "n": 2
+                },
+                "clip": {
+                  "sec": 0.08,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.129,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.006,
+                  "n": 3
+                },
+                "generate": {
+                  "sec": 2.534,
+                  "n": 1
+                }
+              },
+              "context_chars": 3248,
+              "context_block": null,
+              "input_tokens": 3317,
+              "output_tokens": 27,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010356,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3048,
+              "aux_output_tokens": 624,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002474,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.01283,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_02_search_algorithm",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_01_open_toolbox",
+                  "sources": [
+                    "emb:0.67"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "horizon_tracking_07_qc_review",
+                  "sources": [
+                    "emb:0.61"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "emb:0.60"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.90"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.6820094412193888
+                ],
+                [
+                  "qgis_vector_buffer_01_open_toolbox",
+                  0.6662473569136592
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.6316537751020118
+                ],
+                [
+                  "horizon_tracking_07_qc_review",
+                  0.6138676805923189
+                ],
+                [
+                  "qgis_vector_buffer_04_save_output",
+                  0.6004851683222555
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"qgis_vector_buffer_02_search_algorithm\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 3,
+              "response": "Distance 필드의 값을 10.000000에서 50으로 변경하기 위해 Distance 입력란을 클릭하고 값을 지운 후 50을 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 11.642,
+              "latency_wall_sec": 5.99,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 5.652,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.087,
+                  "n": 2
+                },
+                "clip": {
+                  "sec": 0.088,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.054,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.008,
+                  "n": 3
+                },
+                "generate": {
+                  "sec": 2.937,
+                  "n": 1
+                }
+              },
+              "context_chars": 3259,
+              "context_block": null,
+              "input_tokens": 3376,
+              "output_tokens": 61,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011043,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 2975,
+              "aux_output_tokens": 859,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.00304,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.014083,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_03_configure_buffer",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.72"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.71"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "emb:0.66"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.92"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_03_configure_buffer",
+                  0.7278520683695052
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.7153072926155654
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.7139323776816374
+                ],
+                [
+                  "qgis_vector_buffer_04_save_output",
+                  0.6618681881593158
+                ],
+                [
+                  "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  0.6255443047182611
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"qgis_vector_buffer_03_configure_buffer\", \"confidence\": 0.9}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 4,
+              "response": "Distance 필드의 값을 50으로 변경하기 위해 Distance 입력란을 클릭하고 기존 값(10.000000)을 지운 후 50을 입력하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 14.786,
+              "latency_wall_sec": 7.529,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 7.257,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.136,
+                  "n": 2
+                },
+                "clip": {
+                  "sec": 0.082,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.088,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.007,
+                  "n": 3
+                },
+                "generate": {
+                  "sec": 4.415,
+                  "n": 1
+                }
+              },
+              "context_chars": 3259,
+              "context_block": null,
+              "input_tokens": 3437,
+              "output_tokens": 63,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011256,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 2991,
+              "aux_output_tokens": 914,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003182,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.014438,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_03_configure_buffer",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.67"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.75"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.72"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.92"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_03_configure_buffer",
+                  0.7503957356639823
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.7326187353571361
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.723704308831686
+                ],
+                [
+                  "qgis_vector_buffer_04_save_output",
+                  0.6651374623363809
+                ],
+                [
+                  "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  0.6341161099045654
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"qgis_vector_buffer_03_configure_buffer\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 5,
+              "response": "Buffered 섹션의 '…' 버튼을 클릭하세요.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 12.416,
+              "latency_wall_sec": 5.68,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 6.736,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.334,
+                  "n": 2
+                },
+                "clip": {
+                  "sec": 0.08,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.106,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.007,
+                  "n": 3
+                },
+                "generate": {
+                  "sec": 2.338,
+                  "n": 1
+                }
+              },
+              "context_chars": 3259,
+              "context_block": null,
+              "input_tokens": 3500,
+              "output_tokens": 28,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.01092,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3046,
+              "aux_output_tokens": 933,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003246,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.014166,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_03_configure_buffer",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.70"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.70"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.69"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "emb:0.61"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_05_compute",
+                  "sources": [
+                    "emb:0.59"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.92"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_03_configure_buffer",
+                  0.7012946208059953
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.6987254146669329
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.6856166931743372
+                ],
+                [
+                  "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  0.6088951020110419
+                ],
+                [
+                  "seismic_attribute_05_compute",
+                  0.5869456290536864
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"qgis_vector_buffer_03_configure_buffer\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 6,
+              "response": "Layer name 필드에 'roads_buffer_50m_dissolved'가 이미 입력되어 있으므로 **OK** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [
+                "OK"
+              ],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 14.654,
+              "latency_wall_sec": 6.843,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 7.811,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.616,
+                  "n": 2
+                },
+                "clip": {
+                  "sec": 0.078,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.159,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.006,
+                  "n": 3
+                },
+                "generate": {
+                  "sec": 3.191,
+                  "n": 1
+                }
+              },
+              "context_chars": 3259,
+              "context_block": null,
+              "input_tokens": 3528,
+              "output_tokens": 51,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011349,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3078,
+              "aux_output_tokens": 1123,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003731,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.01508,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_03_configure_buffer",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.75"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_01_open_toolbox",
+                  "sources": [
+                    "emb:0.64"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.90"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_03_configure_buffer",
+                  0.7483492450427923
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.7333675746631358
+                ],
+                [
+                  "qgis_vector_buffer_04_save_output",
+                  0.72879200802771
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.7270414461298783
+                ],
+                [
+                  "qgis_vector_buffer_01_open_toolbox",
+                  0.6441788827541792
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"qgis_vector_buffer_03_configure_buffer\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            },
+            {
+              "step_index": 7,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": true,
+              "is_recovery": false,
+              "latency_sec": 11.205,
+              "latency_wall_sec": 4.309,
+              "stage_latency": {
+                "vision_replayed": {
+                  "sec": 6.896,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 0.727,
+                  "n": 2
+                },
+                "clip": {
+                  "sec": 0.079,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.053,
+                  "n": 1
+                },
+                "chunk_fetch": {
+                  "sec": 0.006,
+                  "n": 3
+                },
+                "generate": {
+                  "sec": 1.628,
+                  "n": 1
+                }
+              },
+              "context_chars": 2700,
+              "context_block": null,
+              "input_tokens": 3312,
+              "output_tokens": 6,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010026,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3374,
+              "aux_output_tokens": 565,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002425,
+              "aux_by_kind": {
+                "vision_cached": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.012451,
+              "route_confidence": 0.9,
+              "picked_node_id": "qgis_vector_buffer_05_run_and_render",
+              "picked_workflow_id": "qgis_vector_buffer",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "qgis_vector_buffer_04_save_output",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_03_configure_buffer",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_01_open_toolbox",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_02_search_algorithm",
+                  "sources": [
+                    "emb:0.64"
+                  ]
+                },
+                {
+                  "id": "horizon_tracking_07_qc_review",
+                  "sources": [
+                    "emb:0.63"
+                  ]
+                },
+                {
+                  "id": "qgis_vector_buffer_05_run_and_render",
+                  "sources": [
+                    "emb:0.62"
+                  ]
+                },
+                {
+                  "id": "fault_interpretation_07_qc",
+                  "sources": [
+                    "emb:0.60"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.89"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "clip:0.86"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "qgis_vector_buffer_01_open_toolbox",
+                  0.679165119182479
+                ],
+                [
+                  "qgis_vector_buffer_02_search_algorithm",
+                  0.6364261009765333
+                ],
+                [
+                  "horizon_tracking_07_qc_review",
+                  0.6253281871958537
+                ],
+                [
+                  "qgis_vector_buffer_05_run_and_render",
+                  0.6211969336261379
+                ],
+                [
+                  "fault_interpretation_07_qc",
+                  0.5957311400712806
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "qgis_vector_buffer",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"qgis_vector_buffer_05_run_and_render\", \"confidence\": 0.9}",
+              "route_rerank_prompt": null,
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_rerank_votes": null
+            }
+          ],
+          "latency_sec": 174.06
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "no_rag": {
+      "n_scenarios": 1,
+      "step_accuracy": 1.0,
+      "faithfulness": 0.875,
+      "hallucination_rate": 0.125,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 2.662,
+      "mean_cost_usd": 0.007102,
+      "total_cost_usd": 0.056814,
+      "mean_aux_cost_usd": 0.0,
+      "total_aux_cost_usd": 0.0,
+      "mean_cost_total_usd": 0.007102,
+      "total_aux_calls": 0.0,
+      "total_input_tokens": 17468.0,
+      "total_output_tokens": 294.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": null
+    },
+    "vanilla_vector": {
+      "n_scenarios": 1,
+      "step_accuracy": 0.875,
+      "faithfulness": 0.625,
+      "hallucination_rate": 0.375,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 3.888,
+      "mean_cost_usd": 0.017888,
+      "total_cost_usd": 0.143103,
+      "mean_aux_cost_usd": 0.0,
+      "total_aux_cost_usd": 0.0,
+      "mean_cost_total_usd": 0.017888,
+      "total_aux_calls": 0.0,
+      "total_input_tokens": 46581.0,
+      "total_output_tokens": 224.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": null
+    },
+    "vanilla_budget": {
+      "n_scenarios": 1,
+      "step_accuracy": 0.875,
+      "faithfulness": 0.625,
+      "hallucination_rate": 0.375,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 3.188,
+      "mean_cost_usd": 0.010448,
+      "total_cost_usd": 0.08358,
+      "mean_aux_cost_usd": 0.0,
+      "total_aux_cost_usd": 0.0,
+      "mean_cost_total_usd": 0.010448,
+      "total_aux_calls": 0.0,
+      "total_input_tokens": 26595.0,
+      "total_output_tokens": 253.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": null
+    },
+    "graph_only": {
+      "n_scenarios": 1,
+      "step_accuracy": 0.875,
+      "faithfulness": 0.875,
+      "hallucination_rate": 0.125,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 26.671,
+      "mean_cost_usd": 0.00964,
+      "total_cost_usd": 0.077121,
+      "mean_aux_cost_usd": 0.001927,
+      "total_aux_cost_usd": 0.015412,
+      "mean_cost_total_usd": 0.011567,
+      "total_aux_calls": 7.0,
+      "total_input_tokens": 24522.0,
+      "total_output_tokens": 237.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": null
+    },
+    "vision_only": {
+      "n_scenarios": 1,
+      "step_accuracy": 1.0,
+      "faithfulness": 0.875,
+      "hallucination_rate": 0.125,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 4.237,
+      "mean_cost_usd": 0.007127,
+      "total_cost_usd": 0.057015,
+      "mean_aux_cost_usd": 0.0,
+      "total_aux_cost_usd": 0.0,
+      "mean_cost_total_usd": 0.007127,
+      "total_aux_calls": 0.0,
+      "total_input_tokens": 17880.0,
+      "total_output_tokens": 225.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": null
+    },
+    "full_system": {
+      "n_scenarios": 1,
+      "step_accuracy": 0.875,
+      "faithfulness": 0.625,
+      "hallucination_rate": 0.375,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 27.414,
+      "mean_cost_usd": 0.011428,
+      "total_cost_usd": 0.091425,
+      "mean_aux_cost_usd": 0.002648,
+      "total_aux_cost_usd": 0.021182,
+      "mean_cost_total_usd": 0.014076,
+      "total_aux_calls": 15.0,
+      "total_input_tokens": 29425.0,
+      "total_output_tokens": 210.0,
+      "fallback_rate": 0.125,
+      "mean_route_confidence": 0.787
+    },
+    "state_path": {
+      "n_scenarios": 1,
+      "step_accuracy": 0.875,
+      "faithfulness": 0.875,
+      "hallucination_rate": 0.125,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": 1.0,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 26.967,
+      "mean_cost_usd": 0.010214,
+      "total_cost_usd": 0.081708,
+      "mean_aux_cost_usd": 0.002661,
+      "total_aux_cost_usd": 0.021285,
+      "mean_cost_total_usd": 0.012874,
+      "total_aux_calls": 15.0,
+      "total_input_tokens": 25816.0,
+      "total_output_tokens": 284.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": 0.787
+    }
+  }
+}

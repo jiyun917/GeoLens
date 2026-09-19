@@ -64,7 +64,11 @@ def per_replicate_values(model: str, backend: str, mkey: str) -> list[float]:
     Value = mean across scenarios in that replicate.
     """
     if backend == "long_context":
-        pattern = f"data/eval/results/run_{model}_longctx_r*_*.json"
+        # v3: run_v3.sh names long_context files run_<model>_<TAG>longctx_r*; fall back to the
+        # legacy unified-era name only when no tagged files exist (post-run aggregation fix, V3-26).
+        pattern = f"data/eval/results/run_{model}_{TAG}longctx_r*_*.json"
+        if not glob.glob(str(ROOT / pattern)) and not TAG.startswith("v3"):
+            pattern = f"data/eval/results/run_{model}_longctx_r*_*.json"
     else:
         pattern = f"data/eval/results/run_{model}_{TAG}_r*_*.json"
     files = sorted(glob.glob(str(ROOT / pattern)))

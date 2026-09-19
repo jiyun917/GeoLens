@@ -96,14 +96,22 @@ def fmt(vals: list, unit: str) -> str:
 
 def render(data: dict, backends: list, tag: str = "unified") -> str:
     lines = []
-    lines.append(f"# Final 4-Model × {len(backends)}-Backend Matrix (n=5 replicates each, tag={tag})")
+    # v3 (post-run aggregation fix, V3-26): model count, replicate count and the scenario note are
+    # derived from the data / tag instead of the unified-era constants.
+    models_present = sorted({k[0] for k in data.keys()}, key=lambda m: MODELS.index(m) if m in MODELS else 99)
+    n_rep = max((len(v) for v in data.values()), default=0)
+    lines.append(f"# Final {len(models_present)}-Model × {len(backends)}-Backend Matrix (n={n_rep} replicates each, tag={tag})")
     lines.append("")
     if tag == "unified2":
         scen_note = "the 2 scenarios (survey_setup + 3d_visualization)"
+    elif tag == "v3_qgis":
+        scen_note = "the single QGIS test-set scenario (qgis__vector_buffer__01, 8 steps)"
+    elif tag.startswith("v3"):
+        scen_note = "the 3 OpendTect dev-set scenarios (survey_setup + 3d_visualization + attribute_computation, 16 steps)"
     else:
         scen_note = "the 3 scenarios (survey_setup + 3d_visualization + attribute_computation)"
     lines.append(f"Statistical unit = replicate. Each cell reports mean ± std "
-                 f"across 5 replicates, where each replicate averages "
+                 f"across {n_rep} replicates, where each replicate averages "
                  f"{scen_note}.")
     lines.append("")
     lines.append("Goal completion uses the 3-gate check: sentinel + grounded "
@@ -120,6 +128,10 @@ def render(data: dict, backends: list, tag: str = "unified") -> str:
                      "This is a scenario-capture limitation, not a metric flaw. "
                      "Interpret Goal Comp differences with this reduced power in "
                      "mind.")
+    elif tag.startswith("v3"):
+        lines.append(f"**Goal Comp footnote ({tag})**: 3-gate check on the final step of every scenario "
+                     f"({scen_note}); scorer v3, GT 2f3db66, KB v4 (see v3_pre_registration_DRAFT.md). "
+                     "Cross-tag comparison with unified-era tables is prohibited.")
     else:
         lines.append(f"**Goal Comp footnote ({tag})**: {tag} refined the "
                      "3d_visualization step_3 capture to a goal-reached state "

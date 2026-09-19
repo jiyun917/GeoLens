@@ -52,7 +52,7 @@ METRICS = [
 ]
 # Accept any tag between model and r<N>, e.g. _unified_ or _unified2_ .
 RE_UNIFIED = re.compile(
-    r"^run_(?P<model>[a-z]+)_(?P<tag>[a-z0-9]+)_r(?P<rep>\d+)_\d+T\d+\.json$"
+    r"^run_(?P<model>[a-z]+)_(?P<tag>[a-z0-9_]+?)_r(?P<rep>\d+)_\d+T\d+\.json$"  # v3: tags may contain "_" (v3_qgis)
 )
 BOOTSTRAP_N = 10_000
 SEED = 42
