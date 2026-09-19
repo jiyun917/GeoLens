@@ -1,11 +1,9 @@
 # Paper Table 1 — full mean ± sample SD for all 25 cells (v3_qgis)
 
-Statistical unit = replicate (n=5 per cell). Each replicate value is the mean across the scenarios (survey_setup + 3d_visualization + attribute_computation). SD is sample SD (n-1 denominator).
+Statistical unit = replicate (n=10 per cell). Each replicate value is the mean across the scenarios (qgis__vector_buffer__01 (QGIS test set, 8 steps)). SD is sample SD (n-1 denominator).
 
-Cells: 4 models × 6 backends + Gemini × long_context = 25.
-long_context runs Gemini only. The manual is ~226K tokens; Claude Sonnet 4.6 (200K) and GPT-4o (128K) advertised windows are below this, and the Qwen3-235B endpoint used for the benchmark is served at max-model-len=32,768 (a vLLM deployment setting, not the model's theoretical maximum), so long_context cannot be evaluated on any of the three.
-
-Qwen cost uses the cloud-equivalent (time-based) `mean_cost_usd_effective` value; the self-hosted marginal cost is $0 and would be misleading.
+Cells: 3 models × 6 backends + Gemini × long_context = 19.
+long_context runs Gemini only (v3: Gemini × 10 on the OpendTect dev set; not run on the QGIS test set → n/a). The manual prompt is ~210K tokens, above the Claude Sonnet 4.6 (200K) and GPT-4o (128K) windows.
 
 ## Table 1 (compact) — core metrics
 

@@ -244,3 +244,4 @@ QGIS 워크플로우는 노드 5개(01 setup, 02 action, 03 setup, 04 setup, 05 
 - 동결 태그: `v3-freeze-c01fdda` @ a03ca59 (2026-09-18 16:46 KST; 코드 c01fdda, GT 2f3db66). 서명 전 run_v3.sh 미실행.
 - 서명 후 첫 벤치 실행 시각을 아래에 append한다.
 - 첫 벤치 실행 시각(UTC): 2026-09-18T08:09:34Z — `bash scripts/run_v3.sh` (순차: 3 모델 × 10회 → long_context ×10 → QGIS 3 모델 × 10회), 서명 커밋 0f52154 / 태그 `v3-prereg-signed`, 로그 `data/eval/results/v3_bench.log`.
+- 실행 완료(UTC): 2026-09-19T06:02:23Z — 30 + 10 + 30 replicate, 재실행 0, 오류 0. §6.3 기계적 판정(`verdict_v3.md`, V3-26): **비교 1 = B, 비교 2 = C**. P1(QGIS) 반증, P1(개발) 적중, P3·P4·P5(a)(b)(c) 적중, P5(d) 반증, P6 Gemini 반증·Claude/GPT 적중. 이 줄은 §9 실행 기록(add-only).

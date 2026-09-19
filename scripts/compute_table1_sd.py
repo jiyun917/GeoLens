@@ -259,22 +259,26 @@ def main():
     # 2. Build the two tables
     scen_note = (
         "survey_setup + 3d_visualization" if TAG == "unified2"
+        else "qgis__vector_buffer__01 (QGIS test set, 8 steps)" if TAG == "v3_qgis"
         else "survey_setup + 3d_visualization + attribute_computation"
     )
     header = (
         f"# Paper Table 1 — full mean ± sample SD for all 25 cells ({TAG})\n\n"
-        "Statistical unit = replicate (n=5 per cell). Each replicate value "
+        f"Statistical unit = replicate (n={len(glob.glob(str(ROOT / f'data/eval/results/run_{MODELS[0]}_{TAG}_r*_*.json')))} per cell). Each replicate value "
         f"is the mean across the scenarios ({scen_note}). "
         "SD is sample SD (n-1 denominator).\n\n"
-        "Cells: 4 models × 6 backends + Gemini × long_context = 25.\n"
-        "long_context runs Gemini only. The manual is ~226K tokens; Claude "
-        "Sonnet 4.6 (200K) and GPT-4o (128K) advertised windows are below "
-        "this, and the Qwen3-235B endpoint used for the benchmark is served "
-        "at max-model-len=32,768 (a vLLM deployment setting, not the "
-        "model's theoretical maximum), so long_context cannot be evaluated "
-        "on any of the three.\n\n"
-        "Qwen cost uses the cloud-equivalent (time-based) `mean_cost_usd_effective` "
-        "value; the self-hosted marginal cost is $0 and would be misleading.\n\n"
+        f"Cells: {len(MODELS)} models × 6 backends + Gemini × long_context = {len(MODELS) * 6 + 1}.\n"
+        + ("long_context runs Gemini only (v3: Gemini × 10 on the OpendTect dev set; not run on the QGIS test set → n/a). "
+           "The manual prompt is ~210K tokens, above the Claude Sonnet 4.6 (200K) and GPT-4o (128K) windows.\n\n"
+           if TAG.startswith("v3") else
+           "long_context runs Gemini only. The manual is ~226K tokens; Claude "
+           "Sonnet 4.6 (200K) and GPT-4o (128K) advertised windows are below "
+           "this, and the Qwen3-235B endpoint used for the benchmark is served "
+           "at max-model-len=32,768 (a vLLM deployment setting, not the "
+           "model's theoretical maximum), so long_context cannot be evaluated "
+           "on any of the three.\n\n"
+           "Qwen cost uses the cloud-equivalent (time-based) `mean_cost_usd_effective` "
+           "value; the self-hosted marginal cost is $0 and would be misleading.\n\n")
     )
 
     core_note = (
