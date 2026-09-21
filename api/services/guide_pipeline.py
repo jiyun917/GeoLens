@@ -248,6 +248,15 @@ POST_COMPLETION_MODE = os.environ.get("POST_COMPLETION_MODE", "soft").strip().lo
 # example values) and the guidance comes from the outgoing edge ("[Next Action]").
 # v3 = the previous [Current Step] (title + description) / [Possible Next Steps] block.
 CONTEXT_ASSEMBLY = os.environ.get("CONTEXT_ASSEMBLY", "v4").strip().lower()
+# v6 (study 2): v4 + an ordered-actions rule on [Next Action] (first not-yet-visible action only;
+# completion sentinel when everything is visibly done). See methodology_audit_trail.md V3-28.
+_CTX_V6_RULE = ("Rule: if the action above lists several actions, they are in ORDER - instruct ONLY the first one "
+                "whose result is not yet visible on the screen (never skip ahead to a later one). If every listed action "
+                "is already visibly done, or the screen already shows the workflow goal achieved, answer with the "
+                "completion sentinel '완료' / 'Done' instead.")
+# study 2: 0 = do not show the session's earlier generator answers to the rerank (removes the
+# generator -> routing coupling found in V3-22); 1 = v3 behaviour.
+RERANK_SESSION_BLOCK = os.environ.get("RERANK_SESSION_BLOCK", "1").strip() == "1"
 _CTX_NOTE = ("Note: 매뉴얼의 예시 값(파일명·파라미터)은 사용자의 데이터와 다를 수 있다. 화면에 이미 설정된 값을 고치도록 안내하지 않는다. "
              "(Manual example values may differ from the user's data; do not instruct the user to change a value that is already set on screen.)")
 # v3 iteration 2 — two-stage routing: (i) workflow from the user goal (goal ↔
@@ -780,7 +789,7 @@ class GuideRAGPipeline:
                 )
 
         session_block = ""
-        if completed_steps:
+        if completed_steps and RERANK_SESSION_BLOCK:
             recent = completed_steps[-6:]
             session_block = "\nInstructions already given to the user in this session (oldest first):\n" + \
                 "\n".join(f"  {i + 1}. {s[:160]}" for i, s in enumerate(recent))
@@ -1380,7 +1389,8 @@ Respond with JSON only:
                     cond = f" [if: {n.get('edge_condition')}]" if n.get("edge_condition") else ""
                     instr = n.get("edge_instruction") or f"Step {n.get('step_number', '?')} {n.get('title', '')}"
                     act_lines.append(f"  - {instr}{cond}  (→ Step {n.get('step_number', '?')}: {n.get('title', '')})")
-                parts.append("[Next Action] (from the workflow edge)\n" + "\n".join(act_lines))
+                parts.append("[Next Action] (from the workflow edge)\n" + "\n".join(act_lines)
+                             + ("\n" + _CTX_V6_RULE if CONTEXT_ASSEMBLY == "v6" else ""))
             else:
                 parts.append("[Next Action] This is the final step of the workflow; if the screen shows the goal achieved, answer with the completion sentinel.")
             parts.append(_CTX_NOTE)

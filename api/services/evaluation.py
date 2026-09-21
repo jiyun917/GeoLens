@@ -450,6 +450,30 @@ BACKENDS = ("no_rag", "vanilla_vector", "vanilla_budget", "graph_only", "vision_
 # unified2/3/4 scorer bit-for-bit for re-scoring audits
 # (GEOLENS_SCORER=v2).
 SCORER_VERSION = os.environ.get("GEOLENS_SCORER", "v3").lower()
+# "v4" (study 2, fixed before its confirmatory run; see methodology_audit_trail.md V3-28) = v3 +
+# (a) the one-character ellipsis in a response is normalised to "..." before step matching, and
+# (b) a purely numeric mention that appears as a standalone number in the user goal is never a
+# hallucinated element (v3 skipped goal values shorter than 3 characters).
+_ELLIPSIS_RE = re.compile("[\u2026\u22ef]")
+_NUMERIC_MENTION_RE = re.compile(r"^\s*[+-]?\d+(?:[.,]\d+)?\s*$")
+
+
+def _scorer_v4() -> bool:
+    return SCORER_VERSION == "v4"
+
+
+def _goal_has_number(goal: str, mention: str) -> bool:
+    """True if `mention` (a numeric string) occurs in `goal` as a standalone number."""
+    m = (mention or "").strip()
+    if not goal or not _NUMERIC_MENTION_RE.match(m):
+        return False
+    core = m.lstrip("+-")
+    variants = {core}
+    if "." in core or "," in core:
+        variants.add(core.replace(",", "."))
+        variants.add(core.replace(".", ","))
+        variants.add(re.split(r"[.,]", core)[0])   # "60.0" -> "60"
+    return any(re.search(r"(?<![\d.,])" + re.escape(v) + r"(?![\d.,])", goal) for v in variants)
 
 
 def _ascii_boundary(pattern: str) -> str:
@@ -559,7 +583,9 @@ def _step_match_impl(response: str, step_gt: Dict, ascii_boundary: bool) -> bool
 
 
 def step_match(response: str, step_gt: Dict) -> bool:
-    """Active scorer (GEOLENS_SCORER: v3 default, v2 legacy)."""
+    """Active scorer (GEOLENS_SCORER: v3 default, v2 legacy, v4 = study 2)."""
+    if _scorer_v4() and response:
+        response = _ELLIPSIS_RE.sub("...", response)
     return _step_match_impl(response, step_gt, ascii_boundary=(SCORER_VERSION != "v2"))
 
 
@@ -699,6 +725,8 @@ def _hallucinated_elements_impl(response: str, visible_elements_gt: List[str],
         # user-provided specifics (names, paths, values quoted from the goal)
         # are things to TYPE, not phantom UI elements
         if goal_canon and len(rc) >= 3 and rc in goal_canon:
+            continue
+        if _scorer_v4() and _goal_has_number(goal, r):
             continue
         # grounded if the mention is contained in the screen vocabulary or
         # any vocabulary entry is contained in the mention (both loose).
