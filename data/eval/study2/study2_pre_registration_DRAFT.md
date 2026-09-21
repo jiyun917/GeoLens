@@ -17,7 +17,7 @@
 ### 1.1 테스트 세트 선정 규칙 (시스템 실행 전, 이 규칙을 커밋한 뒤 실행)
 - 각 후보 시나리오에 대해 **no_rag만** 3모델 × 1회 실행(채점기 v4, 최종 GT 초안의 패턴; visible_elements는 step accuracy에 영향 없음). 3모델 평균 step accuracy **< 0.85**이면 채택, 아니면 제외(고치지 않음). 두 후보 모두 제외되면 study 2는 여기서 멈추고 보고한다.
 - 선정 실행의 응답은 선정에만 쓰고, 시스템·조립·signature·GT 수정에 참고하지 않는다.
-- 결과: `[선정 실행 후 기재]`
+- 결과(2026-09-21 04:15–04:20 UTC, 커밋 f18298b, 채점기 v4, judge 없음; 파일 `run_<model>_study2sel_r1_*.json`): `opendtect__fault_sticks__01` no_rag step accuracy Gemini 0.333 / Claude 0.444 / GPT 0.222, 평균 **0.333** → 채택; `opendtect__horizon_autotrack__01` Gemini 0.286 / Claude 0.286 / GPT 0.143, 평균 **0.238** → 채택. 두 시나리오 모두 채택(테스트 세트 = 2시나리오 16스텝). 실패 유형(기록만): 메뉴 경로(FaultStickSet > New, Save as, Display > Only at Sections, 3D Horizon > New > Auto and Manual Tracking), 탭·아이콘(Correlation 탭, Auto-Track 아이콘), Z-slice/Similarity 절차를 매뉴얼 없이 못 찾음. 이 응답은 시스템 수정에 참고하지 않는다.
 
 ## 2. 실행 전에 확정된 수정 (전 백엔드 동일; V3-28)
 | # | 수정 | 근거 |
