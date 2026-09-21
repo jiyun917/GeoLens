@@ -1,0 +1,358 @@
+--- page 69 | section 1.4.2a 3D Auto-track
+1.4.2a 3D Auto-track
+Required licenses: OpendTect.
+For a video of these exercises: OpendTect video resources
+- 69 -
+
+[Figure OCR p.69 #1]
+Exercise objective:
+Interpret a horizon using 3D auto tracking
+
+Workflow:
+
+1. Pre-load 4 Dip steered median filter.
+Survey > Pre-Load > Seismic...
+For details on pre-loading see Exercise 1.3.1b.
+
+2. Right-click on Random Line > Add Default Data. The data displayed is 4 Dip steered median filter in the middle of the survey.
+Random Line
+2D Line
+3D Horizon
+2D Horizon
+Fault
+FaultStickSet
+Add Default Data
+Add Stored ...
+Add Color Blended
+New
+
+3. Right-click on 3D Horizon in the tree > New > Auto and Manual Tracking.
+3D Horizon
+2D Horizon
+Fault
+FaultStickS
+Body
+Well
+PickSet
+Polygon
+Prestack Events
+Annotations
+Add ...
+Add at Sections Only ...
+Add Color Blended ...
+New
+Auto and Manual Tracking ...
+Track Unconformity ...
+Thalweg Tracker ...
+With Constant Z ...
+
+4. The Horizon Tracking Setup control center pops up (next slide).
+
+You can interpret on inlines, crosslines and random lines, in the 3D scene and 2D viewer.
+
+[Figure OCR p.69 #2]
+Workflow cont'd:
+5. Choose the tracking mode: Section Auto-track (from seeds) and Select Seed Trace as tracking method.
+
+Horizon Tracking Settings - <New Horizon 1>
+Mode Event Correlation Properties DipSteer
+Section Auto-track Between Seeds (coming soon)
+Manual Draw Snap to Event
+Method Seed Trace
+Close Help
+
+Method:
+• Seed trace: compares amplitudes against the seed reference (recommended for most horizons)
+• Adjacent parent: compares amplitudes against the last tracked position (increased risk of loop-skips; recommended for easy horizons).
+
+--- page 70 | section 1.4.2a 3D Auto-track
+Workflow cont'd:
+
+6. Click on the Event tab.
+
+7. Select event type Peak and leave the search window as default for now.
+
+Display after picking a seed
+
+Horizon Tracking Settings - <New Horizon 1>
+Mode Event Correlation Properties DipSteer
+Event type Peak
+Threshold type Relative difference
+Allowed difference (%) 25
+Search window (ms) -8 8 Symmetric
+Data Display window (ms) -16 16 Symmetric
+Nr Traces 5
+
+Picked on: 4 Dip steered median filter
+
+WVA VD
+Close ?
+
+* Use the green lines in the waveform display to change the search window
+* It is possible to change the event type during the interpretation
+
+Workflow cont'd:
+
+8. Click on the Correlation tab.
+
+9. Set the use Correlation toggle to Yes.
+
+10. Set the Correlation threshold to 60%.
+
+Display after picking a seed
+Horizon Tracking Settings - <New Horizon 1>
+Mode Event Correlation Properties DipSteer
+Use Correlation Yes No
+Compare window (ms) -40 40 Symmetric
+Correlation threshold (%) 60.0 Snap to Event
+Data Display window (ms) -48 48 Symmetric
+Nr Traces 5
+
+WVA VD
+Close ? Help
+
+Tracking with correlation is more accurate, but it takes more time to compute.
+
+- 70 -
+
+--- page 71 | section 1.4.2a 3D Auto-track
+Workflow cont'd:
+
+11. **Set** the selection of Steering to No.
+
+This option is only available if you have a dip-steering license.
+It ensures that the correlation window follows the seismic reflectors by steering the window along the pre-calculated dip. This option lowers the risk of loop-skips, especially in areas with steep dips.
+
+Workflow cont'd:
+
+12. Optionally **edit** the display properties.
+
+We recommend the Horizon Tracking setup window to stay open during the entire interpretation session. Parameters can thus be adjust at all times. To re-open the window, use the icon in the toolbar in the upper section of OpendTect main window.
+
+- 71 -
+
+--- page 72 | section 1.4.2a 3D Auto-track
+Workflow cont'd:
+
+13. **Pick** a seed on a Max event (as selected earlier) on the displayed random line.
+14. **Click** on the Auto-Track icon in the Horizon Tracking Setup window.
+
+In horizon picking mode, the cursor is a cross. You need to have the horizon active in order to
+interpret. You can make it active by clicking on it in the 3D scene or on its name in the tree.
+
+Workflow cont'd:
+
+15. **QC** the auto-tracked horizon patch:
+a. **Select** the new horizon in the tree.
+b. **Set** the display of the horizon to "sections only": **press** the shortcut v/V key.
+c. **Move** the random line through the patch: **click** and **drag** the line.
+16. If the horizon patch looks OK but is rather small: **change** the amplitude correlation
+parameters and redo.
+In this case, **change** the correlate window to [-20, 20] ms.
+17. **Click** on the Retrack-All icon in the Horizon Tracking Setup window.
+
+Correlation window [-40,40]ms
+Correlation window [-20,20]ms
+
+- 72 -
+
+--- page 73 | section 1.4.2a 3D Auto-track
+Workflow cont'd:
+18. When satisfied with a patch, right-click on it > Tracking > Lock, so that it can no longer be changed. Alternatively, Ctrl + right-click on it > Lock.
+19. To continue, pick another seed in an empty area and repeat the exercise.
+Add
+Display
+Tracking
+Tools
+Workflows
+Save
+Save as
+Lock Treeitem
+Hide
+Remove from Tree
+Start Tracking ...
+Change Settings ...
+Enable Tracking
+Lock
+Unlock
+Seeds
+Select Parents
+Show Parents Path
+Select Children
+Delete Selected Children
+
+Workflow cont'd:
+20. Click on the auto-track icon to track more from the new seed (previously auto-tracked horizon patch remains untouched).
+One seed
+Two seeds
+
+- 73 -
+
+--- page 74 | section 1.4.2a 3D Auto-track
+Workflow cont'd:
+
+21. **Repeat** this workflow (add seeds, auto-track, QC, lock) until you have filled the entire area with horizon patches of good confidence.
+
+22. Now **lower** the constraints in the amplitude and correlation tabs.
+
+23. **Repeat** steps 21 and 22 until the tracker cannot fill in holes any further without making mistakes.
+
+What to do when something went wrong?
+
+There are three ways to change the results:
+
+*   Use Undo  and Redo  icons, or CTRL-Z / CRTL-Y shortcuts.
+*   Select the area to remove with the selection  icon and press the  delete icon.
+*   Use the tracking history to remove all positions (children) following the last good position (parent). How to do this is explained next.
+
+Workflow cont'd:
+
+How to see the tracking history
+
+24. **Right-click** in the 3D scene on a bad position on the auto-tracked horizon and **Go** to Tracking > Show Parents Path.
+
+25. position on the auto-tracked horizon and **select** Show Parents Path. Alternatively, **ctrl + right-click** on the bad
+
+Add
+Display
+Tracking
+Tools
+Workflows
+Save
+Save as
+Lock Treeitem
+Hide
+Remove from Tree
+
+Start Tracking ...
+Change Settings ...
+Enable Tracking
+Lock
+Unlock
+Seeds
+Select Parents
+Show Parents Path
+Select Children
+Delete Selected Children
+
+OR
+
+Start Auto Tracking
+Retrack From Seeds
+Select With Polygon
+Select Parents
+Show Parents Path
+Select Children
+Clear Selection
+Delete Selected
+Undo
+Redo
+Lock
+Unlock
+Show Locked
+Save
+Save As ...
+Display Only at Sections
+Show Settings ...
+
+**Ctrl + right-click** pops up the dedicated menu containing all the tools required for 3D horizon tracking. This menu minimizes the need to use the horizon tracking set-up window, e.g. for auto-tracking or re-tracking from seeds.
+
+- 74 -
+
+--- page 75 | section 1.4.2a 3D Auto-track
+Workflow cont'd:
+
+26. The nodes of the random line that appears in the 3D scene shows the tracking path to the selected position (Parents Path).
+
+Each node (in Green) of the random line, corresponds to a parent seed.
+Each parent path is added in the tree under the Random line item and can be saved.
+
+Workflow cont'd:
+
+27. Additionally, the Parents Path random line is automatically displayed in a 2D viewer.
+
+- 75 -
+
+--- page 76 | section 1.4.2a 3D Auto-track
+Workflow cont'd
+
+28. Locate the parent position where the interpretation went off-track: Ctrl + right-click on this position on the horizon patch (or in the 2D viewer) and select Select Children.
+
+29. The samples tracked from this bad parent position are highlighted in the scene. Either, right-click on them > Tracking > Delete Selected Children or Ctrl + right-click on them > Delete Selected.
+
+Select Children
+Add
+Display
+Tracking
+Tools
+Workflows
+Save
+Save as
+Lock Treeitem
+Hide
+Remove from Tree
+Start Tracking ...
+Change Settings ...
+Enable Tracking
+Lock
+Unlock
+Seeds
+Select Parents
+Show Parents Path
+Select Children
+Delete Selected Children
+
+Workflow for “fast” auto-tracking using “Adjacent Parent” tracking method
+
+1. Select Adjacent Parent method in the Mode tab.
+
+2. Go to the Event tab and Select Relative difference as Threshold type.
+
+3. Define the allowed differences value (in %)
+
+Mode Event Correlation
+Section Auto-track
+Manual Draw
+Method Adjacent Parent
+Horizon Tracking Settings - <New Horizon 1>
+Mode Event Correlation Properties DipSteer
+Event type Peak
+Threshold type Relative difference
+Allowed difference (%) 5
+Search window (ms) -8 8 Symmetric
+Data Display window (ms) -16 16 Symmetric
+Nr Traces 5
+Picked on: 4 Dip steered median filter
+Close ?
+Patches tracked with the Adjacent
+Parent method tend to be much
+larger than with the Seed Trace
+method, especially if you use
+multiple steps (next slide)
+
+- 76 -
+
+--- page 77 | section 1.4.2a 3D Auto-track
+Workflow cont'd:
+
+4. Specify the allowed differences (in %) as shown on the picture. In this example any
+sample of the horizon is tracked in at-most 5 steps.
+
+In the first step only 1% difference between neighbors is allowed. If the program is able to
+find a new sample in the neighborhood with less than 1% amplitude difference, that sample
+is included in the horizon and tracking moves on. Otherwise, the amplitude difference
+criteria of next steps are utilized.
+Be aware that loosening the constraints too much may result in loop-skips.
+
+Event type Peak
+Threshold type Relative difference
+Allowed difference (%) 1, 2, 5, 10, 20
+Search window (ms) -20 20 Symmetric
+
+Adjust the amplitude and correlation
+parameters in case the tracker stops tracking
+too soon.
+
+5. Follow steps 8-29 of the previous workflow based on the Seed Trace method.
+
+- 77 -

@@ -1,0 +1,1238 @@
+{
+ "opendtect__fault_sticks__01#0": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line 110",
+   "Step 1",
+   "-8000",
+   "8000",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Color",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Scene 1 [checked]",
+   "In-line [checked]",
+   "110 [checked]",
+   "4 Dip steered medi... [checked]",
+   "Cross-line [checked]",
+   "Z-slice [checked]",
+   "Volume [checked]",
+   "Random Line [checked]",
+   "2D Line [checked]",
+   "3D Horizon [checked]",
+   "2D Horizon [checked]",
+   "Fault [checked]",
+   "FaultSet [checked]",
+   "FaultStickSet [checked]",
+   "Geobody [checked]",
+   "Well [checked]",
+   "PointSet [checked]",
+   "Polygon [checked]",
+   "Prestack Events [checked]"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "200",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "Cross-line",
+   "400",
+   "In-line",
+   "600",
+   "500",
+   "Time",
+   "N",
+   "E",
+   "Z",
+   "[free mem] 101.5/127.8 GB"
+  ]
+ },
+ "opendtect__fault_sticks__01#1": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Select ..."
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line 110",
+   "Step 1",
+   "Copy Selection to",
+   "Fault",
+   "Create Single New"
+  ],
+  "list_or_tree_entries": [
+   "Scene 1",
+   "In-line",
+   "110",
+   "4 Dip steered medi...",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "<New FaultStickSet 1>",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "Elements",
+   "Color",
+   "-8000",
+   "8000",
+   "OD Seismic 1",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "Cross-line",
+   "200",
+   "In-line",
+   "500",
+   "Time",
+   "N",
+   "E",
+   "Z",
+   "Picking",
+   "[free mem] 101.6/127.8 GB"
+  ]
+ },
+ "opendtect__fault_sticks__01#2": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Output selection"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Select ...",
+   "OK",
+   "Cancel",
+   "?",
+   "Copy Selection to",
+   "Fault",
+   "Create Single New",
+   "Select ..."
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line 110",
+   "Step 1",
+   "-8000",
+   "8000",
+   "OD Seismic 1",
+   "Output FaultStickSet"
+  ],
+  "list_or_tree_entries": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "110",
+   "4 Dip steered medi...",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "<New FaultStickSet 1>",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Replace in tree"
+  ],
+  "other_text": [
+   "Color",
+   "200",
+   "400",
+   "600",
+   "Cross-line",
+   "800",
+   "1000",
+   "1200",
+   "400",
+   "In-line",
+   "600",
+   "500",
+   "Time",
+   "N",
+   "E",
+   "Z",
+   "Picking",
+   "[free mem] 101.6/127.8 GB"
+  ]
+ },
+ "opendtect__fault_sticks__01#3": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Select..."
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line (110)",
+   "Step (1)",
+   "Copy Selection to (Fault)",
+   "Create Single New"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "110",
+   "4 Dip steered medi...",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "FaultStickSet_01",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "-8000",
+   "8000",
+   "OD Seismic 1",
+   "400",
+   "600",
+   "Cross-line",
+   "800",
+   "1000",
+   "1200",
+   "200",
+   "In-line",
+   "400",
+   "600",
+   "500",
+   "Time",
+   "N",
+   "E",
+   "Z",
+   "Picking",
+   "[free mem] 101.6/127.8 GB"
+  ]
+ },
+ "opendtect__fault_sticks__01#4": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Select..."
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line (110)",
+   "Step (1)",
+   "Copy Selection to (Fault)",
+   "Create Single New"
+  ],
+  "list_or_tree_entries": [
+   "Scene 1",
+   "In-line",
+   "110",
+   "4 Dip steered medi...",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "FaultStickSet_01",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "-8000",
+   "8000",
+   "OD Seismic 1",
+   "Tree scene 1",
+   "Elements",
+   "Color",
+   "400",
+   "600",
+   "Cross-line",
+   "800",
+   "1000",
+   "1200",
+   "200",
+   "In-line",
+   "400",
+   "600",
+   "500",
+   "Time",
+   "N",
+   "E",
+   "Z",
+   "Picking",
+   "[free mem] 101.3/127.8 GB"
+  ]
+ },
+ "opendtect__fault_sticks__01#5": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Select..."
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line (110)",
+   "Step (1)",
+   "-8000",
+   "8000",
+   "OD Seismic 1",
+   "Copy Selection to (Fault)",
+   "Create Single New"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Color",
+   "Scene 1",
+   "In-line [checked]",
+   "110 [checked]",
+   "4 Dip steered medi... [checked]",
+   "Cross-line [checked]",
+   "Z-slice [checked]",
+   "Volume [checked]",
+   "Random Line [checked]",
+   "2D Line [checked]",
+   "3D Horizon [checked]",
+   "2D Horizon [checked]",
+   "Fault [checked]",
+   "FaultSet [checked]",
+   "FaultStickSet [checked]",
+   "FaultStickSet_01 [checked]",
+   "Geobody [checked]",
+   "Well [checked]",
+   "PointSet [checked]",
+   "Polygon [checked]",
+   "Prestack Events [checked]",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "200",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "Cross-line",
+   "In-line",
+   "400",
+   "600",
+   "500",
+   "Time",
+   "N",
+   "E",
+   "Z",
+   "Picking",
+   "[free mem] 100.1/127.8 GB"
+  ]
+ },
+ "opendtect__fault_sticks__01#6": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Select..."
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line (130)",
+   "Step (10)",
+   "-8000",
+   "8000",
+   "OD Seismic 1",
+   "Copy Selection to (Fault)",
+   "Create Single New"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "130",
+   "4 Dip steered medi...",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "2D Horizon",
+   "3D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "FaultStickSet_01",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "500",
+   "600",
+   "Time",
+   "1000",
+   "1500",
+   "N",
+   "E",
+   "Z",
+   "Picking",
+   "[free mem] 100.8/127.8 GB"
+  ]
+ },
+ "opendtect__fault_sticks__01#7": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Select..."
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Z 1500",
+   "Step 4",
+   "0.61389",
+   "0.96727",
+   "OD Seismic 1",
+   "Copy Selection to",
+   "Fault",
+   "Create Single New",
+   "Value = -1109",
+   "In-line: 130"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "130",
+   "4 Dip steered medi...",
+   "Cross-line",
+   "Z-slice",
+   "1500",
+   "9-1 Similarity on F...",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "FaultStickSet_01",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "N",
+   "E",
+   "130/559",
+   "(612287, 6074487, 1066.9)",
+   "[free mem] 100.8/127.8 GB"
+  ]
+ },
+ "opendtect__fault_sticks__01#8": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Select..."
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Z 1500",
+   "Step 4",
+   "0.61389",
+   "0.96727",
+   "OD Seismic 1",
+   "Copy Selection to",
+   "Fault",
+   "Create Single New"
+  ],
+  "list_or_tree_entries": [
+   "Scene 1",
+   "In-line",
+   "130",
+   "4 Dip steered medi...",
+   "Cross-line",
+   "Z-slice",
+   "1500",
+   "9-1 Similarity on F...",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "Fault_01A",
+   "<right-click>",
+   "FaultSet",
+   "FaultStickSet",
+   "FaultStickSet_01",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "Elements",
+   "Color",
+   "Tr",
+   "500",
+   "Z",
+   "N",
+   "E",
+   "[free mem] 100.8/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_autotrack__01#0": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "In-line (130)",
+   "Step (10)",
+   "0.61389",
+   "0.96727",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "Random Line 1",
+   "4 Dip steered me...",
+   "2D Line",
+   "2D Horizon",
+   "3D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "Elements",
+   "Color",
+   "In-line 400",
+   "600",
+   "E",
+   "N",
+   "Z",
+   "425/825",
+   "(618734, 6082045, 404.1)",
+   "Value = 435",
+   "Random Line 1",
+   "[free mem] 100.6/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_autotrack__01#1": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Horizon Tracking Settings - <New Horizon 1>"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Close"
+  ],
+  "tabs": [
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "field_labels": [
+   "In-line (130)",
+   "Step (10)",
+   "OD Seismic 1",
+   "Method (Seed Trace)"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "Random Line 1",
+   "4 Dip steered medi...",
+   "2D Line",
+   "3D Horizon",
+   "<New Horizon 1>",
+   "Tracking Order",
+   "Seed Index",
+   "Correlation",
+   "Amplitude",
+   "Z values",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Section Auto-track",
+   "Manual Draw",
+   "Snap to Event"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "0.61389",
+   "0.96727",
+   "600",
+   "In-line 400",
+   "E",
+   "Z",
+   "[free mem] 100.6/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_autotrack__01#2": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Horizon Tracking Settings - <New Horizon 1>"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Close",
+   "?"
+  ],
+  "tabs": [
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "field_labels": [
+   "In-line (130)",
+   "Step (10)",
+   "OD Seismic 1",
+   "Event type (Peak)",
+   "Threshold type (Relative difference)",
+   "Allowed difference (%) (25)",
+   "Search window (ms) (-8)",
+   "Search window (ms) (8)",
+   "Data Display window (ms) (-16)",
+   "Data Display window (ms) (16)",
+   "Nr Traces (5)",
+   "Picked on"
+  ],
+  "list_or_tree_entries": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "Random Line 1",
+   "4 Dip steered medi...",
+   "2D Line",
+   "3D Horizon",
+   "<New Horizon 1>",
+   "Tracking Order",
+   "Seed Index",
+   "Correlation",
+   "Amplitude",
+   "Z values",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "WVA [checked]",
+   "VD [unchecked]",
+   "Symmetric [unchecked]",
+   "Symmetric [unchecked]"
+  ],
+  "other_text": [
+   "0.61389",
+   "0.96727",
+   "Color",
+   "600",
+   "In-line 400",
+   "E",
+   "Z",
+   "[free mem] 100.6/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_autotrack__01#3": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Horizon Tracking Settings - <New Horizon 1>"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Close",
+   "?",
+   "▷"
+  ],
+  "tabs": [
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "field_labels": [
+   "In-line (130)",
+   "Step (10)",
+   "OD Seismic 1",
+   "Use Correlation",
+   "Compare window (ms) (-40)",
+   "40",
+   "Correlation threshold (%) (60.0)",
+   "Data Display window (ms) (-48)",
+   "48",
+   "Nr Traces (5)"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "Random Line 1",
+   "4 Dip steered medi...",
+   "2D Line",
+   "3D Horizon",
+   "<New Horizon 1>",
+   "Tracking Order",
+   "Seed Index",
+   "Correlation",
+   "Amplitude",
+   "Z values",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Yes",
+   "No",
+   "WVA",
+   "VD",
+   "Symmetric",
+   "Snap to Event",
+   "Symmetric"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "0.61389",
+   "0.96727",
+   "600",
+   "In-line 400",
+   "E",
+   "F",
+   "Z",
+   "[free mem] 100.6/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_autotrack__01#4": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Horizon Tracking Settings - <New Horizon 1>"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Close",
+   "?",
+   "▷"
+  ],
+  "tabs": [
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "field_labels": [
+   "In-line (130)",
+   "Step (10)",
+   "0.61389",
+   "0.96727",
+   "OD Seismic 1",
+   "Use Correlation",
+   "Compare window (ms) (-40)",
+   "40",
+   "Correlation threshold (%) (60.0)",
+   "Data Display window (ms) (-48)",
+   "48",
+   "Nr Traces (5)"
+  ],
+  "list_or_tree_entries": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "Random Line 1",
+   "4 Dip steered medi...",
+   "2D Line",
+   "3D Horizon",
+   "<New Horizon 1>",
+   "Tracking Order",
+   "Seed Index",
+   "Correlation",
+   "Amplitude",
+   "Z values",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Yes",
+   "No",
+   "Symmetric",
+   "Snap to Event",
+   "Symmetric",
+   "WVA",
+   "VD"
+  ],
+  "other_text": [
+   "Color",
+   "E",
+   "Z",
+   "[free mem] 100.6/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_autotrack__01#5": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Horizon Tracking Settings - <New Horizon 1>"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Close",
+   "?"
+  ],
+  "tabs": [
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "field_labels": [
+   "In-line (130)",
+   "Step (10)",
+   "OD Seismic 1",
+   "Compare window (ms) (-40, 40)",
+   "Correlation threshold (%) (60.0)",
+   "Data Display window (ms) (-48, 48)",
+   "Nr Traces (5)"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "Random Line 1",
+   "4 Dip steered medi...",
+   "2D Line",
+   "2D Horizon",
+   "3D Horizon",
+   "<New Horizon 1>",
+   "Tracking Order",
+   "Seed Index",
+   "Correlation",
+   "Amplitude",
+   "Z values",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Use Correlation",
+   "Yes",
+   "No",
+   "Symmetric",
+   "Snap to Event",
+   "Symmetric",
+   "WVA",
+   "VD"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "0.61389",
+   "0.96727",
+   "425/429",
+   "(608829, 6081768, 1817.8)",
+   "Value = -3612",
+   "Random Line 1",
+   "E",
+   "N",
+   "Z",
+   "[free mem] 100.5/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_autotrack__01#6": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Horizon Tracking Settings - <New Horizon 1>"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Close",
+   "?"
+  ],
+  "tabs": [
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "field_labels": [
+   "In-line (130)",
+   "Step (10)",
+   "OD Seismic 1",
+   "Compare window (ms) (-40)",
+   "40",
+   "Correlation threshold (%) (60.0)",
+   "Data Display window (ms) (-48)",
+   "48",
+   "Nr Traces (5)"
+  ],
+  "list_or_tree_entries": [
+   "Color",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "Random Line 1",
+   "4 Dip steered medi...",
+   "2D Line",
+   "3D Horizon",
+   "<New Horizon 1>",
+   "Tracking Order",
+   "Seed Index",
+   "Correlation",
+   "Amplitude",
+   "Z values",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Use Correlation",
+   "Yes",
+   "No",
+   "Symmetric",
+   "Snap to Event",
+   "Symmetric",
+   "WVA",
+   "VD"
+  ],
+  "other_text": [
+   "0.61389",
+   "0.96727",
+   "Tree scene 1",
+   "E",
+   "Z",
+   "[free mem] 100.5/127.8 GB"
+  ]
+ }
+}

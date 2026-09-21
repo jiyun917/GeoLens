@@ -1,0 +1,235 @@
+--- page 87 | section 1.4.3b Fault Sticks
+1.4.3b Fault Sticks
+Required licenses: OpendTect.
+For a video of these exercises: OpendTect video resources
+- 87 -
+
+[Figure OCR p.87 #1]
+Exercise objective:
+Pick a set of fault sticks and group these into fault planes.
+
+Workflow:
+
+1. Right-click on In-line in the tree >
+Add Default Data; 4 Dip steered
+median filter.
+
+2. Drag inline position to 110 in the
+Position mode .
+
+3. Click on to have an inline view.
+
+4. Reduce the displayed area to the
+faulted part as shown in the picture:
+Left-click + drag the green square
+in the upper right corner.
+
+In-line
+Cross
+Z-slice
+Volum
+Rand
+2D Lil
+
+Add Default Data
+Add and Select Data
+Add at Well Location ...
+Add Color Blended
+
+View In-line
+View Cross-line
+View Z
+View North
+View North Z
+
+200
+In-line
+400
+600
+Cross-line
+800
+1000
+1200
+400
+600
+500
+Time
+1000
+1500
+
+[Figure OCR p.87 #2]
+Workflow cont'd:
+5. Right-click on FaultStickSet in the tree
+FaultStickSet
+Add ...
+New
+and select New.
+6. Right-click on the newly added
+FaultStickSet
+<New FaultStickSet 1>
+Display
+Save
+Save as ...
+Lock Treeitem
+Remove from Tree
+FaultStickSet > Save as...
+7. Enter an Output Fault Stick Set name
+Output selection
+Output FaultStickSet
+FaultStickSet_01
+Select...
+dGB
+✓ Replace in tree
+OK
+Cancel
+? Help
+and click OK.
+8. Right-click on the saved FaultStickSet
+FaultStickSet_01
+Display
+Save
+Save as ...
+Lock Treeitem
+Remove from Tree
+Properties ...
+Only at Sections
+name > Display > Only at Sections.
+
+--- page 88 | section 1.4.3b Fault Sticks
+Workflow cont'd:
+9. Pick the first fault stick: either Left-click + drag or Left-click to pick and double-click to end a stick.
+10. Edit as needed: Left-click + drag seeds, Ctrl + Left-click to remove seeds, or Ctrl + Z to undo the last action, or Ctrl + Y to redo.
+To be able to pick fault sticks make sure that:
+1) Position mode is selected.
+2) The fault stick set is selected in the tree.
+3) Edit Sticks icon is toggled on.
+Tree scene 1
+Elements
+Scene 1
+In-Line
+☑ 130
+☑ 4 Dip steere...
+Cross-line
+Z-slice
+☑ 1516
+☑ 9-1 Similant...
+Volume
+Random Line
+2D Line
+3D Horizon
+2D Horizon
+Fault
+FaultStickSet
+☑ FaultStickSet_01
+Body
+Well
+PickSet
+Polygon
+Prestack Events
+Annotations
+inline 110: 4 Dip steered median filter.
+Workflow cont'd:
+11. Save your work regularly.
+12. Interpret several fault sticks on inline 110.
+FaultStickSet
+☑ FaultStickSet_01
+Body
+Well
+PickSet
+Polygon
+Prestack Events
+Annotations
+Display
+Save
+Save as ...
+Lock Treeitem
+Remove from Tree
+Tips:
+- The fault stick closest to the mouse cursor is highlighted with a thick line. Press Ctrl to make it active and editable.
+- Click on a seed of any stick to make it active and editable.
+- Press Shift to end a stick (alternative to double-click).
+inline 110: 4 Dip steered median filter.
+- 88 -
+
+--- page 89 | section 1.4.3b Fault Sticks
+Workflow cont'd:
+13. Move to inline 120: Click on in the navigation toolbar or use short keys (Z and X
+by default) to move the inline backward and forward. Continue the interpretation for
+several inlines, e.g. with a step of 10.
+
+inline 120: 4 Dip
+steered median filter.
+Select sticks and
+Remove Selected
+Sticks icons allow
+to select and remove
+fault sticks.
+
+Workflow cont'd:
+14. Add an empty Z-slice* to the scene and
+Drag it to 1500 ms. Click on to have a
+North oriented top view and resize with the
+green anchors to cover more or less the
+area you interpreted.
+We have finished picking sticks. In the
+next phase sticks will be grouped into
+planes. To facilitate this process we will
+display a fault discontinuity attribute on
+a time-slice through the sticks.
+View In-line
+View Cross-line
+View Z
+View North
+View North Z
+Body
+*Positioning an empty
+slice is faster than
+positioning a slice with
+data. With pre-loaded
+data the speed
+difference is negligible.
+
+- 89 -
+
+--- page 90 | section 1.4.3b Fault Sticks
+Workflow cont'd:
+
+15. Add 9-1 Similarity on FEF seismic from Stored attribute list.
+
+Observe that separately interpreted fault sticks can be easily grouped into fault planes when co-rendered with a similarity attribute on a Z-slice.
+
+Fault 1
+400
+Fault 2
+600
+
+Workflow cont'd:
+
+16. Select sticks located along the same lineament by clicking on icon and:
+- Ctrl + Left-click to select/de-select sticks one by one;
+- Left-click + drag to select/de-select a group of sticks;
+- Ctrl + Left-click + drag around several groups of sticks for multi-group selection.
+
+Draw a polygon to group fault sticks located along the same lineament.
+
+Selected sticks turn green.
+
+Sticks that are not currently selected remain violet.
+
+Copy Selection to
+Fault
+Create Single New
+Select ...
+
+- 90 -
+
+--- page 91 | section 1.4.3b Fault Sticks
+Workflow cont'd:
+17. Choose Copy Selection to > Fault > Create Single New and type in a new name in the
+toolbar. Optionally choose a fault color. Then click Go!
+Copy Selection to Fault Create Single New Fault_01A Select ... X
+18. Repeat previous two
+steps to create more
+fault planes.
+
+- 91 -
