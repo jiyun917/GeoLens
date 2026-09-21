@@ -9,20 +9,22 @@
 set -u
 cd "$(dirname "$0")/.."
 source scripts/study2_env.sh
-export CONTEXT_ASSEMBLY="${CONTEXT_ASSEMBLY:-v6}"
-export RERANK_SESSION_BLOCK="${RERANK_SESSION_BLOCK:-__PIN_AT_SIGNING__}"   # pinned in the signed pre-registration (§2 F3)
+# Pinned by the signed pre-registration (§2 F2/F3/F5, V3-31): assembly v7, session block kept, session-sticky router rule.
+export CONTEXT_ASSEMBLY="${CONTEXT_ASSEMBLY:-v7}"
+export RERANK_SESSION_BLOCK="${RERANK_SESSION_BLOCK:-1}"
+export ROUTER_SESSION_STICKY="${ROUTER_SESSION_STICKY:-1}"
 TAG="${TAG:-study2}"
 REPS="${REPS:-10}"
 MODELS="${MODELS:-gemini,claude,gpt}"
 TEST_DIR="${TEST_DIR:-data/eval/scenarios/.study2_test}"   # adopted, GT-approved test scenarios only
 PY=".venv/Scripts/python.exe"
 LOG="data/eval/results/${TAG}_bench.log"
-if [ "$RERANK_SESSION_BLOCK" = "__PIN_AT_SIGNING__" ]; then echo "RERANK_SESSION_BLOCK not pinned — sign the pre-registration first"; exit 2; fi
+if ! git tag --list | grep -q "^study2-prereg-signed$"; then echo "pre-registration not signed (tag study2-prereg-signed missing)"; exit 2; fi
 if [ ! -d "$TEST_DIR" ] || [ -z "$(ls "$TEST_DIR"/*.json 2>/dev/null)" ]; then echo "no adopted test scenarios in $TEST_DIR"; exit 2; fi
 {
   echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === ${TAG} bench kickoff ==="
   echo "models=${MODELS} reps=${REPS} scenarios=$(ls "$TEST_DIR"/*.json | xargs -n1 basename | tr '\n' ' ')"
-  echo "scorer=${GEOLENS_SCORER} assembly=${CONTEXT_ASSEMBLY} rerank_session_block=${RERANK_SESSION_BLOCK} pool=$(ls data/workflows/*.json | wc -l) workflows"
+  echo "scorer=${GEOLENS_SCORER} assembly=${CONTEXT_ASSEMBLY} rerank_session_block=${RERANK_SESSION_BLOCK} sticky=${ROUTER_SESSION_STICKY} pool=$(ls data/workflows/*.json | wc -l) workflows"
   echo "git: $(git rev-parse --short HEAD) $(git branch --show-current); dirty=$(git status --short -- api scripts data/workflows data/eval/scenarios | wc -l) files"
 } | tee -a "$LOG"
 $PY -u scripts/run_all_models.py --models "$MODELS" --repeats "$REPS" --judge consensus --tag "$TAG" \

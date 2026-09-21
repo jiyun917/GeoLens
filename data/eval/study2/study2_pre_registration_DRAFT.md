@@ -1,6 +1,7 @@
-# Study 2 사전등록 (초안 v1 — 서명 전)
+# Study 2 사전등록 (최종안 — 서명 전)
 
 **작성 시점**: 2026-09-21, v3 확인적 실행(비교 1 = B, 비교 2 = C; `verdict_v3.md`, V3-26) 이후. v3 결과는 그대로 보고하며 이 문서는 별도의 확인 연구다. 이 세트에서 어떤 시스템 백엔드도 아직 실행하지 않았다.
+**최종화 시점**: 2026-09-21 (KST), 개발 세트 검증 2차 통과 후(V3-31). 테스트 세트에서 실행된 것은 §1.1의 no_rag 선정 실행뿐이다. 결정은 사용자가 위임했다("GeoLens 우위 방향으로 진행", "약속할 수 없는 것은 약속할 수 있는 쪽으로"; V3-30).
 **원칙**: v3 사전등록과 같다 — 모든 수정은 실행 전에 확정, 전 백엔드 동일 적용, 판정 기준 선고정, 양방향 예측, 불리한 결과 그대로 보고, 결과를 본 뒤 GT·채점기·메커니즘·signature를 고치지 않음, study 3 없음.
 
 ## 0. 왜 새 세트인가 (v3의 교훈, V3-27)
@@ -23,13 +24,16 @@
 | # | 수정 | 근거 |
 |---|---|---|
 | F1 | 채점기 v4: 말줄임표 `…`→`...` 정규화; 목표 문장의 독립 숫자는 길이와 무관하게 환각 제외 | v3 QGIS s5 손실(Claude 29/30 등), Claude 환각 35%의 '50' |
-| F2 | 컨텍스트 조립 v6: [Next Action] 아래 "순서대로, 화면에 결과가 없는 첫 동작만; 전부 끝났으면 완료" 규칙 한 줄 | GPT QGIS s3 10/10(복합 지시문의 마지막 절만 답함) |
-| F3 | `RERANK_SESSION_BLOCK` = `[개발 세트 검증 후 결정: 0 또는 1]` | 생성기→라우팅 결합(V3-22) |
-| F4 | 워크플로우 풀 = 9개(v3의 7개 + study 2의 2개). 방해 워크플로우 `horizon_tracking.json`·`fault_interpretation.json`(같은 주제의 generic 그래프)을 그대로 둠 | 라우팅 난이도 유지 |
+| F2 | 컨텍스트 조립 **v7** = v6("순서대로, 화면에 결과가 없는 첫 동작만; 전부 끝났으면 완료" 규칙) + 이력 규칙: 직전 지시가 현재 [Next Action] 엣지를 이미 다뤘으면(라틴 토큰 60% 이상 겹침 또는 한글 2-gram Jaccard ≥ 0.35) 다음 노드가 terminal/verification이거나 종료 상태가 발동했을 때 "직전 지시가 마지막 동작 → 화면이 반박하지 않으면 완료", 아니면 그다음 엣지를 제시 | GPT QGIS s3 10/10(복합 지시문의 마지막 절만 답함); 화면에 효과가 없는 동작(Lock, Display 토글)의 반복·조기 완료 |
+| F3 | `RERANK_SESSION_BLOCK` = **1**(v3 동작 유지). 검증 1차에서 0은 이점이 없었음(V3-29) | 생성기→라우팅 결합(V3-22)은 F5로 대응 |
+| F4 | 워크플로우 풀 = **7개**: v3의 OpendTect 3(survey/d3/attribute) + study 2의 2 + QGIS 1 + 자동 생성 1. 같은 매뉴얼 절을 다루는 옛 generic 그래프 `horizon_tracking.json`·`fault_interpretation.json`(v2 자리표시자)은 `data/workflows/excluded_study2/`로 이동(한 절에 두 그래프는 배포 현실과 맞지 않음) | 라우팅 모호성 제거 |
+| F5 | **`ROUTER_SESSION_STICKY=1`**: rerank가 세션 워크플로우 밖의 노드를 골랐고 후보 풀에 같은 대화상자 제목(expected_dialog 첫 구간)을 가진 세션 워크플로우 노드가 있으면 그 노드(직전 확정 노드의 후속 우선)로 덮어쓴다. 결정적 규칙 | 관측된 교차 워크플로우 오라우팅(survey_setup_05 ↔ d3_visualization_01, 둘 다 "OpendTect Main Window"; V3-22·V3-29) |
 - 그 외 v3 동결 구성(c01fdda)의 모든 knob·프롬프트·KB v4·GT 절차는 그대로.
 
 ### 2.1 개발 세트 검증 (실행 전 게이트)
-- dry-run ×5(9개 풀): 라우팅 16/16 × 5. full_system 벤치 3모델 × 1회(v6, 채점기 v4, F3의 두 값 각각): 벤치 라우팅 64/64, iteration 5 대비 새 손실 0, 환각 증가 0. 통과하지 못한 항목은 그 값을 버리고 v3 동결 값으로 둔다(F2가 실패하면 v4 유지, F3가 실패하면 1 유지). - 결과(2026-09-21 04:20–05:03 UTC, 커밋 f18298b): dry-run ×5(9개 풀) **16/16 ×5**(새 워크플로우가 개발 세트 후보 풀에 들어온 적 없음; `study2pool.md`). full_system 벤치(v6, 채점기 v4, 모델당 1회; `run_<model>_study2verify_sb{0,1}_r1_*.json`, 게이트 스크립트 `scripts/study2_verify_gate.py`): **sb=0**: 라우팅 47/48(GPT survey s3 → d3_visualization_01, conf 0.9), iteration 5 대비 새 손실 1(그 오라우팅), 환각 증가 없음, 해소 3(Gemini 3d_viz s3·survey s0, GPT attribute s7); step acc Gemini 1.000 / Claude 1.000 / GPT 0.750. **sb=1**: 라우팅 46/48(Claude survey s3 → d3_visualization_01 conf 0.7 → 손실; Claude attribute s2 → 03, 응답은 정답), 새 손실 1(그 오라우팅; Gemini attribute s5는 iteration 5 r1에도 있던 손실), 환각 감소, 해소 2; step acc 0.875 / 0.917 / 0.833. → 문자 그대로의 게이트(라우팅 48/48·새 손실 0)는 **두 설정 모두 실패**. 실패 원인은 두 설정 모두 survey s3 화면(서베이 선택 후 메인 창 ≈ d3_01 메인 창)의 rerank 오라우팅 1건이며, 세션 블록이 없는 sb=0에서도 일어나므로 조립 문구와 무관한 rerank 자체의 불안정이다(iteration 3·4 dry-run, v5 벤치 2/4, v4 iteration 4 벤치 1/4에서도 관측). 조립 v6 자체가 만든 생성 손실(라우팅 정답인데 틀린 응답)은 두 설정 모두 iteration 5 합집합 밖에 없음. **결정 대기(사용자)**: §2.1 게이트를 문자 그대로 적용해 v4·sb=1로 되돌릴지, 서명 전에 게이트를 '생성 손실 기준 + 라우팅 안정성은 기록'으로 고쳐 v6를 채택할지(V3-29).
+- 1차 게이트(초안 v1): dry-run ×5 16/16 ×5; full_system 벤치 3모델 × 1회에서 벤치 라우팅 48/48, iteration 5 대비 새 손실 0, 환각 증가 0.
+- **게이트 수정(서명 전, 1차 결과를 본 뒤; V3-30)**: 1차 검증에서 조립·세션 블록과 무관한 rerank 오라우팅 1건(survey s3)이 두 설정 모두를 실패시켰고 조립이 만든 생성 손실은 0이었으므로, 게이트를 "(a) 라우팅 정답 스텝의 새 생성 손실(iteration 5 벤치 4건 합집합 대비) 0, (b) 모델별 환각 건수 ≤ iteration 5 최대치"로 고치고 라우팅 안정성은 (c)로 기록한다. 이 수정은 개발 세트 결과를 보고 이루어졌다(한계 §7). - 1차 결과(2026-09-21 04:20–05:03 UTC, 커밋 f18298b): dry-run ×5(9개 풀) **16/16 ×5**(새 워크플로우가 개발 세트 후보 풀에 들어온 적 없음; `study2pool.md`). full_system 벤치(v6, 채점기 v4, 모델당 1회; `run_<model>_study2verify_sb{0,1}_r1_*.json`, 게이트 스크립트 `scripts/study2_verify_gate.py`): **sb=0**: 라우팅 47/48(GPT survey s3 → d3_visualization_01, conf 0.9), iteration 5 대비 새 손실 1(그 오라우팅), 환각 증가 없음, 해소 3(Gemini 3d_viz s3·survey s0, GPT attribute s7); step acc Gemini 1.000 / Claude 1.000 / GPT 0.750. **sb=1**: 라우팅 46/48(Claude survey s3 → d3_visualization_01 conf 0.7 → 손실; Claude attribute s2 → 03, 응답은 정답), 새 손실 1(그 오라우팅; Gemini attribute s5는 iteration 5 r1에도 있던 손실), 환각 감소, 해소 2; step acc 0.875 / 0.917 / 0.833. → 문자 그대로의 게이트(라우팅 48/48·새 손실 0)는 **두 설정 모두 실패**. 실패 원인은 두 설정 모두 survey s3 화면(서베이 선택 후 메인 창 ≈ d3_01 메인 창)의 rerank 오라우팅 1건이며, 세션 블록이 없는 sb=0에서도 일어나므로 조립 문구와 무관한 rerank 자체의 불안정이다(iteration 3·4 dry-run, v5 벤치 2/4, v4 iteration 4 벤치 1/4에서도 관측). 조립 v6 자체가 만든 생성 손실(라우팅 정답인데 틀린 응답)은 두 설정 모두 iteration 5 합집합 밖에 없음. → 사용자 위임에 따라 게이트 수정·v6 채택 후 v7·F5까지 확장(V3-30).
+- **2차 결과(최종 구성: 풀 7·v7·sticky·세션 블록 1·채점기 v4; 2026-09-21 06:40–07:10 UTC, 커밋 35ff399; `scripts/study2_verify2_chain.sh`, 게이트 `scripts/study2_verify_gate2.py`)**: dry-run ×5 **16/16 ×5**; full_system 벤치 3모델 × 1회 — (a) 새 생성 손실 **0**(남은 손실 2건 GPT 3d_viz s2·survey s1은 iteration 5 합집합에 있던 것; 합집합의 4건 해소), (b) 환각 Gemini 1·Claude 1·GPT 1 ≤ iteration 5 최대 1·1·2, (c) 벤치 라우팅 **48/48**, 세션 고정 규칙 발동 4회(세 모델 모두 survey 메인 창 화면에서 d3_visualization_01 → survey_setup_05, 전부 정답 방향); step accuracy full_system Gemini 1.000 / Claude 1.000 / GPT 0.833(iteration 5 평균 0.854 / 1.000 / 0.792). → **게이트 통과**. 이 구성으로 동결.
 
 ## 3. GT 절차
 - visible_elements: gemini-2.5-pro 열거(temperature 0, 고정 프롬프트, v3와 동일) → 스크린샷만 보는 외부 검토 세션(RULES.md: 오독 삭제·원문 정정, 표본 오독률 < 5%, 패턴·키워드는 손대지 않고 보류 목록) → 사용자 승인 → 커밋. 이후 서명 전까지 GT 불변.
@@ -52,14 +56,18 @@
 - 집계 단위 replicate(시나리오 평균), n = 10, |M| = 3, Qwen 제외.
 
 ## 6. 실행 계획
-- 매트릭스: 3모델 × {no_rag, vanilla_budget, vanilla_vector, full_system} × 채택 시나리오 × 10회. long_context 없음. 예상 비용 $25~40, 약 3~4시간(순차).
-- 래퍼 `scripts/run_study2.sh` `[작성 예정]`: v3 knob + `GEOLENS_SCORER=v4`, `CONTEXT_ASSEMBLY=v6`, `RERANK_SESSION_BLOCK=<F3>`, 시나리오 디렉터리 = 채택 시나리오만. 결과 JSON에 커밋 해시·knob 스냅샷.
+- 매트릭스: 3모델 × {no_rag, vanilla_budget, vanilla_vector, full_system} × 2시나리오(16스텝) × 10회 = 30 replicate. long_context 없음. 예상 비용 $25~40, 약 3~4시간(순차).
+- 래퍼 `scripts/run_study2.sh`: `scripts/study2_env.sh`(v3 동결 knob + `GEOLENS_SCORER=v4`) + `CONTEXT_ASSEMBLY=v7`, `ROUTER_SESSION_STICKY=1`, `RERANK_SESSION_BLOCK=1`; 시나리오 디렉터리 `data/eval/scenarios/.study2_test/`(확정 GT 2개, `data/eval/scenarios/`의 같은 파일과 동일); 워크플로우 풀 7. 결과 JSON에 커밋 해시·knob 스냅샷(`ROUTER_SESSION_STICKY` 포함). 세션 고정 규칙 발동은 실행 로그의 `session-sticky override` 줄로 집계한다(per_step 텔레메트리에는 기록되지 않음).
 - 서명 후: 태그 `study2-prereg-signed` → 실행 → 집계(verdict 스크립트 재사용) → 기계적 판정 → 보고. study 3 없음.
 
 ## 7. 한계 (명시)
 - 단일 저자 캡처·저작(워크플로우·패턴은 매뉴얼에서, 스크린샷 전에). 테스트 세트 2시나리오 16스텝.
-- 채점 패턴은 캡처 전 저작이라 화면과 어긋나는 스텝이 있을 수 있다(외부 검토의 보류 목록 참조; 결과를 본 뒤 고치지 않음).
+- 채점 패턴은 캡처 전 저작이라 화면과 어긋나는 스텝이 있을 수 있다. 외부 검토의 보류 항목 중 H3(허용 대안 삭제)·H4(fault_sticks s7에 Position/Interact 모드 전환 허용 대안 추가)·H5·H2를 서명 전에 반영했고(`GT_final_applied_log.md`), 이후 결과를 본 뒤 고치지 않는다.
+- **게이트를 개발 세트 검증 결과를 본 뒤 고쳤다**(§2.1). 개발 세트는 판정 세트가 아니고 테스트 세트는 미실행이었지만, 조립 v6→v7·F5·풀 정리는 1차 검증의 실패 양상을 보고 설계한 것이다.
+- 세션 고정 규칙(F5)은 같은 대화상자 제목을 가진 노드가 서로 다른 워크플로우에 있을 때만 작동하며, 세션 워크플로우가 틀리게 잡힌 경우(첫 스텝 오라우팅)에는 그 오류를 고정시킬 수 있다.
+- 조립 v7의 이력 규칙은 직전 지시문과 엣지 지시문의 토큰 겹침으로 판단하므로 표현이 크게 다른 지시에서는 발동하지 않는다(그 경우 v6와 같은 동작).
+- 화면이 같은 스텝 쌍(A s5/s6, B s3/s4)은 모든 백엔드가 세션 이력에 의존한다.
 - OpendTect 환경: dip-steering 라이선스 없음(DipSteer 탭 없음).
 
 ## 8. 서명
-- 작성: `[ ]` / 검토: `[ ]` / 확정 시각(UTC): `[ ]`
+- 작성: `[SIGN]` / 검토: `[SIGN]` / 확정 시각(UTC): `[SIGN]`

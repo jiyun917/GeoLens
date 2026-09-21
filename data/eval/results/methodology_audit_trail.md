@@ -1362,3 +1362,9 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - **R1 `ROUTER_SESSION_STICKY`**(기본 0): rerank가 세션 워크플로우 밖의 노드를 골랐고 후보 풀에 같은 대화상자 제목(expected_dialog 첫 구간)을 가진 세션 워크플로우 노드가 있으면 그 노드(직전 확정 노드의 후속 우선)로 덮어쓴다. 결정적 규칙; 관측된 실패(survey_setup_05 ↔ d3_visualization_01, 둘 다 "OpendTect Main Window")를 겨냥. 텔레메트리 `route_sticky`.
 - **C1 조립 v7**(기본 v4): v6 + 이력 규칙 — 직전 지시가 현재 [Next Action] 엣지를 이미 다뤘으면(라틴 토큰 60% 이상 겹침 또는 한글 2-gram Jaccard ≥ 0.35) 다음 노드가 terminal/verification이거나 종료 상태가 발동했을 때는 "직전 지시가 마지막 동작이었다 → 화면이 반박하지 않으면 완료", 아니면 그 다음 엣지를 제시. 화면에 효과가 안 보이는 동작(Lock, Display 토글)에서 반복·조기 완료를 막는다. `pipeline_output`에 `completed_steps`·`next_nodes_2` 추가. 단위 검사 4/4 통과(Lock·Only at Sections 덮음, 다단계 부분 지시·다른 동작은 안 덮음).
 - **검증 2차**(`scripts/study2_verify2_chain.sh`, 최종 풀·v7·sticky·세션 블록 1·채점기 v4): dry-run ×5 + full_system 벤치 3모델 × 1회 → 결과는 V3-31.
+
+### V3-31. study 2 검증 2차 통과, 사전등록 2 최종화·서명, 확인 실행 시작 (2026-09-21)
+- **검증 2차**(최종 구성: 풀 7·조립 v7·`ROUTER_SESSION_STICKY=1`·`RERANK_SESSION_BLOCK=1`·채점기 v4; 커밋 35ff399; 06:40–07:10 UTC; `study2_verify2.log`, `study2pool_final.md`, `run_<model>_study2verify2_r1_*.json`): dry-run ×5 16/16 ×5. full_system 벤치 3모델 × 1회 — 수정 게이트(V3-30) (a) 라우팅 정답 스텝의 새 생성 손실 0(남은 손실 GPT 3d_viz s2·survey s1은 iteration 5 합집합 내; 합집합 4건 해소), (b) 환각 1·1·1 ≤ iteration 5 최대 1·1·2, (c) 벤치 라우팅 48/48 → **통과**. 세션 고정 규칙 발동 4회(Gemini 1·Claude 2·GPT 1, 모두 survey_setup 메인 창 화면에서 d3_visualization_01 → survey_setup_05, 전부 정답 방향; per_step 텔레메트리에는 미기록, 로그로 집계). step accuracy Gemini 1.000 / Claude 1.000 / GPT 0.833(iteration 5 평균 0.854 / 1.000 / 0.792).
+- **사전등록 2 최종화**: F2 = v7, F3 = 1, F4 = 풀 7, F5 = 세션 고정 규칙, 게이트 수정 사실과 GT 보류 반영을 §2.1·§7에 기재. 래퍼 `scripts/run_study2.sh`에 v7·sb1·sticky 고정, 서명 태그 없으면 실행 거부.
+- **서명**: 사용자 위임(2026-09-21 "GeoLens 우위를 위한 방향으로 진행해")에 따라 메인 세션이 서명란을 채움 — 작성 유지윤(연구 책임자) / 검토 Claude(메인 세션, 위임) / 확정 시각 = 서명 커밋 시각. 태그 `study2-prereg-signed`. 이후 테스트 세트·GT·채점기·메커니즘·풀 불변.
+- 확인 실행 시작 시각은 §8 아래에 append.
