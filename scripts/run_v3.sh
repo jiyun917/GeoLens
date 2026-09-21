@@ -76,6 +76,8 @@ cp data/eval/scenarios/opendtect__survey_setup__01.json \
    data/eval/scenarios/opendtect__attribute_computation__01.json "$DEV_DIR"/
 
 mkdir -p data/eval/results
+# Hard gate (added 2026-09-21 after deviation V3-32): refuse to run unless the pool/scenarios/knobs pass the preflight.
+$PY scripts/preflight_check.py --scenarios "$DEV_DIR" --expect CONTEXT_ASSEMBLY="$CONTEXT_ASSEMBLY" GEOLENS_SCORER="$GEOLENS_SCORER" CHROMADB_PATH="$CHROMADB_PATH" || { echo "preflight failed - run refused"; exit 2; }
 {
   echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === ${TAG} bench kickoff ==="
   echo "models=${MODELS} reps=${REPS} chromadb=${CHROMADB_PATH} embed=${EMBED_MODEL} scorer=${GEOLENS_SCORER}"
