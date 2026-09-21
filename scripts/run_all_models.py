@@ -65,6 +65,8 @@ def main():
                     help="Comma-separated model names to run (default: all 4)")
     ap.add_argument("--repeats", type=int, default=3,
                     help="Number of replicate runs per model (default: 3)")
+    ap.add_argument("--start", type=int, default=1,
+                    help="First replicate index to run (resume after an interruption; default 1)")
     ap.add_argument("--judge", default="consensus",
                     help="LLM-as-judge mode (default: consensus)")
     ap.add_argument("--backends", nargs="*", default=None,
@@ -82,11 +84,11 @@ def main():
         print(f"Backends subset: {args.backends}")
     if args.tag:
         print(f"Filename tag: {args.tag}")
-    print(f"Total planned runs: {len(models) * args.repeats}")
+    print(f"Total planned runs: {len(models) * (args.repeats - args.start + 1)} (replicates {args.start}..{args.repeats})")
 
     summary: list[tuple[str, int, int, str]] = []
     for m in models:
-        for r in range(1, args.repeats + 1):
+        for r in range(args.start, args.repeats + 1):
             code, out = run_one(m, r, args.judge, backends=args.backends, tag=args.tag, scenarios=args.scenarios)
             summary.append((m, r, code, out))
             if code != 0:
