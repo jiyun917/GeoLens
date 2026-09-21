@@ -1,0 +1,789 @@
+{
+ "opendtect__fault_sticks__01/step_0": {
+  "n_before": 52,
+  "n_after": 51,
+  "items": [
+   [
+    "fmt",
+    "Scene 1 [checked]",
+    "Scene 1"
+   ],
+   [
+    "fmt",
+    "In-line [checked]",
+    "In-line"
+   ],
+   [
+    "fmt",
+    "110 [checked]",
+    "110"
+   ],
+   [
+    "fmt",
+    "4 Dip steered medi... [checked]",
+    "4 Dip steered medi..."
+   ],
+   [
+    "fmt",
+    "Cross-line [checked]",
+    "Cross-line"
+   ],
+   [
+    "fmt",
+    "Z-slice [checked]",
+    "Z-slice"
+   ],
+   [
+    "fmt",
+    "Volume [checked]",
+    "Volume"
+   ],
+   [
+    "fmt",
+    "Random Line [checked]",
+    "Random Line"
+   ],
+   [
+    "fmt",
+    "2D Line [checked]",
+    "2D Line"
+   ],
+   [
+    "fmt",
+    "3D Horizon [checked]",
+    "3D Horizon"
+   ],
+   [
+    "fmt",
+    "2D Horizon [checked]",
+    "2D Horizon"
+   ],
+   [
+    "fmt",
+    "Fault [checked]",
+    "Fault"
+   ],
+   [
+    "fmt",
+    "FaultSet [checked]",
+    "FaultSet"
+   ],
+   [
+    "fmt",
+    "FaultStickSet [checked]",
+    "FaultStickSet"
+   ],
+   [
+    "fmt",
+    "Geobody [checked]",
+    "Geobody"
+   ],
+   [
+    "fmt",
+    "Well [checked]",
+    "Well"
+   ],
+   [
+    "fmt",
+    "PointSet [checked]",
+    "PointSet"
+   ],
+   [
+    "fmt",
+    "Polygon [checked]",
+    "Polygon"
+   ],
+   [
+    "fmt",
+    "Prestack Events [checked]",
+    "Prestack Events"
+   ],
+   [
+    "add",
+    "",
+    "1500"
+   ],
+   [
+    "dedup",
+    "Cross-line",
+    ""
+   ],
+   [
+    "dedup",
+    "In-line",
+    ""
+   ]
+  ],
+  "sentences": {}
+ },
+ "opendtect__fault_sticks__01/step_1": {
+  "n_before": 54,
+  "n_after": 56,
+  "items": [
+   [
+    "add",
+    "",
+    "SEG-Y"
+   ],
+   [
+    "add",
+    "",
+    "1500"
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "Tree shows <New FaultStickSet 1> under FaultStickSet (selected). The fault-stick edit toolbar appeared at the bottom: Copy Selection to, Fault, Create Single New, name field, Select..., colour, edit icons; status bar 'Picking'. No dialog open.",
+    "Tree shows <New FaultStickSet 1> under FaultStickSet (selected, green colour swatch). The fault-stick edit toolbar appeared at the bottom: Copy Selection to, Fault, Create Single New, name field, Select ..., blue colour swatch, edit icons (undo/redo enabled); the top toolbar gained a gear icon; status bar 'Picking'. No dialog open."
+   ]
+  }
+ },
+ "opendtect__fault_sticks__01/step_2": {
+  "n_before": 61,
+  "n_after": 62,
+  "items": [
+   [
+    "add",
+    "",
+    "1500"
+   ]
+  ],
+  "sentences": {}
+ },
+ "opendtect__fault_sticks__01/step_3": {
+  "n_before": 55,
+  "n_after": 56,
+  "items": [
+   [
+    "rep",
+    "Select...",
+    "Select ..."
+   ],
+   [
+    "rep",
+    "In-line (110)",
+    "In-line 110"
+   ],
+   [
+    "rep",
+    "Step (1)",
+    "Step 1"
+   ],
+   [
+    "rep",
+    "Copy Selection to (Fault)",
+    "Copy Selection to | Fault"
+   ],
+   [
+    "add",
+    "",
+    "1500"
+   ],
+   [
+    "dedup",
+    "Fault",
+    ""
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "Dialog closed; tree item now reads FaultStickSet_01 (selected). Inline 110 displayed. Only at Sections not yet enabled (no visible change expected). Bottom edit toolbar visible; status bar 'Picking'.",
+    "Dialog closed; tree item now reads FaultStickSet_01 (selected, green colour swatch). Inline 110 displayed. Only at Sections not yet enabled (no visible change expected; 화면상 확인 불가, 세션 이력 기준). Bottom edit toolbar visible (undo/redo greyed); status bar 'Picking'."
+   ]
+  }
+ },
+ "opendtect__fault_sticks__01/step_4": {
+  "n_before": 54,
+  "n_after": 56,
+  "items": [
+   [
+    "add",
+    "",
+    "SEG-Y"
+   ],
+   [
+    "rep",
+    "Select...",
+    "Select ..."
+   ],
+   [
+    "rep",
+    "In-line (110)",
+    "In-line 110"
+   ],
+   [
+    "rep",
+    "Step (1)",
+    "Step 1"
+   ],
+   [
+    "rep",
+    "Copy Selection to (Fault)",
+    "Copy Selection to | Fault"
+   ],
+   [
+    "add",
+    "",
+    "1500"
+   ],
+   [
+    "dedup",
+    "Fault",
+    ""
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "Display > Only at Sections enabled for FaultStickSet_01. Visually identical to step 3 (the toggle has no visible effect while no stick exists); the state is known only from the session history. No stick picked yet.",
+    "Display > Only at Sections enabled for FaultStickSet_01 (화면상 확인 불가, 세션 이력 기준). Compared with step 3 the only visible differences are in the bottom edit toolbar: its leftmost icon button is now highlighted (toggled on) and the undo icon is enabled (green); the left main toolbar is unchanged. The section itself is unchanged and no stick is picked yet. Status bar 'Picking'."
+   ]
+  }
+ },
+ "opendtect__fault_sticks__01/step_5": {
+  "n_before": 57,
+  "n_after": 56,
+  "items": [
+   [
+    "fmt",
+    "In-line [checked]",
+    "In-line"
+   ],
+   [
+    "fmt",
+    "110 [checked]",
+    "110"
+   ],
+   [
+    "fmt",
+    "4 Dip steered medi... [checked]",
+    "4 Dip steered medi..."
+   ],
+   [
+    "fmt",
+    "Cross-line [checked]",
+    "Cross-line"
+   ],
+   [
+    "fmt",
+    "Z-slice [checked]",
+    "Z-slice"
+   ],
+   [
+    "fmt",
+    "Volume [checked]",
+    "Volume"
+   ],
+   [
+    "fmt",
+    "Random Line [checked]",
+    "Random Line"
+   ],
+   [
+    "fmt",
+    "2D Line [checked]",
+    "2D Line"
+   ],
+   [
+    "fmt",
+    "3D Horizon [checked]",
+    "3D Horizon"
+   ],
+   [
+    "fmt",
+    "2D Horizon [checked]",
+    "2D Horizon"
+   ],
+   [
+    "fmt",
+    "Fault [checked]",
+    "Fault"
+   ],
+   [
+    "fmt",
+    "FaultSet [checked]",
+    "FaultSet"
+   ],
+   [
+    "fmt",
+    "FaultStickSet [checked]",
+    "FaultStickSet"
+   ],
+   [
+    "fmt",
+    "FaultStickSet_01 [checked]",
+    "FaultStickSet_01"
+   ],
+   [
+    "fmt",
+    "Geobody [checked]",
+    "Geobody"
+   ],
+   [
+    "fmt",
+    "Well [checked]",
+    "Well"
+   ],
+   [
+    "fmt",
+    "PointSet [checked]",
+    "PointSet"
+   ],
+   [
+    "fmt",
+    "Polygon [checked]",
+    "Polygon"
+   ],
+   [
+    "fmt",
+    "Prestack Events [checked]",
+    "Prestack Events"
+   ],
+   [
+    "rep",
+    "Select...",
+    "Select ..."
+   ],
+   [
+    "rep",
+    "In-line (110)",
+    "In-line 110"
+   ],
+   [
+    "rep",
+    "Step (1)",
+    "Step 1"
+   ],
+   [
+    "rep",
+    "Copy Selection to (Fault)",
+    "Copy Selection to | Fault"
+   ],
+   [
+    "add",
+    "",
+    "1500"
+   ],
+   [
+    "dedup",
+    "Fault",
+    ""
+   ],
+   [
+    "dedup",
+    "Cross-line",
+    ""
+   ],
+   [
+    "dedup",
+    "In-line",
+    ""
+   ]
+  ],
+  "sentences": {}
+ },
+ "opendtect__fault_sticks__01/step_6": {
+  "n_before": 52,
+  "n_after": 52,
+  "items": [
+   [
+    "rep",
+    "Select...",
+    "Select ..."
+   ],
+   [
+    "rep",
+    "In-line (130)",
+    "In-line 130"
+   ],
+   [
+    "rep",
+    "Step (10)",
+    "Step 10"
+   ],
+   [
+    "rep",
+    "Copy Selection to (Fault)",
+    "Copy Selection to | Fault"
+   ],
+   [
+    "dedup",
+    "Fault",
+    ""
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "Inline moved to 130 (toolbar In-line 130, Step 10); sticks exist on several inlines and the view is zoomed to the faulted part. Z-slice tree item still empty; no Similarity attribute.",
+    "Inline moved to 130 (toolbar In-line 130, Step 10; tree In-line > 130 > 4 Dip steered medi...); the section shows several sticks on inline 130 and the view is zoomed in on the faulted part (axis labels 500, 600, Time, 1000, 1500). Sticks on the other inlines exist but are not displayed on screen (화면상 확인 불가, 세션 이력 기준). Z-slice tree item still empty; no Similarity attribute."
+   ]
+  }
+ },
+ "opendtect__fault_sticks__01/step_7": {
+  "n_before": 51,
+  "n_after": 51,
+  "items": [
+   [
+    "rep",
+    "Select...",
+    "Select ..."
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "Z-slice 1500 added with '9-1 Similarity on FEF seismic' displayed (toolbar Z 1500, Step 4); camera tilted towards a top view (north up) with inline 130 visible below. FaultStickSet_01 colour swatch violet; sticks visible as thin violet lines over the slice, none selected. Fault tree item empty.",
+    "Z-slice 1500 added with '9-1 Similarity on F...' (tree label truncated; full name '9-1 Similarity on FEF seismic' 화면상 확인 불가, 세션 이력 기준) displayed (toolbar Z 1500, Step 4); camera tilted towards a top view (north up; gizmo shows N and E) with inline 130 visible below. FaultStickSet_01 colour swatch violet; sticks visible as short violet marks along the slice/inline intersection, none selected. Fault tree item empty. Status bar shows 130/559, (612287, 6074487, 1066.9), Value = -1109, In-line: 130. The top icon of the left main toolbar shows a hand cursor (arrow cursor in steps 0-6)."
+   ]
+  }
+ },
+ "opendtect__fault_sticks__01/step_8": {
+  "n_before": 51,
+  "n_after": 52,
+  "items": [
+   [
+    "add",
+    "",
+    "SEG-Y"
+   ],
+   [
+    "rep",
+    "Select...",
+    "Select ..."
+   ],
+   [
+    "rep",
+    "Tr",
+    "Ti"
+   ]
+  ],
+  "sentences": {}
+ },
+ "opendtect__horizon_autotrack__01/step_0": {
+  "n_before": 47,
+  "n_after": 46,
+  "items": [
+   [
+    "del",
+    "N",
+    ""
+   ],
+   [
+    "rep",
+    "In-line (130)",
+    "In-line 130"
+   ],
+   [
+    "rep",
+    "Step (10)",
+    "Step 10"
+   ]
+  ],
+  "sentences": {}
+ },
+ "opendtect__horizon_autotrack__01/step_1": {
+  "n_before": 58,
+  "n_after": 60,
+  "items": [
+   [
+    "add",
+    "",
+    "?"
+   ],
+   [
+    "rep",
+    "In-line (130)",
+    "In-line 130"
+   ],
+   [
+    "rep",
+    "Step (10)",
+    "Step 10"
+   ],
+   [
+    "rep",
+    "Method (Seed Trace)",
+    "Method | Seed Trace"
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "Mode tab active: Section Auto-track selected, Method = Seed Trace. Tabs: Mode, Event, Correlation, Properties (no DipSteer tab; no dip-steering licence). Tree shows <New Horizon 1> with child items Tracking Order, Seed Index, Correlation, Amplitude, Z values (warning icons). No seed picked.",
+    "Mode tab active: Section Auto-track selected, Method = Seed Trace; Snap to Event checkbox greyed out. Tabs: Mode, Event, Correlation, Properties (no DipSteer tab; no dip-steering licence: 화면상 확인 불가, 세션 이력 기준). Tree shows <New Horizon 1> with child items Tracking Order, Seed Index, Correlation, Amplitude, Z values (warning icons). No seed picked."
+   ]
+  }
+ },
+ "opendtect__horizon_autotrack__01/step_2": {
+  "n_before": 67,
+  "n_after": 73,
+  "items": [
+   [
+    "rep",
+    "In-line (130)",
+    "In-line 130"
+   ],
+   [
+    "rep",
+    "Step (10)",
+    "Step 10"
+   ],
+   [
+    "rep",
+    "Event type (Peak)",
+    "Event type | Peak"
+   ],
+   [
+    "rep",
+    "Threshold type (Relative difference)",
+    "Threshold type | Relative difference"
+   ],
+   [
+    "rep",
+    "Allowed difference (%) (25)",
+    "Allowed difference (%) | 25"
+   ],
+   [
+    "rep",
+    "Search window (ms) (-8)",
+    "Search window (ms) | -8"
+   ],
+   [
+    "rep",
+    "Search window (ms) (8)",
+    "8"
+   ],
+   [
+    "rep",
+    "Data Display window (ms) (-16)",
+    "Data Display window (ms) | -16"
+   ],
+   [
+    "rep",
+    "Data Display window (ms) (16)",
+    "16"
+   ],
+   [
+    "rep",
+    "Nr Traces (5)",
+    "Nr Traces | 5"
+   ],
+   [
+    "fmt",
+    "WVA [checked]",
+    "WVA"
+   ],
+   [
+    "fmt",
+    "VD [unchecked]",
+    "VD"
+   ],
+   [
+    "fmt",
+    "Symmetric [unchecked]",
+    "Symmetric"
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "Event tab active: Event type = Peak, Threshold type = Relative difference, Allowed difference (%) 25, Search window (ms) -8 8, Data Display window (ms) -16 16, Nr Traces 5, Picked on (empty), WVA checked. Correlation tab not yet edited.",
+    "Event tab active: Event type = Peak, Threshold type = Relative difference, Allowed difference (%) 25, Search window (ms) -8 8, Data Display window (ms) -16 16, Nr Traces 5, Picked on (empty), WVA checked, VD unchecked, both Symmetric boxes unchecked. Correlation tab not yet edited (화면상 확인 불가, 세션 이력 기준)."
+   ]
+  }
+ },
+ "opendtect__horizon_autotrack__01/step_3": {
+  "n_before": 70,
+  "n_after": 72,
+  "items": [
+   [
+    "del",
+    "F",
+    ""
+   ],
+   [
+    "del",
+    "▷",
+    ""
+   ],
+   [
+    "rep",
+    "In-line (130)",
+    "In-line 130"
+   ],
+   [
+    "rep",
+    "Step (10)",
+    "Step 10"
+   ],
+   [
+    "rep",
+    "Compare window (ms) (-40)",
+    "Compare window (ms) | -40"
+   ],
+   [
+    "rep",
+    "Correlation threshold (%) (60.0)",
+    "Correlation threshold (%) | 60.0"
+   ],
+   [
+    "rep",
+    "Data Display window (ms) (-48)",
+    "Data Display window (ms) | -48"
+   ],
+   [
+    "rep",
+    "Nr Traces (5)",
+    "Nr Traces | 5"
+   ]
+  ],
+  "sentences": {}
+ },
+ "opendtect__horizon_autotrack__01/step_4": {
+  "n_before": 67,
+  "n_after": 72,
+  "items": [
+   [
+    "del",
+    "▷",
+    ""
+   ],
+   [
+    "rep",
+    "In-line (130)",
+    "In-line 130"
+   ],
+   [
+    "rep",
+    "Step (10)",
+    "Step 10"
+   ],
+   [
+    "rep",
+    "Compare window (ms) (-40)",
+    "Compare window (ms) | -40"
+   ],
+   [
+    "rep",
+    "Correlation threshold (%) (60.0)",
+    "Correlation threshold (%) | 60.0"
+   ],
+   [
+    "rep",
+    "Data Display window (ms) (-48)",
+    "Data Display window (ms) | -48"
+   ],
+   [
+    "rep",
+    "Nr Traces (5)",
+    "Nr Traces | 5"
+   ],
+   [
+    "add",
+    "",
+    "Auto-Track (icon) | Retrack-All (icon)"
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "One seed picked on a Peak reflector near the bottom of Random Line 1; the section auto-track drew a green horizon line along the section (Section Auto-track behaviour), no 3D patch yet. <New Horizon 1> active in the tree. Settings window moved to the top-right, Correlation tab visible, WVA waveform panel shows the picked trace. Toolbar now shows the tracking icons (Auto-Track, Retrack). Status bar shows coordinates and Value.",
+    "One seed picked near the bottom of Random Line 1 (white square marker); the section auto-track drew a green horizon line along the section (Section Auto-track behaviour), no 3D patch yet. The seed is on a Peak event per the Event-tab setting (화면상 확인 불가, 세션 이력 기준). <New Horizon 1> active in the tree (child items still show warning icons). Settings window moved to the top-right (inactive title bar), Correlation tab visible, WVA waveform panel shows the picked trace with a green seed marker. The dialog's Auto-Track and Retrack-All icons are now enabled (green); the main toolbar shows six additional tracking icons (no text). Status bar is empty except [free mem]."
+   ]
+  }
+ },
+ "opendtect__horizon_autotrack__01/step_5": {
+  "n_before": 68,
+  "n_after": 75,
+  "items": [
+   [
+    "del",
+    "N",
+    ""
+   ],
+   [
+    "rep",
+    "In-line (130)",
+    "In-line 130"
+   ],
+   [
+    "rep",
+    "Step (10)",
+    "Step 10"
+   ],
+   [
+    "rep",
+    "Compare window (ms) (-40, 40)",
+    "Compare window (ms) | -40 | 40"
+   ],
+   [
+    "rep",
+    "Correlation threshold (%) (60.0)",
+    "Correlation threshold (%) | 60.0"
+   ],
+   [
+    "rep",
+    "Data Display window (ms) (-48, 48)",
+    "Data Display window (ms) | -48 | 48"
+   ],
+   [
+    "rep",
+    "Nr Traces (5)",
+    "Nr Traces | 5"
+   ],
+   [
+    "add",
+    "",
+    "Auto-Track (icon) | Retrack-All (icon)"
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "Auto-Track has run: a green 3D horizon patch spreads out of the random line into the scene. <New Horizon 1> child items now show colour swatches. Settings window still open (Correlation tab). Patch not locked. No context menu open.",
+    "Auto-Track has run: a green 3D horizon patch spreads out of the random line into the scene. <New Horizon 1> child items now show colour swatches. Settings window still open (Correlation tab); the main toolbar's save icon is now enabled. Patch not locked (화면상 확인 불가, 세션 이력 기준). No context menu open. Status bar shows 425/429, (608829, 6081768, 1817.8), Value = -3612, Random Line 1."
+   ]
+  }
+ },
+ "opendtect__horizon_autotrack__01/step_6": {
+  "n_before": 66,
+  "n_after": 72,
+  "items": [
+   [
+    "rep",
+    "In-line (130)",
+    "In-line 130"
+   ],
+   [
+    "rep",
+    "Step (10)",
+    "Step 10"
+   ],
+   [
+    "rep",
+    "Compare window (ms) (-40)",
+    "Compare window (ms) | -40"
+   ],
+   [
+    "rep",
+    "Correlation threshold (%) (60.0)",
+    "Correlation threshold (%) | 60.0"
+   ],
+   [
+    "rep",
+    "Data Display window (ms) (-48)",
+    "Data Display window (ms) | -48"
+   ],
+   [
+    "rep",
+    "Nr Traces (5)",
+    "Nr Traces | 5"
+   ],
+   [
+    "add",
+    "",
+    "Auto-Track (icon) | Retrack-All (icon)"
+   ]
+  ],
+  "sentences": {
+   "data_state": [
+    "Patch locked via Tracking > Lock. Visually identical to step 5 except the status bar is empty; the lock state is not visible on screen and is known only from the session history. Goal reached.",
+    "Patch locked via Tracking > Lock (화면상 확인 불가, 세션 이력 기준). Visually identical to step 5 except: the status bar is empty (only [free mem]) and the seed marker on the section is blue (white in step 5); whether the blue marker reflects the lock cannot be confirmed from the screen. Goal reached."
+   ]
+  }
+ }
+}
