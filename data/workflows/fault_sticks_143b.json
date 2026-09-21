@@ -1,0 +1,160 @@
+{
+  "workflow_id": "fault_sticks_143b",
+  "name": "Fault Sticks → Fault Plane (§1.4.3b)",
+  "description": "OpendTect 매뉴얼 §1.4.3b Fault Sticks 연습: In-line 110에 4 Dip steered median filter를 표시하고 FaultStickSet을 새로 만들어 저장(FaultStickSet_01)한 뒤 Only at Sections로 표시, 여러 인라인에서 fault stick을 픽하고, Z-slice(1500 ms)에 9-1 Similarity를 표시해 같은 lineament의 스틱을 선택한 다음 Copy Selection to > Fault > Create Single New로 단층면(Fault_01A)을 만든다. 노드 signature는 매뉴얼 본문과 그림 OCR(p.87–91)만으로 작성했고(study 2, 2026-09-21), 테스트 스크린샷을 보기 전에 커밋했다.",
+  "authoring": {
+    "source": "manual §1.4.3b pp.87–91 (chromadb_v4 chunks), figure OCR text",
+    "screenshots_seen": false,
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action that leads to the next node"
+  },
+  "nodes": [
+    {
+      "id": "fault_sticks_143b_01_inline_110_loaded",
+      "workflow_id": "fault_sticks_143b",
+      "step_number": 1,
+      "title": "In-line 110에 4 Dip steered median filter 표시, 단층 부위로 확대",
+      "description": "매뉴얼 §1.4.3b step 1–4 결과: In-line 우클릭 > Add Default Data로 4 Dip steered median filter가 표시되고 인라인 위치 110, In-line view, 단층이 있는 부분으로 표시 영역 축소. 트리의 FaultStickSet 항목은 비어 있음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene (In-line view)",
+        "expected_ui_elements": ["tree_inline_110_with_4_dip_steered_median_filter", "tree_faultstickset_empty", "inline_view", "navigation_toolbar_inline_110"],
+        "screenshot_keywords": ["In-line", "110", "4 Dip steered median filter", "FaultStickSet", "Tree scene 1", "View In-line", "no FaultStickSet item yet"]
+      },
+      "parameters": [{"name": "In-line", "default": "110", "description": "인라인 위치"}],
+      "manual_sections": ["1.4.3b"]
+    },
+    {
+      "id": "fault_sticks_143b_02_new_faultstickset",
+      "workflow_id": "fault_sticks_143b",
+      "step_number": 2,
+      "title": "<New FaultStickSet 1> 생성됨 (저장 전)",
+      "description": "매뉴얼 step 5 결과: 트리의 FaultStickSet 우클릭 > New 로 <New FaultStickSet 1> 항목이 트리에 생김. 아직 이름을 저장하지 않았고 Save as 대화상자도 열리지 않음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene",
+        "expected_ui_elements": ["tree_new_faultstickset_1", "inline_110_displayed", "no_dialog_open"],
+        "screenshot_keywords": ["<New FaultStickSet 1>", "FaultStickSet", "In-line", "110"]
+      },
+      "parameters": [],
+      "manual_sections": ["1.4.3b"]
+    },
+    {
+      "id": "fault_sticks_143b_03_save_as_dialog",
+      "workflow_id": "fault_sticks_143b",
+      "step_number": 3,
+      "title": "Output selection 대화상자 (FaultStickSet 이름 입력 전)",
+      "description": "매뉴얼 step 6–7: <New FaultStickSet 1> 우클릭 > Save as... 로 'Output selection' 대화상자가 열림. 'Output FaultStickSet' 이름 필드, Select..., Replace in tree 체크, OK/Cancel 버튼이 보임. 이름은 아직 입력하지 않았거나 기본값.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Output selection",
+        "expected_ui_elements": ["output_faultstickset_name_field", "select_button", "replace_in_tree_checkbox", "ok_button", "cancel_button"],
+        "screenshot_keywords": ["Output selection", "Output FaultStickSet", "Select ...", "Replace in tree", "OK", "Cancel", "Help"]
+      },
+      "parameters": [{"name": "Output FaultStickSet", "default": "FaultStickSet_01", "description": "저장할 fault stick set 이름"}],
+      "manual_sections": ["1.4.3b"]
+    },
+    {
+      "id": "fault_sticks_143b_04_faultstickset_saved",
+      "workflow_id": "fault_sticks_143b",
+      "step_number": 4,
+      "title": "FaultStickSet_01 저장됨 (Only at Sections 설정 전)",
+      "description": "매뉴얼 step 7 결과: 이름 FaultStickSet_01로 저장되어 트리 항목이 FaultStickSet_01로 바뀜. 대화상자는 닫힘. Display > Only at Sections는 아직 켜지 않음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene",
+        "expected_ui_elements": ["tree_faultstickset_01", "no_dialog_open", "inline_110_displayed"],
+        "screenshot_keywords": ["FaultStickSet_01", "FaultStickSet", "In-line", "110", "no Output selection dialog"]
+      },
+      "parameters": [],
+      "manual_sections": ["1.4.3b"]
+    },
+    {
+      "id": "fault_sticks_143b_05_only_at_sections",
+      "workflow_id": "fault_sticks_143b",
+      "step_number": 5,
+      "title": "Only at Sections 표시 켜짐, 픽 준비 상태 (스틱 없음)",
+      "description": "매뉴얼 step 8 결과: FaultStickSet_01 우클릭 > Display > Only at Sections 를 켬. Position mode, 트리에서 FaultStickSet_01 선택, Edit Sticks 아이콘 토글 상태로 픽 준비. 아직 스틱은 하나도 없음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene (In-line 110)",
+        "expected_ui_elements": ["faultstickset_01_selected_in_tree", "only_at_sections_on", "position_mode", "edit_sticks_toggle", "no_sticks_yet"],
+        "screenshot_keywords": ["FaultStickSet_01", "Only at Sections", "Edit Sticks", "Position mode", "In-line 110", "no fault stick picked yet"]
+      },
+      "parameters": [],
+      "manual_sections": ["1.4.3b"]
+    },
+    {
+      "id": "fault_sticks_143b_06_sticks_on_inline_110",
+      "workflow_id": "fault_sticks_143b",
+      "step_number": 6,
+      "title": "In-line 110에 fault stick 여러 개 픽됨",
+      "description": "매뉴얼 step 9–12 결과: 인라인 110에서 좌클릭+드래그(또는 클릭 후 더블클릭으로 종료)로 fault stick 여러 개를 픽함. 스틱은 단면 위에 선으로 표시. 아직 다른 인라인으로 이동하지 않음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene (In-line 110)",
+        "expected_ui_elements": ["fault_sticks_drawn_on_inline_110", "faultstickset_01_in_tree", "inline_110"],
+        "screenshot_keywords": ["FaultStickSet_01", "fault stick", "In-line 110", "4 Dip steered median filter", "sticks drawn on section"]
+      },
+      "parameters": [],
+      "manual_sections": ["1.4.3b"]
+    },
+    {
+      "id": "fault_sticks_143b_07_sticks_on_several_inlines",
+      "workflow_id": "fault_sticks_143b",
+      "step_number": 7,
+      "title": "여러 인라인(110, 120, …)에 스틱 픽 완료 (Z-slice 추가 전)",
+      "description": "매뉴얼 step 13 결과: Z/X 키 또는 네비게이션 툴바로 인라인을 120, 130 …으로 옮기며 스틱을 더 픽함. 현재 인라인은 110이 아닌 위치(예: 120 이상). Z-slice는 아직 추가하지 않음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene (In-line 120 or later)",
+        "expected_ui_elements": ["fault_sticks_on_multiple_inlines", "inline_position_not_110", "faultstickset_01_in_tree", "no_zslice_in_tree"],
+        "screenshot_keywords": ["In-line", "120", "130", "FaultStickSet_01", "fault sticks", "Z-slice empty"]
+      },
+      "parameters": [{"name": "In-line step", "default": "10", "description": "인라인 이동 간격"}],
+      "manual_sections": ["1.4.3b"]
+    },
+    {
+      "id": "fault_sticks_143b_08_zslice_similarity",
+      "workflow_id": "fault_sticks_143b",
+      "step_number": 8,
+      "title": "Z-slice 1500 ms에 9-1 Similarity 표시, 위에서 본 스틱 (선택 전)",
+      "description": "매뉴얼 step 14–15 결과: Z-slice를 추가해 1500 ms로 옮기고 View North(위에서 보기)로 전환, Stored attribute의 9-1 Similarity on FEF seismic을 표시. 스틱들이 시간 단면 위에 점/선으로 보임. 아직 스틱을 선택(폴리곤/Ctrl+클릭)하지 않았고 Copy Selection to 툴바는 사용 전.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene (Z-slice, view North)",
+        "expected_ui_elements": ["zslice_1500_in_tree", "similarity_attribute_on_zslice", "view_north", "fault_sticks_seen_from_top", "no_sticks_selected"],
+        "screenshot_keywords": ["Z-slice", "1500", "9-1 Similarity", "Similarity", "View North", "FaultStickSet_01", "sticks violet (unselected)"]
+      },
+      "parameters": [
+        {"name": "Z-slice", "default": "1500", "description": "시간 단면 위치 (ms)"},
+        {"name": "Attribute", "default": "9-1 Similarity on FEF seismic", "description": "단층 불연속 속성"}
+      ],
+      "manual_sections": ["1.4.3b"]
+    },
+    {
+      "id": "fault_sticks_143b_09_fault_plane_created",
+      "workflow_id": "fault_sticks_143b",
+      "step_number": 9,
+      "title": "선택한 스틱으로 Fault_01A 단층면 생성 완료 (목표 도달)",
+      "description": "매뉴얼 step 16–17 결과: 같은 lineament의 스틱을 선택(선택된 스틱은 녹색)하고 Copy Selection to > Fault > Create Single New, 이름 Fault_01A 입력 후 Go! 를 눌러 단층면이 만들어짐. 트리의 Fault 항목에 Fault_01A가 나타남. 목표 도달.",
+      "step_type": "terminal",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene",
+        "expected_ui_elements": ["tree_fault_fault_01a", "fault_plane_in_scene", "faultstickset_01_in_tree"],
+        "screenshot_keywords": ["Fault", "Fault_01A", "Copy Selection to", "Create Single New", "fault plane", "FaultStickSet_01"]
+      },
+      "parameters": [{"name": "Fault name", "default": "Fault_01A", "description": "생성할 단층면 이름"}],
+      "manual_sections": ["1.4.3b"]
+    }
+  ],
+  "edges": [
+    {"source": "fault_sticks_143b_01_inline_110_loaded", "target": "fault_sticks_143b_02_new_faultstickset", "edge_type": "sequential", "condition": null, "instruction": "트리의 FaultStickSet을 우클릭하고 New를 선택하세요"},
+    {"source": "fault_sticks_143b_02_new_faultstickset", "target": "fault_sticks_143b_03_save_as_dialog", "edge_type": "sequential", "condition": null, "instruction": "<New FaultStickSet 1>을 우클릭하고 Save as... 를 선택하세요"},
+    {"source": "fault_sticks_143b_03_save_as_dialog", "target": "fault_sticks_143b_04_faultstickset_saved", "edge_type": "sequential", "condition": null, "instruction": "Output FaultStickSet 이름에 FaultStickSet_01을 입력하고 OK를 클릭하세요"},
+    {"source": "fault_sticks_143b_04_faultstickset_saved", "target": "fault_sticks_143b_05_only_at_sections", "edge_type": "sequential", "condition": null, "instruction": "FaultStickSet_01을 우클릭하고 Display > Only at Sections 를 켜세요"},
+    {"source": "fault_sticks_143b_05_only_at_sections", "target": "fault_sticks_143b_06_sticks_on_inline_110", "edge_type": "sequential", "condition": null, "instruction": "인라인 110의 단층을 따라 좌클릭+드래그(또는 클릭 후 더블클릭으로 종료)하여 fault stick을 픽하세요"},
+    {"source": "fault_sticks_143b_06_sticks_on_inline_110", "target": "fault_sticks_143b_07_sticks_on_several_inlines", "edge_type": "sequential", "condition": null, "instruction": "Z/X 키(또는 네비게이션 툴바)로 인라인을 120으로 옮기고 같은 방식으로 스틱을 계속 픽하세요 (10 간격)"},
+    {"source": "fault_sticks_143b_07_sticks_on_several_inlines", "target": "fault_sticks_143b_08_zslice_similarity", "edge_type": "sequential", "condition": null, "instruction": "빈 Z-slice를 추가해 1500 ms로 드래그하고 View North로 전환한 뒤 Stored attribute에서 9-1 Similarity on FEF seismic을 표시하세요"},
+    {"source": "fault_sticks_143b_08_zslice_similarity", "target": "fault_sticks_143b_09_fault_plane_created", "edge_type": "sequential", "condition": null, "instruction": "같은 lineament의 스틱을 선택(폴리곤 드래그 또는 Ctrl+클릭)하고 Copy Selection to > Fault > Create Single New 에서 이름 Fault_01A를 입력한 뒤 Go! 를 클릭하세요"}
+  ]
+}

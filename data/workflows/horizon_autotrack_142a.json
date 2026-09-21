@@ -1,0 +1,135 @@
+{
+  "workflow_id": "horizon_autotrack_142a",
+  "name": "3D Horizon Auto-track (§1.4.2a, Seed Trace 방식)",
+  "description": "OpendTect 매뉴얼 §1.4.2a 3D Auto-track 연습: Random Line에 4 Dip steered median filter를 표시하고, 3D Horizon > New > Auto and Manual Tracking으로 Horizon Tracking Settings를 연 뒤 Mode(Section Auto-track / Seed Trace)·Event(Peak)·Correlation(Yes, 60%)을 설정하고, seed를 찍어 Auto-Track 한 패치를 QC 후 Lock 한다. 노드 signature는 매뉴얼 본문과 그림 OCR(p.69–73)만으로 작성했고(study 2, 2026-09-21), 테스트 스크린샷을 보기 전에 커밋했다.",
+  "authoring": {
+    "source": "manual §1.4.2a pp.69–73 (chromadb_v4 chunks), figure OCR text",
+    "screenshots_seen": false,
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action that leads to the next node"
+  },
+  "nodes": [
+    {
+      "id": "horizon_autotrack_142a_01_random_line_loaded",
+      "workflow_id": "horizon_autotrack_142a",
+      "step_number": 1,
+      "title": "Random Line에 4 Dip steered median filter 표시 (추적 전)",
+      "description": "매뉴얼 §1.4.2a step 1–2 결과: 4 Dip steered median filter가 pre-load 되어 있고 Random Line > Add Default Data로 서베이 중앙의 random line에 표시됨. 3D Horizon 트리 항목은 비어 있고 Horizon Tracking Settings 창은 아직 열리지 않음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene",
+        "expected_ui_elements": ["tree_random_line_with_4_dip_steered_median_filter", "tree_3d_horizon_empty", "scene_random_line_section", "no_tracking_settings_window"],
+        "screenshot_keywords": ["Random Line", "4 Dip steered median filter", "3D Horizon", "Tree scene 1", "Elements", "no Horizon Tracking Settings window"]
+      },
+      "parameters": [],
+      "manual_sections": ["1.4.2a"]
+    },
+    {
+      "id": "horizon_autotrack_142a_02_tracking_settings_open",
+      "workflow_id": "horizon_autotrack_142a",
+      "step_number": 2,
+      "title": "Horizon Tracking Settings 창 열림 (Mode 탭)",
+      "description": "매뉴얼 step 3–5 결과: 3D Horizon 우클릭 > New > Auto and Manual Tracking으로 'Horizon Tracking Settings - <New Horizon 1>' 창이 열림. Mode 탭이 보이며 Section Auto-track 모드와 Method = Seed Trace가 선택된 상태. 트리에 <New Horizon 1> 항목이 생김. Event 탭은 아직 열지 않음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Horizon Tracking Settings - <New Horizon 1>",
+        "expected_ui_elements": ["tab_mode_active", "tabs_mode_event_correlation_properties_dipsteer", "section_auto_track_selected", "method_seed_trace", "tree_new_horizon_1"],
+        "screenshot_keywords": ["Horizon Tracking Settings", "<New Horizon 1>", "Mode", "Section Auto-track", "Between Seeds", "Manual Draw", "Method", "Seed Trace", "Event", "Correlation", "Properties", "DipSteer"]
+      },
+      "parameters": [
+        {"name": "Mode", "default": "Section Auto-track", "description": "추적 모드"},
+        {"name": "Method", "default": "Seed Trace", "description": "추적 방법 (Seed Trace / Adjacent Parent)"}
+      ],
+      "manual_sections": ["1.4.2a"]
+    },
+    {
+      "id": "horizon_autotrack_142a_03_event_peak_set",
+      "workflow_id": "horizon_autotrack_142a",
+      "step_number": 3,
+      "title": "Event 탭: Event type = Peak 설정됨",
+      "description": "매뉴얼 step 6–7 결과: Event 탭이 활성화되고 Event type이 Peak로 선택됨. Threshold type Relative difference, Allowed difference (%) 25, Search window (ms) -8 8 등은 기본값 그대로. 'Picked on: 4 Dip steered median filter' 표시. Correlation 탭은 아직 손대지 않음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Horizon Tracking Settings - <New Horizon 1>",
+        "expected_ui_elements": ["tab_event_active", "event_type_peak", "threshold_type_relative_difference", "allowed_difference_percent", "search_window_ms", "picked_on_4_dip_steered_median_filter"],
+        "screenshot_keywords": ["Event", "Event type", "Peak", "Threshold type", "Relative difference", "Allowed difference (%)", "Search window (ms)", "Data Display window (ms)", "Nr Traces", "Picked on: 4 Dip steered median filter", "WVA", "VD"]
+      },
+      "parameters": [
+        {"name": "Event type", "default": "Peak", "description": "추적할 이벤트 유형"}
+      ],
+      "manual_sections": ["1.4.2a"]
+    },
+    {
+      "id": "horizon_autotrack_142a_04_correlation_set",
+      "workflow_id": "horizon_autotrack_142a",
+      "step_number": 4,
+      "title": "Correlation 탭: Use Correlation = Yes, threshold 60%",
+      "description": "매뉴얼 step 8–10 결과: Correlation 탭이 활성화되고 Use Correlation 토글이 Yes, Correlation threshold (%)가 60.0으로 설정됨. Compare window (ms) -40 40 기본값. 아직 seed는 찍지 않음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Horizon Tracking Settings - <New Horizon 1>",
+        "expected_ui_elements": ["tab_correlation_active", "use_correlation_yes", "correlation_threshold_60", "compare_window_ms", "snap_to_event"],
+        "screenshot_keywords": ["Correlation", "Use Correlation", "Yes", "No", "Compare window (ms)", "-40", "40", "Correlation threshold (%)", "60.0", "Snap to Event", "Data Display window (ms)"]
+      },
+      "parameters": [
+        {"name": "Use Correlation", "default": "Yes", "description": "상관 추적 사용 여부"},
+        {"name": "Correlation threshold (%)", "default": "60", "description": "상관 임계값"}
+      ],
+      "manual_sections": ["1.4.2a"]
+    },
+    {
+      "id": "horizon_autotrack_142a_05_seed_picked",
+      "workflow_id": "horizon_autotrack_142a",
+      "step_number": 5,
+      "title": "Random line 위 Peak 이벤트에 seed 하나 찍힘 (Auto-Track 전)",
+      "description": "매뉴얼 step 13 결과: <New Horizon 1>이 트리에서 활성 상태이고, random line의 Peak(Max) 반사면 위에 seed가 하나 찍혀 있음. 커서는 십자 모양. 추적된 패치는 아직 없음(seed 지점만 표시). Horizon Tracking Settings 창은 열린 채(툴바에 Auto-Track·Retrack-All 아이콘).",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene + Horizon Tracking Settings",
+        "expected_ui_elements": ["seed_marker_on_random_line", "new_horizon_1_active_in_tree", "no_tracked_patch_yet", "auto_track_icon_in_settings_window"],
+        "screenshot_keywords": ["<New Horizon 1>", "seed", "Random Line", "Horizon Tracking Settings", "Auto-Track", "cross cursor", "single seed point, no horizon patch"]
+      },
+      "parameters": [],
+      "manual_sections": ["1.4.2a"]
+    },
+    {
+      "id": "horizon_autotrack_142a_06_patch_tracked",
+      "workflow_id": "horizon_autotrack_142a",
+      "step_number": 6,
+      "title": "Auto-Track 실행 후 horizon 패치 표시됨 (QC 단계)",
+      "description": "매뉴얼 step 14–17 결과: Auto-Track 아이콘을 눌러 seed 주변으로 horizon 패치가 추적되어 random line과 3D scene에 표시됨. 사용자는 패치를 QC(v/V 키로 sections only, random line 드래그)하고 필요하면 correlation window를 [-20, 20]으로 바꿔 Retrack-All 한다. 아직 Lock 하지 않음.",
+      "step_type": "verification",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene",
+        "expected_ui_elements": ["tracked_horizon_patch_in_scene", "new_horizon_1_in_tree", "horizon_tracking_settings_window_open", "retrack_all_icon"],
+        "screenshot_keywords": ["<New Horizon 1>", "horizon patch", "auto-tracked", "Random Line", "Retrack", "Horizon Tracking Settings", "Correlation window"]
+      },
+      "parameters": [
+        {"name": "Compare window (ms)", "default": "-20 20", "description": "패치가 작을 때 줄여서 Retrack-All"}
+      ],
+      "manual_sections": ["1.4.2a"]
+    },
+    {
+      "id": "horizon_autotrack_142a_07_patch_locked",
+      "workflow_id": "horizon_autotrack_142a",
+      "step_number": 7,
+      "title": "패치 Lock 완료 (목표 도달)",
+      "description": "매뉴얼 step 18 결과: 패치를 우클릭 > Tracking > Lock(또는 Ctrl+우클릭 > Lock) 하여 더 이상 바뀌지 않도록 잠금. 컨텍스트 메뉴는 닫힌 상태. 이 연습의 목표(패치 하나를 추적하고 잠금)에 도달. 이후 빈 영역에 seed를 더 찍어 반복하는 것은 범위 밖.",
+      "step_type": "terminal",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene",
+        "expected_ui_elements": ["locked_horizon_patch", "new_horizon_1_in_tree", "no_context_menu_open"],
+        "screenshot_keywords": ["<New Horizon 1>", "Lock", "locked", "horizon patch", "Tracking"]
+      },
+      "parameters": [],
+      "manual_sections": ["1.4.2a"]
+    }
+  ],
+  "edges": [
+    {"source": "horizon_autotrack_142a_01_random_line_loaded", "target": "horizon_autotrack_142a_02_tracking_settings_open", "edge_type": "sequential", "condition": null, "instruction": "트리의 3D Horizon을 우클릭하고 New > Auto and Manual Tracking을 선택하세요"},
+    {"source": "horizon_autotrack_142a_02_tracking_settings_open", "target": "horizon_autotrack_142a_03_event_peak_set", "edge_type": "sequential", "condition": null, "instruction": "Event 탭을 클릭하고 Event type을 Peak로 선택하세요 (search window는 기본값 유지)"},
+    {"source": "horizon_autotrack_142a_03_event_peak_set", "target": "horizon_autotrack_142a_04_correlation_set", "edge_type": "sequential", "condition": null, "instruction": "Correlation 탭을 클릭하고 Use Correlation을 Yes로, Correlation threshold를 60%로 설정하세요"},
+    {"source": "horizon_autotrack_142a_04_correlation_set", "target": "horizon_autotrack_142a_05_seed_picked", "edge_type": "sequential", "condition": null, "instruction": "random line 위의 Peak 반사면에 seed를 하나 클릭하세요 (horizon이 트리에서 활성 상태여야 함)"},
+    {"source": "horizon_autotrack_142a_05_seed_picked", "target": "horizon_autotrack_142a_06_patch_tracked", "edge_type": "sequential", "condition": null, "instruction": "Horizon Tracking Settings 창의 Auto-Track 아이콘을 클릭하세요"},
+    {"source": "horizon_autotrack_142a_06_patch_tracked", "target": "horizon_autotrack_142a_07_patch_locked", "edge_type": "sequential", "condition": null, "instruction": "패치를 QC 한 뒤 패치를 우클릭 > Tracking > Lock 으로 잠그세요"}
+  ]
+}

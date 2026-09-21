@@ -1,0 +1,166 @@
+{
+  "scenario_id": "opendtect__fault_sticks__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "Introduction To OpendTect and OpendTect Pro Training Manual 7.0",
+  "manual_reference": "1.4.3b Fault Sticks, steps 5–17 (steps 1–4, loading In-line 110 and zooming to the faulted part, are the initial state; step 18 'repeat for more planes' is out of scope)",
+  "category": "fault_interpretation",
+  "difficulty": "hard",
+  "language": "ko",
+  "goal": "F3 Demo의 In-line 110(4 Dip steered median filter)에서 새 FaultStickSet을 만들어 FaultStickSet_01로 저장하고 Only at Sections로 표시한 뒤, 인라인 110·120 …에서 fault stick을 픽하고, Z-slice 1500 ms에 9-1 Similarity를 표시해 같은 lineament의 스틱을 선택한 다음 Copy Selection to > Fault > Create Single New로 단층면 Fault_01A를 만든다. 매뉴얼 §1.4.3b.",
+  "initial_state": {
+    "description": "F3 Demo survey 활성. In-line 110에 4 Dip steered median filter 표시(Add Default Data), In-line view, 단층 부위로 표시 영역 축소. FaultStickSet 트리 항목 비어 있음.",
+    "must_be_true": ["F3 Demo survey active", "In-line 110 displayed with '4 Dip steered median filter'", "no FaultStickSet item in the tree", "no dialog open"]
+  },
+  "_study2_note": "Authored from the manual text only (2026-09-21), before any screenshot was captured. visual_state_gt is filled after capture by gt_enumerate_visible_elements.py + external review; patterns/keywords are NOT changed after the screenshots or any model output are seen.",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_0.jpg",
+      "expected_workflow_node": "fault_sticks_143b_01_inline_110_loaded",
+      "expected_action_text_pattern": "(?i)\\b(FaultStickSet|Fault Stick Set|New)\\b",
+      "expected_action_keywords": ["FaultStickSet", "New"],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Main window, In-line 110 with '4 Dip steered median filter' in In-line view, zoomed to the faulted part (manual steps 1–4). Tree: FaultStickSet item EMPTY. No dialog, no context menu.",
+        "user_should_have_just": "Set the inline to 110, clicked View In-line and resized the display to the faulted area.",
+        "must_not_show": ["<New FaultStickSet 1>", "an open right-click menu", "a Z-slice"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_1.jpg",
+      "expected_workflow_node": "fault_sticks_143b_02_new_faultstickset",
+      "expected_action_text_pattern": "(?i)\\b(Save as|Save As|Save|저장)\\b",
+      "expected_action_keywords": ["Save as"],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Tree shows '<New FaultStickSet 1>' under FaultStickSet. In-line 110 still displayed. No dialog open, no context menu.",
+        "user_should_have_just": "Right-clicked FaultStickSet > New (manual step 5) and closed the menu.",
+        "must_not_show": ["Output selection dialog", "FaultStickSet_01 (saved name)"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_2.jpg",
+      "expected_workflow_node": "fault_sticks_143b_03_save_as_dialog",
+      "expected_action_text_pattern": "(?i)\\b(FaultStickSet_01|OK|이름|name|Output FaultStickSet)\\b",
+      "expected_action_keywords": ["FaultStickSet_01"],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Output selection' dialog open (from Save as...): field 'Output FaultStickSet' EMPTY or default, Select..., 'Replace in tree' checkbox, OK / Cancel / Help buttons.",
+        "user_should_have_just": "Right-clicked <New FaultStickSet 1> > Save as... (manual step 6).",
+        "must_not_show": ["FaultStickSet_01 already typed in the field", "the dialog already closed"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_3.jpg",
+      "expected_workflow_node": "fault_sticks_143b_04_faultstickset_saved",
+      "expected_action_text_pattern": "(?i)\\b(Only at Sections|Only At Sections|Display)\\b",
+      "expected_action_keywords": ["Only at Sections"],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Dialog closed. Tree item now reads 'FaultStickSet_01'. In-line 110 displayed. Only at Sections NOT yet enabled; no context menu open.",
+        "user_should_have_just": "Typed FaultStickSet_01 and clicked OK (manual step 7).",
+        "must_not_show": ["Output selection dialog", "an open Display submenu"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_4.jpg",
+      "expected_workflow_node": "fault_sticks_143b_05_only_at_sections",
+      "expected_action_text_pattern": "(?i)\\b(stick|Stick|스틱|drag|드래그|double-?click|더블\\s?클릭|pick|Pick|픽)\\b",
+      "expected_action_keywords": ["stick"],
+      "allowed_alternatives": [{"pattern": "(?i)\\b(Edit Sticks|Position mode)\\b", "note": "Enabling the pick prerequisites (manual step 10 note) is a valid next action if not yet visibly on."}],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "FaultStickSet_01 selected in the tree, Display > Only at Sections ON, Position mode active, Edit Sticks icon toggled on. In-line 110 displayed. NO fault stick picked yet.",
+        "user_should_have_just": "Enabled Only at Sections (manual step 8) and made the set active for picking.",
+        "must_not_show": ["any fault stick on the section", "an open context menu"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_5.jpg",
+      "expected_workflow_node": "fault_sticks_143b_06_sticks_on_inline_110",
+      "expected_action_text_pattern": "(?i)\\b(120|inline|In-?line|Z|X|이동|다음 인라인|next inline)\\b",
+      "expected_action_keywords": ["120"],
+      "allowed_alternatives": [{"pattern": "(?i)\\b(Save|저장)\\b", "note": "Manual step 11: save regularly."}],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "In-line 110 with SEVERAL fault sticks drawn along the fault(s). FaultStickSet_01 in tree. Still on inline 110 (navigation toolbar shows 110). No Z-slice.",
+        "user_should_have_just": "Picked several fault sticks on inline 110 (manual steps 9–12).",
+        "must_not_show": ["inline position other than 110", "a Z-slice in the tree"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 6,
+      "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_6.jpg",
+      "expected_workflow_node": "fault_sticks_143b_07_sticks_on_several_inlines",
+      "expected_action_text_pattern": "(?i)\\b(Z-?slice|Z slice|1500|Similarity|9-1|View North|North)\\b",
+      "expected_action_keywords": ["Z-slice", "1500"],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Fault sticks now exist on several inlines (110, 120, 130 …); current inline is NOT 110 (e.g. 130 or 140 in the toolbar). FaultStickSet_01 in tree. NO Z-slice yet.",
+        "user_should_have_just": "Moved through inlines with Z/X (step 10) picking sticks on each (manual step 13).",
+        "must_not_show": ["Z-slice in the tree", "Similarity attribute"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 7,
+      "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_7.jpg",
+      "expected_workflow_node": "fault_sticks_143b_08_zslice_similarity",
+      "expected_action_text_pattern": "(?i)\\b(Copy Selection|Create Single New|Fault_01A|select|Select|선택|polygon|폴리곤|Ctrl|Go)\\b",
+      "expected_action_keywords": ["select"],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Z-slice at 1500 ms in the tree with '9-1 Similarity on FEF seismic' displayed; view from the top (View North); the fault sticks are visible over the similarity slice, all UNSELECTED (violet). Copy Selection toolbar not used yet.",
+        "user_should_have_just": "Added an empty Z-slice, dragged it to 1500 ms, clicked View North and added the 9-1 Similarity stored attribute (manual steps 14–15).",
+        "must_not_show": ["green (selected) sticks", "Fault_01A in the tree"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 8,
+      "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_8.jpg",
+      "expected_workflow_node": "fault_sticks_143b_09_fault_plane_created",
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": ["완료"],
+      "allowed_alternatives": [{"pattern": "(?i)\\b(Done)\\b", "note": "English completion sentinel"}, {"pattern": "(?i)\\b(Fault_01A|fault plane|Fault|stick)\\b", "note": "Ground-truth element mention for the grounding validator."}],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "GOAL-REACHED terminal state: 'Fault_01A' present under Fault in the tree and the fault plane visible in the scene. Copy Selection toolbar closed/idle. No dialog open.",
+        "user_should_have_just": "Selected the sticks of one lineament, chose Copy Selection to > Fault > Create Single New, typed Fault_01A and clicked Go! (manual steps 16–17).",
+        "must_not_show": ["a second fault plane", "an open dialog"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_8.jpg",
+    "expected_done_sentinel": true,
+    "note": "step_8 depicts the goal-achieved terminal state (Fault_01A created from the selected sticks). Creating further planes (manual step 18) is out of scope."
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "scenario_id": "opendtect__horizon_autotrack__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "Introduction To OpendTect and OpendTect Pro Training Manual 7.0",
+  "manual_reference": "1.4.2a 3D Auto-track, steps 2–18 (Seed Trace method; pre-load in step 1 is part of the initial state; Adjacent Parent workflow and parents-path editing pp.74–77 are out of scope)",
+  "category": "horizon_tracking",
+  "difficulty": "hard",
+  "language": "ko",
+  "goal": "F3 Demo에서 Random Line에 표시된 4 Dip steered median filter 위에 3D auto-track(Section Auto-track, Seed Trace 방식, Event type Peak, Correlation 사용 60%)으로 새 3D Horizon 패치를 추적하고, QC 후 그 패치를 Lock 한다. 매뉴얼 §1.4.2a.",
+  "initial_state": {
+    "description": "F3 Demo survey 활성. 4 Dip steered median filter가 Survey > Pre-Load > Seismic으로 pre-load 되어 있고, Random Line > Add Default Data로 서베이 중앙의 random line에 표시됨. 3D Horizon 트리 항목 비어 있음. Horizon Tracking Settings 창은 열려 있지 않음.",
+    "must_be_true": ["F3 Demo survey active", "'4 Dip steered median filter' displayed on a Random Line", "no 3D Horizon in the tree", "Horizon Tracking Settings window not open"]
+  },
+  "_study2_note": "Authored from the manual text only (2026-09-21), before any screenshot was captured. visual_state_gt is filled after capture by gt_enumerate_visible_elements.py + external review; patterns/keywords are NOT changed after the screenshots or any model output are seen.",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_0.jpg",
+      "expected_workflow_node": "horizon_autotrack_142a_01_random_line_loaded",
+      "expected_action_text_pattern": "(?i)\\b(3D Horizon|Auto and Manual Tracking|Auto and Manual|New)\\b",
+      "expected_action_keywords": ["3D Horizon", "New"],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "OpendTect main window. Random Line with '4 Dip steered median filter' displayed in the 3D scene (manual step 2). Tree: 3D Horizon item EMPTY. No Horizon Tracking Settings window. No context menu open.",
+        "user_should_have_just": "Right-clicked Random Line > Add Default Data and confirmed the seismic is displayed; nothing about horizons done yet.",
+        "must_not_show": ["Horizon Tracking Settings window", "<New Horizon 1> in the tree", "an open right-click menu"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_1.jpg",
+      "expected_workflow_node": "horizon_autotrack_142a_02_tracking_settings_open",
+      "expected_action_text_pattern": "(?i)\\b(Event|Peak)\\b",
+      "expected_action_keywords": ["Event", "Peak"],
+      "allowed_alternatives": [{"pattern": "(?i)\\b(Section Auto-track|Seed Trace)\\b", "note": "Confirming/selecting the Mode-tab settings (manual step 5) is also a valid next action when they are visible but not yet confirmed."}],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Horizon Tracking Settings - <New Horizon 1>' window open on the MODE tab: Section Auto-track selected, Method = Seed Trace. Tree shows <New Horizon 1>. Event tab NOT yet opened.",
+        "user_should_have_just": "Right-clicked 3D Horizon > New > Auto and Manual Tracking (manual steps 3–5) and chosen Section Auto-track / Seed Trace.",
+        "must_not_show": ["Event tab active", "Correlation tab active", "a seed on the section"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_2.jpg",
+      "expected_workflow_node": "horizon_autotrack_142a_03_event_peak_set",
+      "expected_action_text_pattern": "(?i)\\b(Correlation|60)\\b",
+      "expected_action_keywords": ["Correlation", "60"],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Same window, EVENT tab active: Event type = Peak selected; Threshold type Relative difference, Allowed difference 25, Search window -8 8 at defaults. 'Picked on: 4 Dip steered median filter' visible. Correlation tab not yet opened.",
+        "user_should_have_just": "Clicked the Event tab and selected Peak (manual steps 6–7).",
+        "must_not_show": ["Correlation tab active", "Use Correlation = Yes"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_3.jpg",
+      "expected_workflow_node": "horizon_autotrack_142a_04_correlation_set",
+      "expected_action_text_pattern": "(?i)\\b(seed|Seed|Peak|random line|Random Line|반사면|시드)\\b",
+      "expected_action_keywords": ["seed"],
+      "allowed_alternatives": [{"pattern": "(?i)\\b(Steering|No|DipSteer)\\b", "note": "Manual step 11 (Steering = No) is a valid intermediate action when a dip-steering licence is present."}],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Same window, CORRELATION tab active: Use Correlation = Yes, Correlation threshold (%) = 60.0, Compare window -40 40. No seed picked yet; the random line shows seismic only.",
+        "user_should_have_just": "Clicked the Correlation tab, set Use Correlation to Yes and the threshold to 60 (manual steps 8–10).",
+        "must_not_show": ["a seed point on the section", "a tracked horizon patch"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_4.jpg",
+      "expected_workflow_node": "horizon_autotrack_142a_05_seed_picked",
+      "expected_action_text_pattern": "(?i)\\b(Auto-?Track|Auto-?track|auto-?track|자동 추적|자동추적)\\b",
+      "expected_action_keywords": ["Auto-Track"],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "3D scene with the random line; ONE seed picked on a Peak event (seed marker visible, cross cursor). <New Horizon 1> active (selected) in the tree. Horizon Tracking Settings window still open (its toolbar shows the Auto-Track and Retrack-All icons). No tracked patch yet.",
+        "user_should_have_just": "Clicked once on a Peak reflector on the random line to place a seed (manual step 13).",
+        "must_not_show": ["a tracked horizon patch beyond the seed", "a Lock context menu"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_5.jpg",
+      "expected_workflow_node": "horizon_autotrack_142a_06_patch_tracked",
+      "expected_action_text_pattern": "(?i)\\b(Lock|QC|sections only|Sections Only|Retrack|Retrack-All|drag|드래그|검토|확인|잠금|잠그)\\b",
+      "expected_action_keywords": ["Lock"],
+      "allowed_alternatives": [{"pattern": "(?i)\\b(v|V)\\b\\s*(key|키)", "note": "Manual step 15b: v/V shortcut to show the horizon at sections only."}],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Auto-Track has run: a horizon patch is visible around the seed on the random line / in the 3D scene. <New Horizon 1> in the tree. Settings window still open. Patch NOT locked; no context menu open.",
+        "user_should_have_just": "Clicked the Auto-Track icon in the Horizon Tracking Settings window (manual step 14).",
+        "must_not_show": ["an open right-click menu", "a second seed"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    },
+    {
+      "step_index": 6,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_6.jpg",
+      "expected_workflow_node": "horizon_autotrack_142a_07_patch_locked",
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": ["완료"],
+      "allowed_alternatives": [{"pattern": "(?i)\\b(Done)\\b", "note": "English completion sentinel"}, {"pattern": "(?i)\\b(Lock|locked|horizon|patch|seed)\\b", "note": "Ground-truth element mention for the grounding validator."}],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "GOAL-REACHED terminal state: the patch has been locked (right-click patch > Tracking > Lock, or Ctrl + right-click > Lock). Context menu closed. Patch visible; <New Horizon 1> in tree.",
+        "user_should_have_just": "Locked the QC-ed patch (manual step 18).",
+        "must_not_show": ["an open context menu", "a new seed placed after locking"]
+      },
+      "visual_state_gt": {"current_dialog": "_FILL_AFTER_CAPTURE", "visible_elements": [], "data_state": "_FILL_AFTER_CAPTURE", "current_action": "_FILL_AFTER_CAPTURE"}
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_6.jpg",
+    "expected_done_sentinel": true,
+    "note": "step_6 depicts the goal-achieved terminal state (one auto-tracked horizon patch locked). Continuing with more seeds (manual steps 19–23) is out of scope."
+  }
+}
