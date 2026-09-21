@@ -257,6 +257,30 @@ _CTX_V6_RULE = ("Rule: if the action above lists several actions, they are in OR
 # study 2: 0 = do not show the session's earlier generator answers to the rerank (removes the
 # generator -> routing coupling found in V3-22); 1 = v3 behaviour.
 RERANK_SESSION_BLOCK = os.environ.get("RERANK_SESSION_BLOCK", "1").strip() == "1"
+# study 2 (V3-30): session stickiness on identical dialog titles across workflows (R1) and the
+# history-aware [Next Action] of assembly v7 (C1). Defaults keep the v3 behaviour.
+ROUTER_SESSION_STICKY = os.environ.get("ROUTER_SESSION_STICKY", "0").strip() == "1"
+_CTX_V7_DONE = ("[Next Action] The previous instruction ({prev}) was the final action of this workflow. "
+                "If the screen shows nothing that contradicts it having been carried out, the goal is reached - answer with the "
+                "completion sentinel '완료' / 'Done'. Otherwise repeat only the part that is visibly not done.")
+_CTX_V7_ADVANCE = ("[Next Action] (the previous instruction - {prev} - already covered the step above; if the screen shows "
+                   "nothing contradicting it, continue with the next action from the workflow)")
+
+
+def _edge_covered(last_instruction: str, edge_instruction: str) -> bool:
+    """True if the previous instruction already told the user to do this edge's action. Latin UI
+    tokens / numbers of the edge must be mostly present in the previous instruction; for edges with
+    fewer than two such tokens a character-bigram Jaccard on the normalised text is used."""
+    if not last_instruction or not edge_instruction:
+        return False
+    stop = {"the", "and", "then", "click", "select", "with"}
+    tok = lambda t: {x for x in re.findall(r"[A-Za-z][A-Za-z\-]{2,}|\d+", (t or "").lower()) if x not in stop}
+    e, l = tok(edge_instruction), tok(last_instruction)
+    if len(e) >= 2:
+        return len(e & l) / len(e) >= 0.6
+    a, b = _norm_text(edge_instruction), _norm_text(last_instruction)
+    ga = {a[i:i + 2] for i in range(len(a) - 1)}; gb = {b[i:i + 2] for i in range(len(b) - 1)}
+    return bool(ga) and len(ga & gb) / len(ga | gb) >= 0.35
 _CTX_NOTE = ("Note: 매뉴얼의 예시 값(파일명·파라미터)은 사용자의 데이터와 다를 수 있다. 화면에 이미 설정된 값을 고치도록 안내하지 않는다. "
              "(Manual example values may differ from the user's data; do not instruct the user to change a value that is already set on screen.)")
 # v3 iteration 2 — two-stage routing: (i) workflow from the user goal (goal ↔
@@ -692,6 +716,8 @@ class GuideRAGPipeline:
                 tie_group=tie_group,
                 last_node_id=last_node_id,
             )
+            if picked_id and ROUTER_SESSION_STICKY:
+                picked_id = self._session_sticky(picked_id, candidates, session_wf, last_node_id)
             if picked_id:
                 for c in candidates:
                     if c["node"].get("id") == picked_id:
@@ -1116,6 +1142,8 @@ Respond with JSON only:
             "current_node": current_node,
             "confidence": confidence,
             "next_nodes": retrieval.get("next_nodes", []),
+            "next_nodes_2": (self.graph.get_next_steps(retrieval["next_nodes"][0]["id"]) if retrieval.get("next_nodes") else []),
+            "completed_steps": list(completed_steps or []),
             "graph_context": retrieval.get("graph_context", []),
             "vector_context": retrieval.get("vector_context"),
             "correction": correction,
@@ -1177,6 +1205,28 @@ Respond with JSON only:
         lines.append(f"Graph-order prior: {pref} — {why}. Pick another member of the group ONLY if a field state listed for it "
                      f"is literally present in visual_state and the prior's states are contradicted.")
         return "\n".join(lines)
+
+    def _session_sticky(self, picked_id: str, candidates: List[Dict], session_wf: Optional[str],
+                        last_node_id: Optional[str]) -> str:
+        """R1 (study 2): keep the session's workflow when the rerank jumped to another workflow's
+        node that shows the same dialog title as a session-workflow candidate."""
+        n = self.graph.get_node(picked_id)
+        if not n or not session_wf or n.get("workflow_id") == session_wf:
+            return picked_id
+        key = _norm_text(((n.get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0])
+        if not key:
+            return picked_id
+        same = [c["node"] for c in candidates if c["node"].get("workflow_id") == session_wf
+                and _norm_text(((c["node"].get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0]) == key]
+        if not same:
+            return picked_id
+        allowed = ({last_node_id} | {x["id"] for x in self.graph.get_next_steps(last_node_id)}) if last_node_id else set()
+        pref = ([x for x in same if x["id"] in allowed and x["id"] != last_node_id]
+                or [x for x in same if x["id"] in allowed] or same)
+        chosen = pref[0]["id"]
+        print(f"[GUIDE] session-sticky override: {picked_id} -> {chosen} (session workflow {session_wf}, same dialog '{key}')")
+        _LAST_LOCALIZE_META["route_sticky"] = {"from": picked_id, "to": chosen}
+        return chosen
 
     def _tie_prior(self, emb_top: List[Tuple[str, float]], last_node_id: Optional[str]) -> Optional[str]:
         """Iteration 3 (c): among the top embedding candidates that share the same
@@ -1383,16 +1433,31 @@ Respond with JSON only:
                 f"Step {current.get('step_number', '?')}: {current.get('title', '')}\n"
                 + ("The screen at this step shows — " + " | ".join(state_bits) if state_bits else "")
             )
-            if next_nodes:
-                act_lines = []
-                for n in next_nodes:
-                    cond = f" [if: {n.get('edge_condition')}]" if n.get("edge_condition") else ""
-                    instr = n.get("edge_instruction") or f"Step {n.get('step_number', '?')} {n.get('title', '')}"
-                    act_lines.append(f"  - {instr}{cond}  (→ Step {n.get('step_number', '?')}: {n.get('title', '')})")
-                parts.append("[Next Action] (from the workflow edge)\n" + "\n".join(act_lines)
-                             + ("\n" + _CTX_V6_RULE if CONTEXT_ASSEMBLY == "v6" else ""))
-            else:
-                parts.append("[Next Action] This is the final step of the workflow; if the screen shows the goal achieved, answer with the completion sentinel.")
+            def _act(n):
+                cond = f" [if: {n.get('edge_condition')}]" if n.get("edge_condition") else ""
+                instr = n.get("edge_instruction") or f"Step {n.get('step_number', '?')} {n.get('title', '')}"
+                return f"  - {instr}{cond}  (→ Step {n.get('step_number', '?')}: {n.get('title', '')})"
+            handled = False
+            if CONTEXT_ASSEMBLY == "v7" and next_nodes:
+                # C1: an action with no visible effect (Lock, a display toggle) cannot be seen on the
+                # screenshot; if the previous instruction already gave this edge's action, do not
+                # repeat it - declare the goal (terminal / goal-state) or advance to the next edge.
+                hist = [h for h in (pipeline_output.get("completed_steps") or []) if h]
+                last = (hist[-1] if hist else "").strip()
+                first = next_nodes[0]
+                if last and _edge_covered(last, first.get("edge_instruction") or ""):
+                    nn2 = pipeline_output.get("next_nodes_2") or []
+                    if goal_state or (first.get("step_type") or "") in _TERMINAL_STEP_TYPES or not nn2:
+                        parts.append(_CTX_V7_DONE.format(prev=last[:160]))
+                    else:
+                        parts.append(_CTX_V7_ADVANCE.format(prev=last[:160]) + "\n" + "\n".join(_act(n) for n in nn2) + "\n" + _CTX_V6_RULE)
+                    handled = True
+            if not handled:
+                if next_nodes:
+                    parts.append("[Next Action] (from the workflow edge)\n" + "\n".join(_act(n) for n in next_nodes)
+                                 + ("\n" + _CTX_V6_RULE if CONTEXT_ASSEMBLY in ("v6", "v7") else ""))
+                else:
+                    parts.append("[Next Action] This is the final step of the workflow; if the screen shows the goal achieved, answer with the completion sentinel.")
             parts.append(_CTX_NOTE)
         elif current:
             parts.append(
