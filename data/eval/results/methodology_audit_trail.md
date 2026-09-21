@@ -1368,3 +1368,4 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - **사전등록 2 최종화**: F2 = v7, F3 = 1, F4 = 풀 7, F5 = 세션 고정 규칙, 게이트 수정 사실과 GT 보류 반영을 §2.1·§7에 기재. 래퍼 `scripts/run_study2.sh`에 v7·sb1·sticky 고정, 서명 태그 없으면 실행 거부.
 - **서명**: 사용자 위임(2026-09-21 "GeoLens 우위를 위한 방향으로 진행해")에 따라 메인 세션이 서명란을 채움 — 작성 유지윤(연구 책임자) / 검토 Claude(메인 세션, 위임) / 확정 시각 = 서명 커밋 시각. 태그 `study2-prereg-signed`. 이후 테스트 세트·GT·채점기·메커니즘·풀 불변.
 - 확인 실행 시작 시각은 §8 아래에 append.
+- 확인 실행 시작(UTC): 2026-09-21T07:13:43Z(서명 커밋 3c54d70, 태그 `study2-prereg-signed`; 결과 JSON code_version은 이 뒤의 문서 커밋을 가리키며 `api/`·`scripts/`·`data/workflows/`·`data/eval/scenarios/`는 서명 커밋과 동일).

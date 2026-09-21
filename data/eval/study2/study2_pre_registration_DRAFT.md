@@ -71,3 +71,4 @@
 
 ## 8. 서명
 - 작성: 유지윤(연구 책임자) / 검토: Claude(메인 세션, 사용자 위임 2026-09-21) / 확정 시각(UTC): 2026-09-21T07:13:04Z (서명 커밋 시각; 태그 `study2-prereg-signed`)
+- 확인 실행 시작(UTC): 2026-09-21T07:13:43Z — `bash scripts/run_study2.sh`(순차, 30 replicate), 서명 커밋 3c54d70, 로그 `data/eval/results/study2_bench.log`.
