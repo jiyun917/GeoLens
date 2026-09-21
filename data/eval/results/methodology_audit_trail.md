@@ -1369,3 +1369,9 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - **서명**: 사용자 위임(2026-09-21 "GeoLens 우위를 위한 방향으로 진행해")에 따라 메인 세션이 서명란을 채움 — 작성 유지윤(연구 책임자) / 검토 Claude(메인 세션, 위임) / 확정 시각 = 서명 커밋 시각. 태그 `study2-prereg-signed`. 이후 테스트 세트·GT·채점기·메커니즘·풀 불변.
 - 확인 실행 시작 시각은 §8 아래에 append.
 - 확인 실행 시작(UTC): 2026-09-21T07:13:43Z(서명 커밋 3c54d70, 태그 `study2-prereg-signed`; 결과 JSON code_version은 이 뒤의 문서 커밋을 가리키며 `api/`·`scripts/`·`data/workflows/`·`data/eval/scenarios/`는 서명 커밋과 동일).
+
+### V3-32. 프로토콜 이탈: study 2 워크플로우의 linked_chunks 누락 발견 → 실행 중단·연결·재시작 (2026-09-21)
+- **발견 경위(공개)**: 확인 실행 시작 후 Gemini replicate 1–2의 중간 수치를 모니터링 중 보았고(full_system이 vanilla_vector보다 낮음), 사용자의 질문("그러면 우위가 아닌 거잖아")을 계기로 원인을 점검하다가 발견. 판정용 수치는 아니었으나 결과를 본 뒤의 조치이므로 이탈로 기록한다.
+- **결함**: study 2 워크플로우 `horizon_autotrack_142a.json`·`fault_sticks_143b.json`을 매뉴얼만 보고 저작해 커밋할 때(bdf8039) `linked_chunks`를 넣지 않았고, v3 절차 G7(모든 워크플로우를 절 출처 기준으로 KB v4에 연결; OpendTect 5 + QGIS 1은 2026-09-18에 수행)을 이 둘에는 적용하지 않았다. 그 결과 테스트 세트에서 full_system의 그래프 컨텍스트(연결 청크 3×800자)가 비어 컨텍스트가 약 3.5k자(상태 블록 + 벡터 1,500자 + 주의문)였고 vanilla_vector는 11–12.5k자였다. 이는 사전등록 2 §2("v3 동결 구성·KB v4 절차 그대로")의 구성이 아니다. 개발 세트 검증(§2.1)은 연결된 워크플로우로 돌았으므로 결함을 드러내지 못했다.
+- **조치**: 실행 중단(07:13–08:31 UTC; Gemini r1–r3 완료, r4 도중 종료; 약 $3). 부분 결과·로그는 `data/eval/results/study2_aborted_nolinks/`로 격리(README). `scripts/relink_chunks_v4.py`에 `--manual study2` 항목(절 출처 1.4.2a / 1.4.3b)을 추가해 **다른 워크플로우와 같은 기계적 절차**(chunk_mapper top-3, 절 우선)로 연결(`relink_chunks_v4_study2.md`, 19.4 s): 16노드 전부 해당 절의 청크 3개, 전부 KB v4에서 해석됨. 워크플로우의 signature·제목·설명·엣지·시나리오·GT·채점기·조립·라우팅 코드는 손대지 않았다.
+- **재시작**: 같은 서명 문서·같은 판정 규칙으로 replicate 1부터 다시 실행(태그 `study2-prereg-signed-dev1` = 이 커밋). 격리된 3회는 어떤 표에도 쓰지 않는다. 사전등록 2 §8에 이탈 기록을 add-only로 덧붙인다.

@@ -17,11 +17,45 @@
       "step_type": "setup",
       "visual_signature": {
         "expected_dialog": "OpendTect Main Window / 3D scene (In-line view)",
-        "expected_ui_elements": ["tree_inline_110_with_4_dip_steered_median_filter", "tree_faultstickset_empty", "inline_view", "navigation_toolbar_inline_110"],
-        "screenshot_keywords": ["In-line", "110", "4 Dip steered median filter", "FaultStickSet", "Tree scene 1", "View In-line", "no FaultStickSet item yet"]
+        "expected_ui_elements": [
+          "tree_inline_110_with_4_dip_steered_median_filter",
+          "tree_faultstickset_empty",
+          "inline_view",
+          "navigation_toolbar_inline_110"
+        ],
+        "screenshot_keywords": [
+          "In-line",
+          "110",
+          "4 Dip steered median filter",
+          "FaultStickSet",
+          "Tree scene 1",
+          "View In-line",
+          "no FaultStickSet item yet"
+        ]
       },
-      "parameters": [{"name": "In-line", "default": "110", "description": "인라인 위치"}],
-      "manual_sections": ["1.4.3b"]
+      "parameters": [
+        {
+          "name": "In-line",
+          "default": "110",
+          "description": "인라인 위치"
+        }
+      ],
+      "manual_sections": [
+        "1.4.3b"
+      ],
+      "linked_chunks": [
+        "a9b02af663a047e4bb85550696860a8f",
+        "cf4aee888a93491198cfabd1cc09c8b6",
+        "7ea55c6370bf40aba1f15d8ed5103ce4"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-21",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "fault_sticks_143b_02_new_faultstickset",
@@ -32,11 +66,35 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "OpendTect Main Window / 3D scene",
-        "expected_ui_elements": ["tree_new_faultstickset_1", "inline_110_displayed", "no_dialog_open"],
-        "screenshot_keywords": ["<New FaultStickSet 1>", "FaultStickSet", "In-line", "110"]
+        "expected_ui_elements": [
+          "tree_new_faultstickset_1",
+          "inline_110_displayed",
+          "no_dialog_open"
+        ],
+        "screenshot_keywords": [
+          "<New FaultStickSet 1>",
+          "FaultStickSet",
+          "In-line",
+          "110"
+        ]
       },
       "parameters": [],
-      "manual_sections": ["1.4.3b"]
+      "manual_sections": [
+        "1.4.3b"
+      ],
+      "linked_chunks": [
+        "a9b02af663a047e4bb85550696860a8f",
+        "ebaeb084b7704c43b74846f12c93e133",
+        "1e2265073e874f3e8781a00c4260e9d3"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-21",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "fault_sticks_143b_03_save_as_dialog",
@@ -47,11 +105,46 @@
       "step_type": "setup",
       "visual_signature": {
         "expected_dialog": "Output selection",
-        "expected_ui_elements": ["output_faultstickset_name_field", "select_button", "replace_in_tree_checkbox", "ok_button", "cancel_button"],
-        "screenshot_keywords": ["Output selection", "Output FaultStickSet", "Select ...", "Replace in tree", "OK", "Cancel", "Help"]
+        "expected_ui_elements": [
+          "output_faultstickset_name_field",
+          "select_button",
+          "replace_in_tree_checkbox",
+          "ok_button",
+          "cancel_button"
+        ],
+        "screenshot_keywords": [
+          "Output selection",
+          "Output FaultStickSet",
+          "Select ...",
+          "Replace in tree",
+          "OK",
+          "Cancel",
+          "Help"
+        ]
       },
-      "parameters": [{"name": "Output FaultStickSet", "default": "FaultStickSet_01", "description": "저장할 fault stick set 이름"}],
-      "manual_sections": ["1.4.3b"]
+      "parameters": [
+        {
+          "name": "Output FaultStickSet",
+          "default": "FaultStickSet_01",
+          "description": "저장할 fault stick set 이름"
+        }
+      ],
+      "manual_sections": [
+        "1.4.3b"
+      ],
+      "linked_chunks": [
+        "a9b02af663a047e4bb85550696860a8f",
+        "cf4aee888a93491198cfabd1cc09c8b6",
+        "ebaeb084b7704c43b74846f12c93e133"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-21",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "fault_sticks_143b_04_faultstickset_saved",
@@ -62,11 +155,36 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "OpendTect Main Window / 3D scene",
-        "expected_ui_elements": ["tree_faultstickset_01", "no_dialog_open", "inline_110_displayed"],
-        "screenshot_keywords": ["FaultStickSet_01", "FaultStickSet", "In-line", "110", "no Output selection dialog"]
+        "expected_ui_elements": [
+          "tree_faultstickset_01",
+          "no_dialog_open",
+          "inline_110_displayed"
+        ],
+        "screenshot_keywords": [
+          "FaultStickSet_01",
+          "FaultStickSet",
+          "In-line",
+          "110",
+          "no Output selection dialog"
+        ]
       },
       "parameters": [],
-      "manual_sections": ["1.4.3b"]
+      "manual_sections": [
+        "1.4.3b"
+      ],
+      "linked_chunks": [
+        "a9b02af663a047e4bb85550696860a8f",
+        "cf4aee888a93491198cfabd1cc09c8b6",
+        "ebaeb084b7704c43b74846f12c93e133"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-21",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "fault_sticks_143b_05_only_at_sections",
@@ -77,11 +195,39 @@
       "step_type": "setup",
       "visual_signature": {
         "expected_dialog": "OpendTect Main Window / 3D scene (In-line 110)",
-        "expected_ui_elements": ["faultstickset_01_selected_in_tree", "only_at_sections_on", "position_mode", "edit_sticks_toggle", "no_sticks_yet"],
-        "screenshot_keywords": ["FaultStickSet_01", "Only at Sections", "Edit Sticks", "Position mode", "In-line 110", "no fault stick picked yet"]
+        "expected_ui_elements": [
+          "faultstickset_01_selected_in_tree",
+          "only_at_sections_on",
+          "position_mode",
+          "edit_sticks_toggle",
+          "no_sticks_yet"
+        ],
+        "screenshot_keywords": [
+          "FaultStickSet_01",
+          "Only at Sections",
+          "Edit Sticks",
+          "Position mode",
+          "In-line 110",
+          "no fault stick picked yet"
+        ]
       },
       "parameters": [],
-      "manual_sections": ["1.4.3b"]
+      "manual_sections": [
+        "1.4.3b"
+      ],
+      "linked_chunks": [
+        "a9b02af663a047e4bb85550696860a8f",
+        "cf4aee888a93491198cfabd1cc09c8b6",
+        "7ea55c6370bf40aba1f15d8ed5103ce4"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-21",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "fault_sticks_143b_06_sticks_on_inline_110",
@@ -92,11 +238,36 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "OpendTect Main Window / 3D scene (In-line 110)",
-        "expected_ui_elements": ["fault_sticks_drawn_on_inline_110", "faultstickset_01_in_tree", "inline_110"],
-        "screenshot_keywords": ["FaultStickSet_01", "fault stick", "In-line 110", "4 Dip steered median filter", "sticks drawn on section"]
+        "expected_ui_elements": [
+          "fault_sticks_drawn_on_inline_110",
+          "faultstickset_01_in_tree",
+          "inline_110"
+        ],
+        "screenshot_keywords": [
+          "FaultStickSet_01",
+          "fault stick",
+          "In-line 110",
+          "4 Dip steered median filter",
+          "sticks drawn on section"
+        ]
       },
       "parameters": [],
-      "manual_sections": ["1.4.3b"]
+      "manual_sections": [
+        "1.4.3b"
+      ],
+      "linked_chunks": [
+        "a9b02af663a047e4bb85550696860a8f",
+        "7ea55c6370bf40aba1f15d8ed5103ce4",
+        "cf4aee888a93491198cfabd1cc09c8b6"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-21",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "fault_sticks_143b_07_sticks_on_several_inlines",
@@ -107,11 +278,44 @@
       "step_type": "action",
       "visual_signature": {
         "expected_dialog": "OpendTect Main Window / 3D scene (In-line 120 or later)",
-        "expected_ui_elements": ["fault_sticks_on_multiple_inlines", "inline_position_not_110", "faultstickset_01_in_tree", "no_zslice_in_tree"],
-        "screenshot_keywords": ["In-line", "120", "130", "FaultStickSet_01", "fault sticks", "Z-slice empty"]
+        "expected_ui_elements": [
+          "fault_sticks_on_multiple_inlines",
+          "inline_position_not_110",
+          "faultstickset_01_in_tree",
+          "no_zslice_in_tree"
+        ],
+        "screenshot_keywords": [
+          "In-line",
+          "120",
+          "130",
+          "FaultStickSet_01",
+          "fault sticks",
+          "Z-slice empty"
+        ]
       },
-      "parameters": [{"name": "In-line step", "default": "10", "description": "인라인 이동 간격"}],
-      "manual_sections": ["1.4.3b"]
+      "parameters": [
+        {
+          "name": "In-line step",
+          "default": "10",
+          "description": "인라인 이동 간격"
+        }
+      ],
+      "manual_sections": [
+        "1.4.3b"
+      ],
+      "linked_chunks": [
+        "7ea55c6370bf40aba1f15d8ed5103ce4",
+        "cf4aee888a93491198cfabd1cc09c8b6",
+        "a9b02af663a047e4bb85550696860a8f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-21",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "fault_sticks_143b_08_zslice_similarity",
@@ -122,14 +326,51 @@
       "step_type": "setup",
       "visual_signature": {
         "expected_dialog": "OpendTect Main Window / 3D scene (Z-slice, view North)",
-        "expected_ui_elements": ["zslice_1500_in_tree", "similarity_attribute_on_zslice", "view_north", "fault_sticks_seen_from_top", "no_sticks_selected"],
-        "screenshot_keywords": ["Z-slice", "1500", "9-1 Similarity", "Similarity", "View North", "FaultStickSet_01", "sticks violet (unselected)"]
+        "expected_ui_elements": [
+          "zslice_1500_in_tree",
+          "similarity_attribute_on_zslice",
+          "view_north",
+          "fault_sticks_seen_from_top",
+          "no_sticks_selected"
+        ],
+        "screenshot_keywords": [
+          "Z-slice",
+          "1500",
+          "9-1 Similarity",
+          "Similarity",
+          "View North",
+          "FaultStickSet_01",
+          "sticks violet (unselected)"
+        ]
       },
       "parameters": [
-        {"name": "Z-slice", "default": "1500", "description": "시간 단면 위치 (ms)"},
-        {"name": "Attribute", "default": "9-1 Similarity on FEF seismic", "description": "단층 불연속 속성"}
+        {
+          "name": "Z-slice",
+          "default": "1500",
+          "description": "시간 단면 위치 (ms)"
+        },
+        {
+          "name": "Attribute",
+          "default": "9-1 Similarity on FEF seismic",
+          "description": "단층 불연속 속성"
+        }
       ],
-      "manual_sections": ["1.4.3b"]
+      "manual_sections": [
+        "1.4.3b"
+      ],
+      "linked_chunks": [
+        "1e2265073e874f3e8781a00c4260e9d3",
+        "7ea55c6370bf40aba1f15d8ed5103ce4",
+        "cf4aee888a93491198cfabd1cc09c8b6"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-21",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "fault_sticks_143b_09_fault_plane_created",
@@ -140,21 +381,101 @@
       "step_type": "terminal",
       "visual_signature": {
         "expected_dialog": "OpendTect Main Window / 3D scene",
-        "expected_ui_elements": ["tree_fault_fault_01a", "fault_plane_in_scene", "faultstickset_01_in_tree"],
-        "screenshot_keywords": ["Fault", "Fault_01A", "Copy Selection to", "Create Single New", "fault plane", "FaultStickSet_01"]
+        "expected_ui_elements": [
+          "tree_fault_fault_01a",
+          "fault_plane_in_scene",
+          "faultstickset_01_in_tree"
+        ],
+        "screenshot_keywords": [
+          "Fault",
+          "Fault_01A",
+          "Copy Selection to",
+          "Create Single New",
+          "fault plane",
+          "FaultStickSet_01"
+        ]
       },
-      "parameters": [{"name": "Fault name", "default": "Fault_01A", "description": "생성할 단층면 이름"}],
-      "manual_sections": ["1.4.3b"]
+      "parameters": [
+        {
+          "name": "Fault name",
+          "default": "Fault_01A",
+          "description": "생성할 단층면 이름"
+        }
+      ],
+      "manual_sections": [
+        "1.4.3b"
+      ],
+      "linked_chunks": [
+        "ebaeb084b7704c43b74846f12c93e133",
+        "1e2265073e874f3e8781a00c4260e9d3",
+        "cf4aee888a93491198cfabd1cc09c8b6"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-21",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     }
   ],
   "edges": [
-    {"source": "fault_sticks_143b_01_inline_110_loaded", "target": "fault_sticks_143b_02_new_faultstickset", "edge_type": "sequential", "condition": null, "instruction": "트리의 FaultStickSet을 우클릭하고 New를 선택하세요"},
-    {"source": "fault_sticks_143b_02_new_faultstickset", "target": "fault_sticks_143b_03_save_as_dialog", "edge_type": "sequential", "condition": null, "instruction": "<New FaultStickSet 1>을 우클릭하고 Save as... 를 선택하세요"},
-    {"source": "fault_sticks_143b_03_save_as_dialog", "target": "fault_sticks_143b_04_faultstickset_saved", "edge_type": "sequential", "condition": null, "instruction": "Output FaultStickSet 이름에 FaultStickSet_01을 입력하고 OK를 클릭하세요"},
-    {"source": "fault_sticks_143b_04_faultstickset_saved", "target": "fault_sticks_143b_05_only_at_sections", "edge_type": "sequential", "condition": null, "instruction": "FaultStickSet_01을 우클릭하고 Display > Only at Sections 를 켜세요"},
-    {"source": "fault_sticks_143b_05_only_at_sections", "target": "fault_sticks_143b_06_sticks_on_inline_110", "edge_type": "sequential", "condition": null, "instruction": "인라인 110의 단층을 따라 좌클릭+드래그(또는 클릭 후 더블클릭으로 종료)하여 fault stick을 픽하세요"},
-    {"source": "fault_sticks_143b_06_sticks_on_inline_110", "target": "fault_sticks_143b_07_sticks_on_several_inlines", "edge_type": "sequential", "condition": null, "instruction": "Z/X 키(또는 네비게이션 툴바)로 인라인을 120으로 옮기고 같은 방식으로 스틱을 계속 픽하세요 (10 간격)"},
-    {"source": "fault_sticks_143b_07_sticks_on_several_inlines", "target": "fault_sticks_143b_08_zslice_similarity", "edge_type": "sequential", "condition": null, "instruction": "빈 Z-slice를 추가해 1500 ms로 드래그하고 View North로 전환한 뒤 Stored attribute에서 9-1 Similarity on FEF seismic을 표시하세요"},
-    {"source": "fault_sticks_143b_08_zslice_similarity", "target": "fault_sticks_143b_09_fault_plane_created", "edge_type": "sequential", "condition": null, "instruction": "같은 lineament의 스틱을 선택(폴리곤 드래그 또는 Ctrl+클릭)하고 Copy Selection to > Fault > Create Single New 에서 이름 Fault_01A를 입력한 뒤 Go! 를 클릭하세요"}
+    {
+      "source": "fault_sticks_143b_01_inline_110_loaded",
+      "target": "fault_sticks_143b_02_new_faultstickset",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "트리의 FaultStickSet을 우클릭하고 New를 선택하세요"
+    },
+    {
+      "source": "fault_sticks_143b_02_new_faultstickset",
+      "target": "fault_sticks_143b_03_save_as_dialog",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "<New FaultStickSet 1>을 우클릭하고 Save as... 를 선택하세요"
+    },
+    {
+      "source": "fault_sticks_143b_03_save_as_dialog",
+      "target": "fault_sticks_143b_04_faultstickset_saved",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Output FaultStickSet 이름에 FaultStickSet_01을 입력하고 OK를 클릭하세요"
+    },
+    {
+      "source": "fault_sticks_143b_04_faultstickset_saved",
+      "target": "fault_sticks_143b_05_only_at_sections",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "FaultStickSet_01을 우클릭하고 Display > Only at Sections 를 켜세요"
+    },
+    {
+      "source": "fault_sticks_143b_05_only_at_sections",
+      "target": "fault_sticks_143b_06_sticks_on_inline_110",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "인라인 110의 단층을 따라 좌클릭+드래그(또는 클릭 후 더블클릭으로 종료)하여 fault stick을 픽하세요"
+    },
+    {
+      "source": "fault_sticks_143b_06_sticks_on_inline_110",
+      "target": "fault_sticks_143b_07_sticks_on_several_inlines",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Z/X 키(또는 네비게이션 툴바)로 인라인을 120으로 옮기고 같은 방식으로 스틱을 계속 픽하세요 (10 간격)"
+    },
+    {
+      "source": "fault_sticks_143b_07_sticks_on_several_inlines",
+      "target": "fault_sticks_143b_08_zslice_similarity",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "빈 Z-slice를 추가해 1500 ms로 드래그하고 View North로 전환한 뒤 Stored attribute에서 9-1 Similarity on FEF seismic을 표시하세요"
+    },
+    {
+      "source": "fault_sticks_143b_08_zslice_similarity",
+      "target": "fault_sticks_143b_09_fault_plane_created",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "같은 lineament의 스틱을 선택(폴리곤 드래그 또는 Ctrl+클릭)하고 Copy Selection to > Fault > Create Single New 에서 이름 Fault_01A를 입력한 뒤 Go! 를 클릭하세요"
+    }
   ]
 }

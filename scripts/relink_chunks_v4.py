@@ -46,6 +46,9 @@ MANUALS = {
     # Only linked_chunks / manual_sections / provenance are written; signatures, titles,
     # descriptions and the scenario file are not touched.
     "qgis": (QGIS_MANUAL, ["qgis_vector_buffer.json"]),
+    # study 2 (2026-09-21, V3-32): the two test-set workflows authored from the manual were
+    # committed WITHOUT linked_chunks (authoring omission); same mechanism and section rule.
+    "study2": (OPENDTECT_MANUAL, ["horizon_autotrack_142a.json", "fault_sticks_143b.json"]),
 }
 FILES = MANUALS["opendtect"][1]
 
@@ -81,6 +84,8 @@ SECTIONS = {
     },
     "fault_interpretation": {"*": ["1.4.3"]},
     "horizon_tracking": {"*": ["1.4.2"]},
+    "horizon_autotrack_142a": {"*": ["1.4.2a"]},
+    "fault_sticks_143b": {"*": ["1.4.3b"]},
     # QGIS Training Manual 3.44 §6.2.6 "Follow Along: Analyzing the Problem: Distances
     # From Schools and Roads" (pp. 212-218) — the workflow file's own manual_reference.
     # The QGIS parser keeps section TITLES (with the manual's difficulty stars),
