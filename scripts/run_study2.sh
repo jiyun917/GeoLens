@@ -21,12 +21,15 @@ PY=".venv/Scripts/python.exe"
 LOG="data/eval/results/${TAG}_bench.log"
 if ! git tag --list | grep -q "^study2-prereg-signed$"; then echo "pre-registration not signed (tag study2-prereg-signed missing)"; exit 2; fi
 if [ ! -d "$TEST_DIR" ] || [ -z "$(ls "$TEST_DIR"/*.json 2>/dev/null)" ]; then echo "no adopted test scenarios in $TEST_DIR"; exit 2; fi
+# Hard gate (V3-32): pool/scenarios/knobs must pass the preflight.
+$PY scripts/preflight_check.py --scenarios "$TEST_DIR" --expect CONTEXT_ASSEMBLY="$CONTEXT_ASSEMBLY" ROUTER_SESSION_STICKY="$ROUTER_SESSION_STICKY" RERANK_SESSION_BLOCK="$RERANK_SESSION_BLOCK" GEOLENS_SCORER="$GEOLENS_SCORER" CHROMADB_PATH="$CHROMADB_PATH" || { echo "preflight failed - run refused"; exit 2; }
+START_REP="${START_REP:-1}"   # resume after an interruption (§6.4: the interrupted replicate is discarded and re-run)
 {
   echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === ${TAG} bench kickoff ==="
-  echo "models=${MODELS} reps=${REPS} scenarios=$(ls "$TEST_DIR"/*.json | xargs -n1 basename | tr '\n' ' ')"
+  echo "models=${MODELS} reps=${REPS} start=${START_REP} scenarios=$(ls "$TEST_DIR"/*.json | xargs -n1 basename | tr '\n' ' ')"
   echo "scorer=${GEOLENS_SCORER} assembly=${CONTEXT_ASSEMBLY} rerank_session_block=${RERANK_SESSION_BLOCK} sticky=${ROUTER_SESSION_STICKY} pool=$(ls data/workflows/*.json | wc -l) workflows"
   echo "git: $(git rev-parse --short HEAD) $(git branch --show-current); dirty=$(git status --short -- api scripts data/workflows data/eval/scenarios | wc -l) files"
 } | tee -a "$LOG"
-$PY -u scripts/run_all_models.py --models "$MODELS" --repeats "$REPS" --judge consensus --tag "$TAG" \
+$PY -u scripts/run_all_models.py --models "$MODELS" --repeats "$REPS" --start "$START_REP" --judge consensus --tag "$TAG" \
     --backends no_rag vanilla_budget vanilla_vector full_system --scenarios "$TEST_DIR" 2>&1 | tee -a "$LOG"
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === ${TAG} bench complete ===" | tee -a "$LOG"
