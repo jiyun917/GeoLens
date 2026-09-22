@@ -277,7 +277,7 @@ def _edge_coverage(last_instruction: str, edge_instruction: str) -> float:
     if not last_instruction or not edge_instruction:
         return 0.0
     stop = {"the", "and", "then", "click", "select", "with"}
-    tok = lambda t: {x for x in re.findall(r"[A-Za-z][A-Za-z\-]{2,}|\d+", (t or "").lower()) if x not in stop}
+    tok = lambda t: {x for x in re.findall(r"[A-Za-z][A-Za-z0-9_\-]+|\d+", (t or "").lower()) if x not in stop}
     e, l = tok(edge_instruction), tok(last_instruction)
     if len(e) >= 2:
         return len(e & l) / len(e)
@@ -293,7 +293,7 @@ def _edge_covered(last_instruction: str, edge_instruction: str) -> bool:
     if not last_instruction or not edge_instruction:
         return False
     stop = {"the", "and", "then", "click", "select", "with"}
-    tok = lambda t: {x for x in re.findall(r"[A-Za-z][A-Za-z\-]{2,}|\d+", (t or "").lower()) if x not in stop}
+    tok = lambda t: {x for x in re.findall(r"[A-Za-z][A-Za-z0-9_\-]+|\d+", (t or "").lower()) if x not in stop}
     e, l = tok(edge_instruction), tok(last_instruction)
     if len(e) >= 2:
         return len(e & l) / len(e) >= 0.6
@@ -1263,7 +1263,7 @@ Respond with JSON only:
         # routing advance is riskier than the assembly hint: for edges with >= 2 Latin tokens require
         # (almost) all of them in the previous instruction (partial completions such as "type the
         # name" without the confirming "OK" must not advance).
-        n_tok = len({x for x in re.findall(r"[A-Za-z][A-Za-z\-]{2,}|\d+", edge_instr.lower()) if x not in {"the", "and", "then", "click", "select", "with"}})
+        n_tok = len({x for x in re.findall(r"[A-Za-z][A-Za-z0-9_\-]+|\d+", edge_instr.lower()) if x not in {"the", "and", "then", "click", "select", "with"}})
         if n_tok >= 2 and cov_next < ROUTER_ADVANCE_MIN_COVERAGE:
             return picked_id
         nxt = succ[0]["id"]
