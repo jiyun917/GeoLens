@@ -459,7 +459,54 @@ _NUMERIC_MENTION_RE = re.compile(r"^\s*[+-]?\d+(?:[.,]\d+)?\s*$")
 
 
 def _scorer_v4() -> bool:
-    return SCORER_VERSION == "v4"
+    return SCORER_VERSION in ("v4", "v5")
+
+
+def _scorer_v5() -> bool:
+    return SCORER_VERSION == "v5"
+
+
+_MANUAL_GROUND_CACHE: Dict[tuple, tuple] = {}
+
+
+def _manual_grounding(manual_id: str, sections: List[str]) -> tuple:
+    """(canonical text, token set) of the manual chunks whose section label starts with one of
+    `sections`, from the configured vector store (study 2/3 hall definition v5)."""
+    key = (manual_id, tuple(sections or []))
+    if key in _MANUAL_GROUND_CACHE:
+        return _MANUAL_GROUND_CACHE[key]
+    text = ""
+    try:
+        from . import vectorstore
+        col = vectorstore.get_collection(manual_id)
+        if col is not None and sections:
+            got = col.get(include=["documents", "metadatas"])
+            parts = [re.sub(r"^\[Section:.*?\]\n", "", d, flags=re.S)
+                     for d, m in zip(got.get("documents") or [], got.get("metadatas") or [])
+                     if any(str((m or {}).get("section", "")).startswith(sec) for sec in sections)]
+            text = " ".join(parts)
+    except Exception as e:  # grounding unavailable -> behaves like v4
+        print(f"[EVAL] manual grounding unavailable: {e}")
+    canon = re.sub(r"[^a-z0-9]+", "", text.lower())
+    toks = set(re.findall(r"[a-z0-9]+", text.lower()))
+    _MANUAL_GROUND_CACHE[key] = (canon, toks)
+    return _MANUAL_GROUND_CACHE[key]
+
+
+def _manual_grounded(label: str, ground: tuple) -> bool:
+    canon, toks = ground
+    if not canon:
+        return False
+    for part in re.split(r"[/+,]", label or ""):
+        c = re.sub(r"[^a-z0-9]+", "", part.lower())
+        if not c:
+            continue
+        if len(c) >= 3:
+            if c not in canon:
+                return False
+        elif c not in toks:
+            return False
+    return True
 
 
 def _goal_has_number(goal: str, mention: str) -> bool:
@@ -953,6 +1000,11 @@ class ScenarioEvaluator:
                 response, (step.get("visual_state_gt") or {}).get("visible_elements", []),
                 step_gt=step, goal=self.scenario.get("goal", ""),
             )
+            if _scorer_v5() and halls:
+                # v5: labels present in the scenario's manual sections are grounded (not invented)
+                ground = _manual_grounding(self.scenario.get("manual_id", ""),
+                                           self.scenario.get("manual_grounding_sections") or [])
+                halls = [h for h in halls if not _manual_grounded(h, ground)]
             looped = bool(
                 prior_responses and
                 _normalize_instruction(response) == _normalize_instruction(prior_responses[-1])
@@ -1008,6 +1060,8 @@ class ScenarioEvaluator:
                 "goal_state_node":    loc_meta.get("goal_state_node"),
                 "route_tie_prior":    loc_meta.get("tie_prior"),
                 "route_tie_group":    loc_meta.get("tie_group"),
+                "route_sticky":       loc_meta.get("route_sticky"),    # study 2 R1
+                "route_advance":      loc_meta.get("route_advance"),   # study 3 R2
                 "route_rerank_votes": loc_meta.get("rerank_votes"),
             })
             step_latencies.append(latency)

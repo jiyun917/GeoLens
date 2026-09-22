@@ -1,0 +1,533 @@
+{
+  "workflow_id": "qgis_rule_classification_335",
+  "name": "Rule-based Classification of landuse (§3.3.5)",
+  "software_id": "qgis",
+  "manual_reference": "QGIS Training Manual 3.44 §3.3.5 Follow Along: Rule-based Classification (pp.117–120)",
+  "description": "QGIS 매뉴얼 §3.3.5: landuse 레이어의 Symbology를 Rule-based로 바꾸고 기존 규칙을 지운 뒤 Swellendam city / Other residential / Big non residential areas / Small non residential areas(Else) 네 규칙을 매뉴얼 식대로 추가해 적용한다. 매뉴얼만 보고 저작(study 3, 2026-09-22), 스크린샷 전 커밋.",
+  "authoring": {
+    "source": "manual text + figure OCR only (chromadb_v4)",
+    "screenshots_seen": false,
+    "authored_on": "2026-09-22",
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node"
+  },
+  "nodes": [
+    {
+      "id": "qgis_rule_classification_335_01_landuse_loaded",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 1,
+      "title": "landuse 레이어 로드됨 (AREA 필드 있음), 대화상자 없음",
+      "description": "§3.3.5 시작: Layers 패널에 landuse(AREA 필드 계산 완료, §3.3.3 결과), 지도에 표시. Layer Properties 닫힘.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "QGIS main window",
+        "expected_ui_elements": [
+          "layers_panel_landuse",
+          "map_canvas",
+          "no_dialog"
+        ],
+        "screenshot_keywords": [
+          "landuse",
+          "Layers",
+          "no Layer Properties dialog"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "9fa152b6bb024d68b6ebc2106b5b21d4",
+        "6f1879eef6624f0881f9a2a9ad76a095",
+        "3b541743033c4974b7d475335ab8a291"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_rule_classification_335_02_properties_symbology",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 2,
+      "title": "Layer Properties - landuse, Symbology 탭 (Rule-based 전환 전)",
+      "description": "step 1–2 결과: landuse의 Layer Properties가 열리고 Symbology 탭. 렌더러는 아직 이전(Categorized/Graduated 등).",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Layer Properties - landuse | Symbology",
+        "expected_ui_elements": [
+          "symbology_tab_active",
+          "renderer_dropdown_not_rule_based",
+          "ok_cancel_apply"
+        ],
+        "screenshot_keywords": [
+          "Layer Properties",
+          "landuse",
+          "Symbology",
+          "Information",
+          "Source",
+          "Labels",
+          "Apply",
+          "OK",
+          "Cancel"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "c6665e293c204003931a8786234a9f83",
+        "3b541743033c4974b7d475335ab8a291",
+        "9fa152b6bb024d68b6ebc2106b5b21d4"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_rule_classification_335_03_rule_based_existing_rules",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 3,
+      "title": "Rule-based 선택됨, 기존 규칙 목록 표시",
+      "description": "step 3 결과: 렌더러 드롭다운을 Rule-based로 바꾸면 현재 분류가 규칙으로 변환되어 목록(Label / Rule / Min. scale / Max. scale)에 표시됨.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Layer Properties - landuse | Symbology",
+        "expected_ui_elements": [
+          "renderer_rule_based",
+          "rule_list_populated",
+          "add_rule_button",
+          "remove_selected_rules_button"
+        ],
+        "screenshot_keywords": [
+          "Rule-based",
+          "Label",
+          "Rule",
+          "Min. scale",
+          "Max. scale",
+          "Refine Selected Rules",
+          "Symbol Levels..."
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "c6665e293c204003931a8786234a9f83",
+        "3b541743033c4974b7d475335ab8a291",
+        "9fa152b6bb024d68b6ebc2106b5b21d4"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_rule_classification_335_04_rules_removed",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 4,
+      "title": "규칙 전부 삭제됨 (빈 목록)",
+      "description": "step 4–5 결과: 규칙을 전부 선택해 Remove selected rules → 목록이 비어 있음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Layer Properties - landuse | Symbology",
+        "expected_ui_elements": [
+          "renderer_rule_based",
+          "rule_list_empty",
+          "add_rule_button"
+        ],
+        "screenshot_keywords": [
+          "Rule-based",
+          "Label",
+          "Rule",
+          "empty rule list"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "c6665e293c204003931a8786234a9f83",
+        "6f1879eef6624f0881f9a2a9ad76a095",
+        "9fa152b6bb024d68b6ebc2106b5b21d4"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_rule_classification_335_05_edit_rule_dialog_empty",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 5,
+      "title": "Edit rule 대화상자 열림 (비어 있음)",
+      "description": "Add rule 클릭 결과: 'Edit Rule' 대화상자 — Label, Filter(+ 식 작성기 버튼), Test, Else, Description, Scale range, Symbol(Fill/Simple fill, Color). 아직 입력 없음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Edit Rule",
+        "expected_ui_elements": [
+          "label_field_empty",
+          "filter_field_empty",
+          "expression_builder_button",
+          "else_checkbox",
+          "symbol_color",
+          "ok_cancel"
+        ],
+        "screenshot_keywords": [
+          "Edit Rule",
+          "Label",
+          "Filter",
+          "Test",
+          "Else",
+          "Catch-all for other features",
+          "Description",
+          "Scale range",
+          "Symbol",
+          "Fill",
+          "Simple fill",
+          "Color",
+          "OK",
+          "Cancel"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "9fa152b6bb024d68b6ebc2106b5b21d4",
+        "6f1879eef6624f0881f9a2a9ad76a095",
+        "c6665e293c204003931a8786234a9f83"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_rule_classification_335_06_rule1_added",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 6,
+      "title": "규칙 1 'Swellendam city' 추가됨",
+      "description": "규칙 1 결과: Label = Swellendam city, Filter = \"name\" = 'Swellendam', 진한 회청색 채우기·테두리 없음 → OK 후 Symbology 목록에 규칙 1이 보임.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Layer Properties - landuse | Symbology",
+        "expected_ui_elements": [
+          "rule_list_1",
+          "rule_swellendam_city"
+        ],
+        "screenshot_keywords": [
+          "Swellendam city",
+          "\"name\" = 'Swellendam'",
+          "Rule-based"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Label",
+          "default": "Swellendam city",
+          "description": "규칙 1"
+        },
+        {
+          "name": "Filter",
+          "default": "\"name\" = 'Swellendam'",
+          "description": "규칙 1 식"
+        }
+      ],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "9fa152b6bb024d68b6ebc2106b5b21d4",
+        "6f1879eef6624f0881f9a2a9ad76a095",
+        "c6665e293c204003931a8786234a9f83"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_rule_classification_335_07_rule2_added",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 7,
+      "title": "규칙 2 'Other residential' 추가됨",
+      "description": "규칙 2 결과: Label = Other residential, Filter = \"landuse\" = 'residential' AND \"name\" <> 'Swellendam', 연한 청회색 → 목록에 규칙 1·2.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Layer Properties - landuse | Symbology",
+        "expected_ui_elements": [
+          "rule_list_2",
+          "rule_other_residential"
+        ],
+        "screenshot_keywords": [
+          "Other residential",
+          "\"landuse\" = 'residential' AND \"name\" <> 'Swellendam'",
+          "Swellendam city"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Label",
+          "default": "Other residential",
+          "description": "규칙 2"
+        },
+        {
+          "name": "Filter",
+          "default": "\"landuse\" = 'residential' AND \"name\" <> 'Swellendam'",
+          "description": "규칙 2 식"
+        }
+      ],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "9fa152b6bb024d68b6ebc2106b5b21d4",
+        "c6665e293c204003931a8786234a9f83",
+        "3b541743033c4974b7d475335ab8a291"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_rule_classification_335_08_rule3_added",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 8,
+      "title": "규칙 3 'Big non residential areas' 추가됨",
+      "description": "규칙 3 결과: Label = Big non residential areas, Filter = \"landuse\" <> 'residential' AND \"AREA\" >= 605000, 중간 녹색 → 목록에 규칙 1–3.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Layer Properties - landuse | Symbology",
+        "expected_ui_elements": [
+          "rule_list_3",
+          "rule_big_non_residential"
+        ],
+        "screenshot_keywords": [
+          "Big non residential areas",
+          "\"landuse\" <> 'residential' AND \"AREA\" >= 605000",
+          "Other residential",
+          "Swellendam city"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Label",
+          "default": "Big non residential areas",
+          "description": "규칙 3"
+        },
+        {
+          "name": "Filter",
+          "default": "\"landuse\" <> 'residential' AND \"AREA\" >= 605000",
+          "description": "규칙 3 식"
+        }
+      ],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "9fa152b6bb024d68b6ebc2106b5b21d4",
+        "c6665e293c204003931a8786234a9f83",
+        "6f1879eef6624f0881f9a2a9ad76a095"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_rule_classification_335_09_rule4_else_added",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 9,
+      "title": "규칙 4 'Small non residential areas' (Else) 추가됨, 적용 전",
+      "description": "규칙 4 결과: Label = Small non residential areas, Filter 대신 Else 체크, 연한 녹색 → 목록에 규칙 1–4(마지막 Rule = ELSE). 아직 Apply/OK 전이라 지도는 이전 상태.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Layer Properties - landuse | Symbology",
+        "expected_ui_elements": [
+          "rule_list_4",
+          "rule_else",
+          "apply_button"
+        ],
+        "screenshot_keywords": [
+          "Small non residential areas",
+          "ELSE",
+          "Big non residential areas",
+          "Other residential",
+          "Swellendam city",
+          "Apply",
+          "OK"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Label",
+          "default": "Small non residential areas",
+          "description": "규칙 4"
+        },
+        {
+          "name": "Else",
+          "default": "checked",
+          "description": "규칙 4는 Else"
+        }
+      ],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "9fa152b6bb024d68b6ebc2106b5b21d4",
+        "c6665e293c204003931a8786234a9f83",
+        "6f1879eef6624f0881f9a2a9ad76a095"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_rule_classification_335_10_applied_map",
+      "workflow_id": "qgis_rule_classification_335",
+      "step_number": 10,
+      "title": "적용 완료: 지도에 4개 규칙 렌더링 (목표 도달)",
+      "description": "step 9 결과: Apply/OK → 지도에 Swellendam(진회청), 기타 주거(연청회), 큰 비주거(중녹), 작은 비주거(연녹) 4가지로 렌더링. 대화상자 닫힘(OK) 또는 열린 채(Apply). 목표 도달.",
+      "step_type": "terminal",
+      "visual_signature": {
+        "expected_dialog": "QGIS main window",
+        "expected_ui_elements": [
+          "map_canvas_four_classes",
+          "layers_panel_landuse_rule_legend"
+        ],
+        "screenshot_keywords": [
+          "landuse",
+          "Swellendam city",
+          "Other residential",
+          "Big non residential areas",
+          "Small non residential areas"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Rule-based Classification"
+      ],
+      "linked_chunks": [
+        "9fa152b6bb024d68b6ebc2106b5b21d4",
+        "c6665e293c204003931a8786234a9f83",
+        "3b541743033c4974b7d475335ab8a291"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "qgis_rule_classification_335_01_landuse_loaded",
+      "target": "qgis_rule_classification_335_02_properties_symbology",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Layers 패널에서 landuse를 우클릭하고 Properties…(레이어 속성)를 열어 Symbology 탭으로 가세요"
+    },
+    {
+      "source": "qgis_rule_classification_335_02_properties_symbology",
+      "target": "qgis_rule_classification_335_03_rule_based_existing_rules",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "렌더러 드롭다운을 Rule-based로 바꾸세요"
+    },
+    {
+      "source": "qgis_rule_classification_335_03_rule_based_existing_rules",
+      "target": "qgis_rule_classification_335_04_rules_removed",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "규칙을 모두 선택(클릭·드래그)하고 Remove selected rules 버튼으로 기존 규칙을 전부 삭제하세요"
+    },
+    {
+      "source": "qgis_rule_classification_335_04_rules_removed",
+      "target": "qgis_rule_classification_335_05_edit_rule_dialog_empty",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Add rule 버튼을 클릭해 Edit rule 대화상자를 여세요"
+    },
+    {
+      "source": "qgis_rule_classification_335_05_edit_rule_dialog_empty",
+      "target": "qgis_rule_classification_335_06_rule1_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Label에 Swellendam city, Filter에 \"name\" = 'Swellendam'(Expression String Builder 사용 가능)을 입력하고 진한 회청색·테두리 없음으로 설정한 뒤 OK를 클릭하세요"
+    },
+    {
+      "source": "qgis_rule_classification_335_06_rule1_added",
+      "target": "qgis_rule_classification_335_07_rule2_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Add rule로 Label = Other residential, Filter = \"landuse\" = 'residential' AND \"name\" <> 'Swellendam', 연한 청회색 규칙을 추가하세요"
+    },
+    {
+      "source": "qgis_rule_classification_335_07_rule2_added",
+      "target": "qgis_rule_classification_335_08_rule3_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Add rule로 Label = Big non residential areas, Filter = \"landuse\" <> 'residential' AND \"AREA\" >= 605000, 중간 녹색 규칙을 추가하세요"
+    },
+    {
+      "source": "qgis_rule_classification_335_08_rule3_added",
+      "target": "qgis_rule_classification_335_09_rule4_else_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Add rule로 Label = Small non residential areas 를 만들고 Filter 대신 Else를 체크한 뒤 연한 녹색으로 설정하세요"
+    },
+    {
+      "source": "qgis_rule_classification_335_09_rule4_else_added",
+      "target": "qgis_rule_classification_335_10_applied_map",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Apply(또는 OK)를 클릭해 심볼로지를 적용하세요"
+    }
+  ]
+}

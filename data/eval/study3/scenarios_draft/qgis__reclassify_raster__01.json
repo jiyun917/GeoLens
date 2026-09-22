@@ -1,0 +1,266 @@
+{
+  "scenario_id": "qgis__reclassify_raster__01",
+  "manual_id": "bf2804feea57434bb79b749134ed1df0",
+  "manual_name": "QGIS Training Manual 3.44",
+  "manual_reference": "§7.3.10 Follow Along: Reclassifying the Raster, tool steps 1–6 and styling steps 1–3 (pp.286–289). Prerequisite: aspect raster from §7.3.x Aspect tool is part of the initial state.",
+  "category": "raster_analysis",
+  "difficulty": "hard",
+  "language": "ko",
+  "goal": "QGIS에서 aspect 래스터(0–360°)를 Processing Toolbox의 Reclassify by table로 방위 4구간 — 1 = North(0–45, 315–360), 2 = East(45–135), 3 = South(135–225), 4 = West(225–315) — 로 재분류해 exercise_data/raster_analysis/reclassified.tif 로 저장·실행하고, Layer Styling에서 Paletted/Unique values 렌더러로 바꿔 Classify로 값 1–4에 색을 배정한다. 매뉴얼 §7.3.10.",
+  "initial_state": {
+    "description": "QGIS Desktop 3.44. Layers 패널에 aspect 래스터(QGIS-Training-Data exercise_data/raster/SRTM/srtm_41_19.tif 에서 Raster › Raster terrain analysis › Aspect로 계산, exercise_data/raster_analysis/aspect.tif)가 로드되어 표시됨. Reclassify by table 대화상자 닫힘.",
+    "must_be_true": [
+      "QGIS main window visible",
+      "aspect raster layer loaded and visible",
+      "Reclassify by table dialog closed",
+      "exercise_data/raster_analysis folder exists"
+    ]
+  },
+  "manual_grounding_sections": [
+    "★★☆ Follow Along: Reclassifying the Raster"
+  ],
+  "_study3_note": "Authored from the manual only (2026-09-22) before capture; visual_state_gt filled after capture; patterns/keywords not changed after screenshots or model output are seen.",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_0.jpg",
+      "expected_workflow_node": "qgis_reclassify_7310_01_aspect_loaded",
+      "expected_action_text_pattern": "(?i)\\b(Reclassify by table|Reclassify|재분류|Raster analysis|Toolbox|reclassify)\\b",
+      "expected_action_keywords": [
+        "Reclassify"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "QGIS main window with the aspect raster loaded (Processing Toolbox may be open). NO Reclassify by table dialog.",
+        "user_should_have_just": "Nothing yet (initial state).",
+        "must_not_show": [
+          "Reclassify by table dialog"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_1.jpg",
+      "expected_workflow_node": "qgis_reclassify_7310_02_reclassify_dialog_open",
+      "expected_action_text_pattern": "(?i)\\b(aspect|Raster layer|래스터 레이어)\\b",
+      "expected_action_keywords": [
+        "aspect"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Reclassify by Table' dialog open; Raster layer NOT yet set to aspect (default/first layer), table empty.",
+        "user_should_have_just": "Opened the Reclassify by table tool.",
+        "must_not_show": [
+          "Fixed table dialog",
+          "Raster layer = aspect"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_2.jpg",
+      "expected_workflow_node": "qgis_reclassify_7310_03_raster_layer_aspect",
+      "expected_action_text_pattern": "(?i)\\b(Reclassification table|Fixed table|\\.\\.\\.|…|테이블|표)\\b",
+      "expected_action_keywords": [
+        "Reclassification table"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Raster layer = aspect selected; Reclassification table still 'Fixed table (0x3)'.",
+        "user_should_have_just": "Chose aspect as the Raster layer.",
+        "must_not_show": [
+          "Fixed table dialog open"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_3.jpg",
+      "expected_workflow_node": "qgis_reclassify_7310_04_fixed_table_dialog",
+      "expected_action_text_pattern": "(?i)\\b(Add Row|Add row|행 추가|45|315|Minimum|Maximum|Value)\\b",
+      "expected_action_keywords": [
+        "Add Row"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Fixed table' dialog open with columns Minimum / Maximum / Value and NO rows.",
+        "user_should_have_just": "Clicked the … button of Reclassification table.",
+        "must_not_show": [
+          "rows already filled"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_4.jpg",
+      "expected_workflow_node": "qgis_reclassify_7310_05_table_filled",
+      "expected_action_text_pattern": "(?i)\\b(reclassified\\.tif|reclassified|Save to File|raster_analysis|Reclassified raster|저장)\\b",
+      "expected_action_keywords": [
+        "reclassified"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Back in Reclassify by Table: Reclassification table shows 'Fixed table (5x3)'; Reclassified raster still '[Save to temporary file]'.",
+        "user_should_have_just": "Added 5 rows with the manual values and clicked OK.",
+        "must_not_show": [
+          "Fixed table dialog",
+          "reclassified.tif already set"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_5.jpg",
+      "expected_workflow_node": "qgis_reclassify_7310_06_output_path_set",
+      "expected_action_text_pattern": "(?i)\\b(Run|실행)\\b",
+      "expected_action_keywords": [
+        "Run"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Reclassified raster path set to …/raster_analysis/reclassified.tif; NOT yet run.",
+        "user_should_have_just": "Set the output file via … › Save to File.",
+        "must_not_show": [
+          "reclassified layer in the Layers panel"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 6,
+      "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_6.jpg",
+      "expected_workflow_node": "qgis_reclassify_7310_07_ran_layer_added",
+      "expected_action_text_pattern": "(?i)\\b(Layer Styling|Styling|Paletted|Unique values|스타일)\\b",
+      "expected_action_keywords": [
+        "Layer Styling"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Algorithm ran: 'reclassified' layer in the Layers panel (Singleband gray, values 1–4), dialog closed or on Log tab. Layer Styling panel NOT showing Paletted yet.",
+        "user_should_have_just": "Clicked Run.",
+        "must_not_show": [
+          "Paletted/Unique values already selected"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 7,
+      "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_7.jpg",
+      "expected_workflow_node": "qgis_reclassify_7310_08_styling_paletted",
+      "expected_action_text_pattern": "(?i)\\b(Classify|분류)\\b",
+      "expected_action_keywords": [
+        "Classify"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Layer Styling panel for reclassified with renderer = Paletted/Unique values and an EMPTY value list (before Classify).",
+        "user_should_have_just": "Opened Layer Styling and switched the renderer to Paletted/Unique values.",
+        "must_not_show": [
+          "values 1–4 already listed"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 8,
+      "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_8.jpg",
+      "expected_workflow_node": "qgis_reclassify_7310_09_classified_map",
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": [
+        "완료"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Done)\\b",
+          "note": "English completion sentinel"
+        },
+        {
+          "pattern": "(?i)\\b(reclassified|Classify|Paletted|1|2|3|4)\\b",
+          "note": "Ground-truth element mention for the grounding validator."
+        }
+      ],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "GOAL-REACHED: value list shows 1,2,3,4 with colours; map rendered in four colours.",
+        "user_should_have_just": "Clicked Classify.",
+        "must_not_show": [
+          "an unrelated dialog"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_8.jpg",
+    "expected_done_sentinel": true,
+    "note": "step_8 depicts the goal-achieved terminal state (four aspect classes coloured)."
+  }
+}

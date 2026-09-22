@@ -49,6 +49,9 @@ MANUALS = {
     # study 2 (2026-09-21, V3-32): the two test-set workflows authored from the manual were
     # committed WITHOUT linked_chunks (authoring omission); same mechanism and section rule.
     "study2": (OPENDTECT_MANUAL, ["horizon_autotrack_142a.json", "fault_sticks_143b.json"]),
+    # study 3 (2026-09-22): linked at authoring time (lesson of V3-32), before capture
+    "study3_ot": (OPENDTECT_MANUAL, ["horizon_2dviewer_142b.json"]),
+    "study3_qgis": (QGIS_MANUAL, ["qgis_rule_classification_335.json", "qgis_reclassify_7310.json"]),
 }
 FILES = MANUALS["opendtect"][1]
 
@@ -86,6 +89,9 @@ SECTIONS = {
     "horizon_tracking": {"*": ["1.4.2"]},
     "horizon_autotrack_142a": {"*": ["1.4.2a"]},
     "fault_sticks_143b": {"*": ["1.4.3b"]},
+    "horizon_2dviewer_142b": {"*": ["1.4.2b"]},
+    "qgis_rule_classification_335": {"*": ["★★★ Follow Along: Rule-based Classification"]},
+    "qgis_reclassify_7310": {"*": ["★★☆ Follow Along: Reclassifying the Raster"]},
     # QGIS Training Manual 3.44 §6.2.6 "Follow Along: Analyzing the Problem: Distances
     # From Schools and Roads" (pp. 212-218) — the workflow file's own manual_reference.
     # The QGIS parser keeps section TITLES (with the manual's difficulty stars),

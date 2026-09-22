@@ -260,6 +260,9 @@ RERANK_SESSION_BLOCK = os.environ.get("RERANK_SESSION_BLOCK", "1").strip() == "1
 # study 2 (V3-30): session stickiness on identical dialog titles across workflows (R1) and the
 # history-aware [Next Action] of assembly v7 (C1). Defaults keep the v3 behaviour.
 ROUTER_SESSION_STICKY = os.environ.get("ROUTER_SESSION_STICKY", "0").strip() == "1"
+# study 3 (R2): advance to the single successor when the rerank repeats the last confirmed node
+# although the previous instruction already covered that node's outgoing edge (V3-37).
+ROUTER_HISTORY_ADVANCE = os.environ.get("ROUTER_HISTORY_ADVANCE", "0").strip() == "1"
 _CTX_V7_DONE = ("[Next Action] The previous instruction ({prev}) was the final action of this workflow. "
                 "If the screen shows nothing that contradicts it having been carried out, the goal is reached - answer with the "
                 "completion sentinel '완료' / 'Done'. Otherwise repeat only the part that is visibly not done.")
@@ -718,6 +721,8 @@ class GuideRAGPipeline:
             )
             if picked_id and ROUTER_SESSION_STICKY:
                 picked_id = self._session_sticky(picked_id, candidates, session_wf, last_node_id)
+            if picked_id and ROUTER_HISTORY_ADVANCE:
+                picked_id = self._history_advance(picked_id, candidates, last_node_id, completed_steps)
             if picked_id:
                 for c in candidates:
                     if c["node"].get("id") == picked_id:
@@ -1205,6 +1210,30 @@ Respond with JSON only:
         lines.append(f"Graph-order prior: {pref} — {why}. Pick another member of the group ONLY if a field state listed for it "
                      f"is literally present in visual_state and the prior's states are contradicted.")
         return "\n".join(lines)
+
+    def _history_advance(self, picked_id: str, candidates: List[Dict], last_node_id: Optional[str],
+                         completed_steps: Optional[List[str]]) -> str:
+        """R2 (study 3): the rerank repeated the last confirmed node, but the previous instruction
+        already told the user to do that node's outgoing action -> the user is on the successor."""
+        if not last_node_id or picked_id != last_node_id:
+            return picked_id
+        hist = [h for h in (completed_steps or []) if h]
+        if not hist:
+            return picked_id
+        succ = self.graph.get_next_steps(last_node_id)
+        if len(succ) != 1:
+            return picked_id
+        edge_instr = succ[0].get("edge_instruction") or ""
+        if not _edge_covered(hist[-1], edge_instr):
+            return picked_id
+        nxt = succ[0]["id"]
+        if not any(c["node"].get("id") == nxt for c in candidates):
+            node = self.graph.get_node(nxt)
+            if node:
+                candidates.append({"node": node, "sources": ["advance"]})
+        print(f"[GUIDE] history-advance: {picked_id} -> {nxt} (previous instruction covered the edge)")
+        _LAST_LOCALIZE_META["route_advance"] = {"from": picked_id, "to": nxt}
+        return nxt
 
     def _session_sticky(self, picked_id: str, candidates: List[Dict], session_wf: Optional[str],
                         last_node_id: Optional[str]) -> str:

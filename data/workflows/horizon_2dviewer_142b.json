@@ -1,0 +1,469 @@
+{
+  "workflow_id": "horizon_2dviewer_142b",
+  "name": "2D Horizon Tracking in 2D Viewer (§1.4.2b)",
+  "software_id": "opendtect",
+  "manual_reference": "1.4.2b Tracking In 2D Viewer, steps 1–8 and 14–15 (manual-draw steps 9–13 optional, out of scope)",
+  "description": "OpendTect 매뉴얼 §1.4.2b: 2D Line 추가(Well correlation-Line, Load default data) → Seis를 2D Viewer로 표시 → 2D Horizon Track New(기본 설정) → Max 이벤트에 seed를 찍어 라인 해석 → Save as → 2D viewer 닫기. 매뉴얼만 보고 저작(study 3, 2026-09-22), 스크린샷 전 커밋.",
+  "authoring": {
+    "source": "manual text + figure OCR only (chromadb_v4)",
+    "screenshots_seen": false,
+    "authored_on": "2026-09-22",
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node"
+  },
+  "nodes": [
+    {
+      "id": "horizon_2dviewer_142b_01_scene_no_2dline",
+      "workflow_id": "horizon_2dviewer_142b",
+      "step_number": 1,
+      "title": "3D scene, 2D Line 트리 항목 비어 있음 (시작)",
+      "description": "매뉴얼 §1.4.2b 시작 상태: 3D scene에 트리가 보이고 2D Line 항목에 자식이 없음. 2D viewer 창 없음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene",
+        "expected_ui_elements": [
+          "tree_2d_line_empty",
+          "no_2d_viewer_window"
+        ],
+        "screenshot_keywords": [
+          "2D Line",
+          "Tree scene 1",
+          "Elements",
+          "no 2D Viewer window"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.4.2b"
+      ],
+      "linked_chunks": [
+        "f60b0832b0a1460ab109c1ff4f1e8f68",
+        "9b04a9c4b7734f029f00277791987baa",
+        "496bd1f88b7f49dc9902e6d8e1d2bc12"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "horizon_2dviewer_142b_02_select_2dlines_dialog",
+      "workflow_id": "horizon_2dviewer_142b",
+      "step_number": 2,
+      "title": "Select 2D Lines 대화상자 열림 (Well correlation-Line 목록)",
+      "description": "step 1 결과: 2D Line 우클릭 > Add 로 'Select 2D Lines' 대화상자가 열림. 목록에 Well correlation-Line, STG 등이 보이고 'On OK' 동작 선택(Load default data / Display projection lines only / Select attribute)이 있음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Select 2D Lines",
+        "expected_ui_elements": [
+          "line_list_well_correlation_line",
+          "on_ok_action_dropdown",
+          "load_default_data_option",
+          "ok_button"
+        ],
+        "screenshot_keywords": [
+          "Select 2D Lines",
+          "Filter",
+          "Well correlation-Line",
+          "STG",
+          "On OK",
+          "Load default data",
+          "Display projection lines only",
+          "Select attribute"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.4.2b"
+      ],
+      "linked_chunks": [
+        "9b04a9c4b7734f029f00277791987baa",
+        "9fb74bc7a8cf4149bda2df058dd330f6",
+        "f60b0832b0a1460ab109c1ff4f1e8f68"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "horizon_2dviewer_142b_03_2dline_loaded",
+      "workflow_id": "horizon_2dviewer_142b",
+      "step_number": 3,
+      "title": "2D line(Well correlation-Line) 로드됨, Seis 속성 표시",
+      "description": "step 2 결과: Well correlation-Line을 선택하고 On OK = Load default data로 OK → 트리 2D Line 아래 Well correlation-Line > Seis가 생기고 3D scene에 2D 라인 단면이 표시됨. 2D viewer는 아직 없음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene",
+        "expected_ui_elements": [
+          "tree_2d_line_well_correlation_line",
+          "tree_attribute_seis",
+          "scene_2d_line_section",
+          "no_2d_viewer_window"
+        ],
+        "screenshot_keywords": [
+          "2D Line",
+          "Well correlation-Line",
+          "Seis",
+          "no 2D Viewer window"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.4.2b"
+      ],
+      "linked_chunks": [
+        "9b04a9c4b7734f029f00277791987baa",
+        "f60b0832b0a1460ab109c1ff4f1e8f68",
+        "9fb74bc7a8cf4149bda2df058dd330f6"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "horizon_2dviewer_142b_04_2dviewer_open",
+      "workflow_id": "horizon_2dviewer_142b",
+      "step_number": 4,
+      "title": "2D Viewer 창 열림 (Well correlation-Line)",
+      "description": "step 3 결과: 트리의 Seis 우클릭 > Display > 2D Viewer 로 '2D Viewer - Line: Well correlation-Line' 창이 열림. 창 안에 자체 트리(Elements: Seis / 2D Horizon / FaultStickSet …)와 단면이 보임. 2D Horizon은 아직 없음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "2D Viewer - Line: Well correlation-Line",
+        "expected_ui_elements": [
+          "2d_viewer_window",
+          "viewer_tree_2d_horizon_empty",
+          "viewer_section_seis"
+        ],
+        "screenshot_keywords": [
+          "2D Viewer",
+          "Well correlation-Line",
+          "Seis",
+          "2D Horizon",
+          "Wiggle",
+          "VD",
+          "Distance",
+          "no 2D horizon yet"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.4.2b"
+      ],
+      "linked_chunks": [
+        "9b04a9c4b7734f029f00277791987baa",
+        "9fb74bc7a8cf4149bda2df058dd330f6",
+        "f60b0832b0a1460ab109c1ff4f1e8f68"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "horizon_2dviewer_142b_05_track_new_settings",
+      "workflow_id": "horizon_2dviewer_142b",
+      "step_number": 5,
+      "title": "Track New: Horizon Tracking Settings 열림, <New 2D Horizon> 생성 (기본값)",
+      "description": "step 4–5 결과: 2D viewer 트리의 2D Horizon 우클릭 > Track New → 'Horizon Tracking Settings' 창(Mode: Section Auto-track / Method Adjacent Parent; Event type Max; Correlation Yes 80%, 기본값 그대로)과 트리에 <New 2D Horizon>. 아직 seed 없음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Horizon Tracking Settings",
+        "expected_ui_elements": [
+          "tracking_settings_window",
+          "mode_section_auto_track",
+          "method_adjacent_parent",
+          "event_type_max",
+          "correlation_threshold_80",
+          "viewer_tree_new_2d_horizon",
+          "no_seed_yet"
+        ],
+        "screenshot_keywords": [
+          "Horizon Tracking Settings",
+          "<New 2D Horizon>",
+          "Section Auto-track",
+          "Adjacent Parent",
+          "Event type",
+          "Max",
+          "Allowed difference (%)",
+          "20",
+          "Correlation threshold (%)",
+          "80.0",
+          "Picked on: Seis"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Method",
+          "default": "Adjacent Parent",
+          "description": "2D 추적 방법(기본값)"
+        },
+        {
+          "name": "Event type",
+          "default": "Max",
+          "description": "기본값"
+        },
+        {
+          "name": "Correlation threshold (%)",
+          "default": "80",
+          "description": "기본값"
+        }
+      ],
+      "manual_sections": [
+        "1.4.2b"
+      ],
+      "linked_chunks": [
+        "9fb74bc7a8cf4149bda2df058dd330f6",
+        "496bd1f88b7f49dc9902e6d8e1d2bc12",
+        "f60b0832b0a1460ab109c1ff4f1e8f68"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "horizon_2dviewer_142b_06_seed_picked_tracked",
+      "workflow_id": "horizon_2dviewer_142b",
+      "step_number": 6,
+      "title": "Max 이벤트에 seed 픽, 라인을 따라 horizon 추적됨",
+      "description": "step 7–8 결과: 2D viewer 단면의 Max 반사면 위에 seed를 찍어 horizon이 라인을 따라 자동 추적됨(선으로 표시). 추가 seed로 라인 전체를 해석한 상태. 아직 저장하지 않음(<New 2D Horizon> 그대로).",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "2D Viewer - Line: Well correlation-Line",
+        "expected_ui_elements": [
+          "horizon_line_on_section",
+          "viewer_tree_new_2d_horizon",
+          "unsaved"
+        ],
+        "screenshot_keywords": [
+          "<New 2D Horizon>",
+          "horizon",
+          "seed",
+          "2D Viewer",
+          "Max event"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.4.2b"
+      ],
+      "linked_chunks": [
+        "e0a48dc3a7f04e4aa34bc4a641a1a970",
+        "f60b0832b0a1460ab109c1ff4f1e8f68",
+        "9fb74bc7a8cf4149bda2df058dd330f6"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "horizon_2dviewer_142b_07_save_as_dialog",
+      "workflow_id": "horizon_2dviewer_142b",
+      "step_number": 7,
+      "title": "Output selection 대화상자 (Output 2D Horizon 이름 입력 전)",
+      "description": "step 14: 2D viewer 트리의 <New 2D Horizon> 우클릭 > Save as → 'Output selection' 대화상자, 'Output 2D Horizon' 이름 필드, Replace in tree, OK/Cancel/Help.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Output selection",
+        "expected_ui_elements": [
+          "output_2d_horizon_name_field",
+          "replace_in_tree_checkbox",
+          "ok_button",
+          "cancel_button"
+        ],
+        "screenshot_keywords": [
+          "Output selection",
+          "Output 2D Horizon",
+          "Replace in tree",
+          "OK",
+          "Cancel",
+          "Help"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Output 2D Horizon",
+          "default": "2D_Horizon",
+          "description": "저장 이름"
+        }
+      ],
+      "manual_sections": [
+        "1.4.2b"
+      ],
+      "linked_chunks": [
+        "f60b0832b0a1460ab109c1ff4f1e8f68",
+        "9fb74bc7a8cf4149bda2df058dd330f6",
+        "496bd1f88b7f49dc9902e6d8e1d2bc12"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "horizon_2dviewer_142b_08_horizon_saved",
+      "workflow_id": "horizon_2dviewer_142b",
+      "step_number": 8,
+      "title": "2D horizon 저장됨 (트리에 저장 이름), 2D viewer 아직 열림",
+      "description": "step 14 결과: 이름을 입력하고 OK → 2D viewer 트리 항목이 저장 이름(예: 2D_Horizon)으로 바뀜. 대화상자 닫힘. 2D viewer 창은 아직 열려 있음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "2D Viewer - Line: Well correlation-Line",
+        "expected_ui_elements": [
+          "viewer_tree_saved_horizon_name",
+          "no_dialog_open",
+          "2d_viewer_still_open"
+        ],
+        "screenshot_keywords": [
+          "2D_Horizon",
+          "2D Viewer",
+          "no Output selection dialog"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.4.2b"
+      ],
+      "linked_chunks": [
+        "f60b0832b0a1460ab109c1ff4f1e8f68",
+        "496bd1f88b7f49dc9902e6d8e1d2bc12",
+        "9b04a9c4b7734f029f00277791987baa"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "horizon_2dviewer_142b_09_viewer_closed_horizon_in_scene",
+      "workflow_id": "horizon_2dviewer_142b",
+      "step_number": 9,
+      "title": "2D viewer 닫힘, 2D 라인과 해석한 2D horizon이 3D scene에 표시 (목표 도달)",
+      "description": "step 15 결과: 2D viewer를 닫으면 3D scene에 2D line과 새 2D horizon이 표시됨. 메인 트리 2D Horizon 아래에 저장 이름. 목표 도달.",
+      "step_type": "terminal",
+      "visual_signature": {
+        "expected_dialog": "OpendTect Main Window / 3D scene",
+        "expected_ui_elements": [
+          "no_2d_viewer_window",
+          "tree_2d_horizon_saved_name",
+          "scene_2d_line_with_horizon"
+        ],
+        "screenshot_keywords": [
+          "2D Horizon",
+          "2D_Horizon",
+          "Well correlation-Line",
+          "no 2D Viewer window"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.4.2b"
+      ],
+      "linked_chunks": [
+        "f60b0832b0a1460ab109c1ff4f1e8f68",
+        "9b04a9c4b7734f029f00277791987baa",
+        "9fb74bc7a8cf4149bda2df058dd330f6"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "horizon_2dviewer_142b_01_scene_no_2dline",
+      "target": "horizon_2dviewer_142b_02_select_2dlines_dialog",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "트리의 2D Line을 우클릭하고 Add를 선택하세요"
+    },
+    {
+      "source": "horizon_2dviewer_142b_02_select_2dlines_dialog",
+      "target": "horizon_2dviewer_142b_03_2dline_loaded",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "목록에서 Well correlation-Line을 선택하고 On OK 동작을 Load default data로 바꾼 뒤 OK를 클릭하세요"
+    },
+    {
+      "source": "horizon_2dviewer_142b_03_2dline_loaded",
+      "target": "horizon_2dviewer_142b_04_2dviewer_open",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "트리의 Seis(속성 이름)를 우클릭하고 Display > 2D Viewer를 선택하세요"
+    },
+    {
+      "source": "horizon_2dviewer_142b_04_2dviewer_open",
+      "target": "horizon_2dviewer_142b_05_track_new_settings",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "2D viewer 트리의 2D Horizon을 우클릭하고 Track New를 선택하세요"
+    },
+    {
+      "source": "horizon_2dviewer_142b_05_track_new_settings",
+      "target": "horizon_2dviewer_142b_06_seed_picked_tracked",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Horizon Tracking Settings는 기본값 그대로 두고, 2D viewer 단면의 Max 반사면 위에 seed를 클릭해 라인을 따라 horizon을 추적하세요"
+    },
+    {
+      "source": "horizon_2dviewer_142b_06_seed_picked_tracked",
+      "target": "horizon_2dviewer_142b_07_save_as_dialog",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "2D viewer 트리의 <New 2D Horizon>을 우클릭하고 Save as를 선택하세요"
+    },
+    {
+      "source": "horizon_2dviewer_142b_07_save_as_dialog",
+      "target": "horizon_2dviewer_142b_08_horizon_saved",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Output 2D Horizon 이름을 입력하고 OK를 클릭하세요"
+    },
+    {
+      "source": "horizon_2dviewer_142b_08_horizon_saved",
+      "target": "horizon_2dviewer_142b_09_viewer_closed_horizon_in_scene",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "2D viewer 창을 닫으세요"
+    }
+  ]
+}
