@@ -74,3 +74,4 @@
 - 확인 실행 시작(UTC): 2026-09-21T07:13:43Z — `bash scripts/run_study2.sh`(순차, 30 replicate), 서명 커밋 3c54d70, 로그 `data/eval/results/study2_bench.log`.
 - **이탈 기록(add-only, V3-32)**: 위 실행은 08:31 UTC에 중단(Gemini r1–r3, 격리 폴더 `study2_aborted_nolinks/`). 사유: study 2 워크플로우 2개에 linked_chunks가 누락되어 full_system 그래프 컨텍스트가 비어 있었음(§2 구성 위반, 저작 누락). 다른 워크플로우와 같은 절차로 연결(`relink_chunks_v4_study2.md`)한 뒤 replicate 1부터 재시작. 중간 수치를 본 뒤의 조치임을 명시. 그 외 변경 없음.
 - **이탈 기록 2(add-only, V3-33)**: 재시작 실행이 2026-09-21 11:19 UTC Gemini replicate 7 도중 Gemini 크레딧 소진(402)으로 중단. replicate 1–6 완료·무결, replicate 7 폐기. 충전 후 같은 커밋·래퍼로 replicate 7부터 재개(`START_REP=7`), 이어서 Claude·GPT ×10. 그 외 변경 없음.
+- **실행 완료(UTC)**: 2026-09-22T06:25:50Z — 30 replicate, 재개 후 오류 0. **§5 기계적 판정(`verdict_study2.md`, V3-34): 비교 1 = A′, 비교 2 = B.** Q2·Q3 적중, Q5 반증, Q4 Gemini +0.138 / Claude −0.083 / GPT +0.282. 이 줄은 §8 실행 기록(add-only).
