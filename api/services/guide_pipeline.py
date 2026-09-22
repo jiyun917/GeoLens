@@ -263,11 +263,27 @@ ROUTER_SESSION_STICKY = os.environ.get("ROUTER_SESSION_STICKY", "0").strip() == 
 # study 3 (R2): advance to the single successor when the rerank repeats the last confirmed node
 # although the previous instruction already covered that node's outgoing edge (V3-37).
 ROUTER_HISTORY_ADVANCE = os.environ.get("ROUTER_HISTORY_ADVANCE", "0").strip() == "1"
+ROUTER_ADVANCE_MIN_COVERAGE = float(os.environ.get("ROUTER_ADVANCE_MIN_COVERAGE", "0.8"))
 _CTX_V7_DONE = ("[Next Action] The previous instruction ({prev}) was the final action of this workflow. "
                 "If the screen shows nothing that contradicts it having been carried out, the goal is reached - answer with the "
                 "completion sentinel '완료' / 'Done'. Otherwise repeat only the part that is visibly not done.")
 _CTX_V7_ADVANCE = ("[Next Action] (the previous instruction - {prev} - already covered the step above; if the screen shows "
                    "nothing contradicting it, continue with the next action from the workflow)")
+
+
+def _edge_coverage(last_instruction: str, edge_instruction: str) -> float:
+    """Same measure as _edge_covered, as a number in [0, 1] (token ratio for edges with >= 2 Latin
+    tokens / numbers, character-bigram Jaccard otherwise)."""
+    if not last_instruction or not edge_instruction:
+        return 0.0
+    stop = {"the", "and", "then", "click", "select", "with"}
+    tok = lambda t: {x for x in re.findall(r"[A-Za-z][A-Za-z\-]{2,}|\d+", (t or "").lower()) if x not in stop}
+    e, l = tok(edge_instruction), tok(last_instruction)
+    if len(e) >= 2:
+        return len(e & l) / len(e)
+    a, b = _norm_text(edge_instruction), _norm_text(last_instruction)
+    ga = {a[i:i + 2] for i in range(len(a) - 1)}; gb = {b[i:i + 2] for i in range(len(b) - 1)}
+    return (len(ga & gb) / len(ga | gb)) if ga else 0.0
 
 
 def _edge_covered(last_instruction: str, edge_instruction: str) -> bool:
@@ -1148,6 +1164,7 @@ Respond with JSON only:
             "confidence": confidence,
             "next_nodes": retrieval.get("next_nodes", []),
             "next_nodes_2": (self.graph.get_next_steps(retrieval["next_nodes"][0]["id"]) if retrieval.get("next_nodes") else []),
+            "prev_edges": (self.graph.get_previous_steps(current_node_id) if current_node_id else []),
             "completed_steps": list(completed_steps or []),
             "graph_context": retrieval.get("graph_context", []),
             "vector_context": retrieval.get("vector_context"),
@@ -1236,6 +1253,18 @@ Respond with JSON only:
             return picked_id
         edge_instr = succ[0].get("edge_instruction") or ""
         if not _edge_covered(hist[-1], edge_instr):
+            return picked_id
+        # R2": the previous instruction must describe the OUTGOING action better than the action that
+        # reached the last node (sibling edges sharing a verb phrase; bundled instructions).
+        cov_next = _edge_coverage(hist[-1], edge_instr)
+        cov_prev = max((_edge_coverage(hist[-1], p.get("edge_instruction") or "") for p in self.graph.get_previous_steps(last_node_id)), default=0.0)
+        if cov_next <= cov_prev:
+            return picked_id
+        # routing advance is riskier than the assembly hint: for edges with >= 2 Latin tokens require
+        # (almost) all of them in the previous instruction (partial completions such as "type the
+        # name" without the confirming "OK" must not advance).
+        n_tok = len({x for x in re.findall(r"[A-Za-z][A-Za-z\-]{2,}|\d+", edge_instr.lower()) if x not in {"the", "and", "then", "click", "select", "with"}})
+        if n_tok >= 2 and cov_next < ROUTER_ADVANCE_MIN_COVERAGE:
             return picked_id
         nxt = succ[0]["id"]
         if not any(c["node"].get("id") == nxt for c in candidates):
@@ -1485,7 +1514,9 @@ Respond with JSON only:
                 hist = [h for h in (pipeline_output.get("completed_steps") or []) if h]
                 last = (hist[-1] if hist else "").strip()
                 first = next_nodes[0]
-                if last and _edge_covered(last, first.get("edge_instruction") or ""):
+                cov_next = _edge_coverage(last, first.get("edge_instruction") or "") if last else 0.0
+                cov_prev = max((_edge_coverage(last, p.get("edge_instruction") or "") for p in (pipeline_output.get("prev_edges") or [])), default=0.0) if last else 0.0
+                if last and _edge_covered(last, first.get("edge_instruction") or "") and cov_next > cov_prev:
                     nn2 = pipeline_output.get("next_nodes_2") or []
                     if goal_state or (first.get("step_type") or "") in _TERMINAL_STEP_TYPES or not nn2:
                         parts.append(_CTX_V7_DONE.format(prev=last[:160]))
