@@ -821,5 +821,8 @@
     "final_screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_8.jpg",
     "expected_done_sentinel": true,
     "note": "step_8 depicts the goal-achieved terminal state (Fault_01A created from the selected sticks). Creating further planes (manual step 18) is out of scope."
-  }
+  },
+  "manual_grounding_sections": [
+    "1.4.3b"
+  ]
 }

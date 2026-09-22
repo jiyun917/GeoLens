@@ -740,5 +740,8 @@
     "final_screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_6.jpg",
     "expected_done_sentinel": true,
     "note": "step_6 depicts the goal-achieved terminal state (one auto-tracked horizon patch locked). Continuing with more seeds (manual steps 19–23) is out of scope."
-  }
+  },
+  "manual_grounding_sections": [
+    "1.4.2a"
+  ]
 }
