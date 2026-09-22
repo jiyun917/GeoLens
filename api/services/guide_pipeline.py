@@ -1213,10 +1213,21 @@ Respond with JSON only:
 
     def _history_advance(self, picked_id: str, candidates: List[Dict], last_node_id: Optional[str],
                          completed_steps: Optional[List[str]]) -> str:
-        """R2 (study 3): the rerank repeated the last confirmed node, but the previous instruction
-        already told the user to do that node's outgoing action -> the user is on the successor."""
-        if not last_node_id or picked_id != last_node_id:
+        """R2/R2' (study 3): the rerank repeated the last confirmed node - or fell back to an earlier
+        node of the same workflow (signature overlap while a window stays open) - although the
+        previous instruction already told the user to do the last node's outgoing action -> the
+        user is on the successor."""
+        if not last_node_id:
             return picked_id
+        if picked_id != last_node_id:
+            pn, ln = self.graph.get_node(picked_id), self.graph.get_node(last_node_id)
+            if not pn or not ln or pn.get("workflow_id") != ln.get("workflow_id"):
+                return picked_id
+            try:
+                if int(pn.get("step_number") or 0) > int(ln.get("step_number") or 0):
+                    return picked_id      # a forward pick is not our case
+            except (TypeError, ValueError):
+                return picked_id
         hist = [h for h in (completed_steps or []) if h]
         if not hist:
             return picked_id

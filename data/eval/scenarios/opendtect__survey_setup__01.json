@@ -271,5 +271,9 @@
     "final_screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_3.jpg",
     "expected_done_sentinel": true,
     "note": "Goal is achieved when user clicks Select on the newly created My_F3_Survey. The subsequent /step (screen change → Main Window) should trigger 완료 emit."
-  }
+  },
+  "manual_grounding_sections": [
+    "1.2.2a",
+    "1.2 "
+  ]
 }

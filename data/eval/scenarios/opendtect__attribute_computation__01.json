@@ -740,5 +740,8 @@
     "final_screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_7.jpg",
     "expected_done_sentinel": true,
     "note": "step_7 depicts the goal-achieved terminal state (Energy attribute rendered on inline 250, color bar visible). Matches manual §1.5.1a page-120 result. The goal_completion_sentinel trap on step_7 explicitly marks this, so the 3-gate completion check is expected to pass all three gates."
-  }
+  },
+  "manual_grounding_sections": [
+    "1.5.1a"
+  ]
 }

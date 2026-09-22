@@ -346,5 +346,8 @@
     "final_screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_3.jpg",
     "expected_done_sentinel": true,
     "note": "step_3 depicts the goal-achieved terminal state (all three slices visible in 3D Scene). The goal_completion_sentinel trap on step_3 explicitly marks this so the 3-gate completion check passes structurally. Refined from unified2's penultimate-capture design as part of unified3 scenario refinement (2026-08-06); see step_3.trap.audit_note for details. Cross-version goal_completion comparison (unified2 vs unified3) is PROHIBITED because scenario definition changed."
-  }
+  },
+  "manual_grounding_sections": [
+    "1.3.1"
+  ]
 }

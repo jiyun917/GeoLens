@@ -7,7 +7,8 @@ cd "$(dirname "$0")/.."
 source scripts/study2_env.sh
 export GEOLENS_SCORER=v5 CONTEXT_ASSEMBLY=v7 ROUTER_SESSION_STICKY=1 ROUTER_HISTORY_ADVANCE=1 RERANK_SESSION_BLOCK=1
 PY=".venv/Scripts/python.exe"
-LOG="data/eval/results/study3_verify.log"
+TAG="${TAG:-study3verify}"
+LOG="data/eval/results/${TAG}.log"
 DEV_DIR="data/eval/scenarios/.dev_opendtect"
 S2_DIR="data/eval/scenarios/.study2_test"
 $PY scripts/preflight_check.py --scenarios "$S2_DIR" --expect GEOLENS_SCORER=v5 CONTEXT_ASSEMBLY=v7 ROUTER_SESSION_STICKY=1 ROUTER_HISTORY_ADVANCE=1 --allow-dirty || { echo "preflight failed - verification refused" | tee -a "$LOG"; exit 2; }
@@ -21,7 +22,7 @@ for set in dev s2; do
     ts=$(date -u +%Y%m%dT%H%M%S)
     echo "$(date -u +%H:%M:%S) $set full_system $m" | tee -a "$LOG"
     $PY -u -m api.services.bench_runner --model $m --backends full_system --scenarios "$dir" \
-        --out "data/eval/results/run_${m}_study3verify_${set}_r1_${ts}.json" 2>&1 | tee -a "$LOG"
+        --out "data/eval/results/run_${m}_${TAG}_${set}_r1_${ts}.json" 2>&1 | tee -a "$LOG"
   done
 done
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === study3 verify complete ===" | tee -a "$LOG"
