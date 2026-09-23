@@ -6,11 +6,15 @@
 set -u
 cd "$(dirname "$0")/.."
 source scripts/study2_env.sh
-export GEOLENS_SCORER="${GEOLENS_SCORER:-v5}"                 # F1' hall definition v5 fixed BEFORE the run
-export CONTEXT_ASSEMBLY="${CONTEXT_ASSEMBLY:-v7}"
-export ROUTER_SESSION_STICKY="${ROUTER_SESSION_STICKY:-1}"
-export ROUTER_HISTORY_ADVANCE="${ROUTER_HISTORY_ADVANCE:-1}"   # R2
-export RERANK_SESSION_BLOCK="${RERANK_SESSION_BLOCK:-1}"
+# Pinned by the signed pre-registration (tag study3-prereg-signed, sections 2/6) and NOT overridable from the
+# environment. V3-41: the previous ':-v5' fallback let study2_env.sh's GEOLENS_SCORER=v4 default through
+# (kickoff 2026-09-23T04:49:41Z logged scorer=v4; aborted before any result file); the preflight expectation
+# below is therefore given as literals, not as the same variables.
+export GEOLENS_SCORER=v5            # F1' hall definition v5 fixed BEFORE the run
+export CONTEXT_ASSEMBLY=v7
+export ROUTER_SESSION_STICKY=1      # R1
+export ROUTER_HISTORY_ADVANCE=1     # R2''
+export RERANK_SESSION_BLOCK=1
 TAG="${TAG:-study3}"
 REPS="${REPS:-10}"
 MODELS="${MODELS:-gemini,claude,gpt}"
@@ -22,7 +26,7 @@ PY=".venv/Scripts/python.exe"
 LOG="data/eval/results/${TAG}_bench.log"
 if ! git tag --list | grep -q "^study3-prereg-signed$"; then echo "pre-registration not signed (tag study3-prereg-signed missing)"; exit 2; fi
 for d in "$OT_DIR" "$QG_DIR"; do
-  $PY scripts/preflight_check.py --scenarios "$d" --expect GEOLENS_SCORER="$GEOLENS_SCORER" CONTEXT_ASSEMBLY="$CONTEXT_ASSEMBLY" ROUTER_SESSION_STICKY="$ROUTER_SESSION_STICKY" ROUTER_HISTORY_ADVANCE="$ROUTER_HISTORY_ADVANCE" RERANK_SESSION_BLOCK="$RERANK_SESSION_BLOCK" CHROMADB_PATH="$CHROMADB_PATH" || { echo "preflight failed for $d - run refused"; exit 2; }
+  $PY scripts/preflight_check.py --scenarios "$d" --expect GEOLENS_SCORER=v5 CONTEXT_ASSEMBLY=v7 ROUTER_SESSION_STICKY=1 ROUTER_HISTORY_ADVANCE=1 RERANK_SESSION_BLOCK=1 CHROMADB_PATH=./data/chromadb_v4 EMBED_MODEL=BAAI/bge-m3 || { echo "preflight failed for $d - run refused"; exit 2; }
 done
 {
   echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === ${TAG} bench kickoff === passes=${PASSES} models=${MODELS} reps=${REPS} start=${START_REP}"

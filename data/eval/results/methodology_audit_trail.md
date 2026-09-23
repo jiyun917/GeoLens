@@ -1433,3 +1433,9 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - **선정(§1.1) OpendTect 패스**: claude 0.889 ✓✓✓✓✓✗✓✓✓; gemini 0.778 ✓✓✓✗✓✗✓✓✓; gpt 0.667 ✓✓✗✓✓✓✗✗✓; mean 0.778 → 채택. QGIS 패스와 합쳐 세 시나리오 모두 채택(no_rag 평균 0.704 / 0.600 / 0.778). 선정 응답은 GT·시스템 수정에 참고하지 않음(선정 중 관측된 패턴 엄격성 — 예: rule s5의 '+' 버튼 답 — 은 전 백엔드 공통이며 그대로 둠).
 - **사전등록 3 최종화**: §1.1 결과, §3 GT 수행 기록(H1–H3·HR 결정), §6 실행 계획(2패스, 잔액 35,000원 확인), §7 한계(데이터명 정정의 signature 불일치 → full_system 불리 가능; Reclassify s1 허용 대안; 캡처 편차), §8 저작 커밋 7e68cc2·GT 커밋 c61a4ef. 서명은 위임에 따라 메인 세션이 채움(작성 유지윤 / 검토 Claude 메인 세션, 위임 / 확정 시각 = 서명 커밋 시각), 태그 `study3-prereg-signed`. 이후 판정 세트·GT·채점기·메커니즘·풀 불변.
 - 확인 실행 시작 시각은 §8 아래에 append.
+
+### V3-41. study 3 확인 실행 이탈 1 — 래퍼 env 핀 결함으로 중단·수정·재시작 (2026-09-23)
+- 04:49:41Z 서명 커밋 416228f에서 `run_study3.sh` 시작. kickoff 행이 `scorer=v4`를 기록 → 사전등록 §2 F1′(GEOLENS_SCORER=v5) 위반. 원인: `study2_env.sh`가 GEOLENS_SCORER 기본값 v4를 export하고 래퍼의 `${GEOLENS_SCORER:-v5}`가 그 값을 유지; preflight E1은 같은 변수를 기대값으로 받아 항진(tautology)이라 잡지 못함. 선정 체인·검증 체인은 v5를 명시 export했으므로(§1.1 선정, V3-38 검증) 영향 없음.
+- 04:51:14Z 중단(결과 JSON 0개; gemini no_rag replicate 1 진행 중이었음; 응답 열람 없음; 비용 < $0.5). 사용자 규칙 "이런 실수 있으면 안돼"의 재발 — preflight가 있었지만 기대값을 환경에서 파생시킨 설계 결함.
+- 수정(스크립트만; api/·GT·워크플로우·시나리오·풀 불변, 사전등록 본문 불변): 래퍼가 5개 핀을 무조건 export하고 preflight `--expect`에 리터럴(v5/v7/1/1/1, KB 경로·임베딩 모델)을 전달. `run_study2.sh`에도 같은 항진 사용이 있으나 그 연구는 종료됐으므로 손대지 않음.
+- 재시작: 이 수정 커밋(HEAD)에서 `run_study3.sh` 재실행. 결과 JSON의 git 스탬프는 서명 태그 커밋(416228f)이 아니라 수정 커밋을 가리키며, 두 커밋의 차이는 `scripts/run_study3.sh`·감사 기록·사전등록 §8 append뿐이다(`git diff study3-prereg-signed HEAD --stat`으로 확인 가능). v5는 채점 라벨(환각 필터)에만 관여하므로 모델 호출·판정 세트와 무관. 재시작 시각·커밋은 사전등록 §8에 append.
