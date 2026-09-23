@@ -9,11 +9,13 @@ PY=".venv/Scripts/python.exe"
 LOG="data/eval/results/study3_select.log"
 OT_DIR="data/eval/scenarios/.study3_test_opendtect"
 QG_DIR="data/eval/scenarios/.study3_test_qgis"
-for d in "$OT_DIR" "$QG_DIR"; do
+PASSES="${PASSES:-opendtect,qgis}"
+for pass in ${PASSES//,/ }; do
+  d=$OT_DIR; [ "$pass" = qgis ] && d=$QG_DIR
   $PY scripts/preflight_check.py --scenarios "$d" --expect GEOLENS_SCORER=v5 --allow-dirty || { echo "preflight failed for $d" | tee -a "$LOG"; exit 2; }
 done
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === study3 selection kickoff === git $(git rev-parse --short HEAD)" | tee -a "$LOG"
-for pass in opendtect qgis; do
+for pass in ${PASSES//,/ }; do
   dir=$OT_DIR; [ "$pass" = qgis ] && dir=$QG_DIR
   for m in gemini claude gpt; do
     ts=$(date -u +%Y%m%dT%H%M%S)
