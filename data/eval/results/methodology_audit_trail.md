@@ -1445,3 +1445,13 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - 그 파일은 `code_version.commit=416228f`, `env_knobs.GEOLENS_SCORER=v4`로 스탬프돼 사전등록과 불일치 → `data/eval/results/study3_aborted_v3-41/`로 격리. 판정 글롭(`run_*_study3_opendtect_r1_*`)에서 빠지며 내용(응답·점수)은 열람하지 않았다(메타데이터·키 구조만 확인). 재시작 실행의 r1(`…_20260923T045259.json`)은 commit ae16873, scorer v5.
 - 스탬프 결함(기록만): `bench_runner._KNOB_KEYS`에 `ROUTER_HISTORY_ADVANCE`·`ROUTER_ADVANCE_MIN_COVERAGE`가 없어 결과 JSON의 env_knobs에 R2″ 핀이 찍히지 않는다. 증거는 (i) 래퍼의 무조건 export, (ii) kickoff 로그 행 `advance=1`, (iii) preflight E1 리터럴 검사, (iv) per_step `route_advance` 텔레메트리(존재 확인). 실행 중 api/ 수정 금지이므로 고치지 않고 이 기록으로 갈음한다.
 - 실행 중 커밋은 문서 전용(ae16873 → d63997b → 이 추기). 결과 JSON의 commit 스탬프는 replicate 시작 시점의 HEAD라 값이 섞이며, `git diff ae16873 <HEAD> --stat`로 문서 전용임을 확인할 수 있다. 종료까지 추가 커밋은 이탈·장애 기록에 한정한다.
+
+### V3-42. study 3 확인 실행 완료·기계적 판정 (2026-09-23T22:10Z; 기록 2026-09-24)
+- **실행**: 2026-09-23T04:52:58Z → 22:10:39Z(17h18m), 두 패스(OpendTect 5h44m, QGIS 11h34m). 결과 파일 60개(패스당 3모델×10회), 3,360 스텝, API 오류 0, 크레딧 신호 0, 이탈은 V3-41(재시작 전) 1건뿐. 스탬프: scorer v5 ×60; commit f99f749 ×54 / d63997b ×5 / ae16873 ×1(실행 중 커밋은 문서·격리 파일뿐, `git diff ae16873 f99f749 --stat`). 비용(결과 JSON 합산): 생성 claude $12.43 / gemini $11.23 / gpt $7.60, Flash 보조 $2.35 → 총 ≈ $33.6, Gemini 청구분 ≈ $13.6(잔액 35,000원 내).
+- **판정**(`scripts/verdict_study3.py` → `verdict_study3.md`, §5 기계 적용, 층화 순열 10,000회 seed 42):
+  - 비교 1 (full vs vanilla_budget): step 방향 3/3, raw p = 0.0001(Holm 0.0002), Δ = +0.110 → 성립; hall v5 full ≤ 비교군 1/3(gpt만) → 불성립 → **A′**.
+  - 비교 2 (full vs vanilla_vector): step 방향 2/3(gpt −0.051, per-model p 0.111, 유의한 역전 아님), raw p = 0.165, Δ = +0.027 → 불성립; hall 0/3 → 불성립 → **B**.
+  - 모델별 full step_acc: gemini 0.782 (vb 0.710 / vv 0.754), claude 0.881 (0.770 / 0.776), gpt 0.780 (0.634 / 0.831). hall v5 full: gemini 0.007 (0.003/0.003), claude 0.093 (0.041/0.033), gpt 0.007 (0.010/0.000).
+- **예측**: Q1/Q7 no_rag 평균 gemini 0.633 / claude 0.779 / gpt 0.734(세 시나리오 모두 §1.1 선정 기준 유지). Q2(vanilla_budget − no_rag ≥ +3pp) 1/3 → 반증. Q3 적중. Q4 적중. Q5(hall) 반증. Q6 라우팅: 워크플로우 적중 80–90/90(OT) · 86–90/90 · 88–90/100(QGIS), 노드 적중 OT 64–70/90 vs QGIS 33–52/90·100; R2″ 발화 0–4회/모델·시나리오, R1 0–5회.
+- **기술(descriptive, 사후; 어떤 수정에도 쓰지 않음)**: full_system 환각은 Claude에 집중되며 세 고정 스텝(horizon s7 10/10, reclassify s6 6/10, rule s2 10/10)이다. rule s2는 Claude의 모든 백엔드에서 10/10이라 full_system 고유가 아니고, horizon s7·reclassify s6은 full_system 고유(비교군 0–2/10). gemini·gpt의 full hall은 ≤ 0.007. GPT reclassify에서 full 0.578 vs vanilla_vector 0.822의 시나리오 수준 역전이 비교 2의 gpt 방향을 결정했다.
+- **종결**: 사전등록 §6에 따라 사후 수정 없음, study 4 없음. 사용자 목표("정확도·환각 모두 우위")는 정확도(vs vanilla_budget)만 확인됐고 환각 조건과 vs vanilla_vector 유의성은 확인되지 않았다. 원인 분석은 별도의 사후 분석으로만 가능하며 판정에 영향을 주지 않는다.
