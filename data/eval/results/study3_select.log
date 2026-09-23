@@ -86,3 +86,71 @@ Scenarios: 2
 Results written: data/eval/results/run_gpt_study3sel_qgis_r1_20260923T034817.json
 Markdown:        data/eval/results/run_gpt_study3sel_qgis_r1_20260923T034817.md
 2026-09-23T03:49:03Z === study3 selection complete ===
+2026-09-23T04:42:32Z === study3 selection kickoff === git c61a4ef
+04:42:32 selection opendtect gemini
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:102: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': 'c61a4ef8fef96802f976a4f64540fc947dbae0a5', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== opendtect__horizon_2dviewer__01 (9 steps) ===
+  - no_rag         step_acc=0.78 hall=0.00 loop=0.00 latency=113.93s
+
+# Benchmark Results
+
+Started: 2026-09-23T04:42:32.666362Z
+Scenarios: 1
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.778 | 0.000 | 0.000 | — | — | 1.000 |
+
+
+Results written: data/eval/results/run_gemini_study3sel_opendtect_r1_20260923T044232.json
+Markdown:        data/eval/results/run_gemini_study3sel_opendtect_r1_20260923T044232.md
+04:44:27 selection opendtect claude
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:102: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': 'c61a4ef8fef96802f976a4f64540fc947dbae0a5', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== opendtect__horizon_2dviewer__01 (9 steps) ===
+  - no_rag         step_acc=0.89 hall=0.00 loop=0.11 latency=38.62s
+
+# Benchmark Results
+
+Started: 2026-09-23T04:44:28.021685Z
+Scenarios: 1
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.889 | 0.000 | 0.111 | — | — | 1.000 |
+
+
+Results written: data/eval/results/run_claude_study3sel_opendtect_r1_20260923T044427.json
+Markdown:        data/eval/results/run_claude_study3sel_opendtect_r1_20260923T044427.md
+04:45:07 selection opendtect gpt
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:102: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': 'c61a4ef8fef96802f976a4f64540fc947dbae0a5', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== opendtect__horizon_2dviewer__01 (9 steps) ===
+  - no_rag         step_acc=0.67 hall=0.00 loop=0.00 latency=25.1s
+
+# Benchmark Results
+
+Started: 2026-09-23T04:45:07.930454Z
+Scenarios: 1
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.667 | 0.000 | 0.000 | — | — | 1.000 |
+
+
+Results written: data/eval/results/run_gpt_study3sel_opendtect_r1_20260923T044507.json
+Markdown:        data/eval/results/run_gpt_study3sel_opendtect_r1_20260923T044507.md
+2026-09-23T04:45:33Z === study3 selection complete ===

@@ -1427,3 +1427,9 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - **외부 검토**(별도 세션, RULES.md, 25스텝 전수 1,476항목): 표본 오독률 7/397 = 1.76%(< 5%). 변경 C 38·B 22·D 7(중복 제거, 상태 주석 제거, 원문 정정, 누락 라벨 추가, data_state 문장). 보류 13: H1 QGIS 소수점 글리프(한글 글꼴에서 '.'이 ','처럼 보임), H2 규칙 3 필드가 화면에 없는 데이터명을 참조(keywords 'Well correlation-Line'·'Seis', s8 대안, goal), H3 D s1 자동 채움, H4–H13 사소.
 - **결정(위임; `study3_apply_gt_decisions.py`, `GT_final_applied_log.md`)**: H1 마침표 규약으로 통일(D 8건·B 2건 변환). H2 v3의 roads_34S→roads_33S 선례대로 **시나리오 GT 필드만** 실측 이름으로 정정 — goal의 라인·속성명, s1 keywords ['Load default data'](라인명 제거) + 패턴에 라인명 추가, s2 keywords 'Seismic', s8 대안에 라인명 추가; 워크플로우 signature 불변. H3 D s1에 "테이블 열기" 허용 대안 추가(v3 QGIS s3 선례). 나머지 검토자 해석 유지. 확정 GT: `data/eval/scenarios/.study3_test_qgis/`(B·D 최종), `.study3_test_opendtect/`(C: s0–s5 확정, s6–s8 임시), `data/eval/scenarios/`에 동일 사본.
 - **선정 실행**: QGIS 패스(B·D)를 먼저 실행(`study3_select_chain.sh PASSES=qgis`); OpendTect 패스는 재캡처 후.
+
+### V3-40. study 3 GT 확정·선정 완료·사전등록 3 최종화·서명 (2026-09-23)
+- **재캡처 검수**(별도 세션, C s6–s8만): 표본 오독률 7/218 = 3.21%(< 5%), 환각 0, 변경 30·보류 6(HR1–HR6, 검토자 표기 유지). proposed C의 s0–s5는 바이트 동일 유지 확인. `study3_apply_gt_decisions.py` 재적용 → 확정 GT 커밋 c61a4ef(C 9스텝, 임시 항목 0).
+- **선정(§1.1) OpendTect 패스**: claude 0.889 ✓✓✓✓✓✗✓✓✓; gemini 0.778 ✓✓✓✗✓✗✓✓✓; gpt 0.667 ✓✓✗✓✓✓✗✗✓; mean 0.778 → 채택. QGIS 패스와 합쳐 세 시나리오 모두 채택(no_rag 평균 0.704 / 0.600 / 0.778). 선정 응답은 GT·시스템 수정에 참고하지 않음(선정 중 관측된 패턴 엄격성 — 예: rule s5의 '+' 버튼 답 — 은 전 백엔드 공통이며 그대로 둠).
+- **사전등록 3 최종화**: §1.1 결과, §3 GT 수행 기록(H1–H3·HR 결정), §6 실행 계획(2패스, 잔액 35,000원 확인), §7 한계(데이터명 정정의 signature 불일치 → full_system 불리 가능; Reclassify s1 허용 대안; 캡처 편차), §8 저작 커밋 7e68cc2·GT 커밋 c61a4ef. 서명은 위임에 따라 메인 세션이 채움(작성 유지윤 / 검토 Claude 메인 세션, 위임 / 확정 시각 = 서명 커밋 시각), 태그 `study3-prereg-signed`. 이후 판정 세트·GT·채점기·메커니즘·풀 불변.
+- 확인 실행 시작 시각은 §8 아래에 append.

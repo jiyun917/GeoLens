@@ -1,6 +1,7 @@
-# Study 3 사전등록 (초안 v1 — 서명 전)
+# Study 3 사전등록 (최종안 — 서명 전)
 
 **작성 시점**: 2026-09-22, study 2 판정(비교 1 A′, 비교 2 B; 2차 분석 A/B; V3-34~36) 이후. study 2 결과는 그대로 보고하며 이 문서는 별도의 확인 연구다. 새 테스트 세트에서는 아직 어떤 백엔드도 실행하지 않았다. 결정은 사용자가 위임했다("고칠 수 있는 건 고치고, QGIS는 OpendTect처럼 새 시나리오로").
+**최종화 시점**: 2026-09-23 (KST), GT 확정(커밋 c61a4ef)·선정 실행 완료 후. 판정 세트에서 실행된 것은 §1.1의 no_rag 선정 실행뿐이다. 결정은 사용자가 위임했다.
 **원칙**: v3·study 2와 같다 — 실행 전 확정, 전 백엔드 동일 적용, 판정 기준 선고정, 양방향 예측, 불리한 결과 그대로, 결과를 본 뒤 GT·채점기·메커니즘·signature 불변, study 4 없음.
 
 ## 0. 왜 study 3인가
@@ -16,7 +17,7 @@
 
 ### 1.1 선정 규칙 (판정 세트, 시스템 실행 전)
 - 각 시나리오에 no_rag만 3모델 × 1회. 3모델 평균 step accuracy < 0.85이면 채택, 아니면 제외(고치지 않음). 선정 실행의 응답은 선정에만 쓰고 GT·시스템 수정에 참고하지 않는다.
-- 결과(QGIS 패스, 2026-09-23, `run_<model>_study3sel_qgis_r1_*.json`, 채점기 v5, judge 없음): `qgis__reclassify_raster__01` Gemini 0.556 / Claude 0.667 / GPT 0.889, 평균 **0.704** → 채택; `qgis__rule_classification__01` 0.400 / 0.800 / 0.600, 평균 **0.600** → 채택. OpendTect 패스(`opendtect__horizon_2dviewer__01`)는 s6–s8 재캡처 후 실행: `[기재]`
+- 결과(QGIS 패스, 2026-09-23, `run_<model>_study3sel_qgis_r1_*.json`, 채점기 v5, judge 없음): `qgis__reclassify_raster__01` Gemini 0.556 / Claude 0.667 / GPT 0.889, 평균 **0.704** → 채택; `qgis__rule_classification__01` 0.400 / 0.800 / 0.600, 평균 **0.600** → 채택. OpendTect 패스(`opendtect__horizon_2dviewer__01`, s6–s8 재캡처·검수 후 실행, `run_<model>_study3sel_opendtect_r1_*.json`): claude 0.889 ✓✓✓✓✓✗✓✓✓; gemini 0.778 ✓✓✓✗✓✗✓✓✓; gpt 0.667 ✓✓✗✓✓✓✗✗✓; mean 0.778 → 채택
 
 ## 2. 실행 전에 확정된 수정 (전 백엔드 동일 또는 full_system 메커니즘; V3-37)
 | # | 수정 | 근거 |
@@ -32,7 +33,9 @@
 - 개발 세트 full_system 3모델 × 1회(최종 구성): (a) 라우팅 정답 스텝의 새 생성 손실(iteration 5 합집합 대비) 0, (b) 환각(v5) 모델별 ≤ study 2 검증 2차 값, (c) 라우팅 기록. 2차 세트(study 2) full_system 3모델 × 1회: (d) fault_sticks s4–s7·horizon s4–s6의 노드 단위 라우팅이 study 2 벤치(19/19/19/18 of 30, 30/30 ×3 오라우팅)보다 개선, (e) R2가 잘못 전진한 사례(전진했는데 응답이 오답이 된 스텝) 0. 통과 못 한 항목은 그 값을 버린다(R2 실패 시 `ROUTER_HISTORY_ADVANCE=0`). 결과(V3-38, 커밋 79c73fb+): 개발 세트 (a) 새 생성 손실 0, (b) 환각 v5 0/0/0, (c) 48/48; study 2 세트 (e) 잘못된 전진 0/7(3라운드 합계 0/24), (d) 뒤처짐 7칸 중 6칸 개선·horizon s6 1칸 동일(세 모델 응답 정답). (d)의 문자 그대로 기준은 미달이나 무해한 1칸이므로 구성을 채택(사용자 위임; §7에 기재). study 2 세트 step accuracy(1회) 1.000 / 0.651 / 1.000 — Claude는 fault_sticks s3 화면 오독의 연쇄(라우팅 규칙과 무관, 세 라운드 일관).
 
 ## 3. GT 절차
-study 2와 동일: gemini-2.5-pro 열거(temperature 0) → 스크린샷만 보는 외부 검토(RULES) → 사용자 승인 → 커밋 → 서명 전까지 불변. `manual_grounding_sections`는 시나리오에 저작 시점에 기재.
+study 2와 동일: gemini-2.5-pro 열거(temperature 0) → 스크린샷만 보는 외부 검토(RULES) → 결정(위임) → 커밋 → 서명 전까지 불변. `manual_grounding_sections`는 시나리오에 저작 시점에 기재.
+- **수행 기록(V3-39)**: 28장 캡처(C s6–s8은 2D viewer가 일찍 닫힌 첫 캡처를 거부하고 재캡처). 열거 27장 + 재캡처 3장. 외부 검토 표본 오독률 1.76%(25스텝 1,476항목), 재캡처 3스텝 3.21%(218항목). 보류 결정: H1 QGIS 소수점 마침표 규약(한글 글꼴 글리프 모호), H2 **데이터명 정정** — F3 Demo 2023에 'Well correlation-Line'이 없고 속성명이 'Seismic'이어서 시나리오 goal·keywords·patterns·allowed_alternatives만 실측 이름으로 바꿈(v3 roads_34S→roads_33S 선례; 워크플로우 signature 불변), H3 Reclassify s1의 Raster layer 자동 채움에 '테이블 열기' 허용 대안(v3 QGIS s3 선례), HR1–HR3 검토자 표기 유지. 확정 GT: `data/eval/scenarios/.study3_test_opendtect/`, `.study3_test_qgis/`(+ `data/eval/scenarios/` 사본).
+- 화면이 같은 스텝 쌍: Reclassify s1/s2(자동 채움)는 세션 이력으로만 구별되며 loop_rate에 잡힐 수 있다(판정 지표 아님).
 
 ## 4. 사전 예측 (결과 관측 전, 양방향)
 | # | 예측 | 임계 | 반증되면 |
@@ -49,13 +52,16 @@ study 2와 동일: gemini-2.5-pro 열거(temperature 0) → 스크린샷만 보�
 - 판정 지표 step accuracy·hallucination_rate(v5), 기술 지표 goal completion·cost·latency·hall v4. 비교 1 = vs vanilla_budget, 비교 2 = vs vanilla_vector. 층화 순열검정(모델 층, 10,000회, seed 42), 방향 분모 3·동률 미가산, step 조건 = 방향 ≥ 2/3 & raw p < 0.05 & 유의한 역방향 없음, hall 조건 = full ≤ 비교대상 2/3 이상, A/A′/B/C, Holm(패밀리 2) 병기. 집계 단위 replicate(3 시나리오 평균), n = 10, |M| = 3.
 
 ## 6. 실행 계획
-- 매트릭스: 3모델 × {no_rag, vanilla_budget, vanilla_vector, full_system} × 3시나리오(28스텝) × 10회, 2패스. 예상 비용 $40~50(Gemini 약 $15: 생성 + Flash 보조·judge), 약 12~14시간 순차. 실행 전 Gemini 잔액 확인(≥ $25 권장, 약 20,000원 추가 충전).
-- 서명 후: 태그 `study3-prereg-signed` → `bash scripts/run_study3.sh` → `verdict_study2.py --tag`(패스별 파일을 합쳐 집계하는 study 3 판정 스크립트) → 보고. study 4 없음.
+- 매트릭스: 3모델 × {no_rag, vanilla_budget, vanilla_vector, full_system} × 3시나리오(28스텝) × 10회, 2패스(`run_study3.sh`: OpendTect 패스 태그 `study3_opendtect`, QGIS 패스 `study3_qgis`; preflight 게이트; 서명 태그 없으면 거부). 예상 비용 $40~50(Gemini 약 $17), 약 12~14시간 순차. Gemini 잔액 35,000원(≈ $25) 확인(2026-09-23).
+- 서명 후: 태그 `study3-prereg-signed` → `bash scripts/run_study3.sh` → `scripts/verdict_study3.py`(두 패스 태그를 replicate 단위로 병합, 3 시나리오 등가중) → 보고. study 4 없음. 실행 중 코드·GT·워크플로우·사전등록 본문 불변; 장애 시 §6.4(study 2)와 같이 중단 replicate 폐기·재개(`START_REP`).
 
 ## 7. 한계
 - 단일 저자 캡처·저작. 판정 세트 3시나리오 28스텝. R2·v5·풀 정리는 study 2 결과를 보고 설계했다(판정 세트는 새것이므로 그 자체는 오염되지 않았으나 설계 동기는 사후임을 명시). QGIS 준비 단계(AREA 필드, aspect 계산)는 시나리오 밖.
 - R2는 후속 노드가 하나인 선형 그래프에서만 작동하며, 직전 지시가 틀렸을 때 그 오류를 한 칸 전진시킬 수 있다(게이트 (e)로 확인).
 - 검증 게이트 (d)는 1회 관측에서 7칸 중 1칸(마지막 스텝, 응답 정답)이 미개선인 채 채택했다. R2″의 덮음 기준(0.8)과 들어옴/나감 가드는 검증 결과를 보며 정했다(판정 세트는 새것이므로 그 자체는 오염되지 않았으나 설계는 사후).
+- 데이터셋 차이로 OpendTect 시나리오의 라인·속성 이름을 캡처 후 시나리오 GT 필드에서 정정했다(H2). 워크플로우 signature는 매뉴얼 이름('Well correlation-Line', 'Seis')을 유지하므로 rerank의 문자열 대조는 이 노드들에서 약해질 수 있다(전 백엔드 공통이 아니라 full_system 쪽 불리).
+- QGIS Reclassify s1은 화면상 다음 동작이 '테이블 열기'라 허용 대안을 넣었다; 화면을 읽는 백엔드에 유리할 수 있음(v3 QGIS s3과 같은 명시).
+- 캡처는 매뉴얼 절차와 두 곳에서 어긋난 채 진행됐다(D 출력 폴더, B EPSG:4326). 무해하나 기록한다.
 
 ## 8. 서명
-- 저작 커밋(캡처 전): `[기재]` / 작성: `[ ]` / 검토: `[ ]` / 확정 시각(UTC): `[ ]`
+- 저작 커밋(캡처 전): 7e68cc2 / GT 확정 커밋: c61a4ef / 작성: `[SIGN]` / 검토: `[SIGN]` / 확정 시각(UTC): `[SIGN]`
