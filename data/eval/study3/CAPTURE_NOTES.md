@@ -41,3 +41,8 @@
 ## GT 작성 시 유의
 - D s1/s2 화면 동일(자동 채움): data_state에 명시. C s6/s7은 재캡처 후 다시 검증.
 - 모든 QGIS 장에 창 제목 `*Untitled Project — QGIS`, 메뉴 바, 상태 표시줄(Coordinate/Scale/Magnifier/Rotation/Render/EPSG)이 공통으로 보임.
+
+## C 재캡처 (2026-09-23, s6–s8; 원본 `originals_png/.../step_6_v1_rejected.png`, `step_7_v1_rejected.png` 보관)
+- s6 ✓ `Output selection`(Output 2D Horizon 비어 있음, Replace in tree, OK/Cancel)이 2D viewer 트리의 <New 2D Horizon 1> 우클릭 > Save as로 열림; 2D Viewer 창(트리에 <New 2D Horizon 1> 선택, 녹색 horizon)과 Horizon Tracking Settings 창(Mode 탭)이 함께 보임. 1920×1032.
+- s7 ✓ 대화상자 닫힘, 2D viewer 트리 2D Horizon > 2D_Horizon, 메인 트리 2D Horizon > 2D_Horizon, **2D Viewer 아직 열림**, Settings 창 닫힘.
+- s8 ✓ 2D Viewer 닫힘, 3D scene에 2D 라인 단면과 horizon(약 1500 ms 반사면을 따라 흰 점), 메인 트리 2D Horizon > 2D_Horizon. 목표 도달.

@@ -1,0 +1,116 @@
+{
+  "scenario_id": "opendtect__horizon_2dviewer__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "Introduction To OpendTect and OpendTect Pro Training Manual 7.0",
+  "manual_reference": "1.4.2b Tracking In 2D Viewer, steps 1–8 and 14–15 (manual-draw mode 9–13 out of scope)",
+  "category": "horizon_tracking",
+  "difficulty": "hard",
+  "language": "ko",
+  "goal": "F3 Demo에서 2D Line(Well correlation-Line)을 Load default data로 추가하고, 그 Seis 속성을 2D Viewer로 열어 2D Horizon을 Track New(기본 추적 설정)로 만든 뒤 Max 반사면에 seed를 찍어 라인을 해석하고, Save as로 2D horizon을 저장한 다음 2D viewer를 닫아 3D scene에 표시한다. 매뉴얼 §1.4.2b.",
+  "initial_state": {
+    "description": "F3 Demo survey 활성, 3D scene 표시. 2D Line·2D Horizon 트리 항목에 자식 없음. 2D viewer 창 없음.",
+    "must_be_true": [
+      "F3 Demo survey active",
+      "no child item under 2D Line in the tree",
+      "no 2D Viewer window open"
+    ]
+  },
+  "manual_grounding_sections": [
+    "1.4.2b"
+  ],
+  "_study3_note": "Authored from the manual only (2026-09-22) before capture; visual_state_gt filled after capture by enumeration + external review; patterns/keywords not changed after screenshots or model output are seen.",
+  "steps": [
+    {
+      "step_index": 6,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_2dviewer__01/step_6.jpg",
+      "expected_workflow_node": "horizon_2dviewer_142b_07_save_as_dialog",
+      "expected_action_text_pattern": "(?i)\\b(2D_Horizon|OK|이름|name|Output 2D Horizon)\\b",
+      "expected_action_keywords": [
+        "OK"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Output selection' dialog open: 'Output 2D Horizon' field empty/default, Replace in tree, OK/Cancel/Help.",
+        "user_should_have_just": "Right-clicked <New 2D Horizon> (2D viewer tree) > Save as.",
+        "must_not_show": [
+          "a name already typed",
+          "dialog already closed"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 7,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_2dviewer__01/step_7.jpg",
+      "expected_workflow_node": "horizon_2dviewer_142b_08_horizon_saved",
+      "expected_action_text_pattern": "(?i)\\b(close|Close|닫|2D viewer|2D Viewer)\\b",
+      "expected_action_keywords": [
+        "2D Viewer"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Dialog closed; the 2D viewer tree item now shows the saved name (e.g. 2D_Horizon). 2D Viewer window STILL open.",
+        "user_should_have_just": "Typed the name and clicked OK.",
+        "must_not_show": [
+          "Output selection dialog",
+          "2D Viewer closed"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 8,
+      "screenshot_path": "data/eval/screenshots/opendtect__horizon_2dviewer__01/step_8.jpg",
+      "expected_workflow_node": "horizon_2dviewer_142b_09_viewer_closed_horizon_in_scene",
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": [
+        "완료"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Done)\\b",
+          "note": "English completion sentinel"
+        },
+        {
+          "pattern": "(?i)\\b(2D Horizon|2D_Horizon|horizon|Well correlation)\\b",
+          "note": "Ground-truth element mention for the grounding validator."
+        }
+      ],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "GOAL-REACHED: 2D Viewer closed; 3D scene shows the 2D line with the interpreted 2D horizon; main tree 2D Horizon shows the saved name.",
+        "user_should_have_just": "Closed the 2D viewer.",
+        "must_not_show": [
+          "2D Viewer window",
+          "an open dialog"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/opendtect__horizon_2dviewer__01/step_8.jpg",
+    "expected_done_sentinel": true,
+    "note": "step_8 depicts the goal-achieved terminal state (2D horizon saved and displayed in the 3D scene)."
+  }
+}
