@@ -15,7 +15,8 @@
 | 개발 세트 | OpendTect 3 시나리오(16스텝) | 게이트 검증 |
 
 ### 1.1 선정 규칙 (판정 세트, 시스템 실행 전)
-- 각 시나리오에 no_rag만 3모델 × 1회. 3모델 평균 step accuracy < 0.85이면 채택, 아니면 제외(고치지 않음). 결과: `[선정 후 기재]`
+- 각 시나리오에 no_rag만 3모델 × 1회. 3모델 평균 step accuracy < 0.85이면 채택, 아니면 제외(고치지 않음). 선정 실행의 응답은 선정에만 쓰고 GT·시스템 수정에 참고하지 않는다.
+- 결과(QGIS 패스, 2026-09-23, `run_<model>_study3sel_qgis_r1_*.json`, 채점기 v5, judge 없음): `qgis__reclassify_raster__01` Gemini 0.556 / Claude 0.667 / GPT 0.889, 평균 **0.704** → 채택; `qgis__rule_classification__01` 0.400 / 0.800 / 0.600, 평균 **0.600** → 채택. OpendTect 패스(`opendtect__horizon_2dviewer__01`)는 s6–s8 재캡처 후 실행: `[기재]`
 
 ## 2. 실행 전에 확정된 수정 (전 백엔드 동일 또는 full_system 메커니즘; V3-37)
 | # | 수정 | 근거 |

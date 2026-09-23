@@ -1,0 +1,88 @@
+2026-09-23T03:43:03Z === study3 selection kickoff === git 21271e1
+03:43:03 selection qgis gemini
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:102: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': '21271e14e1a0fedb99c3da2c4766e71872028cf3', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== qgis__reclassify_raster__01 (9 steps) ===
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+  - no_rag         step_acc=0.56 hall=0.00 loop=0.00 latency=133.32s
+
+=== qgis__rule_classification__01 (10 steps) ===
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+  - no_rag         step_acc=0.40 hall=0.10 loop=0.00 latency=120.97s
+
+# Benchmark Results
+
+Started: 2026-09-23T03:43:04.187267Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.478 | 0.050 | 0.000 | — | — | 0.500 |
+
+
+Results written: data/eval/results/run_gemini_study3sel_qgis_r1_20260923T034303.json
+Markdown:        data/eval/results/run_gemini_study3sel_qgis_r1_20260923T034303.md
+03:47:19 selection qgis claude
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:102: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': '21271e14e1a0fedb99c3da2c4766e71872028cf3', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== qgis__reclassify_raster__01 (9 steps) ===
+  - no_rag         step_acc=0.67 hall=0.00 loop=0.22 latency=29.99s
+
+=== qgis__rule_classification__01 (10 steps) ===
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+  - no_rag         step_acc=0.80 hall=0.10 loop=0.00 latency=27.05s
+
+# Benchmark Results
+
+Started: 2026-09-23T03:47:19.954010Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.733 | 0.050 | 0.111 | — | — | 1.000 |
+
+
+Results written: data/eval/results/run_claude_study3sel_qgis_r1_20260923T034719.json
+Markdown:        data/eval/results/run_claude_study3sel_qgis_r1_20260923T034719.md
+03:48:17 selection qgis gpt
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:102: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': '21271e14e1a0fedb99c3da2c4766e71872028cf3', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== qgis__reclassify_raster__01 (9 steps) ===
+  - no_rag         step_acc=0.89 hall=0.00 loop=0.11 latency=26.85s
+
+=== qgis__rule_classification__01 (10 steps) ===
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+  - no_rag         step_acc=0.60 hall=0.00 loop=0.00 latency=16.95s
+
+# Benchmark Results
+
+Started: 2026-09-23T03:48:18.316983Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.744 | 0.000 | 0.056 | — | — | 0.500 |
+
+
+Results written: data/eval/results/run_gpt_study3sel_qgis_r1_20260923T034817.json
+Markdown:        data/eval/results/run_gpt_study3sel_qgis_r1_20260923T034817.md
+2026-09-23T03:49:03Z === study3 selection complete ===
