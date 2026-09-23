@@ -1,0 +1,2160 @@
+{
+ "opendtect__horizon_2dviewer__01#0": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y"
+  ],
+  "tabs": [
+   "Tree scene 1"
+  ],
+  "field_labels": [
+   "Cross-line (0)",
+   "Step (0)",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Color",
+   "Cross-line",
+   "200",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "In-line",
+   "500",
+   "Time",
+   "1500",
+   "N",
+   "E",
+   "Z",
+   "[free mem] 98.9/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_2dviewer__01#1": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Select 2D Lines"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "OK",
+   "Cancel"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Cross-line: (0)",
+   "Step: (0)",
+   "OD Seismic 1",
+   "Filter",
+   "On OK (Display projection lines only)"
+  ],
+  "list_or_tree_entries": [
+   "Tree scene 1",
+   "Elements",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Scene 1 (checked)",
+   "In-line (checked)",
+   "Cross-line (checked)",
+   "Z-slice (checked)",
+   "Volume (checked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "3D Horizon (checked)",
+   "2D Horizon (checked)",
+   "Fault (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events (checked)",
+   "19981104-1-04_0037 (unchecked)",
+   "19981104-1-04_0038 (unchecked)",
+   "19981104-1-04_0039 (unchecked)",
+   "20021203-2-02_0010 (unchecked)",
+   "20021203-2-02_0013 (unchecked)",
+   "20021203-2-03_0032 (unchecked)",
+   "20021203-2-03_0033 (unchecked)",
+   "20021203-2-03_0034 (unchecked)",
+   "20021203-2-03_0036 (unchecked)",
+   "20021203-2-03_0038 (unchecked)"
+  ],
+  "other_text": [
+   "Color",
+   "Cross-line",
+   "1200",
+   "1000",
+   "800",
+   "600",
+   "400",
+   "200",
+   "In-line",
+   "400",
+   "600",
+   "500",
+   "Time",
+   "1000",
+   "1500",
+   "SEC",
+   "N",
+   "E",
+   "Z",
+   "[free mem] 98.9/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_2dviewer__01#2": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "Cross-line (0)",
+   "Step (0)",
+   "-8.7372",
+   "8.7372",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "19981104-1-04_0037",
+   "Seismic",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [],
+  "other_text": [
+   "Tree scene 1",
+   "Elements",
+   "Color",
+   "400",
+   "600",
+   "Cross-line",
+   "800",
+   "1000",
+   "1200",
+   "19981104-1-04_0037",
+   "500",
+   "Time",
+   "1000",
+   "1500",
+   "N",
+   "E",
+   "Z",
+   "[free mem] 98.9/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_2dviewer__01#3": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "2D Viewer - Line: 19981104-1-04_0037"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "Cross-line (0)",
+   "Step (0)",
+   "-8.7372",
+   "8.7372",
+   "OD Seismic 1"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "19981104-1-04_0037",
+   "Seismic",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Elements",
+   "Wiggle",
+   "VD",
+   "2D Horizon",
+   "FaultStickSet",
+   "PointSet"
+  ],
+  "checkbox_radio_labels": [
+   "Scene 1 (checked)",
+   "In-line (checked)",
+   "Cross-line (checked)",
+   "Z-slice (checked)",
+   "Volume (checked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "19981104-1-04_0037 (checked)",
+   "Seismic (checked)",
+   "3D Horizon (checked)",
+   "2D Horizon (checked)",
+   "Fault (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events (checked)",
+   "Wiggle (unchecked)",
+   "VD (checked)",
+   "2D Horizon (checked)",
+   "FaultStickSet (unchecked)",
+   "PointSet (unchecked)"
+  ],
+  "other_text": [
+   "Tree scene 1",
+   "Color",
+   "400",
+   "600",
+   "Cross-line",
+   "800",
+   "1000",
+   "1200",
+   "19981104-1-04_0037",
+   "500",
+   "Time",
+   "1500",
+   "Tree items",
+   "Line: 19981104-1-04_0037",
+   "0",
+   "20021203-2-03_0008",
+   "20021203-2-02_0010",
+   "Time (ms)",
+   "2000",
+   "Trace number",
+   "207/1130",
+   "(626508, 6076813, 1036.6)",
+   "Value = -0.6270068",
+   "Line: 19981104-1-04_0037, Inl/Crl: 5750, SP: 551",
+   "[free mem] 50.5/127.6 GB"
+  ]
+ },
+ "opendtect__horizon_2dviewer__01#4": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "2D Viewer - Line: 19981104-1-04_0037",
+   "Horizon Tracking Settings - <New 2D Horizon 1>",
+   "4-1-04_0037"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "SEG-Y",
+   "Close"
+  ],
+  "tabs": [
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "field_labels": [
+   "Cross-line (0)",
+   "Step (0)",
+   "OD Seismic 1",
+   "Method (Adjacent Parent)"
+  ],
+  "list_or_tree_entries": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "19981104-1-04_0037",
+   "Seismic",
+   "2D Horizon",
+   "3D Horizon",
+   "<New 2D Horizon 1>",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Section Auto-track",
+   "Manual Draw",
+   "Snap to Event",
+   "If tracking fails",
+   "Extrapolate",
+   "Stop"
+  ],
+  "other_text": [
+   "Color",
+   "-8.7372",
+   "8.7372",
+   "400",
+   "600",
+   "Cross-line",
+   "800",
+   "1000",
+   "1200",
+   "19981104-1-04_0037",
+   "Time",
+   "0",
+   "20021203-2-03_00...21203-2-02_0010",
+   "500",
+   "1000",
+   "1500",
+   "2000",
+   "1000",
+   "2000",
+   "Trace number",
+   "N",
+   "E",
+   "Z",
+   "[free mem] 98.9/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_2dviewer__01#5": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Horizon Tracking Settings - <New 2D Horizon 1>",
+   "2D Viewer - Line: 19981104-1-04_0037"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Close",
+   "?",
+   "▷"
+  ],
+  "tabs": [
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "field_labels": [
+   "Cross-line (0)",
+   "Step (0)",
+   "-8.7372",
+   "8.7372",
+   "OD Seismic 1",
+   "Method (Adjacent Parent)"
+  ],
+  "list_or_tree_entries": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "19981104-1-04_0037",
+   "Seismic",
+   "3D Horizon",
+   "2D Horizon",
+   "<New 2D Horizon 1>",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "> An",
+   "Tree items",
+   "Elements",
+   "Wiggle",
+   "VD",
+   "2D Horizon",
+   "<New 2D Horizon 1>",
+   "ltStickSet",
+   "ntSet"
+  ],
+  "checkbox_radio_labels": [
+   "Section Auto-track",
+   "Manual Draw",
+   "Snap to Event",
+   "If tracking fails",
+   "Extrapolate",
+   "Stop"
+  ],
+  "other_text": [
+   "Color",
+   "400",
+   "600",
+   "Cross-line",
+   "800",
+   "1000",
+   "1200",
+   "19981104-1-04_0037",
+   "Line: 19981104-1-04_0037",
+   "0",
+   "500",
+   "1000",
+   "1500",
+   "2000",
+   "Time (ms)",
+   "1000",
+   "2000",
+   "20021203-2-03_0002",
+   "20021203-2-02_0010",
+   "Trace number",
+   "N",
+   "E",
+   "Z",
+   "[free mem] 98.9/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_2dviewer__01#6": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+   "Output selection"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Select ...",
+   "OK",
+   "Cancel"
+  ],
+  "tabs": [
+   "Tree scene 1"
+  ],
+  "field_labels": [
+   "Cross-line (0)",
+   "Step (0)",
+   "OD Seismic 1",
+   "Output 2D Horizon"
+  ],
+  "list_or_tree_entries": [
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "19981104-1-04_0037",
+   "Seismic",
+   "3D Horizon",
+   "2D Horizon",
+   "<New 2D Horizon 1>",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "Replace in tree [checked]"
+  ],
+  "other_text": [
+   "SEG-Y",
+   "-8.7372",
+   "8.7372",
+   "Color",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "Cross-line",
+   "19981104-1-04_0037",
+   "500",
+   "1500",
+   "Time",
+   "N",
+   "E",
+   "Z",
+   "(212/493 (610573, 6076499, 116.6)",
+   "Value = 2.4656343",
+   "Line: 19981104-1-04_0037, TrcNr: 1248, SP: 353",
+   "[free mem] 98.9/127.8 GB"
+  ]
+ },
+ "opendtect__horizon_2dviewer__01#7": {
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "AI",
+   "pre-st",
+   "SEG-Y"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Cross-line 0",
+   "Step 0",
+   "OD Seismic 1",
+   "-8.7372",
+   "8.7372"
+  ],
+  "list_or_tree_entries": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "Annotations"
+  ],
+  "checkbox_radio_labels": [
+   "In-line (checked)",
+   "Cross-line (checked)",
+   "Z-slice (checked)",
+   "Volume (checked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "19981104-1-04_0037 (checked)",
+   "Seismic (checked)",
+   "3D Horizon (checked)",
+   "2D Horizon (checked)",
+   "2D_Horizon (checked)",
+   "Fault (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events (checked)"
+  ],
+  "other_text": [
+   "Color",
+   "Cross-line",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "19981104-1-04_0037",
+   "Time",
+   "500",
+   "1500",
+   "N",
+   "E",
+   "Z",
+   "209/838",
+   "(619214, 6076668, 576.6)",
+   "Value = -0.0133974",
+   "Line: 19981104-1-04_0037, TrcNr: 2630, SP: 699",
+   "[free mem] 98.9/127.8 GB"
+  ]
+ },
+ "qgis__reclassify_raster__01#0": {
+  "window_titles": [
+   "*Untitled Project — QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "Type to locate (Ctrl+K)",
+   "aspect",
+   "Coordinate (1052474, 6201432)",
+   "Scale (1:281131)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)"
+  ],
+  "list_or_tree_entries": [
+   "aspect",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19",
+   "Band 1 (Gray)",
+   "1,548",
+   "0",
+   "Recently used",
+   "Raster terrain analysis",
+   "Aspect",
+   "GDAL",
+   "Raster analysis",
+   "Aspect",
+   "GRASS",
+   "Raster (r.*)",
+   "r.plane",
+   "r.shade",
+   "r.slope.aspect"
+  ],
+  "checkbox_radio_labels": [
+   "Render"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__reclassify_raster__01#1": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Raster Analysis - Reclassify by Table"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "...",
+   "...",
+   "...",
+   "Advanced",
+   "Run as Batch Process...",
+   "Run",
+   "Close",
+   "Help",
+   "Cancel"
+  ],
+  "tabs": [
+   "Parameters",
+   "Log"
+  ],
+  "field_labels": [
+   "Raster layer (aspect [EPSG:32733])",
+   "Band number (Band 1 (Gray))",
+   "Reclassification table (Fixed table (0x3))",
+   "Reclassified raster ([Save to temporary file])",
+   "Type to locate (Ctrl+K)",
+   "reclassify",
+   "Coordinate (1052400, 6225383)",
+   "Scale (1:281131)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)"
+  ],
+  "list_or_tree_entries": [
+   "aspect",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19",
+   "Band 1 (Gray)",
+   "1,548",
+   "0",
+   "Raster analysis",
+   "Reclassify by layer",
+   "Reclassify by table",
+   "Vector table",
+   "Add unique value index field"
+  ],
+  "checkbox_radio_labels": [
+   "Open output file after running algorithm (checked)",
+   "Render (checked)"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "Reclassify by Table",
+   "Reclassify by table",
+   "This algorithm reclassifies a raster band by assigning new class values based on the ranges specified in a fixed table.",
+   "Advanced Parameters",
+   "0%",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__reclassify_raster__01#2": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Raster Analysis - Reclassify by Table"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Advanced",
+   "Run as Batch Process...",
+   "Run",
+   "Close",
+   "Help",
+   "Cancel"
+  ],
+  "tabs": [
+   "Parameters",
+   "Log"
+  ],
+  "field_labels": [
+   "Raster layer (aspect [EPSG:32733])",
+   "Band number (Band 1 (Gray))",
+   "Reclassification table (Fixed table (0x3))",
+   "Reclassified raster ([Save to temporary file])",
+   "Type to locate (Ctrl+K)",
+   "reclassify",
+   "Coordinate (1051135, 6217871)",
+   "Scale (1:281131)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)"
+  ],
+  "list_or_tree_entries": [
+   "aspect",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19",
+   "Band 1 (Gray)",
+   "1,548",
+   "0",
+   "Raster analysis",
+   "Reclassify by layer",
+   "Reclassify by table",
+   "Vector table",
+   "Add unique value index field"
+  ],
+  "checkbox_radio_labels": [
+   "Open output file after running algorithm",
+   "Render"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "Reclassify by table",
+   "This algorithm reclassifies a raster band by assigning new class values based on the ranges specified in a fixed table.",
+   "Advanced Parameters",
+   "0%",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__reclassify_raster__01#3": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Raster Analysis - Reclassify by Table"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Add Row",
+   "Remove Row(s)",
+   "Remove All",
+   "OK",
+   "Cancel",
+   "Advanced",
+   "Run as Batch Process...",
+   "Run",
+   "Close",
+   "Help"
+  ],
+  "tabs": [
+   "Parameters",
+   "Log"
+  ],
+  "field_labels": [
+   "Reclassification table",
+   "Minimum",
+   "Maximum",
+   "Value",
+   "reclassify",
+   "Type to locate (Ctrl+K)",
+   "Coordinate (1052028, 6213259)",
+   "Scale (1:281131)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)"
+  ],
+  "list_or_tree_entries": [
+   "aspect",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19",
+   "Band 1 (Gray)",
+   "1,548",
+   "0",
+   "Raster analysis",
+   "Reclassify by layer",
+   "Reclassify by table",
+   "Vector table",
+   "Add unique value index field"
+  ],
+  "checkbox_radio_labels": [
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "Reclassify by table",
+   "This algorithm reclassifies a raster band by assigning new class values based on the ranges specified in a fixed table.",
+   "0%",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__reclassify_raster__01#4": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Raster Analysis - Reclassify by Table"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Advanced",
+   "Run as Batch Process...",
+   "Run",
+   "Close",
+   "Help",
+   "Cancel"
+  ],
+  "tabs": [
+   "Parameters",
+   "Log"
+  ],
+  "field_labels": [
+   "Raster layer (aspect [EPSG:32733])",
+   "Band number (Band 1 (Gray))",
+   "Reclassification table (Fixed table (5x3))",
+   "Reclassified raster ([Save to temporary file])",
+   "reclassify",
+   "Type to locate (Ctrl+K)",
+   "Coordinate (1052846, 6225458)",
+   "Scale (1:281131)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)",
+   "EPSG:32733"
+  ],
+  "list_or_tree_entries": [
+   "aspect",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19",
+   "Band 1 (Gray)",
+   "1,548",
+   "0",
+   "Raster analysis",
+   "Reclassify by layer",
+   "Reclassify by table",
+   "Vector table",
+   "Add unique value index field"
+  ],
+  "checkbox_radio_labels": [
+   "Open output file after running algorithm [checked]",
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "Reclassify by table",
+   "This algorithm reclassifies a raster band by assigning new class values based on the ranges specified in a fixed table.",
+   "Advanced Parameters",
+   "0%"
+  ]
+ },
+ "qgis__reclassify_raster__01#5": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Raster Analysis - Reclassify by Table"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Advanced",
+   "Run as Batch Process...",
+   "Run",
+   "Close",
+   "Help",
+   "Cancel"
+  ],
+  "tabs": [
+   "Parameters",
+   "Log"
+  ],
+  "field_labels": [
+   "Raster layer",
+   "aspect [EPSG:32733]",
+   "Band number",
+   "Band 1 (Gray)",
+   "Reclassification table",
+   "Fixed table (5x3)",
+   "Reclassified raster",
+   "C:/GeoLensData/reclassified.tif",
+   "Type to locate (Ctrl+K)",
+   "reclassify",
+   "Coordinate",
+   "Scale",
+   "Magnifier",
+   "Rotation"
+  ],
+  "list_or_tree_entries": [
+   "aspect",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19",
+   "Band 1 (Gray)",
+   "1,548",
+   "0",
+   "Raster analysis",
+   "Reclassify by layer",
+   "Reclassify by table",
+   "Vector table",
+   "Add unique value index field"
+  ],
+  "checkbox_radio_labels": [
+   "Open output file after running algorithm",
+   "Render"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "Reclassify by table",
+   "This algorithm reclassifies a raster band by assigning new class values based on the ranges specified in a fixed table.",
+   "Advanced Parameters",
+   "0%",
+   "1051730, 6198011",
+   "1:281131",
+   "100%",
+   "0.0 °",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__reclassify_raster__01#6": {
+  "window_titles": [
+   "*Untitled Project - QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "Type to locate (Ctrl+K)",
+   "reclassify",
+   "Coordinate (1052176, 6208127)",
+   "Scale (1:281131)",
+   "Magnifier (100%)",
+   "Rotation (0,0 °)"
+  ],
+  "list_or_tree_entries": [
+   "Band 1 (Gray)",
+   "4",
+   "1",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "Band 1 (Gray)",
+   "1,548",
+   "0",
+   "Recently used",
+   "Raster analysis",
+   "Reclassify by layer",
+   "Reclassify by table",
+   "Vector table",
+   "Add unique value index field"
+  ],
+  "checkbox_radio_labels": [
+   "reclassified (checked)",
+   "aspect (checked)",
+   "srtm_41_19 (checked)",
+   "Render (checked)"
+  ],
+  "other_text": [
+   "Layers",
+   "Processing Toolbox",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__reclassify_raster__01#7": {
+  "window_titles": [
+   "*Untitled Project — QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Classify",
+   "Delete All",
+   "...",
+   "Reset",
+   "Apply"
+  ],
+  "tabs": [
+   "Layer Styling",
+   "Processing Toolbox"
+  ],
+  "field_labels": [
+   "Paletted/Unique values",
+   "Band",
+   "Band 1 (Gray)",
+   "Color ramp",
+   "Random colors",
+   "Value",
+   "Color",
+   "Label",
+   "Blending mode",
+   "Normal",
+   "Brightness",
+   "0",
+   "Saturation",
+   "0",
+   "Contrast",
+   "0",
+   "Gamma",
+   "1.00",
+   "Grayscale",
+   "Off",
+   "Hue",
+   "Strength",
+   "100%",
+   "Zoomed in",
+   "Nearest Neighbour",
+   "Type to locate (Ctrl+K)",
+   "Coordinate",
+   "1051400, 6212151",
+   "Scale",
+   "1:300266",
+   "Magnifier",
+   "100%",
+   "Rotation",
+   "0.0 °",
+   "EPSG:32733"
+  ],
+  "list_or_tree_entries": [
+   "reclassified",
+   "Band 1 (Gray)",
+   "aspect",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19",
+   "Band 1 (Gray)",
+   "1.548",
+   "0"
+  ],
+  "checkbox_radio_labels": [
+   "Invert colors",
+   "Colorize",
+   "Live update",
+   "Render"
+  ],
+  "other_text": [
+   "Layers",
+   "Layer Styling",
+   "reclassified",
+   "Layer Rendering",
+   "Resampling"
+  ]
+ },
+ "qgis__reclassify_raster__01#8": {
+  "window_titles": [
+   "*Untitled Project — QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Classify",
+   "Delete All",
+   "...",
+   "Reset",
+   "Apply"
+  ],
+  "tabs": [
+   "Layer Styling",
+   "Processing Toolbox"
+  ],
+  "field_labels": [
+   "Paletted/Unique values",
+   "Band (Band 1 (Gray))",
+   "Color ramp (Random colors)",
+   "Blending mode (Normal)",
+   "Brightness (0)",
+   "Saturation (0)",
+   "Contrast (0)",
+   "Gamma (1.00)",
+   "Grayscale (Off)",
+   "Hue",
+   "Strength (100%)",
+   "Zoomed in (Nearest Neighbour)",
+   "Type to locate (Ctrl+K)"
+  ],
+  "list_or_tree_entries": [
+   "reclassified",
+   "Band 1 (Gray)",
+   "1",
+   "2",
+   "3",
+   "4",
+   "aspect",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19",
+   "Band 1 (Gray)",
+   "1.548",
+   "0",
+   "Value",
+   "Color",
+   "Label",
+   "1",
+   "1",
+   "2",
+   "2",
+   "3",
+   "3",
+   "4",
+   "4"
+  ],
+  "checkbox_radio_labels": [
+   "Invert colors [unchecked]",
+   "Colorize [unchecked]",
+   "Live update [checked]",
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Layer Styling",
+   "reclassified",
+   "Layer Rendering",
+   "Resampling",
+   "Coordinate 1050765, 6197613",
+   "Scale 1:300266",
+   "Magnifier 100%",
+   "Rotation 0.0°",
+   "EPSG:32733"
+  ]
+ },
+ "qgis__rule_classification__01#0": {
+  "window_titles": [
+   "*Untitled Project — QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "Type to locate (Ctrl+K)",
+   "Coordinate (-34.1685°, 20.7394°)",
+   "Scale (1:117758)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)",
+   "EPSG (EPSG:4326)"
+  ],
+  "list_or_tree_entries": [
+   "landuse"
+  ],
+  "checkbox_radio_labels": [
+   "landuse [checked]",
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Toggles the editing state of the current layer"
+  ]
+ },
+ "qgis__rule_classification__01#1": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Layer Properties - landuse — Symbology"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Classify",
+   "Delete All",
+   "Delete Unused",
+   "Advanced",
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Categorized",
+   "Value (landuse)",
+   "Symbol",
+   "Color ramp (Random colors)",
+   "Style"
+  ],
+  "list_or_tree_entries": [
+   "landuse",
+   "Information",
+   "Source",
+   "Symbology",
+   "Labels",
+   "Masks",
+   "3D View",
+   "Diagrams",
+   "Fields",
+   "Attributes Form",
+   "Joins",
+   "Auxiliary Storage",
+   "Actions",
+   "Display",
+   "Rendering",
+   "Temporal",
+   "Variables",
+   "Elevation",
+   "Metadata",
+   "Dependencies",
+   "Legend",
+   "Symbol",
+   "Value",
+   "Legend",
+   "cemetery",
+   "cemetery",
+   "conservation",
+   "conservation",
+   "farmland",
+   "farmland",
+   "forest",
+   "forest",
+   "grass",
+   "grass",
+   "industrial",
+   "industrial",
+   "orchard",
+   "orchard",
+   "reservoir",
+   "reservoir",
+   "residential",
+   "residential",
+   "village_green",
+   "village_green",
+   "vineyard",
+   "vineyard",
+   "all other values"
+  ],
+  "checkbox_radio_labels": [
+   "landuse [checked]",
+   "cemetery [checked]",
+   "conservation [checked]",
+   "farmland [checked]",
+   "forest [checked]",
+   "grass [checked]",
+   "industrial [checked]",
+   "orchard [checked]",
+   "reservoir [checked]",
+   "residential [checked]",
+   "village_green [checked]",
+   "vineyard [checked]",
+   "all other values [checked]",
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Layer Rendering",
+   "Type to locate (Ctrl+K)",
+   "Toggles the editing state of the current layer",
+   "Coordinate -33.8677°, 19.9954°",
+   "Scale 1:143205",
+   "Magnifier 100%",
+   "Rotation 0.0 °",
+   "EPSG:4326"
+  ]
+ },
+ "qgis__rule_classification__01#2": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Layer Properties - landuse — Symbology"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Refine Selected Rules",
+   "Symbol Levels...",
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Rule-based",
+   "Style",
+   "Type to locate (Ctrl+K)",
+   "Coordinate (-33.8677°, 19.9954°)",
+   "Scale (1:143205)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)"
+  ],
+  "list_or_tree_entries": [
+   "landuse",
+   "Information",
+   "Source",
+   "Symbology",
+   "Labels",
+   "Masks",
+   "3D View",
+   "Diagrams",
+   "Fields",
+   "Attributes Form",
+   "Joins",
+   "Auxiliary Storage",
+   "Actions",
+   "Display",
+   "Rendering",
+   "Temporal",
+   "Variables",
+   "Elevation",
+   "Metadata",
+   "Dependencies",
+   "Legend",
+   "cemetery",
+   "'landuse' = 'cemetery'",
+   "conservation",
+   "'landuse' = 'conservation'",
+   "farmland",
+   "'landuse' = 'farmland'",
+   "forest",
+   "'landuse' = 'forest'",
+   "grass",
+   "'landuse' = 'grass'",
+   "industrial",
+   "'landuse' = 'industrial'",
+   "orchard",
+   "'landuse' = 'orchard'",
+   "reservoir",
+   "'landuse' = 'reservoir'",
+   "residential",
+   "'landuse' = 'residential'",
+   "village_green",
+   "'landuse' = 'village_green'",
+   "vineyard",
+   "'landuse' = 'vineyard'",
+   "ELSE"
+  ],
+  "checkbox_radio_labels": [
+   "Render (checked)"
+  ],
+  "other_text": [
+   "Layers",
+   "Layer Rendering",
+   "Label",
+   "Rule",
+   "Min. Scale",
+   "Max. Scale",
+   "Count",
+   "Duplicate Count",
+   "Toggles the editing state of the current layer",
+   "EPSG:4326"
+  ]
+ },
+ "qgis__rule_classification__01#3": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Layer Properties - landuse — Symbology"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Refine Selected Rules",
+   "Symbol Levels...",
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Rule-based",
+   "Style",
+   "Type to locate (Ctrl+K)"
+  ],
+  "list_or_tree_entries": [
+   "landuse",
+   "Information",
+   "Source",
+   "Symbology",
+   "Labels",
+   "Masks",
+   "3D View",
+   "Diagrams",
+   "Fields",
+   "Attributes Form",
+   "Joins",
+   "Auxiliary Storage",
+   "Actions",
+   "Display",
+   "Rendering",
+   "Temporal",
+   "Variables",
+   "Elevation",
+   "Metadata",
+   "Dependencies",
+   "Legend",
+   "Label",
+   "Rule",
+   "Min. Scale",
+   "Max. Scale",
+   "Count",
+   "Duplicate Count"
+  ],
+  "checkbox_radio_labels": [
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Layer Rendering",
+   "Toggles the editing state of the current layer",
+   "Coordinate",
+   "-33.8677°, 19.9954°",
+   "Scale",
+   "1:143205",
+   "Magnifier",
+   "100%",
+   "Rotation",
+   "0.0 °",
+   "EPSG:4326"
+  ]
+ },
+ "qgis__rule_classification__01#4": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Layer Properties - landuse — Symbology",
+   "Edit Rule"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Test",
+   "OK",
+   "Cancel",
+   "Help",
+   "Refine Selected Rules",
+   "Symbol Levels...",
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Rule-based",
+   "Label",
+   "Description",
+   "Minimum (exclusive) (1:100000)",
+   "Maximum (inclusive) (1:1000)",
+   "Style",
+   "Type to locate (Ctrl+K)",
+   "Coordinate (-33.8677°, 19.9954°)",
+   "Scale (1:143205)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)"
+  ],
+  "list_or_tree_entries": [
+   "landuse",
+   "Information",
+   "Source",
+   "Symbology",
+   "Labels",
+   "Masks",
+   "3D View",
+   "Diagrams",
+   "Fields",
+   "Attributes Form",
+   "Joins",
+   "Auxiliary Storage",
+   "Actions",
+   "Display",
+   "Rendering",
+   "Temporal",
+   "Variables",
+   "Elevation",
+   "Metadata",
+   "Dependencies",
+   "Legend",
+   "(no filter)",
+   "Fill",
+   "Simple Fill"
+  ],
+  "checkbox_radio_labels": [
+   "Filter [selected]",
+   "Else [unselected]",
+   "Catch-all for other features",
+   "Scale range [checked]",
+   "Symbol [checked]",
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Label",
+   "Rule",
+   "Min. Scale",
+   "Max. Scale",
+   "Count",
+   "Duplicate Count",
+   "Layer Rendering",
+   "Toggles the editing state of the current layer",
+   "EPSG:4326"
+  ]
+ },
+ "qgis__rule_classification__01#5": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Layer Properties - landuse — Symbology"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Symbol Levels...",
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Rule-based",
+   "Style"
+  ],
+  "list_or_tree_entries": [
+   "landuse",
+   "Information",
+   "Source",
+   "Symbology",
+   "Labels",
+   "Masks",
+   "3D View",
+   "Diagrams",
+   "Fields",
+   "Attributes Form",
+   "Joins",
+   "Auxiliary Storage",
+   "Actions",
+   "Display",
+   "Rendering",
+   "Temporal",
+   "Variables",
+   "Elevation",
+   "Metadata",
+   "Dependencies",
+   "Legend",
+   "Label",
+   "Rule",
+   "Min. Scale",
+   "Max. Scale",
+   "Count",
+   "Duplicate Count",
+   "Swellendam ...",
+   "\"name\" = 'Swellendam'"
+  ],
+  "checkbox_radio_labels": [
+   "Render"
+  ],
+  "other_text": [
+   "Layers",
+   "Refine Selected Rules",
+   "Layer Rendering",
+   "Type to locate (Ctrl+K)",
+   "Toggles the editing state of the current layer",
+   "Coordinate -33.8677°, 19.9954°",
+   "Scale 1:143205",
+   "Magnifier 100%",
+   "Rotation 0.0 °",
+   "EPSG:4326"
+  ]
+ },
+ "qgis__rule_classification__01#6": {
+  "window_titles": [
+   "*Untitled Project - QGIS",
+   "Layer Properties - landuse — Symbology"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Refine Selected Rules",
+   "Symbol Levels...",
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Type to locate (Ctrl+K)",
+   "Style",
+   "Coordinate (-33.8677°, 19.9954°)",
+   "Scale (1:143205)",
+   "Magnifier (100%)",
+   "Rotation (0.0 °)",
+   "EPSG (4326)"
+  ],
+  "list_or_tree_entries": [
+   "landuse",
+   "Information",
+   "Source",
+   "Symbology",
+   "Labels",
+   "Masks",
+   "3D View",
+   "Diagrams",
+   "Fields",
+   "Attributes Form",
+   "Joins",
+   "Auxiliary Storage",
+   "Actions",
+   "Display",
+   "Rendering",
+   "Temporal",
+   "Variables",
+   "Elevation",
+   "Metadata",
+   "Dependencies",
+   "Legend",
+   "Label",
+   "Rule",
+   "Min. Scale",
+   "Max. Scale",
+   "Count",
+   "Duplicate Count",
+   "Swellendam ...",
+   "\"name\" = 'Swellendam'",
+   "Other residen...",
+   "\"landuse\" = 'residential' ..."
+  ],
+  "checkbox_radio_labels": [
+   "Render"
+  ],
+  "other_text": [
+   "Layers",
+   "Rule-based",
+   "Layer Rendering",
+   "Toggles the editing state of the current layer"
+  ]
+ },
+ "qgis__rule_classification__01#7": {
+  "window_titles": [
+   "*Untitled Project — QGIS",
+   "Layer Properties - landuse — Symbology"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Symbol Levels...",
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Rule-based",
+   "Style",
+   "Type to locate (Ctrl+K)"
+  ],
+  "list_or_tree_entries": [
+   "landuse",
+   "Information",
+   "Source",
+   "Symbology",
+   "Labels",
+   "Masks",
+   "3D View",
+   "Diagrams",
+   "Fields",
+   "Attributes Form",
+   "Joins",
+   "Auxiliary Storage",
+   "Actions",
+   "Display",
+   "Rendering",
+   "Temporal",
+   "Variables",
+   "Elevation",
+   "Metadata",
+   "Dependencies",
+   "Legend",
+   "Label",
+   "Rule",
+   "Min. Scale",
+   "Max. Scale",
+   "Count",
+   "Duplicate Count",
+   "Swellendam",
+   "\"name\" = 'Swellendam'",
+   "Other residen...",
+   "\"landuse\" = 'residential'...",
+   "Big non resid...",
+   "\"landuse\" <> 'residential'..."
+  ],
+  "checkbox_radio_labels": [
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Refine Selected Rules",
+   "Layer Rendering",
+   "Toggles the editing state of the current layer",
+   "Coordinate -33.8677°, 19.9954°",
+   "Scale 1:143205",
+   "Magnifier 100%",
+   "Rotation 0.0 °",
+   "EPSG:4326"
+  ]
+ },
+ "qgis__rule_classification__01#8": {
+  "window_titles": [
+   "*Untitled Project - QGIS",
+   "Layer Properties - landuse — Symbology"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Symbol Levels...",
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "tabs": [],
+  "field_labels": [
+   "Type to locate (Ctrl+K)",
+   "Refine Selected Rules",
+   "Style"
+  ],
+  "list_or_tree_entries": [
+   "Information",
+   "Source",
+   "Symbology",
+   "Labels",
+   "Masks",
+   "3D View",
+   "Diagrams",
+   "Fields",
+   "Attributes Form",
+   "Joins",
+   "Auxiliary Storage",
+   "Actions",
+   "Display",
+   "Rendering",
+   "Temporal",
+   "Variables",
+   "Elevation",
+   "Metadata",
+   "Dependencies",
+   "Legend",
+   "Label",
+   "Rule",
+   "Min. Scale",
+   "Max. Scale",
+   "Count",
+   "Duplicate Count",
+   "\"name\" = 'Swellendam'",
+   "\"landuse\" = 'residential' ...",
+   "\"landuse\" <> 'residential...",
+   "ELSE"
+  ],
+  "checkbox_radio_labels": [
+   "landuse [checked]",
+   "Swellendam [checked]",
+   "Other residen... [checked]",
+   "Big non resid... [checked]",
+   "Small non re... [checked]",
+   "Render [checked]"
+  ],
+  "other_text": [
+   "Layers",
+   "Rule-based",
+   "Layer Rendering",
+   "Toggles the editing state of the current layer",
+   "Coordinate",
+   "-33.8677°, 19.9954°",
+   "Scale",
+   "1:143205",
+   "Magnifier",
+   "100%",
+   "Rotation",
+   "0.0 °",
+   "EPSG:4326"
+  ]
+ },
+ "qgis__rule_classification__01#9": {
+  "window_titles": [
+   "*Untitled Project — QGIS"
+  ],
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "tabs": [],
+  "field_labels": [
+   "Type to locate (Ctrl+K)",
+   "Coordinate (-33,8626°, 20,468°)",
+   "Scale (1:143205)",
+   "Magnifier (100%)",
+   "Rotation (0,0 °)"
+  ],
+  "list_or_tree_entries": [
+   "landuse",
+   "Swellendam city",
+   "Other residential",
+   "Big non residential areas",
+   "Small non residential areas"
+  ],
+  "checkbox_radio_labels": [
+   "Render (checked)"
+  ],
+  "other_text": [
+   "Layers",
+   "Toggles the editing state of the current layer",
+   "EPSG:4326"
+  ]
+ }
+}

@@ -1,0 +1,240 @@
+--- page 78 | section 1.4.2b Tracking In 2D Viewer
+1.4.2b Tracking In 2D Viewer
+For a video of these exercises: OpendTect video resources
+- 78 -
+
+[Figure OCR p.78 #1]
+Exercise objective:
+Interpret a 2D horizon using a 2D viewer
+
+Workflow:
+
+1.  Add a 2D line to the 3D scene: right-click on
+    2D line and go Add.
+    Random Line
+    2D Line
+    Add ...
+    3D Hori
+    Create 2D Grid from 3D ...
+    2D Hori
+    Extract from 3D ...
+    Fault
+    FaultStickSet
+
+2.  Select the Well correlation - Line and change
+    the action to Load default data.
+    Select 2D Lines
+    Filter *
+    Well correlation-Line
+    STG
+    On OK
+    Load default data
+    Display projection lines only
+    Load default data
+    Select attribute
+
+3.  Once the 2D line is loaded, right-click on the
+    attribute name (i.e. Seis) in the tree and go
+    Display > 2D viewer.
+    2D Line
+    Well corr...
+    Seis
+    Select Attribute
+    3D Horiz
+    Save Color Settings
+    2D Hori
+    Display
+    Histogram ...
+    FaultStic
+    Remove
+    Amplitude Spectrum ...
+    Body
+    F-K Spectrum ...
+    Well
+    Change Transparency ...
+    PickSet
+    2D Viewer
+    Polygon
+    2D Viewer - Wiggle
+    Prestack E...
+    Annotatio
+
+In a 2D viewer, you can interpret
+2D and 3D seismic.
+
+[Figure OCR p.78 #2]
+Workflow cont'd:
+3D scene
+-4319
+4857
+Seismics
+Tree items
+Elements
+Color
+Wiggle
+VD
+2D Horizon
+FaultStickSet
+HorizonCube
+Systems Tr...
+TrcNr=1004
+(621012, 6086318, 208)
+2D viewer
+2D Viewer - Line: Well correlation-Line
+-120492
+0
+10000
+20000
+30000
+38041
+0.5
+1
+1.5
+1.748
+Z
+Val=398 (Seis)
+Rot/SP=1030
+Distance
+
+--- page 79 | section 1.4.2b Tracking In 2D Viewer
+Workflow cont'd:
+
+4. In the 2D viewer, right-click on 2D horizon and select Track new.
+Elements Color
+Wiggle
+VD
+2D Horizon
+FaultStick
+HorizonC
+Systems Tr
+Add
+Track New ...
+
+5. In the Horizon tracking settings, leave the parameters as default.
+
+6. Optionally, close the Horizon tracking setting window
+
+Horizon Tracking Settings
+Mode Event Correlation Properties DipSteer
+Section Auto-track
+Manual Draw
+Method Adjacent Parent
+Picked on: Seis
+
+Horizon Tracking Settings
+Mode Event Correlation Properties DipSteer
+WVA VD
+Event type Max
+Threshold type Relative difference
+Allowed difference (%) 20
+Search window (ms) -8 8 Symmetric
+Data Display window (ms) -16 16 Symmetric
+Nr Traces 5
+
+Horizon Tracking Settings
+Mode Event Correlation Properties DipSteer
+WVA VD
+Use Correlation Yes No
+Compare window (ms) -40 40 Symmetric
+Correlation threshold (%) 80.0
+Data Display window (ms) -48 48 Symmetric
+Nr Traces 5
+Close Help
+
+Workflow cont'd:
+
+7. Pick a seed on a Max event (as selected earlier) on the line.
+
+8. Interpret the full line.
+
+0.8
+1
+1.2
+.302
+Distance
+
+- 79 -
+
+--- page 80 | section 1.4.2b Tracking In 2D Viewer
+Workflow cont'd:
+
+9. In some areas the horizon does not propagate well and you may want to switch to the manual drawing mode.
+
+Workflow cont'd:
+
+10. Re-open the horizon tracking settings: right-click on the <New 2D Horizon> and select Change setup.
+
+11. Change the tracking mode to Manual Draw and select the Snap to event option. The event type is defined as previously.
+
+2D Horizon
+<New 2D
+Save ...
+FaultStickSet
+Save as
+HorizonCube
+Change setup ...
+Systems Tr...
+Remove
+
+Horizon Tracking Settings
+Mode Event Correlation Properties DipSteer
+Section Auto-track Between Seeds (coming soon)
+Manual Draw
+Snap to Event
+Method Adjacent Parent
+Close ? Help
+
+- 80 -
+
+--- page 81 | section 1.4.2b Tracking In 2D Viewer
+Workflow cont'd:
+
+12. Draw the line where you want to interpret.
+
+Workflow cont'd:
+
+13. Once you are done, release the left-click button from your mouse: the line will be automatically converted into the horizon and snapped to the Max event.
+
+- 81 -
+
+--- page 82 | section 1.4.2b Tracking In 2D Viewer
+Workflow cont'd:
+
+14. When satisfied of the interpretation,
+save the 2D horizon: right-click on
+the <New 2D Horizon> in the 2D
+viewer tree and select Save as (at
+this point Save and Save as are
+equivalent) and specify an output
+name.
+
+15. Close the 2D viewer.
+The 2D line and the newly
+interpreted 2D horizon are
+displayed in the 3D scene.
+
+Output selection
+Output 2D Horizon 2D_Horizon
+✔ Replace in tree
+OK Cancel Help
+
+Note: A 3D horizon as well as Fault stick sets can also be interpreted in the 2D viewer.
+
+Workflow cont'd:
+
+3D horizon interpretation using a 2D viewer
+
+1. The horizon type you are interpreting is 3D horizon.
+
+2. The tracking modes are similar but on the contrary to the 2D tracking, the auto-tracking
+option is ON while tracking a 3D horizon in a 2D viewer.
+
+3. For auto-tracking the horizon, recommendation is to use the Seed trace method in
+combination with the section auto-track option (see previous exercise 1.4.2a for more
+details).
+
+4. In the 2D viewer, while tracking a 3D horizon, you can switch inline/crossline by either
+typing the line number or using the arrows and the step to interpret a grid like you would
+do in the 3D scene.
+
+- 82 -

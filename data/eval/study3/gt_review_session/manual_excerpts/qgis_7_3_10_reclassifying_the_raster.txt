@@ -1,0 +1,150 @@
+--- page 286 | section ★★☆ Follow Along: Reclassifying the Raster
+QGIS Training Manual
+This raster, like the one it is derived from, should only feature the values 1 and 0, but it has also a very large
+negative number. Investigation of the data shows that this number acts as a null value. Since we are only after
+areas that weren’t filtered out, let us set these null values to zero.
+5. Open the Raster Calculator, and build this expression:
+(all_conditions_sieve@1 <= 0) = 0
+This will maintain all non-negative values, and set the negative numbers to zero, leaving all the areas with value
+1 intact.
+6. Save the output under exercise_data/raster_analysis/ as all_conditions_simple.tif.
+Your output looks like this:
+This is what was expected: a simplified version of the earlier results. Remember that if the results you get from a tool
+aren’t what you expected, viewing the metadata (and vector attributes, if applicable) can prove essential to solving
+the problem.
+7.3.10 ★★☆ Follow Along: Reclassifying the Raster
+We have used the Raster calculator to do calculations on raster layers. There is another powerful tool that we can use
+to extract information from existing layers.
+Back to the aspect layer. We know now that it has numerical values within a range from 0 through 360. What we
+want to do is to reclassify this layer to other discrete values (from 1 to 4), depending on the aspect:
+• 1 = North (from 0 to 45 and from 315 to 360);
+• 2 = East (from 45 to 135)
+• 3 = South (from 135 to 225)
+• 4 = West (from 225 to 315)
+272 Chapter 7. Module: Rasters
+
+[Figure OCR p.286 #1]
+There is no readable text in the image.
+
+--- page 287 | section ★★☆ Follow Along: Reclassifying the Raster
+QGIS Training Manual
+This operation can be achieved with the raster calculator, but the formula would become very very large.
+The alternative tool is the Reclassify by table tool in Raster analysis in the Processing Toolbox.
+1. Open the tool
+2. Choose aspect as the Raster layer
+3. Click on the … of Reclassification table. A table-like dialog will pop up, where you can choose the minimum,
+maximum and new values for each class.
+4. Click on the Add row button and add 5 rows. Fill in each row as the following picture and click OK:
+The method used by the algorithm to treat the threshold values of each class is defined by the Range boundaries.
+5. Save the layer as reclassified.tif in the exercise_data/raster_analysis/ folder
+7.3. Lesson: Terrain Analysis 273
+
+[Figure OCR p.287 #1]
+Fixed table
+Minimum
+Maximum
+Value
+OK
+Cancel
+1 0
+45
+1
+2 315
+360
+1
+Add Row
+3 45
+135
+2
+Remove Row(s)
+4 135
+225
+3
+Remove All
+5 225
+315
+4
+
+--- page 288 | section ★★☆ Follow Along: Reclassifying the Raster
+QGIS Training Manual
+6. Click on Run
+If you compare the native aspect layer with the reclassified one, there are not big differences. But by looking
+at the legend, you can see that the values go from 1 to 4.
+Let us give this layer a better style.
+1. Open the Layer Styling panel
+2. Choose Paletted/Unique values, instead of Singleband gray
+274 Chapter 7. Module: Rasters
+
+[Figure OCR p.288 #1]
+Reclassify by Table
+Parameters
+Log
+Raster layer
+Aspect [EPSG:32733]
+Band number
+Band 1 (Gray)
+Reclassification table
+Fixed table (5x3)
+Advanced parameters
+Output no data value
+-9999,000000
+Range boundaries
+min < value <= max
+Use no data when no range matches value
+Output data type
+Float32
+Reclassified raster
+rcise_data/raster_analysis/reclassified.sdat
+Open output file after running algorithm
+Reclassify
+by table
+This algorithm
+reclassifies a
+raster band by
+assigning new
+class values
+based on the
+ranges specified
+in a fixed table.
+0%
+Cancel
+Help
+Run as Batch Process...
+Close
+Run
+
+--- page 289 | section ★★☆ Follow Along: Reclassifying the Raster
+QGIS Training Manual
+3. Click on the Classify button to automatically fetch the values and assign them random colors:
+The output should look like this (you can have different colors given that they have been randomly generated):
+7.3. Lesson: Terrain Analysis 275
+
+[Figure OCR p.289 #1]
+Layer Styling
+reclassified
+Paletted/Unique values
+Band
+Band 1 (Gray)
+Color ramp
+Random colors
+Value
+Color
+Label
+1
+1
+2
+2
+3
+3
+4
+4
+Classify
+Delete All
+...
+Layer Rendering
+Blending mode
+Normal
+Live update
+Apply
+Layer Styling
+Processing Toolbox

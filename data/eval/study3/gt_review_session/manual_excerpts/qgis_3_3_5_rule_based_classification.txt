@@ -1,0 +1,267 @@
+--- page 117 | section ★★★ Follow Along: Rule-based Classification
+QGIS Training Manual
+3.3.4 ★★☆ Try Yourself: Refine the Classification
+• Change the values of Mode and Classes until you get a classification that makes sense.
+Answer
+The settings you used might not be the same, but with the values Classes = 6 and Mode = Natural Breaks (Jenks)
+(and using the same colors, of course), the map will look like this:
+3.3.5 ★★★ Follow Along: Rule-based Classification
+It’s often useful to combine multiple criteria for a classification, but unfortunately normal classification only takes one
+attribute into account. That’s where rule-based classification comes in handy.
+In this lesson, we will represent the landuse layer in a way to easily identify Swellendam city from the other resi-
+dential area, and from the other types of landuse (based on their area).
+1. Open the Layer Properties dialog for the landuse layer
+2. Switch to the Symbology tab
+3. Switch the classification style to Rule-based
+QGIS will automatically show the rules that represent the current classification implemented for this layer. For
+example, after completing the exercise above, you may see something like this:
+3.3. Lesson: Classification 103
+
+[Figure OCR p.117 #1]
+Swellendam
+Railton
+Buffeljagsrivier
+Bontebok National Park Reception & Shop
+
+--- page 118 | section ★★★ Follow Along: Rule-based Classification
+QGIS Training Manual
+4. Click and drag to select all the rules
+5. Use the Remove selected rules button to remove all of the existing rules
+Let’s now add our custom rules.
+1. Click the Add rule button
+2. The Edit rule dialog then appears
+3. Enter Swellendam city as Label
+4. Click the button next to the Filter text area to open the Expression String Builder
+5. Enter the criterion "name" = 'Swellendam' and validate
+6. Back to the Edit rule dialog, assign it a darker grey-blue color in order to indicate the town’s importance in the
+region and remove the border
+104 Chapter 3. Module: Classifying Vector Data
+
+[Figure OCR p.118 #1]
+Layer Properties - landuse | Symbology
+Q
+Information
+Source
+Symbology
+Labels
+Masks
+Diagrams
+Fields
+Attributes Form
+Joins
+Rule-based
+Label
+Rule
+Min. scale
+Max.
+✓
+131 - 101924
+"AREA" >= 131.299349 AND "AREA" <= 101924.499748
+✓
+101924 - 309418
+"AREA" > 101924.499748 AND "AREA" <= 309417.846808
+✓
+309418 - 839955
+"AREA" > 309417.846808 AND "AREA" <= 839954.777508
+✓
+839955 - 1578789
+"AREA" > 839954.777508 AND "AREA" <= 1578788.863263
+✓
+1578789 - 34452227
+"AREA" > 1578788.863263 AND "AREA" <= 34452226.958486
+✓
+34452227 - 112894046
+"AREA" > 34452226.958486 AND "AREA" <= 112894046.060455
+Refine Selected Rules
+Layer Rendering
+Style
+Symbol Levels...
+OK
+Cancel
+Apply
+Help
+
+[Figure OCR p.118 #2]
+Expression String Builder
+Expression Function Editor
+"name" = 'Swellendam'
+Search... Show Values
+Conditionals
+Conversions
+Custom
+Date and Time
+Fields and Values
+NULL
+ogc_fid
+full_id
+osm_id
+osm_type
+landuse
+name
+type
+wikipedia
+boundary
+is_in
+leisure
+name:de
+group field
+Double-click to add field name to expression string.
+Right-Click on field name to open context menu sample value
+loading options.
+Notes
+Values Search...
+All Unique
+10 Samples
+Fynbos Heights
+Gaikou Lodge
+Koloniesbos
+Koorland
+Marloth Nature Reserve
+Railton
+Swellendam
+Wamakersbos
+= + - / * ^ || ( ) '\n'
+Feature 1
+Preview: 0
+Help
+Cancel OK
+
+--- page 119 | section ★★★ Follow Along: Rule-based Classification
+QGIS Training Manual
+7. Press OK
+8. Repeat the steps above to add the following rules:
+1. Other residential label with the criterion "landuse" = 'residential' AND "name" <>
+'Swellendam'. Choose a pale blue-grey Fill color
+2. Big non residential areas label with the criterion "landuse" <> 'residential' AND "AREA"
+>= 605000. Choose a mid-green color.
+These filters are exclusive, in that they exclude areas on the map (non-residential areas which are smaller
+than 605000 (square meters) are not included in any of the rules).
+3. We will catch the remaining features using a new rule labeled Small non residential areas. Instead of
+a filter expression, Check the Else. Give this category a suitable pale green color.
+3.3. Lesson: Classification 105
+
+[Figure OCR p.119 #1]
+Edit Rule
+Label Swellendam city
+Filter "name" = 'Swellendam' £ Test
+Else Catch-all for other features
+Description
+Scale range
+Minimum (exclusive) Maximum (inclusive)
+1:100000 1:1000
+Symbol
+Fill
+Simple fill
+Unit Millimeters
+Opacity 100.0 %
+Color
+Help Cancel OK
+
+[Figure OCR p.119 #2]
+Layer Properties — landuse (basic) — Symbology
+
+Information
+Source
+Symbology
+Labels
+Masks
+3D View
+Diagrams
+Fields
+Attributes Form
+Joins
+
+Rule-based
+Label
+Swellendam city
+Other residenttial
+Big non residential areas
+
+Rule
+"name" = 'Swellendam'
+"landuse" = 'residential' AND "name" <> 'Swellendam'
+"landuse" <> 'residential' AND "AREA" >= 605000
+
+Min. Scale
+Max. Scale
+Count
+Duplicate Count
+
+Refine Selected Rules
+Layer Rendering
+Help
+Style
+Symbol Levels...
+Apply
+Cancel
+OK
+
+--- page 120 | section ★★★ Follow Along: Rule-based Classification
+QGIS Training Manual
+Your rules should now look like this:
+9. Apply this symbology
+Your map will look something like this:
+106 Chapter 3. Module: Classifying Vector Data
+
+[Figure OCR p.120 #1]
+Edit Rule
+Label
+Small non residential areas
+Filter
+ELSE
+Test
+Else
+Catch-all for other features
+Description
+Scale range
+Minimum (exclusive)
+1:100000
+Maximum (inclusive)
+1:1000
+Symbol
+Fill
+Simple fill
+Unit
+Millimeters
+Opacity
+100.0 %
+Color
+Help
+Cancel
+OK
+
+[Figure OCR p.120 #2]
+Layer Properties — landuse (basic) — Symbology
+Rule-based
+Information
+Source
+Symbology
+Labels
+Masks
+3D View
+Diagrams
+Fields
+Attributes Form
+Joins
+Label
+Swellendam city
+Other residential
+Big non residential areas
+Small non residential areas
+Rule
+"name" = 'Swellendam'
+"landuse" = 'residential' AND "name" <> 'Swellendam'
+"landuse" <> 'residential' AND "AREA" >= 605000
+ELSE
+Min. Scale
+Max. Scale
+Count
+Duplicate Count
+Refine Selected Rules
+Layer Rendering
+Help
+Style
+Symbol Levels...
+Apply
+Cancel
+OK

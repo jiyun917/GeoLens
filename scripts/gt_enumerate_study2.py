@@ -46,6 +46,8 @@ def main():
         review.append(f"## {sid}")
         for step in scen["steps"]:
             i = step["step_index"]
+            if not (ROOT / step["screenshot_path"]).exists():
+                print(f"{sid} s{i}: screenshot missing - skipped", flush=True); continue
             img = open(ROOT / step["screenshot_path"], "rb").read()
             contents = [types.Content(role="user", parts=[types.Part.from_text(text=PROMPT),
                                                           types.Part.from_bytes(data=img, mime_type="image/jpeg")])]

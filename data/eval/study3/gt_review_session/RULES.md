@@ -2,7 +2,7 @@
 
 이 폴더(`data/eval/study3/gt_review_session/`) 밖의 파일은 열지 않는다. 실행 로그, 모델 응답, 채점 결과(`data/eval/results/`, `*.log`, `run_*.json`, `verdict_*`)와 워크플로우 파일(`data/workflows/`)은 열지 않는다. 파이프라인·벤치를 실행하지 않는다. git 명령을 쓰지 않는다. 원본 초안(`scenarios/*.json`)은 수정하지 않고, 수정안은 `proposed/` 아래에 같은 파일명으로 저장한다.
 
-입력: `screenshots/<scenario>/step_N.jpg` (28장: opendtect__horizon_2dviewer__01 9장, qgis__rule_classification__01 10장, qgis__reclassify_raster__01 9장), `gt_visible_elements_review_study3.md` (vision 열거 결과), `scenarios/*.json` (GT 초안: `steps[i].visual_state_gt` = current_dialog / visible_elements / data_state / current_action, 그리고 `capture_instructions`, `expected_action_text_pattern`, `expected_action_keywords`, `allowed_alternatives`), `manual_excerpts/*.txt` (매뉴얼 §1.4.2b / QGIS §3.3.5 / §7.3.10 원문).
+입력: `screenshots/<scenario>/step_N.jpg` (27장 + 재캡처 대기 3장: opendtect__horizon_2dviewer__01 8장(s6·s7은 재캡처 예정이라 검수 대상에서 제외, s8 없음), qgis__rule_classification__01 10장, qgis__reclassify_raster__01 9장), `gt_visible_elements_review_study3.md` (vision 열거 결과), `scenarios/*.json` (GT 초안: `steps[i].visual_state_gt` = current_dialog / visible_elements / data_state / current_action, 그리고 `capture_instructions`, `expected_action_text_pattern`, `expected_action_keywords`, `allowed_alternatives`), `manual_excerpts/*.txt` (매뉴얼 §1.4.2b / QGIS §3.3.5 / §7.3.10 원문).
 
 작은 글자는 Python(PIL)으로 3배 이상 확대 크롭해 이 폴더의 `crops/` 아래에 저장하고 Read 도구로 본다(트리·패널 항목, 툴바 값, 다이얼로그 필드, 표의 셀, 상태 표시줄). 규칙에 없는 경우는 판단하지 말고 **"보류"** 로 남긴다.
 
