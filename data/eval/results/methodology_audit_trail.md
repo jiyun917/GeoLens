@@ -1439,3 +1439,9 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - 04:51:14Z 중단(결과 JSON 0개; gemini no_rag replicate 1 진행 중이었음; 응답 열람 없음; 비용 < $0.5). 사용자 규칙 "이런 실수 있으면 안돼"의 재발 — preflight가 있었지만 기대값을 환경에서 파생시킨 설계 결함.
 - 수정(스크립트만; api/·GT·워크플로우·시나리오·풀 불변, 사전등록 본문 불변): 래퍼가 5개 핀을 무조건 export하고 preflight `--expect`에 리터럴(v5/v7/1/1/1, KB 경로·임베딩 모델)을 전달. `run_study2.sh`에도 같은 항진 사용이 있으나 그 연구는 종료됐으므로 손대지 않음.
 - 재시작: 이 수정 커밋(HEAD)에서 `run_study3.sh` 재실행. 결과 JSON의 git 스탬프는 서명 태그 커밋(416228f)이 아니라 수정 커밋을 가리키며, 두 커밋의 차이는 `scripts/run_study3.sh`·감사 기록·사전등록 §8 append뿐이다(`git diff study3-prereg-signed HEAD --stat`으로 확인 가능). v5는 채점 라벨(환각 필터)에만 관여하므로 모델 호출·판정 세트와 무관. 재시작 시각·커밋은 사전등록 §8에 append.
+
+### V3-41 추기 — 고아 프로세스가 replicate 1을 완료함; 격리 (2026-09-23T06:15:05Z)
+- 정정: V3-41의 "결과 JSON 0개 / 비용 < $0.5"는 틀렸다. 중단 명령(04:51Z) 뒤에도 첫 실행의 bench python은 살아남아 replicate 1(gemini, 4 백엔드 × 9 스텝)을 끝까지 수행하고 05:05:18Z에 `run_gemini_study3_opendtect_r1_20260923T044941.json`(+ .md)을 썼다(래퍼·tee만 죽어 다음 표준출력에서 종료된 것으로 추정; 그 실행의 r2 파일은 없고, 현재 살아 있는 bench 프로세스는 재시작 실행분(04:52:59Z 시작)뿐임을 프로세스 목록으로 확인). 추가 비용 약 $1.5.
+- 그 파일은 `code_version.commit=416228f`, `env_knobs.GEOLENS_SCORER=v4`로 스탬프돼 사전등록과 불일치 → `data/eval/results/study3_aborted_v3-41/`로 격리. 판정 글롭(`run_*_study3_opendtect_r1_*`)에서 빠지며 내용(응답·점수)은 열람하지 않았다(메타데이터·키 구조만 확인). 재시작 실행의 r1(`…_20260923T045259.json`)은 commit ae16873, scorer v5.
+- 스탬프 결함(기록만): `bench_runner._KNOB_KEYS`에 `ROUTER_HISTORY_ADVANCE`·`ROUTER_ADVANCE_MIN_COVERAGE`가 없어 결과 JSON의 env_knobs에 R2″ 핀이 찍히지 않는다. 증거는 (i) 래퍼의 무조건 export, (ii) kickoff 로그 행 `advance=1`, (iii) preflight E1 리터럴 검사, (iv) per_step `route_advance` 텔레메트리(존재 확인). 실행 중 api/ 수정 금지이므로 고치지 않고 이 기록으로 갈음한다.
+- 실행 중 커밋은 문서 전용(ae16873 → d63997b → 이 추기). 결과 JSON의 commit 스탬프는 replicate 시작 시점의 HEAD라 값이 섞이며, `git diff ae16873 <HEAD> --stat`로 문서 전용임을 확인할 수 있다. 종료까지 추가 커밋은 이탈·장애 기록에 한정한다.
