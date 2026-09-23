@@ -66,3 +66,4 @@ study 2와 동일: gemini-2.5-pro 열거(temperature 0) → 스크린샷만 보�
 ## 8. 서명
 - 저작 커밋(캡처 전): 7e68cc2 / GT 확정 커밋: c61a4ef / 작성: 유지윤(연구 책임자) / 검토: Claude(메인 세션, 사용자 위임 2026-09-22) / 확정 시각(UTC): 2026-09-23T04:46:25Z (서명 커밋 시각; 태그 `study3-prereg-signed`)
 - 이탈 1 (V3-41, 2026-09-23T04:49:41Z–04:51:14Z): 첫 kickoff가 `scorer=v4`로 시작됨을 로그에서 확인하고 결과 파일 생성 전 중단. `run_study3.sh`의 핀만 고쳐(무조건 export + 리터럴 preflight 기대값) 재시작. 판정 세트·GT·채점기·메커니즘·풀·본문 불변. 재시작 커밋·시각은 아래에 append.
+- 재시작(확인 실행 시작): 2026-09-23T04:52:58Z, 커밋 ae16873(서명 태그 416228f + V3-41 래퍼 수정·기록만), kickoff 행 `scorer=v5 assembly=v7 sticky=1 advance=1 session_block=1 pool=10`, preflight PASS(두 디렉터리), 로그 `data/eval/results/study3_bench.log`. 이후 완료까지 코드·GT·워크플로우·시나리오·본문 불변.
