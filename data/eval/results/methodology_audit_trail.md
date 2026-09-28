@@ -1455,3 +1455,8 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - **예측**: Q1/Q7 no_rag 평균 gemini 0.633 / claude 0.779 / gpt 0.734(세 시나리오 모두 §1.1 선정 기준 유지). Q2(vanilla_budget − no_rag ≥ +3pp) 1/3 → 반증. Q3 적중. Q4 적중. Q5(hall) 반증. Q6 라우팅: 워크플로우 적중 80–90/90(OT) · 86–90/90 · 88–90/100(QGIS), 노드 적중 OT 64–70/90 vs QGIS 33–52/90·100; R2″ 발화 0–4회/모델·시나리오, R1 0–5회.
 - **기술(descriptive, 사후; 어떤 수정에도 쓰지 않음)**: full_system 환각은 Claude에 집중되며 세 고정 스텝(horizon s7 10/10, reclassify s6 6/10, rule s2 10/10)이다. rule s2는 Claude의 모든 백엔드에서 10/10이라 full_system 고유가 아니고, horizon s7·reclassify s6은 full_system 고유(비교군 0–2/10). gemini·gpt의 full hall은 ≤ 0.007. GPT reclassify에서 full 0.578 vs vanilla_vector 0.822의 시나리오 수준 역전이 비교 2의 gpt 방향을 결정했다.
 - **종결**: 사전등록 §6에 따라 사후 수정 없음, study 4 없음. 사용자 목표("정확도·환각 모두 우위")는 정확도(vs vanilla_budget)만 확인됐고 환각 조건과 vs vanilla_vector 유의성은 확인되지 않았다. 원인 분석은 별도의 사후 분석으로만 가능하며 판정에 영향을 주지 않는다.
+
+### V3-43. study 3 사후 진단(exploratory)·study 4 개시 결정 (2026-09-28)
+- 사용자 지시: "벡터 rag 대비 우위와 환각감소 또한 우위에 있어야 돼." study 3 판정(A′/B)은 불변. 사전등록 3 §6의 "study 4 없음"은 계획 진술이며, 사용자 지시로 새 사전등록 연구(study 4)를 연다 — 이는 사전등록 3에 대한 명시적 이탈로 기록한다. v3 → 2 → 3 → 4의 연속 시도임을 논문에 공개해야 한다.
+- 사후 진단 `data/eval/study3/posthoc_diagnosis.md`: (1) full_system 손실의 주원인은 라우터 지연 — 라우팅 정답률 50~57%, 틀린 선택의 70~75%가 뒤처짐; 라우팅이 맞은 스텝의 정확도 0.92~0.94. rerank가 직전 노드에 고착(confidence 0.9 반복), 후보 풀에 정답 노드 누락(2-hop), R2″ 발화 희소(덮음 0.8), v7 이력 규칙이 동일 화면에서 한 단계 앞서감. (2) full_system 고유 환각 플래그는 전부 키보드 키·창 컨트롤 유형(`X(`·`F7`·`Shift`); `X(`·`Add Data (`는 토크나이저가 여는 괄호를 토큰에 붙이는 버그.
+- 이 시점부터 study 3 판정 세트는 개발 데이터. study 4 판정 세트는 새 캡처. 지표 재정의(hall v6)는 하지 않고, 토크나이저 버그 수정 + 생성기 프롬프트(전 백엔드 공통)로 대응한다.
