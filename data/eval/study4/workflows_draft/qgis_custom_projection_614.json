@@ -5,7 +5,7 @@
   "manual_reference": "QGIS Training Manual 3.44 §6.1.4 Follow Along: Creating Your Own Projection, steps 1–11 (pp.190–192)",
   "description": "QGIS 매뉴얼 §6.1.4: Settings ► Custom Projections…에서 + 로 새 CRS를 만들고 Name = Van der Grinten I, Format = WKT, Parameters = 매뉴얼의 PROJCRS WKT(METHOD Van Der Grinten, 반경 6371000) 입력 → OK → 상태 표시줄 CRS 버튼으로 프로젝트 CRS를 Van der Grinten I 로 바꿔 지도를 재투영.",
   "authoring": {
-    "source": "manual text + figure OCR only (chromadb_v4)",
+    "source": "manual text + figure OCR only (chromadb_v4); main-window / Processing dialog titles follow the study-2/3 screens of the same application versions",
     "screenshots_seen": false,
     "authored_on": "2026-09-28",
     "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node"
@@ -19,7 +19,7 @@
       "description": "§6.1.4 step 1–2: 새 맵에 oceans 레이어가 로드되어 지도에 세계 해양이 보임. 상태 표시줄 CRS = EPSG:4326. 대화상자 없음.",
       "step_type": "start",
       "visual_signature": {
-        "expected_dialog": "QGIS main window",
+        "expected_dialog": "Untitled Project - QGIS",
         "expected_ui_elements": [
           "layers_panel_oceans",
           "map_canvas_world",
@@ -28,7 +28,7 @@
         "screenshot_keywords": [
           "oceans",
           "EPSG:4326",
-          "Layers"
+          "Untitled Project"
         ]
       },
       "parameters": [],
@@ -173,7 +173,7 @@
       "description": "step 8 결과: OK → 대화상자 닫힘, 메인 창. 상태 표시줄 CRS 버튼은 아직 EPSG:4326.",
       "step_type": "action",
       "visual_signature": {
-        "expected_dialog": "QGIS main window",
+        "expected_dialog": "Untitled Project - QGIS",
         "expected_ui_elements": [
           "no_dialog",
           "statusbar_crs_epsg4326",
@@ -182,7 +182,7 @@
         "screenshot_keywords": [
           "EPSG:4326",
           "oceans",
-          "no User Defined CRS dialog"
+          "Untitled Project"
         ]
       },
       "parameters": [],
@@ -254,7 +254,7 @@
       "description": "step 11 결과: OK → 지도가 원형(Van der Grinten)으로 재투영되고 상태 표시줄 CRS 버튼에 USER:100000 표시.",
       "step_type": "verification",
       "visual_signature": {
-        "expected_dialog": "QGIS main window",
+        "expected_dialog": "Untitled Project - QGIS",
         "expected_ui_elements": [
           "map_canvas_circular_world",
           "statusbar_crs_user100000",
@@ -263,7 +263,7 @@
         "screenshot_keywords": [
           "USER:100000",
           "oceans",
-          "no Project Properties dialog"
+          "Untitled Project"
         ]
       },
       "parameters": [],

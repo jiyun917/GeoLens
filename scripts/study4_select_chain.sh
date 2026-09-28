@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Study 4 section 1.1 selection run: no_rag x 1 x 3 models on the GT-approved test scenarios, two passes
+# (GEOLENS_SOFTWARE_ID per software). Responses are used for selection only. Preflight-gated.
+set -u
+cd "$(dirname "$0")/.."
+source scripts/study2_env.sh
+source scripts/study4_env.sh
+PY=".venv/Scripts/python.exe"
+LOG="data/eval/results/study4_select.log"
+OT_DIR="data/eval/scenarios/.study4_test_opendtect"
+QG_DIR="data/eval/scenarios/.study4_test_qgis"
+PASSES="${PASSES:-opendtect,qgis}"
+for pass in ${PASSES//,/ }; do
+  d=$OT_DIR; [ "$pass" = qgis ] && d=$QG_DIR
+  $PY scripts/preflight_check.py --scenarios "$d" --expect GEOLENS_SCORER=v6 GEN_PROMPT_VERSION=v3 --allow-dirty || { echo "preflight failed for $d" | tee -a "$LOG"; exit 2; }
+done
+echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === study4 selection kickoff === git $(git rev-parse --short HEAD)" | tee -a "$LOG"
+for pass in ${PASSES//,/ }; do
+  dir=$OT_DIR; [ "$pass" = qgis ] && dir=$QG_DIR
+  for m in gemini claude gpt; do
+    ts=$(date -u +%Y%m%dT%H%M%S)
+    echo "$(date -u +%H:%M:%S) selection $pass $m" | tee -a "$LOG"
+    GEOLENS_SOFTWARE_ID=$pass $PY -u -m api.services.bench_runner --model $m --backends no_rag --scenarios "$dir" \
+        --out "data/eval/results/run_${m}_study4sel_${pass}_r1_${ts}.json" 2>&1 | tee -a "$LOG"
+  done
+done
+echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === study4 selection complete ===" | tee -a "$LOG"

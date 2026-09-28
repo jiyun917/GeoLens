@@ -16,7 +16,7 @@ import json
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OT = "645b7cdf2690408da843b9ce63c52d5b"; QG = "bf2804feea57434bb79b749134ed1df0"
-AUTH = {"source": "manual text + figure OCR only (chromadb_v4)", "screenshots_seen": False, "authored_on": "2026-09-28",
+AUTH = {"source": "manual text + figure OCR only (chromadb_v4); main-window / Processing dialog titles follow the study-2/3 screens of the same application versions", "screenshots_seen": False, "authored_on": "2026-09-28",
         "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node"}
 
 
@@ -47,14 +47,14 @@ NOTE = "Authored from the manual only (2026-09-28) before capture; visual_state_
 W = "spectral_decomp_152a"; S = ["1.5.2a"]
 nE = [
     node(W, 1, "scene_start", "3D scene, 3D Horizon 트리 항목에 color-blended horizon 없음 (시작)", "§1.5.2a 시작 상태: F3 Demo 3D scene, 트리에 3D Horizon 항목이 있으나 Demo 1 --> MFS4 color-blended 표시 없음. Attribute Set 창 없음.", "start",
-         "OpendTect Main Window / 3D scene", ["tree_3d_horizon_item", "no_color_blended_horizon", "no_attribute_set_window"], ["3D Horizon", "Tree scene 1", "F3 Demo"], secs=S),
+         "F3 Demo 2023 - [Scene 1]", ["tree_3d_horizon_item", "no_color_blended_horizon", "no_attribute_set_window"], ["3D Horizon", "Tree scene 1", "F3 Demo 2023"], secs=S),
     node(W, 2, "select_horizon_dialog", "Select Input Horizon(s) 대화상자 열림 (Add Color Blended)", "step 1 결과: 트리 3D Horizon 우클릭 > Add Color Blended… → 'Select Input Horizon(s)' 대화상자: Filter, 목록(Demo 0 --> FS4, Demo 1 --> MFS4, …), Area subselection + Select…, OK/Cancel/Help. 아직 선택·범위 없음.", "dialog",
          "Select Input Horizon(s)", ["horizon_list", "area_subselection_row", "select_button", "ok_cancel"], ["Select Input Horizon", "Demo 1 --> MFS4", "Demo 0 --> FS4", "Area subselection", "Select...", "Filter"], secs=S),
     node(W, 3, "position_ranges_entered", "Demo 1 --> MFS4 선택, Position 대화상자에 In-line 200–650 / Cross-line 500–1000 입력 (OK 전)", "step 2 결과: 목록에서 Demo 1 --> MFS4를 선택하고 Area subselection의 Select…를 클릭 → 'Position'(Specify Position) 대화상자에서 In-line Range 200 650, Cross-line Range 500 1000 을 입력한 상태(OK 누르기 전).", "dialog",
          "Position", ["inline_range_200_650", "crossline_range_500_1000", "ok_cancel"], ["Position", "Specify Position", "In-line Range", "Cross-line Range", "200", "650", "500", "1000", "Step"],
          params=[("In-line Range", "200-650", "manual §1.5.2a step 2"), ("Cross-line Range", "500-1000", "manual §1.5.2a step 2")], secs=S),
     node(W, 4, "horizon_color_blended", "Demo 1 --> MFS4 가 color-blended 로 표시됨 (트리에 4개 속성 레이어)", "step 2 결과(OK, OK): 트리 3D Horizon 아래 Demo 1 --> MFS4 가 4개의 속성 레이어(아래 3개는 R/G/B 채널 색 플래그)와 함께 표시되고 scene에 horizon이 보임. 대화상자 없음.", "action",
-         "OpendTect Main Window / 3D scene", ["tree_demo1_mfs4", "four_attribute_layers", "rgb_channel_flags", "horizon_in_scene"], ["Demo 1 --> MFS4", "3D Horizon", "Tree scene 1"], secs=S),
+         "F3 Demo 2023 - [Scene 1]", ["tree_demo1_mfs4", "four_attribute_layers", "rgb_channel_flags", "horizon_in_scene"], ["Demo 1 --> MFS4", "3D Horizon", "Tree scene 1", "F3 Demo 2023"], secs=S),
     node(W, 5, "attribute_set_open", "Attribute Set 3D 창 열림 (빈 세트, <not saved>)", "step 3 결과: 툴바의 Attribute Set 3D 아이콘(A) 클릭 → 'Attribute Set 3D' 창: File 메뉴, Attribute set <not saved>, 속성 목록 비어 있음, 속성 종류 드롭다운, Input Data, Attribute Name, Add as new, Close.", "dialog",
          "Attribute Set 3D", ["attribute_type_dropdown", "input_data_field", "attribute_name_field", "add_as_new_button", "empty_attribute_list"], ["Attribute Set 3D", "Attribute set <not saved>", "Input Data", "Attribute Name", "Add as new", "Close", "Save on Close"], secs=S),
     node(W, 6, "sd_24hz_added", "SD_24Hz[-8,24ms] 정의 후 Add as new (목록에 1개)", "step 4, 9–11 결과: 속성 = Spectral Decomposition, Input Data = 4 Dip steered median filter, Transform type FFT, Time gate (ms) -8 24, Output frequency (Hz) 24, Step 4, Attribute Name SD_24Hz[-8,24ms] → Add as new → 목록에 SD_24Hz[-8,24ms] 1개.", "action",
@@ -65,7 +65,7 @@ nE = [
     node(W, 8, "sd_64hz_added", "SD_64Hz[-8,24ms] 추가됨 (목록에 3개)", "step 12 결과(높은 주파수): Output frequency 64, Attribute Name SD_64Hz[-8,24ms] → Add as new → 목록에 SD_24Hz, SD_44Hz, SD_64Hz.", "action",
          "Attribute Set 3D", ["attribute_list_sd_24_44_64", "output_frequency_64"], ["SD_64Hz[-8,24ms]", "SD_44Hz[-8,24ms]", "SD_24Hz[-8,24ms]", "64.0", "Spectral Decomposition"], params=[("Output frequency (Hz)", "64", "step 12")], secs=S),
     node(W, 9, "attribute_set_closed", "Attribute Set 창 닫힘 (세트 이름 Spectral Decomposition 저장), 3D scene 만 표시 (목표 도달)", "step 13 결과: Close(Save on Close 켜짐, 이름 예: Spectral Decomposition) → Attribute Set 3D 창이 사라지고 3D scene과 트리(Demo 1 --> MFS4 color-blended)만 보임.", "verification",
-         "OpendTect Main Window / 3D scene", ["no_attribute_set_window", "tree_demo1_mfs4", "four_attribute_layers"], ["Demo 1 --> MFS4", "3D Horizon", "Tree scene 1", "no Attribute Set 3D window"], secs=S),
+         "F3 Demo 2023 - [Scene 1]", ["no_attribute_set_window", "tree_demo1_mfs4", "four_attribute_layers"], ["Demo 1 --> MFS4", "3D Horizon", "Tree scene 1", "F3 Demo 2023"], secs=S),
 ]
 eE = edges(W, nE, [
     "트리의 3D Horizon을 우클릭하고 Add Color Blended…를 선택하세요",
@@ -114,7 +114,7 @@ W = "qgis_custom_projection_614"; S = ["★★★ Follow Along: Creating Your Ow
 WKT_SHORT = 'PROJCRS["unknown", BASEGEOGCRS["unknown", DATUM["unknown", ELLIPSOID["unknown",6371000,0, LENGTHUNIT["metre",1, ID["EPSG",9001]]]], PRIMEM["Greenwich",0, ANGLEUNIT["degree",0.0174532925199433], ID["EPSG",8901]]], CONVERSION["unknown", METHOD["Van Der Grinten"], PARAMETER["Longitude of natural origin",0, ANGLEUNIT["degree",0.0174532925199433], ID["EPSG",8802]], PARAMETER["False easting",0, LENGTHUNIT["metre",1], ID["EPSG",8806]], PARAMETER["False northing",0, LENGTHUNIT["metre",1], ID["EPSG",8807]]], CS[Cartesian,2], AXIS["(E)",east, ORDER[1], LENGTHUNIT["metre",1, ID["EPSG",9001]]], AXIS["(N)",north, ORDER[2], LENGTHUNIT["metre",1, ID["EPSG",9001]]]]'
 nF = [
     node(W, 1, "oceans_loaded", "새 프로젝트에 world/oceans.shp 로드됨 (EPSG:4326), 대화상자 없음", "§6.1.4 step 1–2: 새 맵에 oceans 레이어가 로드되어 지도에 세계 해양이 보임. 상태 표시줄 CRS = EPSG:4326. 대화상자 없음.", "start",
-         "QGIS main window", ["layers_panel_oceans", "map_canvas_world", "statusbar_crs_epsg4326"], ["oceans", "EPSG:4326", "Layers"], secs=S),
+         "Untitled Project - QGIS", ["layers_panel_oceans", "map_canvas_world", "statusbar_crs_epsg4326"], ["oceans", "EPSG:4326", "Untitled Project"], secs=S),
     node(W, 2, "custom_crs_dialog", "Custom Projections 대화상자 열림 (Options — User Defined CRS, 항목 없음)", "step 3 결과: Settings ► Custom Projections… → 'Options — User Defined CRS' 대화상자: 상단 Name/Parameters 표(비어 있음), + / - 버튼, Name, Definition(Format, Parameters), Validate, Test, OK/Cancel/Help.", "dialog",
          "Options — User Defined CRS", ["crs_table_empty", "add_new_crs_button", "name_field", "format_dropdown", "parameters_field", "validate_button"], ["User Defined CRS", "Custom Projections", "Name", "Parameters", "Format", "Validate", "Test", "Definition"], secs=S),
     node(W, 3, "new_crs_row_added", "Add new CRS(+) 클릭: 표에 새 CRS 행 추가됨 (이름 미입력)", "step 4 결과: + (Add new CRS) 클릭 → 표에 새 행(new CRS)이 생기고 Name 필드가 편집 가능. Parameters 비어 있음.", "action",
@@ -124,13 +124,13 @@ nF = [
     node(W, 5, "wkt_entered", "Parameters에 Van Der Grinten WKT 문자열 입력됨 (OK 전)", "step 7 결과: Parameters 필드에 PROJCRS[\"unknown\", … METHOD[\"Van Der Grinten\"] … ] WKT 문자열이 들어 있음(Validate 가능). OK 아직 안 누름.", "setup",
          "Options — User Defined CRS", ["parameters_wkt_projcrs", "method_van_der_grinten", "ellipsoid_6371000"], ["PROJCRS", "Van Der Grinten", "6371000", "BASEGEOGCRS", "Van der Grinten I"], params=[("Parameters (WKT)", WKT_SHORT, "manual step 7")], secs=S),
     node(W, 6, "crs_saved_dialog_closed", "OK: 사용자 정의 CRS 저장, 대화상자 닫힘 (프로젝트 CRS 아직 EPSG:4326)", "step 8 결과: OK → 대화상자 닫힘, 메인 창. 상태 표시줄 CRS 버튼은 아직 EPSG:4326.", "action",
-         "QGIS main window", ["no_dialog", "statusbar_crs_epsg4326", "map_canvas_world"], ["EPSG:4326", "oceans", "no User Defined CRS dialog"], secs=S),
+         "Untitled Project - QGIS", ["no_dialog", "statusbar_crs_epsg4326", "map_canvas_world"], ["EPSG:4326", "oceans", "Untitled Project"], secs=S),
     node(W, 7, "project_crs_dialog", "프로젝트 CRS 대화상자 열림 (Project Properties — CRS)", "step 9 결과: 상태 표시줄 오른쪽의 현재 CRS 버튼 클릭 → 'Project Properties — CRS' 대화상자: Filter, Recently Used / Predefined CRS 목록, 미리보기. 아직 필터·선택 없음.", "dialog",
          "Project Properties — CRS", ["filter_field", "crs_list", "recently_used", "predefined_crs", "ok_cancel_apply"], ["Project Properties", "Coordinate Reference System", "Filter", "Recently Used", "Predefined Coordinate Reference Systems", "No CRS"], secs=S),
     node(W, 8, "van_der_grinten_selected", "Filter 'Van der Grinten' → 사용자 정의 CRS Van der Grinten I 선택됨 (OK 전)", "step 10 결과: Filter에 Van der Grinten 입력 → User Defined Coordinate Systems 아래 Van der Grinten I (USER:100000) 선택. OK 아직 안 누름.", "setup",
          "Project Properties — CRS", ["filter_van_der_grinten", "user_defined_crs_selected", "usercrs_100000"], ["Van der Grinten I", "USER:100000", "User Defined Coordinate Systems", "Filter"], secs=S),
     node(W, 9, "map_reprojected", "OK: 지도가 Van der Grinten I 로 재투영됨 (원형 세계지도, 목표 도달)", "step 11 결과: OK → 지도가 원형(Van der Grinten)으로 재투영되고 상태 표시줄 CRS 버튼에 USER:100000 표시.", "verification",
-         "QGIS main window", ["map_canvas_circular_world", "statusbar_crs_user100000", "no_dialog"], ["USER:100000", "oceans", "no Project Properties dialog"], secs=S),
+         "Untitled Project - QGIS", ["map_canvas_circular_world", "statusbar_crs_user100000", "no_dialog"], ["USER:100000", "oceans", "Untitled Project"], secs=S),
 ]
 eF = edges(W, nF, [
     "Settings 메뉴에서 Custom Projections…를 여세요",
@@ -178,17 +178,17 @@ scF = {"scenario_id": sidF, "manual_id": QG, "manual_name": "QGIS Training Manua
 W = "qgis_aspect_north_736"; S = ["★★☆ Follow Along: Finding the north-facing aspect"]
 nG = [
     node(W, 1, "aspect_loaded", "aspect 래스터 로드됨, Raster calculator 닫힘", "§7.3.6 시작: Layers에 aspect(0–360°) 래스터(§7.3.5 결과)가 있고 지도에 표시. Processing Toolbox 열려 있을 수 있음. Raster calculator 대화상자 없음.", "start",
-         "QGIS main window", ["layers_panel_aspect", "map_canvas_aspect", "processing_toolbox"], ["aspect", "Layers", "Processing Toolbox"], secs=S),
+         "Untitled Project - QGIS", ["layers_panel_aspect", "map_canvas_aspect", "processing_toolbox"], ["aspect", "Processing Toolbox", "Untitled Project"], secs=S),
     node(W, 2, "raster_calc_open", "Raster calculator(Processing) 대화상자 열림 (식 비어 있음)", "step 1 결과: Processing Toolbox › Raster analysis › Raster calculator 더블클릭 → 'Raster Calculator' 대화상자: Layers 목록(aspect@1 …), Operators, Expression(비어 있음), Reference layer(s) [optional], Cell size, Output extent, Output CRS, Calculated 출력(임시 파일), Run.", "dialog",
-         "Raster Calculator", ["layers_list_aspect_at_1", "operators_panel", "expression_empty", "reference_layers_row", "output_row", "run_button"], ["Raster Calculator", "Expression", "Layers", "Operators", "aspect@1", "Reference layer(s)", "Cell size", "Output extent", "Output CRS", "Calculated"], secs=S),
+         "Raster Analysis - Raster Calculator", ["layers_list_aspect_at_1", "operators_panel", "expression_empty", "reference_layers_row", "output_row", "run_button"], ["Raster Calculator", "Expression", "Layers", "Operators", "aspect@1", "Reference layer(s)", "Cell size", "Output extent", "Output CRS", "Calculated"], secs=S),
     node(W, 3, "expression_entered", "Expression = aspect@1 <= 90 OR aspect@1 >= 270 (Expression is valid)", "step 2 결과: Expression 필드에 aspect@1 <= 90 OR aspect@1 >= 270 입력 → 'Expression is valid'. Reference layer 아직 없음.", "setup",
-         "Raster Calculator", ["expression_aspect_north", "expression_is_valid"], ["aspect@1 <= 90 OR aspect@1 >= 270", "Expression is valid", "aspect@1"], params=[("Expression", "aspect@1 <= 90 OR aspect@1 >= 270", "manual step 2")], secs=S),
+         "Raster Analysis - Raster Calculator", ["expression_aspect_north", "expression_is_valid"], ["aspect@1 <= 90 OR aspect@1 >= 270", "Expression is valid", "aspect@1"], params=[("Expression", "aspect@1 <= 90 OR aspect@1 >= 270", "manual step 2")], secs=S),
     node(W, 4, "reference_layer_set", "Reference layer(s) = aspect (1 inputs selected)", "step 3–4 결과: Reference layer(s)의 … 버튼 → 다중 선택 대화상자에서 aspect 체크 → OK → '1 inputs selected'.", "setup",
-         "Raster Calculator", ["reference_layers_1_selected"], ["1 inputs selected", "Reference layer(s)", "aspect"], params=[("Reference layer(s)", "aspect", "manual step 4")], secs=S),
+         "Raster Analysis - Raster Calculator", ["reference_layers_1_selected"], ["1 inputs selected", "Reference layer(s)", "aspect"], params=[("Reference layer(s)", "aspect", "manual step 4")], secs=S),
     node(W, 5, "output_set", "Calculated 출력 = exercise_data/raster_analysis/aspect_north.tif (Run 전)", "step 5 결과: Calculated(출력)의 … › Save to File… 로 raster_analysis 폴더에 aspect_north.tif 지정. 아직 Run 안 함.", "setup",
-         "Raster Calculator", ["output_aspect_north_tif"], ["aspect_north.tif", "raster_analysis", "Calculated", "Run"], params=[("Output", "aspect_north.tif", "manual step 5")], secs=S),
+         "Raster Analysis - Raster Calculator", ["output_aspect_north_tif"], ["aspect_north.tif", "raster_analysis", "Calculated", "Run"], params=[("Output", "aspect_north.tif", "manual step 5")], secs=S),
     node(W, 6, "ran_layer_added", "Run 완료: aspect_north 레이어(0/1) 추가됨 (목표 도달)", "step 6 결과: Run → 알고리즘 실행, Layers 패널에 aspect_north 레이어(값 0/1, 흑백)가 추가되고 지도에 북향 픽셀이 흰색으로 표시. 대화상자 닫힘(또는 Close).", "verification",
-         "QGIS main window", ["layers_panel_aspect_north", "map_canvas_binary"], ["aspect_north", "Layers", "1", "0"], secs=S),
+         "Untitled Project - QGIS", ["layers_panel_aspect_north", "map_canvas_binary"], ["aspect_north", "Untitled Project"], secs=S),
 ]
 eG = edges(W, nG, [
     "Processing Toolbox에서 Raster analysis › Raster calculator를 더블클릭해 여세요(검색창에 raster calculator 입력 가능)",

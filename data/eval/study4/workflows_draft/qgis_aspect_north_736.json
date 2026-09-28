@@ -5,7 +5,7 @@
   "manual_reference": "QGIS Training Manual 3.44 §7.3.6 Follow Along: Finding the north-facing aspect, steps 1–6 (pp.263–264)",
   "description": "QGIS 매뉴얼 §7.3.6: Processing Toolbox의 Raster analysis › Raster calculator에서 식 aspect@1 <= 90 OR aspect@1 >= 270 을 입력하고 Reference layer = aspect, 출력 aspect_north.tif 로 저장한 뒤 Run → 북향 픽셀이 1인 래스터 생성.",
   "authoring": {
-    "source": "manual text + figure OCR only (chromadb_v4)",
+    "source": "manual text + figure OCR only (chromadb_v4); main-window / Processing dialog titles follow the study-2/3 screens of the same application versions",
     "screenshots_seen": false,
     "authored_on": "2026-09-28",
     "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node"
@@ -19,7 +19,7 @@
       "description": "§7.3.6 시작: Layers에 aspect(0–360°) 래스터(§7.3.5 결과)가 있고 지도에 표시. Processing Toolbox 열려 있을 수 있음. Raster calculator 대화상자 없음.",
       "step_type": "start",
       "visual_signature": {
-        "expected_dialog": "QGIS main window",
+        "expected_dialog": "Untitled Project - QGIS",
         "expected_ui_elements": [
           "layers_panel_aspect",
           "map_canvas_aspect",
@@ -27,8 +27,8 @@
         ],
         "screenshot_keywords": [
           "aspect",
-          "Layers",
-          "Processing Toolbox"
+          "Processing Toolbox",
+          "Untitled Project"
         ]
       },
       "parameters": [],
@@ -44,7 +44,7 @@
       "description": "step 1 결과: Processing Toolbox › Raster analysis › Raster calculator 더블클릭 → 'Raster Calculator' 대화상자: Layers 목록(aspect@1 …), Operators, Expression(비어 있음), Reference layer(s) [optional], Cell size, Output extent, Output CRS, Calculated 출력(임시 파일), Run.",
       "step_type": "dialog",
       "visual_signature": {
-        "expected_dialog": "Raster Calculator",
+        "expected_dialog": "Raster Analysis - Raster Calculator",
         "expected_ui_elements": [
           "layers_list_aspect_at_1",
           "operators_panel",
@@ -79,7 +79,7 @@
       "description": "step 2 결과: Expression 필드에 aspect@1 <= 90 OR aspect@1 >= 270 입력 → 'Expression is valid'. Reference layer 아직 없음.",
       "step_type": "setup",
       "visual_signature": {
-        "expected_dialog": "Raster Calculator",
+        "expected_dialog": "Raster Analysis - Raster Calculator",
         "expected_ui_elements": [
           "expression_aspect_north",
           "expression_is_valid"
@@ -109,7 +109,7 @@
       "description": "step 3–4 결과: Reference layer(s)의 … 버튼 → 다중 선택 대화상자에서 aspect 체크 → OK → '1 inputs selected'.",
       "step_type": "setup",
       "visual_signature": {
-        "expected_dialog": "Raster Calculator",
+        "expected_dialog": "Raster Analysis - Raster Calculator",
         "expected_ui_elements": [
           "reference_layers_1_selected"
         ],
@@ -138,7 +138,7 @@
       "description": "step 5 결과: Calculated(출력)의 … › Save to File… 로 raster_analysis 폴더에 aspect_north.tif 지정. 아직 Run 안 함.",
       "step_type": "setup",
       "visual_signature": {
-        "expected_dialog": "Raster Calculator",
+        "expected_dialog": "Raster Analysis - Raster Calculator",
         "expected_ui_elements": [
           "output_aspect_north_tif"
         ],
@@ -168,16 +168,14 @@
       "description": "step 6 결과: Run → 알고리즘 실행, Layers 패널에 aspect_north 레이어(값 0/1, 흑백)가 추가되고 지도에 북향 픽셀이 흰색으로 표시. 대화상자 닫힘(또는 Close).",
       "step_type": "verification",
       "visual_signature": {
-        "expected_dialog": "QGIS main window",
+        "expected_dialog": "Untitled Project - QGIS",
         "expected_ui_elements": [
           "layers_panel_aspect_north",
           "map_canvas_binary"
         ],
         "screenshot_keywords": [
           "aspect_north",
-          "Layers",
-          "1",
-          "0"
+          "Untitled Project"
         ]
       },
       "parameters": [],
