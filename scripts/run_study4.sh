@@ -14,7 +14,8 @@ QG_DIR="${QG_DIR:-data/eval/scenarios/.study4_test_qgis}"
 PASSES="${PASSES:-opendtect,qgis}"
 START_REP="${START_REP:-1}"
 PY=".venv/Scripts/python.exe"
-LOG="data/eval/results/${TAG}_bench.log"
+# one wrapper per model may run in parallel (MODELS=gemini / claude / gpt): each keeps its own log
+LOG="data/eval/results/${TAG}_bench_${MODELS//,/_}.log"
 if ! git tag --list | grep -q "^study4-prereg-signed$"; then echo "pre-registration not signed (tag study4-prereg-signed missing)"; exit 2; fi
 for d in "$OT_DIR" "$QG_DIR"; do
   $PY scripts/preflight_check.py --scenarios "$d" --expect GEOLENS_SCORER=v6 CONTEXT_ASSEMBLY=v8 ROUTER_SESSION_STICKY=1 ROUTER_HISTORY_ADVANCE=1 ROUTER_ADVANCE_MIN_COVERAGE=0.6 ROUTER_SCREEN_ADVANCE=1 ROUTER_SCREEN_ADVANCE_HOPS=3 ROUTER_PRIOR_HOPS=2 RERANK_SESSION_BLOCK=1 GEN_PROMPT_VERSION=v3 CHROMADB_PATH=./data/chromadb_v4 EMBED_MODEL=BAAI/bge-m3 || { echo "preflight failed for $d - run refused"; exit 2; }
