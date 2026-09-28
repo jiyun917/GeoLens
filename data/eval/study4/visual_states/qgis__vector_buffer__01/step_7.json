@@ -1,0 +1,56 @@
+{
+ "scenario_id": "qgis__vector_buffer__01",
+ "step_index": 7,
+ "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_7.jpg",
+ "sha256": "d68a05cedae17d9a826122b5b8ee5abf39687cf909effd2640127b9bf82f0782",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "*Untitled Project - QGIS",
+  "window_titles": [
+   "*Untitled Project - QGIS"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "Type to locate (Ctrl+K)",
+   "Coordinate 1055235, 6207527",
+   "Scale 1:240882",
+   "Magnifier 100%",
+   "Rotation 0,0 °",
+   "Render (checked)",
+   "EPSG:32733"
+  ],
+  "field_values": [
+   "Type to locate (Ctrl+K): (empty)",
+   "Coordinate: 1055235, 6207527",
+   "Scale: 1:240882",
+   "Magnifier: 100%",
+   "Rotation: 0,0 °",
+   "Render: checked",
+   "EPSG:32733: EPSG:32733"
+  ],
+  "visible_elements": [
+   "Layers",
+   "roads_buffer 50m dissolved",
+   "roads_33S"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "viewing map"
+ }
+}

@@ -1,0 +1,80 @@
+{
+ "scenario_id": "opendtect__horizon_2dviewer__01",
+ "step_index": 0,
+ "screenshot_path": "data/eval/screenshots/opendtect__horizon_2dviewer__01/step_0.jpg",
+ "sha256": "d7a36c38a602bae4774f524544cd48f7e1c1d833e5be4aee3189fd06722fadec",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubus",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "Cross-line 0",
+   "Step 0",
+   "Elements",
+   "Scene 1",
+   "In-line (checked)",
+   "Cross-line (checked)",
+   "Z-slice (checked)",
+   "Volume (checked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "3D Horizon (checked)",
+   "2D Horizon (checked)",
+   "Fault (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "field_values": [
+   "Cross-line: 0",
+   "Step: 0",
+   "In-line: checked",
+   "Cross-line: checked",
+   "Z-slice: checked",
+   "Volume: checked",
+   "Random Line: checked",
+   "2D Line: checked",
+   "3D Horizon: checked",
+   "2D Horizon: checked",
+   "Fault: checked",
+   "FaultSet: checked",
+   "FaultStickSet: checked",
+   "Geobody: checked",
+   "Well: checked",
+   "PointSet: checked",
+   "Polygon: checked"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Color",
+   "OD Seismic 1",
+   "Toolbar (top left, with icons for new, open, save, print, undo, redo, etc.)",
+   "Toolbar (top right, with icons for Cross-line, In-line, Z-slice, etc.)",
+   "Toolbar (right side, vertical, with icons for 3D scene, 2D viewer, etc.)",
+   "3D viewer with grid lines and labels (In-line, Cross-line, Time)",
+   "Navigation cube (bottom right, with N, E, Z axes)"
+  ],
+  "data_state": "3D seismic loaded (OD Seismic 1)",
+  "current_action": "viewing 3D scene"
+ }
+}

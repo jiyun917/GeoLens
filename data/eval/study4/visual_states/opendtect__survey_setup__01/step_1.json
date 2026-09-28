@@ -1,0 +1,68 @@
+{
+ "scenario_id": "opendtect__survey_setup__01",
+ "step_index": 1,
+ "screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_1.jpg",
+ "sha256": "9e638c0829cf1c5940cfa38b13e290b490c2e47ebb5bb6badcac79815c7c3a4f",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Create New Survey",
+  "window_titles": [
+   "Create New Survey",
+   "Survey Setup and Selection"
+  ],
+  "active_menu": null,
+  "menu_items": [],
+  "buttons": [
+   "Next",
+   "Cancel",
+   "Select",
+   "Cancel"
+  ],
+  "labels": [
+   "Survey name:",
+   "Available data",
+   "3D (checked)",
+   "2D (checked)",
+   "Wells (unchecked)",
+   "Initial setup",
+   "Enter X/Y ranges",
+   "Scan Navigation Data",
+   "Copy from other survey",
+   "Read from Survey Setup file",
+   "Scan SEG-Y file(s)",
+   "Scan LAS Well Data",
+   "Enter by hand",
+   "Z Domain",
+   "Time (checked)",
+   "Depth (unchecked)"
+  ],
+  "field_values": [
+   "Survey name: (empty)",
+   "3D: checked",
+   "2D: checked",
+   "Wells: unchecked",
+   "Initial setup: Enter X/Y ranges",
+   "Time: checked",
+   "Depth: unchecked"
+  ],
+  "visible_elements": [
+   "Survey Data Root ...",
+   "C:\\Users\\user\\Downloads\\GeoLens_test",
+   "Information",
+   "Notes",
+   "Log",
+   "Specify new survey parameters",
+   "toolbar: Add new survey",
+   "toolbar: Edit survey",
+   "toolbar: Save survey",
+   "toolbar: Save survey as",
+   "toolbar: Delete survey",
+   "toolbar: Survey info",
+   "toolbar: Survey settings",
+   "toolbar: Coordinate system"
+  ],
+  "data_state": "none",
+  "current_action": "Creating a new survey"
+ }
+}

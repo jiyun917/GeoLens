@@ -1,0 +1,92 @@
+{
+ "scenario_id": "opendtect__attribute_computation__01",
+ "step_index": 1,
+ "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_1.jpg",
+ "sha256": "0ee358825460feff046b5854ec8ed788b7992a150c2ea3bc210cb9ec608e5b3c",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Attribute Set 3D",
+  "window_titles": [
+   "Attribute Set 3D",
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubus",
+   "Help"
+  ],
+  "buttons": [
+   "Select ...",
+   "Add as new",
+   "Close"
+  ],
+  "labels": [
+   "File",
+   "Attribute set (<not saved>)",
+   "Input Data (Seismic_data)",
+   "Time gate (ms) (-28)",
+   "Compute gradient",
+   "Yes",
+   "No",
+   "Output (Energy)",
+   "Attribute Name",
+   "Save on Close (checked)"
+  ],
+  "field_values": [
+   "Attribute set: <not saved>",
+   "Input Data: Seismic_data",
+   "Time gate (ms): -28",
+   "Time gate (ms): 28",
+   "Compute gradient: No",
+   "Output: Energy",
+   "Attribute Name: (empty)",
+   "Save on Close: checked"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Z 924",
+   "Step 4",
+   "-9968",
+   "9968",
+   "OD Seismic 1",
+   "Color",
+   "1200"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "Defining a 3D attribute set"
+ }
+}

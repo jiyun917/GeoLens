@@ -1,0 +1,86 @@
+{
+ "scenario_id": "qgis__rule_classification__01",
+ "step_index": 6,
+ "screenshot_path": "data/eval/screenshots/qgis__rule_classification__01/step_6.jpg",
+ "sha256": "10e12e4af044896feb60c732f77c75536a5bd6f1d3b2564023ce5d8a3d584352",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Layer Properties - landuse - Symbology",
+  "window_titles": [
+   "Layer Properties - landuse - Symbology",
+   "Untitled Project - QGIS"
+  ],
+  "active_menu": "Symbology",
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Symbol Levels...",
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "labels": [
+   "Rule-based (checked)",
+   "Label",
+   "Rule",
+   "Min. Scale",
+   "Max. Scale",
+   "Count",
+   "Duplicate Count",
+   "Refine Selected Rules",
+   "Layer Rendering",
+   "Style"
+  ],
+  "field_values": [
+   "Rule-based: checked",
+   "Swellendam: checked",
+   "Other residen...: checked",
+   "Refine Selected Rules: (dropdown)",
+   "Layer Rendering: (expanded)",
+   "Style: (dropdown)"
+  ],
+  "visible_elements": [
+   "Layers panel",
+   "landuse (checked)",
+   "Information",
+   "Source",
+   "Symbology",
+   "Labels",
+   "Masks",
+   "3D View",
+   "Diagrams",
+   "Fields",
+   "Attributes Form",
+   "Joins",
+   "Auxiliary Storage",
+   "Actions",
+   "Display",
+   "Rendering",
+   "Temporal",
+   "Variables",
+   "Elevation",
+   "Metadata",
+   "Dependencies",
+   "Legend",
+   "Type to locate (Ctrl+K) text field",
+   "Toggles the editing state of the current layer"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "viewing layer properties for 'landuse' layer, specifically the symbology"
+ }
+}

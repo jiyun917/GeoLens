@@ -1,0 +1,93 @@
+{
+ "scenario_id": "opendtect__horizon_autotrack__01",
+ "step_index": 1,
+ "screenshot_path": "data/eval/screenshots/opendtect__horizon_autotrack__01/step_1.jpg",
+ "sha256": "f71697098c7f2409216a47c721c19b9c683e8279eb5a6cd4f743f8101dacf8c3",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Horizon Tracking Settings - <New Horizon 1>",
+  "window_titles": [
+   "Horizon Tracking Settings - <New Horizon 1>",
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": "Mode",
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help",
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "buttons": [
+   "Close"
+  ],
+  "labels": [
+   "In-line (130)",
+   "Step (10)",
+   "0.61389",
+   "0.96727",
+   "OD Seismic 1",
+   "Section Auto-track (checked)",
+   "Manual Draw (unchecked)",
+   "Snap to Event (unchecked)",
+   "Method: Seed Trace"
+  ],
+  "field_values": [
+   "In-line: 130",
+   "Step: 10",
+   "0.61389",
+   "0.96727",
+   "OD Seismic 1: OD Seismic 1",
+   "Section Auto-track: checked",
+   "Manual Draw: unchecked",
+   "Snap to Event: unchecked",
+   "Method: Seed Trace"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "Random Line 1",
+   "4 Dip steered medi...",
+   "2D Line",
+   "3D Horizon",
+   "<New Horizon 1>",
+   "Tracking Order",
+   "Seed Index",
+   "Correlation",
+   "Amplitude",
+   "Z values",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Color",
+   "In-lin400",
+   "600",
+   "F",
+   "N",
+   "Z"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "configuring horizon tracking settings"
+ }
+}

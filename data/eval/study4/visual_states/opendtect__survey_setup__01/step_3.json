@@ -1,0 +1,80 @@
+{
+ "scenario_id": "opendtect__survey_setup__01",
+ "step_index": 3,
+ "screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_3.jpg",
+ "sha256": "6cc0ea960dc5114c544cb0082e0972142039bb823d7b77e305cfce906d7bd154",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "OpendTect 7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]",
+  "window_titles": [
+   "OpendTect 7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubus",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "Cross-line 0",
+   "Step 0",
+   "OD Seismic 1",
+   "Elements",
+   "Scene 1",
+   "In-line (checked)",
+   "Cross-line (checked)",
+   "Z-slice (checked)",
+   "Volume (checked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "3D Horizon (checked)",
+   "2D Horizon (checked)",
+   "Fault (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "field_values": [
+   "Cross-line: 0",
+   "Step: 0",
+   "OD Seismic 1: OD Seismic 1",
+   "In-line: checked",
+   "Cross-line: checked",
+   "Z-slice: checked",
+   "Volume: checked",
+   "Random Line: checked",
+   "2D Line: checked",
+   "3D Horizon: checked",
+   "2D Horizon: checked",
+   "Fault: checked",
+   "FaultSet: checked",
+   "FaultStickSet: checked",
+   "Geobody: checked",
+   "Well: checked",
+   "PointSet: checked",
+   "Polygon: checked"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Color",
+   "Toolbar (left, vertical): Create new item, Open item, Save item, Delete item, Copy item, Paste item, Undo, Redo, Select item, Move item, Rotate item, Scale item, Pick item, Measure item, Zoom in, Zoom out, Zoom to full extent, Pan, 3D view, 2D view, Cross-line view, In-line view, Z-slice view, Time slice view, Horizon view, Fault view, Well view, Point set view, Polygon view, Geobody view, Fault stick set view, Random line view, 2D line view, 3D horizon view, 2D horizon view, Volume view, Prestack events view, Annotations view",
+   "Toolbar (right, vertical): Render settings, Display settings, Color bar settings, Legend settings, Text settings, Grid settings, Axis settings, Compass settings, Python console, Command line",
+   "Grid with labels: 200, 400, 600, 800, 1000, 1200 (Cross-line); 500, 1000, 1500 (Time); 200, 400, 600 (In-line)",
+   "Compass: N, E, Z"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "viewing 3D seismic data"
+ }
+}

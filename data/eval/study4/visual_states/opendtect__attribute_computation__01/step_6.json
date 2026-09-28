@@ -1,0 +1,89 @@
+{
+ "scenario_id": "opendtect__attribute_computation__01",
+ "step_index": 6,
+ "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_6.jpg",
+ "sha256": "fb3e57cf76059162dac14ffea264079ffc5d4cf1104e204301ae42292930a52f",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Select",
+  "window_titles": [
+   "Select",
+   "OpendTect V7.0.0 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubus",
+   "Help"
+  ],
+  "buttons": [
+   "OK",
+   "Cancel"
+  ],
+  "labels": [
+   "Filter",
+   "Stored",
+   "Steering",
+   "Attributes"
+  ],
+  "field_values": [
+   "Filter: (empty)",
+   "Stored: unchecked",
+   "Steering: unchecked",
+   "Attributes: checked",
+   "List of attributes: Energy [-28,+28]"
+  ],
+  "visible_elements": [
+   "Tree scene 1 panel",
+   "Elements tree",
+   "Scene 1",
+   "In-line",
+   "250",
+   "<right-click>",
+   "Seismic_data",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "In-line 250",
+   "Step 1",
+   "-9968",
+   "9968",
+   "OD Seismic 1",
+   "Color bar",
+   "Time 500",
+   "Time 1000",
+   "Time 1500",
+   "SEG-Y icon",
+   "Coordinate system axes (N, E, Z)"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "Selecting Layer 2"
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "scenario_id": "opendtect__survey_setup__01",
+ "step_index": 0,
+ "screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_0.jpg",
+ "sha256": "fd226a6fc0f97d582ecce1b9bfdd483b8c8cde1882d358f84ba45d3ee10707dc",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Survey Setup and Selection",
+  "window_titles": [
+   "Survey Setup and Selection"
+  ],
+  "active_menu": null,
+  "menu_items": [],
+  "buttons": [
+   "Select",
+   "Cancel"
+  ],
+  "labels": [
+   "Survey Data Root ...",
+   "Information",
+   "Notes",
+   "Log"
+  ],
+  "field_values": [
+   "Survey Data Root ...: C:\\Users\\user\\Downloads\\GeoLens_test"
+  ],
+  "visible_elements": [
+   "Toolbar with icons: Add new survey, Edit survey, Import survey, Export survey, Refresh, Delete survey",
+   "Information tab",
+   "Notes tab",
+   "Log tab"
+  ],
+  "data_state": "none",
+  "current_action": "Selecting a survey"
+ }
+}

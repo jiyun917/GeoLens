@@ -1,0 +1,75 @@
+{
+ "scenario_id": "opendtect__fault_sticks__01",
+ "step_index": 0,
+ "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_0.jpg",
+ "sha256": "c300ad83337a5595bfd515e7d68b645b50b1aa2b18a15837e1936d9dd575d88f",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "In-line (110)",
+   "Step (1)",
+   "-8000",
+   "8000",
+   "OD Seismic 1"
+  ],
+  "field_values": [
+   "In-line: 110",
+   "Step: 1",
+   "Text field: -8000",
+   "Text field: 8000",
+   "Dropdown: OD Seismic 1",
+   "Elements: In-line (checked)",
+   "Elements: 110 (checked)",
+   "Elements: 4 Dip steered medi... (checked)",
+   "Elements: Cross-line (checked)",
+   "Elements: Z-slice (checked)",
+   "Elements: Volume (checked)",
+   "Elements: Random Line (checked)",
+   "Elements: 2D Line (checked)",
+   "Elements: 3D Horizon (checked)",
+   "Elements: 2D Horizon (checked)",
+   "Elements: Fault (checked)",
+   "Elements: FaultSet (checked)",
+   "Elements: FaultStickSet (checked)",
+   "Elements: Geobody (checked)",
+   "Elements: Well (checked)",
+   "Elements: PointSet (checked)",
+   "Elements: Polygon (checked)",
+   "Elements: Prestack Events (checked)",
+   "Annotations: (empty)"
+  ],
+  "visible_elements": [
+   "Tree scene 1 panel",
+   "Elements tree",
+   "Scene 1 tree entry",
+   "Color column header",
+   "In-line axis label",
+   "Cross-line axis label",
+   "Time axis label",
+   "Toolbar with icons for: New scene, Open scene, Save scene, Save scene as, Print, Undo, Redo, Cut, Copy, Paste, Delete, Select all, Deselect all, Invert selection, Find, Replace, Go to, Zoom in, Zoom out, Fit to window, Pan, Rotate, Measure, Annotate, Help",
+   "Toolbar with icons for: Select, Move, Rotate, Scale, Clip, Slice, Volume, Random line, 2D line, 3D horizon, 2D horizon, Fault, Fault set, Fault stick set, Geobody, Well, Point set, Polygon, Prestack events, Annotations",
+   "Toolbar with icons for: Add, Remove, Edit, Properties, Refresh, Export, Import, Group, Ungroup, Lock, Unlock, Hide, Show, Transparency, Color, Style, Font, Text, Image, Video, Audio, Link, Note, Comment, Tag, Bookmark, Snapshot, Animation, Script, Macro, Plugin, Extension, Settings, Options, Preferences, About",
+   "Toolbar with icons for: Python, Terminal",
+   "Navigation cube with N, E, Z axes"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "Viewing 3D seismic data with an in-line slice"
+ }
+}

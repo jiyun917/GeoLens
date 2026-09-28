@@ -1,0 +1,74 @@
+{
+ "scenario_id": "opendtect__fault_sticks__01",
+ "step_index": 2,
+ "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_2.jpg",
+ "sha256": "27d363e3d1d4731ab92b1f3406a25b759642ca104ff6030478bec5b04103e7a6",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Output selection",
+  "window_titles": [
+   "Output selection",
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Select ...",
+   "OK",
+   "Cancel"
+  ],
+  "labels": [
+   "Output FaultStickSet:",
+   "Replace in tree (checked)"
+  ],
+  "field_values": [
+   "Output FaultStickSet: (empty)",
+   "Replace in tree: checked"
+  ],
+  "visible_elements": [
+   "Tree scene 1 panel",
+   "Elements tree",
+   "Scene 1",
+   "In-line",
+   "110",
+   "4 Dip steered medi...",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "<New FaultStickSet 1>",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "In-line 110",
+   "Step 1",
+   "8000",
+   "8000",
+   "OD Seismic 1",
+   "Copy Selection to dropdown",
+   "Fault dropdown",
+   "Create Single New dropdown",
+   "Picking status bar"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "Outputting selection for FaultStickSet"
+ }
+}

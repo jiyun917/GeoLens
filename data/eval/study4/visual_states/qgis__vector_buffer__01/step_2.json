@@ -1,0 +1,83 @@
+{
+ "scenario_id": "qgis__vector_buffer__01",
+ "step_index": 2,
+ "screenshot_path": "data/eval/screenshots/qgis__vector_buffer__01/step_2.jpg",
+ "sha256": "11a260648f00ec4b31117b03589b5f4db9973d43f0ab7e173dab022e2e862178",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "*Untitled Project - QGIS",
+  "window_titles": [
+   "*Untitled Project - QGIS",
+   "Processing Toolbox"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "Q buffer",
+   "Vector geometry",
+   "Buffer",
+   "Create wedge buffers",
+   "Multi-ring buffer (constant distance)",
+   "Rectangles, ovals, diamonds",
+   "Single sided buffer",
+   "Tapered buffers",
+   "Variable width buffer (by M value)",
+   "Vector selection",
+   "Select within distance",
+   "GDAL",
+   "Vector geoprocessing",
+   "Buffer vectors",
+   "One side buffer",
+   "GRASS",
+   "Raster (r.*)",
+   "r.buffer",
+   "r.buffer.lowmem",
+   "Vector (v.*)",
+   "v.buffer",
+   "Coordinate 1045420, 6224416",
+   "Scale 1:240882",
+   "Magnifier 100%",
+   "Rotation 0,0",
+   "Render (checked)",
+   "EPSG:32733"
+  ],
+  "field_values": [
+   "Q buffer: buffer",
+   "Q Type to locate (Ctrl+K): (empty)",
+   "Coordinate: 1045420, 6224416",
+   "Scale: 1:240882",
+   "Magnifier: 100%",
+   "Rotation: 0,0",
+   "Render: checked",
+   "EPSG:32733: 32733"
+  ],
+  "visible_elements": [
+   "Layers panel",
+   "roads_33S (checked)",
+   "Processing Toolbox panel",
+   "Vector geometry tree",
+   "Vector selection tree",
+   "GDAL tree",
+   "GRASS tree",
+   "Vector (v.*) tree"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "browsing processing toolbox for buffer operations"
+ }
+}

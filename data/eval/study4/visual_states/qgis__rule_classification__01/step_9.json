@@ -1,0 +1,60 @@
+{
+ "scenario_id": "qgis__rule_classification__01",
+ "step_index": 9,
+ "screenshot_path": "data/eval/screenshots/qgis__rule_classification__01/step_9.jpg",
+ "sha256": "d857b676e5a60763226a592b0baa9a23deda342ae8b5c378b26c62dea71cb2fb",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "*Untitled Project - QGIS",
+  "window_titles": [
+   "*Untitled Project - QGIS"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "Type to locate (Ctrl+K): (empty)",
+   "Coordinate: -33.8626°, 20.468°",
+   "Scale: 1:143205",
+   "Magnifier: 100%",
+   "Rotation: 0.0 °",
+   "Render: checked",
+   "EPSG:4326"
+  ],
+  "field_values": [
+   "Type to locate (Ctrl+K): (empty)",
+   "Coordinate: -33.8626°, 20.468°",
+   "Scale: 1:143205",
+   "Magnifier: 100%",
+   "Rotation: 0.0 °",
+   "Render: checked",
+   "EPSG:4326"
+  ],
+  "visible_elements": [
+   "Layers panel",
+   "landuse (selected)",
+   "Swellendam city (checked)",
+   "Other residential (checked)",
+   "Big non residential areas (checked)",
+   "Small non residential areas (checked)",
+   "Toggles the editing state of the current layer"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "viewing map"
+ }
+}

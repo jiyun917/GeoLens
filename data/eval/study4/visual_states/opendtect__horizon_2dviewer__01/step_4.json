@@ -1,0 +1,86 @@
+{
+ "scenario_id": "opendtect__horizon_2dviewer__01",
+ "step_index": 4,
+ "screenshot_path": "data/eval/screenshots/opendtect__horizon_2dviewer__01/step_4.jpg",
+ "sha256": "72cba1ce31eff966004cab156f8f8c7b13815b014612fa11dcd4214e047f32b0",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Horizon Tracking Settings - <New 2D Horizon 1>",
+  "window_titles": [
+   "Horizon Tracking Settings - <New 2D Horizon 1>",
+   "2D Viewer - Line: 19981104-1-04_0037",
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": "Mode",
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help",
+   "Mode",
+   "Event",
+   "Correlation",
+   "Properties"
+  ],
+  "buttons": [
+   "Close"
+  ],
+  "labels": [
+   "Cross-line 0",
+   "Step 0",
+   "Section Auto-track",
+   "Manual Draw",
+   "Snap to Event",
+   "Method (Adjacent Parent)",
+   "If tracking fails",
+   "Extrapolate",
+   "Stop"
+  ],
+  "field_values": [
+   "Cross-line: 0",
+   "Step: 0",
+   "Section Auto-track: checked",
+   "Manual Draw: unchecked",
+   "Snap to Event: unchecked",
+   "Method: Adjacent Parent",
+   "Extrapolate: unchecked",
+   "Stop: checked"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "19981104-1-04_0037",
+   "Seismic",
+   "3D Horizon",
+   "2D Horizon",
+   "<New 2D Horizon 1>",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Color",
+   "Time",
+   "Trace number",
+   "Toolbar"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "Horizon tracking settings for a new 2D horizon"
+ }
+}

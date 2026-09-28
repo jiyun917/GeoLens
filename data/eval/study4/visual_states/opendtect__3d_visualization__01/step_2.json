@@ -1,0 +1,82 @@
+{
+ "scenario_id": "opendtect__3d_visualization__01",
+ "step_index": 2,
+ "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_2.jpg",
+ "sha256": "2afc0186da1793f60b16d408bf2baca7c766fe0e226270dbe3fcbd4e7af2d716",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]",
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubus",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "In-line 425",
+   "Step 1",
+   "-9968",
+   "9968",
+   "OD Seismic 1"
+  ],
+  "field_values": [
+   "In-line: 425",
+   "Step 1: (empty)",
+   "SEG-Y: (empty)",
+   "-9968: (empty)",
+   "9968: (empty)",
+   "OD Seismic 1: OD Seismic 1",
+   "Elements: (empty)",
+   "Scene 1: (empty)",
+   "In-line: checked",
+   "425: checked",
+   "Seismic_data: checked",
+   "Cross-line: checked",
+   "Z-slice: checked",
+   "Volume: checked",
+   "Random Line: checked",
+   "2D Line: checked",
+   "3D Horizon: checked",
+   "Fault: checked",
+   "FaultSet: checked",
+   "FaultStickSet: checked",
+   "Geobody: checked",
+   "Well: checked",
+   "PointSet: checked",
+   "Polygon: checked",
+   "Prestack Events: checked",
+   "Annotations: (empty)"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Color",
+   "In-line",
+   "Cross-line",
+   "Time",
+   "500",
+   "1000",
+   "1500",
+   "200",
+   "400",
+   "600",
+   "800",
+   "1000",
+   "1200",
+   "N",
+   "E",
+   "Z"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "viewing 3D seismic data"
+ }
+}

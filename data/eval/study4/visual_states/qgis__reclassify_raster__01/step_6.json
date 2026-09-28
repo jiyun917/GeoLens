@@ -1,0 +1,82 @@
+{
+ "scenario_id": "qgis__reclassify_raster__01",
+ "step_index": 6,
+ "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_6.jpg",
+ "sha256": "752f9b16d82e966c668579ec9fecc2265f05bde426475699d2f4103960f4cf72",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Untitled Project - QGIS",
+  "window_titles": [
+   "Untitled Project - QGIS",
+   "Processing Toolbox"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "reclassify",
+   "Recently used",
+   "Raster analysis",
+   "Reclassify by layer",
+   "Reclassify by table",
+   "Vector table",
+   "Add unique value index field",
+   "Type to locate (Ctrl+K)",
+   "Coordinate 1052176, 6208127",
+   "Scale 1:281131",
+   "Magnifier 100%",
+   "Rotation 0,0 °",
+   "Render (checked)",
+   "EPSG:32733"
+  ],
+  "field_values": [
+   "reclassify: reclassify",
+   "Recently used: (empty)",
+   "Raster analysis: (empty)",
+   "Reclassify by layer: unchecked",
+   "Reclassify by table: unchecked",
+   "Vector table: (empty)",
+   "Add unique value index field: unchecked",
+   "Type to locate (Ctrl+K): (empty)",
+   "Coordinate 1052176, 6208127: 1052176, 6208127",
+   "Scale 1:281131: 1:281131",
+   "Magnifier 100%: 100%",
+   "Rotation 0,0 °: 0,0 °",
+   "Render: checked",
+   "EPSG:32733: EPSG:32733"
+  ],
+  "visible_elements": [
+   "Layers panel",
+   "Processing Toolbox panel",
+   "reclassified (checked)",
+   "Band 1 (Gray)",
+   "4",
+   "1",
+   "aspect (checked)",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19 (checked)",
+   "Band 1 (Gray)",
+   "1.548",
+   "0"
+  ],
+  "data_state": "raster layers loaded",
+  "current_action": "viewing map and searching in processing toolbox"
+ }
+}

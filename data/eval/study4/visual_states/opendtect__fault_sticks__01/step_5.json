@@ -1,0 +1,79 @@
+{
+ "scenario_id": "opendtect__fault_sticks__01",
+ "step_index": 5,
+ "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_5.jpg",
+ "sha256": "5bf7f5a477cca39ea4e2fd217af07dad06decde7292cb9f5413a8d44755ba0fb",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* - F3 DEMO 2023 - [Scene 1]",
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* - F3 DEMO 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Select ...",
+   "Picking"
+  ],
+  "labels": [
+   "In-line (110)",
+   "Step 1",
+   "OD Seismic 1",
+   "Copy Selection to: Fault",
+   "Create Single New"
+  ],
+  "field_values": [
+   "In-line: 110",
+   "Step 1: (empty)",
+   "text field: -8000",
+   "text field: 8000",
+   "OD Seismic 1: OD Seismic 1",
+   "Copy Selection to: Fault",
+   "Create Single New: Create Single New"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "110",
+   "4 Dip steered medi...",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "FaultStickSet_01",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Color",
+   "In-line",
+   "Cross-line",
+   "Time",
+   "N",
+   "E",
+   "Z"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "Picking"
+ }
+}

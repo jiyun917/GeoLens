@@ -1,0 +1,91 @@
+{
+ "scenario_id": "qgis__reclassify_raster__01",
+ "step_index": 5,
+ "screenshot_path": "data/eval/screenshots/qgis__reclassify_raster__01/step_5.jpg",
+ "sha256": "d0a8c6c57d185e4bac205d70e4ab7ff4bc6cdee1eea39f2e46d524d3f25f7c00",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Raster Analysis - Reclassify by Table",
+  "window_titles": [
+   "Raster Analysis - Reclassify by Table",
+   "Untitled Project - QGIS"
+  ],
+  "active_menu": "Parameters",
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Cancel",
+   "Run",
+   "Close",
+   "Help",
+   "Advanced",
+   "Run as Batch Process..."
+  ],
+  "labels": [
+   "Parameters",
+   "Log",
+   "Raster layer (aspect [EPSG:32733])",
+   "Band number (Band 1 (Gray))",
+   "Reclassification table (Fixed table (5x3))",
+   "Advanced Parameters",
+   "Reclassified raster (C:/GeoLensData/reclassified.tif)",
+   "Open output file after running algorithm (checked)",
+   "Reclassify by table",
+   "Processing Toolbox",
+   "Raster analysis",
+   "Reclassify by layer",
+   "Reclassify by table",
+   "Vector table",
+   "Add unique value index field",
+   "Layers",
+   "aspect",
+   "Band 1 (Gray)",
+   "360",
+   "0.093473",
+   "srtm_41_19",
+   "Band 1 (Gray)",
+   "1,548",
+   "0",
+   "Type to locate (Ctrl+K)",
+   "Coordinate 1051730, 6198011",
+   "Scale 1:281131",
+   "Magnifier 100%",
+   "Rotation 0,0 °",
+   "Render",
+   "EPSG:32733"
+  ],
+  "field_values": [
+   "Raster layer: aspect [EPSG:32733]",
+   "Band number: Band 1 (Gray)",
+   "Reclassification table: Fixed table (5x3)",
+   "Reclassified raster: C:/GeoLensData/reclassified.tif",
+   "Open output file after running algorithm: checked",
+   "reclassify: reclassify",
+   "Type to locate (Ctrl+K): (empty)"
+  ],
+  "visible_elements": [
+   "Layers panel",
+   "Processing Toolbox panel",
+   "aspect (tree item)",
+   "srtm_41_19 (tree item)",
+   "Reclassify by table (description text)",
+   "0% (progress bar)"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "configuring raster reclassification"
+ }
+}

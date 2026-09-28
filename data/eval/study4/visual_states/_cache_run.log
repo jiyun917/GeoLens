@@ -1,0 +1,93 @@
+[WorkflowGraph] Loaded 10 workflows, 69 nodes, 61 edges
+opendtect__3d_visualization__01 s0: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My'
+opendtect__3d_visualization__01 s1: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My'
+opendtect__3d_visualization__01 s2: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My'
+opendtect__3d_visualization__01 s3: ok dialog='OpendTect V7.0.9 (Windows) "UPDATE AVAILABLE" : My'
+opendtect__attribute_computation__01 s0: ok dialog='Attribute Set 3D'
+opendtect__attribute_computation__01 s1: ok dialog='Attribute Set 3D'
+opendtect__attribute_computation__01 s2: ok dialog='Attribute Set 3D'
+opendtect__attribute_computation__01 s3: ok dialog='Attribute Set 3D'
+opendtect__attribute_computation__01 s4: ok dialog='Save Attribute as'
+opendtect__attribute_computation__01 s5: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : se'
+opendtect__attribute_computation__01 s6: ok dialog='Select'
+opendtect__attribute_computation__01 s7: ok dialog='OpendTect 7.0.9 (Windows) *UPDATE AVAILABLE* : sei'
+opendtect__survey_setup__01 s0: ok dialog='Survey Setup and Selection'
+opendtect__survey_setup__01 s1: ok dialog='Create New Survey'
+opendtect__survey_setup__01 s2: ok dialog='Create New Survey'
+opendtect__survey_setup__01 s3: ok dialog='OpendTect 7.0.9 (Windows) *UPDATE AVAILABLE* : My_'
+opendtect__fault_sticks__01 s0: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+opendtect__fault_sticks__01 s1: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* - F3'
+opendtect__fault_sticks__01 s2: ok dialog='Output selection'
+opendtect__fault_sticks__01 s3: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+opendtect__fault_sticks__01 s4: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+opendtect__fault_sticks__01 s5: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* - F3'
+opendtect__fault_sticks__01 s6: ok dialog='OpenDTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+opendtect__fault_sticks__01 s7: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+opendtect__fault_sticks__01 s8: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+opendtect__horizon_autotrack__01 s0: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+opendtect__horizon_autotrack__01 s1: ok dialog='Horizon Tracking Settings - <New Horizon 1>'
+opendtect__horizon_autotrack__01 s2: ok dialog='Horizon Tracking Settings - <New Horizon 1>'
+opendtect__horizon_autotrack__01 s3: ok dialog='Horizon Tracking Settings - <New Horizon 1>'
+opendtect__horizon_autotrack__01 s4: ok dialog='Horizon Tracking Settings - <New Horizon 1>'
+opendtect__horizon_autotrack__01 s5: ok dialog='Horizon Tracking Settings - <New Horizon 1>'
+opendtect__horizon_autotrack__01 s6: ok dialog='Horizon Tracking Settings - <New Horizon 1>'
+opendtect__horizon_2dviewer__01 s0: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+opendtect__horizon_2dviewer__01 s1: ok dialog='Select 2D Lines'
+opendtect__horizon_2dviewer__01 s2: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+[GuidePipeline] visual_state transient; retry 1/3 after 1.7s
+opendtect__horizon_2dviewer__01 s3: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+opendtect__horizon_2dviewer__01 s4: ok dialog='Horizon Tracking Settings - <New 2D Horizon 1>'
+opendtect__horizon_2dviewer__01 s5: ok dialog='Horizon Tracking Settings - <New 2D Horizon 1>'
+opendtect__horizon_2dviewer__01 s6: ok dialog='Output selection'
+opendtect__horizon_2dviewer__01 s7: ok dialog='2D Viewer - Line: 19981104-1-04_0037'
+opendtect__horizon_2dviewer__01 s8: ok dialog='OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3'
+qgis__reclassify_raster__01 s0: ok dialog='*Untitled Project - QGIS'
+[GuidePipeline] visual_state transient; retry 1/3 after 1.6s
+qgis__reclassify_raster__01 s1: ok dialog='Raster Analysis - Reclassify by Table'
+qgis__reclassify_raster__01 s2: ok dialog='Raster Analysis - Reclassify by Table'
+qgis__reclassify_raster__01 s3: ok dialog='Raster Analysis - Reclassify by Table'
+qgis__reclassify_raster__01 s4: ok dialog='Raster Analysis - Reclassify by Table'
+qgis__reclassify_raster__01 s5: ok dialog='Raster Analysis - Reclassify by Table'
+qgis__reclassify_raster__01 s6: ok dialog='Untitled Project - QGIS'
+qgis__reclassify_raster__01 s7: ok dialog='*Untitled Project - QGIS'
+qgis__reclassify_raster__01 s8: ok dialog='Untitled Project - QGIS'
+[WorkflowGraph] Loaded 10 workflows, 69 nodes, 61 edges
+[GuidePipeline] visual_state transient; retry 1/3 after 1.5s
+[GuidePipeline] visual_state transient; retry 2/3 after 3.1s
+[GuidePipeline] visual_state transient; retry 3/3 after 6.2s
+[GuidePipeline] Visual state recognition failed: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'The request timed out. Please try again.', 'status': 'DEADLINE_EXCEEDED'}}
+[GuidePipeline] visual_state transient; retry 1/3 after 1.5s
+[GuidePipeline] visual_state transient; retry 2/3 after 3.1s
+[GuidePipeline] visual_state transient; retry 3/3 after 6.2s
+[GuidePipeline] Visual state recognition failed: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'The request timed out. Please try again.', 'status': 'DEADLINE_EXCEEDED'}}
+[GuidePipeline] visual_state transient; retry 1/3 after 1.6s
+[GuidePipeline] visual_state transient; retry 2/3 after 3.4s
+[GuidePipeline] visual_state transient; retry 3/3 after 6.2s
+[GuidePipeline] Visual state recognition failed: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'The request timed out. Please try again.', 'status': 'DEADLINE_EXCEEDED'}}
+qgis__rule_classification__01 s0: EMPTY dialog='None'
+qgis__rule_classification__01 s1: ok dialog='Layer Properties - landuse — Symbology'
+qgis__rule_classification__01 s2: ok dialog='Layer Properties - landuse - Symbology'
+qgis__rule_classification__01 s3: ok dialog='Layer Properties - landuse — Symbology'
+qgis__rule_classification__01 s4: ok dialog='Edit Rule'
+qgis__rule_classification__01 s5: ok dialog='Layer Properties - landuse -- Symbology'
+[GuidePipeline] visual_state transient; retry 1/3 after 1.8s
+qgis__rule_classification__01 s6: ok dialog='Layer Properties - landuse - Symbology'
+qgis__rule_classification__01 s7: ok dialog='Layer Properties - landuse — Symbology'
+qgis__rule_classification__01 s8: ok dialog='Layer Properties - landuse - Symbology'
+qgis__rule_classification__01 s9: ok dialog='*Untitled Project - QGIS'
+qgis__vector_buffer__01 s0: ok dialog='*Untitled Project - QGIS'
+qgis__vector_buffer__01 s1: ok dialog='*Untitled Project - QGIS'
+qgis__vector_buffer__01 s2: ok dialog='*Untitled Project - QGIS'
+qgis__vector_buffer__01 s3: ok dialog='Vector Geometry - Buffer'
+qgis__vector_buffer__01 s4: ok dialog='Vector Geometry - Buffer'
+qgis__vector_buffer__01 s5: ok dialog='Vector Geometry - Buffer'
+[GuidePipeline] visual_state transient; retry 1/3 after 1.7s
+[GuidePipeline] visual_state transient; retry 2/3 after 3.4s
+[GuidePipeline] visual_state transient; retry 3/3 after 6.2s
+[GuidePipeline] Visual state recognition failed: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'The request timed out. Please try again.', 'status': 'DEADLINE_EXCEEDED'}}
+[GuidePipeline] visual_state transient; retry 1/3 after 1.6s
+[GuidePipeline] visual_state transient; retry 2/3 after 3.2s
+[GuidePipeline] visual_state transient; retry 3/3 after 6.5s
+qgis__vector_buffer__01 s6: ok dialog='Vector Geometry - Buffer'
+qgis__vector_buffer__01 s7: ok dialog='*Untitled Project - QGIS'
+done: calls=18 skipped=50 cache={'hits': 0, 'misses': 21, 'size': 17, 'hit_rate': 0.0}

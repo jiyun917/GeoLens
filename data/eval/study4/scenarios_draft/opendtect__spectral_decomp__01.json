@@ -1,0 +1,276 @@
+{
+  "scenario_id": "opendtect__spectral_decomp__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "Introduction To OpendTect and OpendTect Pro Training Manual 7.0",
+  "manual_reference": "1.5.2a Spectral Decomposition, steps 1–4 and 9–13 (pp.130–133)",
+  "category": "attribute_analysis",
+  "difficulty": "hard",
+  "language": "ko",
+  "goal": "F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.",
+  "initial_state": {
+    "description": "F3 Demo 2023 survey 활성, 3D scene 표시, 트리에 3D Horizon 항목이 있으나 color-blended horizon 없음. Attribute Set 창 없음. (4 Dip steered median filter 볼륨은 stored data로 존재.)",
+    "must_be_true": [
+      "F3 Demo survey active",
+      "no color-blended horizon in the tree",
+      "no Attribute Set 3D window"
+    ]
+  },
+  "manual_grounding_sections": [
+    "1.5.2a"
+  ],
+  "_study4_note": "Authored from the manual only (2026-09-28) before capture; visual_state_gt filled after capture by enumeration + external review; patterns/keywords not changed after screenshots or model output are seen.",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_0.jpg",
+      "expected_workflow_node": "spectral_decomp_152a_01_scene_start",
+      "expected_action_text_pattern": "(?i)\\b(3D Horizon|Add Color Blended|Color Blended|color blended|컬러 블렌드|블렌드)\\b",
+      "expected_action_keywords": [
+        "Add Color Blended"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "3D scene with the tree; 3D Horizon item WITHOUT a color-blended horizon; no dialog; no Attribute Set window.",
+        "user_should_have_just": "Nothing yet (initial state).",
+        "must_not_show": [
+          "Select Input Horizon(s) dialog",
+          "Attribute Set 3D window"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_1.jpg",
+      "expected_workflow_node": "spectral_decomp_152a_02_select_horizon_dialog",
+      "expected_action_text_pattern": "(?i)\\b(MFS4|Demo 1|Area subselection|Select\\.\\.\\.|Select…|Select|영역|범위|부분 선택)\\b",
+      "expected_action_keywords": [
+        "MFS4"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Select Input Horizon(s)' dialog open (Add Color Blended): horizon list incl. Demo 1 --> MFS4, Area subselection row with Select…, OK/Cancel. Nothing selected yet, no Position dialog.",
+        "user_should_have_just": "Right-clicked 3D Horizon > Add Color Blended….",
+        "must_not_show": [
+          "a selected horizon",
+          "Position dialog"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_2.jpg",
+      "expected_workflow_node": "spectral_decomp_152a_03_position_ranges_entered",
+      "expected_action_text_pattern": "(?i)\\b(OK|확인|적용)\\b",
+      "expected_action_keywords": [
+        "OK"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(200|650|500|1000|In-line|Cross-line|Inline|Crossline)\\b",
+          "note": "Restating the ranges to be applied is accepted (manual step 2 values)."
+        }
+      ],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Position' (Specify Position) dialog open with In-line Range 200 650 and Cross-line Range 500 1000 already typed (Step 1); OK NOT yet clicked. Demo 1 --> MFS4 is selected in the dialog behind.",
+        "user_should_have_just": "Selected Demo 1 --> MFS4, clicked Select… and typed the two ranges.",
+        "must_not_show": [
+          "horizon displayed in the scene"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_3.jpg",
+      "expected_workflow_node": "spectral_decomp_152a_04_horizon_color_blended",
+      "expected_action_text_pattern": "(?i)\\b(Attribute Set|Attribute set|attribute set|속성 세트|속성 집합|속성 셋|A 아이콘|Attributes 3D)\\b",
+      "expected_action_keywords": [
+        "Attribute Set"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Dialogs closed; tree shows 3D Horizon > Demo 1 --> MFS4 with four attribute layers (three with R/G/B colour flags); horizon visible in the 3D scene; no Attribute Set window.",
+        "user_should_have_just": "Clicked OK (ranges) and OK (display).",
+        "must_not_show": [
+          "Attribute Set 3D window",
+          "Select Input Horizon(s) dialog"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_4.jpg",
+      "expected_workflow_node": "spectral_decomp_152a_05_attribute_set_open",
+      "expected_action_text_pattern": "(?i)\\b(Spectral Decomposition|Spectral|스펙트럼|Dip steered median|-8|24)\\b",
+      "expected_action_keywords": [
+        "Spectral Decomposition"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Attribute Set 3D' window open, attribute set <not saved>, EMPTY attribute list, default attribute type; Input Data empty.",
+        "user_should_have_just": "Clicked the Attribute Set 3D toolbar icon.",
+        "must_not_show": [
+          "SD_24Hz in the attribute list"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_5.jpg",
+      "expected_workflow_node": "spectral_decomp_152a_06_sd_24hz_added",
+      "expected_action_text_pattern": "(?i)\\b(44|SD_44Hz|Add as new|Output frequency)\\b",
+      "expected_action_keywords": [
+        "44"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Attribute Set 3D window: list shows ONE attribute SD_24Hz[-8,24ms]; fields still show Spectral Decomposition, Input 4 Dip steered median filter, Time gate -8 24, Output frequency 24, Step 4.",
+        "user_should_have_just": "Defined SD_24Hz[-8,24ms] and clicked Add as new.",
+        "must_not_show": [
+          "SD_44Hz in the list"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 6,
+      "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_6.jpg",
+      "expected_workflow_node": "spectral_decomp_152a_07_sd_44hz_added",
+      "expected_action_text_pattern": "(?i)\\b(64|SD_64Hz|Add as new|Output frequency)\\b",
+      "expected_action_keywords": [
+        "64"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Attribute Set 3D window: list shows TWO attributes (SD_24Hz[-8,24ms], SD_44Hz[-8,24ms]); Output frequency field shows 44.",
+        "user_should_have_just": "Changed frequency to 44, name to SD_44Hz[-8,24ms], clicked Add as new.",
+        "must_not_show": [
+          "SD_64Hz in the list"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 7,
+      "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_7.jpg",
+      "expected_workflow_node": "spectral_decomp_152a_08_sd_64hz_added",
+      "expected_action_text_pattern": "(?i)\\b(Close|닫|Save on Close|저장|Spectral Decomposition)\\b",
+      "expected_action_keywords": [
+        "Close"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Done|완료)\\b",
+          "note": "Declaring the three attributes done is accepted only with the closing action; bare sentinel handled by the scorer."
+        }
+      ],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Attribute Set 3D window: list shows THREE attributes (SD_24Hz, SD_44Hz, SD_64Hz[-8,24ms]); Output frequency field shows 64. Window still open.",
+        "user_should_have_just": "Changed frequency to 64, name to SD_64Hz[-8,24ms], clicked Add as new.",
+        "must_not_show": [
+          "window closed"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 8,
+      "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_8.jpg",
+      "expected_workflow_node": "spectral_decomp_152a_09_attribute_set_closed",
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": [
+        "완료"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Done)\\b",
+          "note": "English completion sentinel"
+        },
+        {
+          "pattern": "(?i)\\b(Spectral|SD_|attribute|속성|MFS4)\\b",
+          "note": "Ground-truth element mention for the grounding validator."
+        }
+      ],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "GOAL-REACHED: Attribute Set 3D window closed (set saved, e.g. as Spectral Decomposition); 3D scene with the color-blended Demo 1 --> MFS4 horizon and the tree only.",
+        "user_should_have_just": "Clicked Close (and named the set on Save on Close).",
+        "must_not_show": [
+          "Attribute Set 3D window"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_8.jpg",
+    "expected_done_sentinel": true,
+    "note": "step_8 depicts the goal-achieved terminal state (three SD attributes defined, window closed)."
+  }
+}

@@ -1,0 +1,333 @@
+{
+  "workflow_id": "qgis_custom_projection_614",
+  "name": "Create a custom Van der Grinten I projection and apply it (§6.1.4)",
+  "software_id": "qgis",
+  "manual_reference": "QGIS Training Manual 3.44 §6.1.4 Follow Along: Creating Your Own Projection, steps 1–11 (pp.190–192)",
+  "description": "QGIS 매뉴얼 §6.1.4: Settings ► Custom Projections…에서 + 로 새 CRS를 만들고 Name = Van der Grinten I, Format = WKT, Parameters = 매뉴얼의 PROJCRS WKT(METHOD Van Der Grinten, 반경 6371000) 입력 → OK → 상태 표시줄 CRS 버튼으로 프로젝트 CRS를 Van der Grinten I 로 바꿔 지도를 재투영.",
+  "authoring": {
+    "source": "manual text + figure OCR only (chromadb_v4)",
+    "screenshots_seen": false,
+    "authored_on": "2026-09-28",
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node"
+  },
+  "nodes": [
+    {
+      "id": "qgis_custom_projection_614_01_oceans_loaded",
+      "workflow_id": "qgis_custom_projection_614",
+      "step_number": 1,
+      "title": "새 프로젝트에 world/oceans.shp 로드됨 (EPSG:4326), 대화상자 없음",
+      "description": "§6.1.4 step 1–2: 새 맵에 oceans 레이어가 로드되어 지도에 세계 해양이 보임. 상태 표시줄 CRS = EPSG:4326. 대화상자 없음.",
+      "step_type": "start",
+      "visual_signature": {
+        "expected_dialog": "QGIS main window",
+        "expected_ui_elements": [
+          "layers_panel_oceans",
+          "map_canvas_world",
+          "statusbar_crs_epsg4326"
+        ],
+        "screenshot_keywords": [
+          "oceans",
+          "EPSG:4326",
+          "Layers"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Creating Your Own Projection"
+      ]
+    },
+    {
+      "id": "qgis_custom_projection_614_02_custom_crs_dialog",
+      "workflow_id": "qgis_custom_projection_614",
+      "step_number": 2,
+      "title": "Custom Projections 대화상자 열림 (Options — User Defined CRS, 항목 없음)",
+      "description": "step 3 결과: Settings ► Custom Projections… → 'Options — User Defined CRS' 대화상자: 상단 Name/Parameters 표(비어 있음), + / - 버튼, Name, Definition(Format, Parameters), Validate, Test, OK/Cancel/Help.",
+      "step_type": "dialog",
+      "visual_signature": {
+        "expected_dialog": "Options — User Defined CRS",
+        "expected_ui_elements": [
+          "crs_table_empty",
+          "add_new_crs_button",
+          "name_field",
+          "format_dropdown",
+          "parameters_field",
+          "validate_button"
+        ],
+        "screenshot_keywords": [
+          "User Defined CRS",
+          "Custom Projections",
+          "Name",
+          "Parameters",
+          "Format",
+          "Validate",
+          "Test",
+          "Definition"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Creating Your Own Projection"
+      ]
+    },
+    {
+      "id": "qgis_custom_projection_614_03_new_crs_row_added",
+      "workflow_id": "qgis_custom_projection_614",
+      "step_number": 3,
+      "title": "Add new CRS(+) 클릭: 표에 새 CRS 행 추가됨 (이름 미입력)",
+      "description": "step 4 결과: + (Add new CRS) 클릭 → 표에 새 행(new CRS)이 생기고 Name 필드가 편집 가능. Parameters 비어 있음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Options — User Defined CRS",
+        "expected_ui_elements": [
+          "crs_table_one_row",
+          "new_crs_row",
+          "name_field_empty"
+        ],
+        "screenshot_keywords": [
+          "new CRS",
+          "Name",
+          "Parameters",
+          "WKT (Recommended)",
+          "Proj String"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Creating Your Own Projection"
+      ]
+    },
+    {
+      "id": "qgis_custom_projection_614_04_name_and_format_set",
+      "workflow_id": "qgis_custom_projection_614",
+      "step_number": 4,
+      "title": "Name = Van der Grinten I, Format = WKT (Recommended)",
+      "description": "step 5–6 결과: Name 필드에 Van der Grinten I 입력, Format 드롭다운 WKT (Recommended). Parameters 아직 비어 있음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Options — User Defined CRS",
+        "expected_ui_elements": [
+          "name_van_der_grinten",
+          "format_wkt",
+          "parameters_empty"
+        ],
+        "screenshot_keywords": [
+          "Van der Grinten I",
+          "WKT (Recommended)",
+          "Parameters"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Name",
+          "default": "Van der Grinten I",
+          "description": "manual step 5"
+        },
+        {
+          "name": "Format",
+          "default": "WKT (Recommended)",
+          "description": "manual step 6"
+        }
+      ],
+      "manual_sections": [
+        "★★★ Follow Along: Creating Your Own Projection"
+      ]
+    },
+    {
+      "id": "qgis_custom_projection_614_05_wkt_entered",
+      "workflow_id": "qgis_custom_projection_614",
+      "step_number": 5,
+      "title": "Parameters에 Van Der Grinten WKT 문자열 입력됨 (OK 전)",
+      "description": "step 7 결과: Parameters 필드에 PROJCRS[\"unknown\", … METHOD[\"Van Der Grinten\"] … ] WKT 문자열이 들어 있음(Validate 가능). OK 아직 안 누름.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Options — User Defined CRS",
+        "expected_ui_elements": [
+          "parameters_wkt_projcrs",
+          "method_van_der_grinten",
+          "ellipsoid_6371000"
+        ],
+        "screenshot_keywords": [
+          "PROJCRS",
+          "Van Der Grinten",
+          "6371000",
+          "BASEGEOGCRS",
+          "Van der Grinten I"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Parameters (WKT)",
+          "default": "PROJCRS[\"unknown\", BASEGEOGCRS[\"unknown\", DATUM[\"unknown\", ELLIPSOID[\"unknown\",6371000,0, LENGTHUNIT[\"metre\",1, ID[\"EPSG\",9001]]]], PRIMEM[\"Greenwich\",0, ANGLEUNIT[\"degree\",0.0174532925199433], ID[\"EPSG\",8901]]], CONVERSION[\"unknown\", METHOD[\"Van Der Grinten\"], PARAMETER[\"Longitude of natural origin\",0, ANGLEUNIT[\"degree\",0.0174532925199433], ID[\"EPSG\",8802]], PARAMETER[\"False easting\",0, LENGTHUNIT[\"metre\",1], ID[\"EPSG\",8806]], PARAMETER[\"False northing\",0, LENGTHUNIT[\"metre\",1], ID[\"EPSG\",8807]]], CS[Cartesian,2], AXIS[\"(E)\",east, ORDER[1], LENGTHUNIT[\"metre\",1, ID[\"EPSG\",9001]]], AXIS[\"(N)\",north, ORDER[2], LENGTHUNIT[\"metre\",1, ID[\"EPSG\",9001]]]]",
+          "description": "manual step 7"
+        }
+      ],
+      "manual_sections": [
+        "★★★ Follow Along: Creating Your Own Projection"
+      ]
+    },
+    {
+      "id": "qgis_custom_projection_614_06_crs_saved_dialog_closed",
+      "workflow_id": "qgis_custom_projection_614",
+      "step_number": 6,
+      "title": "OK: 사용자 정의 CRS 저장, 대화상자 닫힘 (프로젝트 CRS 아직 EPSG:4326)",
+      "description": "step 8 결과: OK → 대화상자 닫힘, 메인 창. 상태 표시줄 CRS 버튼은 아직 EPSG:4326.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "QGIS main window",
+        "expected_ui_elements": [
+          "no_dialog",
+          "statusbar_crs_epsg4326",
+          "map_canvas_world"
+        ],
+        "screenshot_keywords": [
+          "EPSG:4326",
+          "oceans",
+          "no User Defined CRS dialog"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Creating Your Own Projection"
+      ]
+    },
+    {
+      "id": "qgis_custom_projection_614_07_project_crs_dialog",
+      "workflow_id": "qgis_custom_projection_614",
+      "step_number": 7,
+      "title": "프로젝트 CRS 대화상자 열림 (Project Properties — CRS)",
+      "description": "step 9 결과: 상태 표시줄 오른쪽의 현재 CRS 버튼 클릭 → 'Project Properties — CRS' 대화상자: Filter, Recently Used / Predefined CRS 목록, 미리보기. 아직 필터·선택 없음.",
+      "step_type": "dialog",
+      "visual_signature": {
+        "expected_dialog": "Project Properties — CRS",
+        "expected_ui_elements": [
+          "filter_field",
+          "crs_list",
+          "recently_used",
+          "predefined_crs",
+          "ok_cancel_apply"
+        ],
+        "screenshot_keywords": [
+          "Project Properties",
+          "Coordinate Reference System",
+          "Filter",
+          "Recently Used",
+          "Predefined Coordinate Reference Systems",
+          "No CRS"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Creating Your Own Projection"
+      ]
+    },
+    {
+      "id": "qgis_custom_projection_614_08_van_der_grinten_selected",
+      "workflow_id": "qgis_custom_projection_614",
+      "step_number": 8,
+      "title": "Filter 'Van der Grinten' → 사용자 정의 CRS Van der Grinten I 선택됨 (OK 전)",
+      "description": "step 10 결과: Filter에 Van der Grinten 입력 → User Defined Coordinate Systems 아래 Van der Grinten I (USER:100000) 선택. OK 아직 안 누름.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Project Properties — CRS",
+        "expected_ui_elements": [
+          "filter_van_der_grinten",
+          "user_defined_crs_selected",
+          "usercrs_100000"
+        ],
+        "screenshot_keywords": [
+          "Van der Grinten I",
+          "USER:100000",
+          "User Defined Coordinate Systems",
+          "Filter"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Creating Your Own Projection"
+      ]
+    },
+    {
+      "id": "qgis_custom_projection_614_09_map_reprojected",
+      "workflow_id": "qgis_custom_projection_614",
+      "step_number": 9,
+      "title": "OK: 지도가 Van der Grinten I 로 재투영됨 (원형 세계지도, 목표 도달)",
+      "description": "step 11 결과: OK → 지도가 원형(Van der Grinten)으로 재투영되고 상태 표시줄 CRS 버튼에 USER:100000 표시.",
+      "step_type": "verification",
+      "visual_signature": {
+        "expected_dialog": "QGIS main window",
+        "expected_ui_elements": [
+          "map_canvas_circular_world",
+          "statusbar_crs_user100000",
+          "no_dialog"
+        ],
+        "screenshot_keywords": [
+          "USER:100000",
+          "oceans",
+          "no Project Properties dialog"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★★ Follow Along: Creating Your Own Projection"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "qgis_custom_projection_614_01_oceans_loaded",
+      "target": "qgis_custom_projection_614_02_custom_crs_dialog",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Settings 메뉴에서 Custom Projections…를 여세요"
+    },
+    {
+      "source": "qgis_custom_projection_614_02_custom_crs_dialog",
+      "target": "qgis_custom_projection_614_03_new_crs_row_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Add new CRS 버튼(+)을 클릭해 새 CRS 항목을 만드세요"
+    },
+    {
+      "source": "qgis_custom_projection_614_03_new_crs_row_added",
+      "target": "qgis_custom_projection_614_04_name_and_format_set",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Name에 Van der Grinten I 를 입력하고 Format을 WKT (Recommended)로 선택하세요"
+    },
+    {
+      "source": "qgis_custom_projection_614_04_name_and_format_set",
+      "target": "qgis_custom_projection_614_05_wkt_entered",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Parameters에 매뉴얼의 WKT 문자열을 입력하세요: PROJCRS[\"unknown\", BASEGEOGCRS[\"unknown\", DATUM[\"unknown\", ELLIPSOID[\"unknown\",6371000,0, LENGTHUNIT[\"metre\",1, ID[\"EPSG\",9001]]]], PRIMEM[\"Greenwich\",0, ANGLEUNIT[\"degree\",0.0174532925199433], ID[\"EPSG\",8901]]], CONVERSION[\"unknown\", METHOD[\"Van Der Grinten\"], PARAMETER[\"Longitude of natural origin\",0, ANGLEUNIT[\"degree\",0.0174532925199433], ID[\"EPSG\",8802]], PARAMETER[\"False easting\",0, LENGTHUNIT[\"metre\",1], ID[\"EPSG\",8806]], PARAMETER[\"False northing\",0, LENGTHUNIT[\"metre\",1], ID[\"EPSG\",8807]]], CS[Cartesian,2], AXIS[\"(E)\",east, ORDER[1], LENGTHUNIT[\"metre\",1, ID[\"EPSG\",9001]]], AXIS[\"(N)\",north, ORDER[2], LENGTHUNIT[\"metre\",1, ID[\"EPSG\",9001]]]]"
+    },
+    {
+      "source": "qgis_custom_projection_614_05_wkt_entered",
+      "target": "qgis_custom_projection_614_06_crs_saved_dialog_closed",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "OK를 클릭해 사용자 정의 CRS를 저장하고 대화상자를 닫으세요"
+    },
+    {
+      "source": "qgis_custom_projection_614_06_crs_saved_dialog_closed",
+      "target": "qgis_custom_projection_614_07_project_crs_dialog",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "상태 표시줄 오른쪽의 현재 CRS 버튼(EPSG:4326)을 클릭해 프로젝트 CRS 대화상자를 여세요"
+    },
+    {
+      "source": "qgis_custom_projection_614_07_project_crs_dialog",
+      "target": "qgis_custom_projection_614_08_van_der_grinten_selected",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Filter에 Van der Grinten 을 입력하고 User Defined Coordinate Systems 아래의 Van der Grinten I 을 선택하세요"
+    },
+    {
+      "source": "qgis_custom_projection_614_08_van_der_grinten_selected",
+      "target": "qgis_custom_projection_614_09_map_reprojected",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "OK를 클릭해 프로젝트 CRS를 적용하세요"
+    }
+  ]
+}

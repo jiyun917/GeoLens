@@ -1,0 +1,81 @@
+{
+ "scenario_id": "opendtect__horizon_2dviewer__01",
+ "step_index": 1,
+ "screenshot_path": "data/eval/screenshots/opendtect__horizon_2dviewer__01/step_1.jpg",
+ "sha256": "143cb5cc62da05b02441bd86be48e566b2ee39831affc69d02771158de02b4fe",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Select 2D Lines",
+  "window_titles": [
+   "Select 2D Lines",
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubus",
+   "Help"
+  ],
+  "buttons": [
+   "OK",
+   "Cancel"
+  ],
+  "labels": [
+   "Filter",
+   "On OK (Display projection lines only)"
+  ],
+  "field_values": [
+   "Filter: (empty)",
+   "19981104-1-04_0037: unchecked",
+   "19981104-1-04_0038: unchecked",
+   "19981104-1-04_0039: unchecked",
+   "20021203-2-02_0010: unchecked",
+   "20021203-2-02_0013: unchecked",
+   "20021203-2-03_0032: unchecked",
+   "20021203-2-03_0033: unchecked",
+   "20021203-2-03_0034: unchecked",
+   "20021203-2-03_0036: unchecked",
+   "20021203-2-03_0038: unchecked",
+   "On OK: Display projection lines only",
+   "Cross-line: 0",
+   "Step: 0",
+   "Elements: (empty)",
+   "Scene 1: checked",
+   "In-line: checked",
+   "Cross-line: checked",
+   "Z-slice: checked",
+   "Volume: checked",
+   "Random Line: checked",
+   "2D Line: checked",
+   "3D Horizon: checked",
+   "2D Horizon: checked",
+   "Fault: checked",
+   "FaultSet: checked",
+   "FaultStickSet: checked",
+   "Geobody: checked",
+   "Well: checked",
+   "PointSet: checked",
+   "Polygon: checked",
+   "Prestack Events: checked",
+   "Annotations: (empty)"
+  ],
+  "visible_elements": [
+   "Tree scene 1 panel",
+   "Color panel",
+   "OD Seismic 1 dropdown",
+   "Vertical toolbar on left",
+   "Vertical toolbar on right",
+   "3D viewer with grid lines",
+   "N-E-Z axis indicator",
+   "Status bar with memory info"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "Selecting 2D lines"
+ }
+}

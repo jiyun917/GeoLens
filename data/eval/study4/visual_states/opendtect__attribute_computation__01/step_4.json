@@ -1,0 +1,93 @@
+{
+ "scenario_id": "opendtect__attribute_computation__01",
+ "step_index": 4,
+ "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_4.jpg",
+ "sha256": "2079fad978cdeed00da7c548d4efed5c94c2c56ae64ca1f40dbc828e192c776a",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Save Attribute as",
+  "window_titles": [
+   "Save Attribute as",
+   "Attribute Set 3D",
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "File",
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "OK",
+   "Cancel",
+   "Select ...",
+   "Add as new",
+   "Close"
+  ],
+  "labels": [
+   "Attribute set: <not saved>",
+   "Energy [-28, +28]",
+   "Select Output Attribute",
+   "Filter",
+   "Name: my first attribute set",
+   "Save on Close (checked)",
+   "Attribute Name: Energy [-28,+28]"
+  ],
+  "field_values": [
+   "Attribute set: <not saved>",
+   "Energy [-28, +28]: (empty)",
+   "Filter: (empty)",
+   "Name: my first attribute set",
+   "Save on Close: checked",
+   "Attribute Name: Energy [-28,+28]"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "425",
+   "Seismic_data",
+   "Cross-line",
+   "775",
+   "Seismic_data",
+   "Z-slice",
+   "924",
+   "Seismic_data",
+   "Volume",
+   "343-506 / 656-893 / 69...",
+   "<right-click>",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Color",
+   "Z 924",
+   "Step 4",
+   "-9968",
+   "9968",
+   "OD Seismic 1",
+   "<All>",
+   "Energy",
+   "1200"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "saving an attribute set"
+ }
+}

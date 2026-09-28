@@ -1,0 +1,60 @@
+{
+ "scenario_id": "opendtect__survey_setup__01",
+ "step_index": 2,
+ "screenshot_path": "data/eval/screenshots/opendtect__survey_setup__01/step_2.jpg",
+ "sha256": "b91a5d6c808fb908c1a7ca80ed3a70b3bf30e841228663c2d0cc460b5c6c5afe",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Create New Survey",
+  "window_titles": [
+   "Create New Survey",
+   "Survey Setup and Selection"
+  ],
+  "active_menu": null,
+  "menu_items": [],
+  "buttons": [
+   "Next",
+   "Cancel",
+   "Select",
+   "Cancel"
+  ],
+  "labels": [
+   "Survey name (My_F3_Survey)",
+   "Available data",
+   "3D (checked)",
+   "2D (checked)",
+   "Wells (unchecked)",
+   "Initial setup",
+   "Z Domain",
+   "Time (checked)",
+   "Depth (unchecked)"
+  ],
+  "field_values": [
+   "Survey name: My_F3_Survey",
+   "3D: checked",
+   "2D: checked",
+   "Wells: unchecked",
+   "Initial setup: Enter X/Y ranges",
+   "Time: checked",
+   "Depth: unchecked"
+  ],
+  "visible_elements": [
+   "Survey Data Root ...",
+   "C:\\Users\\user\\Downloads\\GeoLens_test",
+   "Information",
+   "Notes",
+   "Log",
+   "Specify new survey parameters",
+   "Enter X/Y ranges",
+   "Scan Navigation Data",
+   "Copy from other survey",
+   "Read from Survey Setup file",
+   "Scan SEG-Y file(s)",
+   "Scan LAS Well Data",
+   "Enter by hand"
+  ],
+  "data_state": "none",
+  "current_action": "creating a new survey"
+ }
+}

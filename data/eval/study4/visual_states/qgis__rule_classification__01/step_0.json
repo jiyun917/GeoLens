@@ -1,0 +1,9 @@
+{
+ "scenario_id": "qgis__rule_classification__01",
+ "step_index": 0,
+ "screenshot_path": "data/eval/screenshots/qgis__rule_classification__01/step_0.jpg",
+ "sha256": "f799987956e5828abf9a372c78d26084842c422fdcca2981a91526baa673da33",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {}
+}

@@ -1,0 +1,82 @@
+{
+ "scenario_id": "opendtect__3d_visualization__01",
+ "step_index": 0,
+ "screenshot_path": "data/eval/screenshots/opendtect__3d_visualization__01/step_0.jpg",
+ "sha256": "d5ca85d191ad872673e556d9446c17598b8073d70e6ea25badeb27737d676fa6",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]",
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : My_F3_Survey - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubus",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "Cross-line 0",
+   "Step 0",
+   "Elements",
+   "Color",
+   "Scene 1",
+   "In-line (checked)",
+   "Cross-line (checked)",
+   "Z-slice (checked)",
+   "Volume (checked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "3D Horizon (checked)",
+   "2D Horizon (checked)",
+   "Fault (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events",
+   "Annotations"
+  ],
+  "field_values": [
+   "Cross-line: 0",
+   "Step: 0",
+   "In-line: checked",
+   "Cross-line: checked",
+   "Z-slice: checked",
+   "Volume: checked",
+   "Random Line: checked",
+   "2D Line: checked",
+   "3D Horizon: checked",
+   "2D Horizon: checked",
+   "Fault: checked",
+   "FaultSet: checked",
+   "FaultStickSet: checked",
+   "Geobody: checked",
+   "Well: checked",
+   "PointSet: checked",
+   "Polygon: checked"
+  ],
+  "visible_elements": [
+   "Tree scene 1 panel",
+   "OD Seismic 1 dropdown",
+   "Toolbar with icons for: new project, open project, save project, print, undo, redo, cut, copy, paste, delete, select, zoom in, zoom out, pan, rotate, measure, 3D viewer, 2D viewer, cross-plot, histogram, calculator, script editor, help",
+   "Vertical toolbar with icons for: select, move, rotate, scale, clip, slice, volume, horizon, fault, well, point set, polygon, text, image, legend, color bar, coordinate system, grid, ruler, compass, python script, command line",
+   "Cross-line axis with labels 200, 400, 600, 800, 1000, 1200",
+   "In-line axis with labels 200, 400, 600",
+   "Time axis with labels 500, 1000, 1500",
+   "Compass with N, E, Z labels",
+   "Status bar showing \"[free mem] 101.4/127.8 GB\""
+  ],
+  "data_state": "3D seismic loaded (OD Seismic 1)",
+  "current_action": "viewing a 3D scene with various geological elements"
+ }
+}

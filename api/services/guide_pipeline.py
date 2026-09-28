@@ -314,9 +314,54 @@ def _title_text(visual_state: Optional[Dict]) -> str:
     return _norm_text(" ".join([str(vs.get("current_dialog") or "")] + node_matcher._lst(vs, "window_titles")))
 
 
+# UI chrome present on every screen of the application (the vision output lists it inconsistently, so it
+# must never count as evidence of a state change)
+_SCREEN_ADVANCE_CHROME = {"layerspanel", "layers", "toolbox", "processingtoolbox", "mapcanvas", "statusbar", "menubar", "toolbar",
+                          "browser", "browserpanel", "treescene1", "tree", "scene1", "mainwindow", "qgismainwindow", "opendtectmainwindow",
+                          "workspace"}
+
+
+def _kw_tokens(node: Dict) -> List[str]:
+    """Normalised screenshot_keywords of a node usable as literal on-screen evidence: >= 5 characters or
+    containing a digit, not a bare number, not a generic control / chrome word. (expected_ui_elements are
+    descriptive, not literal, and are NOT used as evidence.)"""
+    sig = (node or {}).get("visual_signature") or {}
+    out = []
+    for r in (sig.get("screenshot_keywords") or []):
+        t = _norm_text(r)
+        if not t or t in _SCREEN_ADVANCE_GENERIC or t in _SCREEN_ADVANCE_CHROME or t.isdigit():
+            continue
+        if len(t) >= 5 or re.search(r"\d", t):
+            out.append(t)
+    return list(dict.fromkeys(out))
+
+
+def _truncated_labels(visual_state: Optional[Dict]) -> set:
+    """Normalised on-screen strings that the UI truncated with an ellipsis ("Other residen..."), >= 8 chars."""
+    out = set()
+    for k in ("labels", "buttons", "visible_elements", "field_values", "menu_items", "window_titles"):
+        v = (visual_state or {}).get(k) or []
+        for x in (v if isinstance(v, list) else [v]):
+            x = str(x)
+            if x.endswith("…") or x.endswith("..."):
+                t = _norm_text(x.rstrip(".").rstrip("…"))
+                if len(t) >= 8:
+                    out.add(t)
+    return out
+
+
 def screen_delta_advance(graph, picked_id: Optional[str], last_node_id: Optional[str], visual_state: Dict,
                          prev_visual_state: Optional[Dict], max_hops: int = 3, min_tokens: int = 1) -> Tuple[Optional[str], Optional[Dict]]:
-    """R3. Returns (node_id, meta). meta is None when the rule did not fire."""
+    """R3 (study 4, revision validated offline on 1,578 recorded routing decisions: +138 corrected lags, 0 harmful
+    moves). Returns (node_id, meta); meta is None when the rule did not fire.
+    Evidence for a successor = (a) one of its distinguishing screenshot_keywords (not shared with the other chain
+    nodes) literally on screen now and not on the previous screen - a single token suffices only if it is long
+    (>= 10 chars) or carries a digit, otherwise two are needed - a truncated on-screen label ("Other residen...")
+    counts as its prefix; (b) its expected dialog appearing in the window titles now but not before (credited to
+    the EARLIEST chain node expecting that dialog, and no token evidence is accepted for later nodes of that same
+    dialog on the same turn: a dialog that has just opened shows its field labels before any value is set);
+    (c) with no other evidence, the last node's dialog having disappeared from the titles while the next edge
+    leaves that dialog -> one step on."""
     if not last_node_id or not visual_state:
         return picked_id, None
     last = graph.get_node(last_node_id)
@@ -339,29 +384,34 @@ def screen_delta_advance(graph, picked_id: Optional[str], last_node_id: Optional
         cur = succ[0]["id"]; chain.append(cur)
     if len(chain) < 2:
         return picked_id, None
-    toks = {nid: set(_sig_tokens(graph.get_node(nid))) for nid in chain}
+    toks = {nid: set(_kw_tokens(graph.get_node(nid))) for nid in chain}
     now, before = _screen_text(visual_state), _screen_text(prev_visual_state)
     titles_now, titles_before = _title_text(visual_state), _title_text(prev_visual_state)
+    trunc_now, trunc_before = _truncated_labels(visual_state), _truncated_labels(prev_visual_state)
     dlg_of = lambda nid: _norm_text(((graph.get_node(nid).get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0])
     last_dlg = dlg_of(last_node_id)
+
+    def present(t: str, text: str, trunc: set) -> bool:
+        return (t in text) or any(t.startswith(p) for p in trunc)
+
     evidence: Dict[str, List[str]] = {}
     seen_dlgs = {last_dlg}
-    for k, nid in enumerate(chain[1:], start=1):
+    cap_dlg = None
+    for nid in chain[1:]:
+        dlg = dlg_of(nid)
+        if cap_dlg is not None and dlg == cap_dlg:
+            seen_dlgs.add(dlg); continue
         others = set().union(*(toks[o] for o in chain if o != nid))
         distinct = [t for t in toks[nid] if t not in others]
-        hits = [t for t in distinct if t in now and (not before or t not in before)]
-        # a token is weak (weight 1) unless it is long or carries a digit; a node needs weight >= 2
-        weight = sum(2 if (len(t) >= 8 or re.search(r"\d", t)) else 1 for t in hits)
-        dlg = dlg_of(nid)
-        # a newly opened dialog supports only the EARLIEST chain node that expects it
+        hits = [t for t in distinct if present(t, now, trunc_now) and (not before or not present(t, before, trunc_before))]
+        strong = [t for t in hits if len(t) >= 10 or re.search(r"\d", t)]
+        weight = 2 if (strong or len(hits) >= 2) else (1 if hits else 0)
         if dlg and len(dlg) >= 6 and dlg not in seen_dlgs and dlg in titles_now and (not prev_visual_state or dlg not in titles_before):
-            hits.append("dialog:" + dlg); weight += 2
+            hits.append("dialog:" + dlg); weight += 2; cap_dlg = dlg
         seen_dlgs.add(dlg)
         if hits and weight >= 2 and len(hits) >= max(1, min_tokens):
             evidence[nid] = hits
     if not evidence and prev_visual_state:
-        # dialog-closed rule: the last node's specific dialog was in the previous screen's titles and is gone now,
-        # and the next edge leaves that dialog (its target expects a different dialog) -> one step on.
         nxt_dlg = dlg_of(chain[1])
         if last_dlg and len(last_dlg) >= 6 and last_dlg in titles_before and last_dlg not in titles_now and nxt_dlg != last_dlg:
             evidence[chain[1]] = ["dialog_closed:" + last_dlg]

@@ -1,0 +1,81 @@
+{
+ "scenario_id": "opendtect__fault_sticks__01",
+ "step_index": 8,
+ "screenshot_path": "data/eval/screenshots/opendtect__fault_sticks__01/step_8.jpg",
+ "sha256": "a79c3c3cd47ed71cf4b928c8f2a1c44eb75f56d8bd3583c3d8ec1c21112e637d",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]",
+  "window_titles": [
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubus",
+   "Help"
+  ],
+  "buttons": [
+   "Step 4",
+   "Select ..."
+  ],
+  "labels": [
+   "Z 1500 (1500)",
+   "0.61389 (0.61389)",
+   "0.96727 (0.96727)",
+   "OD Seismic 1 (OD Seismic 1)",
+   "Copy Selection to (Fault)",
+   "Create Single New (Create Single New)"
+  ],
+  "field_values": [
+   "Z 1500: 1500",
+   "0.61389: 0.61389",
+   "0.96727: 0.96727",
+   "OD Seismic 1: OD Seismic 1",
+   "Copy Selection to: Fault",
+   "Create Single New: Create Single New",
+   "Elements: Scene 1, In-line, 130, 4 Dip steered medi..., Cross-line, Z-slice, 1500, 9-1 Similarity on F..., Volume, Random Line, 2D Line, 3D Horizon, 2D Horizon, Fault, Fault_01A, <right-click>, FaultSet, FaultStickSet, FaultStickSet_01, Geobody, Well, PointSet, Polygon, Prestack Events, Annotations"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Elements tree",
+   "Scene 1 (checked)",
+   "In-line (checked)",
+   "130 (checked)",
+   "4 Dip steered medi... (checked)",
+   "Cross-line (checked)",
+   "Z-slice (checked)",
+   "1500 (checked)",
+   "9-1 Similarity on F... (checked)",
+   "Volume (checked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "3D Horizon (checked)",
+   "2D Horizon (checked)",
+   "Fault (checked)",
+   "Fault_01A (checked)",
+   "<right-click> (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "FaultStickSet_01 (checked, selected)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events (checked)",
+   "Annotations (checked)",
+   "Toolbar with icons for selection, add, delete, etc.",
+   "3D viewer panel with seismic data and fault interpretation",
+   "Color bar",
+   "Coordinate axes (N, E, Z)"
+  ],
+  "data_state": "3D seismic loaded, multiple interpretations (faults, horizons, wells, etc.) loaded",
+  "current_action": "Viewing 3D scene with various geophysical data and interpretations"
+ }
+}

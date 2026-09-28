@@ -1,0 +1,197 @@
+{
+  "scenario_id": "qgis__aspect_north__01",
+  "manual_id": "bf2804feea57434bb79b749134ed1df0",
+  "manual_name": "QGIS Training Manual 3.44",
+  "manual_reference": "§7.3.6 Follow Along: Finding the north-facing aspect, steps 1–6 (pp.263–264). Prerequisite §7.3.5 (aspect raster).",
+  "category": "raster_analysis",
+  "difficulty": "medium",
+  "language": "ko",
+  "goal": "QGIS에서 aspect 래스터로부터 북향(aspect ≤ 90° 또는 ≥ 270°) 픽셀만 1인 래스터를 만든다: Processing Toolbox의 Raster analysis › Raster calculator에서 식 aspect@1 <= 90 OR aspect@1 >= 270, Reference layer = aspect, 출력 raster_analysis/aspect_north.tif 로 저장하고 Run.",
+  "initial_state": {
+    "description": "QGIS Desktop 3.44. Layers 패널에 aspect 래스터(§7.3.5 결과, C:/GeoLensData/aspect.tif 등)가 로드되어 지도에 표시. Raster calculator 대화상자 없음.",
+    "must_be_true": [
+      "aspect raster loaded",
+      "no Raster Calculator dialog"
+    ]
+  },
+  "manual_grounding_sections": [
+    "★★☆ Follow Along: Finding the north-facing aspect"
+  ],
+  "_study4_note": "Authored from the manual only (2026-09-28) before capture; visual_state_gt filled after capture by enumeration + external review; patterns/keywords not changed after screenshots or model output are seen.",
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/qgis__aspect_north__01/step_0.jpg",
+      "expected_workflow_node": "qgis_aspect_north_736_01_aspect_loaded",
+      "expected_action_text_pattern": "(?i)\\b(Raster calculator|Raster Calculator|래스터 계산기|Raster analysis|Toolbox|calculator)\\b",
+      "expected_action_keywords": [
+        "Raster calculator"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "QGIS main window with the aspect raster loaded (Processing Toolbox may be open); NO Raster Calculator dialog.",
+        "user_should_have_just": "Nothing yet (initial state).",
+        "must_not_show": [
+          "Raster Calculator dialog"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/qgis__aspect_north__01/step_1.jpg",
+      "expected_workflow_node": "qgis_aspect_north_736_02_raster_calc_open",
+      "expected_action_text_pattern": "(?i)\\b(aspect@1|<= 90|>= 270|Expression|식|수식)\\b",
+      "expected_action_keywords": [
+        "aspect@1"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Raster Calculator' (Processing) dialog open: Layers list (aspect@1 …), Operators, Expression EMPTY, Reference layer(s) empty, output = temporary file.",
+        "user_should_have_just": "Double-clicked Raster analysis › Raster calculator in the toolbox.",
+        "must_not_show": [
+          "text in Expression"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/qgis__aspect_north__01/step_2.jpg",
+      "expected_workflow_node": "qgis_aspect_north_736_03_expression_entered",
+      "expected_action_text_pattern": "(?i)\\b(Reference layer|참조 레이어|reference|aspect)\\b",
+      "expected_action_keywords": [
+        "Reference layer"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(aspect_north|Output|출력|Save to File|Calculated|저장)\\b",
+          "note": "Setting the output first is accepted (manual steps 3–5 are order-free in the dialog)."
+        }
+      ],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Same dialog: Expression = aspect@1 <= 90 OR aspect@1 >= 270 ('Expression is valid'); Reference layer(s) still empty; output temporary.",
+        "user_should_have_just": "Typed the expression.",
+        "must_not_show": [
+          "1 inputs selected"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/qgis__aspect_north__01/step_3.jpg",
+      "expected_workflow_node": "qgis_aspect_north_736_04_reference_layer_set",
+      "expected_action_text_pattern": "(?i)\\b(aspect_north|Output|출력|Save to File|Calculated|저장)\\b",
+      "expected_action_keywords": [
+        "aspect_north"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Run|실행)\\b",
+          "note": "Running with a temporary output is accepted (the manual names the file but the analysis is identical)."
+        }
+      ],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Same dialog: Reference layer(s) shows '1 inputs selected' (aspect); output still temporary.",
+        "user_should_have_just": "Chose aspect via the … button and clicked OK.",
+        "must_not_show": [
+          "aspect_north in the output path"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/eval/screenshots/qgis__aspect_north__01/step_4.jpg",
+      "expected_workflow_node": "qgis_aspect_north_736_05_output_set",
+      "expected_action_text_pattern": "(?i)\\b(Run|실행)\\b",
+      "expected_action_keywords": [
+        "Run"
+      ],
+      "allowed_alternatives": [],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Same dialog: Calculated = …/raster_analysis/aspect_north.tif; NOT yet run.",
+        "user_should_have_just": "Set the output file via … › Save to File.",
+        "must_not_show": [
+          "aspect_north layer in the Layers panel"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/eval/screenshots/qgis__aspect_north__01/step_5.jpg",
+      "expected_workflow_node": "qgis_aspect_north_736_06_ran_layer_added",
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": [
+        "완료"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Done)\\b",
+          "note": "English completion sentinel"
+        },
+        {
+          "pattern": "(?i)\\b(aspect_north|aspect|north|북향)\\b",
+          "note": "Ground-truth element mention for the grounding validator."
+        }
+      ],
+      "capture_required": true,
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "GOAL-REACHED: algorithm ran; aspect_north layer (0/1) in the Layers panel; map shows north-facing pixels; dialog closed.",
+        "user_should_have_just": "Clicked Run (and closed the dialog).",
+        "must_not_show": [
+          "Raster Calculator dialog"
+        ]
+      },
+      "visual_state_gt": {
+        "current_dialog": "_FILL_AFTER_CAPTURE",
+        "visible_elements": [],
+        "data_state": "_FILL_AFTER_CAPTURE",
+        "current_action": "_FILL_AFTER_CAPTURE"
+      }
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/qgis__aspect_north__01/step_5.jpg",
+    "expected_done_sentinel": true,
+    "note": "step_5 depicts the goal-achieved terminal state (aspect_north raster created)."
+  }
+}
