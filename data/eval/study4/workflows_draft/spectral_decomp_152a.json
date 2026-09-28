@@ -8,7 +8,8 @@
     "source": "manual text + figure OCR only (chromadb_v4); main-window / Processing dialog titles follow the study-2/3 screens of the same application versions",
     "screenshots_seen": false,
     "authored_on": "2026-09-28",
-    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node"
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node",
+    "k1_corrections": "2026-09-28 strings only after capture (K1); see data/eval/study4/K1_signature_log.md"
   },
   "nodes": [
     {
@@ -44,7 +45,7 @@
       "description": "step 1 결과: 트리 3D Horizon 우클릭 > Add Color Blended… → 'Select Input Horizon(s)' 대화상자: Filter, 목록(Demo 0 --> FS4, Demo 1 --> MFS4, …), Area subselection + Select…, OK/Cancel/Help. 아직 선택·범위 없음.",
       "step_type": "dialog",
       "visual_signature": {
-        "expected_dialog": "Select Input Horizon(s)",
+        "expected_dialog": "Select Horizons / Select Input Horizon(s)",
         "expected_ui_elements": [
           "horizon_list",
           "area_subselection_row",
@@ -57,7 +58,9 @@
           "Demo 0 --> FS4",
           "Area subselection",
           "Select...",
-          "Filter"
+          "Filter",
+          "Select Horizons",
+          "100/300-750/1250"
         ]
       },
       "parameters": [],
@@ -73,7 +76,7 @@
       "description": "step 2 결과: 목록에서 Demo 1 --> MFS4를 선택하고 Area subselection의 Select…를 클릭 → 'Position'(Specify Position) 대화상자에서 In-line Range 200 650, Cross-line Range 500 1000 을 입력한 상태(OK 누르기 전).",
       "step_type": "dialog",
       "visual_signature": {
-        "expected_dialog": "Position",
+        "expected_dialog": "Positions / Position",
         "expected_ui_elements": [
           "inline_range_200_650",
           "crossline_range_500_1000",
@@ -88,7 +91,9 @@
           "650",
           "500",
           "1000",
-          "Step"
+          "Step",
+          "Positions",
+          "Specify Positions"
         ]
       },
       "parameters": [
@@ -126,7 +131,9 @@
           "Demo 1 --> MFS4",
           "3D Horizon",
           "Tree scene 1",
-          "F3 Demo 2023"
+          "F3 Demo 2023",
+          "<right-click>",
+          "Z values"
         ]
       },
       "parameters": [],
@@ -157,7 +164,8 @@
           "Attribute Name",
           "Add as new",
           "Close",
-          "Save on Close"
+          "Save on Close",
+          "Similarity"
         ]
       },
       "parameters": [],

@@ -8,7 +8,7 @@
   "language": "ko",
   "goal": "F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.",
   "initial_state": {
-    "description": "F3 Demo 2023 survey 활성, 3D scene 표시, 트리에 3D Horizon 항목이 있으나 color-blended horizon 없음. Attribute Set 창 없음. (4 Dip steered median filter 볼륨은 stored data로 존재.)",
+    "description": "F3 Demo 2023 survey 활성, 3D scene 표시, 트리에 3D Horizon 항목이 있으나 color-blended horizon 없음. Attribute Set 창 없음. (4 Dip steered median filter 볼륨은 stored data로 존재.) 캡처(7.0.9): 'Select Horizons' 대화상자(매뉴얼 'Select Input Horizon(s)'), 'Positions' 대화상자, 표시 OK 뒤 'Select RGB Attributes' 창은 비운 채 OK로 통과(미캡처), 트리 하위 레이어는 <right-click>×3 + Z values, Attribute Set 3D의 Input Data는 4 Dip steered median filter로 자동 채워짐.",
     "must_be_true": [
       "F3 Demo survey active",
       "no color-blended horizon in the tree",
@@ -18,7 +18,7 @@
   "manual_grounding_sections": [
     "1.5.2a"
   ],
-  "_study4_note": "Authored from the manual only (2026-09-28) before capture; visual_state_gt filled after capture by enumeration + external review; patterns/keywords not changed after screenshots or model output are seen.",
+  "_study4_note": "Authored from the manual only (2026-09-28) before capture; visual_state_gt filled after capture by enumeration + external review; patterns/keywords not changed after screenshots or model output are seen. H5 (2026-09-28, after capture, before any model run): version/data facts recorded in initial_state; patterns and keywords unchanged.",
   "steps": [
     {
       "step_index": 0,

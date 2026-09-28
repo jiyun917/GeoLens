@@ -1,0 +1,168 @@
+[Section: ★★★ Follow Along: Creating Your Own Projection, Page: 204, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+10. Click OK
+You can now compare the old and new projections of the layer and see that they are in two different CRS but they
+are still overlapping.
+6.1.4 ★★★ Follow Along: Creating Your Own Projection
+There are many more projections than just those included in QGIS by default. You can also create your own projec-
+tions.
+1. Start a new map
+2. Load the world/oceans.shp dataset
+3. Go to Settings ► Custom Projections… and you will see this dialog.
+190 Chapter 6. Module: Vector Analysis
+
+[Figure OCR p.204 #1]
+Save Vector Layer as...
+Format ESRI Shapefile
+File name ome/matteo/exercise_data/exercise_data/buildings_reprojected.shp ...
+Layer name
+CRS EPSG:32734 - WGS 84 / UTM zone 34S
+
+Encoding UTF-8
+Save only selected features
+Add saved file to map
+Select fields to export and their export options
+Geometry
+Geometry type Automatic
+Force multi-type
+Include z-dimension
+
+Extent (current: layer)
+Layer Options
+Custom Options
+
+Help Cancel OK
+
+[Section: ★★★ Follow Along: Creating Your Own Projection, Page: 205, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+4. Click on the Add new CRS button to create a new projection
+5. An interesting projection to use is called Van der Grinten I. Enter its name in the Name field.
+This projection represents the Earth on a circular field instead of a rectangular one, as most other projections
+do.
+6. In Format, select WKT (Recommended)
+7. Add the following string in the Parameters field:
+PROJCRS["unknown",
+BASEGEOGCRS["unknown",
+DATUM["unknown",
+ELLIPSOID["unknown",6371000,0,
+LENGTHUNIT["metre",1,
+ID["EPSG",9001]]]],
+PRIMEM["Greenwich",0,
+ANGLEUNIT["degree",0.0174532925199433],
+ID["EPSG",8901]]],
+CONVERSION["unknown",
+METHOD["Van Der Grinten"],
+PARAMETER["Longitude of natural origin",0,
+ANGLEUNIT["degree",0.0174532925199433],
+ID["EPSG",8802]],
+PARAMETER["False easting",0,
+LENGTHUNIT["metre",1],
+ID["EPSG",8806]],
+PARAMETER["False northing",0,
+LENGTHUNIT["metre",1],
+ID["EPSG",8807]]],
+CS[Cartesian,2],
+(continues on next page)
+6.1. Lesson: Reprojecting and Transforming Data 191
+
+[Figure OCR p.205 #1]
+Options — User Defined CRS
+You can define your own custom Coordinate Reference System (CRS) here. The definition must conform to a WKT or Proj string
+format for specifying a CRS.
+Name Parameters
+Q
+Search (icon)
+General
+System
+User Profiles
+CRS and Transforms
+CRS Handling
+Coordinate Transforms
+User Defined CRS
+Data Sources
+GDAL
+Vector
+Raster
+Canvas & Legend
+Map Tools
+Digitizing
+Elevation
+3D
+Colors
+Fonts
+Layouts
+Variables
+Authentication
+Network
+GPS
+GPSBabel
+Locator
+Acceleration
+QField
+NextGIS
+QuickMapServices
+French Locator Filter
+BD TOPO® Extractor
+Name
+Definition
+Format WKT (Recommended)
+Validate
+Parameters
+Test
+Help
+Cancel
+OK
+
+[Section: ★★★ Follow Along: Creating Your Own Projection, Page: 206, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+(continued from previous page)
+AXIS["(E)",east,
+ORDER[1],
+LENGTHUNIT["metre",1,
+ID["EPSG",9001]]],
+AXIS["(N)",north,
+ORDER[2],
+LENGTHUNIT["metre",1,
+ID["EPSG",9001]]]]
+8. Click OK
+9. Click on the Current CRS button at the right of the status bar to change the project CRS
+10. Choose your newly defined projection (search for its name in the Filter field)
+11. On applying this projection, the map will be reprojected thus:
+192 Chapter 6. Module: Vector Analysis
+
+[Figure OCR p.206 #1]
+Options — User Defined CRS
+You can define your own custom Coordinate Reference System (CRS) here. The definition must conform to a WKT or Proj string format for specifying a CRS.
+
+Name Parameters
+Van der Grinten I PROJCRS["unknown",BASEGEOGCRS["unknown",DATUM["unknown",ELLIPSOID["unknown",6371000,0,LENGTHUNIT["metre",1,...
++
+-
+
+Name Van der Grinten I
+
+Definition
+Format WKT (Recommended)
+Parameters
+PROJCRS["unknown",
+BASEGEOGCRS["unknown",
+DATUM["unknown",
+ELLIPSOID["unknown",6371000,0,
+LENGTHUNIT["metre",1,
+ID["EPSG",9001]]],
+PRIMEM["Greenwich",0,
+ANGLEUNIT["degree",0.0174532925199433,
+ID["EPSG",8901]]],
+CONVERSION["unknown",
+METHOD["Van Der Grinten"],
+PARAMETER["Longitude of natural origin",0,
+ANGLEUNIT["degree",0.0174532925199433,
+ID["EPSG",8802]],
+PARAMETER["False easting",0,
+Validate
+
+Test
+
+Help
+Cancel
+OK

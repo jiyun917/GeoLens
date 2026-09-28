@@ -1,0 +1,280 @@
+[Section: 1.5.2a Spectral Decomposition, Page: 130, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+1.5.2a Spectral Decomposition
+Required licenses: OpendTect.
+For a video of these exercises: OpendTect video resources
+- 130 -
+
+[Figure OCR p.130 #1]
+Exercise objective:
+Study paleo-geomorphological features by displaying 3 iso-frequencies simultaneously with color stacking.
+
+Workflow:
+
+1.  Right-click on 3D Horizon in the tree and click on Add color blended...
+    Choose horizon Demo 1->MFS4 from the list of horizons.
+
+    2D Line
+    3D Horizon
+    2D Horizon
+    Fault
+    FaultStickS
+    Body
+    Well
+    PickSet
+    Load ...
+    Add at Sections Only ...
+    Add Color Blended ...
+    Track New ...
+    Create with Constant Z ...
+
+2.  Optionally, to speed up the exercise, click Select for area sub-selection and set inline range to 200-650; crossline range to 500-1000.
+    Press OK to apply the changes and then click OK to display the horizon.
+
+    Select Input Horizon (s)
+    Filter *
+    Demo 0 --> FS4
+    Demo 1 --> MFS4
+    Demo 2 --> FS6
+    Demo 3 --> Top Foresets
+    Demo 4 --> Truncation
+    Demo 4 --> Truncation trim & fill
+    Demo 5 --> FS7
+    Demo 6 --> FS8
+    Demo 7 --> shallow
+    Area subselection 100/300-750/1250 (463 samples)
+    Select...
+    OK
+    Cancel
+    Help
+    _emo_2015\Surfaces\Demo_1_--_MFS4.hor
+
+    Position
+    Specify Position
+    Area subselection Range
+    In-line Range 200 650 Step 1
+    Cross-line Range 500 1000 Step 1
+    OK
+    Cancel
+    Help
+
+[Figure OCR p.130 #2]
+Workflow cont'd:
+In the tree, the horizon appears with 4 separate attribute layers. The three lowest attribute layers represent the RGB channels (see color flags next to each layer). Three attributes can thus be blended into a single display.
+OpenDtect Pro V6.0.0pre7-20151016/win64: F3_Demo_2015 - [Scene 1]
+Survey Analysis Processing Scene View Utilities Help
+Elements
+Scene 1
+In-line
+Cross-line
+Z slice
+Volume
+Random Line
+2D Line
+3D Horizon
+Demo 1 -> M.
+<right-click>
+<right-click>
+<right-click>
+Z values
+2D Horizon
+Fault
+FaultStickSet
+Body
+Well
+Geobody
+Polygon
+PickSet
+Prestack Events
+Annotations
+Seismics
+[free mem] 4.3/7.9 GB
+
+[Section: 1.5.2a Spectral Decomposition, Page: 131, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont’d:
+
+3. To define 3 different attributes that will be loaded to the RGB channels of the horizon,
+open an attribute set 3D: click on the A icon.
+
+4. Select Spectral Decomposition as attribute and set the time gate to [-8,24]ms.
+
+When the extraction of an
+attribute is done on a horizon,
+choosing the right time gate
+is critical. The time gate
+represents the interval of
+investigation. If a
+symmetrical time gate is
+chosen (e.g. [-28, +28ms])
+the attribute will highlight
+geological features above
+and below the horizon. When
+an asymmetrical time gate is
+chosen (e.g. [-8, 24ms] or
+[-24, 8ms]) the attribute
+response will highlight
+geological features below or
+above the horizon.
+
+Workflow cont’d:
+
+5. Right-click on Inline in the tree > Add Default Data
+Inline 425 will be added to the scene.
+
+6. Reduce Z ranges of the section, so that it just covers the horizon interval: select the
+inline and drag the green anchor vertically.
+
+7. Right-click on the 4 Dip Steered Median Filter attribute and select Display > Amplitude
+Spectrum…
+
+- 131 -
+
+[Section: 1.5.2a Spectral Decomposition, Page: 132, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+8. Within the amplitude spectrum, identify the frequencies to be used as the low, middle and high frequencies: the low frequency can be selected as being the first peak (e.g. 24Hz), while the high frequency as the last peak (e.g. 64 Hz).
+After choosing the frequencies, close Amplitude spectrum window.
+Amplitude Spectrum for 4 Dip steered median filter
+0
+-5
+-10
+-15
+-20
+-25
+Power (dB)
+0
+25
+50
+75
+100
+125
+Frequency (Hz)
+Display between frequencies 0 125 Gridline step 25
+Value(frequency, power) 23.70259 -5.36955 Normalize dB scale
+Display cepstrum... Export...
+
+Workflow cont'd:
+9. Back to the attribute set window: create the first Spectral Decomposition attribute and set the input data to 4 Dip Steered Median Filter.
+10. Set output frequency to 24Hz with a step of 4Hz.
+11. Give a name to a new attribute, e.g. SD_24Hz[-8,24ms], and press Add as new.
+Attribute Set 3D
+File
+Attribute set <not saved>
+SD_24Hz[-8,24ms]
+Frequency
+?
+Input Data 4 Dip steered median filter
+Transform type FFT CWT
+Time gate (ms) 8 24
+Select...
+Display Time/Frequency panel
+Output frequency (Hz) 24.0 Step 4.0
+Attribute Name SD_24Hz[-8,24ms]
+Save on Close
+Add as new
+Close
+? Help
+- 132 -
+
+[Section: 1.5.2a Spectral Decomposition, Page: 133, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+12. In the same manner, create the other two attributes for middle (44Hz) and high (64Hz) frequencies: change the output frequency value and the attribute name respectively. Click Add as new every time when a new attribute was defined.
+13. Click on Close.
+Optionally, give a name to the new attribute set, e.g.: Spectral Decomposition (if Save on Close is toggled on).
+
+SD_24Hz[-8,24ms]
+SD_44Hz[-8,24ms]
+SD_64Hz[-8,24ms]
+
+Attribute Name SD_24Hz[-8,24ms]
+Add as new
+
+Save on Close
+Close
+
+Workflow cont'd:
+14. To convert your attributes into Horizon Data.
+go to Processing > Create Horizon Output >
+Attributes > 3D.
+
+Processing Scene View Utilities Help
+Create Seismic Output ▸
+Create Horizon Output ▸
+(Re-)Start Batch Job ...
+Dip Steering ▸
+GMT Mapping Tool ...
+HorizonCube
+Madagascar ...
+SSIS
+Attributes ▸
+2D ...
+3D ...
+Horizon Curvature ...
+Stratal Amplitude ...
+Isochron ...
+
+15. Select the SD_24Hz_[-8,24]ms attribute to output and the Demo1->MSF4 horizon on which it will be output and press Run.
+16. Process the two other attributes in similar way.
+
+Calculate Horizon Data from 3D
+Quantity to output SD_24Hz[-8,24ms]
+Attribute Name SD_24Hz[-8,24ms]
+Fill undefined parts O Yes O No
+Calculate on Horizon Demo 1 --> MFS4
+Batch execution Single Process
+Options ...
+Run
+Close
+Help
+
+Select
+Select Quantity to output
+Stored
+SD_24Hz[-8,24ms]
+Attributes
+SD_44Hz[-8,24ms]
+SD_64Hz[-8,24ms]
+OK
+Cancel
+Help
+
+Saving as Horizon Data is faster than calculating on the fly along a horizon. Moreover, the process is done in batch, so can be preferred simultaneously for other Horizon Data.
+
+- 133 -
+
+[Section: 1.5.2a Spectral Decomposition, Page: 134, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+
+17. Display the three new Horizon Data on Demo1-> MFS4: right-click the text adjacent to the red channel > Select attribute > Horizon Data and select SD_24Hz_[-8,24]ms.
+
+18. In the same manner, select SD_44Hz_[-8,24]ms data for the green channel and select SD_64Hz_[-8,24]ms for the blue channel.
+
+Workflow cont'd:
+
+19. When blending the three inputs, the results should be similar to the one shown on the figure.
+
+Some extra steps:
+* Try to flip the green channel : right-click on the color bar, a menu pops up which allows you to flip the color bar).
+* What do you notice? Do you see one feature better than the other ones? Which paleo- geomorphological features can you interpret? What can you conclude in terms of depositional environments, water depth, litho-facies, and direction of currents?
+
+- 134 -
+
+[Section: 1.5.2a Spectral Decomposition, Page: 135, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]
+Workflow cont'd:
+We normally create RGB with three channels: Red, Green and Blue. A fourth attribute (called
+Alpha channel) can be optionally added to highlight structural features like faults/fractures.
+
+20. To define 'Similarity' attribute and add it to the fourth layer, **open** the Attribute set 3D
+    window with the icon and **select** Similarity.
+21. **Select** Extension: All Directions.
+22. **Select** Min for Output statistics.
+23. **Give** it a name (**Min_Similarity**)
+    and **click** Add as new.
+24. **Close** the Attribute set window.
+
+Workflow cont'd:
+
+25. **Right-click** on the fourth element on _Demo1--> MFS4 > Select attribute > Attributes 3D_
+    and **select** _Min_Similarity_.
+
+What do you notice? Do you see any structural features (faults, fractures)?
+
+- 135 -

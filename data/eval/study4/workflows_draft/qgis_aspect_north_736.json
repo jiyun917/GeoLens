@@ -8,7 +8,8 @@
     "source": "manual text + figure OCR only (chromadb_v4); main-window / Processing dialog titles follow the study-2/3 screens of the same application versions",
     "screenshots_seen": false,
     "authored_on": "2026-09-28",
-    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node"
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node",
+    "k1_corrections": "2026-09-28 strings only after capture (K1); see data/eval/study4/K1_signature_log.md"
   },
   "nodes": [
     {
@@ -59,11 +60,14 @@
           "Layers",
           "Operators",
           "aspect@1",
-          "Reference layer(s)",
           "Cell size",
           "Output extent",
           "Output CRS",
-          "Calculated"
+          "Calculated",
+          "Input layers",
+          "0 inputs selected",
+          "Output cell size",
+          "Advanced Parameters"
         ]
       },
       "parameters": [],
@@ -86,8 +90,8 @@
         ],
         "screenshot_keywords": [
           "aspect@1 <= 90 OR aspect@1 >= 270",
-          "Expression is valid",
-          "aspect@1"
+          "aspect@1",
+          "\"aspect@1\" <= 90 OR \"aspect@1\" >= 270"
         ]
       },
       "parameters": [
@@ -114,9 +118,9 @@
           "reference_layers_1_selected"
         ],
         "screenshot_keywords": [
-          "1 inputs selected",
-          "Reference layer(s)",
-          "aspect"
+          "aspect",
+          "1 input selected",
+          "Input layers"
         ]
       },
       "parameters": [

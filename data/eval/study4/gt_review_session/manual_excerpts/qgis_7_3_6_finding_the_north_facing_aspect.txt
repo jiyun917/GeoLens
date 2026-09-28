@@ -1,0 +1,104 @@
+[Section: ★★☆ Follow Along: Finding the north-facing aspect, Page: 277, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+7.3.6 ★★☆ Follow Along: Finding the north-facing aspect
+Now, you have rasters showing you the slope as well as the aspect, but you have no way of knowing where ideal
+conditions are satisfied at once. How could this analysis be done?
+The answer lies with the Raster calculator.
+QGIS has different raster calculators available:
+• Raster ► Raster Calculator
+• In processing:
+– Raster Analysis ► Raster calculator
+– GDAL ► Raster miscellaneous ► Raster calculator
+– SAGA ► Raster calculus ► Raster calculator
+Each tool is leading to the same results, but the syntax may be slightly different and the availability of operators may
+vary.
+We will use Raster Analysis ► Raster calculator in the Processing Toolbox
+1. Open the tool by double clicking on it.
+• The upper left part of the dialog lists all the loaded raster layers as name@N, where name is the name of
+the layer and N is the band.
+7.3. Lesson: Terrain Analysis 263
+
+[Figure OCR p.277 #1]
+There is no readable text within the image.
+
+[Section: ★★☆ Follow Along: Finding the north-facing aspect, Page: 278, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+QGIS Training Manual
+• In the upper right part you will see a lot of different operators. Stop for a moment to think that a raster
+is an image. You should see it as a 2D matrix filled with numbers.
+2. North is at 0 (zero) degrees, so for the terrain to face north, its aspect needs to be greater than 270 degrees or
+less than 90 degrees. Therefore the formula is:
+aspect@1 <= 90 OR aspect@1 >= 270
+3. Now you have to set up the raster details, like the cell size, extent and CRS. This can be done manually or
+it can be automatically set by choosing a Reference layer. Choose this last option by clicking on the …
+button next to the Reference layer(s) parameter.
+4. In the dialog, choose the aspect layer, because we want to obtain a layer with the same resolution.
+5. Save the layer as aspect_north.tif.
+The dialog should look like:
+6. Finally click on Run.
+Your result will be this:
+264 Chapter 7. Module: Rasters
+
+[Figure OCR p.278 #1]
+Raster Calculator
+Parameters Log
+
+Expression
+
+Layers
+aspect@1
+hillshade@1
+slope@1
+srtm_41_19@1
+
+Operators
++ * cos sin log10 AND
+- / acos asin In OR
+^ sqrt tan atan ( )
+< > = != <= >=
+abs min max
+
+Expression
+aspect@1 <= 90 OR aspect@1 >= 270
+
+Expression is valid
+
+Predefined expressions
+NDVI Add... Save...
+
+Reference layer(s) (used for automated extent, cellsize, and CRS) [optional]
+1 inputs selected
+Cell size (use 0 or empty to set it automatically) [optional]
+0.000000
+Output extent [optional]
+Not set
+Output CRS [optional]
+
+Output
+D:/dev/github/QGIS-Training-Data/exercise_data/raster_analysis/aspect_north.tif
+Open output file after running algorithm
+
+0%
+
+Run as Batch Process...
+
+Raster calculator
+This algorithm allows performing algebraic operations using raster layers.
+
+The resulting layer will have its values computed according to an expression. The expression can contain numerical values, operators and references to any of the layers in the current project. The following functions are also supported:
+
+- sin(), cos(), tan(), atan2(), In(), log10()
+
+The extent, cell size, and output CRS can be defined by the user. If the extent is not specified, the minimum extent that covers selected reference layer(s) will be used. If the cell size is not specified, the minimum cell size of selected reference layer(s) will be used. If the output CRS is not specified, the CRS of the first reference layer will be used.
+
+The cell size is assumed to be the same in both X and Y axes.
+
+Layers are referred by their name as displayed in the layer list and the number of the band to use (based on 1), using the pattern 'layer_name@band number'. For instance, the first band from a layer named DEM will be referred as DEM@1.
+
+When using the calculator in the batch interface or from the console, the files to use have to be specified. The corresponding layers are referred using the base name of the file (without the full path). For instance, if using a layer at path /to/my/rasterfile.tif, the first band of that layer will be referred as rasterfile.tif@1.
+
+Run Close Help
+
+[Section: ★★☆ Follow Along: Finding the north-facing aspect, Page: 278, Source: data/uploads/bf2804feea57434bb79b749134ed1df0_QGIS-3.44-TrainingManual-en.pdf]
+/rasterfile.tif, the first band of that layer will be referred as rasterfile.tif@1.
+
+Run Close Help
