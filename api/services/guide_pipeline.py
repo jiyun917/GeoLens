@@ -431,8 +431,11 @@ _CTX_V8_RULE = ("Rule: compare the screenshot with the screen states listed afte
                 "and never skip an action whose result is not visible. Judge from the SCREEN, not from the list of instructions "
                 "already given: if your previous instruction's result is not on the screen (the screen looks unchanged), the user "
                 "has not done it yet - give that instruction again (a value that is still at its default has not been set). "
-                "If the result of the last listed action is visible and it is the final step of the workflow, answer with the "
-                "completion sentinel '완료' / 'Done'.")
+                "Start from line 0 and go down: the FIRST line whose result state is not on the screen is the one to instruct. "
+                "If that line bundles several actions (set a value, tick a box, then click a button), they are in order too: "
+                "give only the first of them that is not yet visibly done - never the whole bundle and never a later part. "
+                "Output exactly one action. If the result of the last listed action is visible and it is the final step of the "
+                "workflow, answer with the completion sentinel '완료' / 'Done'.")
 _CTX_V7_DONE = ("[Next Action] The previous instruction ({prev}) was the final action of this workflow. "
                 "If the screen shows nothing that contradicts it having been carried out, the goal is reached - answer with the "
                 "completion sentinel '완료' / 'Done'. Otherwise repeat only the part that is visibly not done.")
@@ -917,7 +920,7 @@ class GuideRAGPipeline:
             if picked_id and ROUTER_SESSION_STICKY:
                 picked_id = self._session_sticky(picked_id, candidates, session_wf, last_node_id)
             if picked_id and ROUTER_HISTORY_ADVANCE:
-                picked_id = self._history_advance(picked_id, candidates, last_node_id, completed_steps)
+                picked_id = self._history_advance(picked_id, candidates, last_node_id, completed_steps, visual_state, prev_visual_state)
             if ROUTER_SCREEN_ADVANCE:
                 adv_id, adv_meta = screen_delta_advance(self.graph, picked_id, last_node_id, visual_state, prev_visual_state,
                                                         ROUTER_SCREEN_ADVANCE_HOPS, ROUTER_SCREEN_ADVANCE_MIN_TOKENS)
@@ -1439,7 +1442,8 @@ Respond with JSON only:
         return out
 
     def _history_advance(self, picked_id: str, candidates: List[Dict], last_node_id: Optional[str],
-                         completed_steps: Optional[List[str]]) -> str:
+                         completed_steps: Optional[List[str]], visual_state: Optional[Dict] = None,
+                         prev_visual_state: Optional[Dict] = None) -> str:
         """R2/R2' (study 3): the rerank repeated the last confirmed node - or fell back to an earlier
         node of the same workflow (signature overlap while a window stays open) - although the
         previous instruction already told the user to do the last node's outgoing action -> the
@@ -1464,6 +1468,23 @@ Respond with JSON only:
         edge_instr = succ[0].get("edge_instruction") or ""
         if not _edge_covered(hist[-1], edge_instr):
             return picked_id
+        # study 4 (V3-45): the history premise ("the user did what was instructed") is checked against the screen
+        # on text-verifiable transitions (main-window placeholders are not specific and are skipped):
+        # G1 the target expects a specific dialog that is NOT among the window titles -> it has not opened yet;
+        # G2 the previous node's specific dialog is still among the titles and the target's dialog does not keep
+        #    it open -> the transition that leaves the dialog has not happened yet.
+        if visual_state:
+            titles = _title_text(visual_state)
+            ln = self.graph.get_node(last_node_id) or {}
+            last_full = _norm_text(((ln.get("visual_signature") or {}).get("expected_dialog") or ""))
+            last_dlg = _norm_text(((ln.get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0])
+            nxt_full = _norm_text(((succ[0].get("visual_signature") or {}).get("expected_dialog") or ""))
+            nxt_dlg = _norm_text(((succ[0].get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0])
+            specific = lambda d: bool(d) and len(d) >= 6 and "mainwindow" not in d and not d.endswith("scene")
+            if specific(nxt_dlg) and nxt_dlg not in titles and nxt_dlg[:12] not in last_full:
+                return picked_id                                   # G1
+            if specific(last_dlg) and last_dlg in titles and last_dlg[:12] not in nxt_full:
+                return picked_id                                   # G2
         # R2": the previous instruction must describe the OUTGOING action better than the action that
         # reached the last node (sibling edges sharing a verb phrase; bundled instructions).
         cov_next = _edge_coverage(hist[-1], edge_instr)
