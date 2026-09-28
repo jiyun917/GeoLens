@@ -1,0 +1,496 @@
+{
+  "workflow_id": "spectral_decomp_152a",
+  "name": "Spectral Decomposition attributes on a color-blended horizon (§1.5.2a)",
+  "software_id": "opendtect",
+  "manual_reference": "1.5.2a Spectral Decomposition, steps 1–4 and 9–13 (amplitude-spectrum inspection 5–8 and horizon-output 14–25 out of scope; frequencies 24/44/64 Hz taken from the manual)",
+  "description": "OpendTect 매뉴얼 §1.5.2a: 3D Horizon > Add Color Blended…로 Demo 1 --> MFS4를 In-line 200–650 / Cross-line 500–1000 범위로 표시 → Attribute Set 3D에서 Spectral Decomposition 속성(Input 4 Dip steered median filter, Time gate [-8,24] ms, Step 4 Hz)을 24/44/64 Hz로 세 개 정의(SD_24Hz[-8,24ms] 등, Add as new) → Close.",
+  "authoring": {
+    "source": "manual text + figure OCR only (chromadb_v4); main-window / Processing dialog titles follow the study-2/3 screens of the same application versions",
+    "screenshots_seen": false,
+    "authored_on": "2026-09-28",
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node",
+    "k1_corrections": "2026-09-28 strings only after capture (K1); see data/eval/study4/K1_signature_log.md"
+  },
+  "nodes": [
+    {
+      "id": "spectral_decomp_152a_01_scene_start",
+      "workflow_id": "spectral_decomp_152a",
+      "step_number": 1,
+      "title": "3D scene, 3D Horizon 트리 항목에 color-blended horizon 없음 (시작)",
+      "description": "§1.5.2a 시작 상태: F3 Demo 3D scene, 트리에 3D Horizon 항목이 있으나 Demo 1 --> MFS4 color-blended 표시 없음. Attribute Set 창 없음.",
+      "step_type": "start",
+      "visual_signature": {
+        "expected_dialog": "F3 Demo 2023 - [Scene 1]",
+        "expected_ui_elements": [
+          "tree_3d_horizon_item",
+          "no_color_blended_horizon",
+          "no_attribute_set_window"
+        ],
+        "screenshot_keywords": [
+          "3D Horizon",
+          "Tree scene 1",
+          "F3 Demo 2023"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.5.2a"
+      ],
+      "linked_chunks": [
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "96f9818d6a5c407f8fa1680b0c46d947",
+        "8b94094f7d1c4086b197b16332a88e03"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "spectral_decomp_152a_02_select_horizon_dialog",
+      "workflow_id": "spectral_decomp_152a",
+      "step_number": 2,
+      "title": "Select Input Horizon(s) 대화상자 열림 (Add Color Blended)",
+      "description": "step 1 결과: 트리 3D Horizon 우클릭 > Add Color Blended… → 'Select Input Horizon(s)' 대화상자: Filter, 목록(Demo 0 --> FS4, Demo 1 --> MFS4, …), Area subselection + Select…, OK/Cancel/Help. 아직 선택·범위 없음.",
+      "step_type": "dialog",
+      "visual_signature": {
+        "expected_dialog": "Select Horizons / Select Input Horizon(s)",
+        "expected_ui_elements": [
+          "horizon_list",
+          "area_subselection_row",
+          "select_button",
+          "ok_cancel"
+        ],
+        "screenshot_keywords": [
+          "Select Input Horizon",
+          "Demo 1 --> MFS4",
+          "Demo 0 --> FS4",
+          "Area subselection",
+          "Select...",
+          "Filter",
+          "Select Horizons",
+          "100/300-750/1250"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.5.2a"
+      ],
+      "linked_chunks": [
+        "96f9818d6a5c407f8fa1680b0c46d947",
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "dc489c2441fe4b11ab8a370deb82991f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "spectral_decomp_152a_03_position_ranges_entered",
+      "workflow_id": "spectral_decomp_152a",
+      "step_number": 3,
+      "title": "Demo 1 --> MFS4 선택, Position 대화상자에 In-line 200–650 / Cross-line 500–1000 입력 (OK 전)",
+      "description": "step 2 결과: 목록에서 Demo 1 --> MFS4를 선택하고 Area subselection의 Select…를 클릭 → 'Position'(Specify Position) 대화상자에서 In-line Range 200 650, Cross-line Range 500 1000 을 입력한 상태(OK 누르기 전).",
+      "step_type": "dialog",
+      "visual_signature": {
+        "expected_dialog": "Positions / Position",
+        "expected_ui_elements": [
+          "inline_range_200_650",
+          "crossline_range_500_1000",
+          "ok_cancel"
+        ],
+        "screenshot_keywords": [
+          "Position",
+          "Specify Position",
+          "In-line Range",
+          "Cross-line Range",
+          "200",
+          "650",
+          "500",
+          "1000",
+          "Step",
+          "Positions",
+          "Specify Positions"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "In-line Range",
+          "default": "200-650",
+          "description": "manual §1.5.2a step 2"
+        },
+        {
+          "name": "Cross-line Range",
+          "default": "500-1000",
+          "description": "manual §1.5.2a step 2"
+        }
+      ],
+      "manual_sections": [
+        "1.5.2a"
+      ],
+      "linked_chunks": [
+        "3470801bd9364c85ab297ffe0259c396",
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "96f9818d6a5c407f8fa1680b0c46d947"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "spectral_decomp_152a_04_horizon_color_blended",
+      "workflow_id": "spectral_decomp_152a",
+      "step_number": 4,
+      "title": "Demo 1 --> MFS4 가 color-blended 로 표시됨 (트리에 4개 속성 레이어)",
+      "description": "step 2 결과(OK, OK): 트리 3D Horizon 아래 Demo 1 --> MFS4 가 4개의 속성 레이어(아래 3개는 R/G/B 채널 색 플래그)와 함께 표시되고 scene에 horizon이 보임. 대화상자 없음.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "F3 Demo 2023 - [Scene 1]",
+        "expected_ui_elements": [
+          "tree_demo1_mfs4",
+          "four_attribute_layers",
+          "rgb_channel_flags",
+          "horizon_in_scene"
+        ],
+        "screenshot_keywords": [
+          "Demo 1 --> MFS4",
+          "3D Horizon",
+          "Tree scene 1",
+          "F3 Demo 2023",
+          "<right-click>",
+          "Z values"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.5.2a"
+      ],
+      "linked_chunks": [
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "96f9818d6a5c407f8fa1680b0c46d947",
+        "dc489c2441fe4b11ab8a370deb82991f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "spectral_decomp_152a_05_attribute_set_open",
+      "workflow_id": "spectral_decomp_152a",
+      "step_number": 5,
+      "title": "Attribute Set 3D 창 열림 (빈 세트, <not saved>)",
+      "description": "step 3 결과: 툴바의 Attribute Set 3D 아이콘(A) 클릭 → 'Attribute Set 3D' 창: File 메뉴, Attribute set <not saved>, 속성 목록 비어 있음, 속성 종류 드롭다운, Input Data, Attribute Name, Add as new, Close.",
+      "step_type": "dialog",
+      "visual_signature": {
+        "expected_dialog": "Attribute Set 3D",
+        "expected_ui_elements": [
+          "attribute_type_dropdown",
+          "input_data_field",
+          "attribute_name_field",
+          "add_as_new_button",
+          "empty_attribute_list"
+        ],
+        "screenshot_keywords": [
+          "Attribute Set 3D",
+          "Attribute set <not saved>",
+          "Input Data",
+          "Attribute Name",
+          "Add as new",
+          "Close",
+          "Save on Close",
+          "Similarity"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.5.2a"
+      ],
+      "linked_chunks": [
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "8b94094f7d1c4086b197b16332a88e03"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "spectral_decomp_152a_06_sd_24hz_added",
+      "workflow_id": "spectral_decomp_152a",
+      "step_number": 6,
+      "title": "SD_24Hz[-8,24ms] 정의 후 Add as new (목록에 1개)",
+      "description": "step 4, 9–11 결과: 속성 = Spectral Decomposition, Input Data = 4 Dip steered median filter, Transform type FFT, Time gate (ms) -8 24, Output frequency (Hz) 24, Step 4, Attribute Name SD_24Hz[-8,24ms] → Add as new → 목록에 SD_24Hz[-8,24ms] 1개.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Attribute Set 3D",
+        "expected_ui_elements": [
+          "attribute_list_sd_24",
+          "spectral_decomposition_selected",
+          "time_gate_minus8_24",
+          "output_frequency_24_step_4"
+        ],
+        "screenshot_keywords": [
+          "Spectral Decomposition",
+          "SD_24Hz[-8,24ms]",
+          "4 Dip steered median filter",
+          "Time gate (ms)",
+          "-8",
+          "24",
+          "Output frequency (Hz)",
+          "24.0",
+          "Step",
+          "4.0",
+          "FFT"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Time gate (ms)",
+          "default": "[-8, 24]",
+          "description": "manual §1.5.2a step 4"
+        },
+        {
+          "name": "Output frequency (Hz)",
+          "default": "24",
+          "description": "step 10"
+        },
+        {
+          "name": "Step (Hz)",
+          "default": "4",
+          "description": "step 10"
+        },
+        {
+          "name": "Input Data",
+          "default": "4 Dip steered median filter",
+          "description": "step 9"
+        }
+      ],
+      "manual_sections": [
+        "1.5.2a"
+      ],
+      "linked_chunks": [
+        "3470801bd9364c85ab297ffe0259c396",
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "8b94094f7d1c4086b197b16332a88e03"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "spectral_decomp_152a_07_sd_44hz_added",
+      "workflow_id": "spectral_decomp_152a",
+      "step_number": 7,
+      "title": "SD_44Hz[-8,24ms] 추가됨 (목록에 2개)",
+      "description": "step 12 결과(중간 주파수): Output frequency 44, Attribute Name SD_44Hz[-8,24ms] → Add as new → 목록에 SD_24Hz, SD_44Hz.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Attribute Set 3D",
+        "expected_ui_elements": [
+          "attribute_list_sd_24_44",
+          "output_frequency_44"
+        ],
+        "screenshot_keywords": [
+          "SD_44Hz[-8,24ms]",
+          "SD_24Hz[-8,24ms]",
+          "44.0",
+          "Spectral Decomposition"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Output frequency (Hz)",
+          "default": "44",
+          "description": "step 12"
+        }
+      ],
+      "manual_sections": [
+        "1.5.2a"
+      ],
+      "linked_chunks": [
+        "3470801bd9364c85ab297ffe0259c396",
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "96f9818d6a5c407f8fa1680b0c46d947"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "spectral_decomp_152a_08_sd_64hz_added",
+      "workflow_id": "spectral_decomp_152a",
+      "step_number": 8,
+      "title": "SD_64Hz[-8,24ms] 추가됨 (목록에 3개)",
+      "description": "step 12 결과(높은 주파수): Output frequency 64, Attribute Name SD_64Hz[-8,24ms] → Add as new → 목록에 SD_24Hz, SD_44Hz, SD_64Hz.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Attribute Set 3D",
+        "expected_ui_elements": [
+          "attribute_list_sd_24_44_64",
+          "output_frequency_64"
+        ],
+        "screenshot_keywords": [
+          "SD_64Hz[-8,24ms]",
+          "SD_44Hz[-8,24ms]",
+          "SD_24Hz[-8,24ms]",
+          "64.0",
+          "Spectral Decomposition"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Output frequency (Hz)",
+          "default": "64",
+          "description": "step 12"
+        }
+      ],
+      "manual_sections": [
+        "1.5.2a"
+      ],
+      "linked_chunks": [
+        "3470801bd9364c85ab297ffe0259c396",
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "96f9818d6a5c407f8fa1680b0c46d947"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "spectral_decomp_152a_09_attribute_set_closed",
+      "workflow_id": "spectral_decomp_152a",
+      "step_number": 9,
+      "title": "Attribute Set 창 닫힘 (세트 이름 Spectral Decomposition 저장), 3D scene 만 표시 (목표 도달)",
+      "description": "step 13 결과: Close(Save on Close 켜짐, 이름 예: Spectral Decomposition) → Attribute Set 3D 창이 사라지고 3D scene과 트리(Demo 1 --> MFS4 color-blended)만 보임.",
+      "step_type": "verification",
+      "visual_signature": {
+        "expected_dialog": "F3 Demo 2023 - [Scene 1]",
+        "expected_ui_elements": [
+          "no_attribute_set_window",
+          "tree_demo1_mfs4",
+          "four_attribute_layers"
+        ],
+        "screenshot_keywords": [
+          "Demo 1 --> MFS4",
+          "3D Horizon",
+          "Tree scene 1",
+          "F3 Demo 2023"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "1.5.2a"
+      ],
+      "linked_chunks": [
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "96f9818d6a5c407f8fa1680b0c46d947"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "spectral_decomp_152a_01_scene_start",
+      "target": "spectral_decomp_152a_02_select_horizon_dialog",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "트리의 3D Horizon을 우클릭하고 Add Color Blended…를 선택하세요"
+    },
+    {
+      "source": "spectral_decomp_152a_02_select_horizon_dialog",
+      "target": "spectral_decomp_152a_03_position_ranges_entered",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "목록에서 Demo 1 --> MFS4를 선택하고, Area subselection의 Select…를 클릭해 In-line Range 200–650, Cross-line Range 500–1000을 입력하세요"
+    },
+    {
+      "source": "spectral_decomp_152a_03_position_ranges_entered",
+      "target": "spectral_decomp_152a_04_horizon_color_blended",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "OK를 클릭해 범위를 적용하고, 다시 OK를 클릭해 horizon을 표시하세요"
+    },
+    {
+      "source": "spectral_decomp_152a_04_horizon_color_blended",
+      "target": "spectral_decomp_152a_05_attribute_set_open",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "툴바의 Attribute Set 3D 아이콘(A)을 클릭해 Attribute Set 3D 창을 여세요"
+    },
+    {
+      "source": "spectral_decomp_152a_05_attribute_set_open",
+      "target": "spectral_decomp_152a_06_sd_24hz_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "속성 종류로 Spectral Decomposition을 선택하고 Input Data = 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 Hz, Step 4 Hz, Attribute Name SD_24Hz[-8,24ms]를 입력한 뒤 Add as new를 클릭하세요"
+    },
+    {
+      "source": "spectral_decomp_152a_06_sd_24hz_added",
+      "target": "spectral_decomp_152a_07_sd_44hz_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Output frequency를 44 Hz로 바꾸고 Attribute Name을 SD_44Hz[-8,24ms]로 바꾼 뒤 Add as new를 클릭하세요"
+    },
+    {
+      "source": "spectral_decomp_152a_07_sd_44hz_added",
+      "target": "spectral_decomp_152a_08_sd_64hz_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Output frequency를 64 Hz로 바꾸고 Attribute Name을 SD_64Hz[-8,24ms]로 바꾼 뒤 Add as new를 클릭하세요"
+    },
+    {
+      "source": "spectral_decomp_152a_08_sd_64hz_added",
+      "target": "spectral_decomp_152a_09_attribute_set_closed",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Close를 클릭해 Attribute Set 창을 닫으세요(Save on Close가 켜져 있으면 세트 이름 Spectral Decomposition을 입력)"
+    }
+  ]
+}
