@@ -1474,3 +1474,11 @@ zone 33S (meters)** — 예상값 정확히 일치. **정제 불요**. `initial_
 - 게이트 결과(사전등록 4 §2.1에 기재): (a)(b)(c) PASS, (d) FAIL — GPT vector_buffer 0.875(s3: v3식 signature가 설정 전 값 '50'을 도달 상태로 기재 → 묶음 지시 뒷부분 응답). 판정 세트 5개(vector_buffer 제외)에서는 15칸 모두 full ≥ vv(동률 1), 환각 full ≤ 비교군 전 모델, 라우팅 0.872, R3 잘못된 전진 0.
 - **설계 변경(사용자 결정)**: 새 캡처 없이 기존 캡처 5 시나리오로 10회 본 실행(vector_buffer는 signature 결함으로 제외). 이는 확인 연구가 아니라 최종 메커니즘의 개발 세트(in-sample) 재평가이며 사전등록 4 초안 v2에 그렇게 명시. 사용자: "네가 논문 쓸거 아니니깐 논문에 어떻게 적을지는 생각안해도돼. 해당 GeoLens 구현방식과 테스트 결과정도만 자세히 정리해주면 돼." 새 세트 초안 E/F/G와 K1 절차는 보존(별도 확인 실행용).
 - 실행 준비: `.study4_test_opendtect`(3)·`.study4_test_qgis`(2) = 확정 GT 복사(바이트 동일), preflight PASS; `run_study4.sh` 모델별 로그(병렬 3프로세스).
+
+### V3-46. study 5(새 캡처 세트 E/F/G) 준비 — 캡처·K1·dry-run·GT·선정 (2026-09-28, study 4 본 실행 중)
+- 사용자 결정: study 4 본 실행 결과는 `C:/Users/user/Downloads/STUDY-대체.docx`로 정리하고, 새 세트에서 우위를 얻지 못하면 그것을 주 결과로 쓴다. 새 세트 실행은 본 실행 종료 후 잔액 확인 뒤 시작.
+- 캡처 24장(사용자, 버전 차이 노트 `data/eval/study4/CAPTURE_NOTES.md`), 세션 축소본·확대본 대조, 재캡처 없음. 벤치 JPEG는 quality 92에서 F s0의 Flash 비전 반복 루프(504/2,990토큰 잘못된 JSON)가 확인돼 24장 모두 quality 85로 재인코딩(모델 실행 전, 원본 불변). 비전 캐시 24/24.
+- K1(사전등록 절차): signature 문자열 정정(E 02·03·04·05, G 02·03·04, F 08; 로그 `K1_signature_log.md`) 후 대화상자 24/24 일치, 키워드 122/129(나머지 매뉴얼 별칭). 스테이징 워크플로우 relink(`--dir`), 스테이징 풀 13. 생성기 없는 라우팅 dry-run(`study4_route_dryrun.py`): chained 23/24 = 0.958, teacher 23/24(E s0 동점 화면 1건).
+- GT: 열거(gemini-2.5-pro, $0.80) → 초안(`gt_apply_study4.py`) → 외부 검토(표본 오독 1.34%, 1,498항목: 삭제 1·정정 32·추가 36) → 결정 B-1(소수점 마침표)·H6(F s6 'User[- ]?Defined' 별칭) → 확정(커밋 05f856d). H6 패턴이 셸 heredoc의 이스케이프 처리로 ``→백스페이스로 손상된 것을 발견해 스크립트로 복구·검증(로그 기재; 선정 실행의 QGIS 패스 전).
+- 선정(§1.1, 스테이징 풀, preflight `--pool` 추가): E 0.667·G 0.833·F 0.815 → 셋 다 채택. F는 Gemini no_rag 1.000·Claude 0.889로 천장에 가까움(s3 WKT 패턴이 투영 이름만으로 통과) — 사전등록 5 §7에 한계로 기재, 패턴 불변.
+- 사전등록 5 최종안(서명 전) `data/eval/study4/study5_pre_registration_DRAFT.md`; 래퍼 `run_study5.sh`, 판정 `verdict_study5.py`. 실행은 본 실행 종료 → 드래프트를 `data/workflows/`로 편입·커밋 → preflight → 서명 → 시작.

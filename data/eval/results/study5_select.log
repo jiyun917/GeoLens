@@ -1,0 +1,153 @@
+preflight failed for data/eval/scenarios/.study5_test_opendtect
+2026-09-28T11:10:47Z === study5 selection kickoff === git 05f856d
+11:10:47 selection opendtect gemini
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:105: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': '05f856d38a656addd97bd8854cbe0e78a9c4e31c', 'branch': 'v3-rerun', 'dirty': True, 'dirty_diff_sha256': 'aebcff1a618042bcde01c3d6ae6693ca82c5c138d4346d44d86b8696bb820d18', 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== opendtect__spectral_decomp__01 (9 steps) ===
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+  - no_rag         step_acc=0.56 hall=0.11 loop=0.11 latency=102.66s
+
+# Benchmark Results
+
+Started: 2026-09-28T11:10:47.798228Z
+Scenarios: 1
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.556 | 0.111 | 0.111 | — | — | 0.000 |
+
+
+Results written: data/eval/results/run_gemini_study5sel_opendtect_r1_20260928T111047.json
+Markdown:        data/eval/results/run_gemini_study5sel_opendtect_r1_20260928T111047.md
+11:12:31 selection opendtect claude
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:105: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': '39d8cb55d6aac40d0ad7edd091bb24a7d694c54a', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== opendtect__spectral_decomp__01 (9 steps) ===
+  - no_rag         step_acc=0.78 hall=0.00 loop=0.00 latency=37.79s
+
+# Benchmark Results
+
+Started: 2026-09-28T11:12:32.040704Z
+Scenarios: 1
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.778 | 0.000 | 0.000 | — | — | 0.000 |
+
+
+Results written: data/eval/results/run_claude_study5sel_opendtect_r1_20260928T111231.json
+Markdown:        data/eval/results/run_claude_study5sel_opendtect_r1_20260928T111231.md
+11:13:10 selection opendtect gpt
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:105: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': '39d8cb55d6aac40d0ad7edd091bb24a7d694c54a', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== opendtect__spectral_decomp__01 (9 steps) ===
+  - no_rag         step_acc=0.67 hall=0.00 loop=0.11 latency=24.02s
+
+# Benchmark Results
+
+Started: 2026-09-28T11:13:11.269904Z
+Scenarios: 1
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.667 | 0.000 | 0.111 | — | — | 0.000 |
+
+
+Results written: data/eval/results/run_gpt_study5sel_opendtect_r1_20260928T111310.json
+Markdown:        data/eval/results/run_gpt_study5sel_opendtect_r1_20260928T111310.md
+11:13:36 selection qgis gemini
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:105: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': '39d8cb55d6aac40d0ad7edd091bb24a7d694c54a', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== qgis__aspect_north__01 (6 steps) ===
+  - no_rag         step_acc=0.83 hall=0.00 loop=0.00 latency=72.1s
+
+=== qgis__custom_projection__01 (9 steps) ===
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+  - no_rag         step_acc=1.00 hall=0.11 loop=0.00 latency=82.86s
+
+# Benchmark Results
+
+Started: 2026-09-28T11:13:36.601178Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.917 | 0.056 | 0.000 | — | — | 0.500 |
+
+
+Results written: data/eval/results/run_gemini_study5sel_qgis_r1_20260928T111336.json
+Markdown:        data/eval/results/run_gemini_study5sel_qgis_r1_20260928T111336.md
+11:16:12 selection qgis claude
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:105: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': '39d8cb55d6aac40d0ad7edd091bb24a7d694c54a', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== qgis__aspect_north__01 (6 steps) ===
+  - no_rag         step_acc=0.83 hall=0.00 loop=0.00 latency=24.96s
+
+=== qgis__custom_projection__01 (9 steps) ===
+Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+  - no_rag         step_acc=0.89 hall=0.00 loop=0.00 latency=27.62s
+
+# Benchmark Results
+
+Started: 2026-09-28T11:16:13.182463Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.861 | 0.000 | 0.000 | — | — | 1.000 |
+
+
+Results written: data/eval/results/run_claude_study5sel_qgis_r1_20260928T111612.json
+Markdown:        data/eval/results/run_claude_study5sel_qgis_r1_20260928T111612.md
+11:17:06 selection qgis gpt
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:105: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+[bench] code_version={'commit': '39d8cb55d6aac40d0ad7edd091bb24a7d694c54a', 'branch': 'v3-rerun', 'dirty': False, 'dirty_diff_sha256': None, 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== qgis__aspect_north__01 (6 steps) ===
+  - no_rag         step_acc=0.83 hall=0.00 loop=0.00 latency=21.15s
+
+=== qgis__custom_projection__01 (9 steps) ===
+  - no_rag         step_acc=0.56 hall=0.00 loop=0.11 latency=15.93s
+
+# Benchmark Results
+
+Started: 2026-09-28T11:17:07.159972Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| no_rag | 0.694 | 0.000 | 0.056 | — | — | 1.000 |
+
+
+Results written: data/eval/results/run_gpt_study5sel_qgis_r1_20260928T111706.json
+Markdown:        data/eval/results/run_gpt_study5sel_qgis_r1_20260928T111706.md
+2026-09-28T11:17:45Z === study5 selection complete ===

@@ -1,4 +1,4 @@
-# Study 5 사전등록 (초안 v1 — 서명 전) — 최종 메커니즘의 새 판정 세트 확인 연구
+# Study 5 사전등록 (최종안 — 서명 전) — 최종 메커니즘의 새 판정 세트 확인 연구
 
 **작성 시점**: 2026-09-28, study 4(개발 세트 재평가, 실행 중; 사전등록 834d58b) 시작 이후, 새 세트 24장 캡처·GT 열거·K1 signature 검증·라우팅 dry-run 완료 후. **새 판정 세트에서 생성기는 아직 한 번도 실행되지 않았다**(선정 실행 §1.1 전). 결정은 사용자가 위임했다.
 **성격**: study 4와 같은 최종 메커니즘(커밋 e330836 계열)을 **처음 보는 판정 세트**에서 확인하는 연구. 사용자 결정(2026-09-28): 이 연구에서 GeoLens가 우위를 얻지 못하면 study 4(개발 세트 재평가, `STUDY-대체`)를 주 결과로 쓴다. 이 문서의 판정은 그 결정과 무관하게 §5대로 기계적으로 낸다.
@@ -16,7 +16,7 @@
 
 ### 1.1 선정 규칙 (판정 세트, 시스템 실행 전)
 - 각 시나리오에 no_rag만 3모델 × 1회. 3모델 평균 step accuracy < 0.85이면 채택, 아니면 제외(고치지 않음). 선정 실행의 응답은 선정에만 쓰고 GT·시스템·signature 수정에 참고하지 않는다.
-- 결과: `[기재]`
+- 결과(2026-09-28 11:10–11:17Z, `run_<model>_study5sel_{opendtect,qgis}_r1_*.json`, 채점기 v6, judge 없음, 스테이징 풀): E `opendtect__spectral_decomp__01` claude 0.778 ✓✓✓✗✓✓✓✗✓ / gemini 0.556 ✓✓✓✗✗✓✓✗✗ / gpt 0.667 ✓✓✓✗✗✓✓✓✗, 평균 **0.667** → 채택; G `qgis__aspect_north__01` 0.833 / 0.833 / 0.833, 평균 **0.833** → 채택; F `qgis__custom_projection__01` claude 0.889 / gemini 1.000 / gpt 0.556, 평균 **0.815** → 채택(규칙상 채택이나 Gemini·Claude no_rag가 천장에 가까움 — §7).
 
 ## 2. 실행 전에 확정된 메커니즘 (study 4 사전등록 §2와 동일; 커밋 e330836 계열)
 | # | 수정 | 근거 |
@@ -40,7 +40,7 @@
 2. **벤치 JPEG**: quality 92로 변환한 `qgis__custom_projection__01/step_0.jpg`에서 Flash 비전이 반복 생성 루프(504/2,990토큰 잘못된 JSON)에 빠져 24장 모두 quality 85로 재인코딩(원본 PNG 불변, 화면 내용 동일). 비전 캐시 24/24 정상. 이 결정은 모델 실행 전이며 전 백엔드 공통(비전은 full_system만 쓰므로 실질 영향은 full_system의 라우팅 입력).
 3. **K1 signature 검증·정정**(`study4_verify_signatures.py` → `study4_apply_k1.py`, 로그 `K1_signature_log.md`): E 노드 02 dialog 'Select Horizons / Select Input Horizon(s)', 03 'Positions / Position', 04 키워드 `<right-click>`·`Z values`, 05 'Similarity'; G 노드 02·04 'Input layers'·'0/1 input(s) selected', 03 따옴표 식·'Expression is valid' 제거; F 노드 08 'User-defined'. 정정 후 대화상자 24/24 일치, 키워드 122/129 화면 존재(나머지 7개는 매뉴얼 이름 별칭 유지). 노드·엣지·edge instruction 불변.
 4. **라우팅 dry-run**(생성기 없음, `study4_route_dryrun.py`, 스테이징 풀 13): chained 23/24 = 0.958, teacher 23/24 = 0.958(≥ 0.85). 유일한 불일치는 E s0(빈 scene 시작 화면에서 다른 워크플로우의 시작 노드 선택; 세션 이력 없는 첫 스텝의 동점 화면). 정정하지 않음.
-5. **GT**: gemini-2.5-pro 열거(temperature 0, `gt_enumerate_study2.py --dir study4`, 24장, $0.80) → 초안(`gt_apply_study4.py`: 열거 라벨 전부 + 세션의 화면 사실) → 스크린샷만 보는 외부 검토(RULES, 표본 오독률 5% 중단 규칙) → 결정(위임, H-항목) → 확정 → 서명 전까지 불변. H4: G s2 패턴에 'Input layers?' 별칭 추가(매뉴얼 'Reference layer(s)' 병기); H5: E initial_state에 버전 사실 기재. 수행 기록: `[기재]`
+5. **GT**: gemini-2.5-pro 열거(temperature 0, `gt_enumerate_study2.py --dir study4`, 24장, $0.80) → 초안(`gt_apply_study4.py`: 열거 라벨 전부 + 세션의 화면 사실) → 스크린샷만 보는 외부 검토(RULES, 표본 오독률 5% 중단 규칙) → 결정(위임, H-항목) → 확정 → 서명 전까지 불변. H4: G s2 패턴에 'Input layers?' 별칭 추가(매뉴얼 'Reference layer(s)' 병기); H5: E initial_state에 버전 사실 기재. 수행 기록: 외부 검토(별도 에이전트, 폴더 밖 미열람) 표본 오독률 1.34%(6/449; 공백 차이 제외 0.89%) < 5%; 1,498항목 검수, 삭제 1·정정 32·추가 36, data_state 정정 6스텝, current_dialog·current_action 변경 없음. 결정(위임): B-1 QGIS 소수점 마침표(검토자 픽셀 비교) 수용; H6 F s6 패턴에 'User[- ]?Defined' 별칭(3.44 그룹 라벨 'User-defined'); 나머지 보류 항목은 검토자 표기 유지. 확정 GT `data/eval/scenarios/.study5_test_opendtect/`, `.study5_test_qgis/`(+ `data/eval/scenarios/` 사본), 로그 `data/eval/study4/GT5_final_applied_log.md`(H6 패턴의 셸 이스케이프 손상 1건을 스크립트로 복구·검증한 기록 포함).
 6. 선정 실행(§1.1) → 최종화·서명 → 본 실행.
 
 ## 4. 사전 예측 (결과 관측 전, 양방향)
@@ -63,8 +63,8 @@
 
 ## 7. 한계
 - 단일 저자 캡처·저작. 3 시나리오 24스텝. K1은 판정 세트의 캡처 화면을 KB 문자열 정정에 썼다(모델 응답 미개입; "테스트 화면을 본 KB"). 라우팅 dry-run은 Flash rerank를 판정 세트 화면에 돌린 것이다(생성기 없음; 결과로 signature를 더 고치지는 않았음).
-- E는 매뉴얼의 Amplitude Spectrum 확인 단계와 horizon output 단계를 생략한 부분 과제. F의 WKT 입력은 GT 패턴이 문자열 존재(PROJCRS 등)만 본다.
+- E는 매뉴얼의 Amplitude Spectrum 확인 단계와 horizon output 단계를 생략한 부분 과제. F의 WKT 입력(s3) 패턴은 `PROJCRS|Van Der Grinten|6371000|BASEGEOGCRS`로 저작돼 투영 이름만 말해도 통과한다(goal에 이름이 있음) — 선정 실행에서 Gemini no_rag 1.000, Claude 0.889로 F는 천장에 가깝고 변별력이 낮다. 선정 규칙(평균 0.815 < 0.85)상 채택하되 패턴은 고치지 않는다(선정 응답을 GT 수정에 쓰지 않는 원칙). F에서의 동률은 우위 판정에 기여하지 못할 수 있다.
 - v3 → 2 → 3 → 4 → 5의 연속 시도(V3-43 이후 사용자 지시).
 
 ## 8. 서명
-- 저작 커밋(캡처 전): 9ba5b23 / K1 정정 커밋: `[기재]` / GT 확정 커밋: `[기재]` / 작성: `[ ]` / 검토: `[ ]` / 확정 시각(UTC): `[ ]`
+- 저작 커밋(캡처 전): 9ba5b23 / K1 정정 커밋: 91f85e6 (relink·q85: 603df13) / GT 확정 커밋: 05f856d / 선정 커밋: 39d8cb5 이후 결과 파일 / 작성: `[SIGN]` / 검토: `[SIGN]` / 확정 시각(UTC): `[SIGN]`
