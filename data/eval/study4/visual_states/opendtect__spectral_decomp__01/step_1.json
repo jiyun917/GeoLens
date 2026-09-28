@@ -1,0 +1,79 @@
+{
+ "scenario_id": "opendtect__spectral_decomp__01",
+ "step_index": 1,
+ "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_1.jpg",
+ "sha256": "af467799f0cd79db462c5fe79f6b7944d565d5d2cbd291df22a1db5ea72630b2",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Select Horizons",
+  "window_titles": [
+   "Select Horizons",
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubus",
+   "Help"
+  ],
+  "buttons": [
+   "Select ...",
+   "OK",
+   "Cancel",
+   "?"
+  ],
+  "labels": [
+   "Cross-line 0",
+   "Step 0",
+   "Filter",
+   "Area subselection (100/300-750/1250 (463 samples))"
+  ],
+  "field_values": [
+   "Cross-line: 0",
+   "Step: 0",
+   "Filter: (empty)",
+   "Area subselection: 100/300-750/1250 (463 samples)",
+   "Demo 0 --> FS4: unchecked",
+   "Demo 1 --> MFS4: unchecked",
+   "Demo 2 --> FS6: unchecked",
+   "Demo 3 --> Top Foresets: unchecked",
+   "Demo 4 --> Truncation: unchecked",
+   "Demo 5 --> FS7: unchecked"
+  ],
+  "visible_elements": [
+   "Tree scene 1 panel",
+   "Elements tree",
+   "Scene 1 tree item",
+   "In-line checkbox (checked)",
+   "Cross-line checkbox (checked)",
+   "Z-slice checkbox (checked)",
+   "Volume checkbox (checked)",
+   "Random Line checkbox (checked)",
+   "2D Line checkbox (checked)",
+   "3D Horizon checkbox (checked)",
+   "2D Horizon checkbox (checked)",
+   "Fault checkbox (checked)",
+   "FaultSet checkbox (checked)",
+   "FaultStickSet checkbox (checked)",
+   "Geobody checkbox (checked)",
+   "Well checkbox (checked)",
+   "PointSet checkbox (checked)",
+   "Polygon checkbox (checked)",
+   "Prestack Events tree item",
+   "Annotations tree item",
+   "OD Seismic 1 dropdown",
+   "Main 3D view with grid lines (In-line, Cross-line, Time axes)",
+   "Toolbar with icons (e.g., save, open, undo, redo, settings, lock, delete)",
+   "List of horizons in \"Select Horizons\" dialog",
+   "Path text field: ...Demo_2023\\Surfaces\\Demo_0_--_FS4.hor"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "selecting horizons"
+ }
+}

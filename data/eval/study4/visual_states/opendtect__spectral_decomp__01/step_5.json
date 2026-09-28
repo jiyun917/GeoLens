@@ -1,0 +1,91 @@
+{
+ "scenario_id": "opendtect__spectral_decomp__01",
+ "step_index": 5,
+ "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_5.jpg",
+ "sha256": "aff200730d4ef10cbbb63f44486540d9bc46ea212e0a60477842425662c137f1",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Attribute Set 3D",
+  "window_titles": [
+   "Attribute Set 3D",
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "File",
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Select ...",
+   "Display Time/Frequency panel",
+   "Add as new",
+   "Close"
+  ],
+  "labels": [
+   "Attribute set: <not saved>",
+   "Input Data: 4 Dip steered median filter",
+   "Transform type: FFT (checked)",
+   "CWT (unchecked)",
+   "Time gate (ms): -8",
+   "24",
+   "Output frequency (Hz): 24.0",
+   "Step: 4.0",
+   "Attribute Name: SD_24Hz[-8,24ms]",
+   "Save on Close (checked)"
+  ],
+  "field_values": [
+   "Attribute set: <not saved>",
+   "Input Data: 4 Dip steered median filter",
+   "Transform type: FFT (checked)",
+   "Transform type: CWT (unchecked)",
+   "Time gate (ms): -8",
+   "Time gate (ms): 24",
+   "Output frequency (Hz): 24.0",
+   "Step: 4.0",
+   "Attribute Name: SD_24Hz[-8,24ms]",
+   "Save on Close: checked"
+  ],
+  "visible_elements": [
+   "Cross-line 0",
+   "Step 0",
+   "Tree scene 1",
+   "Elements",
+   "Scene 1",
+   "In-line",
+   "Cross-line",
+   "Z-slice",
+   "Volume",
+   "Random Line",
+   "2D Line",
+   "3D Horizon",
+   "Demo 1 --> MFS4",
+   "<right-click>",
+   "<right-click>",
+   "<right-click>",
+   "Z values",
+   "2D Horizon",
+   "Fault",
+   "FaultSet",
+   "FaultStickSet",
+   "Geobody",
+   "Well",
+   "PointSet",
+   "Polygon",
+   "Prestack Events",
+   "Annotations",
+   "Color",
+   "Spectral Decomposition (dropdown)",
+   "SD_24Hz[-8,24ms] (list entry)"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "configuring 3D attribute set for spectral decomposition"
+ }
+}

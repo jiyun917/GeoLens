@@ -1,0 +1,306 @@
+{
+  "workflow_id": "qgis_aspect_north_736",
+  "name": "North-facing aspect with the Raster calculator (§7.3.6)",
+  "software_id": "qgis",
+  "manual_reference": "QGIS Training Manual 3.44 §7.3.6 Follow Along: Finding the north-facing aspect, steps 1–6 (pp.263–264)",
+  "description": "QGIS 매뉴얼 §7.3.6: Processing Toolbox의 Raster analysis › Raster calculator에서 식 aspect@1 <= 90 OR aspect@1 >= 270 을 입력하고 Reference layer = aspect, 출력 aspect_north.tif 로 저장한 뒤 Run → 북향 픽셀이 1인 래스터 생성.",
+  "authoring": {
+    "source": "manual text + figure OCR only (chromadb_v4); main-window / Processing dialog titles follow the study-2/3 screens of the same application versions",
+    "screenshots_seen": false,
+    "authored_on": "2026-09-28",
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node",
+    "k1_corrections": "2026-09-28 strings only after capture (K1); see data/eval/study4/K1_signature_log.md"
+  },
+  "nodes": [
+    {
+      "id": "qgis_aspect_north_736_01_aspect_loaded",
+      "workflow_id": "qgis_aspect_north_736",
+      "step_number": 1,
+      "title": "aspect 래스터 로드됨, Raster calculator 닫힘",
+      "description": "§7.3.6 시작: Layers에 aspect(0–360°) 래스터(§7.3.5 결과)가 있고 지도에 표시. Processing Toolbox 열려 있을 수 있음. Raster calculator 대화상자 없음.",
+      "step_type": "start",
+      "visual_signature": {
+        "expected_dialog": "Untitled Project - QGIS",
+        "expected_ui_elements": [
+          "layers_panel_aspect",
+          "map_canvas_aspect",
+          "processing_toolbox"
+        ],
+        "screenshot_keywords": [
+          "aspect",
+          "Processing Toolbox",
+          "Untitled Project"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★☆ Follow Along: Finding the north-facing aspect"
+      ],
+      "linked_chunks": [
+        "3e435105cef9498abc59998a3c714698",
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "02a5a3bf2dea48278e0268543de0d21f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_aspect_north_736_02_raster_calc_open",
+      "workflow_id": "qgis_aspect_north_736",
+      "step_number": 2,
+      "title": "Raster calculator(Processing) 대화상자 열림 (식 비어 있음)",
+      "description": "step 1 결과: Processing Toolbox › Raster analysis › Raster calculator 더블클릭 → 'Raster Calculator' 대화상자: Layers 목록(aspect@1 …), Operators, Expression(비어 있음), Reference layer(s) [optional], Cell size, Output extent, Output CRS, Calculated 출력(임시 파일), Run.",
+      "step_type": "dialog",
+      "visual_signature": {
+        "expected_dialog": "Raster Analysis - Raster Calculator",
+        "expected_ui_elements": [
+          "layers_list_aspect_at_1",
+          "operators_panel",
+          "expression_empty",
+          "reference_layers_row",
+          "output_row",
+          "run_button"
+        ],
+        "screenshot_keywords": [
+          "Raster Calculator",
+          "Expression",
+          "Layers",
+          "Operators",
+          "aspect@1",
+          "Cell size",
+          "Output extent",
+          "Output CRS",
+          "Calculated",
+          "Input layers",
+          "0 inputs selected",
+          "Output cell size",
+          "Advanced Parameters"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★☆ Follow Along: Finding the north-facing aspect"
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "3e435105cef9498abc59998a3c714698",
+        "02a5a3bf2dea48278e0268543de0d21f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_aspect_north_736_03_expression_entered",
+      "workflow_id": "qgis_aspect_north_736",
+      "step_number": 3,
+      "title": "Expression = aspect@1 <= 90 OR aspect@1 >= 270 (Expression is valid)",
+      "description": "step 2 결과: Expression 필드에 aspect@1 <= 90 OR aspect@1 >= 270 입력 → 'Expression is valid'. Reference layer 아직 없음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Raster Analysis - Raster Calculator",
+        "expected_ui_elements": [
+          "expression_aspect_north",
+          "expression_is_valid"
+        ],
+        "screenshot_keywords": [
+          "aspect@1 <= 90 OR aspect@1 >= 270",
+          "aspect@1",
+          "\"aspect@1\" <= 90 OR \"aspect@1\" >= 270"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Expression",
+          "default": "aspect@1 <= 90 OR aspect@1 >= 270",
+          "description": "manual step 2"
+        }
+      ],
+      "manual_sections": [
+        "★★☆ Follow Along: Finding the north-facing aspect"
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "3e435105cef9498abc59998a3c714698",
+        "02a5a3bf2dea48278e0268543de0d21f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_aspect_north_736_04_reference_layer_set",
+      "workflow_id": "qgis_aspect_north_736",
+      "step_number": 4,
+      "title": "Reference layer(s) = aspect (1 inputs selected)",
+      "description": "step 3–4 결과: Reference layer(s)의 … 버튼 → 다중 선택 대화상자에서 aspect 체크 → OK → '1 inputs selected'.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Raster Analysis - Raster Calculator",
+        "expected_ui_elements": [
+          "reference_layers_1_selected"
+        ],
+        "screenshot_keywords": [
+          "aspect",
+          "1 input selected",
+          "Input layers"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Reference layer(s)",
+          "default": "aspect",
+          "description": "manual step 4"
+        }
+      ],
+      "manual_sections": [
+        "★★☆ Follow Along: Finding the north-facing aspect"
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "3e435105cef9498abc59998a3c714698",
+        "02a5a3bf2dea48278e0268543de0d21f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_aspect_north_736_05_output_set",
+      "workflow_id": "qgis_aspect_north_736",
+      "step_number": 5,
+      "title": "Calculated 출력 = exercise_data/raster_analysis/aspect_north.tif (Run 전)",
+      "description": "step 5 결과: Calculated(출력)의 … › Save to File… 로 raster_analysis 폴더에 aspect_north.tif 지정. 아직 Run 안 함.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Raster Analysis - Raster Calculator",
+        "expected_ui_elements": [
+          "output_aspect_north_tif"
+        ],
+        "screenshot_keywords": [
+          "aspect_north.tif",
+          "raster_analysis",
+          "Calculated",
+          "Run"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Output",
+          "default": "aspect_north.tif",
+          "description": "manual step 5"
+        }
+      ],
+      "manual_sections": [
+        "★★☆ Follow Along: Finding the north-facing aspect"
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "02a5a3bf2dea48278e0268543de0d21f",
+        "3e435105cef9498abc59998a3c714698"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_aspect_north_736_06_ran_layer_added",
+      "workflow_id": "qgis_aspect_north_736",
+      "step_number": 6,
+      "title": "Run 완료: aspect_north 레이어(0/1) 추가됨 (목표 도달)",
+      "description": "step 6 결과: Run → 알고리즘 실행, Layers 패널에 aspect_north 레이어(값 0/1, 흑백)가 추가되고 지도에 북향 픽셀이 흰색으로 표시. 대화상자 닫힘(또는 Close).",
+      "step_type": "verification",
+      "visual_signature": {
+        "expected_dialog": "Untitled Project - QGIS",
+        "expected_ui_elements": [
+          "layers_panel_aspect_north",
+          "map_canvas_binary"
+        ],
+        "screenshot_keywords": [
+          "aspect_north",
+          "Untitled Project"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★☆ Follow Along: Finding the north-facing aspect"
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "02a5a3bf2dea48278e0268543de0d21f",
+        "3e435105cef9498abc59998a3c714698"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "qgis_aspect_north_736_01_aspect_loaded",
+      "target": "qgis_aspect_north_736_02_raster_calc_open",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Processing Toolbox에서 Raster analysis › Raster calculator를 더블클릭해 여세요(검색창에 raster calculator 입력 가능)"
+    },
+    {
+      "source": "qgis_aspect_north_736_02_raster_calc_open",
+      "target": "qgis_aspect_north_736_03_expression_entered",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Expression에 aspect@1 <= 90 OR aspect@1 >= 270 을 입력하세요"
+    },
+    {
+      "source": "qgis_aspect_north_736_03_expression_entered",
+      "target": "qgis_aspect_north_736_04_reference_layer_set",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Reference layer(s) 옆의 … 버튼을 클릭해 aspect 레이어를 선택하고 OK를 클릭하세요"
+    },
+    {
+      "source": "qgis_aspect_north_736_04_reference_layer_set",
+      "target": "qgis_aspect_north_736_05_output_set",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Calculated(출력)의 … 버튼 › Save to File… 로 exercise_data/raster_analysis 폴더에 aspect_north.tif 로 저장 경로를 지정하세요"
+    },
+    {
+      "source": "qgis_aspect_north_736_05_output_set",
+      "target": "qgis_aspect_north_736_06_ran_layer_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Run을 클릭하세요"
+    }
+  ]
+}

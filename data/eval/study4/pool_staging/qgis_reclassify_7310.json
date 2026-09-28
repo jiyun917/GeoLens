@@ -1,0 +1,466 @@
+{
+  "workflow_id": "qgis_reclassify_7310",
+  "name": "Reclassify the aspect raster by table (§7.3.10)",
+  "software_id": "qgis",
+  "manual_reference": "QGIS Training Manual 3.44 §7.3.10 Follow Along: Reclassifying the Raster (pp.286–289)",
+  "description": "QGIS 매뉴얼 §7.3.10: Processing Toolbox의 Reclassify by table로 aspect 래스터(0–360°)를 1(N)/2(E)/3(S)/4(W)로 재분류(Fixed table 5행), reclassified.tif로 저장·실행한 뒤 Layer Styling에서 Paletted/Unique values + Classify로 표시한다. 매뉴얼만 보고 저작(study 3, 2026-09-22), 스크린샷 전 커밋.",
+  "authoring": {
+    "source": "manual text + figure OCR only (chromadb_v4)",
+    "screenshots_seen": false,
+    "authored_on": "2026-09-22",
+    "convention": "signature = screen state AFTER the node's action (reached state); edge instruction = action leading to the next node"
+  },
+  "nodes": [
+    {
+      "id": "qgis_reclassify_7310_01_aspect_loaded",
+      "workflow_id": "qgis_reclassify_7310",
+      "step_number": 1,
+      "title": "aspect 래스터 로드됨, Reclassify 도구 닫힘",
+      "description": "§7.3.10 시작: Layers에 aspect(0–360°) 래스터가 있고 지도에 표시. Processing Toolbox는 열려 있을 수 있음. Reclassify by table 대화상자 없음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "QGIS main window",
+        "expected_ui_elements": [
+          "layers_panel_aspect",
+          "map_canvas",
+          "no_reclassify_dialog"
+        ],
+        "screenshot_keywords": [
+          "aspect",
+          "Layers",
+          "Processing Toolbox",
+          "no Reclassify by table dialog"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★☆ Follow Along: Reclassifying the Raster"
+      ],
+      "linked_chunks": [
+        "2334d71684df4d53abe7dbcc97491e08",
+        "9cc3fabe19df4f70be6e5bd9d66ce29f",
+        "5c0269d66c7c476c920ceae59d023c3b"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_reclassify_7310_02_reclassify_dialog_open",
+      "workflow_id": "qgis_reclassify_7310",
+      "step_number": 2,
+      "title": "Reclassify by table 대화상자 열림 (Raster layer 미선택/기본값)",
+      "description": "step 1 결과: Processing Toolbox › Raster analysis › Reclassify by table(또는 검색)을 열어 대화상자가 표시됨: Raster layer, Band number, Reclassification table(Fixed table … 버튼), Advanced parameters, Reclassified raster, Run/Close.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Reclassify by Table",
+        "expected_ui_elements": [
+          "raster_layer_dropdown",
+          "band_number",
+          "reclassification_table_button",
+          "reclassified_raster_output",
+          "run_button"
+        ],
+        "screenshot_keywords": [
+          "Reclassify by Table",
+          "Parameters",
+          "Log",
+          "Raster layer",
+          "Band number",
+          "Band 1 (Gray)",
+          "Reclassification table",
+          "Fixed table",
+          "Advanced parameters",
+          "Reclassified raster",
+          "Run",
+          "Close"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★☆ Follow Along: Reclassifying the Raster"
+      ],
+      "linked_chunks": [
+        "2334d71684df4d53abe7dbcc97491e08",
+        "9cc3fabe19df4f70be6e5bd9d66ce29f",
+        "00cb9fcf830b4072be49df529fe1945f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_reclassify_7310_03_raster_layer_aspect",
+      "workflow_id": "qgis_reclassify_7310",
+      "step_number": 3,
+      "title": "Raster layer = aspect 선택됨",
+      "description": "step 2 결과: Raster layer 드롭다운에서 aspect 선택. 테이블은 아직 비어 있음(Fixed table (0x3)).",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Reclassify by Table",
+        "expected_ui_elements": [
+          "raster_layer_aspect",
+          "reclassification_table_empty"
+        ],
+        "screenshot_keywords": [
+          "Raster layer",
+          "aspect",
+          "Fixed table (0x3)",
+          "Reclassification table"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Raster layer",
+          "default": "aspect",
+          "description": "입력 래스터"
+        }
+      ],
+      "manual_sections": [
+        "★★☆ Follow Along: Reclassifying the Raster"
+      ],
+      "linked_chunks": [
+        "2334d71684df4d53abe7dbcc97491e08",
+        "5c0269d66c7c476c920ceae59d023c3b",
+        "9cc3fabe19df4f70be6e5bd9d66ce29f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_reclassify_7310_04_fixed_table_dialog",
+      "workflow_id": "qgis_reclassify_7310",
+      "step_number": 4,
+      "title": "Fixed table 대화상자 열림 (행 없음)",
+      "description": "step 3 결과: Reclassification table의 … 버튼 → 'Fixed table' 대화상자(Minimum / Maximum / Value 열, Add Row / Remove Row(s) / Remove All, OK/Cancel). 아직 행 없음.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Fixed table",
+        "expected_ui_elements": [
+          "columns_minimum_maximum_value",
+          "add_row_button",
+          "remove_row_button",
+          "ok_cancel",
+          "no_rows"
+        ],
+        "screenshot_keywords": [
+          "Fixed table",
+          "Minimum",
+          "Maximum",
+          "Value",
+          "Add Row",
+          "Remove Row(s)",
+          "Remove All",
+          "OK",
+          "Cancel"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★☆ Follow Along: Reclassifying the Raster"
+      ],
+      "linked_chunks": [
+        "9cc3fabe19df4f70be6e5bd9d66ce29f",
+        "2334d71684df4d53abe7dbcc97491e08",
+        "5c0269d66c7c476c920ceae59d023c3b"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_reclassify_7310_05_table_filled",
+      "workflow_id": "qgis_reclassify_7310",
+      "step_number": 5,
+      "title": "5행 입력 완료 후 OK → Fixed table (5x3)",
+      "description": "step 4 결과: Add Row 5회, (0,45,1) (315,360,1) (45,135,2) (135,225,3) (225,315,4) 입력 후 OK → 대화상자에 'Fixed table (5x3)' 표시. 출력 경로는 아직 기본(임시).",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "Reclassify by Table",
+        "expected_ui_elements": [
+          "reclassification_table_5x3",
+          "reclassified_raster_output_default"
+        ],
+        "screenshot_keywords": [
+          "Fixed table (5x3)",
+          "Reclassification table",
+          "Reclassified raster",
+          "[Save to temporary file]"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "rows",
+          "default": "0-45→1, 315-360→1, 45-135→2, 135-225→3, 225-315→4",
+          "description": "aspect 재분류 표"
+        }
+      ],
+      "manual_sections": [
+        "★★☆ Follow Along: Reclassifying the Raster"
+      ],
+      "linked_chunks": [
+        "9cc3fabe19df4f70be6e5bd9d66ce29f",
+        "2334d71684df4d53abe7dbcc97491e08",
+        "5c0269d66c7c476c920ceae59d023c3b"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_reclassify_7310_06_output_path_set",
+      "workflow_id": "qgis_reclassify_7310",
+      "step_number": 6,
+      "title": "Reclassified raster 출력 = exercise_data/raster_analysis/reclassified.tif",
+      "description": "step 5 결과: Reclassified raster의 … › Save to File… 로 raster_analysis 폴더에 reclassified.tif 지정. 아직 Run 전.",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Reclassify by Table",
+        "expected_ui_elements": [
+          "reclassified_raster_path_set",
+          "run_button"
+        ],
+        "screenshot_keywords": [
+          "reclassified.tif",
+          "raster_analysis",
+          "Reclassified raster",
+          "Run"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "Reclassified raster",
+          "default": "exercise_data/raster_analysis/reclassified.tif",
+          "description": "출력 파일"
+        }
+      ],
+      "manual_sections": [
+        "★★☆ Follow Along: Reclassifying the Raster"
+      ],
+      "linked_chunks": [
+        "9cc3fabe19df4f70be6e5bd9d66ce29f",
+        "5c0269d66c7c476c920ceae59d023c3b",
+        "2334d71684df4d53abe7dbcc97491e08"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_reclassify_7310_07_ran_layer_added",
+      "workflow_id": "qgis_reclassify_7310",
+      "step_number": 7,
+      "title": "Run 실행 완료: reclassified 레이어 추가됨",
+      "description": "step 6 결과: Run → 알고리즘 실행, Layers 패널에 reclassified 레이어(값 1–4, Singleband gray)가 추가되고 지도에 표시. 대화상자는 닫혔거나 Log 탭 완료 상태.",
+      "step_type": "action",
+      "visual_signature": {
+        "expected_dialog": "QGIS main window",
+        "expected_ui_elements": [
+          "layers_panel_reclassified",
+          "map_canvas_reclassified_gray"
+        ],
+        "screenshot_keywords": [
+          "reclassified",
+          "Layers",
+          "Singleband gray",
+          "1",
+          "4"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★☆ Follow Along: Reclassifying the Raster"
+      ],
+      "linked_chunks": [
+        "2334d71684df4d53abe7dbcc97491e08",
+        "00cb9fcf830b4072be49df529fe1945f",
+        "9cc3fabe19df4f70be6e5bd9d66ce29f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_reclassify_7310_08_styling_paletted",
+      "workflow_id": "qgis_reclassify_7310",
+      "step_number": 8,
+      "title": "Layer Styling 패널: Paletted/Unique values 선택 (Classify 전)",
+      "description": "스타일 step 1–2 결과: Layer Styling 패널을 열고 렌더러를 Singleband gray → Paletted/Unique values로 바꿈. 값 목록은 아직 비어 있음(Classify 전).",
+      "step_type": "setup",
+      "visual_signature": {
+        "expected_dialog": "Layer Styling",
+        "expected_ui_elements": [
+          "layer_styling_panel",
+          "renderer_paletted_unique_values",
+          "classify_button",
+          "value_list_empty"
+        ],
+        "screenshot_keywords": [
+          "Layer Styling",
+          "reclassified",
+          "Paletted/Unique values",
+          "Band",
+          "Band 1 (Gray)",
+          "Color ramp",
+          "Random colors",
+          "Classify",
+          "Delete All"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★☆ Follow Along: Reclassifying the Raster"
+      ],
+      "linked_chunks": [
+        "00cb9fcf830b4072be49df529fe1945f",
+        "2334d71684df4d53abe7dbcc97491e08",
+        "9cc3fabe19df4f70be6e5bd9d66ce29f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    },
+    {
+      "id": "qgis_reclassify_7310_09_classified_map",
+      "workflow_id": "qgis_reclassify_7310",
+      "step_number": 9,
+      "title": "Classify 완료: 값 1–4에 색 배정, 지도 렌더링 (목표 도달)",
+      "description": "스타일 step 3 결과: Classify 클릭 → Value/Color/Label 목록에 1,2,3,4와 임의 색, 지도가 4색으로 렌더링. 목표 도달.",
+      "step_type": "terminal",
+      "visual_signature": {
+        "expected_dialog": "Layer Styling",
+        "expected_ui_elements": [
+          "value_list_1_to_4",
+          "map_canvas_four_colours"
+        ],
+        "screenshot_keywords": [
+          "Classify",
+          "Value",
+          "Color",
+          "Label",
+          "1",
+          "2",
+          "3",
+          "4",
+          "reclassified"
+        ]
+      },
+      "parameters": [],
+      "manual_sections": [
+        "★★☆ Follow Along: Reclassifying the Raster"
+      ],
+      "linked_chunks": [
+        "00cb9fcf830b4072be49df529fe1945f",
+        "2334d71684df4d53abe7dbcc97491e08",
+        "9cc3fabe19df4f70be6e5bd9d66ce29f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-22",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "qgis_reclassify_7310_01_aspect_loaded",
+      "target": "qgis_reclassify_7310_02_reclassify_dialog_open",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Processing Toolbox에서 Raster analysis › Reclassify by table 도구를 여세요(검색창에 reclassify 입력 가능)"
+    },
+    {
+      "source": "qgis_reclassify_7310_02_reclassify_dialog_open",
+      "target": "qgis_reclassify_7310_03_raster_layer_aspect",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Raster layer 드롭다운에서 aspect를 선택하세요"
+    },
+    {
+      "source": "qgis_reclassify_7310_03_raster_layer_aspect",
+      "target": "qgis_reclassify_7310_04_fixed_table_dialog",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Reclassification table 옆의 … 버튼을 클릭해 Fixed table 대화상자를 여세요"
+    },
+    {
+      "source": "qgis_reclassify_7310_04_fixed_table_dialog",
+      "target": "qgis_reclassify_7310_05_table_filled",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Add Row를 5번 눌러 행을 만들고 Minimum/Maximum/Value를 0-45→1, 315-360→1, 45-135→2, 135-225→3, 225-315→4 로 입력한 뒤 OK를 클릭하세요"
+    },
+    {
+      "source": "qgis_reclassify_7310_05_table_filled",
+      "target": "qgis_reclassify_7310_06_output_path_set",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Reclassified raster의 … 버튼 › Save to File… 로 exercise_data/raster_analysis 폴더에 reclassified.tif 로 저장 경로를 지정하세요"
+    },
+    {
+      "source": "qgis_reclassify_7310_06_output_path_set",
+      "target": "qgis_reclassify_7310_07_ran_layer_added",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Run을 클릭하세요"
+    },
+    {
+      "source": "qgis_reclassify_7310_07_ran_layer_added",
+      "target": "qgis_reclassify_7310_08_styling_paletted",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Layer Styling 패널을 열고(reclassified 선택) 렌더러를 Singleband gray에서 Paletted/Unique values로 바꾸세요"
+    },
+    {
+      "source": "qgis_reclassify_7310_08_styling_paletted",
+      "target": "qgis_reclassify_7310_09_classified_map",
+      "edge_type": "sequential",
+      "condition": null,
+      "instruction": "Classify 버튼을 클릭해 값 1–4에 색을 배정하세요"
+    }
+  ]
+}

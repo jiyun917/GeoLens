@@ -1,0 +1,93 @@
+{
+ "scenario_id": "opendtect__spectral_decomp__01",
+ "step_index": 6,
+ "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_6.jpg",
+ "sha256": "8440763aef3bde139fdf27ddf8839acb4005a15be34f533392498a843418e20c",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Attribute Set 3D",
+  "window_titles": [
+   "Attribute Set 3D",
+   "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "File",
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "Select ...",
+   "Display Time/Frequency panel",
+   "Add as new",
+   "Close"
+  ],
+  "labels": [
+   "Attribute set: <not saved>",
+   "Input Data: 4 Dip steered median filter",
+   "Transform type",
+   "FFT (checked)",
+   "CWT (unchecked)",
+   "Time gate (ms): -8",
+   "24",
+   "Output frequency (Hz): 44.0",
+   "Step: 4.0",
+   "Attribute Name: SD_44Hz[-8,24ms]",
+   "Save on Close (checked)"
+  ],
+  "field_values": [
+   "Attribute set: <not saved>",
+   "Input Data: 4 Dip steered median filter",
+   "Transform type: FFT",
+   "Time gate (ms): -8",
+   "Time gate (ms): 24",
+   "Output frequency (Hz): 44.0",
+   "Step: 4.0",
+   "Attribute Name: SD_44Hz[-8,24ms]",
+   "Save on Close: checked",
+   "List of attributes: SD_24Hz[-8,24ms], SD_44Hz[-8,24ms]"
+  ],
+  "visible_elements": [
+   "Tree scene 1 panel",
+   "Elements tree",
+   "Scene 1",
+   "In-line (checked)",
+   "Cross-line (checked)",
+   "Z-slice (checked)",
+   "Volume (checked)",
+   "Random Line (checked)",
+   "2D Line (checked)",
+   "3D Horizon (checked)",
+   "Demo 1 -> MFS4 (checked)",
+   "<right-click> (checked)",
+   "<right-click> (checked)",
+   "<right-click> (checked)",
+   "Z values (checked)",
+   "2D Horizon (checked)",
+   "Fault (checked)",
+   "FaultSet (checked)",
+   "FaultStickSet (checked)",
+   "Geobody (checked)",
+   "Well (checked)",
+   "PointSet (checked)",
+   "Polygon (checked)",
+   "Prestack Events",
+   "Annotations",
+   "Cross-line 0",
+   "Step 0",
+   "OD Seismic 1",
+   "Toolbar with icons for file operations, editing, etc.",
+   "Toolbar with navigation arrows and value display",
+   "Vertical toolbar on the right with various tools"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "Defining a 3D attribute using Spectral Decomposition"
+ }
+}

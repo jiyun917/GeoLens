@@ -34,7 +34,20 @@
       "parameters": [],
       "manual_sections": [
         "★★★ Follow Along: Creating Your Own Projection"
-      ]
+      ],
+      "linked_chunks": [
+        "229206d9ce2a4520a223c8a714d2d1cc",
+        "942598014e934e29934a105e455ad555",
+        "dc73f6114d274ca3a8a27b437a9f2c5f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_custom_projection_614_02_custom_crs_dialog",
@@ -67,7 +80,20 @@
       "parameters": [],
       "manual_sections": [
         "★★★ Follow Along: Creating Your Own Projection"
-      ]
+      ],
+      "linked_chunks": [
+        "942598014e934e29934a105e455ad555",
+        "dc73f6114d274ca3a8a27b437a9f2c5f",
+        "229206d9ce2a4520a223c8a714d2d1cc"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_custom_projection_614_03_new_crs_row_added",
@@ -94,7 +120,20 @@
       "parameters": [],
       "manual_sections": [
         "★★★ Follow Along: Creating Your Own Projection"
-      ]
+      ],
+      "linked_chunks": [
+        "dc73f6114d274ca3a8a27b437a9f2c5f",
+        "942598014e934e29934a105e455ad555",
+        "229206d9ce2a4520a223c8a714d2d1cc"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_custom_projection_614_04_name_and_format_set",
@@ -130,7 +169,20 @@
       ],
       "manual_sections": [
         "★★★ Follow Along: Creating Your Own Projection"
-      ]
+      ],
+      "linked_chunks": [
+        "dc73f6114d274ca3a8a27b437a9f2c5f",
+        "942598014e934e29934a105e455ad555",
+        "229206d9ce2a4520a223c8a714d2d1cc"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_custom_projection_614_05_wkt_entered",
@@ -163,7 +215,20 @@
       ],
       "manual_sections": [
         "★★★ Follow Along: Creating Your Own Projection"
-      ]
+      ],
+      "linked_chunks": [
+        "dc73f6114d274ca3a8a27b437a9f2c5f",
+        "942598014e934e29934a105e455ad555",
+        "229206d9ce2a4520a223c8a714d2d1cc"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_custom_projection_614_06_crs_saved_dialog_closed",
@@ -188,7 +253,20 @@
       "parameters": [],
       "manual_sections": [
         "★★★ Follow Along: Creating Your Own Projection"
-      ]
+      ],
+      "linked_chunks": [
+        "229206d9ce2a4520a223c8a714d2d1cc",
+        "942598014e934e29934a105e455ad555",
+        "dc73f6114d274ca3a8a27b437a9f2c5f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_custom_projection_614_07_project_crs_dialog",
@@ -218,7 +296,20 @@
       "parameters": [],
       "manual_sections": [
         "★★★ Follow Along: Creating Your Own Projection"
-      ]
+      ],
+      "linked_chunks": [
+        "942598014e934e29934a105e455ad555",
+        "229206d9ce2a4520a223c8a714d2d1cc",
+        "dc73f6114d274ca3a8a27b437a9f2c5f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_custom_projection_614_08_van_der_grinten_selected",
@@ -245,7 +336,20 @@
       "parameters": [],
       "manual_sections": [
         "★★★ Follow Along: Creating Your Own Projection"
-      ]
+      ],
+      "linked_chunks": [
+        "942598014e934e29934a105e455ad555",
+        "dc73f6114d274ca3a8a27b437a9f2c5f",
+        "229206d9ce2a4520a223c8a714d2d1cc"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_custom_projection_614_09_map_reprojected",
@@ -270,7 +374,20 @@
       "parameters": [],
       "manual_sections": [
         "★★★ Follow Along: Creating Your Own Projection"
-      ]
+      ],
+      "linked_chunks": [
+        "942598014e934e29934a105e455ad555",
+        "dc73f6114d274ca3a8a27b437a9f2c5f",
+        "229206d9ce2a4520a223c8a714d2d1cc"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     }
   ],
   "edges": [

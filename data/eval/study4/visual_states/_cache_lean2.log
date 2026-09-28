@@ -1,0 +1,13 @@
+  retry qgis__custom_projection__01 s0: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'The request timed out
+  retry qgis__custom_projection__01 s0: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'The request timed out
+  retry qgis__custom_projection__01 s0: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'The request timed out
+  retry qgis__custom_projection__01 s0: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'The request timed out
+qgis__custom_projection__01 s0: EMPTY dialog='None'
+qgis__custom_projection__01 s1: ok dialog='Options — User Defined CRS'
+qgis__custom_projection__01 s2: ok dialog='Options — User Defined CRS'
+qgis__custom_projection__01 s3: ok dialog='Options — User Defined CRS'
+qgis__custom_projection__01 s4: ok dialog='Options — User Defined CRS'
+qgis__custom_projection__01 s5: ok dialog='*Untitled Project - QGIS'
+qgis__custom_projection__01 s6: ok dialog='Project Properties — CRS'
+qgis__custom_projection__01 s7: ok dialog='Project Properties – CRS'
+exit=127

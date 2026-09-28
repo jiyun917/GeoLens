@@ -1,0 +1,88 @@
+{
+ "scenario_id": "opendtect__spectral_decomp__01",
+ "step_index": 2,
+ "screenshot_path": "data/eval/screenshots/opendtect__spectral_decomp__01/step_2.jpg",
+ "sha256": "00acf79be27031cffbad837ca53f9e19eef3d4d6c4df91283e30fde3182a70b5",
+ "software_id": "opendtect",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Specify Positions",
+  "window_titles": [
+   "Specify Positions",
+   "Select Horizons",
+   "OpendTect 7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Survey",
+   "Analysis",
+   "Processing",
+   "Scene",
+   "View",
+   "Utilities",
+   "TerraNubis",
+   "Help"
+  ],
+  "buttons": [
+   "OK",
+   "Cancel",
+   "OK",
+   "Cancel"
+  ],
+  "labels": [
+   "Area subselection: Range",
+   "In-line range: 200",
+   "650",
+   "Step: 1",
+   "Cross-line range: 500",
+   "1000",
+   "Step: 1"
+  ],
+  "field_values": [
+   "Area subselection: Range",
+   "In-line range: 200",
+   "650",
+   "Step: 1",
+   "Cross-line range: 500",
+   "1000",
+   "Step: 1",
+   "Elements: (empty)",
+   "Scene 1: checked",
+   "In-line: checked",
+   "Cross-line: checked",
+   "Z-slice: checked",
+   "Volume: checked",
+   "Random Line: checked",
+   "2D Line: checked",
+   "3D Horizon: checked",
+   "2D Horizon: checked",
+   "Fault: checked",
+   "FaultSet: checked",
+   "FaultStickSet: checked",
+   "Geobody: checked",
+   "Well: checked",
+   "PointSet: checked",
+   "Polygon: checked",
+   "Prestack Events: checked",
+   "Annotations: (empty)",
+   "Positions: (empty)"
+  ],
+  "visible_elements": [
+   "Tree scene 1",
+   "Elements",
+   "Color",
+   "Cross-line 0",
+   "Step 0",
+   "OD Seismic 1",
+   "Filter...",
+   "Area sub",
+   "select ...",
+   "ammo_2023\\Surfaces\\Demo_1_-_MFS4.hor",
+   "In-line",
+   "Cross-line",
+   "Time"
+  ],
+  "data_state": "3D seismic loaded",
+  "current_action": "specifying positions for horizon selection"
+ }
+}

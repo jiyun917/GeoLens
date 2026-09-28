@@ -35,7 +35,20 @@
       "parameters": [],
       "manual_sections": [
         "1.5.2a"
-      ]
+      ],
+      "linked_chunks": [
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "96f9818d6a5c407f8fa1680b0c46d947",
+        "8b94094f7d1c4086b197b16332a88e03"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "spectral_decomp_152a_02_select_horizon_dialog",
@@ -66,7 +79,20 @@
       "parameters": [],
       "manual_sections": [
         "1.5.2a"
-      ]
+      ],
+      "linked_chunks": [
+        "96f9818d6a5c407f8fa1680b0c46d947",
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "dc489c2441fe4b11ab8a370deb82991f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "spectral_decomp_152a_03_position_ranges_entered",
@@ -110,7 +136,20 @@
       ],
       "manual_sections": [
         "1.5.2a"
-      ]
+      ],
+      "linked_chunks": [
+        "3470801bd9364c85ab297ffe0259c396",
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "96f9818d6a5c407f8fa1680b0c46d947"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "spectral_decomp_152a_04_horizon_color_blended",
@@ -139,7 +178,20 @@
       "parameters": [],
       "manual_sections": [
         "1.5.2a"
-      ]
+      ],
+      "linked_chunks": [
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "96f9818d6a5c407f8fa1680b0c46d947",
+        "dc489c2441fe4b11ab8a370deb82991f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "spectral_decomp_152a_05_attribute_set_open",
@@ -171,7 +223,20 @@
       "parameters": [],
       "manual_sections": [
         "1.5.2a"
-      ]
+      ],
+      "linked_chunks": [
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "8b94094f7d1c4086b197b16332a88e03"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "spectral_decomp_152a_06_sd_24hz_added",
@@ -226,7 +291,20 @@
       ],
       "manual_sections": [
         "1.5.2a"
-      ]
+      ],
+      "linked_chunks": [
+        "3470801bd9364c85ab297ffe0259c396",
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "8b94094f7d1c4086b197b16332a88e03"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "spectral_decomp_152a_07_sd_44hz_added",
@@ -257,7 +335,20 @@
       ],
       "manual_sections": [
         "1.5.2a"
-      ]
+      ],
+      "linked_chunks": [
+        "3470801bd9364c85ab297ffe0259c396",
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "96f9818d6a5c407f8fa1680b0c46d947"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "spectral_decomp_152a_08_sd_64hz_added",
@@ -289,7 +380,20 @@
       ],
       "manual_sections": [
         "1.5.2a"
-      ]
+      ],
+      "linked_chunks": [
+        "3470801bd9364c85ab297ffe0259c396",
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "96f9818d6a5c407f8fa1680b0c46d947"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "spectral_decomp_152a_09_attribute_set_closed",
@@ -315,7 +419,20 @@
       "parameters": [],
       "manual_sections": [
         "1.5.2a"
-      ]
+      ],
+      "linked_chunks": [
+        "7d0c0f068b1946f9aaf4167cec829b28",
+        "dc489c2441fe4b11ab8a370deb82991f",
+        "96f9818d6a5c407f8fa1680b0c46d947"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     }
   ],
   "edges": [

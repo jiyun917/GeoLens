@@ -35,7 +35,20 @@
       "parameters": [],
       "manual_sections": [
         "★★☆ Follow Along: Finding the north-facing aspect"
-      ]
+      ],
+      "linked_chunks": [
+        "3e435105cef9498abc59998a3c714698",
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "02a5a3bf2dea48278e0268543de0d21f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_aspect_north_736_02_raster_calc_open",
@@ -73,7 +86,20 @@
       "parameters": [],
       "manual_sections": [
         "★★☆ Follow Along: Finding the north-facing aspect"
-      ]
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "3e435105cef9498abc59998a3c714698",
+        "02a5a3bf2dea48278e0268543de0d21f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_aspect_north_736_03_expression_entered",
@@ -103,7 +129,20 @@
       ],
       "manual_sections": [
         "★★☆ Follow Along: Finding the north-facing aspect"
-      ]
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "3e435105cef9498abc59998a3c714698",
+        "02a5a3bf2dea48278e0268543de0d21f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_aspect_north_736_04_reference_layer_set",
@@ -132,7 +171,20 @@
       ],
       "manual_sections": [
         "★★☆ Follow Along: Finding the north-facing aspect"
-      ]
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "3e435105cef9498abc59998a3c714698",
+        "02a5a3bf2dea48278e0268543de0d21f"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_aspect_north_736_05_output_set",
@@ -162,7 +214,20 @@
       ],
       "manual_sections": [
         "★★☆ Follow Along: Finding the north-facing aspect"
-      ]
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "02a5a3bf2dea48278e0268543de0d21f",
+        "3e435105cef9498abc59998a3c714698"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     },
     {
       "id": "qgis_aspect_north_736_06_ran_layer_added",
@@ -185,7 +250,20 @@
       "parameters": [],
       "manual_sections": [
         "★★☆ Follow Along: Finding the north-facing aspect"
-      ]
+      ],
+      "linked_chunks": [
+        "f9cdc69fa6714b248ae26b7642c69c61",
+        "02a5a3bf2dea48278e0268543de0d21f",
+        "3e435105cef9498abc59998a3c714698"
+      ],
+      "linked_chunks_provenance": {
+        "index": "chromadb_v4",
+        "embed_model": "BAAI/bge-m3",
+        "mapped_on": "2026-09-28",
+        "mechanism": "chunk_mapper.map_node_to_chunks top-3 (section provenance first)",
+        "previous_ids": [],
+        "previous_ids_resolved": 0
+      }
     }
   ],
   "edges": [

@@ -1,0 +1,92 @@
+{
+ "scenario_id": "qgis__custom_projection__01",
+ "step_index": 3,
+ "screenshot_path": "data/eval/screenshots/qgis__custom_projection__01/step_3.jpg",
+ "sha256": "c4cd3bf750d79a3e1994809596cdcd7515e0884e2c884afcff74b84e77fdf05a",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Options — User Defined CRS",
+  "window_titles": [
+   "Options — User Defined CRS",
+   "Untitled Project - QGIS"
+  ],
+  "active_menu": "User Defined",
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Validate",
+   "OK",
+   "Cancel",
+   "Help"
+  ],
+  "labels": [
+   "You can define your own custom Coordinate Reference System (CRS) here. The definition must conform to a WKT or Proj string format for specifying a CRS.",
+   "Name",
+   "Parameters",
+   "Definition",
+   "Format (WKT (Recommended))",
+   "Parameters",
+   "Test"
+  ],
+  "field_values": [
+   "Name: Van der Gri...",
+   "Format: WKT (Recommended)"
+  ],
+  "visible_elements": [
+   "Layers panel",
+   "oceans (checked)",
+   "General",
+   "System",
+   "User Profiles",
+   "CRS and Transforms",
+   "CRS Handling",
+   "Coordinate T",
+   "User Defined",
+   "Data Sources",
+   "GDAL",
+   "Rendering",
+   "Vector",
+   "Raster",
+   "Canvas & Legend",
+   "Map Tools",
+   "Digitizing",
+   "Elevation",
+   "3D",
+   "Colors",
+   "Fonts",
+   "Layouts",
+   "Variables",
+   "Authentication",
+   "Network",
+   "GPS",
+   "GPSBabel",
+   "Locator",
+   "Acceleration",
+   "Processing",
+   "IDE",
+   "Type to locate (Ctrl+K): (empty)",
+   "Coordinate: -77.2°, -170.8°",
+   "Scale: 1:95263976",
+   "Magnifier: 100%",
+   "Rotation: 0,0 °",
+   "Render (checked)",
+   "EPSG:4326"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "defining a user-defined Coordinate Reference System"
+ }
+}

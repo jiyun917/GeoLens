@@ -1,0 +1,75 @@
+{
+ "scenario_id": "qgis__custom_projection__01",
+ "step_index": 8,
+ "screenshot_path": "data/eval/screenshots/qgis__custom_projection__01/step_8.jpg",
+ "sha256": "5cef160d3a808a82d1f5d859f83aa14ae387a71b06e472c319107ed047bfa4a9",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "*Untitled Project - QGIS",
+  "window_titles": [
+   "*Untitled Project - QGIS"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "Layers",
+   "oceans (checked)",
+   "Coordinate: 82014073, -11191302",
+   "Scale: 1:57344704",
+   "Magnifier: 100%",
+   "Rotation: 0.0 °",
+   "Render (checked)",
+   "USER:100000"
+  ],
+  "field_values": [
+   "Type to locate (Ctrl+K): (empty)",
+   "oceans: checked",
+   "Coordinate: 82014073, -11191302",
+   "Scale: 1:57344704",
+   "Magnifier: 100%",
+   "Rotation: 0.0 °",
+   "Render: checked",
+   "USER:100000"
+  ],
+  "visible_elements": [
+   "Layers panel",
+   "oceans (layer in Layers panel)",
+   "Toolbar: Project",
+   "Toolbar: Map Navigation",
+   "Toolbar: Attributes",
+   "Toolbar: Selection",
+   "Toolbar: Digitizing",
+   "Toolbar: Advanced Digitizing",
+   "Toolbar: Shape Digitizing",
+   "Toolbar: Data Source Manager",
+   "Toolbar: Label Toolbar",
+   "Toolbar: Plugins",
+   "Toolbar: Processing",
+   "Toolbar: Web",
+   "Toolbar: Vector",
+   "Toolbar: Raster",
+   "Toolbar: Database",
+   "Toolbar: Mesh",
+   "Toolbar: Help",
+   "Map canvas showing a world map"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "viewing map"
+ }
+}

@@ -52,6 +52,9 @@ MANUALS = {
     # study 3 (2026-09-22): linked at authoring time (lesson of V3-32), before capture
     "study3_ot": (OPENDTECT_MANUAL, ["horizon_2dviewer_142b.json"]),
     "study3_qgis": (QGIS_MANUAL, ["qgis_rule_classification_335.json", "qgis_reclassify_7310.json"]),
+    # study 4 new capture set (2026-09-28): authored before capture; linked in the STAGING directory (--dir)
+    "study4_ot": (OPENDTECT_MANUAL, ["spectral_decomp_152a.json"]),
+    "study4_qgis": (QGIS_MANUAL, ["qgis_custom_projection_614.json", "qgis_aspect_north_736.json"]),
 }
 FILES = MANUALS["opendtect"][1]
 
@@ -92,6 +95,10 @@ SECTIONS = {
     "horizon_2dviewer_142b": {"*": ["1.4.2b"]},
     "qgis_rule_classification_335": {"*": ["★★★ Follow Along: Rule-based Classification"]},
     "qgis_reclassify_7310": {"*": ["★★☆ Follow Along: Reclassifying the Raster"]},
+    # study 4 new capture set
+    "spectral_decomp_152a": {"*": ["1.5.2a"]},
+    "qgis_custom_projection_614": {"*": ["★★★ Follow Along: Creating Your Own Projection"]},
+    "qgis_aspect_north_736": {"*": ["★★☆ Follow Along: Finding the north-facing aspect"]},
     # QGIS Training Manual 3.44 §6.2.6 "Follow Along: Analyzing the Problem: Distances
     # From Schools and Roads" (pp. 212-218) — the workflow file's own manual_reference.
     # The QGIS parser keeps section TITLES (with the manual's difficulty stars),
@@ -107,6 +114,7 @@ def main():
     ap.add_argument("--top-k", type=int, default=3)
     ap.add_argument("--report", default=None)
     ap.add_argument("--manual", default="opendtect", choices=sorted(MANUALS))
+    ap.add_argument("--dir", default="data/workflows", help="workflow directory (staging dir for study 4 drafts)")
     args = ap.parse_args()
     import time as _time
     t_start = _time.time()
@@ -129,7 +137,7 @@ def main():
              "Section provenance (v3): node.manual_sections restricts candidates to the node's source section(s) first (see SECTIONS in this script).",
              "", "| workflow | node | manual_sections | old ids resolve? | new chunk (section, p.) | distance |", "|---|---|---|---|---|---|"]
     for fn in files:
-        path = ROOT / "data" / "workflows" / fn
+        path = ROOT / args.dir / fn
         data = json.load(open(path, encoding="utf-8"))
         wf_secs = SECTIONS.get(data.get("workflow_id"), {})
         for node in data.get("nodes", []):
@@ -163,7 +171,7 @@ def main():
                 f.write("\n")
             print(f"[relink] wrote {fn}")
     elapsed = _time.time() - t_start
-    lines += ["", f"Wall-clock for this relink run (model load + {sum(len(json.load(open(ROOT / 'data' / 'workflows' / f, encoding='utf-8'))['nodes']) for f in files)} nodes): {elapsed:.1f} s."]
+    lines += ["", f"Wall-clock for this relink run (model load + {sum(len(json.load(open(ROOT / args.dir / f, encoding='utf-8'))['nodes']) for f in files)} nodes): {elapsed:.1f} s."]
     Path(report).write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
     print(f"[relink] report: {report}  elapsed={elapsed:.1f}s")

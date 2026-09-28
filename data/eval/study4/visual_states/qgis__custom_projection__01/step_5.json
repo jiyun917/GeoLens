@@ -1,0 +1,55 @@
+{
+ "scenario_id": "qgis__custom_projection__01",
+ "step_index": 5,
+ "screenshot_path": "data/eval/screenshots/qgis__custom_projection__01/step_5.jpg",
+ "sha256": "379ed1d1342bdf2f03d70f22a5af6676decddc44021118c32a8bbe6a096d347f",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "*Untitled Project - QGIS",
+  "window_titles": [
+   "*Untitled Project - QGIS"
+  ],
+  "active_menu": null,
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [],
+  "labels": [
+   "oceans (checked)",
+   "Scale 1:95263976",
+   "Magnifier 100%",
+   "Rotation 0,0 °",
+   "Render (checked)",
+   "EPSG:4326"
+  ],
+  "field_values": [
+   "Type to locate (Ctrl+K): (empty)",
+   "oceans: checked",
+   "Scale: 1:95263976",
+   "Magnifier: 100%",
+   "Rotation: 0,0 °",
+   "Render: checked",
+   "EPSG:4326: EPSG:4326"
+  ],
+  "visible_elements": [
+   "Layers",
+   "oceans (list entry)",
+   "Coordinate -77,2°, -170,8°"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "viewing map"
+ }
+}

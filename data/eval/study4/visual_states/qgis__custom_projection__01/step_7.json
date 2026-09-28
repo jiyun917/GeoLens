@@ -1,0 +1,85 @@
+{
+ "scenario_id": "qgis__custom_projection__01",
+ "step_index": 7,
+ "screenshot_path": "data/eval/screenshots/qgis__custom_projection__01/step_7.jpg",
+ "sha256": "d1028277e1e0c104354205686e0c8768de82001fb8474af196086c89db1913b8",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Project Properties — CRS",
+  "window_titles": [
+   "Project Properties — CRS",
+   "Untitled Project - QGIS"
+  ],
+  "active_menu": "CRS",
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "OK",
+   "Cancel",
+   "Apply",
+   "Help"
+  ],
+  "labels": [
+   "No CRS (or unknown/non-Earth projection)",
+   "Filter",
+   "Coordinate Reference System",
+   "Authority ID",
+   "Hide deprecated CRSs",
+   "Coordinate Reference System",
+   "Authority ID",
+   "Properties",
+   "WKT"
+  ],
+  "field_values": [
+   "No CRS (or unknown/non-Earth projection): unchecked",
+   "Filter: Van der Grinten",
+   "Recently Used Coordinate Reference Systems: (empty)",
+   "Predefined Coordinate Reference Systems: Projected, van der Grinten (I), Sphere_Van_der_Grinten_I, World_Van_der_Grinten_I, User-defined, Van der Grinten I",
+   "Hide deprecated CRSs: unchecked",
+   "Properties: • Units: meters\n• Static (relies on a datum which is plate-fixed)\n• Celestial body: Earth\n• Method: van der Grinten (I)",
+   "WKT: PROJCRS[\"unknown\",\nBASEGEOGCRS[\"unknown\",\nGEOGCRS[\"unknown\",\nDATUM[\"unknown\",\nELLIPSOID[\"unknown\",6371000,0,\nLENGTHUNIT[\"metre\",1]]],\nPRIMEM[\"Greenwich\",0,\nANGLEUNIT[\"degree\",0.0174532925199433]],\nID[\"EPSG\",4326]],\nCS[ellipsoidal,2],\nAXIS[\"latitude\",north,\nORDER[1],\nANGLEUNIT[\"degree\",0.0174532925199433]],\nAXIS[\"longitude\",east,\nORDER[2],\nANGLEUNIT[\"degree\",0.0174532925199433]]],\nCS[Cartesian,2],\nAXIS[\"easting\",east,\nORDER[1],\nLENGTHUNIT[\"metre\",1]],\nAXIS[\"northing\",north,\nORDER[2],\nLENGTHUNIT[\"metre\",1]]],\nPROJECTION[\"Van der Grinten\"],\nPARAMETER[\"False easting\",0,\nLENGTHUNIT[\"metre\",1]],\nPARAMETER[\"False northing\",0,\nLENGTHUNIT[\"metre\",1]],\nPARAMETER[\"Central meridian\",0,\nANGLEUNIT[\"degree\",0.0174532925199433]],\nID[\"USER\",100000]]"
+  ],
+  "visible_elements": [
+   "Layers panel",
+   "oceans (checked)",
+   "General (panel item)",
+   "Metadata (panel item)",
+   "View Settings (panel item)",
+   "CRS (panel item)",
+   "Transformations (panel item)",
+   "Colors (panel item)",
+   "Data Sources (panel item)",
+   "Relations (panel item)",
+   "Variables (panel item)",
+   "Macros (panel item)",
+   "QGIS Server (panel item)",
+   "Temporal (panel item)",
+   "Elevation (panel item)",
+   "Sensors (panel item)",
+   "Predefined Coordinate Reference Systems (list)",
+   "Projected (list item)",
+   "van der Grinten (I) (list item)",
+   "Sphere_Van_der_Grinten_I (list item)",
+   "World_Van_der_Grinten_I (list item)",
+   "User-defined (list item)",
+   "Van der Grinten I (list item, selected)",
+   "Map preview"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "configuring project coordinate reference system"
+ }
+}

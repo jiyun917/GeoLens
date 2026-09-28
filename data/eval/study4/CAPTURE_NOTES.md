@@ -1,6 +1,6 @@
 # Study 4 캡처 노트 (2026-09-28, 사용자 캡처 / 채팅 검증; 세션 기록)
 
-사용자가 24장(E 9, F 9, G 6)을 PNG로 캡처(창 캡처 1920×1032 또는 1922×1041). 재캡처 없음. 원본은 `originals_png/`, 벤치용 JPEG(quality 92)는 `data/eval/screenshots/<scenario_id>/step_N.jpg`(세션이 변환). 아래는 사용자가 적어 온 버전·데이터 차이이며, GT·signature 정정은 K1 절차(문자열만)와 GT 결정 로그(H-항목)로 처리한다.
+사용자가 24장(E 9, F 9, G 6)을 PNG로 캡처(창 캡처 1920×1032 또는 1922×1041). 재캡처 없음. 원본은 `originals_png/`, 벤치용 JPEG(quality 85 — 아래 참고)는 `data/eval/screenshots/<scenario_id>/step_N.jpg`(세션이 변환). 아래는 사용자가 적어 온 버전·데이터 차이이며, GT·signature 정정은 K1 절차(문자열만)와 GT 결정 로그(H-항목)로 처리한다.
 
 ## E — `opendtect__spectral_decomp__01` (OpendTect 7.0.9, F3 Demo 2023)
 - step_1: 대화상자 제목 **'Select Horizons'**(지시서·워크플로우: 'Select Input Horizon(s)'); Area subselection 기본값 '100/300-750/1250 (463 samples)' 표시.
@@ -24,3 +24,7 @@
 ## 처리 계획
 - K1(문자열만, 워크플로우 스테이징): E 노드 02 dialog 'Select Horizons', 03 'Positions'/'Specify Positions', 04 키워드 `<right-click>`·`Z values`; G 노드 02·04 'Reference layer(s)' → 'Input layers', '1 inputs selected' → '1 input selected', 03 'Expression is valid' 제거. 매뉴얼 이름은 별칭으로 남긴다(모델은 매뉴얼 이름으로 답할 수 있음).
 - GT(H-항목, 결정 로그): G s2 패턴에 'Input layer(s)' 추가(매뉴얼 'Reference layer'와 병기); E s3 시나리오 설명에 'Select RGB Attributes' 통과 사실 기재. 나머지 패턴·키워드 불변.
+
+## 벤치용 JPEG 품질 변경 (2026-09-28, 모델 실행 전)
+- 처음 study 3과 같은 quality 92로 변환했더니 `qgis__custom_projection__01/step_0.jpg`(세계지도, 대화상자 없음)에서 Flash 비전 호출이 응답을 끝내지 못했다(504 DEADLINE_EXCEEDED 180초; max_output_tokens=3000을 주면 2,990토큰을 채우고 잘못된 JSON — 모델의 반복 생성 루프). 같은 화면의 step_5(거의 동일한 화면)는 3.8초에 정상. quality 85 또는 1600px 축소로 다시 인코딩하면 4~5초에 정상 JSON.
+- 결정: 24장 모두 quality 85로 재인코딩(균일 적용, 원본 PNG 불변). 비전 캐시 24장 재생성. 이 문제는 이미지 바이트에 대한 모델 특이 반응이며 화면 내용과 무관하다. 본 실행 전 메커니즘에 비전 호출의 출력 상한·재인코딩 재시도(V1)를 추가할지 사전등록 5에서 결정한다.

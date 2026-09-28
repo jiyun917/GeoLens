@@ -1,0 +1,93 @@
+{
+ "scenario_id": "qgis__custom_projection__01",
+ "step_index": 4,
+ "screenshot_path": "data/eval/screenshots/qgis__custom_projection__01/step_4.jpg",
+ "sha256": "6d3291e30e1b73de4e7b8fdfdfe1bf8f1ac9e32bd1ad6eecc53d42371d1b3383",
+ "software_id": "qgis",
+ "vision_prompt": "v3",
+ "visual_state": {
+  "current_dialog": "Options — User Defined CRS",
+  "window_titles": [
+   "Options — User Defined CRS",
+   "*Untitled Project — QGIS"
+  ],
+  "active_menu": "User Defined",
+  "menu_items": [
+   "Project",
+   "Edit",
+   "View",
+   "Layer",
+   "Settings",
+   "Plugins",
+   "Vector",
+   "Raster",
+   "Database",
+   "Web",
+   "Mesh",
+   "Processing",
+   "Help"
+  ],
+  "buttons": [
+   "Validate",
+   "OK",
+   "Cancel",
+   "Help"
+  ],
+  "labels": [
+   "Name",
+   "Parameters",
+   "Definition",
+   "Format (WKT (Recommended))",
+   "Parameters",
+   "Test"
+  ],
+  "field_values": [
+   "Name: Van der Gri...",
+   "Parameters: PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"unknown\",ELLIPSOID[\"unknown\",6371000.0,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",8801]]...",
+   "Format: WKT (Recommended)",
+   "Parameters: PARAMETER[\"false easting\",0],\nLENGTHUNIT[\"metre\",1],\nID[\"EPSG\",8806]]\nPARAMETER[\"false northing\",0],\nLENGTHUNIT[\"metre\",1],\nID[\"EPSG\",8807]]],\nCS[Cartesian,2],\nAXIS[\"E\",east,\nORDER[1],\nLENGTHUNIT[\"metre\",1,\nID[\"EPSG\",9001]]],\nAXIS[\"N\",north,\nORDER[2],\nLENGTHUNIT[\"metre\",1,\nID[\"EPSG\",9001]]]]"
+  ],
+  "visible_elements": [
+   "Layers panel",
+   "oceans (checked)",
+   "General",
+   "System",
+   "User Profiles",
+   "CRS and Transforms",
+   "CRS Handling",
+   "Coordinate T",
+   "User Defined",
+   "Data Sources",
+   "GDAL",
+   "Rendering",
+   "Vector",
+   "Raster",
+   "Canvas & Legend",
+   "Map Tools",
+   "Digitizing",
+   "Elevation",
+   "3D",
+   "Colors",
+   "Fonts",
+   "Layouts",
+   "Variables",
+   "Authentication",
+   "Network",
+   "GPS",
+   "GPSBabel",
+   "Locator",
+   "Acceleration",
+   "Processing",
+   "IDE",
+   "Code Editor",
+   "Coordinate: -77.2°, -17.0°",
+   "Scale 1:95263976",
+   "Magnifier 100%",
+   "Rotation 0.0 °",
+   "Render (checked)",
+   "EPSG:4326"
+  ],
+  "data_state": "vector layers loaded",
+  "current_action": "defining a custom Coordinate Reference System"
+ }
+}
