@@ -10,9 +10,12 @@ LOG="data/eval/results/study5_select.log"
 OT_DIR="data/eval/scenarios/.study5_test_opendtect"
 QG_DIR="data/eval/scenarios/.study5_test_qgis"
 PASSES="${PASSES:-opendtect,qgis}"
+# study 5: the three new workflows live in the staging pool until the study-4 main run releases data/workflows
+POOL="${POOL:-data/eval/study4/pool_staging}"
+export WORKFLOW_DATA_PATH="$POOL"
 for pass in ${PASSES//,/ }; do
   d=$OT_DIR; [ "$pass" = qgis ] && d=$QG_DIR
-  $PY scripts/preflight_check.py --scenarios "$d" --expect GEOLENS_SCORER=v6 GEN_PROMPT_VERSION=v3 --allow-dirty || { echo "preflight failed for $d" | tee -a "$LOG"; exit 2; }
+  $PY scripts/preflight_check.py --scenarios "$d" --pool "$POOL" --expect GEOLENS_SCORER=v6 GEN_PROMPT_VERSION=v3 --allow-dirty || { echo "preflight failed for $d" | tee -a "$LOG"; exit 2; }
 done
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) === study5 selection kickoff === git $(git rev-parse --short HEAD)" | tee -a "$LOG"
 for pass in ${PASSES//,/ }; do

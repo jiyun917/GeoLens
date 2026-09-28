@@ -41,6 +41,7 @@ def main():
     ap.add_argument("--scenarios", default=None, help="scenario directory to check (default: skip S1)")
     ap.add_argument("--expect", nargs="*", default=[], help="KEY=VAL pins that must match os.environ")
     ap.add_argument("--allow-dirty", action="store_true")
+    ap.add_argument("--pool", default="data/workflows", help="routing pool directory (study 5: a staging pool while another run holds data/workflows)")
     ap.add_argument("--distractor", nargs="*", default=["auto_*"],
                     help="workflow-id globs that are frozen distractors (dangling links tolerated, reported as notes); default auto_* = the QGIS auto-generated workflow left untouched since v3 (V3-9)")
     args = ap.parse_args()
@@ -48,7 +49,7 @@ def main():
     from api.services import vectorstore
     # ── workflows ──
     pool = {}
-    for f in sorted(glob.glob("data/workflows/*.json")):
+    for f in sorted(glob.glob(os.path.join(args.pool, "*.json"))):
         wf = json.load(open(f, encoding="utf-8")); wid = wf.get("workflow_id") or Path(f).stem
         pool[wid] = wf
         ids = {n["id"] for n in wf.get("nodes", [])}
