@@ -1,0 +1,747 @@
+{
+  "scenario_id": "opendtect__attribute_computation__01",
+  "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+  "manual_name": "OpendTect 7.0 Training Manual",
+  "manual_reference": "1.5.1a Bright Spot, steps 1–9 (attribute definition and on-the-fly inline display; color-bar edit and volume rendering from p.121 onward are out of scope for this scenario)",
+  "category": "attribute",
+  "difficulty": "hard",
+  "language": "ko",
+  "goal": "F3 Demo survey에서 Energy 속성을 정의하고 In-line 250에 on-the-fly로 표시한다. 매뉴얼 1.5.1a에 따라 툴바의 Attribute 3D 아이콘으로 Attribute Set 3D 창을 연 뒤, Energy 유형을 선택하고 Input Data는 4 Dip steered median filter, Time gate는 [-28,+28], Compute gradient는 No, 속성 이름은 'Energy [-28,+28]'로 설정한다. Add as new 클릭 → Save on Close 체크 → Close로 창을 닫으면 attribute set 저장 다이얼로그가 뜨며 'my first attribute set' 이름을 입력하고 OK. Tree scene에서 In-line 카테고리에 Add Default Data로 기본 seismic을 표시한 뒤 inline 번호를 250으로 변경한다. 표시된 inline 번호를 우클릭하여 Add > Attribute를 선택하고 Attributes 카테고리(on-the-fly)에서 'Energy [-28,+28]'를 선택 → OK. Inline 250에 Energy 속성이 색상 매핑되어 표시되면 목표 달성 (매뉴얼 120쪽 결과 이미지 상태).",
+  "initial_state": {
+    "description": "F3 Demo survey 활성화. 4 Dip steered median filter seismic 볼륨 접근 가능. OpendTect Main Window 표시. 아직 attribute set 도구는 열려 있지 않음. Tree scene의 Attributes 카테고리는 비어 있음 (사용자 정의 속성 없음).",
+    "must_be_true": [
+      "OpendTect Main Window is loaded with F3 Demo survey active",
+      "'4 Dip steered median filter' cube is accessible in Tree scene (Elements or Volume)",
+      "No Attribute Set 3D window is open yet",
+      "Attributes category in Tree scene has no user-defined attributes yet",
+      "No Batch Processing dialog is open"
+    ]
+  },
+  "steps": [
+    {
+      "step_index": 0,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_0.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Attribute Set 3D",
+        "visible_elements": [
+          "Attribute Set 3D window (freshly opened, empty attribute set)",
+          "Attribute Type dropdown (default entry visible)",
+          "Input Data selector (empty or default)",
+          "Attribute Name field (blank)",
+          "Add as new button",
+          "Save on Close checkbox (unchecked)",
+          "Close button",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+          "Survey",
+          "Analysis",
+          "Processing",
+          "View",
+          "Utilities",
+          "TerraNubis",
+          "Help",
+          "File",
+          "Step 4",
+          "Z 924",
+          "-9968",
+          "OD Seismic 1",
+          "Attribute set (<not saved>)",
+          "<All>",
+          "Similarity",
+          "Input Data (Seismic_data)",
+          "Time gate (ms) (-28)",
+          "Extension (Cross)",
+          "Stepout (inl: 1)",
+          "crl: 1",
+          "Steering (None)",
+          "Output statistic (Average)",
+          "Elements",
+          "In-line",
+          "425",
+          "Cross-line",
+          "775",
+          "Z-slice",
+          "Volume",
+          "343-506 / 656-893 / 69...",
+          "<right-click>",
+          "Random Line",
+          "2D Line",
+          "3D Horizon",
+          "2D Horizon",
+          "FaultSet",
+          "FaultStickSet",
+          "Geobody",
+          "Well",
+          "PointSet",
+          "Polygon",
+          "Prestack Events",
+          "Annotations",
+          "Save on Close (checked)",
+          "Tree scene 1",
+          "Color",
+          "1200",
+          "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+          "[free mem] 101.4/127.8 GB"
+        ],
+        "data_state": "Attribute Set 3D just opened via toolbar Attribute 3D icon; no attribute defined yet. Parameter panel is active and pre-filled with the default attribute type (Similarity) parameters.",
+        "current_action": "user is about to choose an Attribute Type",
+        "_gt_provenance": "v3: 8 authored + 50 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 57 items"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Energy|Attribute Type|Similarity|Bright Spot|type|dropdown|선택)\\b",
+      "expected_action_keywords": [
+        "Energy",
+        "Attribute Type"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Select|Choose|Pick).*(type|Energy|Attribute)\\b",
+          "note": "Selection verb + target."
+        }
+      ],
+      "expected_workflow_node": "seismic_attribute_02_open_attribute_tool",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Attribute Set 3D window OPEN (via toolbar Attribute 3D icon). Empty attribute set. Attribute Type dropdown at its default entry. Input Data selector visible but empty/default. Parameter panel blank.",
+        "user_should_have_just": "Clicked the Attribute 3D toolbar icon (per manual §1.5.1a step 1) to open the Attribute Set 3D window.",
+        "must_not_show": [
+          "Attribute Type already changed to Energy (that's step 1)",
+          "Any parameter filled in",
+          "Attribute already added to the set list"
+        ]
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 1,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_1.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Attribute Set 3D",
+        "visible_elements": [
+          "Attribute Set 3D window",
+          "Attribute Type = Energy (selected)",
+          "Input Data = 4 Dip steered median filter (selected)",
+          "Energy-specific parameter panel now visible",
+          "Time gate field (default values, not yet edited)",
+          "Compute gradient toggle (default No)",
+          "Attribute Name field (blank or 'Energy' default)",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+          "Survey",
+          "Analysis",
+          "Processing",
+          "View",
+          "Utilities",
+          "TerraNubis",
+          "Help",
+          "File",
+          "Step 4",
+          "SEG-Y",
+          "Add as new",
+          "Close",
+          "Z 924",
+          "-9968",
+          "OD Seismic 1",
+          "Attribute set (<not saved>)",
+          "<All>",
+          "Input Data (Seismic_data)",
+          "Time gate (ms) (-28)",
+          "Output (Energy)",
+          "Tree scene 1",
+          "Elements",
+          "In-line",
+          "425",
+          "Cross-line",
+          "775",
+          "Z-slice",
+          "Volume",
+          "343-506 / 656-893 / 69...",
+          "<right-click>",
+          "Random Line",
+          "2D Line",
+          "3D Horizon",
+          "2D Horizon",
+          "FaultSet",
+          "FaultStickSet",
+          "Geobody",
+          "Well",
+          "PointSet",
+          "Polygon",
+          "Prestack Events",
+          "Annotations",
+          "Yes",
+          "Color",
+          "1200",
+          "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+          "[free mem] 101.5/127.8 GB"
+        ],
+        "data_state": "Energy type chosen; Input Data linked to 4 Dip steered median filter; parameters still at defaults (Time gate not yet edited to -28..+28)",
+        "current_action": "user is about to enter Time gate and Attribute Name",
+        "_gt_provenance": "v3: 7 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 55 items"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Time gate|-?28|Attribute Name|이름|입력|Enter)\\b",
+      "expected_action_keywords": [
+        "Time gate"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(입력|Enter|설정|Set).*(Time gate|Name|이름)\\b",
+          "note": "Enter/set verb + target."
+        },
+        {
+          "pattern": "(?i)\\b(Compute gradient)\\b",
+          "note": "Compute gradient parameter is a valid focus (kept at No)."
+        }
+      ],
+      "expected_workflow_node": "seismic_attribute_03_select_type",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Attribute Set 3D with Attribute Type = Energy AND Input Data = 4 Dip steered median filter. Time gate field visible at default values (NOT yet edited to -28..+28). Compute gradient at default No. Attribute Name blank or 'Energy' placeholder.",
+        "user_should_have_just": "Selected Energy from Attribute Type dropdown AND set Input Data to 4 Dip steered median filter (per manual §1.5.1a step 2, before entering custom values).",
+        "must_not_show": [
+          "Time gate already edited to -28..+28 (that's step 2)",
+          "Attribute Name 'Energy [-28,+28]' already typed",
+          "Non-Energy attribute type",
+          "Missing Input Data selection"
+        ]
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 2,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_2.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Attribute Set 3D",
+        "visible_elements": [
+          "Attribute Set 3D window",
+          "Attribute Type = Energy",
+          "Time gate (ms) (-28, 28)",
+          "Compute gradient = No",
+          "Attribute Name field = 'Energy [-28,+28]'",
+          "Add as new button (highlighted / ready)",
+          "Save on Close checkbox (unchecked at this step)",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+          "Survey",
+          "Analysis",
+          "Processing",
+          "View",
+          "Utilities",
+          "TerraNubis",
+          "Help",
+          "File",
+          "Step 4",
+          "SEG-Y",
+          "Select ...",
+          "Z (924)",
+          "-9968",
+          "OD Seismic 1",
+          "Attribute set (<not saved>)",
+          "<All>",
+          "Input Data (Seismic_data)",
+          "Time gate (ms)",
+          "Output (Energy)",
+          "Attribute Name (Energy [-28,+28])",
+          "Elements",
+          "In-line",
+          "425",
+          "Cross-line",
+          "775",
+          "Z-slice",
+          "Volume",
+          "343-506 / 656-893 / 69...",
+          "<right-click>",
+          "Random Line",
+          "2D Line",
+          "3D Horizon",
+          "2D Horizon",
+          "Fault",
+          "Geobody",
+          "Well",
+          "PointSet",
+          "Polygon",
+          "Prestack Events",
+          "Annotations",
+          "Yes",
+          "Save on Close (checked)",
+          "Tree scene 1",
+          "Color",
+          "1200",
+          "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+          "[free mem] 101.5/127.8 GB"
+        ],
+        "data_state": "All Energy parameters entered per manual (Time gate -28..+28, Compute gradient No, Attribute Name 'Energy [-28,+28]'); ready to click Add as new",
+        "current_action": "user is about to click Add as new",
+        "_gt_provenance": "v3: 8 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 55 items"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Add as new|Add|추가|new)\\b",
+      "expected_action_keywords": [
+        "Add as new"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Add)\\b",
+          "note": "The Add / 'Add as new' button commits this attribute to the set."
+        }
+      ],
+      "expected_workflow_node": "seismic_attribute_04_configure",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Attribute Set 3D with Time gate = -28..+28 typed in AND Attribute Name = 'Energy [-28,+28]' typed in. Add as new button visible and NOT yet clicked. Save on Close checkbox unchecked at this point.",
+        "user_should_have_just": "Typed -28 and +28 into Time gate AND typed 'Energy [-28,+28]' into Attribute Name.",
+        "must_not_show": [
+          "Attribute already appearing in the left set list (that's step 3)",
+          "Save on Close already checked",
+          "Attribute Set save dialog"
+        ]
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 3,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_3.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Attribute Set 3D",
+        "visible_elements": [
+          "Attribute Set 3D window",
+          "Attribute list panel (left) showing 'Energy [-28,+28]' entry (just added)",
+          "Save on Close checkbox = CHECKED",
+          "Close button",
+          "Save as (icon)",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+          "Survey",
+          "Analysis",
+          "Processing",
+          "View",
+          "Utilities",
+          "TerraNubis",
+          "Help",
+          "File",
+          "Step 4",
+          "SEG-Y",
+          "Select ...",
+          "Add as new",
+          "Z (924)",
+          "-9968",
+          "OD Seismic 1",
+          "Attribute set (<not saved>)",
+          "<All>",
+          "Input Data (Seismic_data)",
+          "Time gate (ms) (-28, 28)",
+          "Output (Energy)",
+          "Attribute Name (Energy [-28,+28])",
+          "Elements",
+          "In-line",
+          "425",
+          "Cross-line",
+          "775",
+          "Z-slice",
+          "Volume",
+          "343-506 / 656-893 / 69...",
+          "<right-click>",
+          "Random Line",
+          "2D Line",
+          "3D Horizon",
+          "2D Horizon",
+          "Fault",
+          "Geobody",
+          "Well",
+          "PointSet",
+          "Polygon",
+          "Prestack Events",
+          "Annotations",
+          "Save on Close (checked)",
+          "Compute gradient",
+          "Yes (unchecked)",
+          "No (checked)",
+          "Tree scene 1",
+          "Color",
+          "1200",
+          "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+          "[free mem] 101.6/127.8 GB"
+        ],
+        "data_state": "Energy attribute added to set (visible in list). Save on Close checked so closing the window will trigger the attribute-set save dialog.",
+        "current_action": "user is about to click Close to trigger the save dialog",
+        "_gt_provenance": "v3: 5 authored + 51 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 56 items"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Close|Save on Close|Save|닫기|저장)\\b",
+      "expected_action_keywords": [
+        "Close"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Save on Close)\\b",
+          "note": "Confirming the checkbox is set is acceptable."
+        }
+      ],
+      "expected_workflow_node": "seismic_attribute_04_configure",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Attribute Set 3D with 'Energy [-28,+28]' visible in the left attribute list AND Save on Close checkbox CHECKED. Close button visible.",
+        "user_should_have_just": "Clicked Add as new AND checked the Save on Close checkbox (per manual §1.5.1a step 3-4).",
+        "must_not_show": [
+          "Left attribute list still empty",
+          "Save on Close checkbox unchecked",
+          "Save Attribute Set dialog already open (that's step 4)"
+        ]
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 4,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_4.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Save Attribute Set (attribute-set naming dialog)",
+        "visible_elements": [
+          "Save Attribute Set dialog (triggered by Save on Close + Close)",
+          "Name (my first attribute set)",
+          "OK",
+          "Cancel button",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+          "Attribute Set 3D",
+          "Save Attribute as",
+          "Survey",
+          "Analysis",
+          "Processing",
+          "View",
+          "Utilities",
+          "TerraNubis",
+          "Help",
+          "SEG-Y",
+          "Select ...",
+          "Add as new",
+          "Tree scene 1",
+          "Z (924)",
+          "Step (4)",
+          "Attribute set (<not saved>)",
+          "<All>",
+          "Energy",
+          "Filter",
+          "Elements",
+          "Color",
+          "In-line",
+          "425",
+          "Cross-line",
+          "775",
+          "Z-slice",
+          "Volume",
+          "343-506 / 656-893 / 69...",
+          "<right-click>",
+          "Random Line",
+          "2D Line",
+          "3D Horizon",
+          "2D Horizon",
+          "Fault",
+          "Geobody",
+          "Well",
+          "PointSet",
+          "Polygon",
+          "Prestack Events",
+          "Annotations",
+          "-9968",
+          "OD Seismic 1",
+          "File",
+          "1200",
+          "Inl: 343-506, Crl: 656-893, Time: 696-1156",
+          "[free mem] 101.3/127.8 GB"
+        ],
+        "data_state": "Attribute-set save dialog is open. User has typed 'my first attribute set' as the set name. OK not yet clicked.",
+        "current_action": "user is about to click OK to save the attribute set",
+        "_gt_provenance": "v3: 4 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 51 items"
+      },
+      "expected_action_text_pattern": "(?i)\\b(OK|Save|저장|확인|my first attribute set)\\b",
+      "expected_action_keywords": [
+        "OK"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Save|확인)\\b",
+          "note": "OK/Save/확인 all commit the save."
+        }
+      ],
+      "expected_workflow_node": "seismic_attribute_04_configure",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "Save Attribute Set dialog OPEN with Name field showing 'my first attribute set'. OK button visible and NOT yet clicked.",
+        "user_should_have_just": "Clicked Close on Attribute Set 3D (Save on Close was checked) which triggered the save dialog, then typed 'my first attribute set' into the Name field.",
+        "must_not_show": [
+          "Name field empty or a different name",
+          "Attribute Set 3D window still open behind the dialog"
+        ]
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 5,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_5.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window (In-line default data added via right-click Add Default Data, inline position 250)",
+        "active_menu": "Tree scene In-line context (Add Default Data just used)",
+        "visible_elements": [
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+          "Tree scene: In-line category with child node (inline 250) — result of right-click Add Default Data",
+          "3D Scene showing an In-line slice at inline position 250 (Seismic_data / f3_demo default)",
+          "No attribute overlay on the inline yet",
+          "Survey",
+          "Analysis",
+          "Processing",
+          "View",
+          "Utilities",
+          "TerraNubis",
+          "Help",
+          "SEG-Y",
+          "Step (1)",
+          "OD Seismic 1",
+          "Elements",
+          "425",
+          "Cross-line",
+          "775",
+          "Z-slice",
+          "924",
+          "Volume",
+          "343-506 / 656-893 / 69...",
+          "Random Line",
+          "2D Line",
+          "3D Horizon",
+          "2D Horizon",
+          "FaultSet",
+          "FaultStickSet",
+          "Geobody",
+          "Well",
+          "PointSet",
+          "Polygon",
+          "Prestack Events",
+          "Annotations",
+          "-9968",
+          "Tree scene 1",
+          "Color",
+          "200",
+          "400",
+          "600",
+          "800",
+          "1000",
+          "500",
+          "Time",
+          "[free mem] 101.5/127.8 GB"
+        ],
+        "data_state": "User performed Tree scene In-line right-click → Add Default Data to add the base Seismic_data / f3_demo inline, then changed inline position to 250. This is the d3_visualization primitive that prepares the display target; no attribute rendered yet. Attribute Set 3D window is closed.",
+        "current_action": "user is about to right-click the inline number 250 to open Add > Attribute submenu for on-the-fly Energy overlay",
+        "_gt_provenance": "v3: 5 authored + 42 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 45 items"
+      },
+      "expected_action_text_pattern": "(?i)\\b(우클릭|right[- ]?click|Add.*Attribute|In[- ]?line|inline)\\b",
+      "expected_action_keywords": [
+        "Add",
+        "Attribute"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(우클릭|right[- ]?click).*(In[- ]?line|250|inline)\\b",
+          "note": "Right-click on inline number is the correct next action."
+        },
+        {
+          "pattern": "(?i)\\b(Add).*(Attribute)\\b",
+          "note": "Submenu path Add > Attribute."
+        }
+      ],
+      "expected_workflow_node": "seismic_attribute_06_display",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "OpendTect Main Window post-attribute-set-save. In-line child node exists in Tree scene under In-line category. 3D Scene shows In-line slice at position 250 with base seismic (no attribute overlay yet). NO attribute overlay on the slice.",
+        "user_should_have_just": "Clicked OK on the Save Attribute Set dialog, then Tree scene → In-line right-click → Add Default Data, then changed inline position to 250 (per manual §1.5.1a steps 6-7).",
+        "must_not_show": [
+          "Energy attribute already rendered on the inline (that's step 7 goal)",
+          "Attribute Set 3D window still open",
+          "Save dialog still open",
+          "No In-line child present"
+        ],
+        "routing_note": "The captured state is the result of a d3_visualization primitive (Add Default Data on In-line) but its PURPOSE is to prepare a display target for the Energy attribute overlay. Router (after node signature expansion) picks seismic_attribute_06_display which retrieves attribute-overlay-preparation context — the correct RAG context for the next-step instruction. This is deliberate and reflected in expected_workflow_node."
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 6,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_6.jpg",
+      "visual_state_gt": {
+        "current_dialog": "Select (dialog with 'Select Layer 2' label)",
+        "visible_elements": [
+          "Select dialog (title 'Select', label 'Select Layer 2')",
+          "Left panel: radio buttons — Stored / Steering / Attributes — Attributes selected (on-the-fly)",
+          "Right panel: entry list showing 'Energy [-28,+28]'",
+          "OK button, Cancel button, Help button",
+          "Underlying: In-line slice at 250 still visible in 3D Scene",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+          "Survey",
+          "Analysis",
+          "Processing",
+          "View",
+          "Utilities",
+          "TerraNubis",
+          "SEG-Y",
+          "Tree scene 1",
+          "In-line (250)",
+          "Step (1)",
+          "-9968",
+          "OD Seismic 1",
+          "Filter",
+          "Elements",
+          "Color",
+          "<right-click>",
+          "425",
+          "Cross-line",
+          "775",
+          "Z-slice",
+          "924",
+          "Volume",
+          "343-506 / 656-893 / 69...",
+          "Random Line",
+          "2D Line",
+          "3D Horizon",
+          "2D Horizon",
+          "Fault",
+          "Geobody",
+          "Well",
+          "PointSet",
+          "Polygon",
+          "Prestack Events",
+          "Annotations",
+          "200",
+          "400",
+          "500",
+          "1000",
+          "Time",
+          "[free mem] 101.4/127.8 GB"
+        ],
+        "data_state": "User right-clicked the inline number and chose Add > Attribute; the Select dialog is open with the Attributes radio (on-the-fly) selected on the left and 'Energy [-28,+28]' listed on the right.",
+        "current_action": "user is about to click 'Energy [-28,+28]' and OK to render the attribute",
+        "_gt_provenance": "v3: 5 authored + 41 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 46 items"
+      },
+      "expected_action_text_pattern": "(?i)\\b(Energy|Attributes|Select|OK|선택|\\[-28,\\+28\\])\\b",
+      "expected_action_keywords": [
+        "Select",
+        "Attributes",
+        "Energy [-28,+28]"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Select|Click|Choose).*(Energy)\\b",
+          "note": "Select verb + target."
+        },
+        {
+          "pattern": "(?i)\\b(Attributes.*radio|on[- ]?the[- ]?fly)\\b",
+          "note": "Attributes radio (on-the-fly) mention."
+        }
+      ],
+      "expected_workflow_node": "seismic_attribute_06_display",
+      "is_error_recovery_test": false,
+      "capture_instructions": {
+        "screen_state": "'Select' dialog OPEN (label 'Select Layer 2'). Left panel radio button 'Attributes' is selected (on-the-fly path). Right panel lists 'Energy [-28,+28]'. OK/Cancel/Help visible. User has NOT yet clicked OK. The inline slice at 250 is visible behind the dialog (still without attribute overlay).",
+        "user_should_have_just": "Right-clicked on the inline number in Tree scene and chose Add > Attribute — the Select dialog opened.",
+        "must_not_show": [
+          "Energy attribute already rendered on the inline (that's step 7)",
+          "'Stored' or 'Steering' radio selected (Attributes/on-the-fly must be selected)",
+          "Dialog closed"
+        ]
+      },
+      "capture_required": true
+    },
+    {
+      "step_index": 7,
+      "screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_7.jpg",
+      "visual_state_gt": {
+        "current_dialog": "OpendTect Main Window — Energy attribute layer rendered on In-line 250",
+        "visible_elements": [
+          "3D Scene: In-line slice at position 250 rendered with Energy attribute color mapping (bright-spot highlights visible)",
+          "Color bar visible (Energy palette)",
+          "Tree scene: In-line > 250 branch expanded with two child layers listed side by side: '4 Dip steered median filter' (base) and 'Energy [-28,+28]' (on-the-fly attribute) — each with its own checkbox",
+          "Energy [-28,+28] (checked)",
+          "OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : seismic_data - [Scene 1]",
+          "Survey",
+          "Analysis",
+          "Processing",
+          "View",
+          "Utilities",
+          "TerraNubis",
+          "Help",
+          "SEG-Y",
+          "Step 1",
+          "7.7334e+07",
+          "OD Seismic 1",
+          "Elements",
+          "Annotations",
+          "Scene 1 (checked)",
+          "In-line (checked)",
+          "250 (checked)",
+          "Seismic_data (checked)",
+          "425 (checked)",
+          "Cross-line (checked)",
+          "775 (checked)",
+          "Z-slice (checked)",
+          "924 (checked)",
+          "Volume (checked)",
+          "343-506 / 656-893 / 69... (checked)",
+          "<right-click> (unchecked)",
+          "Random Line (checked)",
+          "2D Line (checked)",
+          "3D Horizon (checked)",
+          "2D Horizon (checked)",
+          "Fault (checked)",
+          "FaultSet (checked)",
+          "FaultStickSet (checked)",
+          "Geobody (checked)",
+          "Well (checked)",
+          "PointSet (checked)",
+          "Polygon (checked)",
+          "Prestack Events (checked)",
+          "Tree scene 1",
+          "Time",
+          "500",
+          "1000",
+          "200",
+          "400",
+          "600",
+          "800",
+          "[free mem] 101.4/127.8 GB"
+        ],
+        "data_state": "Goal achieved — Energy attribute computed on-the-fly and added as a layer under In-line > 250 alongside the base '4 Dip steered median filter' layer. On-the-fly attributes appear as inline-scoped layers, NOT under a separate top-level Attributes category (that only happens for stored volumes from the batch path). Matches manual §1.5.1a page-120 result image (bright-spot targets visible as high-energy zones).",
+        "current_action": "goal complete — model should emit '완료'",
+        "_gt_provenance": "v3: 4 authored + 48 vision-enumerated (gemini-2.5-pro, temperature 0, 2026-09-18); finalized 2026-09-18 (external review, screenshot comparison): 51 items"
+      },
+      "expected_action_text_pattern": "(?i)^\\s*(완료|Done)\\.?\\s*$",
+      "expected_action_keywords": [
+        "완료"
+      ],
+      "allowed_alternatives": [
+        {
+          "pattern": "(?i)\\b(Done)\\b",
+          "note": "English completion sentinel"
+        },
+        {
+          "pattern": "(?i)\\b(Energy|attribute|Color Bar|In[- ]?line|inline|250|layer)\\b",
+          "note": "Ground-truth element mention for the grounding validator."
+        }
+      ],
+      "expected_workflow_node": "seismic_attribute_06_display",
+      "is_error_recovery_test": false,
+      "trap": {
+        "type": "goal_completion_sentinel",
+        "description": "Energy attribute has been computed on-the-fly AND rendered as a layer under In-line > 250 (alongside the base '4 Dip steered median filter' layer) with color bar visible. Goal achieved (matches manual §1.5.1a's target end state at page 120). Model MUST emit '완료' as the sole response. Any further instruction is a failure. Structural note: unlike opendtect__3d_visualization__01, this scenario's final capture DOES depict the goal-achieved terminal state, so the 3-gate completion check is expected to pass."
+      },
+      "capture_instructions": {
+        "screen_state": "OpendTect Main Window with In-line slice at position 250 rendered with Energy attribute color mapping. Color bar visible. Bright-spot highlights should be visible on the slice (per manual §1.5.1a page-120 result). Tree scene: In-line > 250 branch expanded — 'Energy [-28,+28]' appears as a checked LAYER under 250, next to the base '4 Dip steered median filter' layer. NOT under any separate Attributes top-level category.",
+        "user_should_have_just": "Selected 'Energy [-28,+28]' in the Select dialog (Attributes radio) and clicked OK — the scene just re-rendered with the Energy attribute overlaid on the inline as an inline-scoped layer.",
+        "must_not_show": [
+          "Base seismic without attribute overlay",
+          "Any dialog still open (Select must be closed)",
+          "No color bar",
+          "Wrong inline position (must be 250)",
+          "'Energy [-28,+28]' appearing under a top-level Attributes category rather than as a child layer of In-line > 250 (that would be the stored/batch path, not on-the-fly)"
+        ]
+      },
+      "capture_required": true
+    }
+  ],
+  "completion": {
+    "final_screenshot_path": "data/eval/screenshots/opendtect__attribute_computation__01/step_7.jpg",
+    "expected_done_sentinel": true,
+    "note": "step_7 depicts the goal-achieved terminal state (Energy attribute rendered on inline 250, color bar visible). Matches manual §1.5.1a page-120 result. The goal_completion_sentinel trap on step_7 explicitly marks this, so the 3-gate completion check is expected to pass all three gates."
+  },
+  "manual_grounding_sections": [
+    "1.5.1a"
+  ]
+}
