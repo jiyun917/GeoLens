@@ -459,11 +459,17 @@ _NUMERIC_MENTION_RE = re.compile(r"^\s*[+-]?\d+(?:[.,]\d+)?\s*$")
 
 
 def _scorer_v4() -> bool:
-    return SCORER_VERSION in ("v4", "v5")
+    return SCORER_VERSION in ("v4", "v5", "v6")
+
+
+def _scorer_v6() -> bool:
+    """v6 (study 4) = v5 + tokenizer fix: an opening bracket glued to a Latin run ('X(' from '**X(닫기)**',
+    'Add Data (') is not part of the label."""
+    return SCORER_VERSION == "v6"
 
 
 def _scorer_v5() -> bool:
-    return SCORER_VERSION == "v5"
+    return SCORER_VERSION in ("v5", "v6")
 
 
 _MANUAL_GROUND_CACHE: Dict[tuple, tuple] = {}
@@ -711,6 +717,8 @@ def _latin_label_phrases(text: str) -> List[str]:
     out = []
     for p in phrases:
         p = p.strip(" .,")
+        if _scorer_v6():
+            p = re.sub(r"^[)\]}]+|[(\[{]+$", "", p).strip(" .,")
         if len(p) >= 2 and not p.isdigit() and re.search(r"[A-Za-z]", p):
             out.append(p)
     return out
@@ -1062,6 +1070,7 @@ class ScenarioEvaluator:
                 "route_tie_group":    loc_meta.get("tie_group"),
                 "route_sticky":       loc_meta.get("route_sticky"),    # study 2 R1
                 "route_advance":      loc_meta.get("route_advance"),   # study 3 R2
+                "route_screen_advance": loc_meta.get("route_screen_advance"),   # study 4 R3
                 "route_rerank_votes": loc_meta.get("rerank_votes"),
             })
             step_latencies.append(latency)

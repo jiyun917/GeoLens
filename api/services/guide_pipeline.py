@@ -264,6 +264,122 @@ ROUTER_SESSION_STICKY = os.environ.get("ROUTER_SESSION_STICKY", "0").strip() == 
 # although the previous instruction already covered that node's outgoing edge (V3-37).
 ROUTER_HISTORY_ADVANCE = os.environ.get("ROUTER_HISTORY_ADVANCE", "0").strip() == "1"
 ROUTER_ADVANCE_MIN_COVERAGE = float(os.environ.get("ROUTER_ADVANCE_MIN_COVERAGE", "0.8"))
+# study 4 (R3): screen-delta advance. When the rerank repeats the last confirmed node (or falls back to an
+# earlier node of the same workflow / no node), the successor chain of the last node is scored against the
+# CURRENT vision output: a successor's distinguishing signature tokens that are literally on screen now and
+# were NOT on the previous screen (or that node's expected dialog appearing now) are evidence that the user
+# has reached it; the furthest successor with such evidence becomes the routed node. Deterministic; uses only
+# workflow signatures and the vision outputs of this and the previous turn. Off by default (v3 behaviour).
+ROUTER_SCREEN_ADVANCE = os.environ.get("ROUTER_SCREEN_ADVANCE", "0").strip() == "1"
+ROUTER_SCREEN_ADVANCE_HOPS = int(os.environ.get("ROUTER_SCREEN_ADVANCE_HOPS", "3"))
+ROUTER_SCREEN_ADVANCE_MIN_TOKENS = int(os.environ.get("ROUTER_SCREEN_ADVANCE_MIN_TOKENS", "1"))
+# successors of the last confirmed node up to this many hops join the candidate pool (v3: 1)
+ROUTER_PRIOR_HOPS = int(os.environ.get("ROUTER_PRIOR_HOPS", "1"))
+_SCREEN_ADVANCE_GENERIC = {"ok", "cancel", "close", "help", "apply", "run", "next", "back", "finish", "yes", "no",
+                           "file", "edit", "view", "layer", "layers", "settings", "window", "windows", "main", "mainwindow",
+                           "label", "labels", "color", "colour", "value", "values", "name", "type", "style", "symbol", "fill",
+                           "width", "size", "panel", "table", "row", "rows", "column", "columns", "button", "buttons", "tab",
+                           "menu", "dialog", "select", "selected", "add", "remove", "delete", "new", "open", "save", "load",
+                           "show", "hide", "on", "off", "empty", "none", "default", "scene", "tree", "list", "properties"}
+
+
+def _sig_tokens(node: Dict) -> List[str]:
+    """Normalised signature strings of a node (screenshot keywords + expected UI elements), specific enough to
+    serve as on-screen evidence: >= 5 characters after normalisation, or containing a digit; generic control
+    names excluded."""
+    sig = (node or {}).get("visual_signature") or {}
+    raw = [str(k) for k in (sig.get("screenshot_keywords") or [])] +           [str(e).replace("_", " ") for e in (sig.get("expected_ui_elements") or [])]
+    out = []
+    for r in raw:
+        t = _norm_text(r)
+        if not t or t in _SCREEN_ADVANCE_GENERIC:
+            continue
+        if t.isdigit():
+            continue                                     # a bare number (an inline/crossline value) is not evidence
+        if len(t) >= 5 or re.search(r"\d", t):
+            out.append(t)
+    return list(dict.fromkeys(out))
+
+
+def _screen_text(visual_state: Optional[Dict]) -> str:
+    from . import node_matcher
+    return _norm_text(node_matcher.flatten_visual_state(visual_state or {}))
+
+
+def _title_text(visual_state: Optional[Dict]) -> str:
+    """Normalised window/dialog titles only (the vision's current_dialog + window_titles) - a dialog name that
+    also appears as a menu / toolbox entry must not count as the dialog being open."""
+    from . import node_matcher
+    vs = visual_state or {}
+    return _norm_text(" ".join([str(vs.get("current_dialog") or "")] + node_matcher._lst(vs, "window_titles")))
+
+
+def screen_delta_advance(graph, picked_id: Optional[str], last_node_id: Optional[str], visual_state: Dict,
+                         prev_visual_state: Optional[Dict], max_hops: int = 3, min_tokens: int = 1) -> Tuple[Optional[str], Optional[Dict]]:
+    """R3. Returns (node_id, meta). meta is None when the rule did not fire."""
+    if not last_node_id or not visual_state:
+        return picked_id, None
+    last = graph.get_node(last_node_id)
+    if not last:
+        return picked_id, None
+    pn = graph.get_node(picked_id) if picked_id else None
+    if pn:
+        if pn.get("workflow_id") != last.get("workflow_id"):
+            return picked_id, None                       # other workflow: R1 / the gates decide
+        try:
+            if int(pn.get("step_number") or 0) > int(last.get("step_number") or 0):
+                return picked_id, None                   # the rerank already moved forward
+        except (TypeError, ValueError):
+            return picked_id, None
+    chain = [last_node_id]; cur = last_node_id
+    for _ in range(max(1, max_hops)):
+        succ = graph.get_next_steps(cur)
+        if len(succ) != 1:
+            break
+        cur = succ[0]["id"]; chain.append(cur)
+    if len(chain) < 2:
+        return picked_id, None
+    toks = {nid: set(_sig_tokens(graph.get_node(nid))) for nid in chain}
+    now, before = _screen_text(visual_state), _screen_text(prev_visual_state)
+    titles_now, titles_before = _title_text(visual_state), _title_text(prev_visual_state)
+    dlg_of = lambda nid: _norm_text(((graph.get_node(nid).get("visual_signature") or {}).get("expected_dialog") or "").split("/")[0])
+    last_dlg = dlg_of(last_node_id)
+    evidence: Dict[str, List[str]] = {}
+    seen_dlgs = {last_dlg}
+    for k, nid in enumerate(chain[1:], start=1):
+        others = set().union(*(toks[o] for o in chain if o != nid))
+        distinct = [t for t in toks[nid] if t not in others]
+        hits = [t for t in distinct if t in now and (not before or t not in before)]
+        # a token is weak (weight 1) unless it is long or carries a digit; a node needs weight >= 2
+        weight = sum(2 if (len(t) >= 8 or re.search(r"\d", t)) else 1 for t in hits)
+        dlg = dlg_of(nid)
+        # a newly opened dialog supports only the EARLIEST chain node that expects it
+        if dlg and len(dlg) >= 6 and dlg not in seen_dlgs and dlg in titles_now and (not prev_visual_state or dlg not in titles_before):
+            hits.append("dialog:" + dlg); weight += 2
+        seen_dlgs.add(dlg)
+        if hits and weight >= 2 and len(hits) >= max(1, min_tokens):
+            evidence[nid] = hits
+    if not evidence and prev_visual_state:
+        # dialog-closed rule: the last node's specific dialog was in the previous screen's titles and is gone now,
+        # and the next edge leaves that dialog (its target expects a different dialog) -> one step on.
+        nxt_dlg = dlg_of(chain[1])
+        if last_dlg and len(last_dlg) >= 6 and last_dlg in titles_before and last_dlg not in titles_now and nxt_dlg != last_dlg:
+            evidence[chain[1]] = ["dialog_closed:" + last_dlg]
+    if not evidence:
+        return picked_id, None
+    target = [nid for nid in chain[1:] if nid in evidence][-1]
+    meta = {"from": picked_id, "to": target, "evidence": {n: h[:6] for n, h in evidence.items()}}
+    return target, meta
+
+
+# study 4: assembly v8 - the routed node's single-successor chain (up to ROUTER_SCREEN_ADVANCE_HOPS edges) is
+# rendered with the screen state each action produces; the generator judges from the SCREEN which actions are
+# already done (a routing lag of up to that many steps is absorbed by the generator).
+_CTX_V8_RULE = ("Rule: compare the screenshot with the screen states listed after the arrows. Skip every action whose result "
+                "state is already visible on the screen (the user may be further along than the routed step) and instruct ONLY "
+                "the first action whose result is NOT yet visible. Never instruct an action whose result is already on screen, "
+                "and never skip an action whose result is not visible. If the result of the last listed action is visible and "
+                "it is the final step of the workflow, answer with the completion sentinel '완료' / 'Done'.")
 _CTX_V7_DONE = ("[Next Action] The previous instruction ({prev}) was the final action of this workflow. "
                 "If the screen shows nothing that contradicts it having been carried out, the goal is reached - answer with the "
                 "completion sentinel '완료' / 'Done'. Otherwise repeat only the part that is visibly not done.")
@@ -598,6 +714,7 @@ class GuideRAGPipeline:
         last_node_id: Optional[str] = None,
         completed_steps: Optional[List[str]] = None,
         clip_result: Optional[Tuple] = None,
+        prev_visual_state: Optional[Dict] = None,
     ) -> Dict:
         """
         Match visual state to a workflow graph node using:
@@ -682,6 +799,15 @@ class GuideRAGPipeline:
             for nxt in self.graph.get_next_steps(last_node_id):
                 prior_top.append((nxt, 1.0))
                 expected_next_ids.append(nxt.get("id"))
+            if ROUTER_PRIOR_HOPS >= 2:
+                # study 4: successors two hops ahead also join the pool (a lagging session otherwise has
+                # no way to reach them: they are rarely in the embedding top-K while a dialog stays open)
+                for nxt in list(prior_top):
+                    if nxt[0].get("id") == last_node_id:
+                        continue
+                    for nxt2 in self.graph.get_next_steps(nxt[0].get("id")):
+                        if nxt2.get("id") not in {p[0].get("id") for p in prior_top}:
+                            prior_top.append((nxt2, 0.9))
             # the last node itself stays a candidate (dialog may still be open)
             prior_top.append((self.graph.get_node(last_node_id), 1.0))
         seen_ids: set = set()
@@ -739,6 +865,18 @@ class GuideRAGPipeline:
                 picked_id = self._session_sticky(picked_id, candidates, session_wf, last_node_id)
             if picked_id and ROUTER_HISTORY_ADVANCE:
                 picked_id = self._history_advance(picked_id, candidates, last_node_id, completed_steps)
+            if ROUTER_SCREEN_ADVANCE:
+                adv_id, adv_meta = screen_delta_advance(self.graph, picked_id, last_node_id, visual_state, prev_visual_state,
+                                                        ROUTER_SCREEN_ADVANCE_HOPS, ROUTER_SCREEN_ADVANCE_MIN_TOKENS)
+                if adv_meta:
+                    if not any(c["node"].get("id") == adv_id for c in candidates):
+                        node = self.graph.get_node(adv_id)
+                        if node:
+                            candidates.append({"node": node, "sources": ["screen_advance"]})
+                    print(f"[GUIDE] screen-delta advance: {picked_id} -> {adv_id} evidence={adv_meta.get('evidence')}")
+                    _LAST_LOCALIZE_META["route_screen_advance"] = adv_meta
+                    picked_id = adv_id
+                    picked_conf = max(float(picked_conf or 0.0), CONFIDENCE_THRESHOLD)
             if picked_id:
                 for c in candidates:
                     if c["node"].get("id") == picked_id:
@@ -1005,6 +1143,7 @@ Respond with JSON only:
         session_history = session_history or {}
         last_node_id = session_history.get("last_confirmed_node_id")
         completed_steps = session_history.get("completed_steps") or []
+        prev_visual_state = session_history.get("prev_visual_state") or None   # study 4 (R3)
 
         # v3: the goal-query vector retrieval is the same retrieval the
         # vanilla baseline performs and does not depend on the screenshot,
@@ -1027,6 +1166,9 @@ Respond with JSON only:
         visual_state: Dict = {}
         if screenshot_b64:
             visual_state = self.recognize_visual_state(screenshot_b64)
+
+        _LAST_LOCALIZE_META["visual_state"] = dict(visual_state or {})   # study 4: kept by the session for R3
+        _LAST_LOCALIZE_META["route_screen_advance"] = None
 
         # Step 2: Detect intent
         intent = self._detect_intent(user_message)
@@ -1051,6 +1193,7 @@ Respond with JSON only:
                 last_node_id=last_node_id,
                 completed_steps=completed_steps,
                 clip_result=clip_result,
+                prev_visual_state=prev_visual_state,
             )
         current_node = localization["node"]
         confidence = localization["confidence"]
@@ -1165,6 +1308,7 @@ Respond with JSON only:
             "next_nodes": retrieval.get("next_nodes", []),
             "next_nodes_2": (self.graph.get_next_steps(retrieval["next_nodes"][0]["id"]) if retrieval.get("next_nodes") else []),
             "prev_edges": (self.graph.get_previous_steps(current_node_id) if current_node_id else []),
+            "next_chain": (self._forward_chain(current_node_id, ROUTER_SCREEN_ADVANCE_HOPS) if current_node_id else []),
             "completed_steps": list(completed_steps or []),
             "graph_context": retrieval.get("graph_context", []),
             "vector_context": retrieval.get("vector_context"),
@@ -1227,6 +1371,19 @@ Respond with JSON only:
         lines.append(f"Graph-order prior: {pref} — {why}. Pick another member of the group ONLY if a field state listed for it "
                      f"is literally present in visual_state and the prior's states are contradicted.")
         return "\n".join(lines)
+
+    def _forward_chain(self, node_id: Optional[str], hops: int) -> List[Dict]:
+        """Single-successor chain after node_id (each entry carries its edge_instruction); stops at a branch.
+        The last entry is flagged _terminal when it has no successor."""
+        out: List[Dict] = []; cur = node_id
+        for _ in range(max(1, hops)):
+            succ = self.graph.get_next_steps(cur) if cur else []
+            if len(succ) != 1:
+                break
+            out.append(succ[0]); cur = succ[0]["id"]
+        if out:
+            out[-1]["_terminal"] = not bool(self.graph.get_next_steps(out[-1]["id"]))
+        return out
 
     def _history_advance(self, picked_id: str, candidates: List[Dict], last_node_id: Optional[str],
                          completed_steps: Optional[List[str]]) -> str:
@@ -1523,6 +1680,43 @@ Respond with JSON only:
                     else:
                         parts.append(_CTX_V7_ADVANCE.format(prev=last[:160]) + "\n" + "\n".join(_act(n) for n in nn2) + "\n" + _CTX_V6_RULE)
                     handled = True
+            if CONTEXT_ASSEMBLY == "v8" and next_nodes:
+                chain = pipeline_output.get("next_chain") or []
+                if len(next_nodes) == 1 and chain:
+                    hist = [h for h in (pipeline_output.get("completed_steps") or []) if h]
+                    last = (hist[-1] if hist else "").strip()
+                    start = 0
+                    # C1 (kept from v7, restricted): only an edge whose target adds NO on-screen state of its own
+                    # (a toggle / lock) is taken as done from the instruction history; every other edge is judged
+                    # from the screen by the rule below.
+                    first = chain[0]
+                    if last and not (set(_sig_tokens(first)) - set(_sig_tokens(current))) and _edge_covered(last, first.get("edge_instruction") or ""):
+                        start = 1
+                    lines = []
+                    # lookbehind: the edge that reaches the routed step (a routing error of +1 is recoverable)
+                    prev_edges = pipeline_output.get("prev_edges") or []
+                    if start == 0 and len(prev_edges) == 1 and prev_edges[0].get("edge_instruction"):
+                        csig = current.get("visual_signature") or {}
+                        cst = ([f"dialog: {csig['expected_dialog']}"] if csig.get("expected_dialog") else []) +                               (["states: " + "; ".join(str(x) for x in (csig.get("screenshot_keywords") or [])[:6])] if csig.get("screenshot_keywords") else [])
+                        lines.append(f"  0. {prev_edges[0]['edge_instruction']}  → Step {current.get('step_number', '?')}: {current.get('title', '')}"
+                                     + (f" [screen: {' | '.join(cst)}]" if cst else "") + "  (this is the step the router believes is reached; give this action only if its result is NOT on screen)")
+                    for k, n in enumerate(chain[start:], start=1):
+                        sig = n.get("visual_signature") or {}
+                        st = []
+                        if sig.get("expected_dialog"):
+                            st.append(f"dialog: {sig['expected_dialog']}")
+                        kws = [str(x) for x in (sig.get("screenshot_keywords") or [])][:6]
+                        if kws:
+                            st.append("states: " + "; ".join(kws))
+                        term = " (final step of the workflow)" if n.get("_terminal") else ""
+                        lines.append(f"  {k}. {n.get('edge_instruction') or n.get('title', '')}  → Step {n.get('step_number', '?')}: {n.get('title', '')}"
+                                     + (f" [screen: {' | '.join(st)}]" if st else "") + term)
+                    head = "[Next Actions] (from the workflow, in ORDER; each action produces the screen state written after the arrow)"
+                    if start == 1:
+                        head += f"\n  (the previous instruction - {last[:120]} - already gave the first action; its result is not visible on screen by design)"
+                    if lines:
+                        parts.append(head + "\n" + "\n".join(lines) + "\n" + _CTX_V8_RULE)
+                        handled = True
             if not handled:
                 if next_nodes:
                     parts.append("[Next Action] (from the workflow edge)\n" + "\n".join(_act(n) for n in next_nodes)

@@ -232,7 +232,12 @@ def _inline_action_prompt(goal: str, completed: List[str], context_block: str,
         steps_section = f"\n\n# Steps Already Completed\n{body}"
     ctx_section = f"\n\n# Reference Manual Context\n{context_block}" if context_block else ""
     naming = ""
-    if os.environ.get("GEN_PROMPT_VERSION", "v2").lower() != "v2":   # iteration 2: not enabled (reduced scope)
+    gpv = os.environ.get("GEN_PROMPT_VERSION", "v2").lower()
+    if gpv == "v3":
+        # study 4 (all backends alike): grounded references only - no shortcuts / menu paths from memory
+        naming = ("Refer only to controls, menus, fields and keys that are visible in the screenshot or named in the "
+                  "Reference Manual Context. Do not add keyboard shortcuts, modifier keys or menu paths from memory.\n")
+    elif gpv != "v2":   # iteration 2: not enabled (reduced scope)
         # v3 iteration 2 (all backends): control names as written in the manual
         # context; icon-only buttons = the manual's name + a short icon description.
         naming = ("Name controls exactly as they are written in the Reference Manual Context when one is provided; "
@@ -544,6 +549,19 @@ def _session_note_visit(scenario: Dict, backend: str, node_id: Optional[str]) ->
 # v3 graph prior: the last node that passed the confidence gate in this
 # session (its successors get prior weight in the next localization).
 _SESSION_CONFIRMED: Dict[str, Optional[str]] = {}
+# study 4 (R3): the previous turn's vision output, kept per session like production would.
+_SESSION_PREV_VS: Dict[str, Optional[Dict]] = {}
+
+
+def _session_prev_vs(scenario: Dict, backend: str, step_index: int) -> Optional[Dict]:
+    key = _session_key(scenario, backend)
+    if step_index == 0 or key not in _SESSION_PREV_VS:
+        _SESSION_PREV_VS[key] = None
+    return _SESSION_PREV_VS[key]
+
+
+def _session_note_vs(scenario: Dict, backend: str, vs: Optional[Dict]) -> None:
+    _SESSION_PREV_VS[_session_key(scenario, backend)] = dict(vs) if vs else None
 
 
 def _session_last_confirmed(scenario: Dict, backend: str, step_index: int) -> Optional[str]:
@@ -687,6 +705,7 @@ def backend_full_system(step_index: int, scenario: Dict,
         # v3: graph prior + completed instructions for the rerank
         "last_confirmed_node_id": _session_last_confirmed(scenario, "full_system", step_index),
         "completed_steps": list(prior_responses),
+        "prev_visual_state": _session_prev_vs(scenario, "full_system", step_index),
     }
     result = get_rag_router().route(
         user_message=scenario.get("goal", ""),
@@ -697,6 +716,7 @@ def backend_full_system(step_index: int, scenario: Dict,
     # Same semantics as the v2 reconstruction: the node the localizer picked
     # (before the confidence gate) counts as visited.
     meta = get_last_localize_meta()
+    _session_note_vs(scenario, "full_system", (result.get("raw_output") or {}).get("visual_state") or meta.get("visual_state"))
     _session_note_visit(scenario, "full_system", meta.get("picked_node_id"))
     if meta.get("picked_node_id") and not meta.get("fallback_activated"):
         _session_note_confirmed(scenario, "full_system", meta.get("picked_node_id"))
