@@ -337,14 +337,14 @@ def _kw_tokens(node: Dict) -> List[str]:
 
 
 def _truncated_labels(visual_state: Optional[Dict]) -> set:
-    """Normalised on-screen strings that the UI truncated with an ellipsis ("Other residen..."), >= 8 chars."""
+    """Normalised on-screen strings that the UI truncated with an ellipsis ("Other residen...", also inside a
+    'Label: value' string such as "Other residen...: checked"), >= 8 characters."""
     out = set()
     for k in ("labels", "buttons", "visible_elements", "field_values", "menu_items", "window_titles"):
         v = (visual_state or {}).get(k) or []
         for x in (v if isinstance(v, list) else [v]):
-            x = str(x)
-            if x.endswith("…") or x.endswith("..."):
-                t = _norm_text(x.rstrip(".").rstrip("…"))
+            for m in re.finditer(r"([^:…]{4,}?)\s*(?:…|\.\.\.)", str(x)):
+                t = _norm_text(m.group(1))
                 if len(t) >= 8:
                     out.add(t)
     return out
@@ -428,8 +428,11 @@ def screen_delta_advance(graph, picked_id: Optional[str], last_node_id: Optional
 _CTX_V8_RULE = ("Rule: compare the screenshot with the screen states listed after the arrows. Skip every action whose result "
                 "state is already visible on the screen (the user may be further along than the routed step) and instruct ONLY "
                 "the first action whose result is NOT yet visible. Never instruct an action whose result is already on screen, "
-                "and never skip an action whose result is not visible. If the result of the last listed action is visible and "
-                "it is the final step of the workflow, answer with the completion sentinel '완료' / 'Done'.")
+                "and never skip an action whose result is not visible. Judge from the SCREEN, not from the list of instructions "
+                "already given: if your previous instruction's result is not on the screen (the screen looks unchanged), the user "
+                "has not done it yet - give that instruction again (a value that is still at its default has not been set). "
+                "If the result of the last listed action is visible and it is the final step of the workflow, answer with the "
+                "completion sentinel '완료' / 'Done'.")
 _CTX_V7_DONE = ("[Next Action] The previous instruction ({prev}) was the final action of this workflow. "
                 "If the screen shows nothing that contradicts it having been carried out, the goal is reached - answer with the "
                 "completion sentinel '완료' / 'Done'. Otherwise repeat only the part that is visibly not done.")
