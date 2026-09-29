@@ -1,0 +1,78 @@
+# Study 5 verdict — mechanical application of the pre-registration (tags study5_opendtect + study5_qgis merged per replicate)
+
+runs: gemini n=10, claude n=10, gpt n=10
+
+## §5 judgement (replicate-level, strata = model; hall = v6 as scored)
+
+### 비교 1 (full_system vs vanilla_budget)
+
+| model | full step_acc | comparator | Δ | per-model p | full hall | comparator hall | hall ok |
+|---|---|---|---|---|---|---|---|
+| gemini | 0.963 | 0.780 | +0.183 | 0.000 | 0.000 | 0.007 | ✓ |
+| claude | 1.000 | 0.922 | +0.078 | 0.000 | 0.000 | 0.000 | ✓ |
+| gpt | 0.959 | 0.889 | +0.070 | 0.000 | 0.137 | 0.000 | ✗ |
+
+- step: direction 3/3 (ties 0), stratified raw p = 0.0001, Δ = +0.1105, significant reverse: none → 성립
+- hall: full ≤ comparator in 2/3 → 성립
+- **grade: A**
+
+### 비교 2 (full_system vs vanilla_vector)
+
+| model | full step_acc | comparator | Δ | per-model p | full hall | comparator hall | hall ok |
+|---|---|---|---|---|---|---|---|
+| gemini | 0.963 | 0.859 | +0.104 | 0.000 | 0.000 | 0.000 | ✓ |
+| claude | 1.000 | 0.967 | +0.033 | 0.000 | 0.000 | 0.000 | ✓ |
+| gpt | 0.959 | 0.867 | +0.093 | 0.000 | 0.137 | 0.000 | ✗ |
+
+- step: direction 3/3 (ties 0), stratified raw p = 0.0001, Δ = +0.0765, significant reverse: none → 성립
+- hall: full ≤ comparator in 2/3 → 성립
+- **grade: A**
+
+Holm (family 2): 비교 1 0.0001 → 0.0002; 비교 2 0.0001 → 0.0002. **Grades: 비교 1 = A, 비교 2 = A.**
+
+## Descriptive (mean over replicates, 3 scenarios equally weighted)
+
+| model | backend | step_acc | hall v6 | goal_completion | cost_total $/step | latency s/step |
+|---|---|---|---|---|---|---|
+| gemini | no_rag | 0.835 | 0.022 | 0.600 | 0.0075 | 10.5 |
+| gemini | vanilla_budget | 0.780 | 0.007 | 0.633 | 0.0095 | 11.4 |
+| gemini | vanilla_vector | 0.859 | 0.000 | 0.767 | 0.0127 | 10.6 |
+| gemini | full_system | 0.963 | 0.000 | 0.800 | 0.0144 | 28.2 |
+| claude | no_rag | 0.848 | 0.011 | 0.733 | 0.0067 | 2.7 |
+| claude | vanilla_budget | 0.922 | 0.000 | 0.800 | 0.0109 | 4.0 |
+| claude | vanilla_vector | 0.967 | 0.000 | 0.667 | 0.0192 | 3.5 |
+| claude | full_system | 1.000 | 0.000 | 1.000 | 0.0163 | 19.6 |
+| gpt | no_rag | 0.752 | 0.000 | 0.667 | 0.0036 | 1.9 |
+| gpt | vanilla_budget | 0.889 | 0.000 | 0.667 | 0.0064 | 2.9 |
+| gpt | vanilla_vector | 0.867 | 0.000 | 0.667 | 0.0123 | 2.3 |
+| gpt | full_system | 0.959 | 0.137 | 1.000 | 0.0115 | 17.4 |
+
+## Per-scenario step accuracy (mean over replicates)
+
+| model | backend | spectral_decomp__01 | q:aspect_north__01 | q:custom_projection__01 |
+|---|---|---|---|---|
+| gemini | no_rag | 0.667 | 0.850 | 0.989 |
+| gemini | vanilla_budget | 0.567 | 0.850 | 0.922 |
+| gemini | vanilla_vector | 0.711 | 0.933 | 0.933 |
+| gemini | full_system | 0.889 | 1.000 | 1.000 |
+| claude | no_rag | 0.778 | 0.833 | 0.933 |
+| claude | vanilla_budget | 0.800 | 0.967 | 1.000 |
+| claude | vanilla_vector | 0.900 | 1.000 | 1.000 |
+| claude | full_system | 1.000 | 1.000 | 1.000 |
+| gpt | no_rag | 0.778 | 0.833 | 0.644 |
+| gpt | vanilla_budget | 0.811 | 1.000 | 0.856 |
+| gpt | vanilla_vector | 0.778 | 1.000 | 0.822 |
+| gpt | full_system | 0.889 | 1.000 | 0.989 |
+
+## Predictions
+
+- Q1/Q7 no_rag mean step_acc per model: gemini 0.835, claude 0.848, gpt 0.752
+- Q2 vanilla_budget − no_rag: gemini -0.056, claude +0.074, gpt +0.137 → ≥ +3pp in 2/3 → 적중
+- Q3 비교 1 direction 3/3, p 0.0001 → 적중
+- Q4 비교 2 direction 3/3, reverse none → 적중
+- Q5 hall(v6) full ≤ vanilla_budget 2/3, ≤ vanilla_vector 2/3 → 적중
+- Q6 routing gemini: spectral_decomp__01 wf 80/90, node 78/90, R2 0, R1 0; q:aspect_north__01 wf 60/60, node 50/60, R2 4, R1 0; q:custom_projection__01 wf 87/90, node 85/90, R2 0, R1 0
+- Q6 routing claude: spectral_decomp__01 wf 80/90, node 80/90, R2 0, R1 0; q:aspect_north__01 wf 60/60, node 60/60, R2 7, R1 0; q:custom_projection__01 wf 90/90, node 89/90, R2 0, R1 0
+- Q6 routing gpt: spectral_decomp__01 wf 80/90, node 79/90, R2 0, R1 0; q:aspect_north__01 wf 60/60, node 60/60, R2 16, R1 0; q:custom_projection__01 wf 90/90, node 90/90, R2 0, R1 0
+
+saved: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\verdict_study5.md
