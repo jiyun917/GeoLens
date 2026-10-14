@@ -1,0 +1,1649 @@
+{
+  "started_at": "2026-10-14T06:05:59.675592Z",
+  "code_version": {
+    "commit": "dbc7f42402711710fbecf1e039e382ad56c08948",
+    "branch": "v3-rerun",
+    "dirty": false,
+    "dirty_diff_sha256": null,
+    "worktree": "C:\\Users\\user\\Downloads\\GeoLens-paper"
+  },
+  "env_knobs": {
+    "CHROMADB_PATH": "./data/chromadb_v4",
+    "EMBED_MODEL": "BAAI/bge-m3",
+    "GEOLENS_SCORER": "v6",
+    "RAG_KG_ENABLED": "0",
+    "RAG_KG_POSITION": "last",
+    "AUX_THINKING_BUDGET": "0",
+    "GEN_TEMPERATURE": "0.2",
+    "GEN_MAX_TOKENS": "1024",
+    "GEMINI_THINKING_BUDGET": "1024",
+    "VANILLA_BUDGET_CHARS": "3900",
+    "BENCH_MODEL": "claude",
+    "ROUTER_MATCHER": "embedding",
+    "ROUTER_POOL_K": "5",
+    "ROUTER_GRAPH_PRIOR": "1",
+    "ROUTER_TWO_STAGE": "0",
+    "ROUTER_EVIDENCE_GATE": "0",
+    "GOAL_STATE_HINT": "1",
+    "VISION_PROMPT_VERSION": "v3",
+    "RERANK_PROMPT_VERSION": "v4",
+    "POST_COMPLETION_MODE": "soft",
+    "GEN_PROMPT_VERSION": "v3",
+    "CONFIDENCE_THRESHOLD": "0.7",
+    "PARALLEL_RETRIEVAL": "1",
+    "ROUTED_VECTOR_QUERY": "goal",
+    "GRAPH_VECTOR_AUX": "0",
+    "FALLBACK_CTX_CHARS": "3900",
+    "VECTOR_CTX_CHARS": "1500",
+    "GRAPH_CTX_CHARS": "800",
+    "GRAPH_CTX_ITEMS": "3",
+    "GEOLENS_SOFTWARE_ID": "opendtect",
+    "CONTEXT_ASSEMBLY": "v8",
+    "RERANK_SESSION_BLOCK": "1",
+    "ROUTER_SESSION_STICKY": "1",
+    "ROUTER_TIE_PRIOR": "1",
+    "ROUTER_GROUP_PRIOR": "1",
+    "RERANK_VOTES": "1",
+    "GOAL_STATE_MARGIN": "0.02",
+    "ROUTER_HISTORY_ADVANCE": "1",
+    "ROUTER_ADVANCE_MIN_COVERAGE": "0.6",
+    "ROUTER_SCREEN_ADVANCE": "1",
+    "ROUTER_SCREEN_ADVANCE_HOPS": "3",
+    "ROUTER_SCREEN_ADVANCE_MIN_TOKENS": "1",
+    "ROUTER_PRIOR_HOPS": "2"
+  },
+  "scenarios": [
+    {
+      "scenario_id": "opendtect__spectral_decomp__01",
+      "manual_id": "645b7cdf2690408da843b9ce63c52d5b",
+      "category": "attribute_analysis",
+      "difficulty": "hard",
+      "backends": {
+        "linked_chunks": {
+          "backend": "linked_chunks",
+          "n_steps": 9,
+          "step_accuracy": 0.8888888888888888,
+          "hallucination_rate": 0.0,
+          "faithfulness": 1.0,
+          "dwell_loop_rate": 0.0,
+          "loop_rate": 0.0,
+          "trap_pass_rate": null,
+          "recovery_rate": null,
+          "goal_completion_rate": 1.0,
+          "mean_latency_sec": 18.151,
+          "mean_cost_usd": 0.010587,
+          "total_cost_usd": 0.095283,
+          "mean_aux_cost_usd": 0.002922,
+          "total_aux_cost_usd": 0.0263,
+          "mean_cost_total_usd": 0.013509,
+          "total_aux_calls": 18,
+          "scorer_version": "v6",
+          "total_input_tokens": 30471,
+          "total_output_tokens": 258,
+          "fallback_rate": 0.0,
+          "mean_route_confidence": 0.9,
+          "completion_response": "완료",
+          "completion_grounded": true,
+          "completion_visual_confirms_goal": true,
+          "completion_hallucinations": [],
+          "per_step": [
+            {
+              "step_index": 0,
+              "response": "트리에서 **3D Horizon**을 우클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 51.109,
+              "latency_wall_sec": 51.109,
+              "stage_latency": {
+                "vision": {
+                  "sec": 5.419,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 31.203,
+                  "n": 4
+                },
+                "vector_search": {
+                  "sec": 0.187,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.331,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 8.137,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 20.384,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.661,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 26.565,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 4.148,
+                  "n": 1
+                }
+              },
+              "context_chars": 3875,
+              "context_block": "[Manual Context (graph)]\n[Section: 1.3.1 Tree, Scene & Elements, Page: 45, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.3.1 Tree, Scene & Elements\nEach 3D scene has a tree and each tree controls a set of display elements: In-\nlines, Cross-lines, Horizons, Wells etc. Via the tree a user controls what is dis-\nplayed in the 3D scene. (OpendTect Pro users can also do this via the basemap.)\nDisplay elements can be toggled on and off and display parameters can be\nchanged from the tree menu, which is opened by right-clicking on the element.\nSection elements such as In-line, Cross-line can be filled up to 8 layers deep with\ndata for co-rendering. The layers can be moved up and down in the tree. For co-\nrendering the user can change the layer's\n\n[Manual Context (graph)]\n[Section: 1.3.1a Display An Inline, Page: 46, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.3.1a Display An Inline\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\nVisualization and processing goes faster when you load the relevant data set(s)\ninto memory. If you do not have sufficient memory to load an entire volume load\nonly the part you intend to work on. Another way to reduce memory consumption\nis to re-scale data to 8-bit during pre-load.\n- 46 -\n\n[Figure OCR p.46 #1]\nExercise objective:\nDisplay an inline in the 3D scene.\n\nWorkflow:\n\n1. Right-click on Inline in the tree and select Add\nand Select Data.\n\nScene 1\nIn-line\nCross-\nZ-slice\nVolume\nRando\nAdd Default Data\nAdd and\n\n[Manual Context (graph)]\n[Section: 2.3.1c Dip-steered Similarity, Page: 199, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n11. Display seismic data on inline 425 by\nright-clicking on In-line > Add and\nSelect Data.\nUnder the Stored tab select 1 Original\nSeismics.\n\n12. Select inline number 425 in the tree,\ngo to the top toolbar, change it to 250\nand press enter.\n\nWorkflow cont'd:\n\n13. Load first the steered similarity attribute (i.e. FS_Similarity) by right-\nclicking on inline number 250 > Add > Attribute.\n\n14. Similarly, load the non-steered similarity attribute (i.e. NS_Similarity).\n\n- 199 -\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.5.3a Attributes - Attributes]\n[Section: 1.5.3a Attributes - Attributes, Page: 139, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n7. In similar way define two more Spectral Decomposition attributes of 44Hz and 64Hz.\n8. Give them appropriate names, e.g. FFT [-12,12]ms 44Hz and FFT [-12,12]ms 64Hz,\neach time pressing Add as new.\n9. Uncheck Save on Close and press Close.\n\nAttribute Set 3D\nFile\nAttribute set <not saved>\nInput Data | Dip steered median filter\nTransform type FFT CWT\nTime gate (ms) -12 12\nDisplay Time/Frequency panel\nOutput frequency (Hz) 64.0 Step 4.0\nFFT [-12,12]ms 24Hz\nFFT [-12,12]ms 44Hz\nFFT [-12,12]ms 64Hz\nOptionally save the\nattribute set. In this\ncase \"Save on close\"\nshould be checked.\nAttribute Name FFT [-12,12]ms 64Hz\nAdd as new\nSave on Close\nClose ? Help\n\nWorkflow cont'd:\n10. Apply these three attributes on the\nhorizon (red-24Hz, green-44Hz, and\nblue-64Hz):\nright-click on the red channel and go\nSelect attribute > Attributes 3D > FFT [-\n12,12]ms 24Hz.\n3D Horizon\nDemo 6 -> FS8\n<right-click>\n<right-click>\n<right-click>\nZ values\n2D Horizon\nFault\nFaultStickSet\nBody\nWell\nPickSet\nPrestack Events\nAnnotations\nSelect Attribute\nMove\nDisplay\nSave as Horizon Data ...\nTools\nRemove\nStored Cubes\nAttributes 3D\nSteering Cubes\nStored 2D Data\nAttribut",
+              "input_tokens": 3217,
+              "output_tokens": 25,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010026,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 2675,
+              "aux_output_tokens": 568,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002222,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.012248,
+              "route_confidence": 0.9,
+              "picked_node_id": "d3_visualization_01_main_window_ready",
+              "picked_workflow_id": "d3_visualization",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "d3_visualization_01_main_window_ready",
+                  "sources": [
+                    "emb:0.70",
+                    "clip:0.85"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_03_add_crossline",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_04_add_zslice",
+                  "sources": [
+                    "emb:0.67"
+                  ]
+                },
+                {
+                  "id": "survey_setup_05_select_survey",
+                  "sources": [
+                    "emb:0.67"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_01_ready_to_start",
+                  "sources": [
+                    "emb:0.66"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "clip:0.83"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "d3_visualization_01_main_window_ready",
+                  0.7018539351246553
+                ],
+                [
+                  "d3_visualization_03_add_crossline",
+                  0.6809787780075428
+                ],
+                [
+                  "d3_visualization_04_add_zslice",
+                  0.6713118801470493
+                ],
+                [
+                  "survey_setup_05_select_survey",
+                  0.6711848128903715
+                ],
+                [
+                  "seismic_attribute_01_ready_to_start",
+                  0.65884927500426
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": null,
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"d3_visualization_01_main_window_ready\", \"confidence\": 0.9}",
+              "route_rerank_prompt": "You rank workflow steps by how well they match the user's current UI situation.\n\nUser goal: F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.\nCurrent UI visual_state JSON: {\"current_dialog\": \"OpenDTect V7.0.9 (Windows) *UPDATE AVAILABLE* - F3 Demo 2023 - [Scene 1]\", \"window_titles\": [\"OpenDTect V7.0.9 (Windows) *UPDATE AVAILABLE* - F3 Demo 2023 - [Scene 1]\"], \"active_menu\": null, \"menu_items\": [\"Survey\", \"Analysis\", \"Processing\", \"Scene\", \"View\", \"Utilities\", \"TerraNubis\", \"Help\"], \"buttons\": [], \"labels\": [\"Cross-line 0\", \"Step 0\", \"OD Seismic 1 (-8.7372 to 8.7372)\"], \"field_values\": [\"Cross-line: 0\", \"Step: 0\", \"OD Seismic 1: 8.7372\"], \"visible_elements\": [\"Tree scene 1 panel\", \"Elements\", \"Color\", \"Scene 1\", \"In-line (checked)\", \"Cross-line (checked)\", \"Z-slice (checked)\", \"Volume (checked)\", \"Random Line (checked)\", \"2D Line (checked)\", \"3D Horizon (checked)\", \"2D Horizon (checked)\", \"Fault (checked)\", \"FaultSet (checked)\", \"FaultStickSet (checked)\", \"Geobody (checked)\", \"Well (checked)\", \"PointSet (checked)\", \"Polygon (checked)\", \"Prestack Events\", \"Annotations\", \"Cross-line axis (400, 600, 800, 1000, 1200)\", \"In-line axis (200, 400, 600)\", \"Time axis (500, 1000, 1500)\", \"Main toolbar\", \"Vertical toolbar on the right\"], \"data_state\": \"3D seismic loaded\", \"current_action\": \"viewing 3D scene\"}\n\nCandidate workflow steps (from a software manual):\n1. id=\"d3_visualization_01_main_window_ready\" workflow=\"d3_visualization\" step=1\n   title: Main Window / Tree scene 준비 상태\n   desc: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은\n   expected dialog: OpendTect Main Window\n   expected elements: tree scene panel, elements group, inline category node, crossline category node, zslice category node, empty 3d scene panel\n   keywords: Tree scene, Elements, In-line, Cross-line, Z-slice, 3D Scene, F3 Demo, OpendTect\n2. id=\"d3_visualization_03_add_crossline\" workflow=\"d3_visualization\" step=3\n   title: Cross-line 슬라이스 추가\n   desc: Tree scene의 Elements > Cross-line 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Cross-line 슬라이스를 추가.\n   expected dialog: OpendTect Main Window (In-line displayed) / Context menu on Cross-line\n   expected elements: inline slice visible, crossline context menu, add data item, add default data item\n   keywords: Cross-line, Crossline, Add Data, Add Default Data, Add and Select Data, In-line, 3D Scene, Elements\n3. id=\"d3_visualization_04_add_zslice\" workflow=\"d3_visualization\" step=4\n   title: Z-slice 슬라이스 추가\n   desc: Tree scene의 Elements > Z-slice 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Z-slice(시간/깊이 슬라이스)를 추가.\n   expected dialog: OpendTect Main Window (In-line + Cross-line displayed) / Context menu on Z-slice\n   expected elements: inline slice visible, crossline slice visible, zslice context menu, add data item, add default data item\n   keywords: Z-slice, Time slice, Depth slice, Add Data, Add Default Data, Add and Select Data, In-line, Cross-line, Elements, 3D Scene\n4. id=\"survey_setup_05_select_survey\" workflow=\"survey_setup\" step=5\n   title: Survey Select — Main Window 진입\n   desc: Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 \n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, toolbar, tree scene panel, 3d scene panel, title bar survey name\n   keywords: OpendTect, Main Window, My_F3_Survey, F3 Demo, Survey, Analysis, Processing, Scene, View, Utilities\n5. id=\"seismic_attribute_01_ready_to_start\" workflow=\"seismic_attribute\" step=1\n   title: 속성 작업 시작 전 (아직 창 미개방)\n   desc: 매뉴얼 §1.5 시작 문맥: F3 Demo survey 로드 후 OpendTect Main Window 에서 아직 Attribute Set 3D 창도, 배치 다이얼로그도 열려 있지 않은 상태. 사용자가 toolbar\n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, attribute 3d toolbar icon, analysis menu, attributes menu item\n   keywords: Analysis menu, Attributes menu item, Create Attribute Set (3D), Attribute 3D toolbar icon (unclicked), no attribute dialog open\n6. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02\" workflow=\"follow_along_implementing_a_systematic_s\" step=2\n   title: Label Points with ID and Add a Text Buffer\n   desc: QGIS Training Manual 3.\n   keywords: Label, Points, ID, Add, Text, Buffer, QGIS, Training, Manual, For\n\nPick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given.\n\nDECISION RULE (state match):\n- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.\n- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.\n- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.\n- Return \"none\" when NO candidate is even loosely related (different application, different module, totally unrelated topic).\n\nCONFIDENCE (recorded, not used as a gate; below 0.70 is treated as unsure):\n- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.\n- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.\n- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate.\n\nNOTE — steps that span several actions and dialogs that stay open:\n- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.\n- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step.\n\nRespond with JSON only:\n{\"id\": \"<candidate_id_or_none>\", \"confidence\": 0.0-1.0}",
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_sticky": null,
+              "route_advance": null,
+              "route_screen_advance": null,
+              "route_rerank_votes": null,
+              "judge_score": 0
+            },
+            {
+              "step_index": 1,
+              "response": "**Demo 1 --> MFS4** 항목의 체크박스를 클릭하여 선택하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 16.57,
+              "latency_wall_sec": 16.57,
+              "stage_latency": {
+                "clip": {
+                  "sec": 0.93,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 4.01,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.007,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.455,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 1.735,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 6.124,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.465,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 5.827,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.853,
+                  "n": 1
+                }
+              },
+              "context_chars": 4007,
+              "context_block": "[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 130, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.5.2a Spectral Decomposition\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 130 -\n\n[Figure OCR p.130 #1]\nExercise objective:\nStudy paleo-geomorphological features by displaying 3 iso-frequencies simultaneously with color stacking.\n\nWorkflow:\n\n1.  Right-click on 3D Horizon in the tree and click on Add color blended...\n    Choose horizon Demo 1->MFS4 from the list of horizons.\n\n    2D Line\n    3D Horizon\n    2D Horizon\n    Fault\n    FaultStickS\n    Body\n    Well\n    PickSet\n    Load ...\n    Add at Sections Only ...\n    Add Color Blended ...\n    Track New ...\n    Create with Co\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 132, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n8. Within the amplitude spectrum, identify the frequencies to be used as the low, middle and high frequencies: the low frequency can be selected as being the first peak (e.g. 24Hz), while the high frequency as the last peak (e.g. 64 Hz).\nAfter choosing the frequencies, close Amplitude spectrum window.\nAmplitude Spectrum for 4 Dip steered median filter\n0\n-5\n-10\n-15\n-20\n-25\nPower (dB)\n0\n25\n50\n75\n100\n125\nFrequency (Hz)\nDisplay between frequencies 0 125 Gridline step 25\nValue(frequency, power) 23.70259 -5.36955 Normalize dB scale\nDisplay cepstrum... Export...\n\nWorkflow cont'd:\n9. Back to the attribute set\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 134, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n17. Display the three new Horizon Data on Demo1-> MFS4: right-click the text adjacent to the red channel > Select attribute > Horizon Data and select SD_24Hz_[-8,24]ms.\n\n18. In the same manner, select SD_44Hz_[-8,24]ms data for the green channel and select SD_64Hz_[-8,24]ms for the blue channel.\n\nWorkflow cont'd:\n\n19. When blending the three inputs, the results should be similar to the one shown on the figure.\n\nSome extra steps:\n* Try to flip the green channel : right-click on the color bar, a menu pops up which allows you to flip the color bar).\n* What do you notice? Do you see one feature better th\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.5.3a Attributes - Attributes]\n[Section: 1.5.3a Attributes - Attributes, Page: 139, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n7. In similar way define two more Spectral Decomposition attributes of 44Hz and 64Hz.\n8. Give them appropriate names, e.g. FFT [-12,12]ms 44Hz and FFT [-12,12]ms 64Hz,\neach time pressing Add as new.\n9. Uncheck Save on Close and press Close.\n\nAttribute Set 3D\nFile\nAttribute set <not saved>\nInput Data | Dip steered median filter\nTransform type FFT CWT\nTime gate (ms) -12 12\nDisplay Time/Frequency panel\nOutput frequency (Hz) 64.0 Step 4.0\nFFT [-12,12]ms 24Hz\nFFT [-12,12]ms 44Hz\nFFT [-12,12]ms 64Hz\nOptionally save the\nattribute set. In this\ncase \"Save on close\"\nshould be checked.\nAttribute Name FFT [-12,12]ms 64Hz\nAdd as new\nSave on Close\nClose ? Help\n\nWorkflow cont'd:\n10. Apply these three attributes on the\nhorizon (red-24Hz, green-44Hz, and\nblue-64Hz):\nright-click on the red channel and go\nSelect attribute > Attributes 3D > FFT [-\n12,12]ms 24Hz.\n3D Horizon\nDemo 6 -> FS8\n<right-click>\n<right-click>\n<right-click>\nZ values\n2D Horizon\nFault\nFaultStickSet\nBody\nWell\nPickSet\nPrestack Events\nAnnotations\nSelect Attribute\nMove\nDisplay\nSave as Horizon Data ...\nTools\nRemove\nStored Cubes\nAttributes 3D\nSteering Cubes\nStored 2D Data\nAttribut",
+              "input_tokens": 3310,
+              "output_tokens": 36,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.01047,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3212,
+              "aux_output_tokens": 939,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003311,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.013781,
+              "route_confidence": 0.9,
+              "picked_node_id": "spectral_decomp_152a_02_select_horizon_dialog",
+              "picked_workflow_id": "spectral_decomp_152a",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "d3_visualization_02_add_inline",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_03_add_crossline",
+                  "sources": [
+                    "prior:0.90"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_01_main_window_ready",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.69",
+                    "clip:0.86"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_02_select_horizon_dialog",
+                  "sources": [
+                    "emb:0.74"
+                  ]
+                },
+                {
+                  "id": "horizon_autotrack_142a_01_random_line_loaded",
+                  "sources": [
+                    "emb:0.71"
+                  ]
+                },
+                {
+                  "id": "survey_setup_05_select_survey",
+                  "sources": [
+                    "emb:0.70"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_01_scene_start",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.85"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "spectral_decomp_152a_02_select_horizon_dialog",
+                  0.7412974004469918
+                ],
+                [
+                  "horizon_autotrack_142a_01_random_line_loaded",
+                  0.7138061361714441
+                ],
+                [
+                  "survey_setup_05_select_survey",
+                  0.6986579846105717
+                ],
+                [
+                  "d3_visualization_01_main_window_ready",
+                  0.6906812712701473
+                ],
+                [
+                  "spectral_decomp_152a_01_scene_start",
+                  0.683315866793307
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "d3_visualization",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"spectral_decomp_152a_02_select_horizon_dialog\", \"confidence\": 0.9}",
+              "route_rerank_prompt": "You rank workflow steps by how well they match the user's current UI situation.\n\nUser goal: F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.\nCurrent UI visual_state JSON: {\"current_dialog\": \"Select Horizons\", \"window_titles\": [\"Select Horizons\", \"OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]\"], \"active_menu\": null, \"menu_items\": [\"Survey\", \"Analysis\", \"Processing\", \"Scene\", \"View\", \"Utilities\", \"TerraNubus\", \"Help\"], \"buttons\": [\"Select ...\", \"OK\", \"Cancel\"], \"labels\": [\"Cross-line 0\", \"Step 0\", \"Elements\", \"Scene 1\", \"In-line (checked)\", \"Cross-line (checked)\", \"Z-slice (checked)\", \"Volume (checked)\", \"Random Line (checked)\", \"2D Line (checked)\", \"3D Horizon (checked)\", \"2D Horizon (checked)\", \"Fault (checked)\", \"FaultSet (checked)\", \"FaultStickSet (checked)\", \"Geobody (checked)\", \"Well (checked)\", \"PointSet (checked)\", \"Polygon (checked)\", \"Prestack Events\", \"Annotations\", \"Filter\", \"Area subselection (100/300-750/1250 (463 samples))\"], \"field_values\": [\"Cross-line: 0\", \"Step: 0\", \"Elements: (empty)\", \"Scene 1: (empty)\", \"In-line: checked\", \"Cross-line: checked\", \"Z-slice: checked\", \"Volume: checked\", \"Random Line: checked\", \"2D Line: checked\", \"3D Horizon: checked\", \"2D Horizon: checked\", \"Fault: checked\", \"FaultSet: checked\", \"FaultStickSet: checked\", \"Geobody: checked\", \"Well: checked\", \"PointSet: checked\", \"Polygon: checked\", \"Prestack Events: (empty)\", \"Annotations: (empty)\", \"Filter: (empty)\", \"Demo 0 --> FS4: unchecked\", \"Demo 1 --> MFS4: unchecked\", \"Demo 2 --> FS6: unchecked\", \"Demo 3 --> Top Foresets: unche\nCandidates matched in previous turns of this session (a step can span several actions — pick one of these again if its dialog is still on screen and the instructions already given do not cover all of its actions): d3_visualization_01_main_window_ready\nInstructions already given to the user in this session (oldest first):\n  1. 트리에서 **3D Horizon**을 우클릭하세요.\nGraph prior: after the last confirmed step, the workflow expects one of these next: d3_visualization_02_add_inline. Prefer them when the screen is consistent with them.\n\nCandidate workflow steps (from a software manual):\n1. id=\"d3_visualization_02_add_inline\" workflow=\"d3_visualization\" step=2\n   title: In-line 슬라이스 추가\n   desc: Tree scene의 Elements > In-line 카테고리 노드를 우클릭하고 'Add Data' (첫번째 옵션) 또는 'Add Default Data'를 선택하여 3D Scene에 In-line 슬라이스를 표시\n   expected dialog: Context menu on In-line / Select Cube / Select Attribute\n   expected elements: inline context menu, add data item, add default data item, add and select data item, select cube dialog, blue arrow icon\n   keywords: In-line, Inline, Add Data, Add Default Data, Add and Select Data, Select Cube, Select Attribute, Seismic_data, f3_demo, right-click\n2. id=\"d3_visualization_03_add_crossline\" workflow=\"d3_visualization\" step=3\n   title: Cross-line 슬라이스 추가\n   desc: Tree scene의 Elements > Cross-line 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Cross-line 슬라이스를 추가.\n   expected dialog: OpendTect Main Window (In-line displayed) / Context menu on Cross-line\n   expected elements: inline slice visible, crossline context menu, add data item, add default data item\n   keywords: Cross-line, Crossline, Add Data, Add Default Data, Add and Select Data, In-line, 3D Scene, Elements\n3. id=\"d3_visualization_01_main_window_ready\" workflow=\"d3_visualization\" step=1\n   title: Main Window / Tree scene 준비 상태\n   desc: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은\n   expected dialog: OpendTect Main Window\n   expected elements: tree scene panel, elements group, inline category node, crossline category node, zslice category node, empty 3d scene panel\n   keywords: Tree scene, Elements, In-line, Cross-line, Z-slice, 3D Scene, F3 Demo, OpendTect\n4. id=\"spectral_decomp_152a_02_select_horizon_dialog\" workflow=\"spectral_decomp_152a\" step=2\n   title: Select Input Horizon(s) 대화상자 열림 (Add Color Blended)\n   desc: step 1 결과: 트리 3D Horizon 우클릭 > Add Color Blended… → 'Select Input Horizon(s)' 대화상자: Filter, 목록(Demo 0 --> FS4, Demo 1 --\n   expected dialog: Select Horizons / Select Input Horizon(s)\n   expected elements: horizon list, area subselection row, select button, ok cancel\n   keywords: Select Input Horizon, Demo 1 --> MFS4, Demo 0 --> FS4, Area subselection, Select..., Filter, Select Horizons, 100/300-750/1250\n5. id=\"horizon_autotrack_142a_01_random_line_loaded\" workflow=\"horizon_autotrack_142a\" step=1\n   title: Random Line에 4 Dip steered median filter 표시 (추적 전)\n   desc: 매뉴얼 §1.4.2a step 1–2 결과: 4 Dip steered median filter가 pre-load 되어 있고 Random Line > Add Default Data로 서베이 중앙의 random line\n   expected dialog: OpendTect Main Window / 3D scene\n   expected elements: tree random line with 4 dip steered median filter, tree 3d horizon empty, scene random line section, no tracking settings window\n   keywords: Random Line, 4 Dip steered median filter, 3D Horizon, Tree scene 1, Elements, no Horizon Tracking Settings window\n6. id=\"survey_setup_05_select_survey\" workflow=\"survey_setup\" step=5\n   title: Survey Select — Main Window 진입\n   desc: Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 \n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, toolbar, tree scene panel, 3d scene panel, title bar survey name\n   keywords: OpendTect, Main Window, My_F3_Survey, F3 Demo, Survey, Analysis, Processing, Scene, View, Utilities\n7. id=\"spectral_decomp_152a_01_scene_start\" workflow=\"spectral_decomp_152a\" step=1\n   title: 3D scene, 3D Horizon 트리 항목에 color-blended horizon 없음 (시작)\n   desc: §1.5.2a 시작 상태: F3 Demo 3D scene, 트리에 3D Horizon 항목이 있으나 Demo 1 --> MFS4 color-blended 표시 없음. Attribute Set 창 없음.\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: tree 3d horizon item, no color blended horizon, no attribute set window\n   keywords: 3D Horizon, Tree scene 1, F3 Demo 2023\n8. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03\" workflow=\"follow_along_implementing_a_systematic_s\" step=3\n   title: Save the Output File and Run the Algorithm\n   desc: indicate that the value represents the distance between the points.\n   keywords: Save, Output, Run, Algorithm, Regular, Lesson, Systematic, Sampling, Design, indicate\n\nPick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given.\n\nDECISION RULE (state match):\n- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.\n- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.\n- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.\n- Return \"none\" when NO candidate is even loosely related (different application, different module, totally unrelated topic).\n\nCONFIDENCE (recorded, not used as a gate; below 0.70 is treated as unsure):\n- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.\n- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.\n- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate.\n\nNOTE — steps that span several actions and dialogs that stay open:\n- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.\n- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step.\n\nRespond with JSON only:\n{\"id\": \"<candidate_id_or_none>\", \"confidence\": 0.0-1.0}",
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_sticky": null,
+              "route_advance": null,
+              "route_screen_advance": null,
+              "route_rerank_votes": null,
+              "judge_score": 1
+            },
+            {
+              "step_index": 2,
+              "response": "**OK** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 12.796,
+              "latency_wall_sec": 12.796,
+              "stage_latency": {
+                "clip": {
+                  "sec": 0.692,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.782,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.007,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.434,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 1.143,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 4.691,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.113,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 3.927,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.491,
+                  "n": 1
+                }
+              },
+              "context_chars": 4007,
+              "context_block": "[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 130, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.5.2a Spectral Decomposition\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 130 -\n\n[Figure OCR p.130 #1]\nExercise objective:\nStudy paleo-geomorphological features by displaying 3 iso-frequencies simultaneously with color stacking.\n\nWorkflow:\n\n1.  Right-click on 3D Horizon in the tree and click on Add color blended...\n    Choose horizon Demo 1->MFS4 from the list of horizons.\n\n    2D Line\n    3D Horizon\n    2D Horizon\n    Fault\n    FaultStickS\n    Body\n    Well\n    PickSet\n    Load ...\n    Add at Sections Only ...\n    Add Color Blended ...\n    Track New ...\n    Create with Co\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 133, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n12. In the same manner, create the other two attributes for middle (44Hz) and high (64Hz) frequencies: change the output frequency value and the attribute name respectively. Click Add as new every time when a new attribute was defined.\n13. Click on Close.\nOptionally, give a name to the new attribute set, e.g.: Spectral Decomposition (if Save on Close is toggled on).\n\nSD_24Hz[-8,24ms]\nSD_44Hz[-8,24ms]\nSD_64Hz[-8,24ms]\n\nAttribute Name SD_24Hz[-8,24ms]\nAdd as new\n\nSave on Close\nClose\n\nWorkflow cont'd:\n14. To convert your attributes into Horizon Data.\ngo to Processing > Create Horizon Output >\nAttributes \n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 134, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n17. Display the three new Horizon Data on Demo1-> MFS4: right-click the text adjacent to the red channel > Select attribute > Horizon Data and select SD_24Hz_[-8,24]ms.\n\n18. In the same manner, select SD_44Hz_[-8,24]ms data for the green channel and select SD_64Hz_[-8,24]ms for the blue channel.\n\nWorkflow cont'd:\n\n19. When blending the three inputs, the results should be similar to the one shown on the figure.\n\nSome extra steps:\n* Try to flip the green channel : right-click on the color bar, a menu pops up which allows you to flip the color bar).\n* What do you notice? Do you see one feature better th\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.5.3a Attributes - Attributes]\n[Section: 1.5.3a Attributes - Attributes, Page: 139, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n7. In similar way define two more Spectral Decomposition attributes of 44Hz and 64Hz.\n8. Give them appropriate names, e.g. FFT [-12,12]ms 44Hz and FFT [-12,12]ms 64Hz,\neach time pressing Add as new.\n9. Uncheck Save on Close and press Close.\n\nAttribute Set 3D\nFile\nAttribute set <not saved>\nInput Data | Dip steered median filter\nTransform type FFT CWT\nTime gate (ms) -12 12\nDisplay Time/Frequency panel\nOutput frequency (Hz) 64.0 Step 4.0\nFFT [-12,12]ms 24Hz\nFFT [-12,12]ms 44Hz\nFFT [-12,12]ms 64Hz\nOptionally save the\nattribute set. In this\ncase \"Save on close\"\nshould be checked.\nAttribute Name FFT [-12,12]ms 64Hz\nAdd as new\nSave on Close\nClose ? Help\n\nWorkflow cont'd:\n10. Apply these three attributes on the\nhorizon (red-24Hz, green-44Hz, and\nblue-64Hz):\nright-click on the red channel and go\nSelect attribute > Attributes 3D > FFT [-\n12,12]ms 24Hz.\n3D Horizon\nDemo 6 -> FS8\n<right-click>\n<right-click>\n<right-click>\nZ values\n2D Horizon\nFault\nFaultStickSet\nBody\nWell\nPickSet\nPrestack Events\nAnnotations\nSelect Attribute\nMove\nDisplay\nSave as Horizon Data ...\nTools\nRemove\nStored Cubes\nAttributes 3D\nSteering Cubes\nStored 2D Data\nAttribut",
+              "input_tokens": 3335,
+              "output_tokens": 19,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.01029,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3374,
+              "aux_output_tokens": 625,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002575,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.012865,
+              "route_confidence": 0.9,
+              "picked_node_id": "spectral_decomp_152a_03_position_ranges_entered",
+              "picked_workflow_id": "spectral_decomp_152a",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "spectral_decomp_152a_03_position_ranges_entered",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.70"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_04_horizon_color_blended",
+                  "sources": [
+                    "prior:0.90"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_02_select_horizon_dialog",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.71"
+                  ]
+                },
+                {
+                  "id": "survey_setup_05_select_survey",
+                  "sources": [
+                    "emb:0.69"
+                  ]
+                },
+                {
+                  "id": "horizon_autotrack_142a_01_random_line_loaded",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "fault_sticks_143b_01_inline_110_loaded",
+                  "sources": [
+                    "emb:0.67"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_01_main_window_ready",
+                  "sources": [
+                    "clip:0.86"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.84"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "spectral_decomp_152a_02_select_horizon_dialog",
+                  0.7050564662401902
+                ],
+                [
+                  "spectral_decomp_152a_03_position_ranges_entered",
+                  0.6968869717627834
+                ],
+                [
+                  "survey_setup_05_select_survey",
+                  0.6894781069002552
+                ],
+                [
+                  "horizon_autotrack_142a_01_random_line_loaded",
+                  0.6794101810698706
+                ],
+                [
+                  "fault_sticks_143b_01_inline_110_loaded",
+                  0.6691379045162412
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "spectral_decomp_152a",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"spectral_decomp_152a_03_position_ranges_entered\", \"confidence\": 0.9}",
+              "route_rerank_prompt": "You rank workflow steps by how well they match the user's current UI situation.\n\nUser goal: F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.\nCurrent UI visual_state JSON: {\"current_dialog\": \"Specify Positions\", \"window_titles\": [\"Specify Positions\", \"Select Horizons\", \"OpendTect 7.0.9 (Windows) *UPDATE AVAILABLE* | F3 Demo 2023 - [Scene 1]\"], \"active_menu\": null, \"menu_items\": [\"Survey\", \"Analysis\", \"Processing\", \"Scene\", \"View\", \"Utilities\", \"TerraNubis\", \"Help\"], \"buttons\": [\"OK\", \"Cancel\", \"OK\", \"Cancel\"], \"labels\": [\"Positions\", \"Area subselection (Range)\", \"In-line range (200)\", \"Step (1)\", \"Cross-line range (500)\", \"Step (1)\"], \"field_values\": [\"Positions: (empty)\", \"Area subselection: Range\", \"In-line range: 200\", \"In-line range: 650\", \"Step: 1\", \"Cross-line range: 500\", \"Cross-line range: 1000\", \"Step: 1\", \"In-line: checked\", \"Cross-line: checked\", \"Z-slice: checked\", \"Volume: checked\", \"Random Line: checked\", \"2D Line: checked\", \"3D Horizon: checked\", \"2D Horizon: checked\", \"Fault: checked\", \"FaultSet: checked\", \"FaultStickSet: checked\", \"Geobody: checked\", \"Well: checked\", \"PointSet: checked\", \"Polygon: checked\", \"Prestack Events: checked\", \"Annotations: checked\"], \"visible_elements\": [\"Tree scene 1 panel\", \"Elements tree\", \"Scene 1 tree item\", \"Color tree item\", \"Cross-line 0\", \"Step 0\", \"OD Seismic 1 dropdown\", \"Filter text field\", \"Area sub text field\", \"...emo_2023\\\\Surfaces\\\\Demo_1_-_MFS4.hor\"], \"data_state\": \"3D seismic loaded\", \"current_action\": \"specifying positions for horizon selection\"}\nCandidates matched in previous turns of this session (a step can span several actions — pick one of these again if its dialog is still on screen and the instructions already given do not cover all of its actions): d3_visualization_01_main_window_ready, spectral_decomp_152a_02_select_horizon_dialog\nInstructions already given to the user in this session (oldest first):\n  1. 트리에서 **3D Horizon**을 우클릭하세요.\n  2. **Demo 1 --> MFS4** 항목의 체크박스를 클릭하여 선택하세요.\nGraph prior: after the last confirmed step, the workflow expects one of these next: spectral_decomp_152a_03_position_ranges_entered. Prefer them when the screen is consistent with them.\n\nCandidate workflow steps (from a software manual):\n1. id=\"spectral_decomp_152a_03_position_ranges_entered\" workflow=\"spectral_decomp_152a\" step=3\n   title: Demo 1 --> MFS4 선택, Position 대화상자에 In-line 200–650 / Cross-line 500–1000 입력 (OK \n   desc: step 2 결과: 목록에서 Demo 1 --> MFS4를 선택하고 Area subselection의 Select…를 클릭 → 'Position'(Specify Position) 대화상자에서 In-line Range\n   expected dialog: Positions / Position\n   expected elements: inline range 200 650, crossline range 500 1000, ok cancel\n   keywords: Position, Specify Position, In-line Range, Cross-line Range, 200, 650, 500, 1000, Step, Positions\n2. id=\"spectral_decomp_152a_04_horizon_color_blended\" workflow=\"spectral_decomp_152a\" step=4\n   title: Demo 1 --> MFS4 가 color-blended 로 표시됨 (트리에 4개 속성 레이어)\n   desc: step 2 결과(OK, OK): 트리 3D Horizon 아래 Demo 1 --> MFS4 가 4개의 속성 레이어(아래 3개는 R/G/B 채널 색 플래그)와 함께 표시되고 scene에 horizon이 보임. 대화상\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: tree demo1 mfs4, four attribute layers, rgb channel flags, horizon in scene\n   keywords: Demo 1 --> MFS4, 3D Horizon, Tree scene 1, F3 Demo 2023, <right-click>, Z values\n3. id=\"spectral_decomp_152a_02_select_horizon_dialog\" workflow=\"spectral_decomp_152a\" step=2\n   title: Select Input Horizon(s) 대화상자 열림 (Add Color Blended)\n   desc: step 1 결과: 트리 3D Horizon 우클릭 > Add Color Blended… → 'Select Input Horizon(s)' 대화상자: Filter, 목록(Demo 0 --> FS4, Demo 1 --\n   expected dialog: Select Horizons / Select Input Horizon(s)\n   expected elements: horizon list, area subselection row, select button, ok cancel\n   keywords: Select Input Horizon, Demo 1 --> MFS4, Demo 0 --> FS4, Area subselection, Select..., Filter, Select Horizons, 100/300-750/1250\n4. id=\"survey_setup_05_select_survey\" workflow=\"survey_setup\" step=5\n   title: Survey Select — Main Window 진입\n   desc: Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 \n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, toolbar, tree scene panel, 3d scene panel, title bar survey name\n   keywords: OpendTect, Main Window, My_F3_Survey, F3 Demo, Survey, Analysis, Processing, Scene, View, Utilities\n5. id=\"horizon_autotrack_142a_01_random_line_loaded\" workflow=\"horizon_autotrack_142a\" step=1\n   title: Random Line에 4 Dip steered median filter 표시 (추적 전)\n   desc: 매뉴얼 §1.4.2a step 1–2 결과: 4 Dip steered median filter가 pre-load 되어 있고 Random Line > Add Default Data로 서베이 중앙의 random line\n   expected dialog: OpendTect Main Window / 3D scene\n   expected elements: tree random line with 4 dip steered median filter, tree 3d horizon empty, scene random line section, no tracking settings window\n   keywords: Random Line, 4 Dip steered median filter, 3D Horizon, Tree scene 1, Elements, no Horizon Tracking Settings window\n6. id=\"fault_sticks_143b_01_inline_110_loaded\" workflow=\"fault_sticks_143b\" step=1\n   title: In-line 110에 4 Dip steered median filter 표시, 단층 부위로 확대\n   desc: 매뉴얼 §1.4.3b step 1–4 결과: In-line 우클릭 > Add Default Data로 4 Dip steered median filter가 표시되고 인라인 위치 110, In-line view, 단층이\n   expected dialog: OpendTect Main Window / 3D scene (In-line view)\n   expected elements: tree inline 110 with 4 dip steered median filter, tree faultstickset empty, inline view, navigation toolbar inline 110\n   keywords: In-line, 110, 4 Dip steered median filter, FaultStickSet, Tree scene 1, View In-line, no FaultStickSet item yet\n7. id=\"d3_visualization_01_main_window_ready\" workflow=\"d3_visualization\" step=1\n   title: Main Window / Tree scene 준비 상태\n   desc: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은\n   expected dialog: OpendTect Main Window\n   expected elements: tree scene panel, elements group, inline category node, crossline category node, zslice category node, empty 3d scene panel\n   keywords: Tree scene, Elements, In-line, Cross-line, Z-slice, 3D Scene, F3 Demo, OpendTect\n8. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03\" workflow=\"follow_along_implementing_a_systematic_s\" step=3\n   title: Save the Output File and Run the Algorithm\n   desc: indicate that the value represents the distance between the points.\n   keywords: Save, Output, Run, Algorithm, Regular, Lesson, Systematic, Sampling, Design, indicate\n\nPick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given.\n\nDECISION RULE (state match):\n- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.\n- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.\n- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.\n- Return \"none\" when NO candidate is even loosely related (different application, different module, totally unrelated topic).\n\nCONFIDENCE (recorded, not used as a gate; below 0.70 is treated as unsure):\n- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.\n- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.\n- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate.\n\nNOTE — steps that span several actions and dialogs that stay open:\n- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.\n- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step.\n\nRespond with JSON only:\n{\"id\": \"<candidate_id_or_none>\", \"confidence\": 0.0-1.0}",
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_sticky": null,
+              "route_advance": null,
+              "route_screen_advance": null,
+              "route_rerank_votes": null,
+              "judge_score": 1
+            },
+            {
+              "step_index": 3,
+              "response": "트리에서 **Demo 1 --> MFS4** 항목을 우클릭하세요.",
+              "matched": false,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 14.9,
+              "latency_wall_sec": 14.9,
+              "stage_latency": {
+                "clip": {
+                  "sec": 0.284,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 2.498,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.428,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.936,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 6.261,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.116,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 4.346,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.769,
+                  "n": 1
+                }
+              },
+              "context_chars": 4007,
+              "context_block": "[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 130, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.5.2a Spectral Decomposition\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 130 -\n\n[Figure OCR p.130 #1]\nExercise objective:\nStudy paleo-geomorphological features by displaying 3 iso-frequencies simultaneously with color stacking.\n\nWorkflow:\n\n1.  Right-click on 3D Horizon in the tree and click on Add color blended...\n    Choose horizon Demo 1->MFS4 from the list of horizons.\n\n    2D Line\n    3D Horizon\n    2D Horizon\n    Fault\n    FaultStickS\n    Body\n    Well\n    PickSet\n    Load ...\n    Add at Sections Only ...\n    Add Color Blended ...\n    Track New ...\n    Create with Co\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 131, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont’d:\n\n3. To define 3 different attributes that will be loaded to the RGB channels of the horizon,\nopen an attribute set 3D: click on the A icon.\n\n4. Select Spectral Decomposition as attribute and set the time gate to [-8,24]ms.\n\nWhen the extraction of an\nattribute is done on a horizon,\nchoosing the right time gate\nis critical. The time gate\nrepresents the interval of\ninvestigation. If a\nsymmetrical time gate is\nchosen (e.g. [-28, +28ms])\nthe attribute will highlight\ngeological features above\nand below the horizon. When\nan asymmetrical time gate is\nchosen (e.g. [-8, 24ms] or\n[-24, 8ms]) the attribute\nrespon\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 133, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n12. In the same manner, create the other two attributes for middle (44Hz) and high (64Hz) frequencies: change the output frequency value and the attribute name respectively. Click Add as new every time when a new attribute was defined.\n13. Click on Close.\nOptionally, give a name to the new attribute set, e.g.: Spectral Decomposition (if Save on Close is toggled on).\n\nSD_24Hz[-8,24ms]\nSD_44Hz[-8,24ms]\nSD_64Hz[-8,24ms]\n\nAttribute Name SD_24Hz[-8,24ms]\nAdd as new\n\nSave on Close\nClose\n\nWorkflow cont'd:\n14. To convert your attributes into Horizon Data.\ngo to Processing > Create Horizon Output >\nAttributes \n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.5.3a Attributes - Attributes]\n[Section: 1.5.3a Attributes - Attributes, Page: 139, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n7. In similar way define two more Spectral Decomposition attributes of 44Hz and 64Hz.\n8. Give them appropriate names, e.g. FFT [-12,12]ms 44Hz and FFT [-12,12]ms 64Hz,\neach time pressing Add as new.\n9. Uncheck Save on Close and press Close.\n\nAttribute Set 3D\nFile\nAttribute set <not saved>\nInput Data | Dip steered median filter\nTransform type FFT CWT\nTime gate (ms) -12 12\nDisplay Time/Frequency panel\nOutput frequency (Hz) 64.0 Step 4.0\nFFT [-12,12]ms 24Hz\nFFT [-12,12]ms 44Hz\nFFT [-12,12]ms 64Hz\nOptionally save the\nattribute set. In this\ncase \"Save on close\"\nshould be checked.\nAttribute Name FFT [-12,12]ms 64Hz\nAdd as new\nSave on Close\nClose ? Help\n\nWorkflow cont'd:\n10. Apply these three attributes on the\nhorizon (red-24Hz, green-44Hz, and\nblue-64Hz):\nright-click on the red channel and go\nSelect attribute > Attributes 3D > FFT [-\n12,12]ms 24Hz.\n3D Horizon\nDemo 6 -> FS8\n<right-click>\n<right-click>\n<right-click>\nZ values\n2D Horizon\nFault\nFaultStickSet\nBody\nWell\nPickSet\nPrestack Events\nAnnotations\nSelect Attribute\nMove\nDisplay\nSave as Horizon Data ...\nTools\nRemove\nStored Cubes\nAttributes 3D\nSteering Cubes\nStored 2D Data\nAttribut",
+              "input_tokens": 3354,
+              "output_tokens": 32,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010542,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3663,
+              "aux_output_tokens": 752,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002979,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.013521,
+              "route_confidence": 0.9,
+              "picked_node_id": "spectral_decomp_152a_04_horizon_color_blended",
+              "picked_workflow_id": "spectral_decomp_152a",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "spectral_decomp_152a_04_horizon_color_blended",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_05_attribute_set_open",
+                  "sources": [
+                    "prior:0.90"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_03_position_ranges_entered",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_01_scene_start",
+                  "sources": [
+                    "emb:0.71"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_01_main_window_ready",
+                  "sources": [
+                    "emb:0.71",
+                    "clip:0.86"
+                  ]
+                },
+                {
+                  "id": "survey_setup_05_select_survey",
+                  "sources": [
+                    "emb:0.70"
+                  ]
+                },
+                {
+                  "id": "horizon_autotrack_142a_01_random_line_loaded",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_02_select_horizon_dialog",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "clip:0.84"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.83"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "spectral_decomp_152a_01_scene_start",
+                  0.7058652108619634
+                ],
+                [
+                  "d3_visualization_01_main_window_ready",
+                  0.7050922123306193
+                ],
+                [
+                  "survey_setup_05_select_survey",
+                  0.6984809886063258
+                ],
+                [
+                  "horizon_autotrack_142a_01_random_line_loaded",
+                  0.6809834314471087
+                ],
+                [
+                  "spectral_decomp_152a_02_select_horizon_dialog",
+                  0.6804354569839753
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "spectral_decomp_152a",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"spectral_decomp_152a_02_select_horizon_dialog\", \"confidence\": 0.9}",
+              "route_rerank_prompt": "You rank workflow steps by how well they match the user's current UI situation.\n\nUser goal: F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.\nCurrent UI visual_state JSON: {\"current_dialog\": \"OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]\", \"window_titles\": [\"OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]\"], \"active_menu\": null, \"menu_items\": [\"Survey\", \"Analysis\", \"Processing\", \"Scene\", \"View\", \"Utilities\", \"TerraNubis\", \"Help\"], \"buttons\": [], \"labels\": [\"Cross-line (0)\", \"Step (0)\", \"SEG-Y\", \"OD Seismic 1\"], \"field_values\": [\"Cross-line: 0\", \"Step: 0\", \"Elements: (empty)\", \"Scene 1: (empty)\", \"In-line: checked\", \"Cross-line: checked\", \"Z-slice: checked\", \"Volume: checked\", \"Random Line: checked\", \"2D Line: checked\", \"3D Horizon: checked\", \"Demo 1 --> MFS4: checked\", \"<right-click>: checked\", \"<right-click>: checked\", \"<right-click>: checked\", \"Z values: checked\", \"2D Horizon: checked\", \"Fault: checked\", \"FaultSet: checked\", \"FaultStickSet: checked\", \"Geobody: checked\", \"Well: checked\", \"PointSet: checked\", \"Polygon: checked\", \"Prestack Events: checked\", \"Annotations: (empty)\"], \"visible_elements\": [\"Tree scene 1 panel\", \"Elements tree\", \"Color column\", \"Toolbar with icons for: New scene, Open scene, Save scene, Save scene as, Print, Undo, Redo, Cut, Copy, Paste, Delete, Select all, Deselect all, Invert selection, Find, Replace, Go to, Zoom in, Zoom out, Pan, Rotate, Measure, Pick, Edit, Add, Remove, Properties, Help\", \"Toolbar with icons for: New 3D Horizon, New 2D Horizon, New Fault, New Fau\nCandidates matched in previous turns of this session (a step can span several actions — pick one of these again if its dialog is still on screen and the instructions already given do not cover all of its actions): d3_visualization_01_main_window_ready, spectral_decomp_152a_02_select_horizon_dialog, spectral_decomp_152a_03_position_ranges_entered\nInstructions already given to the user in this session (oldest first):\n  1. 트리에서 **3D Horizon**을 우클릭하세요.\n  2. **Demo 1 --> MFS4** 항목의 체크박스를 클릭하여 선택하세요.\n  3. **OK** 버튼을 클릭하세요.\nGraph prior: after the last confirmed step, the workflow expects one of these next: spectral_decomp_152a_04_horizon_color_blended. Prefer them when the screen is consistent with them.\n\nCandidate workflow steps (from a software manual):\n1. id=\"spectral_decomp_152a_04_horizon_color_blended\" workflow=\"spectral_decomp_152a\" step=4\n   title: Demo 1 --> MFS4 가 color-blended 로 표시됨 (트리에 4개 속성 레이어)\n   desc: step 2 결과(OK, OK): 트리 3D Horizon 아래 Demo 1 --> MFS4 가 4개의 속성 레이어(아래 3개는 R/G/B 채널 색 플래그)와 함께 표시되고 scene에 horizon이 보임. 대화상\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: tree demo1 mfs4, four attribute layers, rgb channel flags, horizon in scene\n   keywords: Demo 1 --> MFS4, 3D Horizon, Tree scene 1, F3 Demo 2023, <right-click>, Z values\n2. id=\"spectral_decomp_152a_05_attribute_set_open\" workflow=\"spectral_decomp_152a\" step=5\n   title: Attribute Set 3D 창 열림 (빈 세트, <not saved>)\n   desc: step 3 결과: 툴바의 Attribute Set 3D 아이콘(A) 클릭 → 'Attribute Set 3D' 창: File 메뉴, Attribute set <not saved>, 속성 목록 비어 있음, 속성 종류\n   expected dialog: Attribute Set 3D\n   expected elements: attribute type dropdown, input data field, attribute name field, add as new button, empty attribute list\n   keywords: Attribute Set 3D, Attribute set <not saved>, Input Data, Attribute Name, Add as new, Close, Save on Close, Similarity\n3. id=\"spectral_decomp_152a_03_position_ranges_entered\" workflow=\"spectral_decomp_152a\" step=3\n   title: Demo 1 --> MFS4 선택, Position 대화상자에 In-line 200–650 / Cross-line 500–1000 입력 (OK \n   desc: step 2 결과: 목록에서 Demo 1 --> MFS4를 선택하고 Area subselection의 Select…를 클릭 → 'Position'(Specify Position) 대화상자에서 In-line Range\n   expected dialog: Positions / Position\n   expected elements: inline range 200 650, crossline range 500 1000, ok cancel\n   keywords: Position, Specify Position, In-line Range, Cross-line Range, 200, 650, 500, 1000, Step, Positions\n4. id=\"spectral_decomp_152a_01_scene_start\" workflow=\"spectral_decomp_152a\" step=1\n   title: 3D scene, 3D Horizon 트리 항목에 color-blended horizon 없음 (시작)\n   desc: §1.5.2a 시작 상태: F3 Demo 3D scene, 트리에 3D Horizon 항목이 있으나 Demo 1 --> MFS4 color-blended 표시 없음. Attribute Set 창 없음.\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: tree 3d horizon item, no color blended horizon, no attribute set window\n   keywords: 3D Horizon, Tree scene 1, F3 Demo 2023\n5. id=\"d3_visualization_01_main_window_ready\" workflow=\"d3_visualization\" step=1\n   title: Main Window / Tree scene 준비 상태\n   desc: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은\n   expected dialog: OpendTect Main Window\n   expected elements: tree scene panel, elements group, inline category node, crossline category node, zslice category node, empty 3d scene panel\n   keywords: Tree scene, Elements, In-line, Cross-line, Z-slice, 3D Scene, F3 Demo, OpendTect\n6. id=\"survey_setup_05_select_survey\" workflow=\"survey_setup\" step=5\n   title: Survey Select — Main Window 진입\n   desc: Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 \n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, toolbar, tree scene panel, 3d scene panel, title bar survey name\n   keywords: OpendTect, Main Window, My_F3_Survey, F3 Demo, Survey, Analysis, Processing, Scene, View, Utilities\n7. id=\"horizon_autotrack_142a_01_random_line_loaded\" workflow=\"horizon_autotrack_142a\" step=1\n   title: Random Line에 4 Dip steered median filter 표시 (추적 전)\n   desc: 매뉴얼 §1.4.2a step 1–2 결과: 4 Dip steered median filter가 pre-load 되어 있고 Random Line > Add Default Data로 서베이 중앙의 random line\n   expected dialog: OpendTect Main Window / 3D scene\n   expected elements: tree random line with 4 dip steered median filter, tree 3d horizon empty, scene random line section, no tracking settings window\n   keywords: Random Line, 4 Dip steered median filter, 3D Horizon, Tree scene 1, Elements, no Horizon Tracking Settings window\n8. id=\"spectral_decomp_152a_02_select_horizon_dialog\" workflow=\"spectral_decomp_152a\" step=2\n   title: Select Input Horizon(s) 대화상자 열림 (Add Color Blended)\n   desc: step 1 결과: 트리 3D Horizon 우클릭 > Add Color Blended… → 'Select Input Horizon(s)' 대화상자: Filter, 목록(Demo 0 --> FS4, Demo 1 --\n   expected dialog: Select Horizons / Select Input Horizon(s)\n   expected elements: horizon list, area subselection row, select button, ok cancel\n   keywords: Select Input Horizon, Demo 1 --> MFS4, Demo 0 --> FS4, Area subselection, Select..., Filter, Select Horizons, 100/300-750/1250\n9. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02\" workflow=\"follow_along_implementing_a_systematic_s\" step=2\n   title: Label Points with ID and Add a Text Buffer\n   desc: QGIS Training Manual 3.\n   keywords: Label, Points, ID, Add, Text, Buffer, QGIS, Training, Manual, For\n10. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03\" workflow=\"follow_along_implementing_a_systematic_s\" step=3\n   title: Save the Output File and Run the Algorithm\n   desc: indicate that the value represents the distance between the points.\n   keywords: Save, Output, Run, Algorithm, Regular, Lesson, Systematic, Sampling, Design, indicate\n\nPick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given.\n\nDECISION RULE (state match):\n- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.\n- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.\n- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.\n- Return \"none\" when NO candidate is even loosely related (different application, different module, totally unrelated topic).\n\nCONFIDENCE (recorded, not used as a gate; below 0.70 is treated as unsure):\n- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.\n- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.\n- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate.\n\nNOTE — steps that span several actions and dialogs that stay open:\n- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.\n- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step.\n\nRespond with JSON only:\n{\"id\": \"<candidate_id_or_none>\", \"confidence\": 0.0-1.0}",
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_sticky": null,
+              "route_advance": null,
+              "route_screen_advance": {
+                "from": "spectral_decomp_152a_02_select_horizon_dialog",
+                "to": "spectral_decomp_152a_04_horizon_color_blended",
+                "evidence": {
+                  "spectral_decomp_152a_04_horizon_color_blended": [
+                    "rightclick",
+                    "zvalues"
+                  ]
+                }
+              },
+              "route_rerank_votes": null,
+              "judge_score": 0
+            },
+            {
+              "step_index": 4,
+              "response": "Attribute 드롭다운(현재 \"Similarity\" 표시)을 클릭하여 **Spectral Decomposition**을 선택하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 13.314,
+              "latency_wall_sec": 13.314,
+              "stage_latency": {
+                "clip": {
+                  "sec": 0.352,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.437,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.442,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 1.039,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 6.346,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.018,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 2.694,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.487,
+                  "n": 1
+                }
+              },
+              "context_chars": 4007,
+              "context_block": "[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 131, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont’d:\n\n3. To define 3 different attributes that will be loaded to the RGB channels of the horizon,\nopen an attribute set 3D: click on the A icon.\n\n4. Select Spectral Decomposition as attribute and set the time gate to [-8,24]ms.\n\nWhen the extraction of an\nattribute is done on a horizon,\nchoosing the right time gate\nis critical. The time gate\nrepresents the interval of\ninvestigation. If a\nsymmetrical time gate is\nchosen (e.g. [-28, +28ms])\nthe attribute will highlight\ngeological features above\nand below the horizon. When\nan asymmetrical time gate is\nchosen (e.g. [-8, 24ms] or\n[-24, 8ms]) the attribute\nrespon\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 132, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n8. Within the amplitude spectrum, identify the frequencies to be used as the low, middle and high frequencies: the low frequency can be selected as being the first peak (e.g. 24Hz), while the high frequency as the last peak (e.g. 64 Hz).\nAfter choosing the frequencies, close Amplitude spectrum window.\nAmplitude Spectrum for 4 Dip steered median filter\n0\n-5\n-10\n-15\n-20\n-25\nPower (dB)\n0\n25\n50\n75\n100\n125\nFrequency (Hz)\nDisplay between frequencies 0 125 Gridline step 25\nValue(frequency, power) 23.70259 -5.36955 Normalize dB scale\nDisplay cepstrum... Export...\n\nWorkflow cont'd:\n9. Back to the attribute set\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 133, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n12. In the same manner, create the other two attributes for middle (44Hz) and high (64Hz) frequencies: change the output frequency value and the attribute name respectively. Click Add as new every time when a new attribute was defined.\n13. Click on Close.\nOptionally, give a name to the new attribute set, e.g.: Spectral Decomposition (if Save on Close is toggled on).\n\nSD_24Hz[-8,24ms]\nSD_44Hz[-8,24ms]\nSD_64Hz[-8,24ms]\n\nAttribute Name SD_24Hz[-8,24ms]\nAdd as new\n\nSave on Close\nClose\n\nWorkflow cont'd:\n14. To convert your attributes into Horizon Data.\ngo to Processing > Create Horizon Output >\nAttributes \n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.5.3a Attributes - Attributes]\n[Section: 1.5.3a Attributes - Attributes, Page: 139, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n7. In similar way define two more Spectral Decomposition attributes of 44Hz and 64Hz.\n8. Give them appropriate names, e.g. FFT [-12,12]ms 44Hz and FFT [-12,12]ms 64Hz,\neach time pressing Add as new.\n9. Uncheck Save on Close and press Close.\n\nAttribute Set 3D\nFile\nAttribute set <not saved>\nInput Data | Dip steered median filter\nTransform type FFT CWT\nTime gate (ms) -12 12\nDisplay Time/Frequency panel\nOutput frequency (Hz) 64.0 Step 4.0\nFFT [-12,12]ms 24Hz\nFFT [-12,12]ms 44Hz\nFFT [-12,12]ms 64Hz\nOptionally save the\nattribute set. In this\ncase \"Save on close\"\nshould be checked.\nAttribute Name FFT [-12,12]ms 64Hz\nAdd as new\nSave on Close\nClose ? Help\n\nWorkflow cont'd:\n10. Apply these three attributes on the\nhorizon (red-24Hz, green-44Hz, and\nblue-64Hz):\nright-click on the red channel and go\nSelect attribute > Attributes 3D > FFT [-\n12,12]ms 24Hz.\n3D Horizon\nDemo 6 -> FS8\n<right-click>\n<right-click>\n<right-click>\nZ values\n2D Horizon\nFault\nFaultStickSet\nBody\nWell\nPickSet\nPrestack Events\nAnnotations\nSelect Attribute\nMove\nDisplay\nSave as Horizon Data ...\nTools\nRemove\nStored Cubes\nAttributes 3D\nSteering Cubes\nStored 2D Data\nAttribut",
+              "input_tokens": 3387,
+              "output_tokens": 47,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010866,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3915,
+              "aux_output_tokens": 676,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.002864,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.01373,
+              "route_confidence": 0.9,
+              "picked_node_id": "spectral_decomp_152a_05_attribute_set_open",
+              "picked_workflow_id": "spectral_decomp_152a",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "spectral_decomp_152a_05_attribute_set_open",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.77"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_06_sd_24hz_added",
+                  "sources": [
+                    "prior:0.90"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_04_horizon_color_blended",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_02_open_attribute_tool",
+                  "sources": [
+                    "emb:0.78"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_01_ready_to_start",
+                  "sources": [
+                    "emb:0.74"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_04_configure",
+                  "sources": [
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_09_attribute_set_closed",
+                  "sources": [
+                    "emb:0.73"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_01_main_window_ready",
+                  "sources": [
+                    "clip:0.85"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.84"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "seismic_attribute_02_open_attribute_tool",
+                  0.784853427568479
+                ],
+                [
+                  "spectral_decomp_152a_05_attribute_set_open",
+                  0.7709818772610585
+                ],
+                [
+                  "seismic_attribute_01_ready_to_start",
+                  0.743637478069929
+                ],
+                [
+                  "seismic_attribute_04_configure",
+                  0.7330758248257467
+                ],
+                [
+                  "spectral_decomp_152a_09_attribute_set_closed",
+                  0.7315003411600646
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "spectral_decomp_152a",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"spectral_decomp_152a_05_attribute_set_open\", \"confidence\": 0.9}",
+              "route_rerank_prompt": "You rank workflow steps by how well they match the user's current UI situation.\n\nUser goal: F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.\nCurrent UI visual_state JSON: {\"current_dialog\": \"Attribute Set 3D\", \"window_titles\": [\"Attribute Set 3D\", \"OpenDTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]\"], \"active_menu\": null, \"menu_items\": [\"File\", \"Survey\", \"Analysis\", \"Processing\", \"Scene\", \"View\", \"Utilities\", \"TerraNubis\", \"Help\"], \"buttons\": [\"Select ...\", \"Add as new\", \"Close\"], \"labels\": [\"Attribute set (<not saved>)\", \"Input Data (4 Dip steered median filter)\", \"Time gate (ms) (-28)\", \"Extension (Cross)\", \"Stepout (inl:1)\", \"crl:1\", \"Steering (None)\", \"Output statistic (Average)\", \"Attribute Name\", \"Save on Close (checked)\"], \"field_values\": [\"Attribute set: <not saved>\", \"Input Data: 4 Dip steered median filter\", \"Time gate (ms): -28\", \"Time gate (ms): 28\", \"Extension: Cross\", \"Stepout: inl:1\", \"Stepout: crl:1\", \"Steering: None\", \"Output statistic: Average\", \"Attribute Name: (empty)\", \"Save on Close: checked\"], \"visible_elements\": [\"Tree scene 1\", \"Elements\", \"Scene 1\", \"In-line\", \"Cross-line\", \"Z-slice\", \"Volume\", \"Random Line\", \"2D Line\", \"3D Horizon\", \"Demo 1 -> MFS4\", \"<right-click>\", \"<right-click>\", \"<right-click>\", \"Z values\", \"2D Horizon\", \"Fault\", \"FaultSet\", \"FaultStickSet\", \"Geobody\", \"Well\", \"PointSet\", \"Polygon\", \"Prestack Events\", \"Annotations\", \"Cross-line 0\", \"Step 0\", \"8.7372\", \"8.7372\", \"OD Seismic 1\", \"<All>\", \"Similarity\", \"Color\"], \"data_state\": \"3D seismic loaded\", \"current_action\": \"configuring 3\nCandidates matched in previous turns of this session (a step can span several actions — pick one of these again if its dialog is still on screen and the instructions already given do not cover all of its actions): d3_visualization_01_main_window_ready, spectral_decomp_152a_04_horizon_color_blended\nInstructions already given to the user in this session (oldest first):\n  1. 트리에서 **3D Horizon**을 우클릭하세요.\n  2. **Demo 1 --> MFS4** 항목의 체크박스를 클릭하여 선택하세요.\n  3. **OK** 버튼을 클릭하세요.\n  4. 트리에서 **Demo 1 --> MFS4** 항목을 우클릭하세요.\nGraph prior: after the last confirmed step, the workflow expects one of these next: spectral_decomp_152a_05_attribute_set_open. Prefer them when the screen is consistent with them.\nCandidates sharing the dialog 'Attribute Set 3D' — tell them apart by FIELD STATES (visual_state.field_values / labels), not by the dialog title:\n  - seismic_attribute_02_open_attribute_tool (step 2): Attribute Set 3D; Attribute set (<not saved>); attribute type: Similarity (default, not yet changed); Time gate (ms) (-28) 28 (default values); Input Data (Seismic_data); Attribute Name (empty); attribute list <All> empty — no attribute added yet; Add as new\n  - seismic_attribute_04_configure (step 4): Attribute Name (Energy [-28,+28]) — field FILLED, not empty; attribute list contains 'Energy [-28,+28]' — NOT empty; Save on Close (checked); Save Attribute as dialog open; Select Output Attribute; Name (my first attribute set) entered; attribute name filled energy -28 28; energy entry present in attribute list\nGraph-order prior: seismic_attribute_02_open_attribute_tool — no step of this group is confirmed yet (last confirmed: spectral_decomp_152a_04_horizon_color_blended), so the earliest step of the group is expected. Pick another member of the group ONLY if a field state listed for it is literally present in visual_state and the prior's states are contradicted.\n\nCandidate workflow steps (from a software manual):\n1. id=\"seismic_attribute_02_open_attribute_tool\" workflow=\"seismic_attribute\" step=2\n   title: Attribute Set 3D 창 열림 (on-the-fly 경로 진입)\n   desc: 매뉴얼 §1.5.1a step 1 결과: toolbar Attribute 3D 아이콘 클릭으로 Attribute Set 3D 창이 방금 열림. 비어 있는 attribute set 상태, Attribute Type d\n   expected dialog: Attribute Set 3D\n   expected elements: attribute type dropdown default similarity, attribute set not saved, attribute list empty, attribute name blank, time gate default -28 28, add as new button\n   keywords: Attribute Set 3D, Attribute set (<not saved>), attribute type: Similarity (default, not yet changed), Time gate (ms) (-28) 28 (default values), Input Data (Seis\n2. id=\"spectral_decomp_152a_05_attribute_set_open\" workflow=\"spectral_decomp_152a\" step=5\n   title: Attribute Set 3D 창 열림 (빈 세트, <not saved>)\n   desc: step 3 결과: 툴바의 Attribute Set 3D 아이콘(A) 클릭 → 'Attribute Set 3D' 창: File 메뉴, Attribute set <not saved>, 속성 목록 비어 있음, 속성 종류\n   expected dialog: Attribute Set 3D\n   expected elements: attribute type dropdown, input data field, attribute name field, add as new button, empty attribute list\n   keywords: Attribute Set 3D, Attribute set <not saved>, Input Data, Attribute Name, Add as new, Close, Save on Close, Similarity\n3. id=\"spectral_decomp_152a_06_sd_24hz_added\" workflow=\"spectral_decomp_152a\" step=6\n   title: SD_24Hz[-8,24ms] 정의 후 Add as new (목록에 1개)\n   desc: step 4, 9–11 결과: 속성 = Spectral Decomposition, Input Data = 4 Dip steered median filter, Transform type FFT, Time gate (m\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24, spectral decomposition selected, time gate minus8 24, output frequency 24 step 4\n   keywords: Spectral Decomposition, SD_24Hz[-8,24ms], 4 Dip steered median filter, Time gate (ms), -8, 24, Output frequency (Hz), 24.0, Step, 4.0\n4. id=\"spectral_decomp_152a_04_horizon_color_blended\" workflow=\"spectral_decomp_152a\" step=4\n   title: Demo 1 --> MFS4 가 color-blended 로 표시됨 (트리에 4개 속성 레이어)\n   desc: step 2 결과(OK, OK): 트리 3D Horizon 아래 Demo 1 --> MFS4 가 4개의 속성 레이어(아래 3개는 R/G/B 채널 색 플래그)와 함께 표시되고 scene에 horizon이 보임. 대화상\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: tree demo1 mfs4, four attribute layers, rgb channel flags, horizon in scene\n   keywords: Demo 1 --> MFS4, 3D Horizon, Tree scene 1, F3 Demo 2023, <right-click>, Z values\n5. id=\"seismic_attribute_01_ready_to_start\" workflow=\"seismic_attribute\" step=1\n   title: 속성 작업 시작 전 (아직 창 미개방)\n   desc: 매뉴얼 §1.5 시작 문맥: F3 Demo survey 로드 후 OpendTect Main Window 에서 아직 Attribute Set 3D 창도, 배치 다이얼로그도 열려 있지 않은 상태. 사용자가 toolbar\n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, attribute 3d toolbar icon, analysis menu, attributes menu item\n   keywords: Analysis menu, Attributes menu item, Create Attribute Set (3D), Attribute 3D toolbar icon (unclicked), no attribute dialog open\n6. id=\"seismic_attribute_04_configure\" workflow=\"seismic_attribute\" step=4\n   title: 속성 파라미터 최종 편집 + attribute set 저장\n   desc: 매뉴얼 §1.5.1a steps 3-5 결과의 통합 노드: Time gate 값 (-28..+28) 및 Attribute Name ('Energy [-28,+28]') 이미 입력 완료 → Add as new 로 se\n   expected dialog: Attribute Set 3D / Save Attribute as / Save Attribute Set\n   expected elements: attribute name filled energy -28 28, energy entry present in attribute list, save on close checked, save attribute as dialog open, attribute set name entered\n   keywords: Attribute Name (Energy [-28,+28]) — field FILLED, not empty, attribute list contains 'Energy [-28,+28]' — NOT empty, Save on Close (checked), Save Attribute as \n7. id=\"spectral_decomp_152a_09_attribute_set_closed\" workflow=\"spectral_decomp_152a\" step=9\n   title: Attribute Set 창 닫힘 (세트 이름 Spectral Decomposition 저장), 3D scene 만 표시 (목표 도달)\n   desc: step 13 결과: Close(Save on Close 켜짐, 이름 예: Spectral Decomposition) → Attribute Set 3D 창이 사라지고 3D scene과 트리(Demo 1 --> MFS\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: no attribute set window, tree demo1 mfs4, four attribute layers\n   keywords: Demo 1 --> MFS4, 3D Horizon, Tree scene 1, F3 Demo 2023\n8. id=\"d3_visualization_01_main_window_ready\" workflow=\"d3_visualization\" step=1\n   title: Main Window / Tree scene 준비 상태\n   desc: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은\n   expected dialog: OpendTect Main Window\n   expected elements: tree scene panel, elements group, inline category node, crossline category node, zslice category node, empty 3d scene panel\n   keywords: Tree scene, Elements, In-line, Cross-line, Z-slice, 3D Scene, F3 Demo, OpendTect\n9. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03\" workflow=\"follow_along_implementing_a_systematic_s\" step=3\n   title: Save the Output File and Run the Algorithm\n   desc: indicate that the value represents the distance between the points.\n   keywords: Save, Output, Run, Algorithm, Regular, Lesson, Systematic, Sampling, Design, indicate\n\nPick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given.\n\nDECISION RULE (state match):\n- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.\n- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.\n- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.\n- Return \"none\" when NO candidate is even loosely related (different application, different module, totally unrelated topic).\n\nCONFIDENCE (recorded, not used as a gate; below 0.70 is treated as unsure):\n- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.\n- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.\n- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate.\n\nNOTE — steps that span several actions and dialogs that stay open:\n- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.\n- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step.\n\nRespond with JSON only:\n{\"id\": \"<candidate_id_or_none>\", \"confidence\": 0.0-1.0}",
+              "goal_state_node": null,
+              "route_tie_prior": "seismic_attribute_02_open_attribute_tool",
+              "route_tie_group": [
+                "seismic_attribute_02_open_attribute_tool",
+                "seismic_attribute_04_configure"
+              ],
+              "route_sticky": null,
+              "route_advance": null,
+              "route_screen_advance": null,
+              "route_rerank_votes": null,
+              "judge_score": 1
+            },
+            {
+              "step_index": 5,
+              "response": "Output frequency를 44.0으로 변경하기 위해 **Output frequency (Hz)** 필드의 값을 클릭하여 **44**로 수정하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 15.16,
+              "latency_wall_sec": 15.16,
+              "stage_latency": {
+                "embed": {
+                  "sec": 2.057,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.006,
+                  "n": 1
+                },
+                "clip": {
+                  "sec": 0.466,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.41,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.866,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 6.036,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.159,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 3.981,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 3.517,
+                  "n": 1
+                }
+              },
+              "context_chars": 4007,
+              "context_block": "[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 132, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n8. Within the amplitude spectrum, identify the frequencies to be used as the low, middle and high frequencies: the low frequency can be selected as being the first peak (e.g. 24Hz), while the high frequency as the last peak (e.g. 64 Hz).\nAfter choosing the frequencies, close Amplitude spectrum window.\nAmplitude Spectrum for 4 Dip steered median filter\n0\n-5\n-10\n-15\n-20\n-25\nPower (dB)\n0\n25\n50\n75\n100\n125\nFrequency (Hz)\nDisplay between frequencies 0 125 Gridline step 25\nValue(frequency, power) 23.70259 -5.36955 Normalize dB scale\nDisplay cepstrum... Export...\n\nWorkflow cont'd:\n9. Back to the attribute set\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 133, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n12. In the same manner, create the other two attributes for middle (44Hz) and high (64Hz) frequencies: change the output frequency value and the attribute name respectively. Click Add as new every time when a new attribute was defined.\n13. Click on Close.\nOptionally, give a name to the new attribute set, e.g.: Spectral Decomposition (if Save on Close is toggled on).\n\nSD_24Hz[-8,24ms]\nSD_44Hz[-8,24ms]\nSD_64Hz[-8,24ms]\n\nAttribute Name SD_24Hz[-8,24ms]\nAdd as new\n\nSave on Close\nClose\n\nWorkflow cont'd:\n14. To convert your attributes into Horizon Data.\ngo to Processing > Create Horizon Output >\nAttributes \n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 134, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n17. Display the three new Horizon Data on Demo1-> MFS4: right-click the text adjacent to the red channel > Select attribute > Horizon Data and select SD_24Hz_[-8,24]ms.\n\n18. In the same manner, select SD_44Hz_[-8,24]ms data for the green channel and select SD_64Hz_[-8,24]ms for the blue channel.\n\nWorkflow cont'd:\n\n19. When blending the three inputs, the results should be similar to the one shown on the figure.\n\nSome extra steps:\n* Try to flip the green channel : right-click on the color bar, a menu pops up which allows you to flip the color bar).\n* What do you notice? Do you see one feature better th\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.5.3a Attributes - Attributes]\n[Section: 1.5.3a Attributes - Attributes, Page: 139, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n7. In similar way define two more Spectral Decomposition attributes of 44Hz and 64Hz.\n8. Give them appropriate names, e.g. FFT [-12,12]ms 44Hz and FFT [-12,12]ms 64Hz,\neach time pressing Add as new.\n9. Uncheck Save on Close and press Close.\n\nAttribute Set 3D\nFile\nAttribute set <not saved>\nInput Data | Dip steered median filter\nTransform type FFT CWT\nTime gate (ms) -12 12\nDisplay Time/Frequency panel\nOutput frequency (Hz) 64.0 Step 4.0\nFFT [-12,12]ms 24Hz\nFFT [-12,12]ms 44Hz\nFFT [-12,12]ms 64Hz\nOptionally save the\nattribute set. In this\ncase \"Save on close\"\nshould be checked.\nAttribute Name FFT [-12,12]ms 64Hz\nAdd as new\nSave on Close\nClose ? Help\n\nWorkflow cont'd:\n10. Apply these three attributes on the\nhorizon (red-24Hz, green-44Hz, and\nblue-64Hz):\nright-click on the red channel and go\nSelect attribute > Attributes 3D > FFT [-\n12,12]ms 24Hz.\n3D Horizon\nDemo 6 -> FS8\n<right-click>\n<right-click>\n<right-click>\nZ values\n2D Horizon\nFault\nFaultStickSet\nBody\nWell\nPickSet\nPrestack Events\nAnnotations\nSelect Attribute\nMove\nDisplay\nSave as Horizon Data ...\nTools\nRemove\nStored Cubes\nAttributes 3D\nSteering Cubes\nStored 2D Data\nAttribut",
+              "input_tokens": 3434,
+              "output_tokens": 53,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.011097,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3649,
+              "aux_output_tokens": 897,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003337,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.014434,
+              "route_confidence": 0.9,
+              "picked_node_id": "spectral_decomp_152a_06_sd_24hz_added",
+              "picked_workflow_id": "spectral_decomp_152a",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "spectral_decomp_152a_06_sd_24hz_added",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.71"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_07_sd_44hz_added",
+                  "sources": [
+                    "prior:0.90"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_05_attribute_set_open",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.74"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_02_open_attribute_tool",
+                  "sources": [
+                    "emb:0.76"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_09_attribute_set_closed",
+                  "sources": [
+                    "emb:0.76"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_01_ready_to_start",
+                  "sources": [
+                    "emb:0.72"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.87"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_01_main_window_ready",
+                  "sources": [
+                    "clip:0.87"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "seismic_attribute_02_open_attribute_tool",
+                  0.7628007491319145
+                ],
+                [
+                  "spectral_decomp_152a_09_attribute_set_closed",
+                  0.7598326616570183
+                ],
+                [
+                  "spectral_decomp_152a_05_attribute_set_open",
+                  0.7350881187250246
+                ],
+                [
+                  "seismic_attribute_01_ready_to_start",
+                  0.7201632947844426
+                ],
+                [
+                  "spectral_decomp_152a_06_sd_24hz_added",
+                  0.7092911174959502
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "spectral_decomp_152a",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\"id\": \"spectral_decomp_152a_06_sd_24hz_added\", \"confidence\": 0.9}",
+              "route_rerank_prompt": "You rank workflow steps by how well they match the user's current UI situation.\n\nUser goal: F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.\nCurrent UI visual_state JSON: {\"current_dialog\": \"Attribute Set 3D\", \"window_titles\": [\"Attribute Set 3D\", \"OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]\"], \"active_menu\": null, \"menu_items\": [\"File\", \"Survey\", \"Analysis\", \"Processing\", \"Scene\", \"View\", \"Utilities\", \"TerraNubis\", \"Help\"], \"buttons\": [\"Select ...\", \"Display Time/Frequency panel\", \"Add as new\", \"Close\"], \"labels\": [\"Cross-line 0\", \"Step 0\", \"Attribute set (<not saved>)\", \"Spectral Decomposition\", \"Input Data (4 Dip steered median filter)\", \"Transform type\", \"FFT (checked)\", \"CWT (unchecked)\", \"Time gate (ms) (-8)\", \"24\", \"Output frequency (Hz) (24.0)\", \"Step (4.0)\", \"Attribute Name (SD_24Hz[-8,24ms])\", \"Save on Close (checked)\"], \"field_values\": [\"Cross-line: 0\", \"Step: 0\", \"Attribute set: <not saved>\", \"Dropdown (unlabeled): <All>\", \"Dropdown (unlabeled): Spectral Decomposition\", \"Input Data: 4 Dip steered median filter\", \"Transform type: FFT (checked)\", \"Transform type: CWT (unchecked)\", \"Time gate (ms): -8\", \"Time gate (ms): 24\", \"Output frequency (Hz): 24.0\", \"Step: 4.0\", \"Attribute Name: SD_24Hz[-8,24ms]\", \"Save on Close: checked\", \"Tree scene 1: Elements\", \"Scene 1: checked\", \"In-line: checked\", \"Cross-line: checked\", \"Z-slice: checked\", \"Volume: checked\", \"Random Line: checked\", \"2D Line: checked\", \"3D Horizon: checked\", \"Demo 1 --> MFS4: checked\", \"<right-click>: checked\", \"<right-click>: checked\", \"<right-c\nCandidates matched in previous turns of this session (a step can span several actions — pick one of these again if its dialog is still on screen and the instructions already given do not cover all of its actions): d3_visualization_01_main_window_ready, spectral_decomp_152a_05_attribute_set_open\nInstructions already given to the user in this session (oldest first):\n  1. 트리에서 **3D Horizon**을 우클릭하세요.\n  2. **Demo 1 --> MFS4** 항목의 체크박스를 클릭하여 선택하세요.\n  3. **OK** 버튼을 클릭하세요.\n  4. 트리에서 **Demo 1 --> MFS4** 항목을 우클릭하세요.\n  5. Attribute 드롭다운(현재 \"Similarity\" 표시)을 클릭하여 **Spectral Decomposition**을 선택하세요.\nGraph prior: after the last confirmed step, the workflow expects one of these next: spectral_decomp_152a_06_sd_24hz_added. Prefer them when the screen is consistent with them.\nCandidates sharing the dialog 'Attribute Set 3D' — tell them apart by FIELD STATES (visual_state.field_values / labels), not by the dialog title:\n  - spectral_decomp_152a_05_attribute_set_open (step 5): Attribute Set 3D; Attribute set <not saved>; Input Data; Attribute Name; Add as new; Close; Save on Close; Similarity\n  - spectral_decomp_152a_06_sd_24hz_added (step 6): Spectral Decomposition; SD_24Hz[-8,24ms]; 4 Dip steered median filter; Time gate (ms); -8; 24; Output frequency (Hz); 24.0\nGraph-order prior: spectral_decomp_152a_06_sd_24hz_added — the last confirmed step spectral_decomp_152a_05_attribute_set_open is in this group, so its successor is expected next. Pick another member of the group ONLY if a field state listed for it is literally present in visual_state and the prior's states are contradicted.\n\nCandidate workflow steps (from a software manual):\n1. id=\"spectral_decomp_152a_06_sd_24hz_added\" workflow=\"spectral_decomp_152a\" step=6\n   title: SD_24Hz[-8,24ms] 정의 후 Add as new (목록에 1개)\n   desc: step 4, 9–11 결과: 속성 = Spectral Decomposition, Input Data = 4 Dip steered median filter, Transform type FFT, Time gate (m\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24, spectral decomposition selected, time gate minus8 24, output frequency 24 step 4\n   keywords: Spectral Decomposition, SD_24Hz[-8,24ms], 4 Dip steered median filter, Time gate (ms), -8, 24, Output frequency (Hz), 24.0, Step, 4.0\n2. id=\"spectral_decomp_152a_07_sd_44hz_added\" workflow=\"spectral_decomp_152a\" step=7\n   title: SD_44Hz[-8,24ms] 추가됨 (목록에 2개)\n   desc: step 12 결과(중간 주파수): Output frequency 44, Attribute Name SD_44Hz[-8,24ms] → Add as new → 목록에 SD_24Hz, SD_44Hz.\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24 44, output frequency 44\n   keywords: SD_44Hz[-8,24ms], SD_24Hz[-8,24ms], 44.0, Spectral Decomposition\n3. id=\"spectral_decomp_152a_05_attribute_set_open\" workflow=\"spectral_decomp_152a\" step=5\n   title: Attribute Set 3D 창 열림 (빈 세트, <not saved>)\n   desc: step 3 결과: 툴바의 Attribute Set 3D 아이콘(A) 클릭 → 'Attribute Set 3D' 창: File 메뉴, Attribute set <not saved>, 속성 목록 비어 있음, 속성 종류\n   expected dialog: Attribute Set 3D\n   expected elements: attribute type dropdown, input data field, attribute name field, add as new button, empty attribute list\n   keywords: Attribute Set 3D, Attribute set <not saved>, Input Data, Attribute Name, Add as new, Close, Save on Close, Similarity\n4. id=\"seismic_attribute_02_open_attribute_tool\" workflow=\"seismic_attribute\" step=2\n   title: Attribute Set 3D 창 열림 (on-the-fly 경로 진입)\n   desc: 매뉴얼 §1.5.1a step 1 결과: toolbar Attribute 3D 아이콘 클릭으로 Attribute Set 3D 창이 방금 열림. 비어 있는 attribute set 상태, Attribute Type d\n   expected dialog: Attribute Set 3D\n   expected elements: attribute type dropdown default similarity, attribute set not saved, attribute list empty, attribute name blank, time gate default -28 28, add as new button\n   keywords: Attribute Set 3D, Attribute set (<not saved>), attribute type: Similarity (default, not yet changed), Time gate (ms) (-28) 28 (default values), Input Data (Seis\n5. id=\"spectral_decomp_152a_09_attribute_set_closed\" workflow=\"spectral_decomp_152a\" step=9\n   title: Attribute Set 창 닫힘 (세트 이름 Spectral Decomposition 저장), 3D scene 만 표시 (목표 도달)\n   desc: step 13 결과: Close(Save on Close 켜짐, 이름 예: Spectral Decomposition) → Attribute Set 3D 창이 사라지고 3D scene과 트리(Demo 1 --> MFS\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: no attribute set window, tree demo1 mfs4, four attribute layers\n   keywords: Demo 1 --> MFS4, 3D Horizon, Tree scene 1, F3 Demo 2023\n6. id=\"seismic_attribute_01_ready_to_start\" workflow=\"seismic_attribute\" step=1\n   title: 속성 작업 시작 전 (아직 창 미개방)\n   desc: 매뉴얼 §1.5 시작 문맥: F3 Demo survey 로드 후 OpendTect Main Window 에서 아직 Attribute Set 3D 창도, 배치 다이얼로그도 열려 있지 않은 상태. 사용자가 toolbar\n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, attribute 3d toolbar icon, analysis menu, attributes menu item\n   keywords: Analysis menu, Attributes menu item, Create Attribute Set (3D), Attribute 3D toolbar icon (unclicked), no attribute dialog open\n7. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03\" workflow=\"follow_along_implementing_a_systematic_s\" step=3\n   title: Save the Output File and Run the Algorithm\n   desc: indicate that the value represents the distance between the points.\n   keywords: Save, Output, Run, Algorithm, Regular, Lesson, Systematic, Sampling, Design, indicate\n8. id=\"d3_visualization_01_main_window_ready\" workflow=\"d3_visualization\" step=1\n   title: Main Window / Tree scene 준비 상태\n   desc: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은\n   expected dialog: OpendTect Main Window\n   expected elements: tree scene panel, elements group, inline category node, crossline category node, zslice category node, empty 3d scene panel\n   keywords: Tree scene, Elements, In-line, Cross-line, Z-slice, 3D Scene, F3 Demo, OpendTect\n\nPick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given.\n\nDECISION RULE (state match):\n- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.\n- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.\n- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.\n- Return \"none\" when NO candidate is even loosely related (different application, different module, totally unrelated topic).\n\nCONFIDENCE (recorded, not used as a gate; below 0.70 is treated as unsure):\n- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.\n- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.\n- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate.\n\nNOTE — steps that span several actions and dialogs that stay open:\n- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.\n- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step.\n\nRespond with JSON only:\n{\"id\": \"<candidate_id_or_none>\", \"confidence\": 0.0-1.0}",
+              "goal_state_node": null,
+              "route_tie_prior": "spectral_decomp_152a_06_sd_24hz_added",
+              "route_tie_group": [
+                "spectral_decomp_152a_05_attribute_set_open",
+                "spectral_decomp_152a_06_sd_24hz_added"
+              ],
+              "route_sticky": null,
+              "route_advance": null,
+              "route_screen_advance": null,
+              "route_rerank_votes": null,
+              "judge_score": 1
+            },
+            {
+              "step_index": 6,
+              "response": "**Add as new** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 13.627,
+              "latency_wall_sec": 13.627,
+              "stage_latency": {
+                "clip": {
+                  "sec": 0.221,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.988,
+                  "n": 3
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.296,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.653,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 5.936,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.26,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 4.026,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.003,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.421,
+                  "n": 1
+                }
+              },
+              "context_chars": 4007,
+              "context_block": "[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 132, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n8. Within the amplitude spectrum, identify the frequencies to be used as the low, middle and high frequencies: the low frequency can be selected as being the first peak (e.g. 24Hz), while the high frequency as the last peak (e.g. 64 Hz).\nAfter choosing the frequencies, close Amplitude spectrum window.\nAmplitude Spectrum for 4 Dip steered median filter\n0\n-5\n-10\n-15\n-20\n-25\nPower (dB)\n0\n25\n50\n75\n100\n125\nFrequency (Hz)\nDisplay between frequencies 0 125 Gridline step 25\nValue(frequency, power) 23.70259 -5.36955 Normalize dB scale\nDisplay cepstrum... Export...\n\nWorkflow cont'd:\n9. Back to the attribute set\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 133, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n12. In the same manner, create the other two attributes for middle (44Hz) and high (64Hz) frequencies: change the output frequency value and the attribute name respectively. Click Add as new every time when a new attribute was defined.\n13. Click on Close.\nOptionally, give a name to the new attribute set, e.g.: Spectral Decomposition (if Save on Close is toggled on).\n\nSD_24Hz[-8,24ms]\nSD_44Hz[-8,24ms]\nSD_64Hz[-8,24ms]\n\nAttribute Name SD_24Hz[-8,24ms]\nAdd as new\n\nSave on Close\nClose\n\nWorkflow cont'd:\n14. To convert your attributes into Horizon Data.\ngo to Processing > Create Horizon Output >\nAttributes \n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 134, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n17. Display the three new Horizon Data on Demo1-> MFS4: right-click the text adjacent to the red channel > Select attribute > Horizon Data and select SD_24Hz_[-8,24]ms.\n\n18. In the same manner, select SD_44Hz_[-8,24]ms data for the green channel and select SD_64Hz_[-8,24]ms for the blue channel.\n\nWorkflow cont'd:\n\n19. When blending the three inputs, the results should be similar to the one shown on the figure.\n\nSome extra steps:\n* Try to flip the green channel : right-click on the color bar, a menu pops up which allows you to flip the color bar).\n* What do you notice? Do you see one feature better th\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.5.3a Attributes - Attributes]\n[Section: 1.5.3a Attributes - Attributes, Page: 139, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n7. In similar way define two more Spectral Decomposition attributes of 44Hz and 64Hz.\n8. Give them appropriate names, e.g. FFT [-12,12]ms 44Hz and FFT [-12,12]ms 64Hz,\neach time pressing Add as new.\n9. Uncheck Save on Close and press Close.\n\nAttribute Set 3D\nFile\nAttribute set <not saved>\nInput Data | Dip steered median filter\nTransform type FFT CWT\nTime gate (ms) -12 12\nDisplay Time/Frequency panel\nOutput frequency (Hz) 64.0 Step 4.0\nFFT [-12,12]ms 24Hz\nFFT [-12,12]ms 44Hz\nFFT [-12,12]ms 64Hz\nOptionally save the\nattribute set. In this\ncase \"Save on close\"\nshould be checked.\nAttribute Name FFT [-12,12]ms 64Hz\nAdd as new\nSave on Close\nClose ? Help\n\nWorkflow cont'd:\n10. Apply these three attributes on the\nhorizon (red-24Hz, green-44Hz, and\nblue-64Hz):\nright-click on the red channel and go\nSelect attribute > Attributes 3D > FFT [-\n12,12]ms 24Hz.\n3D Horizon\nDemo 6 -> FS8\n<right-click>\n<right-click>\n<right-click>\nZ values\n2D Horizon\nFault\nFaultStickSet\nBody\nWell\nPickSet\nPrestack Events\nAnnotations\nSelect Attribute\nMove\nDisplay\nSave as Horizon Data ...\nTools\nRemove\nStored Cubes\nAttributes 3D\nSteering Cubes\nStored 2D Data\nAttribut",
+              "input_tokens": 3487,
+              "output_tokens": 21,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010776,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3930,
+              "aux_output_tokens": 848,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003299,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.014075,
+              "route_confidence": 0.9,
+              "picked_node_id": "spectral_decomp_152a_07_sd_44hz_added",
+              "picked_workflow_id": "spectral_decomp_152a",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "spectral_decomp_152a_07_sd_44hz_added",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_08_sd_64hz_added",
+                  "sources": [
+                    "prior:0.90"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_06_sd_24hz_added",
+                  "sources": [
+                    "prior:1.00",
+                    "emb:0.72"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_02_open_attribute_tool",
+                  "sources": [
+                    "emb:0.75"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_05_attribute_set_open",
+                  "sources": [
+                    "emb:0.75"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_01_ready_to_start",
+                  "sources": [
+                    "emb:0.72"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_09_attribute_set_closed",
+                  "sources": [
+                    "emb:0.71"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_01_main_window_ready",
+                  "sources": [
+                    "clip:0.86"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.85"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "seismic_attribute_02_open_attribute_tool",
+                  0.7546353702525355
+                ],
+                [
+                  "spectral_decomp_152a_05_attribute_set_open",
+                  0.7457335357699432
+                ],
+                [
+                  "spectral_decomp_152a_06_sd_24hz_added",
+                  0.7205152774602607
+                ],
+                [
+                  "seismic_attribute_01_ready_to_start",
+                  0.717411010025165
+                ],
+                [
+                  "spectral_decomp_152a_09_attribute_set_closed",
+                  0.710999341756996
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "spectral_decomp_152a",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"spectral_decomp_152a_07_sd_44hz_added\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": "You rank workflow steps by how well they match the user's current UI situation.\n\nUser goal: F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.\nCurrent UI visual_state JSON: {\"current_dialog\": \"Attribute Set 3D\", \"window_titles\": [\"Attribute Set 3D\", \"OpendTect V7.0.9 (Windows) \\\"UPDATE AVAILABLE\\\" : F3 Demo 2023 - [Scene 1]\"], \"active_menu\": null, \"menu_items\": [\"Survey\", \"Analysis\", \"Processing\", \"Scene\", \"View\", \"Utilities\", \"TerraNubis\", \"Help\", \"File\"], \"buttons\": [\"Select ...\", \"Display Time/Frequency panel\", \"Add as new\", \"Close\"], \"labels\": [\"Attribute set: <not saved>\", \"Input Data: 4 Dip steered median filter\", \"Transform type:\", \"FFT (checked)\", \"CWT (unchecked)\", \"Time gate (ms): -8\", \"24\", \"Output frequency (Hz): 44.0\", \"Step: 4.0\", \"Attribute Name: SD_44Hz[-8,24ms]\", \"Save on Close (checked)\"], \"field_values\": [\"Attribute set: <not saved>\", \"Input Data: 4 Dip steered median filter\", \"Transform type: FFT\", \"Time gate (ms): -8\", \"Time gate (ms): 24\", \"Output frequency (Hz): 44.0\", \"Step: 4.0\", \"Attribute Name: SD_44Hz[-8,24ms]\", \"Save on Close: checked\", \"List of attributes: SD_24Hz[-8,24ms], SD_44Hz[-8,24ms]\"], \"visible_elements\": [\"Cross-line 0\", \"Step 0\", \"Tree scene 1\", \"Elements\", \"Scene 1\", \"In-line (checked)\", \"Cross-line (checked)\", \"Z-slice (checked)\", \"Volume (checked)\", \"Random Line (checked)\", \"2D Line (checked)\", \"3D Horizon (expanded)\", \"Demo 1 -> MFS4 (expanded)\", \"<right-click> (checked)\", \"<right-click> (checked)\", \"<right-click> (checked)\", \"Z values (checked)\", \"2D Horizon (checked)\", \"Fault (checked)\", \"FaultSet (che\nCandidates matched in previous turns of this session (a step can span several actions — pick one of these again if its dialog is still on screen and the instructions already given do not cover all of its actions): d3_visualization_01_main_window_ready, spectral_decomp_152a_05_attribute_set_open, spectral_decomp_152a_06_sd_24hz_added\nInstructions already given to the user in this session (oldest first):\n  1. 트리에서 **3D Horizon**을 우클릭하세요.\n  2. **Demo 1 --> MFS4** 항목의 체크박스를 클릭하여 선택하세요.\n  3. **OK** 버튼을 클릭하세요.\n  4. 트리에서 **Demo 1 --> MFS4** 항목을 우클릭하세요.\n  5. Attribute 드롭다운(현재 \"Similarity\" 표시)을 클릭하여 **Spectral Decomposition**을 선택하세요.\n  6. Output frequency를 44.0으로 변경하기 위해 **Output frequency (Hz)** 필드의 값을 클릭하여 **44**로 수정하세요.\nGraph prior: after the last confirmed step, the workflow expects one of these next: spectral_decomp_152a_07_sd_44hz_added. Prefer them when the screen is consistent with them.\nCandidates sharing the dialog 'Attribute Set 3D' — tell them apart by FIELD STATES (visual_state.field_values / labels), not by the dialog title:\n  - spectral_decomp_152a_05_attribute_set_open (step 5): Attribute Set 3D; Attribute set <not saved>; Input Data; Attribute Name; Add as new; Close; Save on Close; Similarity\n  - spectral_decomp_152a_06_sd_24hz_added (step 6): Spectral Decomposition; SD_24Hz[-8,24ms]; 4 Dip steered median filter; Time gate (ms); -8; 24; Output frequency (Hz); 24.0\nGraph-order prior: spectral_decomp_152a_06_sd_24hz_added — the last confirmed step spectral_decomp_152a_06_sd_24hz_added is in this group, so its successor is expected next. Pick another member of the group ONLY if a field state listed for it is literally present in visual_state and the prior's states are contradicted.\n\nCandidate workflow steps (from a software manual):\n1. id=\"spectral_decomp_152a_06_sd_24hz_added\" workflow=\"spectral_decomp_152a\" step=6\n   title: SD_24Hz[-8,24ms] 정의 후 Add as new (목록에 1개)\n   desc: step 4, 9–11 결과: 속성 = Spectral Decomposition, Input Data = 4 Dip steered median filter, Transform type FFT, Time gate (m\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24, spectral decomposition selected, time gate minus8 24, output frequency 24 step 4\n   keywords: Spectral Decomposition, SD_24Hz[-8,24ms], 4 Dip steered median filter, Time gate (ms), -8, 24, Output frequency (Hz), 24.0, Step, 4.0\n2. id=\"spectral_decomp_152a_07_sd_44hz_added\" workflow=\"spectral_decomp_152a\" step=7\n   title: SD_44Hz[-8,24ms] 추가됨 (목록에 2개)\n   desc: step 12 결과(중간 주파수): Output frequency 44, Attribute Name SD_44Hz[-8,24ms] → Add as new → 목록에 SD_24Hz, SD_44Hz.\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24 44, output frequency 44\n   keywords: SD_44Hz[-8,24ms], SD_24Hz[-8,24ms], 44.0, Spectral Decomposition\n3. id=\"spectral_decomp_152a_08_sd_64hz_added\" workflow=\"spectral_decomp_152a\" step=8\n   title: SD_64Hz[-8,24ms] 추가됨 (목록에 3개)\n   desc: step 12 결과(높은 주파수): Output frequency 64, Attribute Name SD_64Hz[-8,24ms] → Add as new → 목록에 SD_24Hz, SD_44Hz, SD_64Hz.\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24 44 64, output frequency 64\n   keywords: SD_64Hz[-8,24ms], SD_44Hz[-8,24ms], SD_24Hz[-8,24ms], 64.0, Spectral Decomposition\n4. id=\"seismic_attribute_02_open_attribute_tool\" workflow=\"seismic_attribute\" step=2\n   title: Attribute Set 3D 창 열림 (on-the-fly 경로 진입)\n   desc: 매뉴얼 §1.5.1a step 1 결과: toolbar Attribute 3D 아이콘 클릭으로 Attribute Set 3D 창이 방금 열림. 비어 있는 attribute set 상태, Attribute Type d\n   expected dialog: Attribute Set 3D\n   expected elements: attribute type dropdown default similarity, attribute set not saved, attribute list empty, attribute name blank, time gate default -28 28, add as new button\n   keywords: Attribute Set 3D, Attribute set (<not saved>), attribute type: Similarity (default, not yet changed), Time gate (ms) (-28) 28 (default values), Input Data (Seis\n5. id=\"spectral_decomp_152a_05_attribute_set_open\" workflow=\"spectral_decomp_152a\" step=5\n   title: Attribute Set 3D 창 열림 (빈 세트, <not saved>)\n   desc: step 3 결과: 툴바의 Attribute Set 3D 아이콘(A) 클릭 → 'Attribute Set 3D' 창: File 메뉴, Attribute set <not saved>, 속성 목록 비어 있음, 속성 종류\n   expected dialog: Attribute Set 3D\n   expected elements: attribute type dropdown, input data field, attribute name field, add as new button, empty attribute list\n   keywords: Attribute Set 3D, Attribute set <not saved>, Input Data, Attribute Name, Add as new, Close, Save on Close, Similarity\n6. id=\"seismic_attribute_01_ready_to_start\" workflow=\"seismic_attribute\" step=1\n   title: 속성 작업 시작 전 (아직 창 미개방)\n   desc: 매뉴얼 §1.5 시작 문맥: F3 Demo survey 로드 후 OpendTect Main Window 에서 아직 Attribute Set 3D 창도, 배치 다이얼로그도 열려 있지 않은 상태. 사용자가 toolbar\n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, attribute 3d toolbar icon, analysis menu, attributes menu item\n   keywords: Analysis menu, Attributes menu item, Create Attribute Set (3D), Attribute 3D toolbar icon (unclicked), no attribute dialog open\n7. id=\"spectral_decomp_152a_09_attribute_set_closed\" workflow=\"spectral_decomp_152a\" step=9\n   title: Attribute Set 창 닫힘 (세트 이름 Spectral Decomposition 저장), 3D scene 만 표시 (목표 도달)\n   desc: step 13 결과: Close(Save on Close 켜짐, 이름 예: Spectral Decomposition) → Attribute Set 3D 창이 사라지고 3D scene과 트리(Demo 1 --> MFS\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: no attribute set window, tree demo1 mfs4, four attribute layers\n   keywords: Demo 1 --> MFS4, 3D Horizon, Tree scene 1, F3 Demo 2023\n8. id=\"d3_visualization_01_main_window_ready\" workflow=\"d3_visualization\" step=1\n   title: Main Window / Tree scene 준비 상태\n   desc: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은\n   expected dialog: OpendTect Main Window\n   expected elements: tree scene panel, elements group, inline category node, crossline category node, zslice category node, empty 3d scene panel\n   keywords: Tree scene, Elements, In-line, Cross-line, Z-slice, 3D Scene, F3 Demo, OpendTect\n9. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03\" workflow=\"follow_along_implementing_a_systematic_s\" step=3\n   title: Save the Output File and Run the Algorithm\n   desc: indicate that the value represents the distance between the points.\n   keywords: Save, Output, Run, Algorithm, Regular, Lesson, Systematic, Sampling, Design, indicate\n\nPick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given.\n\nDECISION RULE (state match):\n- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.\n- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.\n- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.\n- Return \"none\" when NO candidate is even loosely related (different application, different module, totally unrelated topic).\n\nCONFIDENCE (recorded, not used as a gate; below 0.70 is treated as unsure):\n- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.\n- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.\n- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate.\n\nNOTE — steps that span several actions and dialogs that stay open:\n- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.\n- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step.\n\nRespond with JSON only:\n{\"id\": \"<candidate_id_or_none>\", \"confidence\": 0.0-1.0}",
+              "goal_state_node": null,
+              "route_tie_prior": "spectral_decomp_152a_06_sd_24hz_added",
+              "route_tie_group": [
+                "spectral_decomp_152a_05_attribute_set_open",
+                "spectral_decomp_152a_06_sd_24hz_added"
+              ],
+              "route_sticky": null,
+              "route_advance": null,
+              "route_screen_advance": null,
+              "route_rerank_votes": null,
+              "judge_score": 1
+            },
+            {
+              "step_index": 7,
+              "response": "**Close** 버튼을 클릭하세요.",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 11.592,
+              "latency_wall_sec": 11.592,
+              "stage_latency": {
+                "clip": {
+                  "sec": 0.164,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 1.688,
+                  "n": 4
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.278,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.514,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 5.348,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.037,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 2.829,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 1.819,
+                  "n": 1
+                }
+              },
+              "context_chars": 4007,
+              "context_block": "[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 130, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.5.2a Spectral Decomposition\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 130 -\n\n[Figure OCR p.130 #1]\nExercise objective:\nStudy paleo-geomorphological features by displaying 3 iso-frequencies simultaneously with color stacking.\n\nWorkflow:\n\n1.  Right-click on 3D Horizon in the tree and click on Add color blended...\n    Choose horizon Demo 1->MFS4 from the list of horizons.\n\n    2D Line\n    3D Horizon\n    2D Horizon\n    Fault\n    FaultStickS\n    Body\n    Well\n    PickSet\n    Load ...\n    Add at Sections Only ...\n    Add Color Blended ...\n    Track New ...\n    Create with Co\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 133, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n12. In the same manner, create the other two attributes for middle (44Hz) and high (64Hz) frequencies: change the output frequency value and the attribute name respectively. Click Add as new every time when a new attribute was defined.\n13. Click on Close.\nOptionally, give a name to the new attribute set, e.g.: Spectral Decomposition (if Save on Close is toggled on).\n\nSD_24Hz[-8,24ms]\nSD_44Hz[-8,24ms]\nSD_64Hz[-8,24ms]\n\nAttribute Name SD_24Hz[-8,24ms]\nAdd as new\n\nSave on Close\nClose\n\nWorkflow cont'd:\n14. To convert your attributes into Horizon Data.\ngo to Processing > Create Horizon Output >\nAttributes \n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 134, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n17. Display the three new Horizon Data on Demo1-> MFS4: right-click the text adjacent to the red channel > Select attribute > Horizon Data and select SD_24Hz_[-8,24]ms.\n\n18. In the same manner, select SD_44Hz_[-8,24]ms data for the green channel and select SD_64Hz_[-8,24]ms for the blue channel.\n\nWorkflow cont'd:\n\n19. When blending the three inputs, the results should be similar to the one shown on the figure.\n\nSome extra steps:\n* Try to flip the green channel : right-click on the color bar, a menu pops up which allows you to flip the color bar).\n* What do you notice? Do you see one feature better th\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.5.3a Attributes - Attributes]\n[Section: 1.5.3a Attributes - Attributes, Page: 139, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n7. In similar way define two more Spectral Decomposition attributes of 44Hz and 64Hz.\n8. Give them appropriate names, e.g. FFT [-12,12]ms 44Hz and FFT [-12,12]ms 64Hz,\neach time pressing Add as new.\n9. Uncheck Save on Close and press Close.\n\nAttribute Set 3D\nFile\nAttribute set <not saved>\nInput Data | Dip steered median filter\nTransform type FFT CWT\nTime gate (ms) -12 12\nDisplay Time/Frequency panel\nOutput frequency (Hz) 64.0 Step 4.0\nFFT [-12,12]ms 24Hz\nFFT [-12,12]ms 44Hz\nFFT [-12,12]ms 64Hz\nOptionally save the\nattribute set. In this\ncase \"Save on close\"\nshould be checked.\nAttribute Name FFT [-12,12]ms 64Hz\nAdd as new\nSave on Close\nClose ? Help\n\nWorkflow cont'd:\n10. Apply these three attributes on the\nhorizon (red-24Hz, green-44Hz, and\nblue-64Hz):\nright-click on the red channel and go\nSelect attribute > Attributes 3D > FFT [-\n12,12]ms 24Hz.\n3D Horizon\nDemo 6 -> FS8\n<right-click>\n<right-click>\n<right-click>\nZ values\n2D Horizon\nFault\nFaultStickSet\nBody\nWell\nPickSet\nPrestack Events\nAnnotations\nSelect Attribute\nMove\nDisplay\nSave as Horizon Data ...\nTools\nRemove\nStored Cubes\nAttributes 3D\nSteering Cubes\nStored 2D Data\nAttribut",
+              "input_tokens": 3482,
+              "output_tokens": 19,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010731,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3960,
+              "aux_output_tokens": 738,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.003033,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.013764,
+              "route_confidence": 0.9,
+              "picked_node_id": "spectral_decomp_152a_08_sd_64hz_added",
+              "picked_workflow_id": "spectral_decomp_152a",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "spectral_decomp_152a_08_sd_64hz_added",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_09_attribute_set_closed",
+                  "sources": [
+                    "prior:0.90",
+                    "emb:0.75"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_07_sd_44hz_added",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_02_open_attribute_tool",
+                  "sources": [
+                    "emb:0.75"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_06_sd_24hz_added",
+                  "sources": [
+                    "emb:0.75"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_05_attribute_set_open",
+                  "sources": [
+                    "emb:0.74"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_01_ready_to_start",
+                  "sources": [
+                    "emb:0.71"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_01_main_window_ready",
+                  "sources": [
+                    "clip:0.88"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.87"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "spectral_decomp_152a_09_attribute_set_closed",
+                  0.7543965191868377
+                ],
+                [
+                  "seismic_attribute_02_open_attribute_tool",
+                  0.7528144734853357
+                ],
+                [
+                  "spectral_decomp_152a_06_sd_24hz_added",
+                  0.7495019047134835
+                ],
+                [
+                  "spectral_decomp_152a_05_attribute_set_open",
+                  0.7383536685021859
+                ],
+                [
+                  "seismic_attribute_01_ready_to_start",
+                  0.7138323195686129
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "spectral_decomp_152a",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"spectral_decomp_152a_08_sd_64hz_added\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": "You rank workflow steps by how well they match the user's current UI situation.\n\nUser goal: F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.\nCurrent UI visual_state JSON: {\"current_dialog\": \"Attribute Set 3D\", \"window_titles\": [\"Attribute Set 3D\", \"OpenDTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]\"], \"active_menu\": null, \"menu_items\": [\"File\", \"Survey\", \"Analysis\", \"Processing\", \"Scene\", \"View\", \"Utilities\", \"TerraNubis\", \"Help\"], \"buttons\": [\"Select ...\", \"Display Time/Frequency panel\", \"Add as new\", \"Close\"], \"labels\": [\"Attribute set (<not saved>)\", \"Input Data (4 Dip steered median filter)\", \"Transform type\", \"FFT (checked)\", \"CWT (unchecked)\", \"Time gate (ms) (-8)\", \"Output frequency (Hz) (64.0)\", \"Step (4.0)\", \"Attribute Name (SD_64Hz[-8,24ms])\", \"Save on Close (checked)\"], \"field_values\": [\"Attribute set: <not saved>\", \"Input Data: 4 Dip steered median filter\", \"Transform type: FFT\", \"Time gate (ms): -8\", \"Time gate (ms): 24\", \"Output frequency (Hz): 64.0\", \"Step: 4.0\", \"Attribute Name: SD_64Hz[-8,24ms]\", \"Save on Close: checked\", \"Attribute set list: SD_24Hz[-8,24ms], SD_44Hz[-8,24ms], SD_64Hz[-8,24ms]\"], \"visible_elements\": [\"Tree scene 1 panel\", \"Elements tree\", \"Scene 1\", \"In-line\", \"Cross-line\", \"Z-slice\", \"Volume\", \"Random Line\", \"2D Line\", \"3D Horizon\", \"Demo 1 --> MFS4\", \"<right-click>\", \"Z values\", \"2D Horizon\", \"Fault\", \"FaultSet\", \"FaultStickSet\", \"Geobody\", \"Well\", \"PointSet\", \"Polygon\", \"Prestack Events\", \"Annotations\", \"Cross-line 0\", \"Step 0\", \"OD Seismic 1 dropdown\", \"Toolbar with icons for file oper\nCandidates matched in previous turns of this session (a step can span several actions — pick one of these again if its dialog is still on screen and the instructions already given do not cover all of its actions): d3_visualization_01_main_window_ready, spectral_decomp_152a_05_attribute_set_open, spectral_decomp_152a_06_sd_24hz_added, spectral_decomp_152a_07_sd_44hz_added\nInstructions already given to the user in this session (oldest first):\n  1. **Demo 1 --> MFS4** 항목의 체크박스를 클릭하여 선택하세요.\n  2. **OK** 버튼을 클릭하세요.\n  3. 트리에서 **Demo 1 --> MFS4** 항목을 우클릭하세요.\n  4. Attribute 드롭다운(현재 \"Similarity\" 표시)을 클릭하여 **Spectral Decomposition**을 선택하세요.\n  5. Output frequency를 44.0으로 변경하기 위해 **Output frequency (Hz)** 필드의 값을 클릭하여 **44**로 수정하세요.\n  6. **Add as new** 버튼을 클릭하세요.\nGraph prior: after the last confirmed step, the workflow expects one of these next: spectral_decomp_152a_08_sd_64hz_added. Prefer them when the screen is consistent with them.\nCandidates sharing the dialog 'Attribute Set 3D' — tell them apart by FIELD STATES (visual_state.field_values / labels), not by the dialog title:\n  - spectral_decomp_152a_05_attribute_set_open (step 5): Attribute Set 3D; Attribute set <not saved>; Input Data; Attribute Name; Add as new; Close; Save on Close; Similarity\n  - spectral_decomp_152a_06_sd_24hz_added (step 6): Spectral Decomposition; SD_24Hz[-8,24ms]; 4 Dip steered median filter; Time gate (ms); -8; 24; Output frequency (Hz); 24.0\nGraph-order prior: spectral_decomp_152a_05_attribute_set_open — no step of this group is confirmed yet (last confirmed: spectral_decomp_152a_07_sd_44hz_added), so the earliest step of the group is expected. Pick another member of the group ONLY if a field state listed for it is literally present in visual_state and the prior's states are contradicted.\n\nCandidate workflow steps (from a software manual):\n1. id=\"spectral_decomp_152a_05_attribute_set_open\" workflow=\"spectral_decomp_152a\" step=5\n   title: Attribute Set 3D 창 열림 (빈 세트, <not saved>)\n   desc: step 3 결과: 툴바의 Attribute Set 3D 아이콘(A) 클릭 → 'Attribute Set 3D' 창: File 메뉴, Attribute set <not saved>, 속성 목록 비어 있음, 속성 종류\n   expected dialog: Attribute Set 3D\n   expected elements: attribute type dropdown, input data field, attribute name field, add as new button, empty attribute list\n   keywords: Attribute Set 3D, Attribute set <not saved>, Input Data, Attribute Name, Add as new, Close, Save on Close, Similarity\n2. id=\"spectral_decomp_152a_08_sd_64hz_added\" workflow=\"spectral_decomp_152a\" step=8\n   title: SD_64Hz[-8,24ms] 추가됨 (목록에 3개)\n   desc: step 12 결과(높은 주파수): Output frequency 64, Attribute Name SD_64Hz[-8,24ms] → Add as new → 목록에 SD_24Hz, SD_44Hz, SD_64Hz.\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24 44 64, output frequency 64\n   keywords: SD_64Hz[-8,24ms], SD_44Hz[-8,24ms], SD_24Hz[-8,24ms], 64.0, Spectral Decomposition\n3. id=\"spectral_decomp_152a_09_attribute_set_closed\" workflow=\"spectral_decomp_152a\" step=9\n   title: Attribute Set 창 닫힘 (세트 이름 Spectral Decomposition 저장), 3D scene 만 표시 (목표 도달)\n   desc: step 13 결과: Close(Save on Close 켜짐, 이름 예: Spectral Decomposition) → Attribute Set 3D 창이 사라지고 3D scene과 트리(Demo 1 --> MFS\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: no attribute set window, tree demo1 mfs4, four attribute layers\n   keywords: Demo 1 --> MFS4, 3D Horizon, Tree scene 1, F3 Demo 2023\n4. id=\"spectral_decomp_152a_07_sd_44hz_added\" workflow=\"spectral_decomp_152a\" step=7\n   title: SD_44Hz[-8,24ms] 추가됨 (목록에 2개)\n   desc: step 12 결과(중간 주파수): Output frequency 44, Attribute Name SD_44Hz[-8,24ms] → Add as new → 목록에 SD_24Hz, SD_44Hz.\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24 44, output frequency 44\n   keywords: SD_44Hz[-8,24ms], SD_24Hz[-8,24ms], 44.0, Spectral Decomposition\n5. id=\"seismic_attribute_02_open_attribute_tool\" workflow=\"seismic_attribute\" step=2\n   title: Attribute Set 3D 창 열림 (on-the-fly 경로 진입)\n   desc: 매뉴얼 §1.5.1a step 1 결과: toolbar Attribute 3D 아이콘 클릭으로 Attribute Set 3D 창이 방금 열림. 비어 있는 attribute set 상태, Attribute Type d\n   expected dialog: Attribute Set 3D\n   expected elements: attribute type dropdown default similarity, attribute set not saved, attribute list empty, attribute name blank, time gate default -28 28, add as new button\n   keywords: Attribute Set 3D, Attribute set (<not saved>), attribute type: Similarity (default, not yet changed), Time gate (ms) (-28) 28 (default values), Input Data (Seis\n6. id=\"spectral_decomp_152a_06_sd_24hz_added\" workflow=\"spectral_decomp_152a\" step=6\n   title: SD_24Hz[-8,24ms] 정의 후 Add as new (목록에 1개)\n   desc: step 4, 9–11 결과: 속성 = Spectral Decomposition, Input Data = 4 Dip steered median filter, Transform type FFT, Time gate (m\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24, spectral decomposition selected, time gate minus8 24, output frequency 24 step 4\n   keywords: Spectral Decomposition, SD_24Hz[-8,24ms], 4 Dip steered median filter, Time gate (ms), -8, 24, Output frequency (Hz), 24.0, Step, 4.0\n7. id=\"seismic_attribute_01_ready_to_start\" workflow=\"seismic_attribute\" step=1\n   title: 속성 작업 시작 전 (아직 창 미개방)\n   desc: 매뉴얼 §1.5 시작 문맥: F3 Demo survey 로드 후 OpendTect Main Window 에서 아직 Attribute Set 3D 창도, 배치 다이얼로그도 열려 있지 않은 상태. 사용자가 toolbar\n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, attribute 3d toolbar icon, analysis menu, attributes menu item\n   keywords: Analysis menu, Attributes menu item, Create Attribute Set (3D), Attribute 3D toolbar icon (unclicked), no attribute dialog open\n8. id=\"d3_visualization_01_main_window_ready\" workflow=\"d3_visualization\" step=1\n   title: Main Window / Tree scene 준비 상태\n   desc: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은\n   expected dialog: OpendTect Main Window\n   expected elements: tree scene panel, elements group, inline category node, crossline category node, zslice category node, empty 3d scene panel\n   keywords: Tree scene, Elements, In-line, Cross-line, Z-slice, 3D Scene, F3 Demo, OpendTect\n9. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03\" workflow=\"follow_along_implementing_a_systematic_s\" step=3\n   title: Save the Output File and Run the Algorithm\n   desc: indicate that the value represents the distance between the points.\n   keywords: Save, Output, Run, Algorithm, Regular, Lesson, Systematic, Sampling, Design, indicate\n\nPick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given.\n\nDECISION RULE (state match):\n- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.\n- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.\n- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.\n- Return \"none\" when NO candidate is even loosely related (different application, different module, totally unrelated topic).\n\nCONFIDENCE (recorded, not used as a gate; below 0.70 is treated as unsure):\n- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.\n- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.\n- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate.\n\nNOTE — steps that span several actions and dialogs that stay open:\n- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.\n- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step.\n\nRespond with JSON only:\n{\"id\": \"<candidate_id_or_none>\", \"confidence\": 0.0-1.0}",
+              "goal_state_node": "spectral_decomp_152a_09_attribute_set_closed",
+              "route_tie_prior": "spectral_decomp_152a_05_attribute_set_open",
+              "route_tie_group": [
+                "spectral_decomp_152a_06_sd_24hz_added",
+                "spectral_decomp_152a_05_attribute_set_open"
+              ],
+              "route_sticky": null,
+              "route_advance": null,
+              "route_screen_advance": null,
+              "route_rerank_votes": null,
+              "judge_score": 1
+            },
+            {
+              "step_index": 8,
+              "response": "완료",
+              "matched": true,
+              "hallucinated": [],
+              "looped": false,
+              "is_trap": false,
+              "is_recovery": false,
+              "latency_sec": 14.289,
+              "latency_wall_sec": 14.289,
+              "stage_latency": {
+                "clip": {
+                  "sec": 0.152,
+                  "n": 1
+                },
+                "embed": {
+                  "sec": 3.044,
+                  "n": 7
+                },
+                "vector_search": {
+                  "sec": 0.005,
+                  "n": 1
+                },
+                "neighbor_fetch": {
+                  "sec": 0.287,
+                  "n": 5
+                },
+                "goal_retrieval": {
+                  "sec": 0.499,
+                  "n": 1
+                },
+                "vision": {
+                  "sec": 5.371,
+                  "n": 1
+                },
+                "rerank": {
+                  "sec": 1.362,
+                  "n": 1
+                },
+                "localize": {
+                  "sec": 3.074,
+                  "n": 1
+                },
+                "routed_retrieval": {
+                  "sec": 0.004,
+                  "n": 1
+                },
+                "generate": {
+                  "sec": 2.965,
+                  "n": 1
+                }
+              },
+              "context_chars": 4007,
+              "context_block": "[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 130, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\n1.5.2a Spectral Decomposition\nRequired licenses: OpendTect.\nFor a video of these exercises: OpendTect video resources\n- 130 -\n\n[Figure OCR p.130 #1]\nExercise objective:\nStudy paleo-geomorphological features by displaying 3 iso-frequencies simultaneously with color stacking.\n\nWorkflow:\n\n1.  Right-click on 3D Horizon in the tree and click on Add color blended...\n    Choose horizon Demo 1->MFS4 from the list of horizons.\n\n    2D Line\n    3D Horizon\n    2D Horizon\n    Fault\n    FaultStickS\n    Body\n    Well\n    PickSet\n    Load ...\n    Add at Sections Only ...\n    Add Color Blended ...\n    Track New ...\n    Create with Co\n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 133, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n12. In the same manner, create the other two attributes for middle (44Hz) and high (64Hz) frequencies: change the output frequency value and the attribute name respectively. Click Add as new every time when a new attribute was defined.\n13. Click on Close.\nOptionally, give a name to the new attribute set, e.g.: Spectral Decomposition (if Save on Close is toggled on).\n\nSD_24Hz[-8,24ms]\nSD_44Hz[-8,24ms]\nSD_64Hz[-8,24ms]\n\nAttribute Name SD_24Hz[-8,24ms]\nAdd as new\n\nSave on Close\nClose\n\nWorkflow cont'd:\n14. To convert your attributes into Horizon Data.\ngo to Processing > Create Horizon Output >\nAttributes \n\n[Manual Context (graph)]\n[Section: 1.5.2a Spectral Decomposition, Page: 134, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n17. Display the three new Horizon Data on Demo1-> MFS4: right-click the text adjacent to the red channel > Select attribute > Horizon Data and select SD_24Hz_[-8,24]ms.\n\n18. In the same manner, select SD_44Hz_[-8,24]ms data for the green channel and select SD_64Hz_[-8,24]ms for the blue channel.\n\nWorkflow cont'd:\n\n19. When blending the three inputs, the results should be similar to the one shown on the figure.\n\nSome extra steps:\n* Try to flip the green channel : right-click on the color bar, a menu pops up which allows you to flip the color bar).\n* What do you notice? Do you see one feature better th\n\n[Manual Context (vector)]\n[Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf, Section: 1.5.3a Attributes - Attributes]\n[Section: 1.5.3a Attributes - Attributes, Page: 139, Source: data/uploads/645b7cdf2690408da843b9ce63c52d5b_Introduction-To-OpendTect-and-OpendTect-Pro-Training-Manual-7-0.pdf]\nWorkflow cont'd:\n\n7. In similar way define two more Spectral Decomposition attributes of 44Hz and 64Hz.\n8. Give them appropriate names, e.g. FFT [-12,12]ms 44Hz and FFT [-12,12]ms 64Hz,\neach time pressing Add as new.\n9. Uncheck Save on Close and press Close.\n\nAttribute Set 3D\nFile\nAttribute set <not saved>\nInput Data | Dip steered median filter\nTransform type FFT CWT\nTime gate (ms) -12 12\nDisplay Time/Frequency panel\nOutput frequency (Hz) 64.0 Step 4.0\nFFT [-12,12]ms 24Hz\nFFT [-12,12]ms 44Hz\nFFT [-12,12]ms 64Hz\nOptionally save the\nattribute set. In this\ncase \"Save on close\"\nshould be checked.\nAttribute Name FFT [-12,12]ms 64Hz\nAdd as new\nSave on Close\nClose ? Help\n\nWorkflow cont'd:\n10. Apply these three attributes on the\nhorizon (red-24Hz, green-44Hz, and\nblue-64Hz):\nright-click on the red channel and go\nSelect attribute > Attributes 3D > FFT [-\n12,12]ms 24Hz.\n3D Horizon\nDemo 6 -> FS8\n<right-click>\n<right-click>\n<right-click>\nZ values\n2D Horizon\nFault\nFaultStickSet\nBody\nWell\nPickSet\nPrestack Events\nAnnotations\nSelect Attribute\nMove\nDisplay\nSave as Horizon Data ...\nTools\nRemove\nStored Cubes\nAttributes 3D\nSteering Cubes\nStored 2D Data\nAttribut",
+              "input_tokens": 3465,
+              "output_tokens": 6,
+              "thoughts_tokens": 0,
+              "cost_usd": 0.010485,
+              "model": "claude",
+              "aux_calls": 2,
+              "aux_input_tokens": 3483,
+              "aux_output_tokens": 654,
+              "aux_thoughts_tokens": 0,
+              "aux_cost_usd": 0.00268,
+              "aux_by_kind": {
+                "vision": 1,
+                "rerank": 1
+              },
+              "cost_total_usd": 0.013165,
+              "route_confidence": 0.9,
+              "picked_node_id": "spectral_decomp_152a_09_attribute_set_closed",
+              "picked_workflow_id": "spectral_decomp_152a",
+              "route_method": "llm",
+              "fallback_activated": false,
+              "route_candidates": [
+                {
+                  "id": "spectral_decomp_152a_09_attribute_set_closed",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "spectral_decomp_152a_08_sd_64hz_added",
+                  "sources": [
+                    "prior:1.00"
+                  ]
+                },
+                {
+                  "id": "survey_setup_05_select_survey",
+                  "sources": [
+                    "emb:0.71"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_01_main_window_ready",
+                  "sources": [
+                    "emb:0.71",
+                    "clip:0.85"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_03_add_crossline",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "d3_visualization_04_add_zslice",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "seismic_attribute_01_ready_to_start",
+                  "sources": [
+                    "emb:0.68"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02",
+                  "sources": [
+                    "clip:0.83"
+                  ]
+                },
+                {
+                  "id": "auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03",
+                  "sources": [
+                    "clip:0.83"
+                  ]
+                }
+              ],
+              "route_emb_top": [
+                [
+                  "survey_setup_05_select_survey",
+                  0.7073461575500128
+                ],
+                [
+                  "d3_visualization_01_main_window_ready",
+                  0.7071426785772357
+                ],
+                [
+                  "d3_visualization_03_add_crossline",
+                  0.6823089456595944
+                ],
+                [
+                  "d3_visualization_04_add_zslice",
+                  0.6760221483253047
+                ],
+                [
+                  "seismic_attribute_01_ready_to_start",
+                  0.6757427819592418
+                ]
+              ],
+              "route_wf_scores": [],
+              "route_selected_wfs": [],
+              "route_session_wf": "spectral_decomp_152a",
+              "route_gate_reason": "",
+              "route_evidence": null,
+              "route_rerank_raw": "{\n  \"id\": \"spectral_decomp_152a_08_sd_64hz_added\",\n  \"confidence\": 0.9\n}",
+              "route_rerank_prompt": "You rank workflow steps by how well they match the user's current UI situation.\n\nUser goal: F3 Demo에서 3D Horizon Demo 1 --> MFS4를 Add Color Blended…로 In-line 200–650, Cross-line 500–1000 범위만 표시한 뒤, Attribute Set 3D에서 Spectral Decomposition 속성 세 개(Input Data 4 Dip steered median filter, Time gate [-8, 24] ms, Output frequency 24 / 44 / 64 Hz, Step 4 Hz, 이름 SD_24Hz[-8,24ms] / SD_44Hz[-8,24ms] / SD_64Hz[-8,24ms])를 Add as new로 정의하고 창을 닫는다.\nCurrent UI visual_state JSON: {\"current_dialog\": \"OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]\", \"window_titles\": [\"OpendTect V7.0.9 (Windows) *UPDATE AVAILABLE* : F3 Demo 2023 - [Scene 1]\"], \"active_menu\": null, \"menu_items\": [\"Survey\", \"Analysis\", \"Processing\", \"Scene\", \"View\", \"Utilities\", \"TerraNubis\", \"Help\"], \"buttons\": [], \"labels\": [\"Cross-line 0\", \"Step 0\", \"SEG-Y\", \"OD Seismic 1 (-8.7372 to 8.7372)\"], \"field_values\": [\"Cross-line: 0\", \"Step: 0\", \"SEG-Y: SEG-Y\", \"OD Seismic 1: OD Seismic 1\"], \"visible_elements\": [\"Tree scene 1 panel\", \"Elements\", \"Scene 1\", \"In-line (checked)\", \"Cross-line (checked)\", \"Z-slice (checked)\", \"Volume (checked)\", \"Random Line (checked)\", \"2D Line (checked)\", \"3D Horizon (checked)\", \"Demo 1 -> MFS4 (checked)\", \"<right-click> (checked)\", \"<right-click> (checked)\", \"<right-click> (checked)\", \"Z values (checked)\", \"2D Horizon (checked)\", \"Fault (checked)\", \"FaultSet (checked)\", \"FaultStickSet (checked)\", \"Geobody (checked)\", \"Well (checked)\", \"PointSet (checked)\", \"Polygon (checked)\", \"Prestack Events (checked)\", \"Annotations\", \"Color\", \"Toolbar (top, with icons for new, open, save, print, undo, redo, etc.)\", \"Toolbar (left, with icons for selection, zoom, pan, 3D view, etc.)\", \"Toolbar (right, with icons for properties, display, etc.)\", \"3D viewer with axes labeled In-line, Cross-line, Time\"], \"data_state\": \"3D seismic loaded, multiple horizons \nCandidates matched in previous turns of this session (a step can span several actions — pick one of these again if its dialog is still on screen and the instructions already given do not cover all of its actions): d3_visualization_01_main_window_ready, spectral_decomp_152a_08_sd_64hz_added\nInstructions already given to the user in this session (oldest first):\n  1. **OK** 버튼을 클릭하세요.\n  2. 트리에서 **Demo 1 --> MFS4** 항목을 우클릭하세요.\n  3. Attribute 드롭다운(현재 \"Similarity\" 표시)을 클릭하여 **Spectral Decomposition**을 선택하세요.\n  4. Output frequency를 44.0으로 변경하기 위해 **Output frequency (Hz)** 필드의 값을 클릭하여 **44**로 수정하세요.\n  5. **Add as new** 버튼을 클릭하세요.\n  6. **Close** 버튼을 클릭하세요.\nGraph prior: after the last confirmed step, the workflow expects one of these next: spectral_decomp_152a_09_attribute_set_closed. Prefer them when the screen is consistent with them.\n\nCandidate workflow steps (from a software manual):\n1. id=\"spectral_decomp_152a_09_attribute_set_closed\" workflow=\"spectral_decomp_152a\" step=9\n   title: Attribute Set 창 닫힘 (세트 이름 Spectral Decomposition 저장), 3D scene 만 표시 (목표 도달)\n   desc: step 13 결과: Close(Save on Close 켜짐, 이름 예: Spectral Decomposition) → Attribute Set 3D 창이 사라지고 3D scene과 트리(Demo 1 --> MFS\n   expected dialog: F3 Demo 2023 - [Scene 1]\n   expected elements: no attribute set window, tree demo1 mfs4, four attribute layers\n   keywords: Demo 1 --> MFS4, 3D Horizon, Tree scene 1, F3 Demo 2023\n2. id=\"spectral_decomp_152a_08_sd_64hz_added\" workflow=\"spectral_decomp_152a\" step=8\n   title: SD_64Hz[-8,24ms] 추가됨 (목록에 3개)\n   desc: step 12 결과(높은 주파수): Output frequency 64, Attribute Name SD_64Hz[-8,24ms] → Add as new → 목록에 SD_24Hz, SD_44Hz, SD_64Hz.\n   expected dialog: Attribute Set 3D\n   expected elements: attribute list sd 24 44 64, output frequency 64\n   keywords: SD_64Hz[-8,24ms], SD_44Hz[-8,24ms], SD_24Hz[-8,24ms], 64.0, Spectral Decomposition\n3. id=\"survey_setup_05_select_survey\" workflow=\"survey_setup\" step=5\n   title: Survey Select — Main Window 진입\n   desc: Survey Setup and Selection 창에서 새로 생성된 survey를 선택 후 Select 클릭하여 OpendTect Main Window로 진입. Title bar에 survey 이름이 표시되면 목표 \n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, toolbar, tree scene panel, 3d scene panel, title bar survey name\n   keywords: OpendTect, Main Window, My_F3_Survey, F3 Demo, Survey, Analysis, Processing, Scene, View, Utilities\n4. id=\"d3_visualization_01_main_window_ready\" workflow=\"d3_visualization\" step=1\n   title: Main Window / Tree scene 준비 상태\n   desc: Survey가 로드된 상태에서 Main Window와 Tree scene 패널이 열려 있고, Elements 그룹 아래 In-line/Cross-line/Z-slice 카테고리 노드가 표시되나 3D Scene 패널은\n   expected dialog: OpendTect Main Window\n   expected elements: tree scene panel, elements group, inline category node, crossline category node, zslice category node, empty 3d scene panel\n   keywords: Tree scene, Elements, In-line, Cross-line, Z-slice, 3D Scene, F3 Demo, OpendTect\n5. id=\"d3_visualization_03_add_crossline\" workflow=\"d3_visualization\" step=3\n   title: Cross-line 슬라이스 추가\n   desc: Tree scene의 Elements > Cross-line 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Cross-line 슬라이스를 추가.\n   expected dialog: OpendTect Main Window (In-line displayed) / Context menu on Cross-line\n   expected elements: inline slice visible, crossline context menu, add data item, add default data item\n   keywords: Cross-line, Crossline, Add Data, Add Default Data, Add and Select Data, In-line, 3D Scene, Elements\n6. id=\"d3_visualization_04_add_zslice\" workflow=\"d3_visualization\" step=4\n   title: Z-slice 슬라이스 추가\n   desc: Tree scene의 Elements > Z-slice 카테고리 노드를 우클릭하고 'Add Data' 또는 'Add Default Data'를 선택하여 3D Scene에 Z-slice(시간/깊이 슬라이스)를 추가.\n   expected dialog: OpendTect Main Window (In-line + Cross-line displayed) / Context menu on Z-slice\n   expected elements: inline slice visible, crossline slice visible, zslice context menu, add data item, add default data item\n   keywords: Z-slice, Time slice, Depth slice, Add Data, Add Default Data, Add and Select Data, In-line, Cross-line, Elements, 3D Scene\n7. id=\"seismic_attribute_01_ready_to_start\" workflow=\"seismic_attribute\" step=1\n   title: 속성 작업 시작 전 (아직 창 미개방)\n   desc: 매뉴얼 §1.5 시작 문맥: F3 Demo survey 로드 후 OpendTect Main Window 에서 아직 Attribute Set 3D 창도, 배치 다이얼로그도 열려 있지 않은 상태. 사용자가 toolbar\n   expected dialog: OpendTect Main Window\n   expected elements: main menu bar, attribute 3d toolbar icon, analysis menu, attributes menu item\n   keywords: Analysis menu, Attributes menu item, Create Attribute Set (3D), Attribute 3D toolbar icon (unclicked), no attribute dialog open\n8. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_02\" workflow=\"follow_along_implementing_a_systematic_s\" step=2\n   title: Label Points with ID and Add a Text Buffer\n   desc: QGIS Training Manual 3.\n   keywords: Label, Points, ID, Add, Text, Buffer, QGIS, Training, Manual, For\n9. id=\"auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s_03\" workflow=\"follow_along_implementing_a_systematic_s\" step=3\n   title: Save the Output File and Run the Algorithm\n   desc: indicate that the value represents the distance between the points.\n   keywords: Save, Output, Run, Algorithm, Regular, Lesson, Systematic, Sampling, Design, indicate\n\nPick the candidate whose described screen state matches the CURRENT screen — the step the user has reached (not the action they will do next) — consistent with the goal and the instructions already given.\n\nDECISION RULE (state match):\n- Each candidate describes a SCREEN STATE — the state of the UI when that step is the user's current position (its expected dialog, expected elements and keywords describe what the screen shows at that point). Pick the candidate whose described state matches the CURRENT screen. Do NOT pick the step whose action the user is about to perform: the next action is supplied later from the workflow edges.\n- Candidates that share the same dialog are told apart by FIELD VALUES in visual_state (field_values / labels): the selected dropdown entry, whether a text field is filled or empty, whether a checkbox is checked, whether a list is empty. A label merely being visible on screen (e.g. an unchecked checkbox or an empty field with its caption) is NOT evidence for a candidate that requires it to be set.\n- Prefer a candidate from the same workflow as the session's previous steps and the graph prior, unless the screen clearly shows a different application module.\n- Return \"none\" when NO candidate is even loosely related (different application, different module, totally unrelated topic).\n\nCONFIDENCE (recorded, not used as a gate; below 0.70 is treated as unsure):\n- 0.9–1.0: the candidate's dialog AND its field states are literally on screen.\n- 0.7–0.85: same dialog/workflow, field states consistent but not all visible.\n- 0.5–0.65: plausible topic only. Use this when unsure; do NOT inflate.\n\nNOTE — steps that span several actions and dialogs that stay open:\n- A step may cover several actions; the screen still matches that step until its completion state (as described by its successor) is visible.\n- Pick the SUCCESSOR only if the screen shows the successor's described state (its field values are now set). If the instructions already given completed a step but the screen has not changed, stay on that step.\n\nRespond with JSON only:\n{\"id\": \"<candidate_id_or_none>\", \"confidence\": 0.0-1.0}",
+              "goal_state_node": null,
+              "route_tie_prior": null,
+              "route_tie_group": [],
+              "route_sticky": null,
+              "route_advance": null,
+              "route_screen_advance": {
+                "from": "spectral_decomp_152a_08_sd_64hz_added",
+                "to": "spectral_decomp_152a_09_attribute_set_closed",
+                "evidence": {
+                  "spectral_decomp_152a_09_attribute_set_closed": [
+                    "dialog_closed:attributeset3d"
+                  ]
+                }
+              },
+              "route_rerank_votes": null,
+              "judge_score": 1
+            }
+          ],
+          "latency_sec": 175.78,
+          "judge": {
+            "judge_mode": "consensus",
+            "judge_step_accuracy": 0.7777777777777778,
+            "judged_steps": 9,
+            "total_steps": 9
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "linked_chunks": {
+      "n_scenarios": 1,
+      "step_accuracy": 0.8888888888888888,
+      "faithfulness": 1.0,
+      "hallucination_rate": 0.0,
+      "dwell_loop_rate": 0.0,
+      "loop_rate": 0.0,
+      "trap_pass_rate": null,
+      "recovery_rate": null,
+      "goal_completion_rate": 1.0,
+      "mean_latency_sec": 18.151,
+      "mean_cost_usd": 0.010587,
+      "total_cost_usd": 0.095283,
+      "mean_aux_cost_usd": 0.002922,
+      "total_aux_cost_usd": 0.0263,
+      "mean_cost_total_usd": 0.013509,
+      "total_aux_calls": 18.0,
+      "total_input_tokens": 30471.0,
+      "total_output_tokens": 258.0,
+      "fallback_rate": 0.0,
+      "mean_route_confidence": 0.9
+    }
+  }
+}
