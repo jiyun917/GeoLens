@@ -62,6 +62,6 @@ reps per model: gemini 10, claude 10, gpt 10
 
 | model | linked_chunks | full_system |
 |---|---|---|
-| gemini | 221/240 = 0.921 | 213/240 = 0.887 |
+| gemini | 221/240 = 0.921 | 213/240 = 0.888 |
 | claude | 212/240 = 0.883 | 229/240 = 0.954 |
 | gpt | 205/240 = 0.854 | 229/240 = 0.954 |

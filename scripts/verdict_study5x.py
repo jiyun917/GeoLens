@@ -123,7 +123,7 @@ def main():
     L.append("|---|---|---|")
     for m in MODELS:
         a, b = routex[(m, "linked_chunks")], route5[(m, "full_system")]
-        L.append(f"| {m} | {a[0]}/{a[1]} = {a[0] / max(1, a[1]):.3f} | {b[0]}/{b[1]} = {b[0] / max(1, b[1]):.3f} |")
+        L.append(f"| {m} | {a[0]}/{a[1]} = {a[0] / max(1, a[1]) + 1e-9:.3f} | {b[0]}/{b[1]} = {b[0] / max(1, b[1]) + 1e-9:.3f} |")   # round half up (213/240 -> 0.888)
 
     md = "\n".join(L) + "\n"
     out = RES / "verdict_study5x.md"
