@@ -726,6 +726,54 @@ def backend_full_system(step_index: int, scenario: Dict,
 
 
 # ─────────────────────────────────────────────────────────────────────
+# Backend 4b: linked_chunks — exploratory ablation (study 5x, 2026-10-14,
+# outside the pre-registration): full_system's routing and manual text
+# (linked chunks 3 x 800 + goal-query vector 1,500; vector-only 3,900 on
+# fallback) WITHOUT the structural block ([Current State], [Next Actions]
+# edge list, assembly rule, note). Isolates the contribution of the
+# structure block from that of graph-selected manual text. Implemented as
+# a post-cut of the v8 block at its first [Manual Context ...] marker, so
+# the routed pipeline, telemetry and chunk text are byte-identical to
+# full_system (verified on all 720 study-5 full_system blocks: every block
+# has the marker and nothing structural follows it).
+# ─────────────────────────────────────────────────────────────────────
+
+def _strip_structure(context_block: str) -> str:
+    cb = context_block or ""
+    cuts = [i for i in (cb.find("[Manual Context (graph)]"), cb.find("[Manual Context (vector)]")) if i >= 0]
+    return cb[min(cuts):] if cuts else ""
+
+
+def backend_linked_chunks(step_index: int, scenario: Dict,
+                          prior_responses: List[str]) -> str:
+    from .rag_router import get_rag_router
+    from .guide_pipeline import get_last_localize_meta
+    screenshot_b64 = _load_screenshot_b64(scenario, step_index)
+    visited_node_ids = list(_session_visited(scenario, "linked_chunks", step_index))
+    session_state = {
+        "mode": "guide",
+        "visited_node_ids": visited_node_ids,
+        "last_confirmed_node_id": _session_last_confirmed(scenario, "linked_chunks", step_index),
+        "completed_steps": list(prior_responses),
+        "prev_visual_state": _session_prev_vs(scenario, "linked_chunks", step_index),
+    }
+    result = get_rag_router().route(
+        user_message=scenario.get("goal", ""),
+        screenshot_b64=screenshot_b64,
+        session_state=session_state,
+        manual_ids=[scenario["manual_id"]],
+    )
+    meta = get_last_localize_meta()
+    _session_note_vs(scenario, "linked_chunks", (result.get("raw_output") or {}).get("visual_state") or meta.get("visual_state"))
+    _session_note_visit(scenario, "linked_chunks", meta.get("picked_node_id"))
+    if meta.get("picked_node_id") and not meta.get("fallback_activated"):
+        _session_note_confirmed(scenario, "linked_chunks", meta.get("picked_node_id"))
+    context_block = _strip_structure(result.get("context_block", "") or "")
+    messages = _build_messages(scenario, step_index, prior_responses, context_block=context_block)
+    return _call_generator(messages)
+
+
+# ─────────────────────────────────────────────────────────────────────
 # Backend 5: state_path — Procedural State-Path Retrieval (PSPR, novel)
 # ─────────────────────────────────────────────────────────────────────
 
@@ -862,6 +910,7 @@ BACKEND_REGISTRY: Dict[str, Callable[[int, Dict, List[str]], str]] = {
     "graph_only":     backend_graph_only,
     "vision_only":    backend_vision_only,
     "full_system":    backend_full_system,
+    "linked_chunks":  backend_linked_chunks,      # study 5x exploratory ablation
     "state_path":     backend_state_path,
     "long_context":   backend_long_context,
 }

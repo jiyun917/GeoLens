@@ -1,0 +1,489 @@
+Running models in sequence: ['gemini']  ×  1 replicates each
+Backends subset: ['linked_chunks']
+Filename tag: smoke5x_qgis
+Total planned runs: 1 (replicates 1..1)
+C:\Users\user\Downloads\GeoLens-paper\scripts\run_all_models.py:38: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  ts = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%S")
+
+======================================================================
+[14:21:33] Starting GEMINI replicate 1
+======================================================================
+  cmd: C:\Users\user\Downloads\GeoLens-paper\.venv\Scripts\python.exe -m api.services.bench_runner --model gemini --out C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_smoke5x_qgis_r1_20261014T052133.json --judge consensus --backends linked_chunks --scenarios data/eval/scenarios/.study5_test_qgis
+  out: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_smoke5x_qgis_r1_20261014T052133.json
+C:\Users\user\Downloads\GeoLens-paper\api\services\bench_runner.py:105: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "started_at": datetime.datetime.utcnow().isoformat() + "Z",
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+C:\Users\user\Downloads\GeoLens-paper\.venv\Lib\site-packages\open_clip\factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+[bench] code_version={'commit': 'd27c9d52f542048a9000404943388264c9ddcf54', 'branch': 'v3-rerun', 'dirty': True, 'dirty_diff_sha256': 'b0e8c3a17f58423de455b531d85cfc8aa35078b208b1e514112032bf28e0602c', 'worktree': 'C:\\Users\\user\\Downloads\\GeoLens-paper'}
+
+=== qgis__aspect_north__01 (6 steps) ===
+[WorkflowGraph] Loaded 13 workflows, 93 nodes, 82 edges
+[RAG] Query: QGIS에서 aspect 래스터로부터 북향(aspect ≤ 90° 또는 ≥ 270°) 픽셀만 1인 래스터를 만든다: Processing Toolbox의 Raster analysis, data_types: None
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 26030.08it/s]
+C:\Users\user\Downloads\GeoLens-paper\api\services\embedder.py:32: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  f"dim={_model.get_sentence_embedding_dimension()}")
+[VISUAL_MATCH] CLIP ViT-B-32/openai loaded on cpu
+[VISUAL_MATCH] rehydrating 673 images for manual=bf2804feea57434bb79b749134ed1df0 from disk
+[EMBED] model=BAAI/bge-m3 max_seq_length=8192 dim=1024
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.18it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.18it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 1 additional chunks
+[VISUAL_MATCH] indexed 673 images for manual=bf2804feea57434bb79b749134ed1df0
+Batches:   0%|          | 0/3 [00:00<?, ?it/s]Batches:  33%|███▎      | 1/3 [00:09<00:19,  9.80s/it]Batches:  67%|██████▋   | 2/3 [00:14<00:06,  6.83s/it]Batches: 100%|██████████| 3/3 [00:18<00:00,  5.32s/it]Batches: 100%|██████████| 3/3 [00:18<00:00,  6.02s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.11it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.11it/s]
+[GUIDE] visual_state: '*Untitled Project - QGIS / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.11it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.11it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_aspect_north_736_01_aspect_loaded', 'qgis_aspect_north_736_06_ran_layer_added'] -> qgis_aspect_north_736_01_aspect_loaded (earliest step)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=2, prior=0)
+[GUIDE] localize via LLM rerank: node=qgis_aspect_north_736_01_aspect_loaded conf=0.90
+[RAG] Query: QGIS에서 aspect 래스터로부터 북향(aspect ≤ 90° 또는 ≥ 270°) 픽셀만 1인 래스터를 만든다: Processing Toolbox의 Raster analysis, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.92it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.92it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 1 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.39it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.39it/s]
+[GUIDE] visual_state: 'Raster Analysis - Raster Calculator / Parameters'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_aspect_north_736_02_raster_calc_open', 'qgis_aspect_north_736_04_reference_layer_set'] -> qgis_aspect_north_736_02_raster_calc_open (graph successor of qgis_aspect_north_736_01_aspect_loaded)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_aspect_north_736_02_raster_calc_open conf=0.90
+[RAG] Query: QGIS에서 aspect 래스터로부터 북향(aspect ≤ 90° 또는 ≥ 270°) 픽셀만 1인 래스터를 만든다: Processing Toolbox의 Raster analysis, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.37it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.37it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 1 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s]
+[GUIDE] visual_state: 'Raster Analysis - Raster Calculator / Parameters'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_aspect_north_736_02_raster_calc_open', 'qgis_aspect_north_736_04_reference_layer_set'] -> qgis_aspect_north_736_02_raster_calc_open (graph successor of qgis_aspect_north_736_02_raster_calc_open)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_aspect_north_736_03_expression_entered conf=0.90
+[RAG] Query: QGIS에서 aspect 래스터로부터 북향(aspect ≤ 90° 또는 ≥ 270°) 픽셀만 1인 래스터를 만든다: Processing Toolbox의 Raster analysis, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  7.93it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  7.93it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 1 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.31it/s]
+[GUIDE] visual_state: 'Raster Analysis - Raster Calculator / Parameters'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.32it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_aspect_north_736_02_raster_calc_open', 'qgis_aspect_north_736_04_reference_layer_set'] -> qgis_aspect_north_736_04_reference_layer_set (graph successor of qgis_aspect_north_736_03_expression_entered)
+[GUIDE] candidates: 8 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_aspect_north_736_04_reference_layer_set conf=0.90
+[RAG] Query: QGIS에서 aspect 래스터로부터 북향(aspect ≤ 90° 또는 ≥ 270°) 픽셀만 1인 래스터를 만든다: Processing Toolbox의 Raster analysis, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.73it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.73it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 1 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]
+[GUIDE] visual_state: 'Raster Analysis - Raster Calculator / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.41it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.41it/s]
+[GUIDE] tie prior: ['qgis_aspect_north_736_02_raster_calc_open', 'qgis_aspect_north_736_04_reference_layer_set'] -> qgis_aspect_north_736_04_reference_layer_set (graph successor of qgis_aspect_north_736_04_reference_layer_set)
+[GUIDE] candidates: 8 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_aspect_north_736_05_output_set conf=0.70
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Query: QGIS에서 aspect 래스터로부터 북향(aspect ≤ 90° 또는 ≥ 270°) 픽셀만 1인 래스터를 만든다: Processing Toolbox의 Raster analysis, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.06it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.06it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 1 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.94it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.94it/s]
+[GUIDE] visual_state: 'Untitled Project - QGIS / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.98it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.97it/s]
+[GUIDE] tie prior: ['qgis_aspect_north_736_01_aspect_loaded', 'qgis_aspect_north_736_06_ran_layer_added'] -> qgis_aspect_north_736_06_ran_layer_added (graph successor of qgis_aspect_north_736_05_output_set)
+[GUIDE] candidates: 8 (matcher=embedding kw_top=5, clip_top=2, prior=2)
+[GUIDE] screen-delta advance: qgis_aspect_north_736_01_aspect_loaded -> qgis_aspect_north_736_06_ran_layer_added evidence={'qgis_aspect_north_736_06_ran_layer_added': ['dialog_closed:rasteranalysisrastercalculator']}
+[GUIDE] localize via LLM rerank: node=qgis_aspect_north_736_06_ran_layer_added conf=0.70
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.93it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.93it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.98it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.98it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.98it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.98it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.00it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.00it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Query: QGIS에서 aspect 래스터로부터 북향(aspect ≤ 90° 또는 ≥ 270°) 픽셀만 1인 래스터를 만든다: Processing Toolbox의 Raster analysis, data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  7.78it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  7.72it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+
+Batches: 100%|██████████| 1/1 [00:00<00:00,  1.87it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  1.87it/s]
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 1 additional chunks
+[GUIDE] visual_state: 'Untitled Project - QGIS / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.82it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.82it/s]
+[GUIDE] tie prior: ['qgis_aspect_north_736_01_aspect_loaded', 'qgis_aspect_north_736_06_ran_layer_added'] -> qgis_aspect_north_736_06_ran_layer_added (graph successor of qgis_aspect_north_736_06_ran_layer_added)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=2, prior=1)
+[GUIDE] localize via LLM rerank: node=qgis_aspect_north_736_01_aspect_loaded conf=0.70
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.87it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.87it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.90it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.90it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+  - linked_chunks  step_acc=0.83 hall=0.00 loop=0.00 latency=228.37s
+
+=== qgis__custom_projection__01 (9 steps) ===
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.81it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.81it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.65it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.65it/s]
+[GUIDE] visual_state: '*Untitled Project - QGIS / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.60it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.60it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_custom_projection_614_01_oceans_loaded', 'qgis_custom_projection_614_06_crs_saved_dialog_closed', 'qgis_custom_projection_614_09_map_reprojected'] -> qgis_custom_projection_614_01_oceans_loaded (earliest step)
+[GUIDE] candidates: 6 (matcher=embedding kw_top=5, clip_top=1, prior=0)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_01_oceans_loaded conf=0.90
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.28it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.25it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.67it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.67it/s]
+[GUIDE] visual_state: 'Options – User Defined CRS / User Defined'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.66it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.65it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_custom_projection_614_02_custom_crs_dialog', 'qgis_custom_projection_614_03_new_crs_row_added'] -> qgis_custom_projection_614_02_custom_crs_dialog (graph successor of qgis_custom_projection_614_01_oceans_loaded)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_02_custom_crs_dialog conf=0.90
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.66it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.66it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.79it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.79it/s]
+[GUIDE] visual_state: 'Options — User Defined CRS / User Defined'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.75it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.75it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_custom_projection_614_02_custom_crs_dialog', 'qgis_custom_projection_614_03_new_crs_row_added'] -> qgis_custom_projection_614_03_new_crs_row_added (graph successor of qgis_custom_projection_614_02_custom_crs_dialog)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_03_new_crs_row_added conf=0.90
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.33it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.33it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.68it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.68it/s]
+[GUIDE] visual_state: 'Options — User Defined CRS / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.67it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.67it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_custom_projection_614_02_custom_crs_dialog', 'qgis_custom_projection_614_04_name_and_format_set', 'qgis_custom_projection_614_05_wkt_entered'] -> qgis_custom_projection_614_04_name_and_format_set (graph successor of qgis_custom_projection_614_03_new_crs_row_added)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_04_name_and_format_set conf=0.90
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.13it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.13it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionGetEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]
+[GUIDE] visual_state: 'Options — User Defined CRS / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.57it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.57it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_custom_projection_614_08_van_der_grinten_selected', 'qgis_custom_projection_614_07_project_crs_dialog'] -> qgis_custom_projection_614_07_project_crs_dialog (earliest step)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_05_wkt_entered conf=0.90
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.40it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.40it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+[GuidePipeline] visual_state transient; retry 1/3 after 1.6s
+[GuidePipeline] visual_state transient; retry 2/3 after 3.3s
+[GuidePipeline] visual_state transient; retry 3/3 after 6.3s
+[GuidePipeline] Visual state recognition failed: 504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'The request timed out. Please try again.', 'status': 'DEADLINE_EXCEEDED'}}
+[GUIDE] visual_state: ' / '
+[GUIDE] candidates: 4 (matcher=embedding kw_top=0, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_05_wkt_entered conf=0.75
+[GUIDE] post-completion detected — node qgis_custom_projection_614_05_wkt_entered visited at history[4] (within last 3)
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.74it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.74it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.43it/s]
+[GUIDE] visual_state: 'Project Properties - CRS / CRS'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.50it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] tie prior: ['qgis_custom_projection_614_06_crs_saved_dialog_closed', 'qgis_custom_projection_614_01_oceans_loaded'] -> qgis_custom_projection_614_06_crs_saved_dialog_closed (graph successor of qgis_custom_projection_614_05_wkt_entered)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_07_project_crs_dialog conf=0.90
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.55it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.55it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.13it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.13it/s]
+[GUIDE] visual_state: 'Project Properties — CRS / CRS'
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.08it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.08it/s]
+[GUIDE] tie prior: ['qgis_custom_projection_614_07_project_crs_dialog', 'qgis_custom_projection_614_08_van_der_grinten_selected'] -> qgis_custom_projection_614_08_van_der_grinten_selected (graph successor of qgis_custom_projection_614_07_project_crs_dialog)
+[GUIDE] candidates: 6 (matcher=embedding kw_top=5, clip_top=1, prior=3)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_08_van_der_grinten_selected conf=0.90
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.18it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.18it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.14it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.14it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.83it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.83it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.33it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.33it/s]
+[GUIDE] visual_state: '"Untitled Project - QGIS / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.34it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.34it/s]
+[GUIDE] tie prior: ['qgis_custom_projection_614_01_oceans_loaded', 'qgis_custom_projection_614_09_map_reprojected'] -> qgis_custom_projection_614_09_map_reprojected (graph successor of qgis_custom_projection_614_08_van_der_grinten_selected)
+[GUIDE] candidates: 7 (matcher=embedding kw_top=5, clip_top=1, prior=2)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_09_map_reprojected conf=0.70
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.24it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.24it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.25it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.25it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] goal-state hint (margin): anchor=qgis_custom_projection_614_08_van_der_grinten_selected terminal qgis_custom_projection_614_09_map_reprojected cos=0.675 vs top qgis_custom_projection_614_01_oceans_loaded 0.680
+[RAG] Query: QGIS에서 world/oceans.shp 를 로드한 새 프로젝트에 사용자 정의 투영 'Van der Grinten I'(Settings ► Custom Projections…, , data_types: None
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  5.57it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.57it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.12it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.12it/s]
+[RAG] Specific search: 5 chunks found
+[RAG] Neighbor expansion: 2 additional chunks
+[GUIDE] visual_state: '"Untitled Project - QGIS / '
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.33it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.33it/s]
+[GUIDE] tie prior: ['qgis_custom_projection_614_01_oceans_loaded', 'qgis_custom_projection_614_09_map_reprojected'] -> qgis_custom_projection_614_09_map_reprojected (graph successor of qgis_custom_projection_614_09_map_reprojected)
+[GUIDE] candidates: 6 (matcher=embedding kw_top=5, clip_top=1, prior=1)
+[GUIDE] localize via LLM rerank: node=qgis_custom_projection_614_09_map_reprojected conf=0.90
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.29it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.29it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.38it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.38it/s]
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+[GUIDE] goal-state hint (margin): anchor=qgis_custom_projection_614_09_map_reprojected terminal qgis_custom_projection_614_09_map_reprojected cos=0.675 vs top qgis_custom_projection_614_01_oceans_loaded 0.680
+[GUIDE] post-completion detected — node qgis_custom_projection_614_09_map_reprojected visited at history[7] (within last 3)
+  - linked_chunks  step_acc=1.00 hall=0.00 loop=0.00 latency=302.41s
+
+# Benchmark Results
+
+Started: 2026-10-14T05:21:34.128522Z
+Scenarios: 2
+
+## Aggregate (mean across scenarios)
+
+| backend | step_accuracy | hallucination_rate | dwell_loop_rate | trap_pass_rate | recovery_rate | goal_completion_rate |
+|---|---|---|---|---|---|---|
+| linked_chunks | 0.917 | 0.000 | 0.000 | — | — | 0.500 |
+
+
+Results written: C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_smoke5x_qgis_r1_20261014T052133.json
+Markdown:        C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_smoke5x_qgis_r1_20261014T052133.md
+
+
+=== SUMMARY ===
+  [OK  ] gemini   r1 → C:\Users\user\Downloads\GeoLens-paper\data\eval\results\run_gemini_smoke5x_qgis_r1_20261014T052133.json
