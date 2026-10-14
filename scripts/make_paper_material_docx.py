@@ -51,6 +51,29 @@ def summary_rows(d):
     return rows
 
 
+def judge_rows(tags):
+    """consensus judge (Claude Haiku + Gemini Flash) step accuracy, step-weighted over all files of the tags,
+    next to the pattern step accuracy over the same steps; judged/total shows judge coverage."""
+    import collections, re, os
+    jc, jt, pc, pt, tot = collections.Counter(), collections.Counter(), collections.Counter(), collections.Counter(), collections.Counter()
+    for tag in tags:
+        for f in sorted(glob.glob(str(ROOT / "data/eval/results" / f"run_*_{tag}_r*_*.json"))):
+            m = re.match(rf"run_([a-z]+)_{tag}_r", os.path.basename(f))
+            if not m or m.group(1) not in MODELS: continue
+            run = json.load(open(f, encoding="utf-8"))
+            for sc in run["scenarios"]:
+                for b, r in sc["backends"].items():
+                    j = r.get("judge") or {}; js = j.get("judged_steps") or 0
+                    jc[(m.group(1), b)] += (j.get("judge_step_accuracy") or 0) * js; jt[(m.group(1), b)] += js; tot[(m.group(1), b)] += j.get("total_steps") or r["n_steps"]
+                    for s in r["per_step"]: pc[(m.group(1), b)] += int(bool(s.get("matched"))); pt[(m.group(1), b)] += 1
+    rows = []
+    for mm in MODELS:
+        for b in BACKENDS:
+            if jt[(mm, b)]:
+                rows.append([mm, BACKEND_KO[b], f"{jc[(mm, b)] / jt[(mm, b)]:.3f}", f"{jt[(mm, b)]}/{tot[(mm, b)]}", f"{pc[(mm, b)] / pt[(mm, b)]:.3f}"])
+    return rows
+
+
 def per_scenario_rows(per_sc, sids):
     rows = []
     for m in MODELS:
@@ -189,6 +212,8 @@ def main():
     doc.add_heading("4. 주 결과 — 테스트 세트 (held-out, 3 시나리오 × 10회)", level=1)
     doc.add_heading("4.1 요약 (replicate 평균, n = 10)", level=2)
     add_table(doc, ["모델", "백엔드", "n", "step accuracy (평균 ± sd)", "hall v6", "goal completion", "비용 $/스텝", "지연 s/스텝"], summary_rows(dT))
+    para(doc, "consensus judge 정답률(기술 지표): Claude Haiku와 Gemini Flash가 각 스텝 응답을 독립 판정해 합의한 결과로, 패턴 채점과 별개다. 전 스텝 가중 평균; 'judged/total'은 judge 응답을 받은 스텝 수.", size=8)
+    add_table(doc, ["모델", "백엔드", "judge 정답률", "judged/total", "패턴 step accuracy (같은 스텝)"], judge_rows(TEST_TAGS))
     doc.add_heading("4.2 시나리오별 step accuracy (10회 평균)", level=2)
     sidsT = ["opendtect__spectral_decomp__01", "qgis__custom_projection__01", "qgis__aspect_north__01"]
     add_table(doc, ["모델", "백엔드"] + [short(s) for s in sidsT], per_scenario_rows(per_scT, sidsT))
@@ -223,7 +248,7 @@ def main():
     for t in [
         "GPT GeoLens 환각 0.137(37/240 플래그)의 출처: spectral_decomp s0 'Attribute 3D' 10/10(화면 라벨은 'Attribute Set 3D'), aspect_north s2 'OK' 10/10(Raster Calculator 대화상자의 버튼은 Run/Close; 스텝 자체는 Input layers 동작으로 정답), custom_projection s6 'User Defined Coordinate Systems' 10/10(매뉴얼 표기; 화면은 'User-defined'), spectral_decomp s4 'Output frequency 24 Hz' 2/10. Gemini·Claude의 GeoLens 환각은 0.000.",
         "Gemini GeoLens가 spectral_decomp s4(속성 종류 Spectral Decomposition 선택)에서 0/10: 라우팅은 10/10 정답 노드였으나 생성기가 'Similarity 드롭다운 메뉴를 클릭하세요'(드롭다운을 여는 앞 동작만)를 지시해 패턴 미충족. GPT가 spectral_decomp s0(Add Color Blended)에서 0/10: 세션 이력이 없는 빈 scene 화면에서 rerank가 세 모델 모두 10/10 다른 워크플로우(seismic_attribute)의 시작 노드를 골랐고(사전등록 dry-run에서 예고된 동점 화면), Gemini·Claude는 목표·벡터 맥락으로 정답 동작을 냈지만 GPT는 그 워크플로우의 첫 동작('Attribute 3D 아이콘 클릭')을 지시.",
-        "라우팅(GeoLens, 모델당 240스텝): 노드 정답 gemini 213, claude 229, gpt 229. R3 화면 전진 57회 중 GT 밖 노드 5회(모두 Gemini), R2 이력 전진 27회 모두 GT 노드. Gemini의 rerank 호출 실패 3스텝(custom_projection s0)은 워크플로우 맥락 없이 벡터 검색만으로 생성.",
+        "라우팅(GeoLens, 모델당 240스텝): 노드 정답 gemini 213, claude 229, gpt 229. R3 화면 전진 57회 중 GT 밖 노드 5회(모두 Gemini), R2 이력 전진 27회 모두 GT 노드. 워크플로우 맥락 없이 벡터 검색(3,900자)만으로 생성한 폴백 스텝 5/720(모두 Gemini): rerank가 '해당 후보 없음'을 답한 3스텝(custom_projection s0, 반복 5·6·9) + 신뢰도 게이트 미달 2스텝(aspect_north s5, 반복 3·9). API 호출 실패에 의한 폴백은 0건(로그 기준).",
         "불리한 수치: GeoLens 스텝당 지연 17–28초(비교군 2–11초; 비전 + rerank + 생성), 스텝당 비용은 vanilla_budget보다 높고(전 모델) Gemini는 vanilla_vector보다도 높음. Gemini vanilla_budget < no_rag. F(custom_projection)는 no_rag도 0.933–0.989로 천장에 가까워 변별력이 낮음(사전등록 §7).",
         "judge 누락 1스텝(Gemini opendtect r1 vanilla_budget 8/9; 기술 지표만 영향). 스텝 오류 0/2,880.",
     ]:
@@ -234,6 +259,8 @@ def main():
     para(doc, "최종 메커니즘을 개발 세트 5 시나리오(44스텝)에서 같은 설계로 10회 실행한 결과. 이 시나리오들은 메커니즘 설계·조정에 쓰였으므로 값은 낙관적일 수 있으며 일반화 근거로 쓰지 않는다. 실행·판정 절차는 §3과 동일(사전등록 4, 커밋 834d58b, 태그 study4-prereg-signed).", size=9)
     doc.add_heading("5.1 요약 (replicate 평균, n = 10)", level=2)
     add_table(doc, ["모델", "백엔드", "n", "step accuracy (평균 ± sd)", "hall v6", "goal completion", "비용 $/스텝", "지연 s/스텝"], summary_rows(dD))
+    para(doc, "consensus judge 정답률(기술 지표, §4.1과 같은 정의):", size=8)
+    add_table(doc, ["모델", "백엔드", "judge 정답률", "judged/total", "패턴 step accuracy (같은 스텝)"], judge_rows(DEV_TAGS))
     doc.add_heading("5.2 시나리오별 step accuracy (10회 평균)", level=2)
     sidsD = ["opendtect__fault_sticks__01", "opendtect__horizon_autotrack__01", "opendtect__horizon_2dviewer__01", "qgis__rule_classification__01", "qgis__reclassify_raster__01"]
     add_table(doc, ["모델", "백엔드"] + [short(s) for s in sidsD], per_scenario_rows(per_scD, sidsD))
