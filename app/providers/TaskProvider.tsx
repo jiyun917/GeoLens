@@ -109,6 +109,20 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   const visitedNodeIdsRef = useRef<string[]>([]);
   const activeWorkflowIdRef = useRef<string | null>(null);
   const expectedNextNodeIdRef = useRef<string | null>(null);
+  // Session history aligned with the evaluation harness (bench_backends.backend_full_system):
+  // last node that passed the confidence gate (graph prior for the candidate pool, R2/R3),
+  // the instructions already given (rerank prompt, R2), and the previous screen reading (R3).
+  const lastConfirmedNodeIdRef = useRef<string | null>(null);
+  const prevVisualStateRef = useRef<Record<string, unknown> | null>(null);
+  const buildSessionState = () => ({
+    mode: "guide",
+    visited_node_ids: visitedNodeIdsRef.current,
+    active_workflow_id: activeWorkflowIdRef.current,
+    expected_next_node_id: expectedNextNodeIdRef.current,
+    last_confirmed_node_id: lastConfirmedNodeIdRef.current,
+    completed_steps: tasksRef.current.map((item) => item.text),
+    prev_visual_state: prevVisualStateRef.current,
+  });
 
   const isTriggeringRef = useRef(false);
   const changeDetectionStartedRef = useRef(false);
@@ -244,12 +258,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
         activeManualIds.length > 0 ? activeManualIds : undefined,
         undefined,
         guideLanguage,
-        {
-          mode: "guide",
-          visited_node_ids: visitedNodeIdsRef.current,
-          active_workflow_id: activeWorkflowIdRef.current,
-          expected_next_node_id: expectedNextNodeIdRef.current,
-        }
+        buildSessionState()
       );
 
       // Graph-RAG localization (fire-and-forget, updates visited nodes)
@@ -262,11 +271,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
             body: JSON.stringify({
               message: goal,
               screenshot: imageDataUrl,
-              session_state: {
-                mode: "guide",
-                visited_node_ids: visitedNodeIdsRef.current,
-                active_workflow_id: activeWorkflowIdRef.current,
-              },
+              session_state: buildSessionState(),
               manual_ids: activeManualIds.length > 0 ? activeManualIds : undefined,
             }),
           });
@@ -274,6 +279,14 @@ export function TaskProvider({ children }: { children: ReactNode }) {
           const data = await resp.json();
           const node = data?.raw_output?.current_node;
           const confidence = data?.raw_output?.confidence || 0;
+          // Same bookkeeping as the harness: keep the previous screen reading for R3,
+          // and the confirmed node (not a fallback pick) for the graph prior and R2.
+          if (data?.raw_output?.visual_state) {
+            prevVisualStateRef.current = data.raw_output.visual_state;
+          }
+          if (node?.id && !data?.raw_output?.fallback_activated) {
+            lastConfirmedNodeIdRef.current = node.id;
+          }
           if (node?.id && confidence > 0.3) {
             if (!visitedNodeIdsRef.current.includes(node.id)) {
               visitedNodeIdsRef.current = [...visitedNodeIdsRef.current, node.id];
@@ -676,6 +689,11 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     isTriggeringRef.current = false;
     summaryGeneratedRef.current = false;
     tasksRef.current = [];
+    visitedNodeIdsRef.current = [];
+    activeWorkflowIdRef.current = null;
+    expectedNextNodeIdRef.current = null;
+    lastConfirmedNodeIdRef.current = null;
+    prevVisualStateRef.current = null;
     setTasks([]);
     setTotalTaskCount(0);
     setTotalTaskGeneration(0);

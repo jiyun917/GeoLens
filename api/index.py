@@ -9,6 +9,10 @@ except Exception:
     pass
 
 from dotenv import load_dotenv
+
+# Load .env.local BEFORE the routers/services are imported: the guide pipeline
+# reads its routing/context knobs from os.environ at import time.
+load_dotenv(".env.local")
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi import Limiter, _rate_limit_exceeded_handler
@@ -23,9 +27,6 @@ from .routers import task, manual, workflow
 # Monkeypatch ThinkingConfig to allow extra fields like thinking_level
 types.ThinkingConfig.model_config["extra"] = "allow"
 types.ThinkingConfig.model_rebuild(force=True)
-
-
-load_dotenv(".env.local")
 
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()

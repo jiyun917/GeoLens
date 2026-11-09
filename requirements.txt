@@ -35,3 +35,9 @@ sentence-transformers>=5.0.0
 networkx>=3.2
 open-clip-torch>=2.24
 Pillow>=10.0
+anthropic==0.109.1
+# --- optional (not needed for the servers or the benchmark harness) ---
+# PySide6==6.11.1   desktop window (launcher_desktop.py)
+# pymupdf           AGPL-3.0; used only by api/services/image_extractor.py to build the manual-figure
+#                   cache (data/manual_images/) that the vision candidate source indexes with open-clip
+# python-docx       paper-material scripts (scripts/make_study_docx.py, scripts/md_to_docx*.py) only

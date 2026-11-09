@@ -247,7 +247,7 @@ POST_COMPLETION_MODE = os.environ.get("POST_COMPLETION_MODE", "soft").strip().lo
 # rendered as the STATE reached (signature states only, no description with manual
 # example values) and the guidance comes from the outgoing edge ("[Next Action]").
 # v3 = the previous [Current Step] (title + description) / [Possible Next Steps] block.
-CONTEXT_ASSEMBLY = os.environ.get("CONTEXT_ASSEMBLY", "v4").strip().lower()
+CONTEXT_ASSEMBLY = os.environ.get("CONTEXT_ASSEMBLY", "v8").strip().lower()   # default = study-5 pin (scripts/study4_env.sh)
 # v6 (study 2): v4 + an ordered-actions rule on [Next Action] (first not-yet-visible action only;
 # completion sentinel when everything is visibly done). See methodology_audit_trail.md V3-28.
 _CTX_V6_RULE = ("Rule: if the action above lists several actions, they are in ORDER - instruct ONLY the first one "
@@ -259,22 +259,22 @@ _CTX_V6_RULE = ("Rule: if the action above lists several actions, they are in OR
 RERANK_SESSION_BLOCK = os.environ.get("RERANK_SESSION_BLOCK", "1").strip() == "1"
 # study 2 (V3-30): session stickiness on identical dialog titles across workflows (R1) and the
 # history-aware [Next Action] of assembly v7 (C1). Defaults keep the v3 behaviour.
-ROUTER_SESSION_STICKY = os.environ.get("ROUTER_SESSION_STICKY", "0").strip() == "1"
+ROUTER_SESSION_STICKY = os.environ.get("ROUTER_SESSION_STICKY", "1").strip() == "1"   # R1; default = study-5 pin
 # study 3 (R2): advance to the single successor when the rerank repeats the last confirmed node
 # although the previous instruction already covered that node's outgoing edge (V3-37).
-ROUTER_HISTORY_ADVANCE = os.environ.get("ROUTER_HISTORY_ADVANCE", "0").strip() == "1"
-ROUTER_ADVANCE_MIN_COVERAGE = float(os.environ.get("ROUTER_ADVANCE_MIN_COVERAGE", "0.8"))
+ROUTER_HISTORY_ADVANCE = os.environ.get("ROUTER_HISTORY_ADVANCE", "1").strip() == "1"   # R2; default = study-5 pin
+ROUTER_ADVANCE_MIN_COVERAGE = float(os.environ.get("ROUTER_ADVANCE_MIN_COVERAGE", "0.6"))   # default = study-5 pin
 # study 4 (R3): screen-delta advance. When the rerank repeats the last confirmed node (or falls back to an
 # earlier node of the same workflow / no node), the successor chain of the last node is scored against the
 # CURRENT vision output: a successor's distinguishing signature tokens that are literally on screen now and
 # were NOT on the previous screen (or that node's expected dialog appearing now) are evidence that the user
 # has reached it; the furthest successor with such evidence becomes the routed node. Deterministic; uses only
 # workflow signatures and the vision outputs of this and the previous turn. Off by default (v3 behaviour).
-ROUTER_SCREEN_ADVANCE = os.environ.get("ROUTER_SCREEN_ADVANCE", "0").strip() == "1"
+ROUTER_SCREEN_ADVANCE = os.environ.get("ROUTER_SCREEN_ADVANCE", "1").strip() == "1"   # R3; default = study-5 pin
 ROUTER_SCREEN_ADVANCE_HOPS = int(os.environ.get("ROUTER_SCREEN_ADVANCE_HOPS", "3"))
 ROUTER_SCREEN_ADVANCE_MIN_TOKENS = int(os.environ.get("ROUTER_SCREEN_ADVANCE_MIN_TOKENS", "1"))
 # successors of the last confirmed node up to this many hops join the candidate pool (v3: 1)
-ROUTER_PRIOR_HOPS = int(os.environ.get("ROUTER_PRIOR_HOPS", "1"))
+ROUTER_PRIOR_HOPS = int(os.environ.get("ROUTER_PRIOR_HOPS", "2"))   # default = study-5 pin
 _SCREEN_ADVANCE_GENERIC = {"ok", "cancel", "close", "help", "apply", "run", "next", "back", "finish", "yes", "no",
                            "file", "edit", "view", "layer", "layers", "settings", "window", "windows", "main", "mainwindow",
                            "label", "labels", "color", "colour", "value", "values", "name", "type", "style", "symbol", "fill",

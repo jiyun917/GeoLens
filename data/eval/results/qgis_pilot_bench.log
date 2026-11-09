@@ -53,3 +53,176 @@
 [2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r4_20260813T033833.json: empty=0/24
 [2026-08-13T04:01:30+00:00]   run_gemini_qgis_pilot_r5_20260813T035023.json: empty=0/24
 [2026-08-13T04:01:30+00:00] TOTAL: empty=0/120
+[2026-09-18T23:23:00+00:00] ======================================================================
+[2026-09-18T23:23:00+00:00] QGIS Pilot bench kickoff
+[2026-09-18T23:23:00+00:00] ======================================================================
+[2026-09-18T23:23:00+00:00] pre-flight Gemini quota probe
+[2026-09-18T23:23:03+00:00] probe OK — proceed
+[2026-09-18T23:23:03+00:00] no isolation (v3): active workflow set = ['auto_bf2804feea57434bb79b749134ed1df0__follow_along_implementing_a_systematic_s.json', 'd3_visualization.json', 'fault_interpretation.json', 'horizon_tracking.json', 'qgis_vector_buffer.json', 'seismic_attribute.json', 'survey_setup.json']
+[2026-09-18T23:23:03+00:00] scenarios subdir prepared: data\eval\scenarios\.qgis_pilot_only/qgis__vector_buffer__01.json
+[2026-09-18T23:23:03+00:00] --- replicate 1/10 pre-run probe ---
+[2026-09-18T23:23:06+00:00] probe OK — proceed
+[2026-09-18T23:23:06+00:00] replicate 1/10 [gemini] starting → run_gemini_v3_qgis_r1_20260918T232306.json
+[2026-09-18T23:41:40+00:00] replicate 1 exit=0
+[2026-09-18T23:41:40+00:00] replicate 1/10 [claude] starting → run_claude_v3_qgis_r1_20260918T234140.json
+[2026-09-18T23:53:22+00:00] replicate 1 exit=0
+[2026-09-18T23:53:22+00:00] replicate 1/10 [gpt] starting → run_gpt_v3_qgis_r1_20260918T235322.json
+[2026-09-19T00:04:26+00:00] replicate 1 exit=0
+[2026-09-19T00:04:26+00:00] replicate 1 empty audit: 0/56
+[2026-09-19T00:04:26+00:00] CHECKPOINT after replicate 1: 0/56 empty
+[2026-09-19T00:04:26+00:00] inter-replicate cooldown 30s
+[2026-09-19T00:04:56+00:00] --- replicate 2/10 pre-run probe ---
+[2026-09-19T00:04:59+00:00] probe OK — proceed
+[2026-09-19T00:04:59+00:00] replicate 2/10 [gemini] starting → run_gemini_v3_qgis_r2_20260919T000459.json
+[2026-09-19T00:23:18+00:00] replicate 2 exit=0
+[2026-09-19T00:23:18+00:00] replicate 2/10 [claude] starting → run_claude_v3_qgis_r2_20260919T002318.json
+[2026-09-19T00:35:05+00:00] replicate 2 exit=0
+[2026-09-19T00:35:05+00:00] replicate 2/10 [gpt] starting → run_gpt_v3_qgis_r2_20260919T003505.json
+[2026-09-19T00:45:34+00:00] replicate 2 exit=0
+[2026-09-19T00:45:34+00:00] replicate 2 empty audit: 0/56
+[2026-09-19T00:45:34+00:00] inter-replicate cooldown 30s
+[2026-09-19T00:46:04+00:00] --- replicate 3/10 pre-run probe ---
+[2026-09-19T00:46:07+00:00] probe OK — proceed
+[2026-09-19T00:46:07+00:00] replicate 3/10 [gemini] starting → run_gemini_v3_qgis_r3_20260919T004607.json
+[2026-09-19T01:00:34+00:00] replicate 3 exit=0
+[2026-09-19T01:00:34+00:00] replicate 3/10 [claude] starting → run_claude_v3_qgis_r3_20260919T010034.json
+[2026-09-19T01:13:10+00:00] replicate 3 exit=0
+[2026-09-19T01:13:10+00:00] replicate 3/10 [gpt] starting → run_gpt_v3_qgis_r3_20260919T011310.json
+[2026-09-19T01:22:55+00:00] replicate 3 exit=0
+[2026-09-19T01:22:55+00:00] replicate 3 empty audit: 0/56
+[2026-09-19T01:22:55+00:00] inter-replicate cooldown 30s
+[2026-09-19T01:23:25+00:00] --- replicate 4/10 pre-run probe ---
+[2026-09-19T01:23:29+00:00] probe OK — proceed
+[2026-09-19T01:23:29+00:00] replicate 4/10 [gemini] starting → run_gemini_v3_qgis_r4_20260919T012329.json
+[2026-09-19T01:41:26+00:00] replicate 4 exit=0
+[2026-09-19T01:41:26+00:00] replicate 4/10 [claude] starting → run_claude_v3_qgis_r4_20260919T014126.json
+[2026-09-19T01:53:03+00:00] replicate 4 exit=0
+[2026-09-19T01:53:03+00:00] replicate 4/10 [gpt] starting → run_gpt_v3_qgis_r4_20260919T015303.json
+[2026-09-19T02:03:53+00:00] replicate 4 exit=0
+[2026-09-19T02:03:53+00:00] replicate 4 empty audit: 0/56
+[2026-09-19T02:03:53+00:00] inter-replicate cooldown 30s
+[2026-09-19T02:04:23+00:00] --- replicate 5/10 pre-run probe ---
+[2026-09-19T02:04:26+00:00] probe OK — proceed
+[2026-09-19T02:04:26+00:00] replicate 5/10 [gemini] starting → run_gemini_v3_qgis_r5_20260919T020426.json
+[2026-09-19T02:23:05+00:00] replicate 5 exit=0
+[2026-09-19T02:23:05+00:00] replicate 5/10 [claude] starting → run_claude_v3_qgis_r5_20260919T022305.json
+[2026-09-19T02:35:01+00:00] replicate 5 exit=0
+[2026-09-19T02:35:01+00:00] replicate 5/10 [gpt] starting → run_gpt_v3_qgis_r5_20260919T023501.json
+[2026-09-19T02:45:47+00:00] replicate 5 exit=0
+[2026-09-19T02:45:47+00:00] replicate 5 empty audit: 0/56
+[2026-09-19T02:45:47+00:00] inter-replicate cooldown 30s
+[2026-09-19T02:46:17+00:00] --- replicate 6/10 pre-run probe ---
+[2026-09-19T02:46:21+00:00] probe OK — proceed
+[2026-09-19T02:46:21+00:00] replicate 6/10 [gemini] starting → run_gemini_v3_qgis_r6_20260919T024621.json
+[2026-09-19T03:04:53+00:00] replicate 6 exit=0
+[2026-09-19T03:04:53+00:00] replicate 6/10 [claude] starting → run_claude_v3_qgis_r6_20260919T030453.json
+[2026-09-19T03:16:46+00:00] replicate 6 exit=0
+[2026-09-19T03:16:46+00:00] replicate 6/10 [gpt] starting → run_gpt_v3_qgis_r6_20260919T031646.json
+[2026-09-19T03:27:23+00:00] replicate 6 exit=0
+[2026-09-19T03:27:23+00:00] replicate 6 empty audit: 0/56
+[2026-09-19T03:27:23+00:00] inter-replicate cooldown 30s
+[2026-09-19T03:27:53+00:00] --- replicate 7/10 pre-run probe ---
+[2026-09-19T03:27:57+00:00] probe OK — proceed
+[2026-09-19T03:27:57+00:00] replicate 7/10 [gemini] starting → run_gemini_v3_qgis_r7_20260919T032757.json
+[2026-09-19T03:46:00+00:00] replicate 7 exit=0
+[2026-09-19T03:46:00+00:00] replicate 7/10 [claude] starting → run_claude_v3_qgis_r7_20260919T034600.json
+[2026-09-19T03:57:42+00:00] replicate 7 exit=0
+[2026-09-19T03:57:42+00:00] replicate 7/10 [gpt] starting → run_gpt_v3_qgis_r7_20260919T035742.json
+[2026-09-19T04:08:32+00:00] replicate 7 exit=0
+[2026-09-19T04:08:32+00:00] replicate 7 empty audit: 0/56
+[2026-09-19T04:08:32+00:00] inter-replicate cooldown 30s
+[2026-09-19T04:09:02+00:00] --- replicate 8/10 pre-run probe ---
+[2026-09-19T04:09:06+00:00] probe OK — proceed
+[2026-09-19T04:09:06+00:00] replicate 8/10 [gemini] starting → run_gemini_v3_qgis_r8_20260919T040906.json
+[2026-09-19T04:27:20+00:00] replicate 8 exit=0
+[2026-09-19T04:27:20+00:00] replicate 8/10 [claude] starting → run_claude_v3_qgis_r8_20260919T042720.json
+[2026-09-19T04:38:59+00:00] replicate 8 exit=0
+[2026-09-19T04:38:59+00:00] replicate 8/10 [gpt] starting → run_gpt_v3_qgis_r8_20260919T043859.json
+[2026-09-19T04:46:30+00:00] replicate 8 exit=0
+[2026-09-19T04:46:30+00:00] replicate 8 empty audit: 0/56
+[2026-09-19T04:46:30+00:00] inter-replicate cooldown 30s
+[2026-09-19T04:47:00+00:00] --- replicate 9/10 pre-run probe ---
+[2026-09-19T04:47:04+00:00] probe OK — proceed
+[2026-09-19T04:47:04+00:00] replicate 9/10 [gemini] starting → run_gemini_v3_qgis_r9_20260919T044704.json
+[2026-09-19T05:05:29+00:00] replicate 9 exit=0
+[2026-09-19T05:05:29+00:00] replicate 9/10 [claude] starting → run_claude_v3_qgis_r9_20260919T050529.json
+[2026-09-19T05:11:45+00:00] replicate 9 exit=0
+[2026-09-19T05:11:45+00:00] replicate 9/10 [gpt] starting → run_gpt_v3_qgis_r9_20260919T051145.json
+[2026-09-19T05:22:31+00:00] replicate 9 exit=0
+[2026-09-19T05:22:31+00:00] replicate 9 empty audit: 0/56
+[2026-09-19T05:22:31+00:00] inter-replicate cooldown 30s
+[2026-09-19T05:23:01+00:00] --- replicate 10/10 pre-run probe ---
+[2026-09-19T05:23:05+00:00] probe OK — proceed
+[2026-09-19T05:23:05+00:00] replicate 10/10 [gemini] starting → run_gemini_v3_qgis_r10_20260919T052305.json
+[2026-09-19T05:40:53+00:00] replicate 10 exit=0
+[2026-09-19T05:40:53+00:00] replicate 10/10 [claude] starting → run_claude_v3_qgis_r10_20260919T054053.json
+[2026-09-19T05:51:36+00:00] replicate 10 exit=0
+[2026-09-19T05:51:36+00:00] replicate 10/10 [gpt] starting → run_gpt_v3_qgis_r10_20260919T055136.json
+[2026-09-19T06:02:23+00:00] replicate 10 exit=0
+[2026-09-19T06:02:23+00:00] replicate 10 empty audit: 0/56
+[2026-09-19T06:02:23+00:00] cleaned up scenarios subdir: data\eval\scenarios\.qgis_pilot_only
+[2026-09-19T06:02:23+00:00] ======================================================================
+[2026-09-19T06:02:23+00:00] QGIS Pilot bench complete — 30 replicate files
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r1_20260918T232306.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r1_20260918T234140.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r1_20260918T235322.json
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r2_20260919T000459.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r2_20260919T002318.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r2_20260919T003505.json
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r3_20260919T004607.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r3_20260919T010034.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r3_20260919T011310.json
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r4_20260919T012329.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r4_20260919T014126.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r4_20260919T015303.json
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r5_20260919T020426.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r5_20260919T022305.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r5_20260919T023501.json
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r6_20260919T024621.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r6_20260919T030453.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r6_20260919T031646.json
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r7_20260919T032757.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r7_20260919T034600.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r7_20260919T035742.json
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r8_20260919T040906.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r8_20260919T042720.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r8_20260919T043859.json
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r9_20260919T044704.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r9_20260919T050529.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r9_20260919T051145.json
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r10_20260919T052305.json
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r10_20260919T054053.json
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r10_20260919T055136.json
+[2026-09-19T06:02:23+00:00] ======================================================================
+[2026-09-19T06:02:23+00:00] Final empty audit across all pilot replicates:
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r1_20260918T232306.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r1_20260918T234140.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r1_20260918T235322.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r2_20260919T000459.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r2_20260919T002318.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r2_20260919T003505.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r3_20260919T004607.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r3_20260919T010034.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r3_20260919T011310.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r4_20260919T012329.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r4_20260919T014126.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r4_20260919T015303.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r5_20260919T020426.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r5_20260919T022305.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r5_20260919T023501.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r6_20260919T024621.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r6_20260919T030453.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r6_20260919T031646.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r7_20260919T032757.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r7_20260919T034600.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r7_20260919T035742.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r8_20260919T040906.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r8_20260919T042720.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r8_20260919T043859.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r9_20260919T044704.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r9_20260919T050529.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r9_20260919T051145.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gemini_v3_qgis_r10_20260919T052305.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_claude_v3_qgis_r10_20260919T054053.json: empty=0/56
+[2026-09-19T06:02:23+00:00]   run_gpt_v3_qgis_r10_20260919T055136.json: empty=0/56
+[2026-09-19T06:02:23+00:00] TOTAL: empty=0/1680

@@ -1,99 +1,59 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code when working in this repository.
 
-## Project Overview
+## Project overview
 
-GeoLens is an AI-powered software guide. Users upload manuals (PDF/URL/GitHub source code), describe a goal, share their screen, and AI provides step-by-step instructions grounded in the manual content via RAG. Based on [screen.vision](../screen.vision/) architecture.
+GeoLens is a screen-aware guidance assistant for geoscience desktop software
+(OpendTect, QGIS). The user types a goal and shares the screen; at every
+step a VLM reads the screenshot, the workflow graph built from the software
+manual locates the user's current step, and a generator LLM returns the
+single next action. The desktop front end started from
+[Screen Vision](https://github.com/r-muresan/screen.vision) (MIT; see
+`THIRD_PARTY_NOTICES.md`). Only guide mode exists on this branch.
 
-## Tech Stack
+## Tech stack
 
-- **Frontend**: Next.js 13.4, React 18, TypeScript, Tailwind CSS 3.4, Zustand, shadcn/ui
-- **Backend**: FastAPI (Python 3.12), ChromaDB, OpenAI API, Gemini API
-- **Package Manager**: npm (frontend), uv (Python)
+- Frontend: Next.js 13.4, React 18, TypeScript, Tailwind, Zustand
+- Backend: FastAPI (Python 3.12), ChromaDB, sentence-transformers (bge-m3),
+  open-clip, google-genai, anthropic, openai
+- Desktop wrapper: PySide6 (`launcher_desktop.py`)
 
 ## Commands
 
 ```bash
-# Development (runs both Next.js on :3000 and FastAPI on :8000)
-npm run dev
-
-# Frontend only
-npm run next-dev
-
-# Backend only
-npm run fastapi-dev
-# or: uv run python -m uvicorn api.index:app --reload
-
-# Build
-npm run build
-
-# Lint
-npm run lint
+npm run dev                  # Next.js on :3010 + FastAPI on :8000 (.env.local must exist first)
+npm run next-dev             # frontend only (:3010)
+npm run fastapi-dev          # backend only (:8000, --reload on api/)
+python launcher_desktop.py   # PySide6 window; starts both servers itself (frontend on :3000)
 ```
 
-## Architecture
+`uvicorn --reload` watches `.py` files only; restart `npm run dev` after
+editing `.env.local`.
 
-### Data Flow
+## Architecture (api/services)
 
-1. User uploads manual (PDF/URL/GitHub) → `POST /api/manual/{upload,url,github}`
-2. Backend parses content → splits into chunks → generates OpenAI embeddings → stores in ChromaDB
-3. User enters goal + shares screen → frontend captures screen as base64 JPEG every 200ms
-4. `POST /api/step` with `{messages, manual_ids}` → backend does RAG search (top-5 chunks) → injects into system prompt → streams OpenAI response via SSE
-5. Frontend detects screen pixel changes → `POST /api/check` with before/after images → auto-advances
+- `embedder.py` — 800-token / 100-overlap chunking, bge-m3 embeddings
+  (`EMBED_MODEL`), manual-figure cache via `image_extractor.py` (PyMuPDF)
+- `vectorstore.py` — ChromaDB client; `CHROMADB_PATH` (benchmark index: `./data/chromadb_v4`)
+- `workflow_graph.py` — loads `data/workflows/*.json` (`WORKFLOW_DATA_PATH`)
+- `chunk_mapper.py` — links graph nodes to their top-3 manual chunks
+- `visual_matcher.py` — open-clip ViT-B/32 screenshot-to-manual-figure matching
+- `guide_pipeline.py` — step pipeline: screen reading (gemini-2.5-flash),
+  routing (candidate pool, rerank, rules R1/R2/R3), context assembly (v8:
+  3,900 characters of manual text plus the structure block)
+- `bench_backends.py` / `bench_runner.py` / `evaluation.py` / `bench_judge.py` —
+  benchmark harness, conditions, scorer (v6), LLM judges
+- `api/routers/task.py` — `/api/step` (gemini-2.5-pro, Claude Sonnet 4.6 fallback),
+  `/api/check`, `/api/help`, `/api/coordinates`
 
-### Frontend Architecture
+Routing and assembly knobs are environment variables whose defaults are the
+study-5 pins (`scripts/study2_env.sh`, `scripts/study4_env.sh`).
 
-- `app/providers/TaskProvider.tsx` — Core orchestration: manages task state, calls AI, handles screen change detection loop
-- `app/providers/ManualProvider.tsx` — Manual CRUD state, polls processing status, exposes `activeManualIds`
-- `app/providers/SettingsProvider.tsx` — Local LLM settings (Ollama/LM Studio support)
-- `hooks/screenshare.tsx` — Zustand store: screen capture, 200ms pixel-diff change detection, PiP masking
-- `hooks/pip.tsx` — Document Picture-in-Picture window (Chrome) with Safari popup fallback
-- `lib/ai.ts` — SSE stream parsing (`readStream`), retry logic, `generateAction` sends `manual_ids` to backend
-- `lib/prompts/action.ts` — System prompt builder; accepts `manualContext` string from RAG
+## Rules
 
-### Backend Architecture
-
-- `api/routers/task.py` — `/step` (Claude/Gemini + RAG), `/check` (Gemini), `/help` (Gemini follow-up), `/coordinates` (Gemini click target)
-- `api/routers/manual.py` — CRUD endpoints for PDF upload, URL crawl, GitHub clone; uses BackgroundTasks
-- `api/services/parser/` — `pdf_parser.py` (PyMuPDF), `url_parser.py` (BeautifulSoup, depth-2 crawl), `github_parser.py` (GitPython shallow clone)
-- `api/services/embedder.py` — Chunk splitting (800 tokens, 100 overlap via tiktoken) + OpenAI text-embedding-3-small
-- `api/services/vectorstore.py` — ChromaDB PersistentClient wrapper
-- `api/services/rag.py` — `get_manual_context()`: multi-manual search, distance-sorted, formatted with source metadata
-- `api/services/manual_store.py` — JSON file persistence at `data/manuals.json`
-
-### SSE Streaming Protocol
-
-Backend streams as Server-Sent Events: `start → text-start → text-delta (repeated) → text-end → finish → [DONE]`
-
-Frontend parses via `readStream()` in `lib/ai.ts`.
-
-### Data Storage
-
-- Manual metadata: `data/manuals.json`
-- Vector embeddings: `data/chromadb/` (ChromaDB persistent)
-- Uploaded PDFs: `data/uploads/`
-
-## Environment Variables (.env.local)
-
-```
-OPENAI_API_KEY          — OpenAI API (step generation + embeddings)
-OPENROUTER_API_KEY      — OpenRouter (Qwen coordinates, Gemini fallback)
-GEMINI_API_KEY          — Google Gemini (step completion check)
-CHROMADB_PATH           — ChromaDB path (default: ./data/chromadb)
-GITHUB_TOKEN            — Optional, for private repo cloning
-NEXT_PUBLIC_API_URL     — Backend URL (default: http://127.0.0.1:8000/api)
-```
-
-## AI Models Used
-
-| Endpoint | Model | Purpose |
-|----------|-------|---------|
-| /step | claude-sonnet-4-6 → gemini-2.5-flash | Generate next instruction (with RAG context) |
-| /check | gemini-2.5-flash | Verify step completion (before/after images) |
-| /help | gemini-2.5-flash | Answer follow-up questions during guide |
-| /coordinates | gemini-2.5-pro | Locate UI elements for click targets |
-
-## Guide-only build
-
-This branch keeps only guide mode. Report and qa modes (and their endpoints, providers, components, and prompts) have been removed.
+- Never start a paid benchmark run without `scripts/preflight_check.py` passing.
+- `data/workflows/` must keep all 13 graphs (93 nodes, 82 edges).
+- Do not edit scenarios, screen ground truth, or graphs that a tag froze
+  (`study5-prereg-signed`, `study5-complete`, `study5x-complete`).
+- Run `scripts/secret_scan.py` before any push.

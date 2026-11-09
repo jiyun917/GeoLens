@@ -180,13 +180,28 @@ def _filter_text_messages(messages):
     return text_messages
 
 
+_GEMINI_STREAM_CLIENTS: dict = {}
+
+
+def _get_gemini_client(api_key: str):
+    """Module-level client cache. google-genai >= 1.x closes its httpx client in
+    Client.__del__; a client created as a local variable is garbage-collected as
+    soon as this function returns, so the lazily consumed StreamingResponse then
+    fails with "Cannot send a request, as the client has been closed"."""
+    client = _GEMINI_STREAM_CLIENTS.get(api_key)
+    if client is None:
+        client = genai.Client(api_key=api_key)
+        _GEMINI_STREAM_CLIENTS[api_key] = client
+    return client
+
+
 def _gemini_stream_response(messages):
     """Create a Gemini streaming response from OpenAI-format messages."""
     gemini_api_key = os.environ.get("GEMINI_API_KEY")
     if not gemini_api_key:
         return None
 
-    client = genai.Client(api_key=gemini_api_key)
+    client = _get_gemini_client(gemini_api_key)
 
     # Extract system instruction
     system_instruction_parts = []

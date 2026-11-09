@@ -1,446 +1,428 @@
 # GeoLens
 
-GeoLens is an AI-powered, manual-grounded software guide for geoscience
-software. A user uploads a technical manual (PDF), describes a goal,
-shares their screen, and the system streams step-by-step instructions
-grounded in the manual via hybrid retrieval (workflow-graph + vision +
-vector RAG). The system was evaluated on the OpenDtect seismic-
-interpretation package.
+GeoLens is a screen-aware guidance assistant for geoscience desktop software.
+The user types a goal sentence and shares the screen; at every step a
+vision–language model reads the screenshot, a workflow graph built from the
+software manual locates the step the user is at, and a language model returns
+the single next action in the user's language. Only the knowledge store
+(vector index and workflow graphs) is software-specific: the same code and
+settings ran on OpendTect 7.0.9 and QGIS 3.44.
 
-This repository accompanies the manuscript "GeoLens: hybrid retrieval
-for manual-grounded software guidance in geoscience workflows"
-(*Computers & Geosciences*, in submission). Its purpose is to make the
-benchmark numbers, data, and pipeline reproducible from the README
-alone.
+This repository accompanies the manuscript
 
-## Table of contents
+> Yu J, Yoon D. *GeoLens: a screen-aware guidance assistant for geoscience
+> desktop software built from manual-derived workflow graphs.*
+> Department of Energy and Resources Engineering, Chonnam National University.
 
-1. [Overview](#1-overview)
-2. [Installation](#2-installation)
-3. [API keys and configuration](#3-api-keys-and-configuration)
-4. [Usage — guide mode](#4-usage--guide-mode)
-5. [Benchmark reproduction](#5-benchmark-reproduction)
-6. [Data availability and manual ingestion](#6-data-availability-and-manual-ingestion)
-7. [Language policy](#7-language-policy)
-8. [Parser migration note (PyMuPDF → pdfplumber + pypdf)](#8-parser-migration-note-pymupdf--pdfplumber--pypdf)
-9. [Qwen self-hosted deployment](#9-qwen-self-hosted-deployment)
-10. [Repository structure](#10-repository-structure)
-11. [Citation](#11-citation)
-12. [License](#12-license)
+It contains the code, the 13 workflow graphs, the benchmark scenarios and
+screenshots, the pre-registration document and the raw run logs behind every
+number in the paper.
+
+## Contents
+
+1. [What is released](#1-what-is-released)
+2. [How GeoLens works](#2-how-geolens-works)
+3. [Provenance: Screen Vision](#3-provenance-screen-vision)
+4. [Installation](#4-installation)
+5. [Configuration](#5-configuration)
+6. [Running the desktop application](#6-running-the-desktop-application)
+7. [Building a knowledge store](#7-building-a-knowledge-store)
+8. [Benchmark](#8-benchmark)
+9. [Repository structure](#9-repository-structure)
+10. [Superseded material kept for provenance](#10-superseded-material-kept-for-provenance)
+11. [Data and licences](#11-data-and-licences)
+12. [Citation](#12-citation)
 
 ---
 
-## 1. Overview
+## 1. What is released
 
-GeoLens exposes a single mode — **guide** — that walks a user through
-a software workflow one step at a time. On each iteration the frontend
-captures the user's screen, sends it with the goal and conversation
-history to the backend, and the backend:
+| Item | Location | Notes |
+|---|---|---|
+| Step pipeline, desktop app, benchmark harness | `api/`, `app/`, `components/`, `hooks/`, `lib/`, `scripts/` | Python 3.12 + Next.js 13 |
+| 13 workflow graphs (93 nodes, 82 edges) | `data/workflows/*.json` | OpendTect 7 (4 evaluated + 3 distractors), QGIS 6 (4 + 2) |
+| 8 benchmark scenarios of the paper (5 development, 3 test) | `data/eval/scenarios/*.json` | see §8.1; four further legacy scenarios are explained in §10 |
+| Benchmark screenshots | `data/eval/screenshots/<scenario>/` (JPEG used by the harness), `data/eval/study4/originals_png/` (24 unmodified test-set PNGs) | window captures, about 1920×1030 px |
+| Screen ground truth and its review | `data/eval/study4/gt_review_session/`, `data/eval/study4/GT5_final_applied_log.md` | drafted by gemini-2.5-pro, reviewed, frozen before the tag |
+| Identifier alignment log (K1) | `data/eval/study4/K1_signature_log.md` | 8 of 24 test-set nodes, strings only |
+| Pre-registration | `data/eval/study4/study5_pre_registration_DRAFT.md` | frozen by tag `study5-prereg-signed`; the file name is the one it had when written |
+| Main benchmark run logs (60 sessions) | `data/eval/results/run_<gen>_study5_<software>_r<rep>_<timestamp>.json` | `gen` ∈ gemini, claude, gpt; `software` ∈ opendtect, qgis |
+| Exploratory `linked_chunks` run logs (60) | `data/eval/results/run_<gen>_study5x_<software>_r<rep>_<timestamp>.json` | |
+| Verdicts and re-scorings | `data/eval/results/verdict_study5.md`, `verdict_study5x.md`, `rescore_strict_study5.md` | |
+| Methodology audit trail | `data/eval/results/methodology_audit_trail.md` | chronological record of every deviation and decision |
 
-1. Routes the request to the closest workflow node in the hybrid graph
-   (built at manual-ingest time from workflow-shape headings).
-2. Retrieves manual context (vector similarity + graph-neighbor
-   expansion + optional vision matching against manual figures).
-3. Feeds the context and the current screenshot to the chosen LLM
-   generator (Gemini 2.5 Pro by default; Claude / GPT-4o / Qwen
-   selectable for benchmarking).
-4. Streams the next instruction back as Server-Sent Events.
+Not included: the manual PDFs, the ChromaDB indexes and the manual-figure
+cache (see §7 and §11).
 
-The system's contribution is the hybrid retrieval pipeline (workflow
-graph + vector + vision) evaluated against the same LLM backbones with
-weaker retrieval variants and a long-context zero-retrieval baseline.
+## 2. How GeoLens works
 
-The evaluation spans **two software packages**: OpendTect (three
-scenarios, main matrix) and QGIS 3.44 (one scenario, portability
-pilot). The portability pilot demonstrates end-to-end operation on an
-unrelated open-source geospatial application via four `software_id`
-touch-points and a hand-authored workflow signature; see §6 for data
-availability and §5 for the pilot reproduction command.
+**Knowledge store** (built once per software package)
 
-Report and image-labeling modes present in other branches
-(`conference`, `develop`) are **not part of the paper's scope**. Only
-guide mode is retained on the `paper` and (post-merge) `main` branches.
+- *Vector index.* The manual PDF is split into 800-token chunks with a
+  100-token overlap, embedded with `BAAI/bge-m3` and stored in ChromaDB
+  (OpendTect manual: 467 chunks; QGIS Training Manual: 745 chunks).
+- *Workflow graphs.* One JSON graph per manual procedure. Nodes are the
+  screen states the user sees, edges are the actions that move between them.
+  Each node carries screen identifiers (`visual_signature`: expected dialog
+  title, UI elements, keywords) and the ids of the three manual chunks closest
+  to it (`linked_chunks`). Drafts are written by an LLM from the section text
+  and figure OCR; only identifier wording is corrected afterwards.
 
-## 2. Installation
+**Step pipeline** (runs for every screenshot; `api/services/guide_pipeline.py`)
 
-Requires **Python 3.12** and **Node.js 18+**.
+1. *Screen reading.* `gemini-2.5-flash` extracts window title, menus, buttons,
+   field labels and values verbatim into a structured list.
+2. *Routing.* Candidates = the 5 nodes with the highest embedding similarity
+   to the screen text + up to 3 nodes whose manual figures `open-clip ViT-B/32`
+   matches to the screenshot + graph neighbours of the previous node (2 hops).
+   The same VLM reranks them; below confidence 0.7 no node is chosen. Three
+   model-free rules then correct the pick from session history: R1 (stay in
+   the procedure in progress on identical dialog titles), R2 (advance when the
+   previous instruction covered the outgoing edge and the screen changed),
+   R3 (advance up to 3 hops when a successor-only keyword or dialog is visible).
+3. *Context assembly* (`CONTEXT_ASSEMBLY=v8`). 3,900 characters of manual
+   text (3 × 800 from the node's linked chunks + 1,500 from a vector search
+   with the goal sentence) plus the structure block: the current screen state,
+   the one incoming and three following edges written as
+   "action → resulting screen", and a usage rule. If routing chose no node,
+   the 3,900 characters are filled by vector search alone (fallback).
+4. *Instruction generation.* Context + screenshot + goal + up to six previous
+   instructions go to the generator (`gemini-2.5-pro` by default;
+   `claude-sonnet-4-6` and `gpt-4o` were benchmarked), which outputs one action.
+
+All routing and assembly knobs are environment variables; their defaults are
+the values frozen for the benchmark (`scripts/study2_env.sh`,
+`scripts/study4_env.sh`).
+
+## 3. Provenance: Screen Vision
+
+The desktop front end started from [Screen Vision](https://github.com/r-muresan/screen.vision)
+(MIT), an open-source web application in which a VLM reads the shared screen
+and a language model shows step-by-step instructions from the goal and the
+previous instructions. GeoLens keeps its screen-sharing hook, pixel-diff
+change detection, picture-in-picture instruction panel, SSE stream reader and
+the `step` / `check` / `help` / `coordinates` request structure. Screen Vision
+has no software knowledge beyond the model's prior knowledge and does not
+track the user's position in a procedure; everything in §2 (knowledge store,
+routing, context assembly) and §8 (benchmark harness) is new. The derived
+files and the original licence text are listed in
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+## 4. Installation
+
+Requires **Python 3.12** and **Node.js 18+**. Developed and evaluated on
+Windows 11; the servers also run on macOS/Linux.
 
 ```bash
 git clone https://github.com/jiyun917/GeoLens.git
 cd GeoLens
-git checkout main
 
-# Backend (Python)
 python -m venv .venv
-.venv/Scripts/activate            # Windows PowerShell / Git Bash
+.venv/Scripts/activate            # Windows (Git Bash / PowerShell)
 # source .venv/bin/activate       # macOS / Linux
 pip install -r requirements.txt
+pip install PySide6               # only for the desktop window (launcher_desktop.py)
 
-# Frontend (Next.js)
 npm install
 ```
 
-Approximate size of the Python + JS dependency tree: ~2.5 GB
-installed. First-time embedding calls download the sentence-
-transformers weights lazily (~600 MB, cached).
+First use downloads the `BAAI/bge-m3` weights (about 2.3 GB) and the
+open-clip ViT-B/32 weights. No GPU is required; all generators are API models.
 
-**Compute requirements**
-
-- Development / interactive use: any modern CPU. No GPU required for
-  the API-backed generators (Gemini, Claude, GPT-4o).
-- Local Qwen benchmarking: see §9. The paper's Qwen numbers used
-  4× RTX 6000 Ada 48 GB; smaller configurations are possible but not
-  the ones we benchmarked.
-- Disk: the chromadb index for the OpenDtect manual is ~1 GB. CLIP
-  image cache adds ~160 MB. Synthetic-corpus scratch index is <5 MB.
-
-## 3. API keys and configuration
-
-Copy `.env.example` to `.env.local` and fill in real values:
+## 5. Configuration
 
 ```bash
-cp .env.example .env.local
+cp .env.example .env.local        # then fill in the keys
 ```
 
-| Variable | Required for | Notes |
-|---|---|---|
-| `GEMINI_API_KEY`     | routing + vision + default generator | Required for both interactive use and benchmarking. |
-| `OPENAI_API_KEY`     | embeddings + optional GPT-4o benchmark | Embeddings use `text-embedding-3-small`. |
-| `ANTHROPIC_API_KEY`  | optional Claude benchmark             | Model: `claude-sonnet-4-6`. |
-| `OPENROUTER_API_KEY` | optional Qwen-via-OpenRouter route    | Only if not using a self-hosted vLLM endpoint. |
-| `CHROMADB_PATH`      | vector store location                 | Default `./data/chromadb`. |
-| `GITHUB_TOKEN`       | optional private-repo ingest          | Required only for `POST /api/manual/github` with a private URL. |
+`.env.local` must exist **before** the servers start; the pipeline reads its
+knobs at import time and `uvicorn --reload` does not watch `.env` files.
 
-`.env.local` is gitignored. The placeholder values in `.env.example`
-match `scripts/secret_scan.py`'s allowlist so a clean clone scans
-cleanly.
+| Variable | Needed for |
+|---|---|
+| `GEMINI_API_KEY` | required: screen reading, reranking, default generator, target coordinates |
+| `ANTHROPIC_API_KEY` | Claude Sonnet 4.6 generator (benchmark; desktop fallback), claude-haiku judge |
+| `OPENAI_API_KEY` | GPT-4o generator (benchmark only) |
+| `CHROMADB_PATH` | ChromaDB directory; the paper's index is `./data/chromadb_v4` |
+| `EMBED_MODEL` | `BAAI/bge-m3` (paper); any sentence-transformers model works for a new index |
+| `GEOLENS_SOFTWARE_ID` | `opendtect` or `qgis`: which software's graphs routing searches |
+| `NEXT_PUBLIC_API_URL` | backend URL for the frontend (default `http://127.0.0.1:8000/api`) |
 
-## 4. Usage — guide mode
+Embeddings are computed locally, so ingestion needs no API key.
 
-Start both servers with:
+## 6. Running the desktop application
 
 ```bash
-npm run dev
+npm run dev                       # Next.js on http://localhost:3010 + FastAPI on :8000
+# or
+python launcher_desktop.py        # PySide6 window; starts both servers itself (frontend on :3000)
 ```
 
-This launches the FastAPI backend on port 8000 and the Next.js
-frontend on port 3000. Open <http://localhost:3000>, upload a PDF
-manual, enter a goal (e.g. *"Create a new 3D seismic survey"*),
-start screen sharing, and the assistant will stream the next step at
-each iteration.
+In the app: upload the manual PDF once (§7), type a goal sentence, start
+screen sharing, and the GeoLens panel shows the first instruction. The panel is
+an always-on-top window excluded from capture. Under the instruction is a crop
+of the screenshot around the predicted target (a separate `gemini-2.5-pro`
+call; its accuracy was not measured). When the screen changes (pixel
+differences checked every 200 ms) the next screenshot is captured and the next
+instruction requested; **Done** advances manually and **Pause** suspends
+detection. Typing a question answers it on the basis of the current screen and
+the manual without advancing the step. The session ends when the generator
+declares completion.
 
-Guide mode is the only mode exposed by this build. There is no report
-route and no image-labeling UI.
+Endpoints: `POST /api/step` (instruction, SSE), `/api/check` (step completion),
+`/api/help` (follow-up question), `/api/coordinates` (target location),
+`/api/manual/*` (ingestion), `/api/workflow/*` (graphs), `/api/rag/route`
+(routing only).
 
-## 5. Benchmark reproduction
+## 7. Building a knowledge store
 
-The active paper matrix is the **`unified4` tag**: 4 LLM generators ×
-7 backends (long_context on Gemini only, yielding 25 model–backend
-cells) × 3 scenarios × 5 replicates = **1,920 evaluated main-matrix
-step responses + 240 long-context step responses**.
+The manuals are not redistributed (§11). To rebuild the OpendTect or QGIS
+store, or to add a new software package:
 
-The four LLM generators are Gemini 2.5 Pro, Claude Sonnet 4.6, GPT-4o,
-and Qwen3-235B-A22B-Instruct. The seven backends are `no_rag`,
-`vanilla_vector`, `graph_only`, `vision_only`, `full_system` (the
-proposed hybrid), `state_path`, and `long_context` (Gemini-only because
-the manual at ~226K tokens exceeds Claude Sonnet 4.6's 200K window,
-GPT-4o's 128K window, and the Qwen deployment's vLLM
-`--max-model-len 32768` cap; see §9).
-
-The three OpendTect scenarios are `opendtect__survey_setup__01`
-(4 steps), `opendtect__3d_visualization__01` (4 steps), and
-`opendtect__attribute_computation__01` (8 steps, added in the
-unified3 → unified4 cycle). A separate **portability pilot** on
-`qgis__vector_buffer__01` (8 steps) runs Gemini × 3 backends × 5
-replicates = 120 additional steps; see §5.4.
-
-Prior tags (`unified2`, `unified3`) are preserved for provenance in
-`data/eval/results/.archive_unified2/` and in
-`data/eval/results/unified3_judgment_template.md` respectively.
-**Active-paper citations should use `unified4` and `qgis_pilot`
-outputs only.**
-
-### 5.1 Prepare the index
-
-You need a chromadb index built from a real manual to reproduce the
-paper numbers. Two paths:
-
-- **Recommended**: build your own index from an OpendTect manual PDF
-  (see §6.2). Building takes ~15–25 minutes on a 4-core CPU (dominated
-  by Gemini Vision OCR calls for the manual's screenshot-heavy pages).
-- **Byte-exact reference**: download the AGPL-licensed
-  `chromadb_pymupdf_reference/` snapshot linked in the release
-  description and mount it at `data/chromadb/`. This snapshot uses
-  PyMuPDF 1.25.3 and reproduces the paper's numbers exactly. See §8
-  for why the public code path uses the MIT-compatible parser instead.
-
-### 5.2 Run the main matrix (unified4)
+**7.1 Vector index (bge-m3, as in the paper)**
 
 ```bash
-# Full unified4 matrix + long_context, with credit-probe safety belt.
-# (Wraps run_all_models + long_context loop; ~4-6 h wall time.)
-bash scripts/run_unified4.sh
-
-# Aggregation and analysis (all tag-aware, default = unified4)
-.venv/Scripts/python.exe scripts/qwen_cost_convert.py --tag unified4
-.venv/Scripts/python.exe scripts/build_final_table.py --tag unified4
-.venv/Scripts/python.exe scripts/compute_table1_sd.py --tag unified4
-.venv/Scripts/python.exe scripts/direction_consistency.py --tag unified4
-.venv/Scripts/python.exe scripts/stats_unified.py --tag unified4
-.venv/Scripts/python.exe scripts/stats_audit.py --tag unified4
-.venv/Scripts/python.exe scripts/faithfulness_audit.py --tag unified4
-.venv/Scripts/python.exe scripts/per_scenario_breakdown.py --tag unified4
+CHROMADB_PATH=./data/chromadb_v4 EMBED_MODEL=BAAI/bge-m3 OCR_FIGURES=1 \
+  .venv/Scripts/python.exe scripts/reindex_v4.py --manual-id <manual_id> --pdf <manual.pdf>
 ```
 
-Wall time: full matrix takes ~4–6 hours end-to-end, dominated by
-Qwen wall-clock latency and API rate limits. Approximate cost at
-2026-07 rates: ~USD $40 for the API portion (Qwen self-hosted; see
-§9 for GPU-time accounting). The wrapper includes a credit-depletion
-probe (rc=4 immediate abort) and a 60 s inter-replicate sleep on the
-long-context loop, both inherited from the unified3-recovery lessons
-(see `data/eval/results/methodology_audit_trail.md § 관측 #9`).
+`OCR_FIGURES=1` runs Gemini Vision OCR on figure-heavy pages (about 15–25 min
+for the 454-page OpendTect manual on a 4-core CPU). The manual ids used by the
+released graphs are `645b7cdf2690408da843b9ce63c52d5b` (OpendTect) and
+`bf2804feea57434bb79b749134ed1df0` (QGIS).
 
-### 5.3 Run the QGIS portability pilot (qgis_pilot)
+**7.2 Manual-figure cache (vision candidate source)**
+
+`scripts/reindex_v4.py` builds the text index only. The figure cache
+(`data/manual_images/`, gitignored, about 160 MB) and its open-clip index are
+produced by the standard ingestion path, i.e. uploading the PDF in the UI
+(`POST /api/manual/upload`) or `scripts/reindex_manual.py`. That path needs
+`pip install pymupdf` (AGPL-3.0; see `requirements.txt`). Without the cache,
+routing still runs with the embedding and graph-neighbour candidates.
+
+**7.3 Workflow graphs**
+
+Graphs are JSON files in `data/workflows/` (schema: `workflow_id`, `name`,
+`software_id`, `manual_reference`, `authoring`, `nodes[]`, `edges[]`; see any
+released graph). The three test-set graphs were drafted from manual text only
+by `scripts/study4_author.py`, before any screenshot was captured. After a
+graph is written or an index rebuilt, link each node to its chunks
+(`api/services/chunk_mapper.py`; `scripts/relink_chunks_v4.py` shows the
+batch form) — the released `linked_chunks` ids resolve only against the
+authors' `chromadb_v4` collections, so a rebuilt index requires re-linking.
+`scripts/preflight_check.py` verifies that every node has resolvable links,
+every edge is well-formed and the scenario files are complete.
+
+## 8. Benchmark
+
+### 8.1 Design (as reported)
+
+- **Harness.** `api/services/bench_runner.py` replays pre-captured
+  screenshots through the same routing and context-assembly code as the
+  desktop app, with the same session history (last confirmed node,
+  instructions issued, previous screen reading), and scores the instructions
+  automatically. It does not measure recovery after a wrong instruction or
+  user completion time.
+- **Scenarios (Table 2 of the paper).** Development set, used while designing
+  the system: `opendtect__fault_sticks__01` (9 steps),
+  `opendtect__horizon_autotrack__01` (7), `opendtect__horizon_2dviewer__01` (9),
+  `qgis__rule_classification__01` (10), `qgis__reclassify_raster__01` (9).
+  Test set, written from the manual after the system was frozen:
+  `opendtect__spectral_decomp__01` (9), `qgis__custom_projection__01` (9),
+  `qgis__aspect_north__01` (6). The test-set files used by the run scripts are
+  the copies in `data/eval/scenarios/.study5_test_opendtect/` and
+  `.study5_test_qgis/`.
+- **Conditions** (`api/services/bench_backends.py`). Prespecified:
+  `full_system` (GeoLens), `vanilla_budget` (vector search with the goal
+  sentence, same 3,900 characters, no graph), `no_rag` (goal + screenshot
+  only). Exploratory, run after the main results were seen: `vanilla_vector`
+  (all vector results, no character limit) and `linked_chunks` (GeoLens
+  routing and manual text, structure block removed).
+- **Generators.** `gemini-2.5-pro`, `claude-sonnet-4-6`, `gpt-4o`;
+  temperature 0.2; 10 replicates of every scenario session per generator and
+  condition.
+- **Metrics.** Step accuracy (model-free keyword/pattern match, scorer v6,
+  `api/services/evaluation.py`), hallucination rate (label found neither in the
+  screen ground truth nor in the relevant manual section), cost and latency per
+  step. Two re-scorings: a strict all-keywords criterion
+  (`scripts/rescore_strict_study5.py`) and two LLM judges (`claude-haiku-4-5`,
+  `gemini-2.5-flash`; `api/services/bench_judge.py`), whose per-backend
+  `judge_step_accuracy` is stored inside each run JSON.
+- **Statistics.** Permutation test stratified by generator (10,000
+  permutations), Holm correction over the two prespecified comparisons;
+  `scripts/stats_stratified.py`.
+- **Pre-registration.** Analysis plan, scoring rules, predictions, code and
+  graphs were fixed in `data/eval/study4/study5_pre_registration_DRAFT.md` and
+  frozen by the annotated tag `study5-prereg-signed` (commit `5be5a78`,
+  2026-09-28T19:14:20Z) before the first main-run log
+  (`run_claude_study5_opendtect_r1_20260928T191425.json`). Later tags:
+  `study5-complete` (`72cb171`, main run and verdict), `study5x-complete`
+  (`030fc71`, exploratory `linked_chunks` run). The tags are annotated, not
+  GPG-signed; "signed" refers to the pre-registration document.
+
+### 8.2 Results (test set, mean of 10 replicates; Table 3 of the paper)
+
+| Generator | GeoLens | vanilla_budget | vanilla_vector | no_rag | linked_chunks |
+|---|---|---|---|---|---|
+| Gemini 2.5 Pro | **0.963** | 0.780 | 0.859 | 0.835 | 0.819 |
+| Claude Sonnet 4.6 | **1.000** | 0.922 | 0.967 | 0.848 | 0.928 |
+| GPT-4o | **0.959** | 0.889 | 0.867 | 0.752 | 0.896 |
+
+GeoLens vs vanilla_budget: direction 3/3, stratified Δ = +0.11, raw p = 0.0001,
+Holm-adjusted p = 0.0002. Latency with GeoLens was 14–25 s per step after the
+first step (two auxiliary calls + candidate selection + generation); GPT-4o
+under GeoLens mentioned an off-screen label at 32 of 240 steps (hallucination
+rate 0.137). Full tables, per-scenario breakdowns and routing statistics:
+`data/eval/results/verdict_study5.md`, `verdict_study5x.md`,
+`rescore_strict_study5.md`.
+
+### 8.3 Reproduction
+
+Prerequisites: both indexes built as in §7 at `./data/chromadb_v4` with the
+graphs re-linked, `.env.local` with the three generator keys, and a clean
+working tree for `api/`, `scripts/`, `data/workflows/`, `data/eval/scenarios/`
+(the preflight check enforces this).
 
 ```bash
-# Requires: a running FastAPI backend on :8000 with the QGIS manual
-# already ingested (see §6.2 for ingest, §6.3 for QGIS specifics).
-# The wrapper temporarily moves OpendTect workflow JSONs out of the
-# loader path, restores them on exit, and runs Gemini × 3 backends ×
-# 5 replicates × 1 scenario (~1 hour wall time).
-GEOLENS_SOFTWARE_ID=qgis .venv/Scripts/python.exe -u scripts/run_qgis_pilot.py
+source scripts/study2_env.sh && source scripts/study4_env.sh   # benchmark pins
 
-# Post-run judgment (produces qgis_pilot_result_report.md)
-.venv/Scripts/python.exe scripts/qgis_pilot_judge.py
+# Pre-run integrity check (read-only; the run scripts call it themselves)
+.venv/Scripts/python.exe scripts/preflight_check.py \
+  --scenarios data/eval/scenarios/.study5_test_opendtect \
+  --expect GEOLENS_SCORER=v6 CONTEXT_ASSEMBLY=v8 ROUTER_SESSION_STICKY=1 \
+           ROUTER_HISTORY_ADVANCE=1 ROUTER_SCREEN_ADVANCE=1 GEN_PROMPT_VERSION=v3
+
+# Main matrix: 3 generators x {no_rag, vanilla_budget, vanilla_vector, full_system}
+#              x 3 test scenarios x 10 replicates (two passes: OpendTect, QGIS)
+MODELS=gemini,claude,gpt REPS=10 bash scripts/run_study5.sh
+.venv/Scripts/python.exe scripts/verdict_study5.py          # -> verdict_study5.md
+
+# Exploratory linked_chunks condition on the same test set
+MODELS=gemini,claude,gpt REPS=10 bash scripts/run_study5x.sh
+.venv/Scripts/python.exe scripts/verdict_study5x.py         # -> verdict_study5x.md
+
+# Strict re-scoring of the existing run logs (no API calls)
+.venv/Scripts/python.exe scripts/rescore_strict_study5.py   # -> rescore_strict_study5.md
 ```
 
-### 5.4 Sanity check without the real manual
+The main run cost about USD 32 in API fees at 2026-09 prices (Claude 13,
+Gemini 11, GPT 8; actual billing about 1.5× the recorded estimate) and took one
+night with the three generators running in parallel. A smoke test on one
+generator and one replicate is `MODELS=gemini REPS=1 bash scripts/run_study5.sh`.
 
-For reviewers who cannot obtain the OpenDtect manual, `scripts/
-verify_dummy_pipeline.py` runs the full pipeline (chunk → embed →
-retrieve → generate) against a synthetic corpus committed under
-`data/eval/dummy_manuals/`:
+Reviewers without the manuals can exercise the pipeline mechanics on the
+synthetic corpus in `data/eval/dummy_manuals/`:
 
 ```bash
-# Retrieval only (no LLM key required)
-.venv/Scripts/python.exe scripts/verify_dummy_pipeline.py --skip-generate
-
-# End-to-end (needs GEMINI_API_KEY)
-.venv/Scripts/python.exe scripts/verify_dummy_pipeline.py
+.venv/Scripts/python.exe scripts/verify_dummy_pipeline.py --skip-generate   # no API key
+.venv/Scripts/python.exe scripts/verify_dummy_pipeline.py                   # needs GEMINI_API_KEY
 ```
 
-The script exits 0 on success and prints details of the retrieval and
-generation steps on stderr for auditing.
+### 8.4 Language
 
-## 6. Data availability and manual ingestion
+The benchmark scenarios are authored in Korean (`"language": "ko"` in the
+scenario JSON) and the generators answered in Korean; the completion sentinel
+is the Korean word for "Done". The scorer is language-neutral (labels are
+matched as written on screen) and the desktop app has a language selector.
 
-### 6.1 OpenDtect manual
-
-The OpenDtect manual is authored by dGB Earth Sciences and is not
-redistributable here. Obtain it from the official OpenDtect
-distribution channel (<https://dgbes.com>) and place the PDF at
-`data/uploads/`.
-
-### 6.2 Build your own index
-
-```bash
-.venv/Scripts/python.exe scripts/reindex_manual.py \
-    --manual-id opendtect_v7 \
-    --pdf data/uploads/OpendTect_User_Documentation_v7.pdf
-```
-
-Timing on the OpendTect 454-page manual, MIT-compatible pipeline:
-
-- pdfplumber text extraction: ~3 minutes
-- Gemini Vision OCR pass (279 image-heavy pages, 5 parallel workers):
-  ~15 minutes wall time
-- Chunking + `text-embedding-3-small` on 521 chunks: ~2 minutes
-- Total end-to-end: **~20–25 minutes** on a 4-core CPU with a stable
-  Gemini API connection
-
-The resulting index (521 chunks, ~1 GB) is what the pdfplumber column
-in the paper's benchmark was measured against.
-
-### 6.3 QGIS manual (portability pilot)
-
-The QGIS 3.44 Training Manual is authored by the QGIS project
-(<https://qgis.org>) and licensed under CC-BY-SA. **We do not
-redistribute the PDF here**; obtain it from the official QGIS
-documentation site
-(<https://docs.qgis.org/3.44/en/docs/training_manual/>) and either
-save the PDF locally or use the URL crawler.
-
-For the pilot as reported, the PDF form was used (697 pages, ingested
-in ~56 minutes at 12.5 pages/min throughput). Ingest command:
-
-```bash
-# Ingest the QGIS Training Manual — same POST /api/manual/upload as UI
-QGIS_TRAINING_MANUAL_PDF="/path/to/QGIS-3.44-TrainingManual-en.pdf" \
-  .venv/Scripts/python.exe -u scripts/qgis_pilot_upload.py
-```
-
-The QGIS pilot uses the same `POST /api/manual/upload` endpoint that
-the UI Submit button uses. No internal-function bypass. See
-`data/eval/results/methodology_audit_trail.md § P-1 최종 결과` for the
-ingest measurement provenance.
-
-### 6.4 Synthetic corpus
-
-`data/eval/dummy_manuals/` contains three original short markdown
-files intended for review-time reproducibility checks (see §5.3). They
-are not a substitute for a real manual — they exercise the pipeline
-mechanics, not the benchmark's ecological validity.
-
-## 7. Language policy
-
-All benchmark results were measured with **Korean-language prompts and
-Korean scenario tags**, reflecting the target user population
-(Korean geoscience practitioners). Both the interactive guide flow and
-the benchmark harness feed Korean strings to the generator; the
-underlying backend code is language-neutral, only the prompt templates
-under `lib/prompts/` and the scenario JSONs under `data/eval/
-scenarios/` are language-specific. An English-language extension is
-left as future work.
-
-## 8. Parser migration note (PyMuPDF → pdfplumber + pypdf)
-
-**The paper's headline numbers were computed against a chromadb index
-built with PyMuPDF 1.25.3.** PyMuPDF is licensed under AGPL-3.0, which
-is incompatible with this repository's MIT distribution. The public
-reproduction pipeline therefore uses **pdfplumber 0.11.10 (MIT)** for
-text extraction and rendering, and **pypdf 6.14.2 (BSD-3-Clause)** for
-the outline / table-of-contents traversal that pdfplumber does not
-expose.
-
-Full equivalence between the two indexes was audited before adopting
-the migration. Summary:
-
-- Chunk-boundary identity was rejected as structurally unmeetable
-  (byte-non-identical parser outputs feed a fixed-size splitter — no
-  amount of splitter tuning converges the two chunk sets).
-- Instead, pre-registered end-to-end criteria: full_system Step Acc
-  within reference ±1 SD; ablation ordering preserved
-  (full_system ≥ vanilla on Step Acc and ≤ vanilla on Hall Rate);
-  no pathological reversals (Loop Rate stays 0, Hall Rate < 2× ref).
-- **Result on the pdfplumber index (Gemini × 5 replicates)**:
-  full_system Step Acc **57.5±11.2%** (reference 60.0±10.5,
-  within 1 SD); vanilla Step Acc **45.0±6.8%** — a 15pp drop from the
-  reference 60.0, driven by vanilla_vector's greater sensitivity to
-  chunk-boundary shifts than hybrid retrieval (which stabilises the
-  choice via workflow-graph routing before vector similarity). Hall
-  rate ordering preserved (full 2.5% < vanilla 5.0%). Loop Rate 0.
-- **All pre-registered criteria PASS.** The paper's headline numbers
-  stand as measured on the PyMuPDF reference; the MIT-distributed
-  pdfplumber pipeline is statistically equivalent on the ablation-
-  critical dimensions.
-
-Full audit trail: `data/eval/results/pypdf_migration_audit.md`.
-
-If you require byte-exact reproduction of the paper's numbers, mount
-the released `chromadb_pymupdf_reference/` snapshot at
-`data/chromadb/`; that route retains PyMuPDF as a build-time
-dependency and is not the recommended reproduction path.
-
-## 9. Qwen self-hosted deployment
-
-Qwen3-235B-A22B-Instruct (INT4 GPTQ) was served for the benchmark on
-an institution-hosted node:
-
-- Hardware: **4× NVIDIA RTX 6000 Ada 48GB**
-- Serving engine: vLLM, tensor-parallel 4
-- `--max-model-len 32768`
-- Endpoint pattern: `http://<host>:28000/v1` (OpenAI-compatible)
-
-The endpoint is configured via the `QWEN_BASE_URL` environment
-variable in `api/services/bench_backends.py`; the default is
-`http://localhost:28000/v1`. Override with your own vLLM deployment
-before running Qwen backends. The `run_unified3.sh` / `run_unified4.sh`
-wrappers also honor `QWEN_URL` (health-check endpoint).
-
-**Qwen cost accounting.** Because there is no per-token API fee,
-`scripts/qwen_cost_convert.py` reports Qwen cost primarily as
-**GPU-time per step** (`latency × N_GPU`), with a dollar conversion
-provided for comparability against the API models:
-
-- Reference rate: **$0.84 per GPU-hour for RTX 6000 Ada 48GB** on
-  RunPod Secure Cloud (<https://www.runpod.io/pricing>, queried
-  2026-07-27). Node rate at TP=4: `$0.84 × 4 = $3.36/hr`.
-- Per-step cost = `(latency_sec / 3600) × $3.36/hr`.
-- Backend-to-backend Qwen cost **ratios are invariant** to the chosen
-  hourly rate; only absolute scale depends on it.
-
-The 32,768-token serving cap is the reason Qwen is excluded from the
-`long_context` ablation (the OpenDtect manual is ~226K tokens, well
-above the deployment's context budget). Detailed cost derivation and
-the reproduction script are in `data/eval/results/cost_basis.md` §5.
-
-## 10. Repository structure
+## 9. Repository structure
 
 ```
 GeoLens/
-├── api/                        # FastAPI backend (Python 3.12)
-│   ├── routers/                # /api/{step,check,help,coordinates,manual}
+├── api/
+│   ├── index.py                 # FastAPI app
+│   ├── routers/                 # task.py (/api/step, /check, /help, /coordinates), manual.py, workflow.py
 │   └── services/
-│       ├── parser/             # PDF/URL/GitHub ingest (pdfplumber + pypdf)
-│       ├── embedder.py         # chunking + text-embedding-3-small
-│       ├── vectorstore.py      # ChromaDB PersistentClient wrapper
-│       ├── rag.py              # hybrid retrieval (vector + graph + vision)
-│       ├── guide_pipeline.py   # request routing (workflow graph)
-│       └── bench_backends.py   # 7 backend implementations + pricing table
-├── app/, components/, lib/     # Next.js frontend (guide mode only)
+│       ├── embedder.py          # chunking (800/100), bge-m3 embeddings, figure cache hook
+│       ├── vectorstore.py       # ChromaDB client
+│       ├── parser/              # PDF (pdfplumber + pypdf), URL, GitHub ingestion
+│       ├── image_extractor.py   # manual figures (PyMuPDF, optional)
+│       ├── visual_matcher.py    # open-clip ViT-B/32 screenshot-to-figure matching
+│       ├── workflow_graph.py    # graph loader (WORKFLOW_DATA_PATH)
+│       ├── chunk_mapper.py      # node -> top-3 chunk linking
+│       ├── guide_pipeline.py    # screen reading, routing (R1-R3), context assembly
+│       ├── bench_backends.py    # benchmark conditions
+│       ├── bench_runner.py      # screenshot replay harness
+│       ├── evaluation.py        # scorer (v6), hallucination check
+│       └── bench_judge.py       # LLM judges
+├── app/, components/, hooks/, lib/   # Next.js front end (see THIRD_PARTY_NOTICES.md)
+├── launcher_desktop.py          # PySide6 desktop window
 ├── data/
-│   ├── uploads/                # (gitignored) user-supplied PDFs
-│   ├── chromadb/               # (gitignored) vector index
-│   ├── manual_images/          # (gitignored) CLIP cache; regenerate with scripts/
-│   ├── workflows/              # hand-authored + auto-mapped workflow graphs
-│   └── eval/
-│       ├── scenarios/          # 4 scenario JSONs (3 OpendTect + 1 QGIS pilot)
-│       ├── screenshots/        # per-scenario per-step JPGs (24 images total)
-│       ├── dummy_manuals/      # synthetic corpus for review-time reproducibility check
-│       └── results/            # unified4 + qgis_pilot artifacts + audit trail
-│           └── .archive_unified2/  # historical unified2 snapshots (SUPERSEDED, retained for provenance)
-├── scripts/                    # bench runners, aggregators, migration audits
-│   ├── run_unified4.sh         # active main matrix wrapper (recovery-aware)
-│   ├── run_qgis_pilot.py       # portability pilot wrapper (isolation-aware)
-│   ├── qgis_pilot_dryrun.py    # QGIS routing dry-run
-│   ├── qgis_pilot_judge.py     # QGIS pilot pass/fail judgment
-│   ├── run_all_models.py       # underlying multi-model runner
-│   ├── build_final_table.py    # per-model tables (tag-aware)
-│   ├── compute_table1_sd.py    # compact 25-cell Table 1 (tag-aware)
-│   ├── stats_audit.py          # Table 2 corrections (Bonferroni/Holm/CI, tag-aware)
-│   ├── faithfulness_audit.py   # Table 3 direction-consistency reproduction (tag-aware)
-│   ├── per_scenario_breakdown.py # per-scenario × per-model breakdown
-│   ├── qwen_cost_convert.py    # Qwen effective-cost conversion
-│   ├── routing_dryrun.py       # OpendTect routing dry-run
-│   ├── secret_scan.py          # pre-push credential scanner
-│   ├── reindex_manual.py       # full production reindex path
-│   └── verify_dummy_pipeline.py # review-time end-to-end sanity check
-├── LICENSE                     # MIT
-├── README.md                   # (this file)
-├── .env.example                # documented placeholder keys
-├── requirements.txt            # pinned Python deps
-└── package.json                # Next.js deps + npm run dev scripts
+│   ├── workflows/               # 13 workflow graphs (the routing pool)
+│   ├── eval/
+│   │   ├── scenarios/           # scenario JSONs (+ SCHEMA.json; .study5_test_* = test-set copies)
+│   │   ├── screenshots/         # per-scenario step JPEGs used by the harness
+│   │   ├── study4/              # test-set originals (PNG), GT review, K1 log, pre-registration
+│   │   ├── study2/, study3/     # earlier development-set GT reviews
+│   │   ├── dummy_manuals/       # synthetic corpus for the pipeline check
+│   │   └── results/             # run logs, verdicts, re-scorings, audit trail
+│   ├── chromadb_v4/             # (gitignored) bge-m3 index; build with scripts/reindex_v4.py
+│   ├── manual_images/           # (gitignored) manual-figure cache
+│   └── uploads/                 # (gitignored) manual PDFs
+├── scripts/
+│   ├── study2_env.sh, study4_env.sh   # benchmark pins
+│   ├── preflight_check.py             # pre-run integrity check
+│   ├── run_study5.sh, verdict_study5.py
+│   ├── run_study5x.sh, verdict_study5x.py
+│   ├── rescore_strict_study5.py, stats_stratified.py
+│   ├── reindex_v4.py, relink_chunks_v4.py, study4_author.py
+│   ├── verify_dummy_pipeline.py
+│   └── secret_scan.py                 # pre-push credential scan
+├── THIRD_PARTY_NOTICES.md
+├── LICENSE                      # MIT
+├── requirements.txt, package.json
+└── .env.example
 ```
 
-### Pre-push secret scan
+## 10. Superseded material kept for provenance
 
-Before pushing, run:
+The repository also holds earlier development cycles whose numbers are **not**
+the ones reported in the paper. They are kept so that the audit trail stays
+complete, and should not be cited as results:
 
-```bash
-.venv/Scripts/python.exe scripts/secret_scan.py
-# or, if installed:
-gitleaks git . --log-opts="--all"
+- `unified`, `unified2`, `unified3`, `unified4` and `v3` run logs
+  (`data/eval/results/run_*_unified*`, `run_*_v3*`, `.archive_unified2/`,
+  `archive_unified3_longctx/`): earlier matrices with a 4-generator ×
+  7-backend design, a self-hosted Qwen backend (`QWEN_BASE_URL`,
+  `scripts/qwen_cost_convert.py`), `graph_only` / `vision_only` /
+  `state_path` / `long_context` conditions, and the `qgis__vector_buffer__01`
+  portability pilot (`scripts/run_qgis_pilot.py`).
+- `study2`, `study3`, `study4` runs and verdicts: the pre-registered
+  development-set studies that fixed rules R1, R2 and R3 and the scorer.
+- The four legacy scenarios `opendtect__survey_setup__01`,
+  `opendtect__3d_visualization__01`, `opendtect__attribute_computation__01`
+  and `qgis__vector_buffer__01`, and `data/eval/scenarios/excluded/`.
+- `data/eval/results/pypdf_migration_audit.md` and
+  `data/chromadb_pymupdf_reference/` (gitignored): the 2026-07 migration of the
+  text parser from PyMuPDF to pdfplumber + pypdf, verified before the current
+  index was built.
+- `data/eval/results/_stale_*`, `discarded/`: replicates discarded during
+  recovery from API outages, with the reason recorded in the audit trail.
+
+## 11. Data and licences
+
+- **Code**: MIT, see [`LICENSE`](LICENSE). Front-end files derived from
+  Screen Vision carry its MIT notice, see
+  [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+- **OpendTect manual** (*Introduction to OpendTect and OpendTect Pro Training
+  Manual 7.0*, dGB Earth Sciences): not redistributed. Obtain it from dGB
+  (<https://dgbes.com>); short excerpts appear in the run logs as retrieved
+  context. The F3 Demo 2023 dataset and OpendTect 7.0.9 are free downloads.
+- **QGIS Training Manual 3.44** (QGIS project,
+  <https://docs.qgis.org/3.44/en/docs/training_manual/>): provided by the
+  QGIS project under the GNU Free Documentation License 1.3 or later; the PDF
+  is not redistributed here. QGIS 3.44 and the QGIS Training Data are free.
+- **Screenshots, graphs, scenarios, screen ground truth, run logs**: released
+  under the repository licence.
+- Before pushing, run `.venv/Scripts/python.exe scripts/secret_scan.py`; it
+  must report CLEAN.
+
+## 12. Citation
+
+```
+Yu J, Yoon D. GeoLens: a screen-aware guidance assistant for geoscience
+desktop software built from manual-derived workflow graphs. Manuscript.
+Code: https://github.com/jiyun917/GeoLens
 ```
 
-Both should report `CLEAN` on the current tree.
-
-## 11. Citation
-
-```
-[Citation placeholder — to be updated on acceptance with DOI and
-BibTeX entry.]
-```
-
-## 12. License
-
-MIT — see [`LICENSE`](LICENSE).
+A DOI and BibTeX entry will be added on publication.

@@ -63,3 +63,8 @@ data/chromadb_v4/
 data/eval/scenarios/.dev_opendtect/
 data/eval/scenarios/.qgis_pilot_only/
 data/eval/results/*.out
+
+# Local tool state / debug output (never part of the release)
+.claude/
+launcher_debug.log
+.env.local.bak*
